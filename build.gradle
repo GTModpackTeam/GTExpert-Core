@@ -84,7 +84,7 @@ dependencies {
 
 	compile 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.673'
 	compile 'curse.maven:had-enough-items-557549:3766122'
-	provided(files("libs/gregtech-1.12.2-2.2.1-beta.jar"))
+	deobfCompile 'curse.maven:gregtech-ce-unofficial-557242:3745499'
 	deobfCompile 'curse.maven:codechicken-lib-1-8-242818:2779848'
 	deobfCompile 'curse.maven:the-one-probe-245211:2667280'
 }
