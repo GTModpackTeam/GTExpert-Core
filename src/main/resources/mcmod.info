@@ -2,14 +2,14 @@
 {
   "modid": "gtexpert",
   "name": "GTExpert-Core",
-  "description": "WIP",
+  "description": "a coremod for the GregTech Expert 2 modpack",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["GTModpackTeam"],
   "credits": "Quarri6343",
-  "logoFile": "",
+  "logoFile": "assets/gtexpert/textures/logo.png",
   "screenshots": [],
   "dependencies": []
 }
