@@ -1,5 +1,7 @@
 package gtexpert;
 import gtexpert.common.CommonProxy;
+import gtexpert.common.GreenhouseCasing;
+import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.Mod;
 import codechicken.lib.CodeChickenLib;
 import net.minecraftforge.fml.common.SidedProxy;

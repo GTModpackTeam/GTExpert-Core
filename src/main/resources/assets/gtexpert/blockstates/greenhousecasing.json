@@ -1,0 +1,15 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "gtexpert:greenhousecasing",
+    "uvlock": false
+  },
+  "variants": {
+    "normal": [{
+
+    }],
+    "inventory": [{
+
+    }]
+  }
+}
