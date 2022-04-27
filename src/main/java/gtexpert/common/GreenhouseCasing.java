@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 import javax.annotation.Nonnull;
-
+//disabled, template use only!
 public class GreenhouseCasing extends Block {
 
     public GreenhouseCasing() {
@@ -20,8 +20,8 @@ public class GreenhouseCasing extends Block {
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("pickaxe", 1);
-        setRegistryName("greenhousecasing");
         setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        setRegistryName("greenhousecasing");
     }
 
     @Override

@@ -1,7 +1,10 @@
 package gtexpert.client;
 
+import gregtech.common.blocks.MetaBlocks;
 import gtexpert.common.ModBlocks;
 import gtexpert.common.CommonProxy;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -11,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -21,6 +25,6 @@ public class ClientProxy extends CommonProxy {
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ModBlocks.greenhouseCasing), 0, new ModelResourceLocation(new ResourceLocation("gtexpert", "greenhousecasing"), "inventory"));
+        ModBlocks.registerItemModels();
     }
 }
