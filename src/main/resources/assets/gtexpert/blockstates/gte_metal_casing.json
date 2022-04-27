@@ -12,12 +12,12 @@
       },
       "sawmill_casing": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_bronze_plated_bricks"
+          "all": "gtexpert:sawmill_casing"
         }
       },
       "void_casing": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_primitive_bricks"
+          "all": "gtexpert:void_casing"
         }
       }
     }
