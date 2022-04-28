@@ -1,15 +1,15 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "gtexpert",
+  "name": "GTExpert-Core",
+  "description": "a coremod for the GregTech Expert 2 modpack",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["CleanroomMC"],
-  "credits": "Authors of this project",
-  "logoFile": "",
+  "authorList": ["GTModpackTeam"],
+  "credits": "Quarri6343",
+  "logoFile": "assets/gtexpert/textures/logo.png",
   "screenshots": [],
   "dependencies": []
 }
