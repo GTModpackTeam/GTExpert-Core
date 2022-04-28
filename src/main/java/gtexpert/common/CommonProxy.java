@@ -27,13 +27,11 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        //event.getRegistry().register(greenhouseCasing);
         event.getRegistry().register(gteMetalCasing);
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        //event.getRegistry().register(createItemBlock(greenhouseCasing, ItemBlock::new));
         event.getRegistry().register(createItemBlock(gteMetalCasing, VariantItemBlock::new));
     }
 

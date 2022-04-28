@@ -12,12 +12,10 @@ import static gregtech.common.blocks.MetaBlocks.statePropertiesToString;
 
 public class ModBlocks {
 
-    public static final Block greenhouseCasing = new GreenhouseCasing();
     public static final GTEMetalCasing gteMetalCasing = new GTEMetalCasing();
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
-        //registerItemModel(greenhouseCasing);
         registerItemModel(gteMetalCasing);
     }
 
