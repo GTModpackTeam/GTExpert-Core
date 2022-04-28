@@ -1,4 +1,5 @@
 package gtexpert;
+import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.Mod;

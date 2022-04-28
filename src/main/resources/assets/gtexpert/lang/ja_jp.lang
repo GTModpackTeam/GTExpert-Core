@@ -1,0 +1,7 @@
+item.gte_metal_casing.greenhouse_casing.name=ガルバリウム製対腐食マシン外装
+tile.gte_metal_casing.greenhouse_casing.name=ガルバリウム製対腐食マシン外装
+item.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
+tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
+item.gte_metal_casing.void_casing.name=対虚無マシン外装
+tile.gte_metal_casing.void_casing.name=対虚無マシン外装
+material.galvalume=ガルバリウム

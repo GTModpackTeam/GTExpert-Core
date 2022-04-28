@@ -4,3 +4,4 @@ item.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
 item.gte_metal_casing.void_casing.name=Voiding Proof Machine Casing
 tile.gte_metal_casing.void_casing.name=Voiding Proof Machine Casing
+material.galvalume=Galvalume
