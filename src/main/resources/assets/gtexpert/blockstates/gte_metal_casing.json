@@ -15,9 +15,9 @@
           "all": "gtexpert:sawmill_casing"
         }
       },
-      "void_casing": {
+      "void_miner_casing": {
         "textures": {
-          "all": "gtexpert:void_casing"
+          "all": "gtexpert:void_miner_casing"
         }
       }
     }

@@ -48,6 +48,7 @@ public class GTEMaterials {
 
     // First Degree Materials
     public static Material Galvalume;
+    public static Material NM_HEA_NPs;
 
     // Second Degree Materials
 
