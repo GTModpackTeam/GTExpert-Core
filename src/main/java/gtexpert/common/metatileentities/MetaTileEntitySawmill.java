@@ -7,17 +7,18 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.*;
 import gregtech.api.unification.material.Materials;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEMetalCasing;
 import gtexpert.common.ModBlocks;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -50,10 +51,20 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
                 .build();
     }
 
+    @Nonnull
+    @Override
+    protected ICubeRenderer getFrontOverlay() {
+        return GTETextures.SAWMILL_OVERLAY;
+    }
+
+    @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return GTETextures.SAWMILL_CASING;
-        //return Textures.SOLID_STEEL_CASING;
     }
 
     @Override
@@ -63,11 +74,6 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
 
     @Override
     public boolean canBeDistinct() {
-        return true;
-    }
-
-    @Override
-    public boolean hasMufflerMechanics() {
         return true;
     }
 }

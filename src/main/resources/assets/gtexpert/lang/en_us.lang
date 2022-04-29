@@ -1,12 +1,10 @@
-item.gte_metal_casing.greenhouse_casing.name=Corrosion Proof Galvalume Machine Casing
 tile.gte_metal_casing.greenhouse_casing.name=Corrosion Proof Galvalume Machine Casing
-item.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
-item.gte_metal_casing.void_miner_casing.name=Voiding Proof NM-HEA NP Machine Casing
 tile.gte_metal_casing.void_miner_casing.name=Voiding Proof NM-HEA NP Machine Casing
 material.galvalume=Galvalume
 material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
 metaitem.gte_me_fake_component.name=GTExpert ME fake component
 metaitem.matrix_core.name=Matrix Core
 gtexpert.machine.sawmill.name=Saw Mill
+gtexpert.machine.sawmill.tooltip="Nooo! Do not saw me.."
 recipemap.sawmill.name=Saw Mill
