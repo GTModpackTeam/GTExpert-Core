@@ -43,12 +43,14 @@ public class GTERecipeLoader {
                 .duration(50).EUt(VA[LV]).buildAndRegister();
 
         // NM_HEA_NPs Dust
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .input(dust, Electrum, 2)
+        GTERecipeMaps.EXTREME_MIXER_RECIPES.recipeBuilder()
+                .input(dust, Gold, 1)
+                .input(dust, Silver, 1)
                 .input(dust, Ruthenium, 1)
                 .input(dust, Rhodium, 1)
                 .input(dust, Palladium, 1)
-                .input(dust, Osmiridium, 2)
+                .input(dust, Osmium, 1)
+                .input(dust, Iridium, 1)
                 .input(dust, Platinum, 1)
                 .output(dust, NM_HEA_NPs, 8)
                 .duration(100).EUt(VA[ZPM]).buildAndRegister();
