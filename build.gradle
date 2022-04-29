@@ -87,6 +87,9 @@ dependencies {
 	deobfCompile 'curse.maven:gregtech-ce-unofficial-557242:3745499'
 	deobfCompile 'curse.maven:codechicken-lib-1-8-242818:2779848'
 	deobfCompile 'curse.maven:the-one-probe-245211:2667280'
+	deobfCompile 'curse.maven:gregicality-multiblocks-564858:3736682'
+
+	//provided (files("libs/GregicalityScience-1.12.2-1.0.jar"))
 }
 
 sourceSets {

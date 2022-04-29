@@ -32,7 +32,7 @@ public class GTEMetalCasing extends VariantBlock<GTEMetalCasing.MetalCasingType>
     public enum MetalCasingType implements IStringSerializable {
 
         GREENHOUSE("greenhouse_casing"),
-        SAW_Mill("sawmill_casing"),
+        SAWMill("sawmill_casing"),
         VOID_MINER("void_miner_casing");
 
         private final String name;

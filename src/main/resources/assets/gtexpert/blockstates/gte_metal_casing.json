@@ -7,17 +7,17 @@
     "variant": {
       "greenhouse_casing": {
         "textures": {
-          "all": "gtexpert:greenhouse_casing"
+          "all": "gregtech:blocks/greenhouse_casing"
         }
       },
       "sawmill_casing": {
         "textures": {
-          "all": "gtexpert:sawmill_casing"
+          "all": "gregtech:blocks/sawmill_casing"
         }
       },
       "void_miner_casing": {
         "textures": {
-          "all": "gtexpert:void_miner_casing"
+          "all": "gregtech:blocks/void_miner_casing"
         }
       }
     }

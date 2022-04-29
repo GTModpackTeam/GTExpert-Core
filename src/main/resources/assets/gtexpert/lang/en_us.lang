@@ -8,3 +8,5 @@ material.galvalume=Galvalume
 material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
 metaitem.gte_me_fake_component.name=GTExpert ME fake component
 metaitem.matrix_core.name=Matrix Core
+gtexpert.machine.sawmill.name=Saw Mill
+recipemap.sawmill.name=Saw Mill

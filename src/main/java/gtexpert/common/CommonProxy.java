@@ -3,6 +3,7 @@ package gtexpert.common;
 import gregtech.api.GregTechAPI;
 import gregtech.common.blocks.VariantItemBlock;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import gtexpert.loaders.recipe.GTERecipeLoader;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -23,6 +24,7 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent e) {
         GTEMetaItems.init();
+        GTEMetaTileEntities.init();
     }
 
     public void init(FMLInitializationEvent e) {
