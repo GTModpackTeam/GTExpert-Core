@@ -22,6 +22,7 @@ import static gtexpert.common.ModBlocks.*;
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent e) {
+        GTEMetaItems.init();
     }
 
     public void init(FMLInitializationEvent e) {
