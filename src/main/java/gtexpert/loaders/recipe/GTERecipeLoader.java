@@ -1,6 +1,7 @@
 package gtexpert.loaders.recipe;
 
 import gregtech.api.GTValues;
+import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
@@ -12,9 +13,11 @@ import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
+import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEMetalCasing;
 import gtexpert.common.ModBlocks;
+import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -25,6 +28,7 @@ import java.util.stream.Collectors;
 
 import static gregtech.api.recipes.RecipeMaps.CUTTER_RECIPES;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.loaders.recipe.CraftingComponent.FIELD_GENERATOR;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -87,5 +91,8 @@ public class GTERecipeLoader {
                     .duration(200).EUt(VA[ULV])
                     .buildAndRegister();
         }
+
+        //Extreme Mixer
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaTileEntities.MIXER[ZPM].getStackForm()).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).outputs(GTEMetaTileEntities.EXTREME_MIXER[0].getStackForm()).duration(200).buildAndRegister();
     }
 }

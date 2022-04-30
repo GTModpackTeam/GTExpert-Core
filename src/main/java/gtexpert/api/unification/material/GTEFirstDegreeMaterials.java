@@ -1,10 +1,12 @@
 package gtexpert.api.unification.material;
 
+import gregicality.multiblocks.api.unification.properties.AlloyBlastProperty;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.material.properties.FluidProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import static gregtech.api.GTValues.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
@@ -33,7 +35,7 @@ public class GTEFirstDegreeMaterials {
                 .fluidTemp(1200)
                 .color(0xa90000)
                 .iconSet(MaterialIconSet.METALLIC)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME, DISABLE_DECOMPOSITION)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
                 .components(Gold, 1, Silver ,1, Ruthenium, 1, Rhodium, 1, Palladium, 1, Osmium, 1, Iridium, 1, Platinum, 1)
                 .blastTemp(9001, GasTier.HIGHER, VA[ZPM], 1000)
                 .build();
