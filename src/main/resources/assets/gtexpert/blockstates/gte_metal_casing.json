@@ -15,9 +15,9 @@
           "all": "gregtech:blocks/sawmill_casing"
         }
       },
-      "void_miner_casing": {
+      "void_ore_miner_casing": {
         "textures": {
-          "all": "gregtech:blocks/void_miner_casing"
+          "all": "gregtech:blocks/void_ore_miner_casing"
         }
       }
     }

@@ -2,26 +2,22 @@ package gtexpert.common.metatileentities;
 
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.GTUtility;
-import gregtech.client.renderer.ICubeRenderer;
-import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-import java.util.function.Function;
-
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
-import static gregtech.common.metatileentities.MetaTileEntities.registerSimpleMetaTileEntity;
 
 public class GTEMetaTileEntities {
 
+    public static SimpleMachineMetaTileEntity[] EXTREME_MIXER = new SimpleMachineMetaTileEntity[1]; //ZPM Only
+
     public static MetaTileEntitySawmill SAWMILL;
     public static MetaTileEntityGreenhouse GREENHOUSE;
-    public static SimpleMachineMetaTileEntity[] EXTREME_MIXER = new SimpleMachineMetaTileEntity[1]; //ZPM Only
+    public static MetaTileEntityVoidOreMiner VOIDOREMINER;
 
     public static void init() {
         /*
@@ -55,6 +51,7 @@ public class GTEMetaTileEntities {
         //multiblocks :12000~
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));
         GREENHOUSE = registerMetaTileEntity(12002, new MetaTileEntityGreenhouse(gteId("greenhouse")));
+        VOIDOREMINER = registerMetaTileEntity(12003, new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
     }
 
     @Nonnull

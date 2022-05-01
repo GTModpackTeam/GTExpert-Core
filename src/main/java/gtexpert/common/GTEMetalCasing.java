@@ -33,7 +33,7 @@ public class GTEMetalCasing extends VariantBlock<GTEMetalCasing.MetalCasingType>
 
         GREENHOUSE("greenhouse_casing"),
         SAWMill("sawmill_casing"),
-        VOID_MINER("void_miner_casing");
+        VOID_ORE_MINER("void_ore_miner_casing");
 
         private final String name;
 
