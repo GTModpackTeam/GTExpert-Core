@@ -14,6 +14,7 @@ import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEMetalCasing;
 import gtexpert.common.ModBlocks;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -25,7 +26,7 @@ import java.util.List;
 public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
 
     public MetaTileEntityVoidOreMiner(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GTERecipeMaps.SAWMill_RECIPES);
+        super(metaTileEntityId, GTERecipeMaps.VOID_ORE_MINER_RECIPES);
     }
 
     @Override
@@ -63,6 +64,9 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.2"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.3"));
     }
 
     @Override

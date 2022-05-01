@@ -1,10 +1,13 @@
 package gtexpert.loaders.recipe;
 
 import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
@@ -22,6 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,6 +64,12 @@ public class GTERecipeLoader {
         //Extreme Mixer
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaTileEntities.MIXER[ZPM].getStackForm()).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).outputs(GTEMetaTileEntities.EXTREME_MIXER[0].getStackForm()).duration(200).buildAndRegister();
 
+        //Greenhouse
+
+        //Sawmill
+
+        //Void Ore Miner
+
         //Greenhouse Casing
         ModHandler.addShapedRecipe("gte_metal_casing:0",ModBlocks.gteMetalCasing.getItemVariant(GTEMetalCasing.MetalCasingType.GREENHOUSE,2) ,
                 "PhP", "PFP", "PwP", 'P',new UnificationEntry(plate, Galvalume),'F',new UnificationEntry(frameGt, Galvalume));
@@ -70,7 +80,7 @@ public class GTERecipeLoader {
                 "PhP", "PFP", "PwP", 'P',new UnificationEntry(plate, TreatedWood),'F',new UnificationEntry(frameGt, TreatedWood));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(16).input(OrePrefix.plate, TreatedWood, 6).input(OrePrefix.frameGt, TreatedWood, 1).circuitMeta(6).outputs(ModBlocks.gteMetalCasing.getItemVariant(GTEMetalCasing.MetalCasingType.SAWMill, 2)).duration(50).buildAndRegister();
 
-        //Void Miner Casing
+        //Void Ore Miner Casing
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM)).inputs(MetaItems.COVER_FLUID_VOIDING_ADVANCED.getStackForm()).inputs(MetaItems.VOLTAGE_COIL_ZPM.getStackForm(2)).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).input(OrePrefix.plate, NM_HEA_NPs, 6).fluidInputs(EnderPearl.getFluid(GTValues.L * 2)).outputs(ModBlocks.gteMetalCasing.getItemVariant(GTEMetalCasing.MetalCasingType.VOID_ORE_MINER, 2)).duration(100).buildAndRegister();
 
         //Wood Recipes
@@ -135,6 +145,34 @@ public class GTERecipeLoader {
                     .fluidInputs(Water.getFluid(1000))
                     .outputs(allPlantItem.get(i))
                     .duration(900).EUt(20)
+                    .buildAndRegister();
+        }
+
+        //Void Ore Miner Recipes
+        List<Material> materialOres = new ArrayList<>();
+        for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
+            if (material.hasProperty(PropertyKey.ORE)) {
+                materialOres.add(material);
+            }
+        }
+        for(Material materialOre : materialOres){
+            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().notConsumable(ore, materialOre,32)
+                    .fluidInputs(EnderPearl.getFluid(576))
+                    .fluidInputs(DrillingFluid.getFluid(10000))
+                    .output(ore, materialOre,32)
+                    .duration(20).EUt(VA[ZPM])
+                    .buildAndRegister();
+            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().notConsumable(oreNetherrack, materialOre,32)
+                    .fluidInputs(EnderPearl.getFluid(576))
+                    .fluidInputs(DrillingFluid.getFluid(10000))
+                    .output(oreNetherrack, materialOre,64)
+                    .duration(20).EUt(VA[ZPM])
+                    .buildAndRegister();
+            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().notConsumable(oreEndstone, materialOre,32)
+                    .fluidInputs(EnderPearl.getFluid(576))
+                    .fluidInputs(DrillingFluid.getFluid(10000))
+                    .output(oreEndstone, materialOre,64)
+                    .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
         }
     }
