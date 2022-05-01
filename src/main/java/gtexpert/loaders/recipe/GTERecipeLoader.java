@@ -6,12 +6,15 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
+import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -31,6 +34,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
+import static gregtech.common.metatileentities.MetaTileEntities.HULL;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -65,10 +70,28 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaTileEntities.MIXER[ZPM].getStackForm()).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).outputs(GTEMetaTileEntities.EXTREME_MIXER[0].getStackForm()).duration(200).buildAndRegister();
 
         //Greenhouse
-
+        ModHandler.addShapedRecipe("gte_greenhouse",GTEMetaTileEntities.GREENHOUSE.getStackForm() ,
+                "TTT", "CHC", "PUP", 'T', MetaBlocks.TRANSPARENT_CASING.getItemVariant(BlockGlassCasing.CasingType.TEMPERED_GLASS),'C',new UnificationEntry(circuit, MarkerMaterials.Tier.MV),'H',MetaTileEntities.HULL[2].getStackForm(),'P',MetaItems.ELECTRIC_PISTON_MV.getStackForm(),'U',MetaItems.ELECTRIC_PUMP_MV.getStackForm());
         //Sawmill
+        ModHandler.addShapedRecipe("gte_sawmill",GTEMetaTileEntities.SAWMILL.getStackForm() ,
+                "SBs", "MHM", "COC", 'S', new UnificationEntry(screw, Steel),'B',new UnificationEntry(toolHeadBuzzSaw, Steel),'M',MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),'H',MetaTileEntities.HULL[2].getStackForm(),'C',new UnificationEntry(circuit, MarkerMaterials.Tier.MV), 'O',MetaItems.CONVEYOR_MODULE_MV.getStackForm());
 
         //Void Ore Miner
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(VA[ZPM])
+                .input(HULL[ZPM])
+                .input(frameGt, NaquadahAlloy, 4)
+                .input(circuit, MarkerMaterials.Tier.ZPM,4)
+                .input(ELECTRIC_MOTOR_ZPM, 4)
+                .input(ELECTRIC_PUMP_ZPM, 4)
+                .input(CONVEYOR_MODULE_ZPM,4)
+                .input(ELECTRIC_PISTON_ZPM,4)
+                .input(ROBOT_ARM_ZPM,4)
+                .input(EMITTER_ZPM,4)
+                .input(SENSOR_ZPM, 4)
+                .input(ORE_DICTIONARY_FILTER)
+                .input(gear, NaquadahAlloy, 4)
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .outputs(GTEMetaTileEntities.VOIDOREMINER.getStackForm()).duration(600).buildAndRegister();
 
         //Greenhouse Casing
         ModHandler.addShapedRecipe("gte_metal_casing:0",ModBlocks.gteMetalCasing.getItemVariant(GTEMetalCasing.MetalCasingType.GREENHOUSE,2) ,
