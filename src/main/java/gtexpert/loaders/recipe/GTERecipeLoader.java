@@ -178,19 +178,19 @@ public class GTERecipeLoader {
             }
         }
         for(Material materialOre : materialOres){
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().notConsumable(ore, materialOre,32)
+            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().input(ore, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
                     .output(ore, materialOre,32)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().notConsumable(oreNetherrack, materialOre,32)
+            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().input(oreNetherrack, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
                     .output(oreNetherrack, materialOre,64)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().notConsumable(oreEndstone, materialOre,32)
+            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().input(oreEndstone, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
                     .output(oreEndstone, materialOre,64)
