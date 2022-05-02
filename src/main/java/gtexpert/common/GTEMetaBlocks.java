@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static gregtech.common.blocks.MetaBlocks.statePropertiesToString;
 
-public class ModBlocks {
+public class GTEMetaBlocks {
 
     public static final GTEMetalCasing gteMetalCasing = new GTEMetalCasing();
 

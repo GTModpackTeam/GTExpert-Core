@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.function.Function;
-import static gtexpert.common.ModBlocks.*;
+import static gtexpert.common.GTEMetaBlocks.*;
 
 @Mod.EventBusSubscriber(modid = "gtexpert")
 public class CommonProxy {

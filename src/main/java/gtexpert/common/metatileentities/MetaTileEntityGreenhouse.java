@@ -6,21 +6,18 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
-import gregtech.api.unification.material.Materials;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEMetalCasing;
-import gtexpert.common.ModBlocks;
+import gtexpert.common.GTEMetaBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -44,7 +41,7 @@ public class MetaTileEntityGreenhouse extends RecipeMapMultiblockController {
                 .aisle("CCCCC", "CDDDC", "C###C", "CGGGC")
                 .aisle(" CCC ", " CSC ", " CCC ", " CCC ")
                 .where('S', selfPredicate())
-                .where('C', states(ModBlocks.gteMetalCasing.getState(GTEMetalCasing.MetalCasingType.GREENHOUSE)).setMinGlobalLimited(50)
+                .where('C', states(GTEMetaBlocks.gteMetalCasing.getState(GTEMetalCasing.MetalCasingType.GREENHOUSE)).setMinGlobalLimited(50)
                         .or(autoAbilities(true, true, true, true, true, false, false)))
                 .where('G', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
                 .where('D', blocks(Blocks.DIRT))

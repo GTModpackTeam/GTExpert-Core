@@ -6,14 +6,14 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
-import gregtech.api.unification.material.Materials;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.MetaBlocks;
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEMetalCasing;
-import gtexpert.common.ModBlocks;
+import gtexpert.common.GTEMetaBlocks;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -37,15 +37,16 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("CCCCC", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
-                .aisle("CCCCC", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
-                .aisle("CCCCC", "FCCCF", "FCCCF", "FCCCF", " FCF ", " FCF ", " FCF ", "  F  ", "  F  ", "  F  ")
-                .aisle("CCCCC", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
-                .aisle("CCSCC", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
+                .aisle("XXXXX", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
+                .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
+                .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FCF ", " FCF ", " FCF ", "  F  ", "  F  ", "  F  ")
+                .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
+                .aisle("XXSXX", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
                 .where('S', selfPredicate())
-                .where('C', states(ModBlocks.gteMetalCasing.getState(GTEMetalCasing.MetalCasingType.VOID_ORE_MINER)).setMinGlobalLimited(45)
+                .where('X', states(GTEMetaBlocks.gteMetalCasing.getState(GTEMetalCasing.MetalCasingType.VOID_ORE_MINER)).setMinGlobalLimited(15)
                         .or(autoAbilities(true, true, true, true, true, false, false)))
-                .where('F', states(MetaBlocks.FRAMES.get(Materials.HSSE).getBlock(Materials.HSSE)))
+                .where('C', states(GTEMetaBlocks.gteMetalCasing.getState(GTEMetalCasing.MetalCasingType.VOID_ORE_MINER)))
+                .where('F', states(MetaBlocks.FRAMES.get(GTEMaterials.NM_HEA_NPs).getBlock(GTEMaterials.NM_HEA_NPs)))
                 .where(' ', any())
                 .build();
     }
