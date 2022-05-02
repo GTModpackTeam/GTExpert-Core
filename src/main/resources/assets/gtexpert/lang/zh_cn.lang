@@ -1,0 +1,33 @@
+# Chinese translate by Quarri6343
+# 中文翻译由 Quarri6343 翻译。
+
+# multiblock
+gtexpert.machine.sawmill.name=锯木机
+gtexpert.machine.sawmill.tooltip=Nooooo!不要砍我...
+gtexpert.machine.greenhouse.name=温室
+gtexpert.machine.greenhouse.tooltip=工业植物生产机
+gtexpert.machine.void_ore_miner.name=虚空矿物采掘机
+gtexpert.machine.void_ore_miner.tooltip=星门建造机
+gtexpert.machine.void_ore_miner.tooltip.1=§6采掘32个矿石基于输入的矿石§r
+gtexpert.machine.void_ore_miner.tooltip.2=§6输入下界或末地矿石以获得双倍生产量!§r
+gtexpert.machine.void_ore_miner.tooltip.3=§6一次的动作需要576mb的Enderpearl与10000mb的钻井液§r
+gtexpert.machine.extreme_mixer.zpm.name=精英极限搅拌机 III
+
+# block
+tile.gte_metal_casing.greenhouse_casing.name=抗腐蚀热镀锌机械外壳
+tile.gte_metal_casing.sawmill_casing.name=防腐木机械外壳
+tile.gte_metal_casing.void_ore_miner_casing.name=抗虚空NM-HEA NP机械外壳
+
+# material
+material.galvalume=热镀锌
+material.nm_hea_nps=纳米粒子贵金属高熵合金
+
+# item
+metaitem.gte_me_fake_component.name=GTExpert ME存储组件
+metaitem.matrix_core.name=矩阵核心
+
+# recipemaps
+recipemap.sawmill.name=锯木机
+recipemap.greenhouse.name=温室
+recipemap.extreme_mixer.name=极限搅拌机
+recipemap.void_ore_miner.name=虚空矿物采掘机
