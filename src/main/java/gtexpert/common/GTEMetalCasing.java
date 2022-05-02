@@ -11,8 +11,6 @@ import net.minecraft.world.IBlockAccess;
 
 import javax.annotation.Nonnull;
 
-import static gtexpert.common.ModBlocks.gteMetalCasing;
-
 public class GTEMetalCasing extends VariantBlock<GTEMetalCasing.MetalCasingType> {
 
     public GTEMetalCasing() {
@@ -22,7 +20,7 @@ public class GTEMetalCasing extends VariantBlock<GTEMetalCasing.MetalCasingType>
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(MetalCasingType.Greenhouse));
+        setDefaultState(getState(MetalCasingType.GREENHOUSE));
         setRegistryName("gte_metal_casing");
     }
 
@@ -33,9 +31,9 @@ public class GTEMetalCasing extends VariantBlock<GTEMetalCasing.MetalCasingType>
 
     public enum MetalCasingType implements IStringSerializable {
 
-        Greenhouse("greenhouse_casing"),
-        SAW_Mill("sawmill_casing"),
-        VOID_MINER("void_casing");
+        GREENHOUSE("greenhouse_casing"),
+        SAWMill("sawmill_casing"),
+        VOID_ORE_MINER("void_ore_miner_casing");
 
         private final String name;
 

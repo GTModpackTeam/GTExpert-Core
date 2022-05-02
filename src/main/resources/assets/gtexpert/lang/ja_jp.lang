@@ -1,0 +1,33 @@
+# Japanese translate by Quarri6343
+# 日本語ローカライズ担当： Quarri6343
+
+# multiblock
+gtexpert.machine.sawmill.name=製材機
+gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らないで..
+gtexpert.machine.greenhouse.name=温室
+gtexpert.machine.greenhouse.tooltip=工業用栽培器
+gtexpert.machine.void_ore_miner.name=亜空間型鉱石採掘機
+gtexpert.machine.void_ore_miner.tooltip=スターゲート建設機
+gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します.§r
+gtexpert.machine.void_ore_miner.tooltip.2=§6ネザーかエンド鉱石を消費することでで生産量が倍になります!§r
+gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です.§r
+gtexpert.machine.extreme_mixer.zpm.name=精鋭型エクストリームミキサー III
+
+# block
+tile.gte_metal_casing.greenhouse_casing.name=ガルバリウム製対腐食マシン外装
+tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
+tile.gte_metal_casing.void_ore_miner_casing.name=対虚無マシン外装
+
+# material
+material.galvalume=ガルバリウム
+material.nm_hea_nps=貴金属ハイエントロピーナノ合金
+
+# item
+metaitem.gte_me_fake_component.name=GTExpert 虚構MEストレージセル素材
+metaitem.matrix_core.name=マトリックスコア
+
+# recipemaps
+recipemap.sawmill.name=製材機
+recipemap.greenhouse.name=温室
+recipemap.extreme_mixer.name=エクストリームミキサー
+recipemap.void_ore_miner.name=亜空間型鉱石採掘機

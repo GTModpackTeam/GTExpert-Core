@@ -1,6 +1,32 @@
-item.gte_metal_casing.greenhouse_casing.name=Corrosion Proof Galvalume Machine Casing
+# English by Quarri6343
+
+# multiblock
+gtexpert.machine.sawmill.name=Sawmill
+gtexpert.machine.sawmill.tooltip=Nooo! Do not saw me..
+gtexpert.machine.greenhouse.name=Greenhouse
+gtexpert.machine.greenhouse.tooltip=Industrial Wood producer
+gtexpert.machine.void_ore_miner.name=Void Ore Miner
+gtexpert.machine.void_ore_miner.tooltip=Stargate Builder
+gtexpert.machine.void_ore_miner.tooltip.1=§6Mines out 32 Ores based on the input Ore §r
+gtexpert.machine.void_ore_miner.tooltip.2=§6The outputs will be doubled with a Nether or End ore!§r
+gtexpert.machine.void_ore_miner.tooltip.3=§6Requires 576mb Enderpearl and 10000mb Drilling Fluid per operation§r
+gtexpert.machine.extreme_mixer.zpm.name=Elite Extreme Mixer III
+
+# block
 tile.gte_metal_casing.greenhouse_casing.name=Corrosion Proof Galvalume Machine Casing
-item.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
-item.gte_metal_casing.void_casing.name=Voiding Proof Machine Casing
-tile.gte_metal_casing.void_casing.name=Voiding Proof Machine Casing
+tile.gte_metal_casing.void_ore_miner_casing.name=Voiding Proof NM-HEA NP Machine Casing
+
+# material
+material.galvalume=Galvalume
+material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
+
+# item
+metaitem.gte_me_fake_component.name=GTExpert ME fake component
+metaitem.matrix_core.name=Matrix Core
+
+# recipemaps
+recipemap.sawmill.name=Saw Mill
+recipemap.greenhouse.name=Greenhouse
+recipemap.extreme_mixer.name=Extreme Mixer
+recipemap.void_ore_miner.name=Void Ore Miner
