@@ -7,6 +7,7 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.sound.GTSounds;
+import gtexpert.api.gui.GTEGuiTextures;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenProperty;
 
@@ -32,7 +33,7 @@ public class GTERecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> GREENHOUSE_RECIPES = new RecipeMap<>("greenhouse", 0, 3, 0, 4, 1, 1, 0, 0, new SimpleRecipeBuilder(), false)
             .setSlotOverlay(false, false, false, GuiTextures.BOX_OVERLAY)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL)
+            .setProgressBar(GTEGuiTextures.PROGRESS_BAR_GREENHOUSE, ProgressWidget.MoveType.VERTICAL)
             .setSound(GTSounds.SAW_TOOL);
 
     @ZenProperty
