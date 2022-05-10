@@ -32,7 +32,7 @@ public class GTERecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> GREENHOUSE_RECIPES = new RecipeMap<>("greenhouse", 0, 3, 0, 4, 1, 1, 0, 0, new SimpleRecipeBuilder(), false)
-            .setSlotOverlay(false, false, false, GuiTextures.BOX_OVERLAY)
+            .setSlotOverlay(false, false, GTEGuiTextures.SEED_OVERLAY)
             .setProgressBar(GTEGuiTextures.PROGRESS_BAR_GREENHOUSE, ProgressWidget.MoveType.VERTICAL)
             .setSound(GTSounds.SAW_TOOL);
 
