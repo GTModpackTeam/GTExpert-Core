@@ -36,13 +36,13 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().register(GTE_BLOCK_METAL_CASING);
-        event.getRegistry().register(GTE_BLOCK_SAWMILL_CONVEYOR);
+        event.getRegistry().register(BLOCK_SAWMILL_CONVEYOR);
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(createItemBlock(GTE_BLOCK_METAL_CASING, VariantItemBlock::new));
-        event.getRegistry().register(createItemBlock(GTE_BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
+        event.getRegistry().register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {

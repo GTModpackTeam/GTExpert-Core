@@ -44,7 +44,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
                 .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill)).setMinGlobalLimited(15)
                         .or(autoAbilities(true, false, true, true, true, true, false)))
                 .where('G', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
-                .where('F', states(MetaBlocks.FRAMES.get(Materials.TreatedWood).getBlock(Materials.TreatedWood)))
+                .where('F', blocks(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR))
                 .where('#', air())
                 .where(' ', any())
                 .build();

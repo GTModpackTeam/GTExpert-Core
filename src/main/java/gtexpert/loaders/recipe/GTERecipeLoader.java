@@ -23,6 +23,7 @@ import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import org.apache.commons.lang3.tuple.Pair;
@@ -104,6 +105,9 @@ public class GTERecipeLoader {
 
         //Void Ore Miner Casing
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM)).inputs(MetaItems.COVER_FLUID_VOIDING_ADVANCED.getStackForm()).inputs(MetaItems.VOLTAGE_COIL_ZPM.getStackForm(2)).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).input(OrePrefix.plate, NM_HEA_NPs, 6).fluidInputs(EnderPearl.getFluid(GTValues.L * 2)).outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER, 2)).duration(100).buildAndRegister();
+
+        //Sawmill Conveyor
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[MV]).input(CONVEYOR_MODULE_MV, 1).input(OrePrefix.frameGt, TreatedWood, 1).input(Items.LEATHER, 3).fluidInputs(Glue.getFluid(100)).output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR,1).duration(100).buildAndRegister();
 
         //Wood Recipes
         List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
