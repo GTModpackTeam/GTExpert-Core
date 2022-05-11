@@ -13,7 +13,7 @@ import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTile
 
 public class GTEMetaTileEntities {
 
-    public static SimpleMachineMetaTileEntity[] EXTREME_MIXER = new SimpleMachineMetaTileEntity[1]; //ZPM Only
+    public static GTESimpleMachineMetaTileEntity[] EXTREME_MIXER = new GTESimpleMachineMetaTileEntity[1]; //ZPM Only
 
     public static MetaTileEntitySawmill SAWMILL;
     public static MetaTileEntityGreenhouse GREENHOUSE;
@@ -46,7 +46,7 @@ public class GTEMetaTileEntities {
 
         //EXTREME_MIXER 11001~11009
         EXTREME_MIXER[0]=registerMetaTileEntity(11007,
-                new SimpleMachineMetaTileEntity(gteId(String.format("%s.%s", "extreme_mixer", GTValues.VN[7].toLowerCase())), GTERecipeMaps.EXTREME_MIXER_RECIPES, GTETextures.EXTREME_MIXER_OVERLAY, 7, true, GTUtility.hvCappedTankSizeFunction));
+                new GTESimpleMachineMetaTileEntity(gteId(String.format("%s.%s", "extreme_mixer", GTValues.VN[7].toLowerCase())), GTERecipeMaps.EXTREME_MIXER_RECIPES, GTETextures.EXTREME_MIXER_OVERLAY, 7, true, GTUtility.hvCappedTankSizeFunction));
 
         //multiblocks :12000~
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));

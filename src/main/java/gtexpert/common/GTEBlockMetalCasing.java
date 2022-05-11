@@ -11,9 +11,9 @@ import net.minecraft.world.IBlockAccess;
 
 import javax.annotation.Nonnull;
 
-public class GTEMetalCasing extends VariantBlock<GTEMetalCasing.MetalCasingType> {
+public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalCasingType> {
 
-    public GTEMetalCasing() {
+    public GTEBlockMetalCasing() {
         super(Material.IRON);
         setTranslationKey("gte_metal_casing");
         setHardness(5.0f);

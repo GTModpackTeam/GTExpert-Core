@@ -1,4 +1,5 @@
 package gtexpert;
+import gregtech.api.GTValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.CommonProxy;
 import net.minecraft.block.Block;
@@ -13,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = "gtexpert",
         name = "GTExpert-Core",
         acceptedMinecraftVersions = "[1.12,1.13)",
-        dependencies = "required:forge@[14.23.5.2847,);" + CodeChickenLib.MOD_VERSION_DEP + "after:jei@[4.15.0,);after:crafttweaker")
+        dependencies = GTValues.MOD_VERSION_DEP + "required-after:gcym")
 public class GTExpertMod {
 
     @SidedProxy(modId = "gtexpert", clientSide = "gtexpert.client.ClientProxy", serverSide = "gtexpert.common.CommonProxy")

@@ -12,11 +12,13 @@ import static gregtech.common.blocks.MetaBlocks.statePropertiesToString;
 
 public class GTEMetaBlocks {
 
-    public static final GTEMetalCasing gteMetalCasing = new GTEMetalCasing();
+    public static final GTEBlockMetalCasing GTE_BLOCK_METAL_CASING = new GTEBlockMetalCasing();
+    public static final BlockSawmillConveyor BLOCK_SAWMILL_CONVEYOR = new BlockSawmillConveyor();
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
-        registerItemModel(gteMetalCasing);
+        registerItemModel(GTE_BLOCK_METAL_CASING);
+        registerItemModel(BLOCK_SAWMILL_CONVEYOR);
     }
 
     @SideOnly(Side.CLIENT)

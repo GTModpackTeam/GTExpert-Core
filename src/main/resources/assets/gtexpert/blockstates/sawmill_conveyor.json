@@ -1,0 +1,14 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "gtexpert:sawmill_conveyor"
+  },
+  "variants": {
+    "facing": {
+      "north": { "model": "gtexpert:sawmill_conveyor", "y": 0 },
+      "east": { "model": "gtexpert:sawmill_conveyor", "y": 90 },
+      "south": { "model": "gtexpert:sawmill_conveyor", "y": 180 },
+      "west":  { "model": "gtexpert:sawmill_conveyor", "y": 270 }
+    }
+  }
+}
