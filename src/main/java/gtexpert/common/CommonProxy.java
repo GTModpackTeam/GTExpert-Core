@@ -1,7 +1,7 @@
 package gtexpert.common;
 
 import gregtech.api.GregTechAPI;
-import gregtech.common.blocks.VariantItemBlock;
+import gregtech.api.block.VariantItemBlock;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import gtexpert.loaders.recipe.GTERecipeLoader;
