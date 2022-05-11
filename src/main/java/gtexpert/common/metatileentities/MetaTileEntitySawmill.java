@@ -11,7 +11,7 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
-import gtexpert.common.GTEMetalCasing;
+import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -41,7 +41,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
                 .aisle("CFC", "G#G", "CCC")
                 .aisle("CFC", "S#C", "C#C")
                 .where('S', selfPredicate())
-                .where('C', states(GTEMetaBlocks.gteMetalCasing.getState(GTEMetalCasing.MetalCasingType.SAWMill)).setMinGlobalLimited(15)
+                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill)).setMinGlobalLimited(15)
                         .or(autoAbilities(true, false, true, true, true, true, false)))
                 .where('G', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
                 .where('F', states(MetaBlocks.FRAMES.get(Materials.TreatedWood).getBlock(Materials.TreatedWood)))

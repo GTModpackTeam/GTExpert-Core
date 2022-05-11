@@ -12,7 +12,7 @@ import gregtech.common.blocks.MetaBlocks;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.client.GTETextures;
-import gtexpert.common.GTEMetalCasing;
+import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -43,9 +43,9 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
                 .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
                 .aisle("XXSXX", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
                 .where('S', selfPredicate())
-                .where('X', states(GTEMetaBlocks.gteMetalCasing.getState(GTEMetalCasing.MetalCasingType.VOID_ORE_MINER)).setMinGlobalLimited(15)
+                .where('X', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER)).setMinGlobalLimited(15)
                         .or(autoAbilities(true, true, true, true, true, false, false)))
-                .where('C', states(GTEMetaBlocks.gteMetalCasing.getState(GTEMetalCasing.MetalCasingType.VOID_ORE_MINER)))
+                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER)))
                 .where('F', states(MetaBlocks.FRAMES.get(GTEMaterials.NM_HEA_NPs).getBlock(GTEMaterials.NM_HEA_NPs)))
                 .where(' ', any())
                 .build();
