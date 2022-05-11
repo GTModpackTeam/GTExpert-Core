@@ -3,7 +3,7 @@ package gtexpert.api.gui;
 import gregtech.api.gui.resources.TextureArea;
 
 public class GTEGuiTextures {
-    //GTExpert_CORE
+    //GTEXPERT CORE
     public static final TextureArea GTEXPERT_CORE_LOGO = TextureArea.fullImage("textures/gui/icon/gtexpert_core_logo.png");
 
     //PROGRESS BARS

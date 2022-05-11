@@ -17,6 +17,7 @@ gtexpert.machine.extreme_mixer.zpm.name=精英极限搅拌机 III
 tile.gte_metal_casing.greenhouse_casing.name=抗腐蚀热镀锌机械外壳
 tile.gte_metal_casing.sawmill_casing.name=防腐木机械外壳
 tile.gte_metal_casing.void_ore_miner_casing.name=抗虚空NM-HEA NP机械外壳
+tile.sawmill_conveyor.name=锯木机传送带
 
 # material
 material.galvalume=热镀锌
