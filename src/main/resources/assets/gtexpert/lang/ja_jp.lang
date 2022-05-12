@@ -27,6 +27,7 @@ material.nm_hea_nps=貴金属ハイエントロピーナノ合金
 metaitem.gte_me_fake_component.name=GTExpert 虚構MEストレージセル素材
 metaitem.matrix_core.name=マトリックスコア
 metaitem.piston_boots.name=ピストンブーツ
+metaitem.piston_boots.tooltip=トロッコのように走り、ピストンのように跳ねる!
 
 # recipemaps
 recipemap.sawmill.name=製材機

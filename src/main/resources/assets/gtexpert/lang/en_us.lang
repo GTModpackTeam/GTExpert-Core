@@ -26,6 +26,7 @@ material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
 metaitem.gte_me_fake_component.name=GTExpert ME fake component
 metaitem.matrix_core.name=Matrix Core
 metaitem.piston_boots.name=Piston Boots
+metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Higher!
 
 # recipemaps
 recipemap.sawmill.name=Saw Mill

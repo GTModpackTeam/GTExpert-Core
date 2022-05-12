@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gtexpert:matrix_core"
+    "layer0": "gtexpert:items/metaitems/matrix_core"
   }
 }

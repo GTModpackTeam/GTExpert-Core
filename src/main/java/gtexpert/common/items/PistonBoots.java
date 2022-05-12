@@ -128,13 +128,4 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
         this.HUD.draw();
         this.HUD.reset();
     }
-
-    @Override
-    public void addInfo(ItemStack itemStack, List<String> lines) {
-        super.addInfo(itemStack, lines);
-        if (this.SLOT == EntityEquipmentSlot.FEET) {
-            lines.add(I18n.format("metaarmor.tooltip.stepassist"));
-            lines.add(I18n.format("metaarmor.tooltip.falldamage"));
-        }
-    }
 }
