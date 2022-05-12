@@ -26,6 +26,8 @@ material.nm_hea_nps=纳米粒子贵金属高熵合金
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME存储组件
 metaitem.matrix_core.name=矩阵核心
+metaitem.piston_boots.name=活塞靴子
+metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Higher!
 
 # recipemaps
 recipemap.sawmill.name=锯木机

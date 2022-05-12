@@ -20,6 +20,7 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -108,6 +109,10 @@ public class GTERecipeLoader {
 
         //Sawmill Conveyor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[MV]).input(CONVEYOR_MODULE_MV, 1).input(OrePrefix.frameGt, TreatedWood, 1).input(Items.LEATHER, 3).fluidInputs(Glue.getFluid(100)).output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR,1).duration(100).buildAndRegister();
+
+        //Piston Boots
+        ModHandler.addShapedRecipe("piston_boots", GTEMetaItems.PISTON_BOOTS.getStackForm() ,
+                "EhE", "RLR", "PBP", 'E',Items.LEATHER,'R',new UnificationEntry(plate, Rubber),'L',Items.LEATHER_BOOTS,'P',ELECTRIC_PISTON_LV, 'B',BATTERY_LV_LITHIUM);
 
         //Wood Recipes
         List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
