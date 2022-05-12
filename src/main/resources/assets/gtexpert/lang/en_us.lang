@@ -33,3 +33,6 @@ recipemap.sawmill.name=Saw Mill
 recipemap.greenhouse.name=Greenhouse
 recipemap.extreme_mixer.name=Extreme Mixer
 recipemap.void_ore_miner.name=Void Ore Miner
+
+#misc
+gtexpert.multiblock.needsun=The Controller must be able to See the Sun!

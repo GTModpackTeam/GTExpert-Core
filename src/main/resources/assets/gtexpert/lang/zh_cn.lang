@@ -34,3 +34,6 @@ recipemap.sawmill.name=锯木机
 recipemap.greenhouse.name=温室
 recipemap.extreme_mixer.name=极限搅拌机
 recipemap.void_ore_miner.name=虚空矿物采掘机
+
+#misc
+gtexpert.multiblock.needsun=The Controller must be able to See the Sun!

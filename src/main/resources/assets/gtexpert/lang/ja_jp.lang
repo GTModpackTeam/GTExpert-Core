@@ -34,3 +34,6 @@ recipemap.sawmill.name=製材機
 recipemap.greenhouse.name=温室
 recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
+
+#misc
+gtexpert.multiblock.needsun=コントローラーは必ず空に面する必要があります！
