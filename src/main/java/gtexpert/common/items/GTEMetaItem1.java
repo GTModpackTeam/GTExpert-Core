@@ -1,11 +1,8 @@
-package gtexpert.common;
+package gtexpert.common.items;
 
 import gregtech.api.items.metaitem.StandardMetaItem;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.items.MetaItems;
 
-import static gtexpert.common.GTEMetaItems.*;
+import static gtexpert.common.items.GTEMetaItems.*;
 
 public class GTEMetaItem1  extends StandardMetaItem {
 
