@@ -416,7 +416,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     @Override
     protected RecipeLogicEnergy createWorkable(RecipeMap<?> recipeMap) {
         final RecipeLogicEnergy result = super.createWorkable(recipeMap);
-        result.enableOverclockVoltage();
+        result.getMaximumOverclockVoltage();
         return result;
     }
 
