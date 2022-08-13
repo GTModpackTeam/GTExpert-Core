@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = "gtexpert",
         name = "GTExpert-Core",
         acceptedMinecraftVersions = "[1.12,1.13)",
-        dependencies = GTValues.MOD_VERSION_DEP + "required-after:gcym")
+        dependencies = GTValues.MOD_VERSION_DEP)
 public class GTExpertMod {
 
     @SidedProxy(modId = "gtexpert", clientSide = "gtexpert.client.ClientProxy", serverSide = "gtexpert.common.CommonProxy")
