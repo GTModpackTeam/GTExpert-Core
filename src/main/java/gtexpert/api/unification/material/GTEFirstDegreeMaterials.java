@@ -1,12 +1,10 @@
 package gtexpert.api.unification.material;
 
-import gregicality.multiblocks.api.unification.properties.AlloyBlastProperty;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.material.properties.FluidProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import static gregtech.api.GTValues.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
