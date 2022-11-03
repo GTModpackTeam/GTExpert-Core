@@ -71,25 +71,28 @@ repositories {
 		name = "CraftTweaker"
 		url = 'https://maven.blamejared.com/'
 	}
+	mavenCentral()
 }
 
 dependencies {
-
+	
 	if (project.use_assetmover.toBoolean()) {
 		deobfCompile 'com.cleanroommc:assetmover:0.2'
 	}
 	if (project.use_mixins.toBoolean()) {
 		deobfCompile 'zone.rong:mixinbooter:4.2'
     }
+	
+	implementation 'org.jetbrains:annotations:23.0.0'
 
 	compile 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.677'
 	compile 'curse.maven:had-enough-items-557549:3862733'
-	//deobfCompile 'curse.maven:gregtech-ce-unofficial-557242:3859788'
+//	deobfCompile 'curse.maven:gregtech-ce-unofficial-557242:4051202'
 	deobfCompile 'curse.maven:codechicken-lib-1-8-242818:2779848'
 	deobfCompile 'curse.maven:the-one-probe-245211:2667280'
 	//deobfCompile 'curse.maven:gregicality-multiblocks-564858:3783615'
 
-	provided (files("libs/gregtech-1.12.2-2.3.4-beta.jar"))
+	provided (files("libs/gregtech-1.12.2-2.4.3-beta.jar"))
 }
 
 sourceSets {
