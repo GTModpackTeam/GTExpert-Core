@@ -1,5 +1,6 @@
 package gtexpert;
 import gregtech.api.GTValues;
+import gregtech.integration.GroovyScriptCompat;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.CommonProxy;
 import net.minecraft.block.Block;
@@ -29,6 +30,9 @@ public class GTExpertMod {
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         proxy.preInit(event);
+
+        /* init GroovyScript compat */
+        GroovyScriptCompat.init();
     }
 
     @Mod.EventHandler

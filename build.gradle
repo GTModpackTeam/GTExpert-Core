@@ -82,14 +82,15 @@ dependencies {
 		deobfCompile 'zone.rong:mixinbooter:4.2'
     }
 
-	compile 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.677'
-	compile 'curse.maven:had-enough-items-557549:3862733'
-	//deobfCompile 'curse.maven:gregtech-ce-unofficial-557242:3859788'
+	compile 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.681'
+	compile 'curse.maven:had-enough-items-557549:3957880'
+	deobfCompile 'curse.maven:gregtech-ce-unofficial-557242:4051202'
 	deobfCompile 'curse.maven:codechicken-lib-1-8-242818:2779848'
 	deobfCompile 'curse.maven:the-one-probe-245211:2667280'
-	//deobfCompile 'curse.maven:gregicality-multiblocks-564858:3783615'
+	deobfCompile 'curse.maven:gregicality-multiblocks-564858:4051163'
 
-	provided (files("libs/gregtech-1.12.2-2.3.4-beta.jar"))
+	provided (files("libs/groovyscript-0.0.1.jar"))
+	//provided (files("libs/gregtech-1.12.2-2.3.4-beta.jar"))
 }
 
 sourceSets {
