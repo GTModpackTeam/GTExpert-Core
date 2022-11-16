@@ -70,9 +70,6 @@ public class GTERecipeLoader {
         //Extreme Mixer
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaTileEntities.MIXER[ZPM].getStackForm()).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).outputs(GTEMetaTileEntities.EXTREME_MIXER[0].getStackForm()).duration(200).buildAndRegister();
 
-        //Greenhouse
-        ModHandler.addShapedRecipe("gte_greenhouse",GTEMetaTileEntities.GREENHOUSE.getStackForm() ,
-                "TTT", "CHC", "PUP", 'T', MetaBlocks.TRANSPARENT_CASING.getItemVariant(BlockGlassCasing.CasingType.TEMPERED_GLASS),'C',new UnificationEntry(circuit, MarkerMaterials.Tier.MV),'H',MetaTileEntities.HULL[2].getStackForm(),'P',MetaItems.ELECTRIC_PISTON_MV.getStackForm(),'U',MetaItems.ELECTRIC_PUMP_MV.getStackForm());
         //Sawmill
         ModHandler.addShapedRecipe("gte_sawmill",GTEMetaTileEntities.SAWMILL.getStackForm() ,
                 "SBs", "MHM", "COC", 'S', new UnificationEntry(screw, Steel),'B',new UnificationEntry(toolHeadBuzzSaw, Steel),'M',MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),'H',MetaTileEntities.HULL[2].getStackForm(),'C',new UnificationEntry(circuit, MarkerMaterials.Tier.MV), 'O',MetaItems.CONVEYOR_MODULE_MV.getStackForm());
@@ -93,12 +90,7 @@ public class GTERecipeLoader {
                 .input(gear, NaquadahAlloy, 4)
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .outputs(GTEMetaTileEntities.VOIDOREMINER.getStackForm()).duration(600).buildAndRegister();
-
-        //Greenhouse Casing
-        ModHandler.addShapedRecipe("gte_metal_casing:0", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.GREENHOUSE,2) ,
-                "PhP", "PFP", "PwP", 'P',new UnificationEntry(plate, Galvalume),'F',new UnificationEntry(frameGt, Galvalume));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(16).input(OrePrefix.plate, Galvalume, 6).input(OrePrefix.frameGt, Galvalume, 1).circuitMeta(6).outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.GREENHOUSE, 2)).duration(50).buildAndRegister();
-
+        
         //Sawmill Casing
         ModHandler.addShapedRecipe("gte_metal_casing:1", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,2) ,
                 "PhP", "PFP", "PwP", 'P',new UnificationEntry(plate, TreatedWood),'F',new UnificationEntry(frameGt, TreatedWood));
@@ -139,45 +131,11 @@ public class GTERecipeLoader {
                     .outputs(GTUtility.copyAmount(48, plankStack), OreDictUnifier.get(dust, Wood, 12))
                     .duration(200).EUt(VA[ULV])
                     .buildAndRegister();
-
-            //Greenhouse Recipes
-            GTERecipeMaps.GREENHOUSE_RECIPES.recipeBuilder().notConsumable(GTUtility.copyAmount(16, allSaplings.get(i)))
-                    .notConsumable(new IntCircuitIngredient(1))
-                    .fluidInputs(Water.getFluid(1000))
-                    .outputs(GTUtility.copyAmount(32, allWoodLogs.get(i)))
-                    .outputs(GTUtility.copyAmount(6,allSaplings.get(i)))
-                    .duration(1200).EUt(40)
-                    .buildAndRegister();
-            GTERecipeMaps.GREENHOUSE_RECIPES.recipeBuilder().notConsumable(GTUtility.copyAmount(16, allSaplings.get(i)))
-                    .input(MetaItems.FERTILIZER,4)
-                    .notConsumable(new IntCircuitIngredient(2))
-                    .fluidInputs(Water.getFluid(1000))
-                    .outputs(GTUtility.copyAmount(64, allWoodLogs.get(i)))
-                    .outputs(GTUtility.copyAmount(6,allSaplings.get(i)))
-                    .duration(900).EUt(20)
-                    .buildAndRegister();
         }
 
         //plant Recipes
         List<ItemStack> allSeedItem =  Arrays.asList(new ItemStack(Items.PUMPKIN_SEEDS),new ItemStack(Items.BEETROOT_SEEDS),new ItemStack(Items.WHEAT_SEEDS),new ItemStack(Items.MELON_SEEDS),new ItemStack(Items.CARROT),new ItemStack(Items.POTATO),new ItemStack(Items.REEDS),new ItemStack(Blocks.CACTUS),new ItemStack(Blocks.BROWN_MUSHROOM),new ItemStack(Blocks.RED_MUSHROOM),new ItemStack(Items.NETHER_WART));
         List<ItemStack> allPlantItem =  Arrays.asList(new ItemStack(Blocks.PUMPKIN,6),new ItemStack(Items.BEETROOT,16),new ItemStack(Items.WHEAT,16),new ItemStack(Blocks.MELON_BLOCK,6),new ItemStack(Items.CARROT,12),new ItemStack(Items.POTATO,12),new ItemStack(Items.REEDS,12),new ItemStack(Blocks.CACTUS,12),new ItemStack(Blocks.BROWN_MUSHROOM,12),new ItemStack(Blocks.RED_MUSHROOM,12),new ItemStack(Items.NETHER_WART,12));
-
-        for (int i = 0; i < allSeedItem.size(); i++) {
-            //Greenhouse Recipes
-            GTERecipeMaps.GREENHOUSE_RECIPES.recipeBuilder().notConsumable(allSeedItem.get(i))
-                    .notConsumable(new IntCircuitIngredient(1))
-                    .fluidInputs(Water.getFluid(1000))
-                    .outputs(allPlantItem.get(i))
-                    .duration(1200).EUt(40)
-                    .buildAndRegister();
-            GTERecipeMaps.GREENHOUSE_RECIPES.recipeBuilder().notConsumable(allSeedItem.get(i))
-                    .input(MetaItems.FERTILIZER,4)
-                    .notConsumable(new IntCircuitIngredient(2))
-                    .fluidInputs(Water.getFluid(1000))
-                    .outputs(allPlantItem.get(i))
-                    .duration(900).EUt(20)
-                    .buildAndRegister();
-        }
 
         //Void Ore Miner Recipes
         List<Material> materialOres = new ArrayList<>();

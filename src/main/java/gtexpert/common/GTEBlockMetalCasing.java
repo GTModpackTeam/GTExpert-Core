@@ -20,7 +20,7 @@ public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalC
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(MetalCasingType.GREENHOUSE));
+        setDefaultState(getState(MetalCasingType.SAWMill));
         setRegistryName("gte_metal_casing");
     }
 
@@ -30,8 +30,7 @@ public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalC
     }
 
     public enum MetalCasingType implements IStringSerializable {
-
-        GREENHOUSE("greenhouse_casing"),
+        
         SAWMill("sawmill_casing"),
         VOID_ORE_MINER("void_ore_miner_casing");
 

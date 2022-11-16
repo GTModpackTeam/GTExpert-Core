@@ -16,7 +16,6 @@ public class GTEMetaTileEntities {
     public static GTESimpleMachineMetaTileEntity[] EXTREME_MIXER = new GTESimpleMachineMetaTileEntity[1]; //ZPM Only
 
     public static MetaTileEntitySawmill SAWMILL;
-    public static MetaTileEntityGreenhouse GREENHOUSE;
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
 
     public static void init() {
@@ -50,7 +49,6 @@ public class GTEMetaTileEntities {
 
         //multiblocks :12000~
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));
-        GREENHOUSE = registerMetaTileEntity(12002, new MetaTileEntityGreenhouse(gteId("greenhouse")));
         VOIDOREMINER = registerMetaTileEntity(12003, new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
     }
 
