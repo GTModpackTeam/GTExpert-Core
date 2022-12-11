@@ -49,6 +49,27 @@ public class GTEMaterials {
     // First Degree Materials
     public static Material Galvalume;
     public static Material NM_HEA_NPs;
+    public static Material NAQUADAH_ROCKET_FUEL;
+    public static Material ELECTRICAL_STEEL;
+    public static Material ENERGETIC_ALLOY;
+    public static Material VIBRANT_ALLOY;
+    public static Material REDSTONE_ALLOY;
+    public static Material CONDUCTIVE_IRON;
+    public static Material PULSATING_IRON;
+    public static Material DARK_STEEL;
+    public static Material SOULARIUM;
+    public static Material END_STEEL;
+    public static Material CONSTRUCTION_ALLOY;
+    public static Material CRUDE_STEEL;
+    public static Material CRYSTALLINE_ALLOY;
+    public static Material MELODIC_ALLOY;
+    public static Material STELLAR_ALLOY;
+    public static Material CRYSTALLINE_PINK_SLIME;
+    public static Material ENERGETIC_SILVER;
+    public static Material VIVID_ALLOY;
+    public static Material FLUIX;
+    //public static Material FLUIX_STEEL;
+    public static Material CHARGED_CERTUS_QUARTZ;
 
     // Second Degree Materials
 
