@@ -6,6 +6,7 @@ gtexpert.machine.sawmill.name=锯木机
 gtexpert.machine.sawmill.tooltip=Nooooo!不要砍我...
 gtexpert.machine.greenhouse.name=温室
 gtexpert.machine.greenhouse.tooltip=工业植物生产机
+gtexpert.machine.vail_extractor.name=魂抽出器
 gtexpert.machine.void_ore_miner.name=虚空矿物采掘机
 gtexpert.machine.void_ore_miner.tooltip=星门建造机
 gtexpert.machine.void_ore_miner.tooltip.1=§6采掘32个矿石基于输入的矿石§r
@@ -32,6 +33,7 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 # recipemaps
 recipemap.sawmill.name=锯木机
 recipemap.greenhouse.name=温室
+recipemap.vail_extractor.name=魂抽出器
 recipemap.extreme_mixer.name=极限搅拌机
 recipemap.void_ore_miner.name=虚空矿物采掘机
 

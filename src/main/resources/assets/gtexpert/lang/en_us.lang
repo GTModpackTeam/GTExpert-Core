@@ -5,6 +5,7 @@ gtexpert.machine.sawmill.name=Sawmill
 gtexpert.machine.sawmill.tooltip=Nooo! Do not saw me..
 gtexpert.machine.greenhouse.name=Greenhouse
 gtexpert.machine.greenhouse.tooltip=Industrial Wood producer
+gtexpert.machine.vail_extractor.name=Vail Extractor
 gtexpert.machine.void_ore_miner.name=Void Ore Miner
 gtexpert.machine.void_ore_miner.tooltip=Stargate Builder
 gtexpert.machine.void_ore_miner.tooltip.1=§6Mines out 32 Ores based on the input Ore §r
@@ -31,6 +32,7 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 # recipemaps
 recipemap.sawmill.name=Saw Mill
 recipemap.greenhouse.name=Greenhouse
+recipemap.vail_extractor.name=Vail Extractor
 recipemap.extreme_mixer.name=Extreme Mixer
 recipemap.void_ore_miner.name=Void Ore Miner
 

@@ -22,6 +22,7 @@ import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
+import crazypants.enderio.base.item.soulvial.ItemSoulVial;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -90,7 +91,7 @@ public class GTERecipeLoader {
                 .input(gear, NaquadahAlloy, 4)
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .outputs(GTEMetaTileEntities.VOIDOREMINER.getStackForm()).duration(600).buildAndRegister();
-        
+
         //Sawmill Casing
         ModHandler.addShapedRecipe("gte_metal_casing:1", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,2) ,
                 "PhP", "PFP", "PwP", 'P',new UnificationEntry(plate, TreatedWood),'F',new UnificationEntry(frameGt, TreatedWood));
@@ -164,5 +165,11 @@ public class GTERecipeLoader {
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
         }
+
+        // Get EnderIO Items
+        GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder().input(Items.ENDER_PEARL) //ItemSoulVial.getByNameOrId("enderman")
+                .output(Items.ENDER_PEARL, 16)
+                .duration(20).EUt(VA[LV])
+                .buildAndRegister();
     }
 }

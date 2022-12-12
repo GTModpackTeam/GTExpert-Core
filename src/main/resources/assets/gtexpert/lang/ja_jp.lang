@@ -6,6 +6,7 @@ gtexpert.machine.sawmill.name=製材機
 gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らないで..
 gtexpert.machine.greenhouse.name=温室
 gtexpert.machine.greenhouse.tooltip=工業用栽培器
+gtexpert.machine.vail_extractor.name=魂抽出器
 gtexpert.machine.void_ore_miner.name=亜空間型鉱石採掘機
 gtexpert.machine.void_ore_miner.tooltip=スターゲート建設機
 gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します.§r
@@ -32,6 +33,7 @@ metaitem.piston_boots.tooltip=トロッコのように走り、ピストンの�
 # recipemaps
 recipemap.sawmill.name=製材機
 recipemap.greenhouse.name=温室
+recipemap.vail_extractor.name=魂抽出器
 recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 
