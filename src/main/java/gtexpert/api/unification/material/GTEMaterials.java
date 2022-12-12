@@ -59,7 +59,7 @@ public class GTEMaterials {
     public static Material DARK_STEEL;
     public static Material SOULARIUM;
     public static Material END_STEEL;
-    public static Material CONSTRUCTION_ALLOY;
+    public static Material CONSTRUCTION_IRON;
     public static Material CRUDE_STEEL;
     public static Material CRYSTALLINE_ALLOY;
     public static Material MELODIC_ALLOY;
@@ -84,5 +84,6 @@ public class GTEMaterials {
      */
     public static void init() {
         GTEFirstDegreeMaterials.init();
+        EIOFirstDegreeMaterials.init();
     }
 }

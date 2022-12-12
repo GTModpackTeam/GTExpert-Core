@@ -17,6 +17,9 @@ import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+import gregicality.multiblocks.api.unification.GCYMMaterials;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
@@ -164,5 +167,17 @@ public class GTERecipeLoader {
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
         }
+
+        // Naquadah Rocket Fuel
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(Naquadah.getFluid(1296))
+                .fluidInputs(RocketFuel.getFluid(5000))
+                .fluidOutputs(NAQUADAH_ROCKET_FUEL.getFluid(6000))
+                .duration(20).EUt(VA[EV])
+                .buildAndRegister();
+        RecipeMaps.COMBUSTION_GENERATOR_FUELS.recipeBuilder()
+                .fluidInputs(NAQUADAH_ROCKET_FUEL.getFluid(1))
+                .duration(500).EUt(VA[LV])
+                .buildAndRegister();
     }
 }
