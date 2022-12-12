@@ -5,13 +5,23 @@ gtexpert.machine.sawmill.name=Sawmill
 gtexpert.machine.sawmill.tooltip=Nooo! Do not saw me..
 gtexpert.machine.greenhouse.name=Greenhouse
 gtexpert.machine.greenhouse.tooltip=Industrial Wood producer
-gtexpert.machine.vail_extractor.name=Vail Extractor
 gtexpert.machine.void_ore_miner.name=Void Ore Miner
 gtexpert.machine.void_ore_miner.tooltip=Stargate Builder
 gtexpert.machine.void_ore_miner.tooltip.1=§6Mines out 32 Ores based on the input Ore §r
 gtexpert.machine.void_ore_miner.tooltip.2=§6The outputs will be doubled with a Nether or End ore!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6Requires 576mb Enderpearl and 10000mb Drilling Fluid per operation§r
 gtexpert.machine.extreme_mixer.zpm.name=Elite Extreme Mixer III
+
+# singleblock
+gtexpert.machine.vial_extractor.lv.name=Vial Extractor
+gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
+gtexpert.machine.vial_extractor.mv.name=Advanced Vial Extractor
+gtexpert.machine.vial_extractor.hv.name=Advanced Vial Extractor II
+gtexpert.machine.vial_extractor.ev.name=Advanced Vial Extractor III
+gtexpert.machine.vial_extractor.iv.name=Elite Vial Extractor
+gtexpert.machine.vial_extractor.luv.name=Elite Vial Extractor II
+gtexpert.machine.vial_extractor.zpm.name=Elite Vial Extractor III
+gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
 
 # block
 tile.gte_metal_casing.greenhouse_casing.name=Corrosion Proof Galvalume Machine Casing
@@ -52,7 +62,7 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 # recipemaps
 recipemap.sawmill.name=Saw Mill
 recipemap.greenhouse.name=Greenhouse
-recipemap.vail_extractor.name=Vail Extractor
+recipemap.vial_extractor.name=Vail Extractor
 recipemap.extreme_mixer.name=Extreme Mixer
 recipemap.void_ore_miner.name=Void Ore Miner
 

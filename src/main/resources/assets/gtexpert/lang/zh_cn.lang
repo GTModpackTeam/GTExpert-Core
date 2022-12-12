@@ -6,13 +6,23 @@ gtexpert.machine.sawmill.name=锯木机
 gtexpert.machine.sawmill.tooltip=Nooooo!不要砍我...
 gtexpert.machine.greenhouse.name=温室
 gtexpert.machine.greenhouse.tooltip=工业植物生产机
-gtexpert.machine.vail_extractor.name=魂抽出器
 gtexpert.machine.void_ore_miner.name=虚空矿物采掘机
 gtexpert.machine.void_ore_miner.tooltip=星门建造机
 gtexpert.machine.void_ore_miner.tooltip.1=§6采掘32个矿石基于输入的矿石§r
 gtexpert.machine.void_ore_miner.tooltip.2=§6输入下界或末地矿石以获得双倍生产量!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6一次的动作需要576mb的Enderpearl与10000mb的钻井液§r
 gtexpert.machine.extreme_mixer.zpm.name=精英极限搅拌机 III
+
+# singleblock
+gtexpert.machine.vial_extractor.lv.name=Vial Extractor
+gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
+gtexpert.machine.vial_extractor.mv.name=Advanced Vial Extractor
+gtexpert.machine.vial_extractor.hv.name=Advanced Vial Extractor II
+gtexpert.machine.vial_extractor.ev.name=Advanced Vial Extractor III
+gtexpert.machine.vial_extractor.iv.name=Elite Vial Extractor
+gtexpert.machine.vial_extractor.luv.name=Elite Vial Extractor II
+gtexpert.machine.vial_extractor.zpm.name=Elite Vial Extractor III
+gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
 
 # block
 tile.gte_metal_casing.greenhouse_casing.name=抗腐蚀热镀锌机械外壳
@@ -53,7 +63,7 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 # recipemaps
 recipemap.sawmill.name=锯木机
 recipemap.greenhouse.name=温室
-recipemap.vail_extractor.name=魂抽出器
+recipemap.vial_extractor.name=魂抽出器
 recipemap.extreme_mixer.name=极限搅拌机
 recipemap.void_ore_miner.name=虚空矿物采掘机
 
