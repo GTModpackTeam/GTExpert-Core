@@ -23,6 +23,26 @@ tile.sawmill_conveyor.name=锯木机传送带
 # material
 material.galvalume=热镀锌
 material.nm_hea_nps=纳米粒子贵金属高熵合金
+material.naquadah_rocket_fuel=Naquadah Rocket Fuel
+material.electrical_steel=Electrical Steel
+material.energetic_alloy=Energetic Alloy
+material.vibrant_alloy=Vibrant Alloy
+material.redstone_alloy=Redstone Alloy
+material.conductive_iron=Conductive Iron
+material.pulsating_iron=Pulsating Iron
+material.dark_steel=Dark Steel
+material.soularium=Soularium
+material.end_steel=End Steel
+material.construction_alloy=Iron Alloy
+material.crude_steel=Crude Steel
+material.crystalline_alloy=Crystalline Alloy
+material.melodic_alloy=Melodic Alloy
+material.stellar_alloy=Stellar Alloy
+material.crystalline_pink_slime=Crystalline Pink Slime
+material.energetic_silver=Energetic Silver
+material.vivid_alloy=Vivid Alloy
+material.fluix=Fluix
+material.charged_certus_quartz=Charged Certus Quartz
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME存储组件

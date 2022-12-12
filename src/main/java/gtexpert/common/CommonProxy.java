@@ -5,7 +5,7 @@ import gregtech.api.block.VariantItemBlock;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
-import gtexpert.loaders.recipe.GTERecipeLoader;
+import gtexpert.loaders.recipe.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -63,5 +63,6 @@ public class CommonProxy {
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
         GTERecipeLoader.init();
+        EIORecipeLoader.init();
     }
 }
