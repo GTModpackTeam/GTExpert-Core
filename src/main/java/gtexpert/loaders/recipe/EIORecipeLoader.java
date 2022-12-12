@@ -39,7 +39,9 @@ import java.util.stream.Collectors;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.metatileentities.MetaTileEntities.HULL;
+import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
+import static gregtech.loaders.recipe.CraftingComponent.*;
+import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -208,9 +210,24 @@ public class EIORecipeLoader {
                 .output(dust, VIBRANT_ALLOY, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
-        
-        // GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder().input(Items.ENDER_PEARL) //ItemSoulVial.getByNameOrId("enderman")
-        //         .output(Items.ENDER_PEARL, 16)
-        //         .duration(20).EUt(VA[LV])
+
+        // Vial Extractor TODO: GLASS_BOTTLEをEIOの空Vialに変更
+        registerMachineRecipe(VIAL_EXTRACTOR, "VSV", "SRS", "PMP", 'M', HULL, 'V', Items.GLASS_BOTTLE, 'S', Items.DIAMOND_SWORD, 'R', SENSOR, 'P', new UnificationEntry(OrePrefix.plateDouble, Steel));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[LV], 1).input(Items.GLASS_BOTTLE, 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_LV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[LV], 1).duration(40).EUt(VA[LV]).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[MV], 1).input(Items.GLASS_BOTTLE, 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_MV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[MV], 1).duration(40).EUt(VA[MV]).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[HV], 1).input(Items.GLASS_BOTTLE, 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_HV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[HV], 1).duration(40).EUt(VA[HV]).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[EV], 1).input(Items.GLASS_BOTTLE, 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_EV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[EV], 1).duration(40).EUt(VA[EV]).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[IV], 1).input(Items.GLASS_BOTTLE, 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_IV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[IV], 1).duration(40).EUt(VA[IV]).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[LuV], 1).input(Items.GLASS_BOTTLE, 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_LuV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[LuV], 1).duration(40).EUt(VA[LuV]).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[ZPM], 1).input(Items.GLASS_BOTTLE, 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_ZPM,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[ZPM], 1).duration(40).EUt(VA[ZPM]).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[UV], 1).input(Items.GLASS_BOTTLE, 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_UV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[UV], 1).duration(40).EUt(VA[UV]).buildAndRegister();
+
+        GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
+                .input(Items.ENDER_PEARL, 1) //TODO: EIOのエンダーマンが入ったVial
+                .output(Items.SKULL, 1) //TODO: EIOのエンダーヘッド
+                .output(Items.ENDER_PEARL, 10)
+                .output(Items.GLASS_BOTTLE, 1) //TODO: EIOの空Vial
+                .fluidOutputs(END_STEEL.getFluid(1000)) //TODO: EIOの液体経験値
+                .duration(400).EUt(VA[LV]).buildAndRegister();
     }
 }
