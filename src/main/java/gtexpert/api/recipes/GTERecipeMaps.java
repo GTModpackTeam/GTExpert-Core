@@ -31,7 +31,7 @@ public class GTERecipeMaps {
             .setSound(GTSounds.CUT);
 
     @ZenProperty
-    public static final RecipeMap<?> VIAL_EXTRACTOR_RECIPES = new RecipeMap<>("vial_extractor", 1, 1, 0, 4, 0, 1, 0, 1, new SimpleRecipeBuilder(), false)
+    public static final RecipeMap<SimpleRecipeBuilder> VIAL_EXTRACTOR_RECIPES = new RecipeMap<>("vial_extractor", 1, 1, 0, 3, 0, 1, 0, 1, new SimpleRecipeBuilder(), false)
             .setSlotOverlay(false, false, GuiTextures.EXTRACTOR_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, ProgressWidget.MoveType.HORIZONTAL)
             .setSound(GTSounds.COMPRESSOR);

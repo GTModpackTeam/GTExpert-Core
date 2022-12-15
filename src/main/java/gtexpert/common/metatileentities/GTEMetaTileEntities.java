@@ -49,7 +49,7 @@ public class GTEMetaTileEntities {
         EXTREME_MIXER[0]=registerMetaTileEntity(11007,
                 new GTESimpleMachineMetaTileEntity(gteId(String.format("%s.%s", "extreme_mixer", GTValues.VN[7].toLowerCase())), GTERecipeMaps.EXTREME_MIXER_RECIPES, GTETextures.EXTREME_MIXER_OVERLAY, 7, true, GTUtility.hvCappedTankSizeFunction));
 
-        //VIAL_EXTRACTOR 11010~11019
+        //VIAL_EXTRACTOR 11010~11018
         registerSimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES, GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.hvCappedTankSizeFunction);
 
         //multiblocks :12000~

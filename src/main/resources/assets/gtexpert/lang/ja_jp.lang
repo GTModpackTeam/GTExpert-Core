@@ -3,7 +3,7 @@
 
 # multiblock
 gtexpert.machine.sawmill.name=製材機
-gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らないで..
+gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らないで...
 gtexpert.machine.greenhouse.name=温室
 gtexpert.machine.greenhouse.tooltip=工業用栽培器
 gtexpert.machine.void_ore_miner.name=亜空間型鉱石採掘機
@@ -14,6 +14,7 @@ gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパ�
 gtexpert.machine.extreme_mixer.zpm.name=精鋭型エクストリームミキサー III
 
 # singleblock
+gtexpert.machine.vial_extractor.tooltip=故も知らぬ不死のソウル?
 gtexpert.machine.vial_extractor.lv.name=基本型魂抽出器
 gtexpert.machine.vial_extractor.mv.name=発展型魂抽出器
 gtexpert.machine.vial_extractor.hv.name=発展型魂抽出器 II

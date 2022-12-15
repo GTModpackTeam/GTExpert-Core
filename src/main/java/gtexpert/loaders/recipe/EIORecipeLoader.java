@@ -1,8 +1,5 @@
 package gtexpert.loaders.recipe;
 
-import com.enderio.core.common.OreDict;
-import crazypants.enderio.base.fluid.Fluids;
-import crazypants.enderio.base.init.ModObject;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.recipes.ModHandler;
@@ -28,6 +25,8 @@ import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
+import crazypants.enderio.base.fluid.Fluids;
+import crazypants.enderio.base.init.ModObject;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -148,7 +147,7 @@ public class EIORecipeLoader {
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
-        // Construction Iron(Iron Alloy)
+        // Construction Alloy(Iron Alloy)
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Platinum, 1)
                 .input(dust, Iron, 1)
@@ -168,7 +167,7 @@ public class EIORecipeLoader {
         // Crystalline Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Gold, 1)
-                .input(ModObject.itemMaterial.getItemNN(), 1, 34) // EIO:PrecientPowder
+                .input(ModObject.itemMaterial.getItemNN(), 1, 34)
                 .output(dust, CRYSTALLINE_ALLOY, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
@@ -216,15 +215,7 @@ public class EIORecipeLoader {
                 .buildAndRegister();
 
         // Vial Extractor
-        registerMachineRecipe(VIAL_EXTRACTOR, "VSV", "SRS", "PMP", 'M', HULL, 'V', ModObject.itemSoulVial.getItemNN(), 'S', Items.DIAMOND_SWORD, 'R', SENSOR, 'P', new UnificationEntry(OrePrefix.plateDouble, Steel));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[LV], 1).input(ModObject.itemSoulVial.getItemNN(), 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_LV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[LV], 1).duration(40).EUt(VA[LV]).buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[MV], 1).input(ModObject.itemSoulVial.getItemNN(), 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_MV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[MV], 1).duration(40).EUt(VA[MV]).buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[HV], 1).input(ModObject.itemSoulVial.getItemNN(), 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_HV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[HV], 1).duration(40).EUt(VA[HV]).buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[EV], 1).input(ModObject.itemSoulVial.getItemNN(), 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_EV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[EV], 1).duration(40).EUt(VA[EV]).buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[IV], 1).input(ModObject.itemSoulVial.getItemNN(), 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_IV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[IV], 1).duration(40).EUt(VA[IV]).buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[LuV], 1).input(ModObject.itemSoulVial.getItemNN(), 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_LuV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[LuV], 1).duration(40).EUt(VA[LuV]).buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[ZPM], 1).input(ModObject.itemSoulVial.getItemNN(), 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_ZPM,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[ZPM], 1).duration(40).EUt(VA[ZPM]).buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().notConsumable(new IntCircuitIngredient(1)).input(MetaTileEntities.HULL[UV], 1).input(ModObject.itemSoulVial.getItemNN(), 2).input(Items.DIAMOND_SWORD, 3).input(SENSOR_UV,1).input(plateDouble, Steel, 2).output(VIAL_EXTRACTOR[UV], 1).duration(40).EUt(VA[UV]).buildAndRegister();
+        registerMachineRecipe(VIAL_EXTRACTOR, "VRV", "PMF", "WCW", 'V', ModObject.itemSoulVial.getItemNN(), 'R', SENSOR, 'P', PISTON, 'M', HULL, 'F', PUMP, 'W', CABLE, 'C', CIRCUIT);
 
         // XP Juice
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -239,13 +230,13 @@ public class EIORecipeLoader {
                 .input(Items.GLASS_BOTTLE, 1)
                 .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 120))
                 .output(Items.EXPERIENCE_BOTTLE, 1)
-                .duration(100).EUt(VA[LV])
+                .duration(200).EUt(7)
                 .buildAndRegister();
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .input(Items.EXPERIENCE_BOTTLE, 1)
                 .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 120))
                 .output(Items.GLASS_BOTTLE, 1)
-                .duration(100).EUt(VA[LV])
+                .duration(100).EUt(2)
                 .buildAndRegister();
     }
 }
