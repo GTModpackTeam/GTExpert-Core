@@ -1,8 +1,9 @@
 # English by Quarri6343
 
+
 # multiblock
 gtexpert.machine.sawmill.name=Sawmill
-gtexpert.machine.sawmill.tooltip=Nooo! Do not saw me...
+gtexpert.machine.sawmill.tooltip=Nooo! Do not saw me..
 gtexpert.machine.greenhouse.name=Greenhouse
 gtexpert.machine.greenhouse.tooltip=Industrial Wood producer
 gtexpert.machine.void_ore_miner.name=Void Ore Miner
@@ -14,7 +15,6 @@ gtexpert.machine.extreme_mixer.zpm.name=Elite Extreme Mixer III
 
 # singleblock
 gtexpert.machine.vial_extractor.tooltip=Soul of a Lost Undead?
-gtexpert.machine.vial_extractor.lv.name=Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
 gtexpert.machine.vial_extractor.mv.name=Advanced Vial Extractor
 gtexpert.machine.vial_extractor.hv.name=Advanced Vial Extractor II

@@ -15,15 +15,14 @@ gtexpert.machine.extreme_mixer.zpm.name=精英极限搅拌机 III
 
 # singleblock
 gtexpert.machine.vial_extractor.tooltip=Soul of a Lost Undead?
-gtexpert.machine.vial_extractor.lv.name=Vial Extractor
-gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
-gtexpert.machine.vial_extractor.mv.name=Advanced Vial Extractor
-gtexpert.machine.vial_extractor.hv.name=Advanced Vial Extractor II
-gtexpert.machine.vial_extractor.ev.name=Advanced Vial Extractor III
-gtexpert.machine.vial_extractor.iv.name=Elite Vial Extractor
-gtexpert.machine.vial_extractor.luv.name=Elite Vial Extractor II
-gtexpert.machine.vial_extractor.zpm.name=Elite Vial Extractor III
-gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
+gtexpert.machine.vial_extractor.lv.name=基础灵魂提取机
+gtexpert.machine.vial_extractor.mv.name=进阶灵魂提取机
+gtexpert.machine.vial_extractor.hv.name=进阶灵魂提取机 II
+gtexpert.machine.vial_extractor.ev.name=进阶灵魂提取机 III
+gtexpert.machine.vial_extractor.iv.name=精英灵魂提取机
+gtexpert.machine.vial_extractor.luv.name=精英灵魂提取机 II
+gtexpert.machine.vial_extractor.zpm.name=精英灵魂提取机 III
+gtexpert.machine.vial_extractor.uv.name=终极灵魂提取机
 
 # block
 tile.gte_metal_casing.greenhouse_casing.name=抗腐蚀热镀锌机械外壳
@@ -34,7 +33,7 @@ tile.sawmill_conveyor.name=锯木机传送带
 # material
 material.galvalume=热镀锌
 material.nm_hea_nps=纳米粒子贵金属高熵合金
-material.naquadah_rocket_fuel=Naquadah Rocket Fuel
+material.naquadah_rocket_fuel=硅岩火箭燃料
 material.electrical_steel=Electrical Steel
 material.energetic_alloy=Energetic Alloy
 material.vibrant_alloy=Vibrant Alloy
@@ -52,8 +51,8 @@ material.stellar_alloy=Stellar Alloy
 material.crystalline_pink_slime=Crystalline Pink Slime
 material.energetic_silver=Energetic Silver
 material.vivid_alloy=Vivid Alloy
-material.fluix=Fluix
-material.charged_certus_quartz=Charged Certus Quartz
+material.fluix=福鲁伊克斯
+material.charged_certus_quartz=充能赛特斯石英
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME存储组件
@@ -64,7 +63,7 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 # recipemaps
 recipemap.sawmill.name=锯木机
 recipemap.greenhouse.name=温室
-recipemap.vial_extractor.name=魂抽出器
+recipemap.vial_extractor.name=灵魂提取机
 recipemap.extreme_mixer.name=极限搅拌机
 recipemap.void_ore_miner.name=虚空矿物采掘机
 
