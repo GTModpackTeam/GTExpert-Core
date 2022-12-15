@@ -1,5 +1,8 @@
 package gtexpert.loaders.recipe;
 
+import com.enderio.core.common.OreDict;
+import crazypants.enderio.base.fluid.Fluids;
+import crazypants.enderio.base.init.ModObject;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.recipes.ModHandler;
@@ -30,6 +33,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
@@ -39,7 +43,9 @@ import java.util.stream.Collectors;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.metatileentities.MetaTileEntities.HULL;
+import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
+import static gregtech.loaders.recipe.CraftingComponent.*;
+import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -162,7 +168,7 @@ public class EIORecipeLoader {
         // Crystalline Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Gold, 1)
-                //.input(dust, , 1) // TODO: EIO:PrecientPowder
+                .input(ModObject.itemMaterial.getItemNN(), 1, 34) // EIO:PrecientPowder
                 .output(dust, CRYSTALLINE_ALLOY, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
