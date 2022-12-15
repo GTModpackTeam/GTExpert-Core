@@ -88,6 +88,7 @@ dependencies {
     }
     
     implementation 'org.jetbrains:annotations:23.0.0'
+    implementation 'curse.maven:ae2-extended-life-570458:4105092'
 
     compile 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.682'
     compile 'curse.maven:had-enough-items-557549:4109510'
