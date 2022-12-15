@@ -116,7 +116,7 @@ public class EIOFirstDegreeMaterials {
                 .components(Endstone, 1, DARK_STEEL, 1, Obsidian, 1)
                 .build();
 
-        // Construction Alloy(Iron Alloy)
+        // Iron Alloy
         CONSTRUCTION_ALLOY = new Material.Builder(25010, "construction_alloy")
                 .dust().ingot().fluid()
                 .fluidTemp(1200)

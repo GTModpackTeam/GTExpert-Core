@@ -118,25 +118,6 @@ public class EIORecipeLoader {
                 .output(dust, SOULARIUM, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
-        /*GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
-                .input(dust, Gold, 1)
-                .input(dust, Ash, 1)
-                .input(Blocks.SOUL_SAND, 1)
-                .blastFurnaceTemp(3600)
-                .notConsumable(new IntCircuitIngredient(2))
-                .fluidOutputs(SOULARIUM.getFluid(288))
-                .duration(900).EUt(VA[EV])
-                .buildAndRegister();
-        GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
-                .input(dust, Gold, 1)
-                .input(dust, Ash, 1)
-                .input(Blocks.SOUL_SAND, 1)
-                .fluidInputs(Argon.getFluid(100))
-                .blastFurnaceTemp(3600)
-                .notConsumable(new IntCircuitIngredient(12))
-                .fluidOutputs(SOULARIUM.getFluid(288))
-                .duration(603).EUt(VA[EV])
-                .buildAndRegister();*/
 
         // End Steel
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -147,7 +128,7 @@ public class EIORecipeLoader {
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
-        // Construction Alloy(Iron Alloy)
+        // Iron Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Platinum, 1)
                 .input(dust, Iron, 1)
