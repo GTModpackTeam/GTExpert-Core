@@ -65,6 +65,10 @@ repositories {
     }
 
     maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    maven {
         url 'https://cursemaven.com'
     }
     maven {
@@ -93,6 +97,12 @@ dependencies {
     deobfCompile 'curse.maven:the-one-probe-245211:2667280'
     deobfCompile 'curse.maven:gregicality-multiblocks-564858:4051163'
 
+    compile "curse.maven:enderio-64578:3328811"
+    compile "curse.maven:endercore-231868:2972849"
+    compile "info.loenwind.autoconfig:AutoConfig:${project.minecraft.version}-1.0.2"
+    compile "info.loenwind.autosave:AutoSave:${project.minecraft.version}-1.0.11"
+
+    provided (files("libs/EnderCore-1.12.2-0.5.76-core.jar"))
     provided (files("libs/gregtech-1.12.2-2.4.4-beta.jar"))
 }
 
