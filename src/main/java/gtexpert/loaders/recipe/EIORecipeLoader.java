@@ -152,7 +152,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Platinum, 1)
                 .input(dust, Iron, 1)
-                .output(dust, CONSTRUCTION_IRON)
+                .output(dust, CONSTRUCTION_ALLOY)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 

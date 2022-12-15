@@ -117,7 +117,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Construction Alloy(Iron Alloy)
-        CONSTRUCTION_IRON = new Material.Builder(25010, "construction_iron")
+        CONSTRUCTION_ALLOY = new Material.Builder(25010, "construction_alloy")
                 .dust().ingot().fluid()
                 .fluidTemp(1200)
                 .color(0x524C53)
