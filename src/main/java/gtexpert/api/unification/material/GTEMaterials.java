@@ -79,11 +79,9 @@ public class GTEMaterials {
 
     // Unknown Composition Materials
 
-    /**
-     * 24001 -24100
-     */
     public static void init() {
-        GTEFirstDegreeMaterials.init();
-        EIOFirstDegreeMaterials.init();
+        GTEFirstDegreeMaterials.init(); // 24001 - 24100
+        EIOFirstDegreeMaterials.init(); // 25001 - 25100
+        AEFirstDegreeMaterials.init();  // 25101 - 25200
     }
 }

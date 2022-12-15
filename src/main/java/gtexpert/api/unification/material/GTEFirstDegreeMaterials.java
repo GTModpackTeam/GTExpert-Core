@@ -63,35 +63,5 @@ public class GTEFirstDegreeMaterials {
                 .color(0x2E4C00)
                 .iconSet(MaterialIconSet.FLUID)
                 .build();
-
-        // Fluix
-        FLUIX = new Material.Builder(24004, "fluix")
-                .dust().fluid()
-                .fluidTemp(1200)
-                .color(0x846994)
-                .iconSet(MaterialIconSet.QUARTZ)
-                .flags(GENERATE_PLATE, GENERATE_LENS)
-                .components(Silicon, 2, Oxygen, 4, Redstone, 1)
-                .build();
-
-        // Fluix Steel
-        //FLUIX_STEEL = new Material.Builder(24005, "fluix_steel")
-        //        .dust().ingot().fluid()
-        //        .fluidTemp(1200)
-        //        .color(0x846994)
-        //        .iconSet(MaterialIconSet.SHINY)
-        //        .blastTemp(5400, GasTier.HIGHER, 1920, 1072)
-        //        .components(FLUIX, 1, Steel, 1)
-        //        .build();
-
-        // Charged Certus Quartz
-        CHARGED_CERTUS_QUARTZ = new Material.Builder(24006, "charged_certus_quartz")
-                .dust().fluid()
-                .fluidTemp(1200)
-                .color(0xCFDAFF)
-                .iconSet(MaterialIconSet.QUARTZ)
-                .flags(GENERATE_PLATE, GENERATE_LENS)
-                .components(Silicon, 1, Oxygen, 2)
-                .build();
     }
 }
