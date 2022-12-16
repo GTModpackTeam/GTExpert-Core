@@ -7,7 +7,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -191,7 +190,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, ENERGETIC_SILVER, 1)
                 .input(dust, EnderPearl, 1)
-                .output(dust, VIBRANT_ALLOY, 1)
+                .output(dust, VIVID_ALLOY, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
