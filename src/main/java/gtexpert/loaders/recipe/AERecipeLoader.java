@@ -47,28 +47,66 @@ import static gregtech.api.unification.material.Materials.*;
 public class AERecipeLoader {
     public static void init() {
         // Certus Quartz
-        //RecipeMaps.EXTRACTOR_RECIPES.findRecipe().remove();
+        // RecipeMaps.EXTRACTOR_RECIPES.findRecipe(30, CertusQuartz).remove(); //TODO: Remove this
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .input(block, CertusQuartz, 1)
                 .fluidOutputs(CertusQuartz.getFluid(576))
                 .duration(80).EUt(30)
                 .buildAndRegister();
-        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                //.input() crystalPureCertusQuartz
-                .fluidOutputs(CertusQuartz.getFluid(576))
+        /*RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .input() // TODO: AE2 Pure Certus Quartz
+                .fluidOutputs(CertusQuartz.getFluid(72))
                 .duration(20).EUt(30)
-                .buildAndRegister();
+                .buildAndRegister();*/
 
         // Charged Certus Quartz
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(CertusQuartz.getFluid(144))
-                .fluidOutputs(CertusQuartz.getFluid(144))
+                .fluidOutputs(CHARGED_CERTUS_QUARTZ.getFluid(144))
                 .duration(100).EUt(480)
                 .buildAndRegister();
-        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
-                //.input() AE2 Quartz
-                .fluidOutputs(CertusQuartz.getFluid(144))
+        /*RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
+                .input() // TODO: AE2 Charged Certus Quartz
+                .fluidOutputs(CHARGED_CERTUS_QUARTZ.getFluid(144))
+                .duration(20).EUt(7)
+                .buildAndRegister();*/
+
+        // Fluix
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .input(Items.REDSTONE, 1)
+                .input(dust, NetherQuartz, 1)
+                .fluidInputs(CHARGED_CERTUS_QUARTZ.getFluid(144))
+                .fluidOutputs(FLUIX.getFluid(144))
+                .duration(20).EUt(480)
+                .buildAndRegister();
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .input(Items.REDSTONE, 1)
+                .input(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .fluidInputs(NetherQuartz.getFluid(144))
+                .fluidOutputs(FLUIX.getFluid(144))
+                .duration(20).EUt(480)
+                .buildAndRegister();
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .input(dust, NetherQuartz, 1)
+                .input(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .fluidInputs(Redstone.getFluid(144))
+                .fluidOutputs(FLUIX.getFluid(144))
+                .duration(20).EUt(480)
+                .buildAndRegister();
+        /*RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .input(block, Fluix, 1) //TODO: AE2 Pure Fluix Crystal
+                .fluidOutputs(FLUIX.getFluid(72))
                 .duration(20).EUt(7)
                 .buildAndRegister();
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .input(block, Fluix, 1) //TODO: AE2 Fluix Crystal
+                .fluidOutputs(FLUIX.getFluid(144))
+                .duration(20).EUt(7)
+                .buildAndRegister();
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .input(block, Fluix, 1) //TODO: AE2 Fluix Block
+                .fluidOutputs(FLUIX.getFluid(576))
+                .duration(20).EUt(7)
+                .buildAndRegister();*/
     }
 }
