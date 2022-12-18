@@ -1,4 +1,4 @@
-# Chinese translate by Quarri6343
+# Chinese by GTModpackTeam
 # 中文翻译由 Quarri6343 翻译。
 
 # multiblock
@@ -22,26 +22,26 @@ tile.sawmill_conveyor.name=锯木机传送带
 # material
 material.galvalume=热镀锌
 material.nm_hea_nps=纳米粒子贵金属高熵合金
-material.naquadah_rocket_fuel=Naquadah Rocket Fuel
-material.electrical_steel=Electrical Steel
-material.energetic_alloy=Energetic Alloy
-material.vibrant_alloy=Vibrant Alloy
-material.redstone_alloy=Redstone Alloy
-material.conductive_iron=Conductive Iron
-material.pulsating_iron=Pulsating Iron
-material.dark_steel=Dark Steel
-material.soularium=Soularium
-material.end_steel=End Steel
-material.construction_alloy=Iron Alloy
-material.crude_steel=Crude Steel
-material.crystalline_alloy=Crystalline Alloy
-material.melodic_alloy=Melodic Alloy
-material.stellar_alloy=Stellar Alloy
-material.crystalline_pink_slime=Crystalline Pink Slime
-material.energetic_silver=Energetic Silver
-material.vivid_alloy=Vivid Alloy
-material.fluix=Fluix
-material.charged_certus_quartz=Charged Certus Quartz
+material.naquadah_rocket_fuel=硅岩火箭燃料
+material.electrical_steel=磁钢
+material.energetic_alloy=充能合金
+material.vibrant_alloy=脉冲合金
+material.redstone_alloy=红石合金
+material.conductive_iron=导电铁
+material.pulsating_iron=充能铁
+material.dark_steel=玄钢
+material.soularium=魂金
+material.end_steel=末影钢
+material.construction_alloy=铁合金
+material.crude_steel=粗钢
+material.crystalline_alloy=晶化合金
+material.melodic_alloy=旋律合金
+material.stellar_alloy=恒星合金
+material.crystalline_pink_slime=晶化粉红史莱姆
+material.energetic_silver=充能银
+material.vivid_alloy=生动合金
+material.fluix=福鲁伊克斯
+material.charged_certus_quartz=充能赛特斯石英
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME存储组件

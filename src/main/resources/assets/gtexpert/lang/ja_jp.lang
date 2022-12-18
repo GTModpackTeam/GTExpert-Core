@@ -1,4 +1,4 @@
-# Japanese translate by Quarri6343
+# Japanese by GTModpackTeam
 # 日本語ローカライズ担当： Quarri6343
 
 # multiblock
@@ -32,7 +32,7 @@ material.pulsating_iron=脈動鉄
 material.dark_steel=ダークスチール
 material.soularium=ソウラリウム
 material.end_steel=エンドスチール
-material.construction_iron=鉄合金
+material.construction_alloy=鉄合金
 material.crude_steel=粗鋼
 material.crystalline_alloy=結晶性合金
 material.melodic_alloy=メロディック合金

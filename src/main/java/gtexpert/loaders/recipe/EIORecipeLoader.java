@@ -1,8 +1,5 @@
 package gtexpert.loaders.recipe;
 
-import com.enderio.core.common.OreDict;
-import crazypants.enderio.base.fluid.Fluids;
-import crazypants.enderio.base.init.ModObject;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.recipes.ModHandler;
@@ -10,7 +7,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -28,6 +24,8 @@ import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
+import crazypants.enderio.base.fluid.Fluids;
+import crazypants.enderio.base.init.ModObject;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -119,25 +117,6 @@ public class EIORecipeLoader {
                 .output(dust, SOULARIUM, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
-        /*GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
-                .input(dust, Gold, 1)
-                .input(dust, Ash, 1)
-                .input(Blocks.SOUL_SAND, 1)
-                .blastFurnaceTemp(3600)
-                .notConsumable(new IntCircuitIngredient(2))
-                .fluidOutputs(SOULARIUM.getFluid(288))
-                .duration(900).EUt(VA[EV])
-                .buildAndRegister();
-        GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
-                .input(dust, Gold, 1)
-                .input(dust, Ash, 1)
-                .input(Blocks.SOUL_SAND, 1)
-                .fluidInputs(Argon.getFluid(100))
-                .blastFurnaceTemp(3600)
-                .notConsumable(new IntCircuitIngredient(12))
-                .fluidOutputs(SOULARIUM.getFluid(288))
-                .duration(603).EUt(VA[EV])
-                .buildAndRegister();*/
 
         // End Steel
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -148,11 +127,11 @@ public class EIORecipeLoader {
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
-        // Construction Iron(Iron Alloy)
+        // Iron Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Platinum, 1)
                 .input(dust, Iron, 1)
-                .output(dust, CONSTRUCTION_IRON)
+                .output(dust, CONSTRUCTION_ALLOY)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -168,7 +147,7 @@ public class EIORecipeLoader {
         // Crystalline Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Gold, 1)
-                .input(ModObject.itemMaterial.getItemNN(), 1, 34) // EIO:PrecientPowder
+                .input(ModObject.itemMaterial.getItemNN(), 1, 34)
                 .output(dust, CRYSTALLINE_ALLOY, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
@@ -211,7 +190,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, ENERGETIC_SILVER, 1)
                 .input(dust, EnderPearl, 1)
-                .output(dust, VIBRANT_ALLOY, 1)
+                .output(dust, VIVID_ALLOY, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
     }
