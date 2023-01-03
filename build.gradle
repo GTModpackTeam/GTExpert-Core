@@ -88,14 +88,14 @@ dependencies {
     }
     
     implementation 'org.jetbrains:annotations:23.0.0'
-    implementation 'curse.maven:ae2-extended-life-570458:4105092'
 
     compile 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.682'
     compile 'curse.maven:had-enough-items-557549:4109510'
-    //deobfCompile 'curse.maven:gregtech-ce-unofficial-557242:4068926'
+    //deobfCompile 'curse.maven:gregtech-ce-unofficial-557242:4248309'
     deobfCompile 'curse.maven:codechicken-lib-1-8-242818:2779848'
     deobfCompile 'curse.maven:the-one-probe-245211:2667280'
     deobfCompile 'curse.maven:gregicality-multiblocks-564858:4051163'
+    deobfCompile 'curse.maven:ae2-extended-life-570458:4264378'
 
     compile "curse.maven:enderio-64578:3328811"
     compile "curse.maven:endercore-231868:2972849"
