@@ -50,6 +50,22 @@ import static gregtech.api.unification.material.Materials.*;
 
 public class EIORecipeLoader {
     public static void init() {
+        // Soul Sand Dust
+        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(Blocks.SOUL_SAND))
+                .outputs(OreDictUnifier.get(dust, SOUL_SAND))
+                .duration(25)
+                .EUt(2)
+                .buildAndRegister();
+
+        // Chorus fruit Dust
+        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(Items.CHORUS_FRUIT))
+                .outputs(OreDictUnifier.get(dust, CHORUS_FRUIT))
+                .duration(25)
+                .EUt(2)
+                .buildAndRegister();
+
         // Electrical Steel
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Steel, 1)
@@ -113,7 +129,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Gold, 1)
                 .input(dust, Ash, 1)
-                .input(Blocks.SOUL_SAND, 1)
+                .input(dust, SOUL_SAND, 1)
                 .output(dust, SOULARIUM, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
@@ -155,7 +171,7 @@ public class EIORecipeLoader {
         // Melodic Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, END_STEEL, 1)
-                .input(Items.CHORUS_FRUIT_POPPED, 1)
+                .input(dust, CHORUS_FRUIT, 1)
                 .output(dust, MELODIC_ALLOY, 1)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
