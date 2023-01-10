@@ -80,6 +80,7 @@ dependencies {
 		deobfCompile 'com.cleanroommc:assetmover:0.2'
 	}
 	if (project.use_mixins.toBoolean()) {
+        annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 		deobfCompile 'zone.rong:mixinbooter:4.2'
     }
 	
@@ -92,7 +93,7 @@ dependencies {
 	deobfCompile 'curse.maven:the-one-probe-245211:2667280'
 	//deobfCompile 'curse.maven:gregicality-multiblocks-564858:3783615'
 
-	provided (files("libs/gregtech-1.12.2-2.4.3-beta.jar"))
+	provided (files("libs/gregtech-1.12.2-2.5.0.jar"))
 }
 
 sourceSets {
