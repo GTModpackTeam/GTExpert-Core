@@ -9,6 +9,7 @@ buildscript {
         maven {
             url = 'https://repo.spongepowered.org/maven'
         }
+        mavenCentral()
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.4'

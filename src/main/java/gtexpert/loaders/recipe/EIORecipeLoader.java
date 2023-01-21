@@ -151,15 +151,6 @@ public class EIORecipeLoader {
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
-        // Crude Steel
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .input(dust, Steel, 1)
-                .input(dust, Clay, 1)
-                .input(dust, Flint, 1)
-                .output(dust, CRUDE_STEEL)
-                .duration(40).EUt(VA[HV])
-                .buildAndRegister();
-
         // Crystalline Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Gold, 1)
