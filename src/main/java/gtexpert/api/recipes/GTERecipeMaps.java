@@ -6,7 +6,7 @@ import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.sound.GTSounds;
+import gregtech.core.sound.GTSoundEvents;
 import gtexpert.api.gui.GTEGuiTextures;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -20,7 +20,7 @@ public class GTERecipeMaps {
             .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
             .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_MIXER, ProgressWidget.MoveType.CIRCULAR)
-            .setSound(GTSounds.MIXER);
+            .setSound(GTSoundEvents.MIXER);
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SAWMill_RECIPES = new RecipeMap<>("sawmill", 1, 1, 2, 2, 1, 1, 0, 0, new SimpleRecipeBuilder(), false)
@@ -28,11 +28,11 @@ public class GTERecipeMaps {
             .setSlotOverlay(true, false, false, GuiTextures.CUTTER_OVERLAY)
             .setSlotOverlay(true, false, true, GuiTextures.DUST_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_SLICE, ProgressWidget.MoveType.HORIZONTAL)
-            .setSound(GTSounds.CUT);
+            .setSound(GTSoundEvents.CUT);
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> VOID_ORE_MINER_RECIPES = new RecipeMap<>("void_ore_miner", 0, 1, 0, 1, 0, 2, 0, 0, new SimpleRecipeBuilder(), true)
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
             .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOID, ProgressWidget.MoveType.VERTICAL)
-            .setSound(GTSounds.DRILL_TOOL);
+            .setSound(GTSoundEvents.DRILL_TOOL);
 }
