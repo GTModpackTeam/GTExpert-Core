@@ -50,6 +50,8 @@ public class GTEMaterials {
     public static Material Galvalume;
     public static Material NM_HEA_NPs;
     public static Material NAQUADAH_ROCKET_FUEL;
+    public static Material SOUL_SAND;
+    public static Material CHORUS_FRUIT;
     public static Material ELECTRICAL_STEEL;
     public static Material ENERGETIC_ALLOY;
     public static Material VIBRANT_ALLOY;
