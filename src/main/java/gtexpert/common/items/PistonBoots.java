@@ -109,24 +109,19 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
         }
     }
 
-    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return "gtexpert:textures/armor/piston_boots.png";
-    }
-
     @Override
     public double getDamageAbsorption() {
         return 0;
     }
 
-    @SideOnly(Side.CLIENT)
-    public boolean isNeedDrawHUD() {
-        return true;
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+        return "gtexpert:textures/armor/piston_boots.png";
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void drawHUD(ItemStack item) {
-        super.addCapacityHUD(item, this.HUD);
-        this.HUD.draw();
-        this.HUD.reset();
+    public boolean shouldDrawHUD() {
+        return false;
     }
 }
