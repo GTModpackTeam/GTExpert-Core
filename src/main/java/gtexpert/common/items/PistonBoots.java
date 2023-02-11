@@ -3,6 +3,7 @@ package gtexpert.common.items;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.items.armor.ArmorLogicSuite;
+import gregtech.api.items.armor.ArmorUtils;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.input.KeyBind;
 import gregtech.common.items.armor.IStepAssist;
@@ -24,6 +25,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
+    private static final ArmorUtils.ModularHUD HUD = new ArmorUtils.ModularHUD();
     private float charge = 0.0F;
 
     public PistonBoots(EntityEquipmentSlot slot, int energyPerUse, long maxCapacity, int tier) {
@@ -123,7 +125,7 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
 
     @Override
     public void drawHUD(ItemStack item) {
-        super.addCapacityHUD(item);
+        super.addCapacityHUD(item, this.HUD);
         this.HUD.draw();
         this.HUD.reset();
     }
