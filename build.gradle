@@ -129,7 +129,7 @@ dependencies {
     implementation fg.deobf('curse.maven:ctm-267602:2915363')
     implementation fg.deobf('curse.maven:groovyscript-687577:4329872')
 
-    implementation fg.deobf('curse.maven:gregtech-ce-unofficial-557242:4390776')
+    implementation fg.deobf('curse.maven:gregtech-ce-unofficial-557242:4390983')
     //implementation fg.deobf('curse.maven:gregicality-multiblocks-564858:4325275')
 
     testImplementation('org.junit.jupiter:junit-jupiter:5.9.1')
