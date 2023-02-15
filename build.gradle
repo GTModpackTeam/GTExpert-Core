@@ -134,8 +134,8 @@ dependencies {
 
     implementation fg.deobf('curse.maven:enderio-64578:3328811')
     implementation fg.deobf('curse.maven:endercore-231868:2972849')
-    compileOnly 'info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2'
-    compileOnly 'info.loenwind.autosave:AutoSave:1.12.2-1.0.11'
+    implementation 'info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2'
+    implementation 'info.loenwind.autosave:AutoSave:1.12.2-1.0.11'
 
     testImplementation('org.junit.jupiter:junit-jupiter:5.9.1')
     testImplementation('org.hamcrest:hamcrest:2.2')
@@ -150,6 +150,9 @@ dependencies {
         runtimeOnly 'zone.rong:mixinbooter:7.0'
         annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     }
+
+    // Boot error fix
+    runtimeOnly (files("libs/EnderCore-1.12.2-0.5.76-core.jar"))
 }
 
 fancyGradle {
