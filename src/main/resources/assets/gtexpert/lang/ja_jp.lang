@@ -13,6 +13,17 @@ gtexpert.machine.void_ore_miner.tooltip.2=§6ネザーかエンド鉱石を消�
 gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です.§r
 gtexpert.machine.extreme_mixer.zpm.name=精鋭型エクストリームミキサー III
 
+# singleblock
+gtexpert.machine.vial_extractor.tooltip=故も知らぬ不死のソウル?
+gtexpert.machine.vial_extractor.lv.name=基本型魂抽出器
+gtexpert.machine.vial_extractor.mv.name=発展型魂抽出器
+gtexpert.machine.vial_extractor.hv.name=発展型魂抽出器 II
+gtexpert.machine.vial_extractor.ev.name=発展型魂抽出器 III
+gtexpert.machine.vial_extractor.iv.name=精鋭型魂抽出器
+gtexpert.machine.vial_extractor.luv.name=精鋭型魂抽出器 II
+gtexpert.machine.vial_extractor.zpm.name=精鋭型魂抽出器 III
+gtexpert.machine.vial_extractor.uv.name=究極型魂抽出器
+
 # block
 tile.gte_metal_casing.greenhouse_casing.name=ガルバリウム製対腐食マシン外装
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
@@ -35,7 +46,6 @@ material.dark_steel=ダークスチール
 material.soularium=ソウラリウム
 material.end_steel=エンドスチール
 material.construction_alloy=鉄合金
-material.crude_steel=粗鋼
 material.crystalline_alloy=結晶性合金
 material.melodic_alloy=メロディック合金
 material.stellar_alloy=ステラ合金
@@ -55,6 +65,7 @@ metaitem.piston_boots.tooltip=トロッコのように走り、ピストンの�
 # recipemaps
 recipemap.sawmill.name=製材機
 recipemap.greenhouse.name=温室
+recipemap.vial_extractor.name=魂抽出器
 recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 
