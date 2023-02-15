@@ -29,12 +29,12 @@ public class AEFirstDegreeMaterials {
 
         // Fluix Alloy
         FLUIX_ALLOY = new Material.Builder(25102, "fluix_alloy")
-                .dust().ingot()
+                .ingot()
                 .fluid().fluidTemp(1200)
                 .color(0x4A3954).iconSet(MaterialIconSet.SHINY)
                 .flags(DISABLE_DECOMPOSITION)
-                .blastTemp(5400, GasTier.HIGHER, 1920, 1072)
-                .components(FLUIX, 1, Steel, 1)
+                .blastTemp(2700, GasTier.LOW, 480, 1072)
+                .components(FLUIX, 2, Carbon, 2, Silicon, 1)
                 .build();
 
         // Charged Certus Quartz

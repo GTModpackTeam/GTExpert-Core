@@ -6,6 +6,7 @@ import gregtech.api.fluids.MetaFluids;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -28,11 +29,17 @@ import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
+import appeng.api.AEApi;
+import appeng.api.definitions.IBlocks;
+import appeng.api.definitions.IItems;
+import appeng.api.definitions.IMaterials;
+import appeng.api.definitions.IParts;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
@@ -50,64 +57,80 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 
 public class AERecipeLoader {
+    static IItems aeItems = AEApi.instance().definitions().items();
+    static IBlocks aeBlocks = AEApi.instance().definitions().blocks();
+    static IMaterials aeMaterials = AEApi.instance().definitions().materials();
+    static IParts aeParts = AEApi.instance().definitions().parts();
+
     public static void init() {
         // Certus Quartz
-        //ModHandler.removeRecipeByName(new ResourceLocation("gregtech:block_compress_certus_quartz"));
-        //GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(OrePrefix.gem, CertusQuartz, 9));
-        /*GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
-                MetaItems.SHAPE_MOLD_BLOCK,
-                new FluidStack(MetaFluids.CertusQuartz.getFluid(), 1296));*/
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .input(block, CertusQuartz, 1)
                 .fluidOutputs(CertusQuartz.getFluid(576))
-                .duration(80).EUt(30)
+                .duration(80).EUt(VA[1])
                 .buildAndRegister();
-        /*RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(CERTUS_QUARTZ) // TODO: AE2 Pure Certus Quartz
-                .fluidOutputs(CertusQuartz.getFluid(72))
-                .duration(20).EUt(30)
-                .buildAndRegister();*/
+//        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+//                .input(aeMaterials.purifiedCertusQuartzCrystal().maybeItem().get(), 1)
+//                .fluidOutputs(CertusQuartz.getFluid(72))
+//                .duration(20).EUt(VA[1])
+//                .buildAndRegister();
 
         // Charged Certus Quartz
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(CertusQuartz.getFluid(144))
                 .fluidOutputs(CHARGED_CERTUS_QUARTZ.getFluid(144))
-                .duration(100).EUt(480)
+                .duration(100).EUt(VA[3])
                 .buildAndRegister();
-        /*RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
-                .input() // TODO: AE2 Charged Certus Quartz
-                .fluidOutputs(CHARGED_CERTUS_QUARTZ.getFluid(144))
-                .duration(20).EUt(7)
-                .buildAndRegister();*/
+        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
+                .input(gem, CertusQuartz, 1)
+                .output(gem, CHARGED_CERTUS_QUARTZ, 1)
+                .duration(100).EUt(VA[3])
+                .buildAndRegister();
+        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
+                .input(dust, CertusQuartz, 1)
+                .output(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .duration(100).EUt(VA[3])
+                .buildAndRegister();
+//        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
+//                .input(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get().getItem())
+//                .fluidOutputs(CHARGED_CERTUS_QUARTZ.getFluid(144))
+//                .duration(20).EUt(VA[0])
+//                .buildAndRegister();
 
         // Fluix
-        ModHandler.addShapelessRecipe("fluix",
-                OreDictUnifier.get(dust, FLUIX, 2),
-                Items.REDSTONE,
-                OreDictUnifier.get(dust, NetherQuartz),
-                OreDictUnifier.get(dust, CHARGED_CERTUS_QUARTZ));
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .input(Items.REDSTONE, 1)
-                .input(dust, NetherQuartz, 1)
-                .input(dust, CHARGED_CERTUS_QUARTZ, 1)
                 .notConsumable(new IntCircuitIngredient(1))
+                .input(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .input(dust, Redstone, 1)
+                .input(dust, NetherQuartz, 1)
                 .output(dust, FLUIX, 3)
-                .duration(200).EUt(480)
+                .duration(200).EUt(VA[3])
                 .buildAndRegister();
-        /*RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(block, Fluix, 1) //TODO: AE2 Pure Fluix Crystal
-                .fluidOutputs(FLUIX.getFluid(72))
-                .duration(20).EUt(7)
+//        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+//                .input(aeMaterials.purifiedFluixCrystal().maybeStack(1).get().getItem())
+//                .fluidOutputs(FLUIX.getFluid(72))
+//                .duration(20).EUt(VA[0])
+//                .buildAndRegister();
+//        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+//                .input(aeMaterials.fluixCrystal().maybeStack(1).get().getItem())
+//                .fluidOutputs(FLUIX.getFluid(144))
+//                .duration(20).EUt(VA[0])
+//                .buildAndRegister();
+//        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+//                .input(aeBlocks.fluixBlock().maybeStack(1).get().getItem())
+//                .fluidOutputs(FLUIX.getFluid(576))
+//                .duration(20).EUt(VA[0])
+//                .buildAndRegister();
+
+        // Fluix Alloy
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(2))
+                .input(dust, FLUIX, 2)
+                .input(dust, Carbon, 2)
+                .input(dust, Silicon, 1)
+                .output(dust, FLUIX_ALLOY, 5)
+                .duration(100).EUt(VA[3])
                 .buildAndRegister();
-        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(block, Fluix, 1) //TODO: AE2 Fluix Crystal
-                .fluidOutputs(FLUIX.getFluid(144))
-                .duration(20).EUt(7)
-                .buildAndRegister();
-        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(block, Fluix, 1) //TODO: AE2 Fluix Block
-                .fluidOutputs(FLUIX.getFluid(576))
-                .duration(20).EUt(7)
-                .buildAndRegister();*/
+
     }
 }
