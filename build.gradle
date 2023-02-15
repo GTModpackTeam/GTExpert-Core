@@ -11,6 +11,7 @@ buildscript {
             name 'MixinGradle'
             url 'https://repo.spongepowered.org/repository/maven-public'
         }
+        mavenCentral()
     }
     dependencies {
         if (project.use_mixins.toBoolean()) {

@@ -13,6 +13,17 @@ gtexpert.machine.void_ore_miner.tooltip.2=§6输入下界或末地矿石以获�
 gtexpert.machine.void_ore_miner.tooltip.3=§6一次的动作需要576mb的Enderpearl与10000mb的钻井液§r
 gtexpert.machine.extreme_mixer.zpm.name=精英极限搅拌机 III
 
+# singleblock
+gtexpert.machine.vial_extractor.tooltip=黑暗之魂?
+gtexpert.machine.vial_extractor.lv.name=基础灵魂提取机
+gtexpert.machine.vial_extractor.mv.name=进阶灵魂提取机
+gtexpert.machine.vial_extractor.hv.name=进阶灵魂提取机 II
+gtexpert.machine.vial_extractor.ev.name=进阶灵魂提取机 III
+gtexpert.machine.vial_extractor.iv.name=精英灵魂提取机
+gtexpert.machine.vial_extractor.luv.name=精英灵魂提取机 II
+gtexpert.machine.vial_extractor.zpm.name=精英灵魂提取机 III
+gtexpert.machine.vial_extractor.uv.name=终极灵魂提取机
+
 # block
 tile.gte_metal_casing.greenhouse_casing.name=抗腐蚀热镀锌机械外壳
 tile.gte_metal_casing.sawmill_casing.name=防腐木机械外壳
@@ -35,7 +46,6 @@ material.dark_steel=玄钢
 material.soularium=魂金
 material.end_steel=末影钢
 material.construction_alloy=铁合金
-material.crude_steel=粗钢
 material.crystalline_alloy=晶化合金
 material.melodic_alloy=旋律合金
 material.stellar_alloy=恒星合金
@@ -54,6 +64,7 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 # recipemaps
 recipemap.sawmill.name=锯木机
 recipemap.greenhouse.name=温室
+recipemap.vial_extractor.name=灵魂提取机
 recipemap.extreme_mixer.name=极限搅拌机
 recipemap.void_ore_miner.name=虚空矿物采掘机
 

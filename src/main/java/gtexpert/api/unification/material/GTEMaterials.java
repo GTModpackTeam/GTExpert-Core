@@ -62,7 +62,6 @@ public class GTEMaterials {
     public static Material SOULARIUM;
     public static Material END_STEEL;
     public static Material CONSTRUCTION_ALLOY;
-    public static Material CRUDE_STEEL;
     public static Material CRYSTALLINE_ALLOY;
     public static Material MELODIC_ALLOY;
     public static Material STELLAR_ALLOY;

@@ -13,6 +13,7 @@ public class GTETextures {
 
     public static SimpleOverlayRenderer SAWMILL_CASING;
     public static OrientedOverlayRenderer SAWMILL_OVERLAY;
+    public static OrientedOverlayRenderer VIAL_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("vial_extractor", FRONT, SIDE, TOP);
     public static OrientedOverlayRenderer EXTREME_MIXER_OVERLAY = new OrientedOverlayRenderer("extreme_mixer", FRONT, SIDE, TOP);
     public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;
 
