@@ -71,7 +71,7 @@ public class EIORecipeLoader {
                 .input(dust, Steel, 1)
                 .input(dust, Coal, 1)
                 .input(dust, Silicon, 1)
-                .output(dust, ELECTRICAL_STEEL, 1)
+                .output(dust, ELECTRICAL_STEEL, 3)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -80,7 +80,7 @@ public class EIORecipeLoader {
                 .input(dust, Redstone, 1)
                 .input(dust, Gold, 1)
                 .input(dust, Glowstone, 1)
-                .output(dust, ENERGETIC_ALLOY, 1)
+                .output(dust, ENERGETIC_ALLOY, 3)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -88,7 +88,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, ENERGETIC_ALLOY, 1)
                 .input(dust, EnderPearl, 1)
-                .output(dust, VIBRANT_ALLOY, 1)
+                .output(dust, VIBRANT_ALLOY, 2)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -96,7 +96,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, RedAlloy, 1)
                 .input(dust, Silicon, 1)
-                .output(dust, REDSTONE_ALLOY, 1)
+                .output(dust, REDSTONE_ALLOY, 2)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -104,7 +104,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Iron, 1)
                 .input(dust, REDSTONE_ALLOY, 1)
-                .output(dust, CONDUCTIVE_IRON, 1)
+                .output(dust, CONDUCTIVE_IRON, 2)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -112,7 +112,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Iron, 1)
                 .input(dust, EnderPearl, 1)
-                .output(dust, PULSATING_IRON, 1)
+                .output(dust, PULSATING_IRON, 2)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -121,7 +121,7 @@ public class EIORecipeLoader {
                 .input(dust, Iron, 1)
                 .input(dust, Coal, 1)
                 .input(dust, Obsidian, 1)
-                .output(dust, DARK_STEEL, 1)
+                .output(dust, DARK_STEEL, 3)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -130,7 +130,7 @@ public class EIORecipeLoader {
                 .input(dust, Gold, 1)
                 .input(dust, Ash, 1)
                 .input(dust, SOUL_SAND, 1)
-                .output(dust, SOULARIUM, 1)
+                .output(dust, SOULARIUM, 3)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -139,7 +139,7 @@ public class EIORecipeLoader {
                 .input(dust, Endstone, 1)
                 .input(dust, DARK_STEEL, 1)
                 .input(dust, Obsidian, 1)
-                .output(dust, END_STEEL)
+                .output(dust, END_STEEL, 3)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -147,15 +147,19 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Platinum, 1)
                 .input(dust, Iron, 1)
-                .output(dust, CONSTRUCTION_ALLOY)
+                .input(dust, Aluminium, 1)
+                .output(dust, CONSTRUCTION_ALLOY, 3)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
         // Crystalline Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                //.input(ModObject.itemMaterial.getItemNN(), 1, 34)
                 .input(dust, Gold, 1)
-                .input(ModObject.itemMaterial.getItemNN(), 1, 34)
-                .output(dust, CRYSTALLINE_ALLOY, 1)
+                .input(dust, Platinum, 1)
+                .input(dust, Emerald, 1)
+                .input(dust, VIBRANT_ALLOY, 1)
+                .output(dust, CRYSTALLINE_ALLOY, 4)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -163,7 +167,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, END_STEEL, 1)
                 .input(dust, CHORUS_FRUIT, 1)
-                .output(dust, MELODIC_ALLOY, 1)
+                .output(dust, MELODIC_ALLOY, 2)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -172,7 +176,7 @@ public class EIORecipeLoader {
                 .input(dust, NetherStar, 1)
                 .input(dust, MELODIC_ALLOY, 1)
                 .input(dust, Clay, 1)
-                .output(dust, STELLAR_ALLOY, 1)
+                .output(dust, STELLAR_ALLOY, 3)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -180,7 +184,7 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, MELODIC_ALLOY, 1)
                 .input(dust, RawRubber, 2)
-                .output(dust, CRYSTALLINE_PINK_SLIME, 1)
+                .output(dust, CRYSTALLINE_PINK_SLIME, 2)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -189,7 +193,7 @@ public class EIORecipeLoader {
                 .input(dust, Silver, 1)
                 .input(dust, Redstone, 1)
                 .input(dust, Glowstone, 1)
-                .output(dust, ENERGETIC_SILVER, 1)
+                .output(dust, ENERGETIC_SILVER, 3)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
@@ -197,12 +201,20 @@ public class EIORecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, ENERGETIC_SILVER, 1)
                 .input(dust, EnderPearl, 1)
-                .output(dust, VIVID_ALLOY, 1)
+                .output(dust, VIVID_ALLOY, 2)
                 .duration(40).EUt(VA[HV])
                 .buildAndRegister();
 
+
         // Vial Extractor
-        registerMachineRecipe(VIAL_EXTRACTOR, "VRV", "PMF", "WCW", 'V', ModObject.itemSoulVial.getItemNN(), 'R', SENSOR, 'P', PISTON, 'M', HULL, 'F', PUMP, 'W', CABLE, 'C', CIRCUIT);
+        registerMachineRecipe(VIAL_EXTRACTOR, "VRV", "PMF", "WCW",
+                'V', ModObject.itemSoulVial.getItemNN(),
+                'R', SENSOR,
+                'P', PISTON,
+                'M', HULL,
+                'F', PUMP,
+                'W', CABLE,
+                'C', CIRCUIT);
 
         // XP Juice
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -217,7 +229,7 @@ public class EIORecipeLoader {
                 .input(Items.GLASS_BOTTLE, 1)
                 .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 120))
                 .output(Items.EXPERIENCE_BOTTLE, 1)
-                .duration(200).EUt(7)
+                .duration(200).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .input(Items.EXPERIENCE_BOTTLE, 1)
