@@ -1,59 +1,97 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 buildscript {
     repositories {
         maven {
-            url = 'https://maven.minecraftforge.net'
-        }
-        maven { 
-            url = 'https://maven.cleanroommc.com'
+            name 'Forge'
+            url 'https://maven.minecraftforge.net'
         }
         maven {
-            url = 'https://repo.spongepowered.org/maven'
+            name 'MixinGradle'
+            url 'https://repo.spongepowered.org/repository/maven-public'
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.4'
         if (project.use_mixins.toBoolean()) {
-            classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+            classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
         }
     }
 }
 
-apply plugin: 'net.minecraftforge.gradle.forge'
-
-if (project.use_mixins.toBoolean()) {
-    apply plugin: 'org.spongepowered.mixin'
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'wtf.gofancy.fancygradle' version '1.1.+'
 }
+
 
 version = project.mod_version
 group = project.maven_group
 archivesBaseName = project.archives_base_name
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
-sourceCompatibility = targetCompatibility = '1.8'
-
-compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
+if (project.use_intellij_idea.toBoolean()) {
+    apply {
+        plugin 'java'
+        plugin 'idea'
+    }
+    idea {
+        module {
+            downloadJavadoc = true
+            downloadSources = true
+        }
+    }
 }
-
-configurations {
-    embed
-    implementation.extendsFrom(embed)
+if (project.use_eclipse.toBoolean()) {
+    apply {
+        plugin 'java'
+        plugin 'eclipse'
+    }
+    eclipse {
+        module {
+            downloadJavadoc = true
+            downloadSources = true
+        }
+    }
 }
 
 minecraft {
-    version = '1.12.2-14.23.5.2847'
-    runDir = 'run'
-    mappings = 'stable_39'
-    def args = []
-    if (project.use_coremod.toBoolean()) {
-        args << '-Dfml.coreMods.load=' + coremod_plugin_class_name
+    mappings channel: 'stable', version: '39-1.12'
+    if (project.has_access_transformer.toBoolean()) {
+        // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+        // accessTransformer = file('src/main/resources/gregtech_at.cfg')
     }
-    if (project.use_mixins.toBoolean()) {
-        args << '-Dmixin.hotSwap=true'
-        args << '-Dmixin.checks.interfaces=true'
-        args << '-Dmixin.debug.export=true'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            if (project.use_coremod.toBoolean()) {
+                jvmArg '-Dfml.coreMods.load=' + coremod_plugin_class_name
+            }
+            if (project.use_mixins.toBoolean()) {
+                jvmArg '-Dmixin.hotSwap=true'
+                jvmArg '-Dmixin.checks.interfaces=true'
+                jvmArg '-Dmixin.debug=true'
+            }
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            environment 'MC_VERSION', '1.12.2'
+        }
+
+        server {
+            workingDirectory project.file('run')
+            if (project.use_coremod.toBoolean()) {
+                jvmArg '-Dfml.coreMods.load=' + coremod_plugin_class_name
+            }
+            if (project.use_mixins.toBoolean()) {
+                jvmArg '-Dmixin.hotSwap=true'
+                jvmArg '-Dmixin.checks.interfaces=true'
+            }
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            environment 'MC_VERSION', '1.12.2'
+        }
     }
-    clientJvmArgs.addAll(args)
-    serverJvmArgs.addAll(args)
 }
 
 repositories {
@@ -63,93 +101,187 @@ repositories {
     maven {
         url = 'https://repo.spongepowered.org/maven'
     }
-
     maven {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
     maven {
-        url 'https://cursemaven.com'
+        name = 'Curse Maven'
+        url = 'https://www.cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
     }
-    maven {
-        name = "CraftTweaker"
-        url = 'https://maven.blamejared.com/'
-    }
-    mavenCentral()
 }
 
 dependencies {
-    
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
+
+    // CCL
+    implementation fg.deobf('curse.maven:codechicken-lib-1-8-242818:2779848')
+
+    // PAE
+    implementation fg.deobf('curse.maven:ae2-extended-life-570458:4370127')
+
+    implementation 'curse.maven:crafttweaker-239197:4379998'
+
+    implementation fg.deobf('curse.maven:jei-238222:4364085')
+    implementation fg.deobf('curse.maven:top-245211:2667280')
+    implementation fg.deobf('curse.maven:ctm-267602:2915363')
+
+    implementation fg.deobf('curse.maven:gregtech-ce-unofficial-557242:4390983')
+    implementation fg.deobf('curse.maven:gregicality-multiblocks-564858:4325275')
+
+    implementation fg.deobf('curse.maven:enderio-64578:3328811')
+    implementation fg.deobf('curse.maven:endercore-231868:2972849')
+    compileOnly 'info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2'
+    compileOnly 'info.loenwind.autosave:AutoSave:1.12.2-1.0.11'
+
+    testImplementation('org.junit.jupiter:junit-jupiter:5.9.1')
+    testImplementation('org.hamcrest:hamcrest:2.2')
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
     if (project.use_assetmover.toBoolean()) {
-        compile 'com.cleanroommc:assetmover:2.1'
+        fg.deobf 'com.cleanroommc:assetmover:2.0'
     }
     if (project.use_mixins.toBoolean()) {
-        compile 'zone.rong:mixinbooter:7.0'
+        compileOnly 'zone.rong:mixinbooter:7.0'
+        runtimeOnly 'zone.rong:mixinbooter:7.0'
+        annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     }
-    
-    implementation 'org.jetbrains:annotations:23.0.0'
-    implementation 'curse.maven:ae2-extended-life-570458:4105092'
-
-    compile 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.682'
-    compile 'curse.maven:had-enough-items-557549:4109510'
-    //deobfCompile 'curse.maven:gregtech-ce-unofficial-557242:4068926'
-    deobfCompile 'curse.maven:codechicken-lib-1-8-242818:2779848'
-    deobfCompile 'curse.maven:the-one-probe-245211:2667280'
-    deobfCompile 'curse.maven:gregicality-multiblocks-564858:4051163'
-
-    compile "curse.maven:enderio-64578:3328811"
-    compile "curse.maven:endercore-231868:2972849"
-    compile "info.loenwind.autoconfig:AutoConfig:${project.minecraft.version}-1.0.2"
-    compile "info.loenwind.autosave:AutoSave:${project.minecraft.version}-1.0.11"
-
-    provided (files("libs/EnderCore-1.12.2-0.5.76-core.jar"))
-    provided (files("libs/gregtech-1.12.2-2.4.4-beta.jar"))
 }
 
+fancyGradle {
+    patches {
+        resources
+        coremods
+        asm
+        codeChickenLib
+    }
+}
+
+if (project.build_deobfJar.toBoolean()) {
+    // Create deobf dev jars
+    tasks.register('deobfJar') {
+        archiveClassifier.set("deobf")
+        from sourceSets.main.output
+    }
+}
+
+if (project.build_apiJar.toBoolean()) {
+    // Create API library jar
+    tasks.register('apiZip') {
+        archiveClassifier.set("api")
+        from(sourceSets.main.java) {
+            include "gregtech/api/**"
+        }
+        from(sourceSets.main.output) {
+            include "gregtech/api/**"
+        }
+    }
+}
+
+if (project.build_sourceJar.toBoolean()) {
+    // Create source jar
+    tasks.register('sourcesJar') {
+        archiveClassifier.set("sources")
+        from sourceSets.main.allJava
+    }
+}
+
+// Loading resources, works even on IDE client runs
 sourceSets {
-
     main {
-        ext.refMap = 'mixins.' + archives_base_name + '.refmap.json'
+        if (project.use_mixins.toBoolean()) {
+            ext.refMap = 'mixins.' + archives_base_name + '.refmap.json'
+        }
+
+        java {
+            srcDirs = ["src/main/java", "src/api/java"]
+        }
+
+        resources {
+            srcDirs = ["src/main/resources"]
+        }
+    }
+    test {
+        java {
+            srcDirs = ["src/test/java"]
+        }
+        resources {
+            srcDirs = ["src/test/resources"]
+        }
     }
 
-}
-
-processResources {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property 'version', project.version
-    inputs.property 'mcversion', project.minecraft.version
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-    // copy everything else except the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-
-    if (project.use_access_transformer.toBoolean()) {
-        rename '(.+_at.cfg)', 'META-INF/$1' // Access Transformers
-    }
+    // at compile time, put resources in same directories as classes
+    main.output.setResourcesDir(main.java.classesDirectory)
 }
 
 jar {
     manifest {
+        // noinspection GroovyAssignabilityCheck
         def attribute_map = [:]
         if (project.use_coremod.toBoolean()) {
             attribute_map['FMLCorePlugin'] = project.coremod_plugin_class_name
             if (project.include_mod.toBoolean()) {
                 attribute_map['FMLCorePluginContainsFMLMod'] = true
-                attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == "build"
+                attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == 'build'
             }
         }
         if (project.use_mixins.toBoolean()) {
             attribute_map['TweakClass'] = 'org.spongepowered.asm.launch.MixinTweaker'
         }
-        if (project.use_access_transformer.toBoolean()) {
-            attribute_map['FMLAT'] = project.archives_base_name + '_at.cfg'
-        }
         attributes(attribute_map)
     }
+}
+
+artifacts {
+    if (project.build_deobfJar.toBoolean()) {
+        archives deobfJar
+    }
+    if (project.build_apiJar.toBoolean()) {
+        archives apiZip
+    }
+    if (project.build_sourceJar.toBoolean()) {
+        archives sourcesJar
+    }
+}
+
+jar.finalizedBy('reobfJar')
+
+processResources {
+    // required to allow file expansion later
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
+    // this will ensure that this task is redone when the versions change.
+    inputs.property 'version', version
+    inputs.property 'mcversion', minecraft_version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        // replace version and mcversion
+        expand(['version': version, 'mcversion': minecraft_version])
+    }
+
+    // copy everything else except the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+test {
+    testLogging {
+        var testContainer = getTestLogging()
+        testContainer.events(TestLogEvent.FAILED)
+        testContainer.exceptionFormat(TestExceptionFormat.FULL)
+        testContainer.showExceptions(true)
+        testContainer.showStackTraces(true)
+        testContainer.showCauses(true)
+        testContainer.showStandardStreams(true)
+    }
+
+    useJUnitPlatform()
 }
