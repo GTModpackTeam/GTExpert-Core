@@ -113,10 +113,10 @@ public class GTERecipeLoader {
 
         //Wood Recipes
         List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
-                .flatMap(stack -> ModHandler.getAllSubItems(stack).stream())
+                .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
                 .collect(Collectors.toList());
         List<ItemStack> allSaplings = OreDictUnifier.getAllWithOreDictionaryName("treeSapling").stream()
-                .flatMap(stack -> ModHandler.getAllSubItems(stack).stream())
+                .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
                 .collect(Collectors.toList());
 
         for (int i = 0; i < allWoodLogs.size(); i++) {
