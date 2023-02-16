@@ -208,7 +208,7 @@ public class EIORecipeLoader {
 
         // Vial Extractor
         registerMachineRecipe(VIAL_EXTRACTOR, "VRV", "PMF", "WCW",
-                'V', ModObject.itemSoulVial.getItemNN(),
+                'V', ModObject.itemSoulVial.getItem(),
                 'R', SENSOR,
                 'P', PISTON,
                 'M', HULL,
@@ -221,21 +221,21 @@ public class EIORecipeLoader {
                 .notConsumable(new IntCircuitIngredient(2))
                 .input(dust, Gold, 2)
                 .fluidInputs(Blaze.getFluid(288))
-                .fluidInputs(Glowstone.getFluid(864))
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 120))
+                .fluidInputs(Glowstone.getFluid(576))
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
                 .duration(200).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CANNER_RECIPES.recipeBuilder()
                 .input(Items.GLASS_BOTTLE, 1)
-                .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 120))
+                .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
                 .output(Items.EXPERIENCE_BOTTLE, 1)
-                .duration(200).EUt(VA[LV])
+                .duration(100).EUt(2)
                 .buildAndRegister();
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .input(Items.EXPERIENCE_BOTTLE, 1)
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 120))
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
                 .output(Items.GLASS_BOTTLE, 1)
-                .duration(100).EUt(2)
+                .duration(400).EUt(2)
                 .buildAndRegister();
     }
 }
