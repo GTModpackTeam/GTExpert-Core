@@ -69,7 +69,7 @@ public class GTEMaterials {
     public static Material ENERGETIC_SILVER;
     public static Material VIVID_ALLOY;
     public static Material FLUIX;
-    //public static Material FLUIX_STEEL;
+    public static Material FLUIX_ALLOY;
     public static Material CHARGED_CERTUS_QUARTZ;
 
     // Second Degree Materials
