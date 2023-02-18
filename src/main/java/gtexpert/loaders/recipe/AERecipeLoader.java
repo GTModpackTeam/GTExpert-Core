@@ -57,23 +57,11 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 
 public class AERecipeLoader {
-    static IItems aeItems = AEApi.instance().definitions().items();
-    static IBlocks aeBlocks = AEApi.instance().definitions().blocks();
-    static IMaterials aeMaterials = AEApi.instance().definitions().materials();
-    static IParts aeParts = AEApi.instance().definitions().parts();
-
     public static void init() {
-        // Certus Quartz
-        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .fluidOutputs(CertusQuartz.getFluid(576))
-                .duration(80).EUt(VA[1])
-                .buildAndRegister();
-//        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-//                .input(aeMaterials.purifiedCertusQuartzCrystal().maybeItem().get(), 1)
-//                .fluidOutputs(CertusQuartz.getFluid(72))
-//                .duration(20).EUt(VA[1])
-//                .buildAndRegister();
+        IItems aeItems = AEApi.instance().definitions().items();
+        IBlocks aeBlocks = AEApi.instance().definitions().blocks();
+        IMaterials aeMaterials = AEApi.instance().definitions().materials();
+        IParts aeParts = AEApi.instance().definitions().parts();
 
         // Charged Certus Quartz
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
@@ -91,11 +79,6 @@ public class AERecipeLoader {
                 .output(dust, CHARGED_CERTUS_QUARTZ, 1)
                 .duration(100).EUt(VA[3])
                 .buildAndRegister();
-//        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
-//                .input(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get().getItem())
-//                .fluidOutputs(CHARGED_CERTUS_QUARTZ.getFluid(144))
-//                .duration(20).EUt(VA[0])
-//                .buildAndRegister();
 
         // Fluix
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -106,31 +89,32 @@ public class AERecipeLoader {
                 .output(dust, FLUIX, 3)
                 .duration(200).EUt(VA[3])
                 .buildAndRegister();
-//        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-//                .input(aeMaterials.purifiedFluixCrystal().maybeStack(1).get().getItem())
-//                .fluidOutputs(FLUIX.getFluid(72))
-//                .duration(20).EUt(VA[0])
-//                .buildAndRegister();
-//        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-//                .input(aeMaterials.fluixCrystal().maybeStack(1).get().getItem())
-//                .fluidOutputs(FLUIX.getFluid(144))
-//                .duration(20).EUt(VA[0])
-//                .buildAndRegister();
-//        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-//                .input(aeBlocks.fluixBlock().maybeStack(1).get().getItem())
-//                .fluidOutputs(FLUIX.getFluid(576))
-//                .duration(20).EUt(VA[0])
-//                .buildAndRegister();
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.purifiedFluixCrystal().maybeStack(1).get())
+                .fluidOutputs(FLUIX.getFluid(72))
+                .duration(20).EUt(VA[0])
+                .buildAndRegister();
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.fluixCrystal().maybeStack(1).get())
+                .fluidOutputs(FLUIX.getFluid(144))
+                .duration(20).EUt(VA[0])
+                .buildAndRegister();
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .inputs(aeBlocks.fluixBlock().maybeStack(1).get())
+                .fluidOutputs(FLUIX.getFluid(576))
+                .duration(20).EUt(VA[0])
+                .buildAndRegister();
 
         // Fluix Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .notConsumable(new IntCircuitIngredient(2))
+                .inputs(aeMaterials.skyDust().maybeStack(2).get())
                 .input(dust, FLUIX, 2)
                 .input(dust, Carbon, 2)
                 .input(dust, Silicon, 1)
-                .output(dust, FLUIX_ALLOY, 5)
-                .duration(100).EUt(VA[3])
+                .input(dust, Iron, 1)
+                .output(dust, FLUIX_ALLOY, 8)
+                .duration(200).EUt(VA[3])
                 .buildAndRegister();
-
     }
 }
