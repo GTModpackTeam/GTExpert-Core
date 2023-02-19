@@ -57,7 +57,7 @@ public class CommonProxy {
         GTEMaterials.init();
     }
 
-    @SubscribeEvent()
+    @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         // Main recipe registration
         // This is called AFTER GregTech registers recipes, so
