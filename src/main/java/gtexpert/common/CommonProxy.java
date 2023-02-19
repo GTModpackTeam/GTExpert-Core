@@ -57,11 +57,12 @@ public class CommonProxy {
         GTEMaterials.init();
     }
 
-    @SubscribeEvent()
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         // Main recipe registration
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
+        CEUOverrideRecipes.init();
         GTERecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();

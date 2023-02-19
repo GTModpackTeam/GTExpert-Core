@@ -179,7 +179,7 @@ public class GTERecipeLoader {
                 .buildAndRegister();
         RecipeMaps.COMBUSTION_GENERATOR_FUELS.recipeBuilder()
                 .fluidInputs(NAQUADAH_ROCKET_FUEL.getFluid(1))
-                .duration(500).EUt(VA[LV])
+                .duration(500).EUt(32)
                 .buildAndRegister();
     }
 }
