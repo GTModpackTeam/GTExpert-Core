@@ -57,7 +57,7 @@ public class GTEFirstDegreeMaterials {
         // Naquadah Rocket Fuel
         NAQUADAH_ROCKET_FUEL = new Material.Builder(24003, "naquadah_rocket_fuel")
                 .fluid().fluidTemp(1200)
-                .color(0x2E4C00).iconSet(MaterialIconSet.FLUID)
+                .color(0x2E4C00)
                 .build();
     }
 }

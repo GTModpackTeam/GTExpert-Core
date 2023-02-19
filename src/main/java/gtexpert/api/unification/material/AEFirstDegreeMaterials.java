@@ -13,11 +13,11 @@ import static gtexpert.api.unification.material.GTEMaterials.*;
 public class AEFirstDegreeMaterials {
 
     /**
-     * 25101 - 25200
+     * 24201 - 24300
      */
     public static void init() {
         // Charged Certus Quartz
-        CHARGED_CERTUS_QUARTZ = new Material.Builder(25101, "charged_certus_quartz")
+        CHARGED_CERTUS_QUARTZ = new Material.Builder(24201, "charged_certus_quartz")
                 .dust()
                 .fluid().fluidTemp(1200)
                 .color(0xCFDAFF).iconSet(MaterialIconSet.CERTUS)
@@ -26,7 +26,7 @@ public class AEFirstDegreeMaterials {
                 .build();
 
         // Fluix
-        FLUIX = new Material.Builder(25102, "fluix")
+        FLUIX = new Material.Builder(24202, "fluix")
                 .dust()
                 .fluid().fluidTemp(1200)
                 .color(0x846994).iconSet(MaterialIconSet.CERTUS)
@@ -35,7 +35,7 @@ public class AEFirstDegreeMaterials {
                 .build();
 
         // Fluix Alloy
-        FLUIX_ALLOY = new Material.Builder(25103, "fluix_alloy")
+        FLUIX_ALLOY = new Material.Builder(24203, "fluix_alloy")
                 .ingot()
                 .fluid().fluidTemp(1200)
                 .color(0x4A3954).iconSet(MaterialIconSet.SHINY)

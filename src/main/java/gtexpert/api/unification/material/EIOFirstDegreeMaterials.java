@@ -15,25 +15,25 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 
 public class EIOFirstDegreeMaterials {
     /**
-     * 25001 - 25100
+     * 24101 - 24200
      */
     public static void init() {
         // Soulsand Dust
-        SOUL_SAND = new Material.Builder(25001, "soul_sand")
+        SOUL_SAND = new Material.Builder(24101, "soul_sand")
                 .dust()
                 .color(0x846C4C).iconSet(MaterialIconSet.SAND)
                 .flags(NO_WORKING)
                 .build();
 
         // Chorusfruit Dust
-        CHORUS_FRUIT = new Material.Builder(25002, "chorus_fruit")
+        CHORUS_FRUIT = new Material.Builder(24102, "chorus_fruit")
                 .dust()
                 .color(0x8C648C).iconSet(MaterialIconSet.DULL)
                 .flags(NO_WORKING)
                 .build();
 
         // Electrical Steel
-        ELECTRICAL_STEEL = new Material.Builder(25003, "electrical_steel")
+        ELECTRICAL_STEEL = new Material.Builder(24103, "electrical_steel")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x949494).iconSet(MaterialIconSet.METALLIC)
@@ -43,7 +43,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Energetic Alloy
-        ENERGETIC_ALLOY = new Material.Builder(25004, "energetic_alloy")
+        ENERGETIC_ALLOY = new Material.Builder(24104, "energetic_alloy")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xED8009).iconSet(MaterialIconSet.SHINY)
@@ -54,7 +54,7 @@ public class EIOFirstDegreeMaterials {
         ENERGETIC_ALLOY.setFormula("Au2(Si(FeS2)5(CrAl2O3)Hg3)2", true);
 
         // Vibrant Alloy
-        VIBRANT_ALLOY = new Material.Builder(25005, "vibrant_alloy")
+        VIBRANT_ALLOY = new Material.Builder(24105, "vibrant_alloy")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xBAC63F).iconSet(MaterialIconSet.SHINY)
@@ -65,7 +65,7 @@ public class EIOFirstDegreeMaterials {
         VIBRANT_ALLOY.setFormula("BeK4N5(Au2(Si(FeS2)5(CrAl2O3)Hg3)2)", true);
 
         // Redstone Alloy
-        REDSTONE_ALLOY = new Material.Builder(25006, "redstone_alloy")
+        REDSTONE_ALLOY = new Material.Builder(24106, "redstone_alloy")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x942323).iconSet(MaterialIconSet.DULL)
@@ -75,7 +75,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Conductive Iron
-        CONDUCTIVE_IRON = new Material.Builder(25007, "conductive_iron")
+        CONDUCTIVE_IRON = new Material.Builder(24107, "conductive_iron")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xD1A79B).iconSet(MaterialIconSet.ROUGH)
@@ -85,7 +85,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Pulsating Iron
-        PULSATING_IRON = new Material.Builder(25008, "pulsating_iron")
+        PULSATING_IRON = new Material.Builder(24108, "pulsating_iron")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x6EAC7D).iconSet(MaterialIconSet.SHINY)
@@ -95,7 +95,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Dark Steel
-        DARK_STEEL = new Material.Builder(25009, "dark_steel")
+        DARK_STEEL = new Material.Builder(24109, "dark_steel")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x5F5F5F).iconSet(MaterialIconSet.METALLIC)
@@ -105,7 +105,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Soularium
-        SOULARIUM = new Material.Builder(25010, "soularium")
+        SOULARIUM = new Material.Builder(24110, "soularium")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x5A4226).iconSet(MaterialIconSet.DULL)
@@ -115,7 +115,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // End Steel
-        END_STEEL = new Material.Builder(25011, "end_steel")
+        END_STEEL = new Material.Builder(24111, "end_steel")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xBCB682).iconSet(MaterialIconSet.METALLIC)
@@ -126,7 +126,7 @@ public class EIOFirstDegreeMaterials {
         END_STEEL.setFormula("FeC(MgFeSi2O4)2?", true);
 
         // Iron Alloy
-        CONSTRUCTION_ALLOY = new Material.Builder(25012, "construction_alloy")
+        CONSTRUCTION_ALLOY = new Material.Builder(24112, "construction_alloy")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x524C53).iconSet(MaterialIconSet.ROUGH)
@@ -136,7 +136,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Crystalline Alloy
-        CRYSTALLINE_ALLOY = new Material.Builder(25013, "crystalline_alloy")
+        CRYSTALLINE_ALLOY = new Material.Builder(24113, "crystalline_alloy")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x9FE4E4).iconSet(MaterialIconSet.SHINY)
@@ -146,7 +146,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Melodic Alloy
-        MELODIC_ALLOY = new Material.Builder(25014, "melodic_alloy")
+        MELODIC_ALLOY = new Material.Builder(24114, "melodic_alloy")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xA877A8).iconSet(MaterialIconSet.SHINY)
@@ -156,7 +156,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Stellar Alloy
-        STELLAR_ALLOY = new Material.Builder(25015, "stellar_alloy")
+        STELLAR_ALLOY = new Material.Builder(24115, "stellar_alloy")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xDBDECC).iconSet(MaterialIconSet.SHINY)
@@ -166,7 +166,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Crystalline Pink Slime
-        CRYSTALLINE_PINK_SLIME = new Material.Builder(25016, "crystalline_pink_slime")
+        CRYSTALLINE_PINK_SLIME = new Material.Builder(24116, "crystalline_pink_slime")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xE79EDB).iconSet(MaterialIconSet.SHINY)
@@ -176,7 +176,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Energetic Silver
-        ENERGETIC_SILVER = new Material.Builder(25017, "energetic_silver")
+        ENERGETIC_SILVER = new Material.Builder(24117, "energetic_silver")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x598DB3).iconSet(MaterialIconSet.SHINY)
@@ -186,7 +186,7 @@ public class EIOFirstDegreeMaterials {
                 .build();
 
         // Vivid Alloy
-        VIVID_ALLOY = new Material.Builder(25018, "vivid_alloy")
+        VIVID_ALLOY = new Material.Builder(24118, "vivid_alloy")
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x469BB1).iconSet(MaterialIconSet.SHINY)

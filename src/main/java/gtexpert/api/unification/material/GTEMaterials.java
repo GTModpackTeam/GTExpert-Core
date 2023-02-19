@@ -82,7 +82,7 @@ public class GTEMaterials {
 
     public static void init() {
         GTEFirstDegreeMaterials.init(); // 24001 - 24100
-        EIOFirstDegreeMaterials.init(); // 25001 - 25100
-        AEFirstDegreeMaterials.init();  // 25101 - 25200
+        EIOFirstDegreeMaterials.init(); // 24101 - 24200
+        AEFirstDegreeMaterials.init();  // 24201 - 24300
     }
 }
