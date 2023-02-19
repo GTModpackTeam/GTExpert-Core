@@ -34,6 +34,7 @@ import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
 import appeng.api.definitions.IParts;
+import crazypants.enderio.base.init.ModObject;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -65,6 +66,115 @@ public class AERecipeLoader {
 
 
         // ########################################
+        // Sky Stone
+        // ########################################
+        // Dust
+        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
+                .inputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
+                .outputs(aeMaterials.skyDust().maybeStack(1).get())
+                .duration(500).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Block
+        ModHandler.removeFurnaceSmelting(aeBlocks.skyStoneBlock().maybeStack(1).get());
+        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
+                .input(Item.getItemFromBlock(ModObject.block_infinity.getBlockNN()), 4, 2)
+                .outputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
+                .duration(500).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.BLAST_RECIPES.recipeBuilder()
+                .inputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
+                .outputs(aeBlocks.smoothSkyStoneBlock().maybeStack(1).get())
+                .duration(100).EUt(VA[HV])
+                .blastFurnaceTemp(2700)
+                .buildAndRegister();
+        RecipeMaps.ROCK_BREAKER_RECIPES.recipeBuilder()
+                .notConsumable(aeBlocks.skyStoneBlock().maybeStack(1).get())
+                .outputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+
+        // ########################################
+        // Inscriber
+        // ########################################
+        // Press
+        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .notConsumable(lens, NetherQuartz)
+                .input(block, Iron, 1)
+                .outputs(aeMaterials.siliconPress().maybeStack(1).get())
+                .duration(2000).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .notConsumable(lens, Gold)
+                .input(block, Iron, 1)
+                .outputs(aeMaterials.logicProcessorPress().maybeStack(1).get())
+                .duration(2000).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .notConsumable(lens, CertusQuartz)
+                .input(block, Iron, 1)
+                .outputs(aeMaterials.calcProcessorPress().maybeStack(1).get())
+                .duration(2000).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .notConsumable(lens, Diamond)
+                .input(block, Iron, 1)
+                .outputs(aeMaterials.engProcessorPress().maybeStack(1).get())
+                .duration(2000).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Circuit
+        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                .notConsumable(aeMaterials.siliconPress().maybeStack(1).get())
+                .input(plate, Silicon, 1)
+                .outputs(aeMaterials.siliconPrint().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                .notConsumable(aeMaterials.logicProcessorPress().maybeStack(1).get())
+                .input(plate, Gold, 1)
+                .outputs(aeMaterials.logicProcessorPrint().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                .notConsumable(aeMaterials.calcProcessorPress().maybeStack(1).get())
+                .input(plate, CertusQuartz, 1)
+                .outputs(aeMaterials.calcProcessorPrint().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                .notConsumable(aeMaterials.engProcessorPress().maybeStack(1).get())
+                .input(plate, Diamond, 1)
+                .outputs(aeMaterials.engProcessorPrint().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Processor
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.siliconPrint().maybeStack(1).get())
+                .inputs(aeMaterials.logicProcessorPrint().maybeStack(1).get())
+                .fluidInputs(Redstone.getFluid(144))
+                .outputs(aeMaterials.logicProcessor().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.siliconPrint().maybeStack(1).get())
+                .inputs(aeMaterials.calcProcessorPrint().maybeStack(1).get())
+                .fluidInputs(Redstone.getFluid(144))
+                .outputs(aeMaterials.calcProcessor().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.siliconPrint().maybeStack(1).get())
+                .inputs(aeMaterials.engProcessorPrint().maybeStack(1).get())
+                .fluidInputs(Redstone.getFluid(144))
+                .outputs(aeMaterials.engProcessor().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+
+
+        // ########################################
         // Neter Quartz
         // ########################################
         // Fluid
@@ -86,6 +196,13 @@ public class AERecipeLoader {
                 .inputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(8).get())
                 .output(block, NetherQuartz, 1)
                 .duration(300).EUt(2)
+                .buildAndRegister();
+
+        // Rod
+        RecipeMaps.LATHE_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get())
+                .output(stick, NetherQuartz, 1)
+                .duration(40).EUt(16)
                 .buildAndRegister();
 
 
@@ -136,6 +253,13 @@ public class AERecipeLoader {
                 .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(8).get())
                 .output(block, CertusQuartz, 1)
                 .duration(300).EUt(2)
+                .buildAndRegister();
+
+        // Rod
+        RecipeMaps.LATHE_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get())
+                .output(stick, CertusQuartz, 1)
+                .duration(40).EUt(16)
                 .buildAndRegister();
 
         // Plate
@@ -189,8 +313,42 @@ public class AERecipeLoader {
                 .buildAndRegister();
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
                 .input(dust, CertusQuartz, 1)
-                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
+                .output(dust, CHARGED_CERTUS_QUARTZ, 1)
                 .duration(100).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .fluidInputs(DistilledWater.getFluid(50))
+                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
+                .duration(600).EUt(24)
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .fluidInputs(Water.getFluid(250))
+                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
+                .duration(1200).EUt(24)
+                .buildAndRegister();
+        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                .input(dust, CHARGED_CERTUS_QUARTZ, 4)
+                .explosivesAmount(2)
+                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(3).get())
+                .output(dustSmall, DarkAsh, 1)
+                .duration(20).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                .input(dust, CHARGED_CERTUS_QUARTZ, 4)
+                .explosivesType(MetaItems.DYNAMITE.getStackForm())
+                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(3).get())
+                .output(dustSmall, DarkAsh, 1)
+                .duration(20).EUt(VA[LV])
+                .buildAndRegister();
+
+        // Lens
+        RecipeMaps.LATHE_RECIPES.recipeBuilder()
+                .input(plate, CHARGED_CERTUS_QUARTZ, 1)
+                .output(lens, CHARGED_CERTUS_QUARTZ, 1)
+                .output(dustSmall, CHARGED_CERTUS_QUARTZ, 1)
+                .duration(1200).EUt(VA[MV])
                 .buildAndRegister();
 
 
@@ -239,6 +397,34 @@ public class AERecipeLoader {
                 .duration(80).EUt(2)
                 .buildAndRegister();
 
+        // Gem
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input(dust, FLUIX, 1)
+                .fluidInputs(DistilledWater.getFluid(50))
+                .outputs(aeMaterials.fluixCrystal().maybeStack(1).get())
+                .duration(600).EUt(24)
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input(dust, FLUIX, 1)
+                .fluidInputs(Water.getFluid(250))
+                .outputs(aeMaterials.fluixCrystal().maybeStack(1).get())
+                .duration(1200).EUt(24)
+                .buildAndRegister();
+        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                .input(dust, FLUIX, 4)
+                .explosivesAmount(2)
+                .outputs(aeMaterials.fluixCrystal().maybeStack(3).get())
+                .output(dustSmall, DarkAsh, 1)
+                .duration(20).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                .input(dust, FLUIX, 4)
+                .explosivesType(MetaItems.DYNAMITE.getStackForm())
+                .outputs(aeMaterials.fluixCrystal().maybeStack(3).get())
+                .output(dustSmall, DarkAsh, 1)
+                .duration(20).EUt(VA[LV])
+                .buildAndRegister();
+
         // Block
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.fluixCrystal().maybeStack(4).get())
@@ -275,6 +461,14 @@ public class AERecipeLoader {
                 .fluidInputs(Water.getFluid(15))
                 .output(plate, FLUIX, 4)
                 .duration(160).EUt(VA[LV])
+                .buildAndRegister();
+
+        // Lens
+        RecipeMaps.LATHE_RECIPES.recipeBuilder()
+                .input(plate, FLUIX, 1)
+                .output(lens, FLUIX, 1)
+                .output(dustSmall, FLUIX, 1)
+                .duration(1200).EUt(VA[MV])
                 .buildAndRegister();
 
 
