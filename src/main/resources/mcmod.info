@@ -8,7 +8,7 @@
   "url": "",
   "updateUrl": "",
   "authorList": ["GTModpackTeam"],
-  "credits": "Quarri6343",
+  "credits": ["Quarri6343", "tier940"],
   "logoFile": "assets/gregtech/textures/gui/icon/gtexpert_core_logo_high_resolution.png",
   "screenshots": [],
   "dependencies": []
