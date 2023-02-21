@@ -43,6 +43,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
@@ -209,6 +210,9 @@ public class AERecipeLoader {
         // ########################################
         // Certus Quartz
         // ########################################
+        OreDictionary.registerOre("blockCertusQuartz", aeBlocks.quartzBlock().maybeStack(1).get());
+        OreDictionary.registerOre("gemCertusQuartz", aeMaterials.certusQuartzCrystal().maybeStack(1).get());
+
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get())
@@ -286,6 +290,9 @@ public class AERecipeLoader {
         // ########################################
         // Charged Certus Quartz
         // ########################################
+        OreDictionary.registerOre("gemChargedCertusQuartz", aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
+        OreDictionary.registerOre("crystalChargedCertusQuartz", aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
+
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
@@ -325,7 +332,7 @@ public class AERecipeLoader {
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(dust, CHARGED_CERTUS_QUARTZ, 1)
                 .fluidInputs(Water.getFluid(250))
-                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
+                .chancedOutput(aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get(), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
@@ -355,6 +362,9 @@ public class AERecipeLoader {
         // ########################################
         // Fluix
         // ########################################
+        OreDictionary.registerOre("blockFluix", aeBlocks.fluixBlock().maybeStack(1).get());
+        OreDictionary.registerOre("gemFluix", aeMaterials.fluixCrystal().maybeStack(1).get());
+
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.purifiedFluixCrystal().maybeStack(1).get())
@@ -407,7 +417,7 @@ public class AERecipeLoader {
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(dust, FLUIX, 1)
                 .fluidInputs(Water.getFluid(250))
-                .outputs(aeMaterials.fluixCrystal().maybeStack(1).get())
+                .chancedOutput(aeMaterials.fluixCrystal().maybeStack(1).get(), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
