@@ -11,6 +11,7 @@ buildscript {
             name 'MixinGradle'
             url 'https://repo.spongepowered.org/repository/maven-public'
         }
+        mavenCentral()
     }
     dependencies {
         if (project.use_mixins.toBoolean()) {
@@ -23,6 +24,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
     id 'wtf.gofancy.fancygradle' version '1.1.+'
 }
+
 
 version = project.mod_version
 group = project.maven_group
@@ -127,10 +129,14 @@ dependencies {
     implementation fg.deobf('curse.maven:jei-238222:4364085')
     implementation fg.deobf('curse.maven:top-245211:2667280')
     implementation fg.deobf('curse.maven:ctm-267602:2915363')
-    implementation fg.deobf('curse.maven:groovyscript-687577:4329872')
 
     implementation fg.deobf('curse.maven:gregtech-ce-unofficial-557242:4390983')
-    //implementation fg.deobf('curse.maven:gregicality-multiblocks-564858:4325275')
+    implementation fg.deobf('curse.maven:gregicality-multiblocks-564858:4325275')
+
+    implementation fg.deobf('curse.maven:enderio-64578:3328811')
+    implementation fg.deobf('curse.maven:endercore-231868:2972849')
+    implementation 'info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2'
+    implementation 'info.loenwind.autosave:AutoSave:1.12.2-1.0.11'
 
     testImplementation('org.junit.jupiter:junit-jupiter:5.9.1')
     testImplementation('org.hamcrest:hamcrest:2.2')
@@ -146,8 +152,8 @@ dependencies {
         annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     }
 
-    // groovyscript dependency
-    runtimeOnly 'zone.rong:mixinbooter:7.0'
+    // Boot error fix
+    runtimeOnly (files("libs/EnderCore-1.12.2-0.5.76-core.jar"))
 }
 
 fancyGradle {
