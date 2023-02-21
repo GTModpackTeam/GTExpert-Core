@@ -17,6 +17,9 @@ import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+import gregicality.multiblocks.api.unification.GCYMMaterials;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
@@ -36,7 +39,9 @@ import java.util.stream.Collectors;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.metatileentities.MetaTileEntities.HULL;
+import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
+import static gregtech.loaders.recipe.CraftingComponent.*;
+import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -68,15 +73,15 @@ public class GTERecipeLoader {
                 .duration(100).EUt(VA[ZPM]).buildAndRegister();
 
         //Extreme Mixer
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaTileEntities.MIXER[ZPM].getStackForm()).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).outputs(GTEMetaTileEntities.EXTREME_MIXER[0].getStackForm()).duration(200).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaTileEntities.MIXER[ZPM].getStackForm()).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).outputs(EXTREME_MIXER[0].getStackForm()).duration(200).buildAndRegister();
 
         //Sawmill
-        ModHandler.addShapedRecipe("gte_sawmill",GTEMetaTileEntities.SAWMILL.getStackForm() ,
+        ModHandler.addShapedRecipe("gte_sawmill", SAWMILL.getStackForm() ,
                 "SBs", "MHM", "COC", 'S', new UnificationEntry(screw, Steel),'B',new UnificationEntry(toolHeadBuzzSaw, Steel),'M',MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),'H',MetaTileEntities.HULL[2].getStackForm(),'C',new UnificationEntry(circuit, MarkerMaterials.Tier.MV), 'O',MetaItems.CONVEYOR_MODULE_MV.getStackForm());
 
         //Void Ore Miner
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(VA[ZPM])
-                .input(HULL[ZPM])
+                .input(MetaTileEntities.HULL[ZPM])
                 .input(frameGt, NaquadahAlloy, 4)
                 .input(circuit, MarkerMaterials.Tier.ZPM,4)
                 .input(ELECTRIC_MOTOR_ZPM, 4)
@@ -89,8 +94,8 @@ public class GTERecipeLoader {
                 .input(ORE_DICTIONARY_FILTER)
                 .input(gear, NaquadahAlloy, 4)
                 .fluidInputs(SolderingAlloy.getFluid(18432))
-                .outputs(GTEMetaTileEntities.VOIDOREMINER.getStackForm()).duration(600).buildAndRegister();
-        
+                .outputs(VOIDOREMINER.getStackForm()).duration(600).buildAndRegister();
+
         //Sawmill Casing
         ModHandler.addShapedRecipe("gte_metal_casing:1", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,2) ,
                 "PhP", "PFP", "PwP", 'P',new UnificationEntry(plate, TreatedWood),'F',new UnificationEntry(frameGt, TreatedWood));
@@ -164,5 +169,17 @@ public class GTERecipeLoader {
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
         }
+
+        // Naquadah Rocket Fuel
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(Naquadah.getFluid(1296))
+                .fluidInputs(RocketFuel.getFluid(5000))
+                .fluidOutputs(NAQUADAH_ROCKET_FUEL.getFluid(6000))
+                .duration(20).EUt(VA[EV])
+                .buildAndRegister();
+        RecipeMaps.COMBUSTION_GENERATOR_FUELS.recipeBuilder()
+                .fluidInputs(NAQUADAH_ROCKET_FUEL.getFluid(1))
+                .duration(500).EUt(32)
+                .buildAndRegister();
     }
 }

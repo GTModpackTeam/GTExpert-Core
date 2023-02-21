@@ -1,4 +1,6 @@
-# English by Quarri6343
+# English by GTModpackTeam
+
+
 
 # multiblock
 gtexpert.machine.sawmill.name=Sawmill
@@ -12,6 +14,17 @@ gtexpert.machine.void_ore_miner.tooltip.2=§6The outputs will be doubled with a 
 gtexpert.machine.void_ore_miner.tooltip.3=§6Requires 576mb Enderpearl and 10000mb Drilling Fluid per operation§r
 gtexpert.machine.extreme_mixer.zpm.name=Elite Extreme Mixer III
 
+# singleblock
+gtexpert.machine.vial_extractor.tooltip=Soul of a Lost Undead?
+gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
+gtexpert.machine.vial_extractor.mv.name=Advanced Vial Extractor
+gtexpert.machine.vial_extractor.hv.name=Advanced Vial Extractor II
+gtexpert.machine.vial_extractor.ev.name=Advanced Vial Extractor III
+gtexpert.machine.vial_extractor.iv.name=Elite Vial Extractor
+gtexpert.machine.vial_extractor.luv.name=Elite Vial Extractor II
+gtexpert.machine.vial_extractor.zpm.name=Elite Vial Extractor III
+gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
+
 # block
 tile.gte_metal_casing.greenhouse_casing.name=Corrosion Proof Galvalume Machine Casing
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
@@ -21,6 +34,28 @@ tile.sawmill_conveyor.name=Sawmill Conveyor
 # material
 material.galvalume=Galvalume
 material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
+material.naquadah_rocket_fuel=Naquadah Rocket Fuel
+material.electrical_steel=Electrical Steel
+material.energetic_alloy=Energetic Alloy
+material.vibrant_alloy=Vibrant Alloy
+material.redstone_alloy=Redstone Alloy
+material.conductive_iron=Conductive Iron
+material.pulsating_iron=Pulsating Iron
+material.dark_steel=Dark Steel
+material.soul_sand=Soul Sand
+material.chorus_fruit=Chorus Fruit
+material.soularium=Soularium
+material.end_steel=End Steel
+material.construction_alloy=Iron Alloy
+material.crystalline_alloy=Crystalline Alloy
+material.melodic_alloy=Melodic Alloy
+material.stellar_alloy=Stellar Alloy
+material.crystalline_pink_slime=Crystalline Pink Slime
+material.energetic_silver=Energetic Silver
+material.vivid_alloy=Vivid Alloy
+material.fluix=Fluix
+material.fluix_alloy=Fluix Alloy
+material.charged_certus_quartz=Charged Certus Quartz
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME fake component
@@ -31,6 +66,7 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 # recipemaps
 recipemap.sawmill.name=Saw Mill
 recipemap.greenhouse.name=Greenhouse
+recipemap.vial_extractor.name=Vial Extractor
 recipemap.extreme_mixer.name=Extreme Mixer
 recipemap.void_ore_miner.name=Void Ore Miner
 
