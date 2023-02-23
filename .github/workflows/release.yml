@@ -1,0 +1,48 @@
+name: Deploy CoreMod
+on:
+  push:
+    tags:
+      - 'v*-release'
+      - 'v*-beta'
+      - 'v*-alpha'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get the version
+        run: |
+          echo VERSION=$(echo ${GITHUB_REF} | sed -e 's#refs/tags/##g' | awk -F'-' '{print $1}') >> $GITHUB_ENV
+          echo LEVEL=$(echo ${GITHUB_REF} | sed -e 's#refs/tags/##g' | awk -F'-' '{print $2}') >> $GITHUB_ENV
+
+      - name: Set the version
+        run: |
+          COREVERSION=${{ env.VERSION }}-${{ env.PR_VERSION }}
+          sed -i -e "s/COREVERSION/${COREVERSION}/g" ./gradle.properties
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: 8
+          distribution: zulu
+          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-executable: .gradlew
+          generate-job-summary: false
+
+      - name: Execute Gradle build
+        run: ./gradlew build
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          prerelease: false
+          generate_release_notes: true
+          files: build/libs/*.jar
