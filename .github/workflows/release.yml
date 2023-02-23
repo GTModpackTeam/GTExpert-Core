@@ -20,7 +20,7 @@ jobs:
 
       - name: Set the version
         run: |
-          COREVERSION=${{ env.VERSION }}-${{ env.PR_VERSION }}
+          COREVERSION=${{ env.VERSION }}-${{ env.LEVEL }}
           sed -i -e "s/COREVERSION/${COREVERSION}/g" ./gradle.properties
 
       - name: Set up JDK 8
