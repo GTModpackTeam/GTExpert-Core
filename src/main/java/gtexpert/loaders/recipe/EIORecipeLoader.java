@@ -140,7 +140,7 @@ public class EIORecipeLoader {
                 .input(dust, DARK_STEEL, 1)
                 .input(dust, Obsidian, 1)
                 .output(dust, END_STEEL, 3)
-                .duration(40).EUt(VA[HV])
+                .duration(40).EUt(VA[EV])
                 .buildAndRegister();
 
         // Iron Alloy
@@ -149,7 +149,7 @@ public class EIORecipeLoader {
                 .input(dust, Iron, 1)
                 .input(dust, Aluminium, 1)
                 .output(dust, CONSTRUCTION_ALLOY, 3)
-                .duration(40).EUt(VA[HV])
+                .duration(40).EUt(VA[EV])
                 .buildAndRegister();
 
         // Crystalline Alloy
@@ -160,7 +160,7 @@ public class EIORecipeLoader {
                 .input(dust, Emerald, 1)
                 .input(dust, VIBRANT_ALLOY, 1)
                 .output(dust, CRYSTALLINE_ALLOY, 4)
-                .duration(40).EUt(VA[HV])
+                .duration(40).EUt(VA[EV])
                 .buildAndRegister();
 
         // Melodic Alloy
@@ -168,7 +168,7 @@ public class EIORecipeLoader {
                 .input(dust, END_STEEL, 1)
                 .input(dust, CHORUS_FRUIT, 1)
                 .output(dust, MELODIC_ALLOY, 2)
-                .duration(40).EUt(VA[HV])
+                .duration(40).EUt(VA[EV])
                 .buildAndRegister();
 
         // Stellar Alloy
@@ -177,7 +177,7 @@ public class EIORecipeLoader {
                 .input(dust, MELODIC_ALLOY, 1)
                 .input(dust, Clay, 1)
                 .output(dust, STELLAR_ALLOY, 3)
-                .duration(40).EUt(VA[HV])
+                .duration(40).EUt(VA[LuV])
                 .buildAndRegister();
 
         // Crystalline Pink Slime
@@ -185,7 +185,7 @@ public class EIORecipeLoader {
                 .input(dust, MELODIC_ALLOY, 1)
                 .input(dust, RawRubber, 2)
                 .output(dust, CRYSTALLINE_PINK_SLIME, 2)
-                .duration(40).EUt(VA[HV])
+                .duration(40).EUt(VA[EV])
                 .buildAndRegister();
 
         // Energetic Silver
@@ -194,7 +194,7 @@ public class EIORecipeLoader {
                 .input(dust, Redstone, 1)
                 .input(dust, Glowstone, 1)
                 .output(dust, ENERGETIC_SILVER, 3)
-                .duration(40).EUt(VA[HV])
+                .duration(40).EUt(VA[EV])
                 .buildAndRegister();
 
         // Vivid Alloy
@@ -202,7 +202,7 @@ public class EIORecipeLoader {
                 .input(dust, ENERGETIC_SILVER, 1)
                 .input(dust, EnderPearl, 1)
                 .output(dust, VIVID_ALLOY, 2)
-                .duration(40).EUt(VA[HV])
+                .duration(40).EUt(VA[EV])
                 .buildAndRegister();
 
 

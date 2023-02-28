@@ -107,7 +107,7 @@ public class AERecipeLoader {
                 .duration(2000).EUt(VA[HV])
                 .buildAndRegister();
         RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, Gold)
+                .notConsumable(lens, CHARGED_CERTUS_QUARTZ)
                 .input(block, Iron, 1)
                 .outputs(aeMaterials.logicProcessorPress().maybeStack(1).get())
                 .duration(2000).EUt(VA[HV])
@@ -119,7 +119,7 @@ public class AERecipeLoader {
                 .duration(2000).EUt(VA[HV])
                 .buildAndRegister();
         RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, Diamond)
+                .notConsumable(lens, FLUIX)
                 .input(block, Iron, 1)
                 .outputs(aeMaterials.engProcessorPress().maybeStack(1).get())
                 .duration(2000).EUt(VA[HV])
@@ -193,6 +193,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Block
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/quartz_block_pure"));
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(8).get())
                 .output(block, NetherQuartz, 1)
@@ -210,7 +211,6 @@ public class AERecipeLoader {
         // ########################################
         // Certus Quartz
         // ########################################
-        OreDictionary.registerOre("blockCertusQuartz", aeBlocks.quartzBlock().maybeStack(1).get());
         OreDictionary.registerOre("gemCertusQuartz", aeMaterials.certusQuartzCrystal().maybeStack(1).get());
 
         // Fluid
@@ -248,6 +248,11 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Block
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/certus_quartz_block"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/certus_quartz_block_pure"));
+        ModHandler.removeRecipeByOutput(aeMaterials.certusQuartzCrystal().maybeStack(4).get());
+        ModHandler.addShapelessRecipe("ae2_certus_quartz_block", aeBlocks.quartzBlock().maybeStack(1).get(), new UnificationEntry(block, CertusQuartz));
+        ModHandler.addShapelessRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, CertusQuartz), aeBlocks.quartzBlock().maybeStack(1).get());
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.certusQuartzCrystal().maybeStack(4).get())
                 .output(block, CertusQuartz, 1)
@@ -436,6 +441,9 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Block
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/fluix_block"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/fluix_block_pure"));
+        ModHandler.removeRecipeByOutput(aeMaterials.fluixCrystal().maybeStack(4).get());
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.fluixCrystal().maybeStack(4).get())
                 .outputs(aeBlocks.fluixBlock().maybeStack(1).get())
