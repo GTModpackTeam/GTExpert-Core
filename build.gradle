@@ -125,8 +125,9 @@ dependencies {
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
     implementation fg.deobf("curse.maven:codechicken-lib-1-8-${ccl_pid}:${ccl_fid}")
-    implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
-    implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
+    //implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
+    implementation (files("libs/gregtech-1.12.2-2.5.2-beta-deobf.jar"))
+    //implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
     implementation fg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
     implementation fg.deobf("curse.maven:endercore-${eco_pid}:${eco_fid}")
@@ -209,19 +210,19 @@ sourceSets {
         }
 
         java {
-            srcDirs = ["src/main/java", "src/api/java"]
+            srcDirs = ['src/main/java', 'src/api/java']
         }
 
         resources {
-            srcDirs = ["src/main/resources"]
+            srcDirs = ['src/main/resources']
         }
     }
     test {
         java {
-            srcDirs = ["src/test/java"]
+            srcDirs = ['src/test/java']
         }
         resources {
-            srcDirs = ["src/test/resources"]
+            srcDirs = ['src/test/resources']
         }
     }
 
@@ -267,8 +268,6 @@ artifacts {
         archives sourcesJar
     }
 }
-
-jar.finalizedBy('reobfJar')
 
 processResources {
     // required to allow file expansion later

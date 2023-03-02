@@ -17,9 +17,6 @@ import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
-import gregicality.multiblocks.api.unification.GCYMMaterials;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
@@ -55,7 +52,7 @@ public class GTERecipeLoader {
                 .input(dust, Steel, 4)
                 .input(dust, Zinc, 1)
                 .input(dust, Aluminium, 1)
-                .notConsumable(new IntCircuitIngredient(1))
+                .circuitMeta(1)
                 .output(dust, Galvalume, 6)
                 .duration(50).EUt(VA[LV]).buildAndRegister();
 
