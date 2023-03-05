@@ -49,12 +49,13 @@ public class GTERecipeLoader {
 
         // Galvalume Dust
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
                 .input(dust, Steel, 4)
                 .input(dust, Zinc, 1)
                 .input(dust, Aluminium, 1)
-                .circuitMeta(1)
                 .output(dust, Galvalume, 6)
-                .duration(50).EUt(VA[LV]).buildAndRegister();
+                .duration(50).EUt(VA[LV])
+                .buildAndRegister();
 
         // NM_HEA_NPs Dust
         GTERecipeMaps.EXTREME_MIXER_RECIPES.recipeBuilder()
@@ -67,17 +68,29 @@ public class GTERecipeLoader {
                 .input(dust, Iridium, 1)
                 .input(dust, Platinum, 1)
                 .output(dust, NM_HEA_NPs, 8)
-                .duration(100).EUt(VA[ZPM]).buildAndRegister();
+                .duration(100).EUt(VA[ZPM])
+                .buildAndRegister();
 
         //Extreme Mixer
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaTileEntities.MIXER[ZPM].getStackForm()).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).outputs(EXTREME_MIXER[0].getStackForm()).duration(200).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MetaTileEntities.MIXER[ZPM].getStackForm())
+                .inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm())
+                .outputs(EXTREME_MIXER[0].getStackForm())
+                .duration(200).EUt(VA[ZPM])
+                .buildAndRegister();
 
         //Sawmill
-        ModHandler.addShapedRecipe("gte_sawmill", SAWMILL.getStackForm() ,
-                "SBs", "MHM", "COC", 'S', new UnificationEntry(screw, Steel),'B',new UnificationEntry(toolHeadBuzzSaw, Steel),'M',MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),'H',MetaTileEntities.HULL[2].getStackForm(),'C',new UnificationEntry(circuit, MarkerMaterials.Tier.MV), 'O',MetaItems.CONVEYOR_MODULE_MV.getStackForm());
+        ModHandler.addShapedRecipe("gte_sawmill", SAWMILL.getStackForm(),
+                "SBs", "MHM", "COC",
+                'S', new UnificationEntry(screw, Steel),
+                'B', new UnificationEntry(toolHeadBuzzSaw, Steel),
+                'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
+                'H', MetaTileEntities.HULL[2].getStackForm(),
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
+                'O', MetaItems.CONVEYOR_MODULE_MV.getStackForm());
 
         //Void Ore Miner
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(VA[ZPM])
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.HULL[ZPM])
                 .input(frameGt, NaquadahAlloy, 4)
                 .input(circuit, MarkerMaterials.Tier.ZPM,4)
@@ -91,22 +104,53 @@ public class GTERecipeLoader {
                 .input(ORE_DICTIONARY_FILTER)
                 .input(gear, NaquadahAlloy, 4)
                 .fluidInputs(SolderingAlloy.getFluid(18432))
-                .outputs(VOIDOREMINER.getStackForm()).duration(600).buildAndRegister();
+                .outputs(VOIDOREMINER.getStackForm())
+                .duration(600).EUt(VA[ZPM])
+                .buildAndRegister();
 
         //Sawmill Casing
-        ModHandler.addShapedRecipe("gte_metal_casing:1", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,2) ,
-                "PhP", "PFP", "PwP", 'P',new UnificationEntry(plate, TreatedWood),'F',new UnificationEntry(frameGt, TreatedWood));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(16).input(OrePrefix.plate, TreatedWood, 6).input(OrePrefix.frameGt, TreatedWood, 1).circuitMeta(6).outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2)).duration(50).buildAndRegister();
+        ModHandler.addShapedRecipe("gte_metal_casing:1", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,2),
+                "PhP", "PFP", "PwP",
+                'P', new UnificationEntry(plate, TreatedWood),
+                'F', new UnificationEntry(frameGt, TreatedWood));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(6)
+                .input(OrePrefix.plate, TreatedWood, 6)
+                .input(OrePrefix.frameGt, TreatedWood, 1)
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
+                .duration(50).EUt(16)
+                .buildAndRegister();
 
         //Void Ore Miner Casing
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[ZPM]).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM)).inputs(MetaItems.COVER_FLUID_VOIDING_ADVANCED.getStackForm()).inputs(MetaItems.VOLTAGE_COIL_ZPM.getStackForm(2)).inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm()).input(OrePrefix.plate, NM_HEA_NPs, 6).fluidInputs(EnderPearl.getFluid(GTValues.L * 2)).outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER, 2)).duration(100).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM))
+                .inputs(MetaItems.COVER_FLUID_VOIDING_ADVANCED.getStackForm())
+                .inputs(MetaItems.VOLTAGE_COIL_ZPM.getStackForm(2))
+                .inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm())
+                .input(OrePrefix.plate, NM_HEA_NPs, 6)
+                .fluidInputs(EnderPearl.getFluid(GTValues.L * 2))
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER, 2))
+                .duration(100).EUt(VA[ZPM])
+                .buildAndRegister();
 
         //Sawmill Conveyor
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[MV]).input(CONVEYOR_MODULE_MV, 1).input(OrePrefix.frameGt, TreatedWood, 1).input(Items.LEATHER, 3).fluidInputs(Glue.getFluid(100)).output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR,1).duration(100).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(CONVEYOR_MODULE_MV, 1)
+                .input(OrePrefix.frameGt, TreatedWood, 1)
+                .input(Items.LEATHER, 3)
+                .fluidInputs(Glue.getFluid(100))
+                .output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR,1)
+                .duration(100).EUt(VA[MV])
+                .buildAndRegister();
 
         //Piston Boots
-        ModHandler.addShapedRecipe("piston_boots", GTEMetaItems.PISTON_BOOTS.getStackForm() ,
-                "EhE", "RLR", "PBP", 'E',Items.LEATHER,'R',new UnificationEntry(plate, Rubber),'L',Items.LEATHER_BOOTS,'P',ELECTRIC_PISTON_LV, 'B',BATTERY_LV_LITHIUM);
+        ModHandler.addShapedRecipe("piston_boots", GTEMetaItems.PISTON_BOOTS.getStackForm(),
+                "EhE", "RLR", "PBP",
+                'E', Items.LEATHER,
+                'R', new UnificationEntry(plate, Rubber),
+                'L', Items.LEATHER_BOOTS,
+                'P', ELECTRIC_PISTON_LV,
+                'B', BATTERY_LV_LITHIUM);
 
         //Wood Recipes
         List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
@@ -128,16 +172,13 @@ public class GTERecipeLoader {
             }
 
             //Sawmill Recipes
-            GTERecipeMaps.SAWMill_RECIPES.recipeBuilder().inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
+            GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
+                    .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
                     .fluidInputs(Water.getFluid(1000))
                     .outputs(GTUtility.copyAmount(48, plankStack), OreDictUnifier.get(dust, Wood, 12))
                     .duration(200).EUt(VA[ULV])
                     .buildAndRegister();
         }
-
-        //plant Recipes
-        List<ItemStack> allSeedItem =  Arrays.asList(new ItemStack(Items.PUMPKIN_SEEDS),new ItemStack(Items.BEETROOT_SEEDS),new ItemStack(Items.WHEAT_SEEDS),new ItemStack(Items.MELON_SEEDS),new ItemStack(Items.CARROT),new ItemStack(Items.POTATO),new ItemStack(Items.REEDS),new ItemStack(Blocks.CACTUS),new ItemStack(Blocks.BROWN_MUSHROOM),new ItemStack(Blocks.RED_MUSHROOM),new ItemStack(Items.NETHER_WART));
-        List<ItemStack> allPlantItem =  Arrays.asList(new ItemStack(Blocks.PUMPKIN,6),new ItemStack(Items.BEETROOT,16),new ItemStack(Items.WHEAT,16),new ItemStack(Blocks.MELON_BLOCK,6),new ItemStack(Items.CARROT,12),new ItemStack(Items.POTATO,12),new ItemStack(Items.REEDS,12),new ItemStack(Blocks.CACTUS,12),new ItemStack(Blocks.BROWN_MUSHROOM,12),new ItemStack(Blocks.RED_MUSHROOM,12),new ItemStack(Items.NETHER_WART,12));
 
         //Void Ore Miner Recipes
         List<Material> materialOres = new ArrayList<>();
@@ -147,19 +188,22 @@ public class GTERecipeLoader {
             }
         }
         for(Material materialOre : materialOres){
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().input(ore, materialOre)
+            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
+                    .input(ore, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
                     .output(ore, materialOre,32)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().input(oreNetherrack, materialOre)
+            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
+                    .input(oreNetherrack, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
                     .output(oreNetherrack, materialOre,64)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder().input(oreEndstone, materialOre)
+            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
+                    .input(oreEndstone, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
                     .output(oreEndstone, materialOre,64)
