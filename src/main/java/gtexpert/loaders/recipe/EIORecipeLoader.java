@@ -16,9 +16,6 @@ import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
-import gregicality.multiblocks.api.unification.GCYMMaterials;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
@@ -218,7 +215,7 @@ public class EIORecipeLoader {
 
         // XP Juice
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .notConsumable(new IntCircuitIngredient(2))
+                .circuitMeta(2)
                 .input(dust, Gold, 2)
                 .fluidInputs(Blaze.getFluid(288))
                 .fluidInputs(Glowstone.getFluid(576))

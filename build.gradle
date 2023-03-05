@@ -4,6 +4,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 buildscript {
     repositories {
         mavenCentral()
+        mavenLocal()
         maven {
             name = 'Forge'
             url = 'https://maven.minecraftforge.net'
@@ -61,7 +62,7 @@ if (project.use_eclipse.toBoolean()) {
 minecraft {
     mappings channel: "${mcp_mappings_channel}", version: "${mcp_mappings_version}"
     if (project.has_access_transformer.toBoolean()) {
-        // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+        // accessTransformer = file('src/main/resources/META-INF/gtexpert_at.cfg')
     }
 
     runs {
@@ -125,8 +126,9 @@ dependencies {
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
     implementation fg.deobf("curse.maven:codechicken-lib-1-8-${ccl_pid}:${ccl_fid}")
-    implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
-    implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
+    //implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
+    implementation (files("libs/gregtech-1.12.2-2.5.3-beta-deobf.jar"))
+    //implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
     implementation fg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
     implementation fg.deobf("curse.maven:endercore-${eco_pid}:${eco_fid}")
@@ -172,12 +174,15 @@ fancyGradle {
     }
 }
 
+processJarTask jar
+
 if (project.build_deobfJar.toBoolean()) {
     // Create deobf dev jars
     tasks.register('deobfJar', Jar) {
         archiveClassifier.set 'deobf'
         from sourceSets.main.output
     }
+    processJarTask deobfJar
 }
 
 if (project.build_apiJar.toBoolean()) {
@@ -209,51 +214,24 @@ sourceSets {
         }
 
         java {
-            srcDirs = ["src/main/java", "src/api/java"]
+            srcDirs = ['src/main/java', 'src/api/java']
         }
 
         resources {
-            srcDirs = ["src/main/resources"]
+            srcDirs = ['src/main/resources']
         }
     }
     test {
         java {
-            srcDirs = ["src/test/java"]
+            srcDirs = ['src/test/java']
         }
         resources {
-            srcDirs = ["src/test/resources"]
+            srcDirs = ['src/test/resources']
         }
     }
 
     // at compile time, put resources in same directories as classes
     main.output.setResourcesDir(main.java.classesDirectory)
-}
-
-jar {
-    manifest {
-        // noinspection GroovyAssignabilityCheck
-        def attribute_map = [:]
-        if (project.use_coremod.toBoolean()) {
-            attribute_map['FMLCorePlugin'] = project.coremod_plugin_class_name
-            if (project.include_mod.toBoolean()) {
-                attribute_map['FMLCorePluginContainsFMLMod'] = true
-                attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == 'build'
-            }
-        }
-        if (project.use_mixins.toBoolean()) {
-            attribute_map['TweakClass'] = 'org.spongepowered.asm.launch.MixinTweaker'
-        }
-        if (project.has_access_transformer.toBoolean()) {
-            attribute_map['FMLAT'] = 'gtexpert_at.cfg'
-        }
-        attributes(attribute_map)
-    }
-
-    // exclude all files in src/api from being shipped in the jar
-    // this prevents crashes in obfuscated environments
-    file('src/api/').eachDirRecurse { dir ->
-        exclude dir.name
-    }
 }
 
 artifacts {
@@ -268,7 +246,9 @@ artifacts {
     }
 }
 
-jar.finalizedBy('reobfJar')
+// It is important to NOT re-obfuscate jars for the deobfuscated environment.
+// Therefore, we do not finalize the 'jar' task with the 'reobfJar' task.
+// The Forge FG5 example buildscript states otherwise, however it creates broken builds in deobfuscated environments.
 
 processResources {
     // required to allow file expansion later
@@ -303,4 +283,37 @@ test {
     }
 
     useJUnitPlatform()
+}
+
+/**
+ * Applies required processing to jar tasks
+ * @param task the task to process
+ */
+private void processJarTask(task) {
+    task.configure {
+        manifest {
+            // noinspection GroovyAssignabilityCheck
+            def attribute_map = [:]
+            if (project.use_coremod.toBoolean()) {
+                attribute_map['FMLCorePlugin'] = project.coremod_plugin_class_name
+                if (project.include_mod.toBoolean()) {
+                    attribute_map['FMLCorePluginContainsFMLMod'] = true
+                    attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == 'build'
+                }
+            }
+            if (project.use_mixins.toBoolean()) {
+                attribute_map['TweakClass'] = 'org.spongepowered.asm.launch.MixinTweaker'
+            }
+            if (project.has_access_transformer.toBoolean()) {
+                attribute_map['FMLAT'] = 'gregtech_at.cfg'
+            }
+            attributes(attribute_map)
+        }
+
+        // exclude all files in src/api from being shipped in the jar
+        // this prevents crashes in obfuscated environments
+        file('src/api/').eachDirRecurse { dir ->
+            exclude dir.name
+        }
+    }
 }
