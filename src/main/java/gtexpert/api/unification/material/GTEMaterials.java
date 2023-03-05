@@ -50,6 +50,9 @@ public class GTEMaterials {
     public static Material Galvalume;
     public static Material NM_HEA_NPs;
     public static Material NAQUADAH_ROCKET_FUEL;
+    //public static Material DRAGON;
+    //public static Material DRACONIUM;
+    //public static Material DRACONIUM_AWAKENED;
     public static Material SOUL_SAND;
     public static Material CHORUS_FRUIT;
     public static Material ELECTRICAL_STEEL;
@@ -82,7 +85,8 @@ public class GTEMaterials {
 
     public static void init() {
         GTEFirstDegreeMaterials.init(); // 24001 - 24100
-        EIOFirstDegreeMaterials.init(); // 24101 - 24200
-        AEFirstDegreeMaterials.init();  // 24201 - 24300
+        EIOFirstDegreeMaterials.init(); // 24101 - 24150
+        AEFirstDegreeMaterials.init();  // 24151 - 24175
+        //DraconicDegreeMaterials.init();  // 24176 - 24200
     }
 }

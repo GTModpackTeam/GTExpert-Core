@@ -46,6 +46,23 @@ import static gregtech.api.unification.material.Materials.*;
 public class GTERecipeLoader {
 
     public static void init() {
+        // Nether Star Dust
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Diamond, 1)
+                .input(dust, Iridium, 1)
+                .fluidInputs(NetherAir.getFluid(8000))
+                .fluidInputs(RocketFuel.getFluid(1000))
+                .output(dust, NetherStar, 2)
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
+
+        // Ender Eye
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(EnderPearl.getFluid(144))
+                .fluidInputs(Blaze.getFluid(144))
+                .fluidOutputs(EnderEye.getFluid(144))
+                .duration(50).EUt(VA[HV])
+                .buildAndRegister();
 
         // Galvalume Dust
         RecipeMaps.MIXER_RECIPES.recipeBuilder()

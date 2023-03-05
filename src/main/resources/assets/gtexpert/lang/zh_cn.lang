@@ -34,6 +34,9 @@ tile.sawmill_conveyor.name=锯木机传送带
 material.galvalume=热镀锌
 material.nm_hea_nps=纳米粒子贵金属高熵合金
 material.naquadah_rocket_fuel=硅岩火箭燃料
+material.dragon=Dragon
+material.draconium=龙
+material.draconium_awakened=觉醒龙
 material.soul_sand=Soul Sand
 material.chorus_fruit=Chorus Fruit
 material.electrical_steel=磁钢
@@ -53,7 +56,7 @@ material.crystalline_pink_slime=晶化粉红史莱姆
 material.energetic_silver=充能银
 material.vivid_alloy=生动合金
 material.fluix=福鲁伊克斯
-material.fluix_alloy=Fluix Alloy
+material.fluix_alloy=福鲁伊克斯合金
 material.charged_certus_quartz=充能赛特斯石英
 
 # item
