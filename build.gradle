@@ -126,23 +126,23 @@ dependencies {
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
     implementation fg.deobf("curse.maven:codechicken-lib-1-8-${ccl_pid}:${ccl_fid}")
-    //implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
-    implementation (files("libs/gregtech-1.12.2-2.5.3-beta-deobf.jar"))
+    implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
+    //implementation (files("libs/gregtech-1.12.2-2.5.3-beta-deobf.jar"))
     //implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
     implementation fg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
     implementation fg.deobf("curse.maven:endercore-${eco_pid}:${eco_fid}")
     implementation "info.loenwind.autoconfig:AutoConfig:${minecraft_version}-${autoconfig_version}"
     implementation "info.loenwind.autosave:AutoSave:${minecraft_version}-${autosave_version}"
+    //implementation fg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
+    //implementation fg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
+    //implementation fg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
 
-    // Medium Dependencies
+    // Soft Dependencies
     implementation "curse.maven:crafttweaker-${crt_pid}:${crt_fid}"
     implementation fg.deobf("curse.maven:jei-${jei_pid}:${jei_fid}")
     implementation fg.deobf("curse.maven:top-${top_pid}:${top_fid}")
     implementation fg.deobf("curse.maven:ctm-${ctm_pid}:${ctm_fid}")
-
-    // Soft Dependencies
-    
 
     // Tests
     testImplementation("org.junit.jupiter:junit-jupiter:${junit_version}")
