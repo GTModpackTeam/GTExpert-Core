@@ -21,9 +21,6 @@ import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
-import gregicality.multiblocks.api.unification.GCYMMaterials;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
@@ -389,7 +386,7 @@ public class AERecipeLoader {
 
         // Dust
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .notConsumable(new IntCircuitIngredient(1))
+                .circuitMeta(1)
                 .input(dust, CHARGED_CERTUS_QUARTZ, 1)
                 .input(dust, Redstone, 1)
                 .input(dust, NetherQuartz, 1)
@@ -495,7 +492,7 @@ public class AERecipeLoader {
         // ########################################
         // Dust
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .notConsumable(new IntCircuitIngredient(2))
+                .circuitMeta(2)
                 .inputs(aeMaterials.skyDust().maybeStack(2).get())
                 .input(dust, FLUIX, 2)
                 .input(dust, Carbon, 2)
