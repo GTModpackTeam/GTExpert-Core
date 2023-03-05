@@ -20,6 +20,9 @@ public class GTEFirstDegreeMaterials {
         // Ender Peral
         EnderPearl.setProperty(PropertyKey.FLUID, new FluidProperty());
 
+        // Ender Eye
+        EnderEye.setProperty(PropertyKey.FLUID, new FluidProperty());
+
         // NetherQuartz
         NetherQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
         NetherQuartz.addFlags(GENERATE_LENS, GENERATE_ROD);
