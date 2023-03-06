@@ -50,6 +50,27 @@ import static gregtech.api.unification.material.Materials.*;
 
 public class CEUOverrideRecipes {
     public static void init() {
+        // Glowstone Dust
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Glowstone, 2));
+        RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, Glowstone, 2)
+                .output(dust, Redstone, 1)
+                .output(dust, Gold, 1)
+                .duration(488).EUt(80)
+                .buildAndRegister();
+
+        // Netherrack Dust
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Netherrack, 1));
+        RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, Netherrack, 1)
+                .chancedOutput(dustTiny, Gold, 620, 120)
+                .chancedOutput(dustTiny, Redstone, 5600, 850)
+                .chancedOutput(dustTiny, Coal, 5600, 850)
+                .chancedOutput(dustTiny, Glowstone, 5600, 850)
+                .chancedOutput(dust, Sulfur, 9900, 100)
+                .duration(160).EUt(20)
+                .buildAndRegister();
+
         // ########################################
         // Quartzite (Bug Fix)
         // ########################################

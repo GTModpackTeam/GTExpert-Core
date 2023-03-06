@@ -15,7 +15,7 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 
 public class EIOFirstDegreeMaterials {
     /**
-     * 24101 - 24200
+     * 24101 - 24150
      */
     public static void init() {
         // Soulsand Dust
