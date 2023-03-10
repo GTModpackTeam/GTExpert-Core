@@ -8,9 +8,9 @@ gtexpert.machine.greenhouse.name=温室
 gtexpert.machine.greenhouse.tooltip=工業用栽培器
 gtexpert.machine.void_ore_miner.name=亜空間型鉱石採掘機
 gtexpert.machine.void_ore_miner.tooltip=スターゲート建設機
-gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します.§r
+gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します。§r
 gtexpert.machine.void_ore_miner.tooltip.2=§6ネザーかエンド鉱石を消費することでで生産量が倍になります!§r
-gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です.§r
+gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です。§r
 gtexpert.machine.extreme_mixer.zpm.name=精鋭型エクストリームミキサー III
 
 # singleblock
@@ -73,4 +73,4 @@ recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 
 #misc
-gtexpert.multiblock.needsun=コントローラーは必ず空に面する必要があります！
+gtexpert.multiblock.needsun=コントローラーは必ず空に面する必要があります!

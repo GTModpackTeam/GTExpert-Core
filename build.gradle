@@ -131,12 +131,15 @@ dependencies {
     //implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
     implementation fg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
+    implementation fg.deobf("curse.maven:ender-io-conduits-${eie_pid}:${eie_fid}")
     implementation fg.deobf("curse.maven:endercore-${eco_pid}:${eco_fid}")
     implementation "info.loenwind.autoconfig:AutoConfig:${minecraft_version}-${autoconfig_version}"
     implementation "info.loenwind.autosave:AutoSave:${minecraft_version}-${autosave_version}"
-    //implementation fg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
-    //implementation fg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
-    //implementation fg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
+    implementation fg.deobf("curse.maven:baubles-lts-${bal_pid}:${bal_fid}")
+    implementation fg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
+    implementation fg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
+    implementation fg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
+    implementation fg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
 
     // Soft Dependencies
     implementation "curse.maven:crafttweaker-${crt_pid}:${crt_fid}"

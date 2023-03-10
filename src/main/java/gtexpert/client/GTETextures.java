@@ -16,10 +16,14 @@ public class GTETextures {
     public static OrientedOverlayRenderer VIAL_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("vial_extractor", FRONT, SIDE, TOP);
     public static OrientedOverlayRenderer EXTREME_MIXER_OVERLAY = new OrientedOverlayRenderer("extreme_mixer", FRONT, SIDE, TOP);
     public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;
+    public static SimpleOverlayRenderer DRACONIUM_CASING;
+    public static SimpleOverlayRenderer DRACONIUM_AWAKENED_CASING;
 
     public static void preInit() {
         SAWMILL_CASING = new SimpleOverlayRenderer("sawmill_casing");
         SAWMILL_OVERLAY = new OrientedOverlayRenderer("sawmill", FRONT);
         VOID_ORE_MINER_CASING = new SimpleOverlayRenderer("void_ore_miner_casing");
+        DRACONIUM_CASING = new SimpleOverlayRenderer("draconium_casing");
+        DRACONIUM_AWAKENED_CASING = new SimpleOverlayRenderer("draconium_awakened_casing");
     }
 }

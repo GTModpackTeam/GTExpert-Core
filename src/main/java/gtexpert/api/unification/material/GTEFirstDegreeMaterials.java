@@ -39,7 +39,7 @@ public class GTEFirstDegreeMaterials {
 
         // Galvalume
         Galvalume = new Material.Builder(24001, "galvalume")
-                .dust().ingot()
+                .ingot()
                 .fluid().fluidTemp(1200)
                 .color(0x072743).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
@@ -49,7 +49,7 @@ public class GTEFirstDegreeMaterials {
 
         // NM_HEA_NPs
         NM_HEA_NPs = new Material.Builder(24002, "nm_hea_nps")
-                .dust().ingot()
+                .ingot()
                 .fluid().fluidTemp(1200)
                 .color(0xa90000).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)

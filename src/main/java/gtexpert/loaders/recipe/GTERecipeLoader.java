@@ -2,6 +2,7 @@ package gtexpert.loaders.recipe;
 
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
+import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
@@ -22,6 +23,8 @@ import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
+import com.brandon3055.draconicevolution.DEFeatures;
+import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -52,6 +55,7 @@ public class GTERecipeLoader {
                 .input(dust, Iridium, 1)
                 .fluidInputs(NetherAir.getFluid(8000))
                 .fluidInputs(RocketFuel.getFluid(1000))
+                .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, NetherStar, 2)
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
@@ -91,7 +95,7 @@ public class GTERecipeLoader {
         //Extreme Mixer
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(MetaTileEntities.MIXER[ZPM].getStackForm())
-                .inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm())
+                .inputs(FIELD_GENERATOR_ZPM.getStackForm())
                 .outputs(EXTREME_MIXER[0].getStackForm())
                 .duration(200).EUt(VA[ZPM])
                 .buildAndRegister();
@@ -101,10 +105,10 @@ public class GTERecipeLoader {
                 "SBs", "MHM", "COC",
                 'S', new UnificationEntry(screw, Steel),
                 'B', new UnificationEntry(toolHeadBuzzSaw, Steel),
-                'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
+                'M', ELECTRIC_MOTOR_MV.getStackForm(),
                 'H', MetaTileEntities.HULL[2].getStackForm(),
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
-                'O', MetaItems.CONVEYOR_MODULE_MV.getStackForm());
+                'O', CONVEYOR_MODULE_MV.getStackForm());
 
         //Void Ore Miner
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -125,6 +129,18 @@ public class GTERecipeLoader {
                 .duration(600).EUt(VA[ZPM])
                 .buildAndRegister();
 
+        //Draconic Fusion Crafter
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.HULL[LuV])
+                .input(frameGt, DRACONIUM, 4)
+                .input(DEFeatures.wyvernCore, 4)
+                .input(ROBOT_ARM_LuV, 2)
+                .input(SENSOR_LuV, 2)
+                .input(EMITTER_LuV, 2)
+                .outputs(DRACONICFUSION.getStackForm())
+                .duration(600).EUt(VA[LuV])
+                .buildAndRegister();
+
         //Sawmill Casing
         ModHandler.addShapedRecipe("gte_metal_casing:1", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,2),
                 "PhP", "PFP", "PwP",
@@ -132,8 +148,8 @@ public class GTERecipeLoader {
                 'F', new UnificationEntry(frameGt, TreatedWood));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(6)
-                .input(OrePrefix.plate, TreatedWood, 6)
-                .input(OrePrefix.frameGt, TreatedWood, 1)
+                .input(plate, TreatedWood, 6)
+                .input(frameGt, TreatedWood, 1)
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
                 .duration(50).EUt(16)
                 .buildAndRegister();
@@ -141,19 +157,37 @@ public class GTERecipeLoader {
         //Void Ore Miner Casing
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM))
-                .inputs(MetaItems.COVER_FLUID_VOIDING_ADVANCED.getStackForm())
-                .inputs(MetaItems.VOLTAGE_COIL_ZPM.getStackForm(2))
-                .inputs(MetaItems.FIELD_GENERATOR_ZPM.getStackForm())
-                .input(OrePrefix.plate, NM_HEA_NPs, 6)
+                .inputs(COVER_FLUID_VOIDING_ADVANCED.getStackForm())
+                .inputs(VOLTAGE_COIL_ZPM.getStackForm(2))
+                .inputs(FIELD_GENERATOR_ZPM.getStackForm())
+                .input(plate, NM_HEA_NPs, 6)
                 .fluidInputs(EnderPearl.getFluid(GTValues.L * 2))
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER, 2))
+                .duration(100).EUt(VA[ZPM])
+                .buildAndRegister();
+
+        //Draconum Casing
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(6)
+                .input(plate, DRACONIUM, 6)
+                .input(frameGt, DRACONIUM, 1)
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2))
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
+
+        //Awakened Draconum Casing
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(6)
+                .input(plate, DRACONIUM_AWAKENED, 6)
+                .input(frameGt, DRACONIUM_AWAKENED, 1)
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_AWAKENED_CASING, 2))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
 
         //Sawmill Conveyor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(CONVEYOR_MODULE_MV, 1)
-                .input(OrePrefix.frameGt, TreatedWood, 1)
+                .input(frameGt, TreatedWood, 1)
                 .input(Items.LEATHER, 3)
                 .fluidInputs(Glue.getFluid(100))
                 .output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR,1)

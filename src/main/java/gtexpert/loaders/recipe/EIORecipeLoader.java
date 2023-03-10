@@ -1,43 +1,17 @@
 package gtexpert.loaders.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTUtility;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.items.MetaItems;
-import gregtech.common.metatileentities.MetaTileEntities;
-import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
-import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.metatileentities.GTEMetaTileEntities;
+import gregtech.common.items.ToolItems;
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fluids.FluidStack;
-import org.apache.commons.lang3.tuple.Pair;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
@@ -47,6 +21,12 @@ import static gregtech.api.unification.material.Materials.*;
 
 public class EIORecipeLoader {
     public static void init() {
+        materias();
+        items();
+        tools();
+    }
+
+    public static void materias() {
         // Soul Sand Dust
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(Blocks.SOUL_SAND))
@@ -234,5 +214,15 @@ public class EIORecipeLoader {
                 .output(Items.GLASS_BOTTLE, 1)
                 .duration(400).EUt(2)
                 .buildAndRegister();
+    }
+
+    public static void items() {}
+
+    public static void tools() {
+        // Yeta Wrench
+        ModHandler.addShapedRecipe("yeta_wrench", new ItemStack(ModObject.itemYetaWrench.getItemNN(), 1, 0),
+                "PHP", " P ", " P ",
+                'H', ToolItems.HARD_HAMMER,
+                'P', OreDictUnifier.get(plate, ELECTRICAL_STEEL));
     }
 }

@@ -19,6 +19,16 @@
         "textures": {
           "all": "gregtech:blocks/void_ore_miner_casing"
         }
+      },
+      "draconium_casing": {
+          "textures": {
+          "all": "gregtech:blocks/draconium_casing"
+          }
+      },
+      "draconium_awakened_casing": {
+        "textures": {
+          "all": "gregtech:blocks/draconium_awakened_casing"
+        }
       }
     }
   }

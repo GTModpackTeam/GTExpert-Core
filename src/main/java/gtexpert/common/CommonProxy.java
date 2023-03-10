@@ -62,9 +62,11 @@ public class CommonProxy {
         // Main recipe registration
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
-        CEUOverrideRecipes.init();
+        CEUOverrideRecipeLoader.init();
         GTERecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();
+        DERecipeLoader.init();
+        DARecipeLoader.init();
     }
 }

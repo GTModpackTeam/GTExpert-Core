@@ -19,6 +19,7 @@ public class GTEMetaTileEntities {
     public static MetaTileEntitySawmill SAWMILL;
     public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
+    public static MetaTileEntityDraconicFusion DRACONICFUSION;
 
     public static void init() {
         /*
@@ -54,6 +55,7 @@ public class GTEMetaTileEntities {
         //multiblocks :12000~
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));
         VOIDOREMINER = registerMetaTileEntity(12003, new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
+        DRACONICFUSION = registerMetaTileEntity(12004, new MetaTileEntityDraconicFusion(gteId("draconic_fusion")));
     }
 
     @Nonnull
