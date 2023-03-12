@@ -36,7 +36,7 @@ public class AERecipeLoader {
         tools();
     }
 
-    public static void materias() {
+    private static void materias() {
         // ########################################
         // Sky Stone
         // ########################################
@@ -145,11 +145,6 @@ public class AERecipeLoader {
         ModHandler.removeRecipeByOutput(aeMaterials.certusQuartzCrystal().maybeStack(4).get());
         ModHandler.addShapelessRecipe("ae2_certus_quartz_block", aeBlocks.quartzBlock().maybeStack(1).get(), new UnificationEntry(block, CertusQuartz));
         ModHandler.addShapelessRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, CertusQuartz), aeBlocks.quartzBlock().maybeStack(1).get());
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.certusQuartzCrystal().maybeStack(4).get())
-                .output(block, CertusQuartz, 1)
-                .duration(300).EUt(2)
-                .buildAndRegister();
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(8).get())
                 .output(block, CertusQuartz, 1)
@@ -478,7 +473,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
     }
 
-    public static void tools() {
+    private static void tools() {
         // Nether Quartz Normal Tools
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "nether_quartz_axe"));
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "nether_quartz_hoe"));

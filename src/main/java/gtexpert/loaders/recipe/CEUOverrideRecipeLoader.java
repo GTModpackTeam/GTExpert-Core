@@ -101,6 +101,10 @@ public class CEUOverrideRecipeLoader {
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, CertusQuartz, 1));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, CertusQuartz, 9));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES, OreDictUnifier.get(block, CertusQuartz, 1));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
+                new ItemStack[]{OreDictUnifier.get(block, CertusQuartz, 1)},
+                new FluidStack[]{CertusQuartz.getFluid(1296)}
+        );
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                 new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},
                 new FluidStack[]{CertusQuartz.getFluid(1296)

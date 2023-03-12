@@ -67,6 +67,5 @@ public class CommonProxy {
         AERecipeLoader.init();
         EIORecipeLoader.init();
         DERecipeLoader.init();
-        DARecipeLoader.init();
     }
 }

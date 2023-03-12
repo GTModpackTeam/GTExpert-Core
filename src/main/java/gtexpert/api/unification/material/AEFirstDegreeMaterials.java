@@ -1,5 +1,6 @@
 package gtexpert.api.unification.material;
 
+import gregtech.api.fluids.fluidType.FluidTypes;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
@@ -19,7 +20,7 @@ public class AEFirstDegreeMaterials {
         // Charged Certus Quartz
         CHARGED_CERTUS_QUARTZ = new Material.Builder(24151, "charged_certus_quartz")
                 .dust()
-                .fluid().fluidTemp(1200)
+                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xCFDAFF).iconSet(MaterialIconSet.CERTUS)
                 .flags(GENERATE_PLATE, GENERATE_LENS, DISABLE_DECOMPOSITION)
                 .components(Silicon, 1, Oxygen, 2)
@@ -28,7 +29,7 @@ public class AEFirstDegreeMaterials {
         // Fluix
         FLUIX = new Material.Builder(24152, "fluix")
                 .dust()
-                .fluid().fluidTemp(1200)
+                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x846994).iconSet(MaterialIconSet.CERTUS)
                 .flags(GENERATE_PLATE, GENERATE_LENS, DISABLE_DECOMPOSITION)
                 .components(Silicon, 2, Oxygen, 4, Redstone, 1)
@@ -37,7 +38,7 @@ public class AEFirstDegreeMaterials {
         // Fluix Alloy
         FLUIX_ALLOY = new Material.Builder(24153, "fluix_alloy")
                 .ingot()
-                .fluid().fluidTemp(1200)
+                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x4A3954).iconSet(MaterialIconSet.SHINY)
                 .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
                 .blastTemp(2700, GasTier.LOW, 480, 1072)
