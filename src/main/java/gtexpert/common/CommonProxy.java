@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -66,6 +67,12 @@ public class CommonProxy {
         GTERecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();
-        DERecipeLoader.init();
+
+        if (Loader.isModLoaded("draconicevolution")) {
+            DERecipeLoader.init();
+        }
+        if (Loader.isModLoaded("draconicadditions")) {
+            DARecipeLoader.init();
+        }
     }
 }

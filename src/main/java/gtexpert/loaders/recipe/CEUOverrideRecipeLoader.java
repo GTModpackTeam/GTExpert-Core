@@ -85,13 +85,13 @@ public class CEUOverrideRecipeLoader {
                 .input(block, Quartzite, 1)
                 .fluidInputs(DistilledWater.getFluid(11))
                 .output(plate, Quartzite, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(240).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .input(block, Quartzite, 1)
                 .fluidInputs(Water.getFluid(15))
                 .output(plate, Quartzite, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(300).EUt(VA[LV])
                 .buildAndRegister();
 
 
@@ -107,8 +107,8 @@ public class CEUOverrideRecipeLoader {
         );
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                 new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},
-                new FluidStack[]{CertusQuartz.getFluid(1296)
-        });
+                new FluidStack[]{CertusQuartz.getFluid(1296)}
+        );
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
                 new ItemStack[]{OreDictUnifier.get(block, CertusQuartz, 1)},
                 new FluidStack[]{Lubricant.getFluid(3)}
@@ -167,13 +167,13 @@ public class CEUOverrideRecipeLoader {
                 .input(block, CertusQuartz, 1)
                 .fluidInputs(DistilledWater.getFluid(11))
                 .output(plate, CertusQuartz, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(240).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .input(block, CertusQuartz, 1)
                 .fluidInputs(Water.getFluid(15))
                 .output(plate, CertusQuartz, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(300).EUt(VA[LV])
                 .buildAndRegister();
     }
 }

@@ -169,13 +169,13 @@ public class AERecipeLoader {
                 .inputs(aeBlocks.quartzBlock().maybeStack(1).get())
                 .fluidInputs(DistilledWater.getFluid(11))
                 .output(plate, CertusQuartz, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(240).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(aeBlocks.quartzBlock().maybeStack(1).get())
                 .fluidInputs(Water.getFluid(15))
                 .output(plate, CertusQuartz, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(300).EUt(VA[LV])
                 .buildAndRegister();
 
 
@@ -359,13 +359,13 @@ public class AERecipeLoader {
                 .inputs(aeBlocks.fluixBlock().maybeStack(1).get())
                 .fluidInputs(DistilledWater.getFluid(11))
                 .output(plate, FLUIX, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(240).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(aeBlocks.fluixBlock().maybeStack(1).get())
                 .fluidInputs(Water.getFluid(15))
                 .output(plate, FLUIX, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(300).EUt(VA[LV])
                 .buildAndRegister();
 
         // Lens

@@ -22,9 +22,6 @@ import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.metatileentities.GTEMetaTileEntities;
-import com.brandon3055.draconicevolution.DEFeatures;
-import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -37,14 +34,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
-import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
+import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
 
 public class GTERecipeLoader {
 
@@ -107,7 +102,7 @@ public class GTERecipeLoader {
                 'S', new UnificationEntry(screw, Steel),
                 'B', new UnificationEntry(toolHeadBuzzSaw, Steel),
                 'M', ELECTRIC_MOTOR_MV.getStackForm(),
-                'H', MetaTileEntities.HULL[2].getStackForm(),
+                'H', MetaTileEntities.HULL[MV].getStackForm(),
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
                 'O', CONVEYOR_MODULE_MV.getStackForm());
 
@@ -128,30 +123,6 @@ public class GTERecipeLoader {
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .outputs(VOIDOREMINER.getStackForm())
                 .duration(600).EUt(VA[ZPM])
-                .buildAndRegister();
-
-        // Draconic Fusion Crafter
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(MetaTileEntities.HULL[LuV])
-                .input(frameGt, DRACONIUM, 4)
-                .input(DEFeatures.wyvernCore, 4)
-                .input(ROBOT_ARM_LuV, 2)
-                .input(SENSOR_LuV, 2)
-                .input(EMITTER_LuV, 2)
-                .outputs(DRACONIUM_FUSION.getStackForm())
-                .duration(600).EUt(VA[LuV])
-                .buildAndRegister();
-
-        // Draconic Awakened Fusion Crafter
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(MetaTileEntities.HULL[UV])
-                .input(frameGt, DRACONIUM_AWAKENED, 4)
-                .input(DEFeatures.awakenedCore, 4)
-                .input(ROBOT_ARM_UV, 2)
-                .input(SENSOR_UV, 2)
-                .input(EMITTER_UV, 2)
-                .outputs(DRACONIUM_AWAKENED_FUSION.getStackForm())
-                .duration(600).EUt(VA[UV])
                 .buildAndRegister();
 
         // Sawmill Casing
@@ -176,24 +147,6 @@ public class GTERecipeLoader {
                 .input(plate, NM_HEA_NPs, 6)
                 .fluidInputs(EnderPearl.getFluid(GTValues.L * 2))
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER, 2))
-                .duration(100).EUt(VA[ZPM])
-                .buildAndRegister();
-
-        // Draconum Casing
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .circuitMeta(6)
-                .input(plate, DRACONIUM, 6)
-                .input(frameGt, DRACONIUM, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2))
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
-
-        // Awakened Draconum Casing
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .circuitMeta(6)
-                .input(plate, DRACONIUM_AWAKENED, 6)
-                .input(frameGt, DRACONIUM_AWAKENED, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_AWAKENED_CASING, 2))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
 
