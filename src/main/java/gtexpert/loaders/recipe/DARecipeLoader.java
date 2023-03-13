@@ -1,6 +1,5 @@
 package gtexpert.loaders.recipe;
 
-import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -46,7 +45,6 @@ public class DARecipeLoader {
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DAFeatures.chaoticEnergyCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(153600)
                 .buildAndRegister();
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -59,7 +57,6 @@ public class DARecipeLoader {
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DAFeatures.chaoticEnergyCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(153600)
                 .buildAndRegister();
     }

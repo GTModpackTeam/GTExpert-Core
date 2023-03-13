@@ -315,15 +315,8 @@ public class DERecipeLoader {
     }
 
     private static void items() {
-        // ########################################
-        // Cores
-        // ########################################
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_core"));
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconic_core"));
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_energy_core"));
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconic_energy_core"));
-
         // Wyvern Core
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_core"));
         RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ADVANCED_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorEnergeticSilver.getItemNN(), 4)
@@ -346,6 +339,7 @@ public class DERecipeLoader {
                 .buildAndRegister();
 
         // Draconic Core
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconic_core"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(EXTREME_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorCrystalline.getItemNN(), 4)
@@ -357,7 +351,6 @@ public class DERecipeLoader {
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.draconicCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(38400)
                 .buildAndRegister();
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -371,7 +364,6 @@ public class DERecipeLoader {
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.draconicCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(38400)
                 .buildAndRegister();
 
@@ -387,7 +379,6 @@ public class DERecipeLoader {
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.awakenedCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(153600)
                 .buildAndRegister();
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -401,7 +392,6 @@ public class DERecipeLoader {
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.awakenedCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(153600)
                 .buildAndRegister();
 
@@ -418,7 +408,6 @@ public class DERecipeLoader {
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.chaoticCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(614400)
                 .buildAndRegister();
         GTERecipeMaps.DRACONIUM_AWAKENED_FUSION_RECIPES.recipeBuilder()
@@ -433,11 +422,11 @@ public class DERecipeLoader {
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.chaoticCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(614400)
                 .buildAndRegister();
 
         // Wyvern Energy Core
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_energy_core"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(EXTREME_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.wyvernCore, 1)
@@ -448,7 +437,6 @@ public class DERecipeLoader {
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.wyvernEnergyCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(9600)
                 .buildAndRegister();
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -461,11 +449,11 @@ public class DERecipeLoader {
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.wyvernEnergyCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(9600)
                 .buildAndRegister();
 
         // Draconic Energy Core
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconic_energy_core"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.draconicCore, 1)
@@ -476,7 +464,6 @@ public class DERecipeLoader {
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.draconicEnergyCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400).EUt(38400)
                 .buildAndRegister();
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -489,7 +476,124 @@ public class DERecipeLoader {
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.draconicEnergyCore, 1)
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
-                .cleanroom(CleanroomType.CLEANROOM)
+                .duration(400).EUt(38400)
+                .buildAndRegister();
+
+        // Energy Core
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_storage_core"));
+        ModHandler.addShapedRecipe("energy_storage_core", new ItemStack(DEFeatures.energyStorageCore, 1, 0),
+                "DDD", "ECE", "DDD",
+                'D', OreDictUnifier.get(plate, DRACONIUM),
+                'E', DEFeatures.wyvernEnergyCore,
+                'C', DEFeatures.wyvernCore
+        );
+
+        // Energy Pylon
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_pylon"));
+        ModHandler.addShapedRecipe("energy_pylon", new ItemStack(DEFeatures.energyPylon, 2, 0),
+                "AIA", "ECE", "ADA",
+                'A', OreDictUnifier.get(plate, DRACONIUM),
+                'D', OreDictUnifier.get(gem, Diamond),
+                'E', OreDictUnifier.get(plate, Emerald),
+                'I', Items.ENDER_EYE,
+                'C', DEFeatures.wyvernCore
+        );
+
+        // Reactor Stabilizer Frame
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part"));
+        ModHandler.addShapedRecipe("reactor_part", new ItemStack(DEFeatures.reactorPart, 1, 0),
+                "SSS", "CA ", "SSS",
+                'S', OreDictUnifier.get(stick, DARK_STEEL),
+                'A', OreDictUnifier.get(plate, DRACONIUM_AWAKENED),
+                'C', DEFeatures.wyvernCore
+        );
+
+        // Reactor Stabilizer Inner Rotor
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part_1"));
+        ModHandler.addShapedRecipe("reactor_part_1", new ItemStack(DEFeatures.reactorPart, 1, 1),
+                "DDD", "CAA",
+                'D', OreDictUnifier.get(plate, DRACONIUM),
+                'A', OreDictUnifier.get(plate, DRACONIUM_AWAKENED),
+                'C', DEFeatures.wyvernCore
+        );
+
+        // Reactor Stabilizer Outer Rotor
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part_2"));
+        ModHandler.addShapedRecipe("reactor_part_2", new ItemStack(DEFeatures.reactorPart, 1, 2),
+                "DDD", "CAA",
+                'D', OreDictUnifier.get(plate, Diamond),
+                'A', OreDictUnifier.get(plate, DRACONIUM),
+                'C', DEFeatures.wyvernCore
+        );
+
+        // Reactor Stabilizer Rotor Assembly
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part_3"));
+        ModHandler.addShapedRecipe("reactor_part_3", new ItemStack(DEFeatures.reactorPart, 1, 3),
+                " IO", "CAA", " IO",
+                'A', OreDictUnifier.get(stick, DRACONIUM),
+                'I', new ItemStack(DEFeatures.reactorPart, 1, 1),
+                'O', new ItemStack(DEFeatures.reactorPart, 1, 2),
+                'C', DEFeatures.wyvernCore
+        );
+
+        // Reactor Stabilizer Focus Ring
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part_4"));
+        ModHandler.addShapedRecipe("reactor_part_4", new ItemStack(DEFeatures.reactorPart, 1, 4),
+                "GDG", "DCD", "GDG",
+                'D', OreDictUnifier.get(stick, Diamond),
+                'G', OreDictUnifier.get(screw, Gold),
+                'C', DEFeatures.wyvernCore
+        );
+
+        // Reactor Stabilizer
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .input(DEFeatures.reactorPart, 1, 3)
+                .input(DEFeatures.reactorPart, 1, 4)
+                .input(DEFeatures.wyvernCore, 1)
+                .input(DEFeatures.wyvernEnergyCore, 4)
+                .fluidInputs(DRACONIUM_AWAKENED.getFluid(1152))
+                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .fluidInputs(Polyethylene.getFluid(288))
+                .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 0))
+                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .duration(400).EUt(38400)
+                .buildAndRegister();
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .input(DEFeatures.reactorPart, 1, 3)
+                .input(DEFeatures.reactorPart, 1, 4)
+                .input(DEFeatures.wyvernCore, 1)
+                .input(DEFeatures.wyvernEnergyCore, 4)
+                .fluidInputs(DRACONIUM_AWAKENED.getFluid(1152))
+                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .fluidInputs(Polytetrafluoroethylene.getFluid(144))
+                .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 0))
+                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .duration(400).EUt(38400)
+                .buildAndRegister();
+
+        // Reactor Energy Injector
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .input(DEFeatures.reactorPart, 4, 1)
+                .input(DEFeatures.wyvernCore, 1)
+                .input(DEFeatures.wyvernEnergyCore, 4)
+                .input(plate, DARK_STEEL, 4)
+                .fluidInputs(DRACONIUM.getFluid(576))
+                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .fluidInputs(Polyethylene.getFluid(288))
+                .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 1))
+                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .duration(400).EUt(38400)
+                .buildAndRegister();
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .input(DEFeatures.reactorPart, 4, 1)
+                .input(DEFeatures.wyvernCore, 1)
+                .input(DEFeatures.wyvernEnergyCore, 4)
+                .input(plate, DARK_STEEL, 4)
+                .fluidInputs(DRACONIUM.getFluid(576))
+                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .fluidInputs(Polytetrafluoroethylene.getFluid(144))
+                .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 1))
+                .fluidOutputs(PYROTHEUM.getFluid(2304))
                 .duration(400).EUt(38400)
                 .buildAndRegister();
     }
@@ -562,10 +666,13 @@ public class DERecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","crafting_injector"));
 
         // Basic Energy Relay Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","energy_crystal"));
+        //ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","energy_crystal"));
 
         // Wyvern Energy Relay Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","energy_crystal_1"));
+        //ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","energy_crystal_1"));
+
+        // Draconic Energy Relay Crystal
+
     }
 
     private static void tools() {
