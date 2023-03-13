@@ -5,7 +5,6 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.ToolProperty;
-
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 

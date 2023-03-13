@@ -6,7 +6,6 @@ import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.material.properties.FluidProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
-
 import static gregtech.api.GTValues.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.unification.material.Materials.*;

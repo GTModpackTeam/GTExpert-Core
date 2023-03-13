@@ -102,13 +102,21 @@ repositories {
         name = 'Cleanroom Maven'
         url = 'https://maven.cleanroommc.com'
     }
-    maven {
-        name = 'Sponge Powered'
-        url = 'https://repo.spongepowered.org/maven'
+    maven { // JEI
+        name = 'Progwml6 Maven'
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
+    maven { // CraftTweaker and JEI Backup
+        name = 'BlameJared Maven'
+        url = 'https://maven.blamejared.com'
     }
     maven {
         name = 'Mod Maven'
         url = 'https://modmaven.dev'
+    }
+    maven {
+        name = 'Sponge Powered'
+        url = 'https://repo.spongepowered.org/maven'
     }
     maven {
         name = 'Curse Maven'
@@ -135,15 +143,15 @@ dependencies {
     implementation fg.deobf("curse.maven:endercore-${eco_pid}:${eco_fid}")
     implementation "info.loenwind.autoconfig:AutoConfig:${minecraft_version}-${autoconfig_version}"
     implementation "info.loenwind.autosave:AutoSave:${minecraft_version}-${autosave_version}"
-    implementation fg.deobf("curse.maven:baubles-lts-${bal_pid}:${bal_fid}")
+    implementation fg.deobf("curse.maven:baubles-${bal_pid}:${bal_fid}")
     implementation fg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
     implementation fg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
     implementation fg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
     implementation fg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
 
     // Soft Dependencies
-    implementation "curse.maven:crafttweaker-${crt_pid}:${crt_fid}"
-    implementation fg.deobf("curse.maven:jei-${jei_pid}:${jei_fid}")
+    implementation "mezz.jei:jei_1.12.2:${jei_version}"
+    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crt_version}"
     implementation fg.deobf("curse.maven:top-${top_pid}:${top_fid}")
     implementation fg.deobf("curse.maven:ctm-${ctm_pid}:${ctm_fid}")
 
@@ -152,6 +160,8 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest:${hamcrest_version}")
 
     // Compile-Time Dependencies
+    compileOnly "org.jetbrains:annotations:${annotations_version}"
+    annotationProcessor "org.jetbrains:annotations:${annotations_version}"
     compileOnly "org.projectlombok:lombok:${lombok_version}"
     annotationProcessor "org.projectlombok:lombok:${lombok_version}"
 

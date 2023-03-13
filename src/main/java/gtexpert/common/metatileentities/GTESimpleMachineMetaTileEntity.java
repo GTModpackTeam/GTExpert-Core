@@ -1,30 +1,11 @@
 package gtexpert.common.metatileentities;
 
-import gregtech.api.GTValues;
-import gregtech.api.gui.GuiTextures;
-import gregtech.api.gui.ModularUI;
-import gregtech.api.gui.Widget;
-import gregtech.api.gui.widgets.*;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
-import gregtech.api.metatileentity.WorkableTieredMetaTileEntity;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.client.renderer.ICubeRenderer;
-import gtexpert.api.gui.GTEGuiTextures;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.items.ItemStackHandler;
-
-import java.util.function.Function;
-
-
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregtech.api.GTValues;
+import gregtech.api.util.GTUtility;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IActiveOutputSide;
 import gregtech.api.capability.impl.*;
@@ -34,25 +15,17 @@ import gregtech.api.cover.ICoverable;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.Widget;
-import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.gui.widgets.*;
+import gregtech.api.gui.resources.TextureArea;
+import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
+import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
+import gregtech.api.metatileentity.WorkableTieredMetaTileEntity;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.util.GTUtility;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.World;
+import gtexpert.api.gui.GTEGuiTextures;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -61,19 +34,29 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
+import static gregtech.api.capability.GregtechDataCodes.*;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Function;
 
-import static gregtech.api.capability.GregtechDataCodes.*;
-
 public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity implements IActiveOutputSide {
-
     private final boolean hasFrontFacing;
 
-    protected final ItemStackHandler chargerInventory;
-    protected final ItemStackHandler circuitInventory;
+    protected final @NotNull ItemStackHandler chargerInventory;
+    protected final @NotNull ItemStackHandler circuitInventory;
     private EnumFacing outputFacingItems;
     private EnumFacing outputFacingFluids;
 
@@ -100,7 +83,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
+    public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
         return new GTESimpleMachineMetaTileEntity(metaTileEntityId, workable.getRecipeMap(), renderer, getTier(), hasFrontFacing, getTankScalingFunction());
     }
 
@@ -117,7 +100,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public boolean onWrenchClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
+    public boolean onWrenchClick(@NotNull EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
         if (!playerIn.isSneaking()) {
             //TODO Separate the setters
             EnumFacing currentOutputSide = getOutputFacing();
@@ -134,7 +117,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public boolean placeCoverOnSide(EnumFacing side, ItemStack itemStack, CoverDefinition coverDefinition, EntityPlayer player) {
+    public boolean placeCoverOnSide(@NotNull EnumFacing side, ItemStack itemStack, CoverDefinition coverDefinition, EntityPlayer player) {
         boolean coverPlaced = super.placeCoverOnSide(side, itemStack, coverDefinition, player);
         if (coverPlaced) {
             CoverBehavior cover = getCoverAtSide(side);
@@ -185,7 +168,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public boolean onScrewdriverClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
+    public boolean onScrewdriverClick(@NotNull EntityPlayer playerIn, EnumHand hand, EnumFacing facing, @NotNull CuboidRayTraceResult hitResult) {
         EnumFacing hitFacing = ICoverable.determineGridSideHit(hitResult);
         if (facing == getOutputFacingItems() || facing == getOutputFacingFluids() ||
                 ((hitFacing == getOutputFacingItems() || hitFacing == getOutputFacingFluids()) && playerIn.isSneaking())) {
@@ -208,7 +191,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing side) {
+    public <T> @Nullable T getCapability(Capability<T> capability, EnumFacing side) {
         if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
             IFluidHandler fluidHandler = (side == getOutputFacingFluids() && !isAllowInputFromOutputSideFluids()) ? outputFluidInventory : fluidInventory;
             if (fluidHandler.getTankProperties().length > 0) {
@@ -231,7 +214,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound data) {
+    public @NotNull NBTTagCompound writeToNBT(@NotNull NBTTagCompound data) {
         super.writeToNBT(data);
         data.setTag("ChargerInventory", chargerInventory.serializeNBT());
         data.setTag("CircuitInventory", circuitInventory.serializeNBT());
@@ -245,7 +228,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound data) {
+    public void readFromNBT(@NotNull NBTTagCompound data) {
         super.readFromNBT(data);
         this.chargerInventory.deserializeNBT(data.getCompoundTag("ChargerInventory"));
         if (data.hasKey("CircuitInventory")) {
@@ -260,7 +243,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public void writeInitialSyncData(PacketBuffer buf) {
+    public void writeInitialSyncData(@NotNull PacketBuffer buf) {
         super.writeInitialSyncData(buf);
         buf.writeByte(getOutputFacingItems().getIndex());
         buf.writeByte(getOutputFacingFluids().getIndex());
@@ -269,7 +252,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public void receiveInitialSyncData(PacketBuffer buf) {
+    public void receiveInitialSyncData(@NotNull PacketBuffer buf) {
         super.receiveInitialSyncData(buf);
         this.outputFacingItems = EnumFacing.VALUES[buf.readByte()];
         this.outputFacingFluids = EnumFacing.VALUES[buf.readByte()];
@@ -278,7 +261,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public void receiveCustomData(int dataId, PacketBuffer buf) {
+    public void receiveCustomData(int dataId, @NotNull PacketBuffer buf) {
         super.receiveCustomData(dataId, buf);
         if (dataId == UPDATE_OUTPUT_FACING) {
             this.outputFacingItems = EnumFacing.VALUES[buf.readByte()];
@@ -369,7 +352,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    public void setFrontFacing(EnumFacing frontFacing) {
+    public void setFrontFacing(@NotNull EnumFacing frontFacing) {
         super.setFrontFacing(frontFacing);
         if (this.outputFacingItems == null || this.outputFacingFluids == null) {
             //set initial output facing as opposite to front
@@ -382,11 +365,11 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
         return getOutputFacingItems();
     }
 
-    public EnumFacing getOutputFacingItems() {
+    public @NotNull EnumFacing getOutputFacingItems() {
         return outputFacingItems == null ? EnumFacing.SOUTH : outputFacingItems;
     }
 
-    public EnumFacing getOutputFacingFluids() {
+    public @NotNull EnumFacing getOutputFacingFluids() {
         return outputFacingFluids == null ? EnumFacing.SOUTH : outputFacingFluids;
     }
 
@@ -414,13 +397,13 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     @Override
-    protected RecipeLogicEnergy createWorkable(RecipeMap<?> recipeMap) {
+    protected @NotNull RecipeLogicEnergy createWorkable(RecipeMap<?> recipeMap) {
         final RecipeLogicEnergy result = super.createWorkable(recipeMap);
         result.getMaximumOverclockVoltage();
         return result;
     }
 
-    protected ModularUI.Builder createGuiTemplate(EntityPlayer player) {
+    protected ModularUI.@NotNull Builder createGuiTemplate(@NotNull EntityPlayer player) {
         RecipeMap<?> workableRecipeMap = workable.getRecipeMap();
         int yOffset = 0;
         if (workableRecipeMap.getMaxInputs() >= 6 || workableRecipeMap.getMaxFluidInputs() >= 6 || workableRecipeMap.getMaxOutputs() >= 6 || workableRecipeMap.getMaxFluidOutputs() >= 6) {
@@ -475,14 +458,14 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
         return builder;
     }
 
-    private void circuitConfigPlus(Widget.ClickData data) {
+    private void circuitConfigPlus(Widget.@NotNull ClickData data) {
         ItemStack stack;
         if (circuitInventory != null && IntCircuitIngredient.isIntegratedCircuit(stack = circuitInventory.getStackInSlot(0))) {
             IntCircuitIngredient.adjustConfiguration(stack, data.isShiftClick ? 5 : 1);
         }
     }
 
-    private void circuitConfigMinus(Widget.ClickData data) {
+    private void circuitConfigMinus(Widget.@NotNull ClickData data) {
         ItemStack stack;
         if (circuitInventory != null && IntCircuitIngredient.isIntegratedCircuit(stack = circuitInventory.getStackInSlot(0))) {
             IntCircuitIngredient.adjustConfiguration(stack, data.isShiftClick ? -5 : -1);
@@ -490,22 +473,22 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     // Method provided to override
-    protected TextureArea getCircuitSlotOverlay() {
+    protected @NotNull TextureArea getCircuitSlotOverlay() {
         return GuiTextures.INT_CIRCUIT_OVERLAY;
     }
 
     // Method provided to override
-    protected SlotWidget getCircuitSlotTooltip(SlotWidget widget) {
+    protected SlotWidget getCircuitSlotTooltip(@NotNull SlotWidget widget) {
         return widget.setTooltipText("gregtech.gui.configurator_slot.tooltip");
     }
 
     @Override
-    protected ModularUI createUI(EntityPlayer entityPlayer) {
+    protected ModularUI createUI(@NotNull EntityPlayer entityPlayer) {
         return createGuiTemplate(entityPlayer).build(getHolder(), entityPlayer);
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         String key = this.metaTileEntityId.getPath().split("\\.")[0];
         String mainKey = String.format("gregtech.machine.%s.tooltip", key);

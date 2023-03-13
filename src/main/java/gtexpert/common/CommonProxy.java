@@ -21,6 +21,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.function.Function;
 import static gtexpert.common.GTEMetaBlocks.*;
 
+import org.jetbrains.annotations.NotNull;
+
 @Mod.EventBusSubscriber(modid = "gtexpert")
 public class CommonProxy {
 
@@ -36,18 +38,18 @@ public class CommonProxy {
     }
 
     @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+    public static void registerBlocks(RegistryEvent.@NotNull Register<Block> event) {
         event.getRegistry().register(GTE_BLOCK_METAL_CASING);
         event.getRegistry().register(BLOCK_SAWMILL_CONVEYOR);
     }
 
     @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
+    public static void registerItems(RegistryEvent.@NotNull Register<Item> event) {
         event.getRegistry().register(createItemBlock(GTE_BLOCK_METAL_CASING, VariantItemBlock::new));
         event.getRegistry().register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
     }
 
-    private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
+    private static <T extends Block> @NotNull ItemBlock createItemBlock(@NotNull T block, @NotNull Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
         itemBlock.setRegistryName(block.getRegistryName());
         return itemBlock;

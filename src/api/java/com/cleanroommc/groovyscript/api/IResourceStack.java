@@ -1,5 +1,7 @@
 package com.cleanroommc.groovyscript.api;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * An object that has an amount.
  * Can use '*' in groovy to set amount.
@@ -10,7 +12,7 @@ public interface IResourceStack {
 
     void setAmount(int amount);
 
-    default IResourceStack withAmount(int amount) {
+    default @NotNull IResourceStack withAmount(int amount) {
         setAmount(amount);
         return this;
     }
@@ -18,7 +20,7 @@ public interface IResourceStack {
     /**
      * enables groovy to use '*' operator
      */
-    default IResourceStack multiply(Number n) {
+    default IResourceStack multiply(@NotNull Number n) {
         return withAmount(n.intValue());
     }
 }

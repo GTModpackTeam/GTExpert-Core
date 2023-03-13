@@ -16,7 +16,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockController {
@@ -25,12 +26,12 @@ public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockCo
     }
 
     @Override
-    public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
+    public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
         return new MetaTileEntityDraconiumAwakenedFusion(metaTileEntityId);
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("CCC", "CCC", "CCC")
                 .aisle("CCC", "C#C", "CMC")
@@ -47,7 +48,7 @@ public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockCo
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) { return GTETextures.DRACONIUM_AWAKENED_CASING; }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
     }
 

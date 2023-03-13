@@ -28,12 +28,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import org.apache.commons.lang3.tuple.Pair;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -41,8 +35,12 @@ import static gregtech.common.items.MetaItems.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 
-public class GTERecipeLoader {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
+public class GTERecipeLoader {
     public static void init() {
         // Nether Star Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()

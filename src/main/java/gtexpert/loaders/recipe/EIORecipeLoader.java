@@ -14,10 +14,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
 import static gregtech.loaders.recipe.CraftingComponent.*;
@@ -25,6 +21,9 @@ import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EIORecipeLoader {
     public static void init() {
