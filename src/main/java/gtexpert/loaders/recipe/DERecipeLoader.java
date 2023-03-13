@@ -562,6 +562,12 @@ public class DERecipeLoader {
 
         // Fusion Crafting Injector
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","crafting_injector"));
+
+        // Basic Energy Relay Crystal
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","energy_crystal"));
+
+        // Wyvern Energy Relay Crystal
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","energy_crystal_1"));
     }
 
     private static void tools() {
