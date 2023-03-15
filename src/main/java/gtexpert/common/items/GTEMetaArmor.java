@@ -1,7 +1,6 @@
 package gtexpert.common.items;
 
 import gregtech.api.items.armor.ArmorMetaItem;
-import gtexpert.common.items.GTEMetaItems;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 
