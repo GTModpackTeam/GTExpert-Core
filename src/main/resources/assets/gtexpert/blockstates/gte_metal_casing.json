@@ -25,9 +25,9 @@
           "all": "gregtech:blocks/draconium_casing"
           }
       },
-      "draconium_awakened_casing": {
+      "awakened_draconium_casing": {
         "textures": {
-          "all": "gregtech:blocks/draconium_awakened_casing"
+          "all": "gregtech:blocks/awakened_draconium_casing"
         }
       }
     }

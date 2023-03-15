@@ -53,7 +53,7 @@ public class DEDegreeMaterials {
                 .build();
 
         // Awakened Draconium
-        DRACONIUM_AWAKENED = new Material.Builder(24181, "draconium_awakened")
+        AWAKENED_DRACONIUM = new Material.Builder(24181, "awakened_draconium")
                 .ingot(6)
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xFF6C00).iconSet(MaterialIconSet.METALLIC)

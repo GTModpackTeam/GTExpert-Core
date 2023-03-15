@@ -19,6 +19,7 @@ import gtexpert.common.GTEMetaBlocks;
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;
 import com.brandon3055.draconicevolution.DEFeatures;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -99,7 +100,7 @@ public class DERecipeLoader {
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, DRAGON, 16)
                 .fluidInputs(PYROTHEUM.getFluid(4608))
-                .fluidInputs(DRACONIUM_AWAKENED.getFluid(1152))
+                .fluidInputs(AWAKENED_DRACONIUM.getFluid(1152))
                 .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, CHAOS, 2)
                 .duration(1200).EUt(VA[ZPM])
@@ -220,44 +221,44 @@ public class DERecipeLoader {
         // ########################################
         // Awakened Draconium
         // ########################################
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, DRACONIUM_AWAKENED, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(ingot, DRACONIUM_AWAKENED, 9));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(ingot, AWAKENED_DRACONIUM, 9));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ARC_FURNACE_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM_AWAKENED, 1)},
+                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
                 new FluidStack[]{Oxygen.getFluid(882)}
         );
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM_AWAKENED, 1)},
-                new FluidStack[]{DRACONIUM_AWAKENED.getFluid(1296)}
+                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
+                new FluidStack[]{AWAKENED_DRACONIUM.getFluid(1296)}
         );
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                 new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},
-                new FluidStack[]{DRACONIUM_AWAKENED.getFluid(1296)}
+                new FluidStack[]{AWAKENED_DRACONIUM.getFluid(1296)}
         );
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM_AWAKENED, 1)},
+                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
                 new FluidStack[]{Lubricant.getFluid(18)}
         );
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM_AWAKENED, 1)},
+                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
                 new FluidStack[]{DistilledWater.getFluid(55)}
         );
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM_AWAKENED, 1)},
+                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
                 new FluidStack[]{Water.getFluid(73)}
         );
 
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM_AWAKENED, 1)
-                .fluidOutputs(DRACONIUM_AWAKENED.getFluid(1296))
+                .input(block, AWAKENED_DRACONIUM, 1)
+                .fluidOutputs(AWAKENED_DRACONIUM.getFluid(1296))
                 .duration(882).EUt(VA[HV])
                 .buildAndRegister();
 
         // Dust
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM_AWAKENED, 1)
-                .output(dust, DRACONIUM_AWAKENED, 9)
+                .input(block, AWAKENED_DRACONIUM, 1)
+                .output(dust, AWAKENED_DRACONIUM, 9)
                 .duration(882).EUt(32)
                 .buildAndRegister();
 
@@ -268,28 +269,29 @@ public class DERecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","draconic_ingot"));
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","draconic_ingot_1"));
         RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM_AWAKENED, 1)
+                .input(block, AWAKENED_DRACONIUM, 1)
                 .fluidInputs(Oxygen.getFluid(882))
-                .output(ingot, DRACONIUM_AWAKENED, 9)
+                .output(ingot, AWAKENED_DRACONIUM, 9)
                 .duration(882).EUt(VA[LV])
                 .buildAndRegister();
 
         // Block
+        OreDictionary.registerOre("blockAwakenedDraconium", DEFeatures.draconicBlock);
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","draconic_block"));
         RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(DRACONIUM_AWAKENED.getFluid(1296))
+                .fluidInputs(AWAKENED_DRACONIUM.getFluid(1296))
                 .output(DEFeatures.draconicBlock, 1)
                 .duration(90).EUt(7)
                 .buildAndRegister();
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .input(ingot, DRACONIUM_AWAKENED, 9)
+                .input(ingot, AWAKENED_DRACONIUM, 9)
                 .output(DEFeatures.draconicBlock, 1)
                 .duration(300).EUt(2)
                 .buildAndRegister();
         RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(DRACONIUM_AWAKENED.getFluid(1296))
+                .fluidInputs(AWAKENED_DRACONIUM.getFluid(1296))
                 .output(DEFeatures.draconicBlock, 1)
                 .duration(98).EUt(7)
                 .buildAndRegister();
@@ -312,21 +314,21 @@ public class DERecipeLoader {
 
         // Plate
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM_AWAKENED, 1)
+                .input(block, AWAKENED_DRACONIUM, 1)
                 .fluidInputs(Lubricant.getFluid(18))
-                .output(plate, DRACONIUM_AWAKENED, 9)
+                .output(plate, AWAKENED_DRACONIUM, 9)
                 .duration(784).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM_AWAKENED, 1)
+                .input(block, AWAKENED_DRACONIUM, 1)
                 .fluidInputs(DistilledWater.getFluid(55))
-                .output(plate, DRACONIUM_AWAKENED, 9)
+                .output(plate, AWAKENED_DRACONIUM, 9)
                 .duration(1176).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM_AWAKENED, 1)
+                .input(block, AWAKENED_DRACONIUM, 1)
                 .fluidInputs(Water.getFluid(73))
-                .output(plate, DRACONIUM_AWAKENED, 9)
+                .output(plate, AWAKENED_DRACONIUM, 9)
                 .duration(1568).EUt(VA[LV])
                 .buildAndRegister();
     }
@@ -400,7 +402,7 @@ public class DERecipeLoader {
                 .input(DEFeatures.draconicCore, 1)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .input(RANDOM_ACCESS_MEMORY, 32)
-                .input(wireFine, DRACONIUM_AWAKENED, 16)
+                .input(wireFine, AWAKENED_DRACONIUM, 16)
                 .fluidInputs(CRYOTHEUM.getFluid(9216))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.awakenedCore, 1)
@@ -413,7 +415,7 @@ public class DERecipeLoader {
                 .input(DEFeatures.draconicCore, 1)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .input(RANDOM_ACCESS_MEMORY, 32)
-                .input(wireFine, DRACONIUM_AWAKENED, 16)
+                .input(wireFine, AWAKENED_DRACONIUM, 16)
                 .fluidInputs(CRYOTHEUM.getFluid(9216))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.awakenedCore, 1)
@@ -422,13 +424,13 @@ public class DERecipeLoader {
                 .buildAndRegister();
 
         // Chaotic Core
-        GTERecipeMaps.DRACONIUM_AWAKENED_FUSION_RECIPES.recipeBuilder()
+        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorStellar.getItemNN(), 4)
                 .input(DEFeatures.awakenedCore, 1)
                 .input(DEFeatures.draconicEnergyCore, 4)
                 .input(RANDOM_ACCESS_MEMORY, 40)
-                .input(wireFine, DRACONIUM_AWAKENED, 32)
+                .input(wireFine, AWAKENED_DRACONIUM, 32)
                 .fluidInputs(Redstone.getFluid(5184))
                 .fluidInputs(CRYOTHEUM.getFluid(9216))
                 .fluidInputs(Polyethylene.getFluid(288))
@@ -436,13 +438,13 @@ public class DERecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(2304))
                 .duration(600).EUt(614400)
                 .buildAndRegister();
-        GTERecipeMaps.DRACONIUM_AWAKENED_FUSION_RECIPES.recipeBuilder()
+        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorStellar.getItemNN(), 4)
                 .input(DEFeatures.awakenedCore, 1)
                 .input(DEFeatures.draconicEnergyCore, 4)
                 .input(RANDOM_ACCESS_MEMORY, 40)
-                .input(wireFine, DRACONIUM_AWAKENED, 32)
+                .input(wireFine, AWAKENED_DRACONIUM, 32)
                 .fluidInputs(Redstone.getFluid(5184))
                 .fluidInputs(CRYOTHEUM.getFluid(9216))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
@@ -484,7 +486,7 @@ public class DERecipeLoader {
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.draconicCore, 1)
                 .input(RANDOM_ACCESS_MEMORY, 40)
-                .input(wireFine, DRACONIUM_AWAKENED, 24)
+                .input(wireFine, AWAKENED_DRACONIUM, 24)
                 .fluidInputs(Redstone.getFluid(5184))
                 .fluidInputs(CRYOTHEUM.getFluid(9216))
                 .fluidInputs(Polyethylene.getFluid(288))
@@ -496,7 +498,7 @@ public class DERecipeLoader {
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.draconicCore, 1)
                 .input(RANDOM_ACCESS_MEMORY, 40)
-                .input(wireFine, DRACONIUM_AWAKENED, 24)
+                .input(wireFine, AWAKENED_DRACONIUM, 24)
                 .fluidInputs(Redstone.getFluid(5184))
                 .fluidInputs(CRYOTHEUM.getFluid(9216))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
@@ -536,7 +538,7 @@ public class DERecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 1)
                 .input(stick, DARK_STEEL, 6)
-                .input(plate, DRACONIUM_AWAKENED, 1)
+                .input(plate, AWAKENED_DRACONIUM, 1)
                 .outputs(new ItemStack(DEFeatures.reactorPart, 1, 0))
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
@@ -546,7 +548,7 @@ public class DERecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 1)
                 .input(plate, DRACONIUM, 3)
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .outputs(new ItemStack(DEFeatures.reactorPart, 1, 1))
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
@@ -556,7 +558,7 @@ public class DERecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 1)
                 .input(plate, Diamond, 3)
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .outputs(new ItemStack(DEFeatures.reactorPart, 1, 2))
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
@@ -588,7 +590,7 @@ public class DERecipeLoader {
                 .input(DEFeatures.reactorPart, 1, 4)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 4)
-                .fluidInputs(DRACONIUM_AWAKENED.getFluid(1152))
+                .fluidInputs(AWAKENED_DRACONIUM.getFluid(1152))
                 .fluidInputs(CRYOTHEUM.getFluid(9216))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 0))
@@ -600,7 +602,7 @@ public class DERecipeLoader {
                 .input(DEFeatures.reactorPart, 1, 4)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 4)
-                .fluidInputs(DRACONIUM_AWAKENED.getFluid(1152))
+                .fluidInputs(AWAKENED_DRACONIUM.getFluid(1152))
                 .fluidInputs(CRYOTHEUM.getFluid(9216))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 0))
@@ -638,7 +640,7 @@ public class DERecipeLoader {
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.chaosShard, 1, 0)
                 .fluidInputs(DRACONIUM.getFluid(1152))
-                .fluidInputs(DRACONIUM_AWAKENED.getFluid(1152))
+                .fluidInputs(AWAKENED_DRACONIUM.getFluid(1152))
                 .fluidInputs(PYROTHEUM.getFluid(9216))
                 .outputs(new ItemStack(DEFeatures.reactorCore, 1, 0))
                 .duration(1200).EUt(VA[LuV])
@@ -719,12 +721,12 @@ public class DERecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(MetaTileEntities.HULL[UV])
-                .input(frameGt, DRACONIUM_AWAKENED, 4)
+                .input(frameGt, AWAKENED_DRACONIUM, 4)
                 .input(DEFeatures.awakenedCore, 4)
                 .input(ROBOT_ARM_UV, 2)
                 .input(SENSOR_UV, 2)
                 .input(EMITTER_UV, 2)
-                .outputs(DRACONIUM_AWAKENED_FUSION.getStackForm())
+                .outputs(AWAKENED_DRACONIUM_FUSION.getStackForm())
                 .duration(600).EUt(VA[UV])
                 .buildAndRegister();
 
@@ -740,9 +742,9 @@ public class DERecipeLoader {
         // Awakened Draconum Casing
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(6)
-                .input(plate, DRACONIUM_AWAKENED, 6)
-                .input(frameGt, DRACONIUM_AWAKENED, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_AWAKENED_CASING, 2))
+                .input(plate, AWAKENED_DRACONIUM, 6)
+                .input(frameGt, AWAKENED_DRACONIUM, 1)
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -838,7 +840,7 @@ public class DERecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
                 .inputs(new ItemStack(DEFeatures.draconiumCapacitor, 4, 0))
-                .input(plate, DRACONIUM_AWAKENED, 4)
+                .input(plate, AWAKENED_DRACONIUM, 4)
                 .input(DEFeatures.awakenedCore, 1)
                 .outputs(new ItemStack(DEFeatures.draconiumCapacitor, 1, 1))
                 .duration(100).EUt(VA[ZPM])
@@ -968,7 +970,7 @@ public class DERecipeLoader {
         // Draconic Axe
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.wyvernAxe, 1))
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .fluidInputs(CRYOTHEUM.getFluid(18432))
@@ -980,7 +982,7 @@ public class DERecipeLoader {
         // Draconic Pickaxe
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.wyvernPick, 1))
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .fluidInputs(CRYOTHEUM.getFluid(18432))
@@ -992,7 +994,7 @@ public class DERecipeLoader {
         // Draconic Shovel
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.wyvernShovel, 1))
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .fluidInputs(CRYOTHEUM.getFluid(18432))
@@ -1004,7 +1006,7 @@ public class DERecipeLoader {
         // Draconic Sword
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.wyvernSword, 1))
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .fluidInputs(CRYOTHEUM.getFluid(18432))
@@ -1016,7 +1018,7 @@ public class DERecipeLoader {
         // Draconic Bow
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.wyvernBow, 1))
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .fluidInputs(CRYOTHEUM.getFluid(18432))
@@ -1042,7 +1044,7 @@ public class DERecipeLoader {
         // Draconic Helm
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.wyvernHelm, 1))
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .fluidInputs(CRYOTHEUM.getFluid(18432))
@@ -1054,7 +1056,7 @@ public class DERecipeLoader {
         // Draconic Chest
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.wyvernChest, 1))
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .fluidInputs(CRYOTHEUM.getFluid(18432))
@@ -1066,7 +1068,7 @@ public class DERecipeLoader {
         // Draconic Legs
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.wyvernLegs, 1))
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .fluidInputs(CRYOTHEUM.getFluid(18432))
@@ -1078,7 +1080,7 @@ public class DERecipeLoader {
         // Draconic Boots
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.wyvernBoots, 1))
-                .input(plate, DRACONIUM_AWAKENED, 2)
+                .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .fluidInputs(CRYOTHEUM.getFluid(18432))

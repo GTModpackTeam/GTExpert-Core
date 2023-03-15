@@ -47,7 +47,7 @@ public class GTERecipeMaps {
             .setSound(GTSoundEvents.ASSEMBLER);
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> DRACONIUM_AWAKENED_FUSION_RECIPES = new RecipeMap<>("draconium_awakened_fusion", 1, 6, 0, 3, 0, 3, 0, 1, new SimpleRecipeBuilder(), false)
+    public static final RecipeMap<SimpleRecipeBuilder> AWAKENED_DRACONIUM_FUSION_RECIPES = new RecipeMap<>("awakened_draconium_fusion", 1, 6, 0, 3, 0, 3, 0, 1, new SimpleRecipeBuilder(), false)
             .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
             .setSound(GTSoundEvents.ASSEMBLER);
 }

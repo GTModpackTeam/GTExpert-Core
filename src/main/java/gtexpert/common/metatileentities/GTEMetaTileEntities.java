@@ -17,7 +17,7 @@ public class GTEMetaTileEntities {
     public static SimpleMachineMetaTileEntity @NotNull [] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
-    public static MetaTileEntityDraconiumAwakenedFusion DRACONIUM_AWAKENED_FUSION;
+    public static MetaTileEntityDraconiumAwakenedFusion AWAKENED_DRACONIUM_FUSION;
 
     public static void init() {
         /*
@@ -54,7 +54,7 @@ public class GTEMetaTileEntities {
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));
         VOIDOREMINER = registerMetaTileEntity(12003, new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
         DRACONIUM_FUSION = registerMetaTileEntity(12004, new MetaTileEntityDraconiumFusion(gteId("draconium_fusion")));
-        DRACONIUM_AWAKENED_FUSION = registerMetaTileEntity(12005, new MetaTileEntityDraconiumAwakenedFusion(gteId("draconium_awakened_fusion")));
+        AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005, new MetaTileEntityDraconiumAwakenedFusion(gteId("awakened_draconium_fusion")));
     }
 
     @NotNull

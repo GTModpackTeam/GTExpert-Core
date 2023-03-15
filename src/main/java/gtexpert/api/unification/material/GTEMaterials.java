@@ -77,7 +77,7 @@ public class GTEMaterials {
     public static Material DRAGON;
     public static Material CHAOS;
     public static Material DRACONIUM;
-    public static Material DRACONIUM_AWAKENED;
+    public static Material AWAKENED_DRACONIUM;
 
     // Second Degree Materials
 
