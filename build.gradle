@@ -104,13 +104,13 @@ repositories {
     }
     maven { // JEI
         name = 'Progwml6 Maven'
-        url = 'https://dvs1.progwml6.com/files/maven/'
+        url = 'https://dvs1.progwml6.com/files/maven'
     }
     maven { // CraftTweaker and JEI Backup
         name = 'BlameJared Maven'
         url = 'https://maven.blamejared.com'
     }
-    maven {
+    maven {  // Autoconfig and Autosave
         name = 'Mod Maven'
         url = 'https://modmaven.dev'
     }
@@ -135,7 +135,7 @@ dependencies {
     // therefore we manually deobf the regular jar
     implementation fg.deobf("curse.maven:codechicken-lib-1-8-${ccl_pid}:${ccl_fid}")
     implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
-    //implementation (files("libs/gregtech-1.12.2-2.5.3-beta-deobf.jar"))
+    //implementation (files("libs/gregtech-1.12.2-2.5.4-beta-deobf.jar"))
     //implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
     implementation fg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
@@ -318,7 +318,7 @@ private void processJarTask(task) {
                 attribute_map['TweakClass'] = 'org.spongepowered.asm.launch.MixinTweaker'
             }
             if (project.has_access_transformer.toBoolean()) {
-                attribute_map['FMLAT'] = 'gregtech_at.cfg'
+                attribute_map['FMLAT'] = 'gtexpert_at.cfg'
             }
             attributes(attribute_map)
         }
