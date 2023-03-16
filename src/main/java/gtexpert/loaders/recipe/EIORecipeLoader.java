@@ -6,7 +6,6 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.common.items.MetaItems;
-import gregtech.common.items.ToolItems;
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;
@@ -288,8 +287,7 @@ public class EIORecipeLoader {
     private static void tools() {
         // Yeta Wrench
         ModHandler.addShapedRecipe("yeta_wrench", new ItemStack(ModObject.itemYetaWrench.getItemNN(), 1, 0),
-                "PHP", " P ", " P ",
-                'H', ToolItems.HARD_HAMMER,
+                "PhP", " P ", " P ",
                 'P', OreDictUnifier.get(plate, ELECTRICAL_STEEL));
     }
 

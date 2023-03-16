@@ -5,7 +5,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
-import gregtech.common.items.ToolItems;
 import appeng.api.AEApi;
 import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IItems;
@@ -596,9 +595,7 @@ public class AERecipeLoader {
         // Nether Quartz Cutting Knife
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_cutting_knife"));
         ModHandler.addShapedRecipe("nether_quartz_cutting_knife", aeItems.netherQuartzKnife().maybeStack(1).get(),
-                "FPH", "QSQ", " S ",
-                'F', ToolItems.FILE,
-                'H', ToolItems.HARD_HAMMER,
+                "fPh", "QSQ", " S ",
                 'Q', new ItemStack(Items.QUARTZ),
                 'P', OreDictUnifier.get(plate, NetherQuartz),
                 'S', OreDictUnifier.get(stick, Wood));
@@ -606,8 +603,7 @@ public class AERecipeLoader {
         // Nether Quartz Wrench
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_wrench"));
         ModHandler.addShapedRecipe("ether_quartz_wrench", aeItems.netherQuartzWrench().maybeStack(1).get(),
-                "PHP", " P ", " P ",
-                'H', ToolItems.HARD_HAMMER,
+                "PhP", " P ", " P ",
                 'P', OreDictUnifier.get(plate, NetherQuartz));
 
         // Certus Quartz Normal Tools
@@ -620,9 +616,7 @@ public class AERecipeLoader {
         // Certus Quartz Cutting Knife
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_cutting_knife"));
         ModHandler.addShapedRecipe("certus_quartz_cutting_knife", aeItems.certusQuartzKnife().maybeStack(1).get(),
-                "FPH", "QSQ", " S ",
-                'F', ToolItems.FILE,
-                'H', ToolItems.HARD_HAMMER,
+                "fPh", "QSQ", " S ",
                 'Q', aeMaterials.certusQuartzCrystal().maybeStack(1).get(),
                 'P', OreDictUnifier.get(plate, CertusQuartz),
                 'S', OreDictUnifier.get(stick, Wood));
@@ -630,8 +624,7 @@ public class AERecipeLoader {
         // Certus Quartz Wrench
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_wrench"));
         ModHandler.addShapedRecipe("certus_quartz_wrench", aeItems.certusQuartzWrench().maybeStack(1).get(),
-                "PHP", " P ", " P ",
-                'H', ToolItems.HARD_HAMMER,
+                "PhP", " P ", " P ",
                 'P', OreDictUnifier.get(plate, CertusQuartz));
     }
 }

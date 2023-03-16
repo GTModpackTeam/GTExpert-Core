@@ -1,10 +1,24 @@
 package gtexpert.loaders.recipe;
 
 import gregtech.api.recipes.GTRecipeHandler;
+import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.api.util.GTUtility;
+import gregtech.common.items.MetaItems;
+import gtexpert.api.recipes.GTERecipeMaps;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
+import org.apache.commons.lang3.tuple.Pair;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.api.GTValues.*;
@@ -12,6 +26,11 @@ import static gregtech.api.unification.material.Materials.*;
 
 public class CEUOverrideRecipeLoader {
     public static void init() {
+        materias();
+        woods();
+    }
+
+    private static void materias() {
         // Glowstone Dust
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Glowstone, 2));
         RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
@@ -174,5 +193,27 @@ public class CEUOverrideRecipeLoader {
                 .output(plate, CertusQuartz, 4)
                 .duration(300).EUt(VA[LV])
                 .buildAndRegister();
+    }
+
+    private static void woods() {
+        // Wood sticks
+        ModHandler.removeRecipeByOutput(new ItemStack(Items.STICK, 2));
+        ModHandler.removeRecipeByOutput(new ItemStack(Items.STICK, 4));
+        ModHandler.addShapedRecipe("stick_saw", new ItemStack(Items.STICK, 2), "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
+        ModHandler.addShapedRecipe("stick_normal", new ItemStack(Items.STICK, 1), "P", "P", 'P', new UnificationEntry(plank, Wood));
+
+        // Wood planks
+        List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
+                .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
+                .collect(Collectors.toList());
+        List<ItemStack> allWoodPlanks = OreDictUnifier.getAllWithOreDictionaryName("plankWood").stream()
+                .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
+                .collect(Collectors.toList());
+        for (int i = 0; i < allWoodLogs.size(); i++) {
+            ModHandler.removeRecipeByOutput(GTUtility.copyAmount(2, allWoodPlanks.get(i)));
+            ModHandler.removeRecipeByOutput(GTUtility.copyAmount(4, allWoodPlanks.get(i)));
+            ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copyAmount(1, allWoodPlanks.get(i)), allWoodLogs.get(i));
+            ModHandler.addShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(2, allWoodPlanks.get(i)), "s", "P", "P", 'P', allWoodPlanks.get(i));
+        }
     }
 }

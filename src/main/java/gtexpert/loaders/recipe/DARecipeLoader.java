@@ -5,7 +5,6 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
-import gregtech.common.items.ToolItems;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;

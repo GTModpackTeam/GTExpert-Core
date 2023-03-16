@@ -11,7 +11,6 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
-import gregtech.common.items.ToolItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
@@ -78,11 +77,6 @@ public class DERecipeLoader {
                 .output(dust, DRAGON, 2)
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .input(Blocks.DRAGON_EGG, 1)
-                .output(dust, DRAGON, 8)
-                .duration(400).EUt(VA[LuV])
-                .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(dust, DRAGON, 1)
                 .fluidInputs(DistilledWater.getFluid(50))
@@ -98,17 +92,12 @@ public class DERecipeLoader {
 
         // Chaos Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, DRAGON, 16)
+                .input(dust, DRAGON, 8)
                 .fluidInputs(PYROTHEUM.getFluid(4608))
                 .fluidInputs(AWAKENED_DRACONIUM.getFluid(1152))
                 .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, CHAOS, 2)
                 .duration(1200).EUt(VA[ZPM])
-                .buildAndRegister();
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .input(DEFeatures.chaosShard, 1, 1)
-                .output(dust, CHAOS, 16)
-                .duration(600).EUt(VA[LuV])
                 .buildAndRegister();
 
 
@@ -817,12 +806,10 @@ public class DERecipeLoader {
         // Crystal Binder
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","crystal_binder"));
         ModHandler.addShapedRecipe("crystal_binder", new ItemStack(DEFeatures.crystalBinder, 1, 0),
-                "PHP", " R ", " C ",
-                'H', ToolItems.HARD_HAMMER,
+                "PhP", " R ", " C ",
                 'P', OreDictUnifier.get(plate, DRACONIUM),
                 'R', OreDictUnifier.get(stick, ENERGETIC_ALLOY),
-                'C', DEFeatures.wyvernCore
-        );
+                'C', DEFeatures.wyvernCore);
 
         // Wyvern Flux Capacitor
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","draconium_capacitor"));
@@ -890,17 +877,16 @@ public class DERecipeLoader {
 
         // Sword of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","wyvern_sword"));
-        //GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-        //        //.inputNBT(GTRecipeItemInput.getOrCreate(ToolItems.SWORD.get(DRACONIUM)), NBTMatcher.ANY, NBTCondition.create(NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(NBTTagType.STRING, "Material", "draconium"))) // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
-        //        .input(Items.DIAMOND_SWORD)
-        //        .input(plate, DRACONIUM, 2)
-        //        .input(DEFeatures.wyvernCore, 1)
-        //        .input(DEFeatures.wyvernEnergyCore, 1)
-        //        .fluidInputs(CRYOTHEUM.getFluid(9216))
-        //        .outputs(new ItemStack(DEFeatures.wyvernSword, 1))
-        //        .fluidOutputs(PYROTHEUM.getFluid(2304))
-        //        .duration(200).EUt(VA[LuV])
-        //        .buildAndRegister();
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .inputNBT(NANO_SABER, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
+                .input(plate, DRACONIUM, 2)
+                .input(DEFeatures.wyvernCore, 1)
+                .input(DEFeatures.wyvernEnergyCore, 1)
+                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .outputs(new ItemStack(DEFeatures.wyvernSword, 1))
+                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
 
         // Bow of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","wyvern_bow"));
@@ -931,7 +917,7 @@ public class DERecipeLoader {
         // Wyvern Chest
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","wyvern_chest"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputNBT(QUANTUM_CHESTPLATE, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
+                .inputNBT(QUANTUM_CHESTPLATE_ADVANCED, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
                 .input(plate, DRACONIUM, 6)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 1)
