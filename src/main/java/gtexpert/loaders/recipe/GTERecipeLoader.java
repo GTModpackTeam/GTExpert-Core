@@ -25,8 +25,9 @@ import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import appeng.api.AEApi;
-import com.the9grounds.aeadditions.api.AEAApi;
+import com.the9grounds.aeadditions.definitions.ItemDefinition;
 import crazypants.enderio.powertools.init.PowerToolObject;
+import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -256,13 +257,13 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENERGY_CLUSTER, 4)
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
-                .inputs(MetaTileEntities.HULL[UHV].getStackForm(1))
-                .input(circuit, MarkerMaterials.Tier.UHV, 4)
+                .input(MetaTileEntities.HULL[UV])
+                .input(circuit, MarkerMaterials.Tier.UV, 4)
                 .inputs(AEApi.instance().definitions().blocks().energyCellDense().maybeStack(8).get())
                 .input(COVER_SOLAR_PANEL_UV, 1)
+                .fluidInputs(FLUIX.getFluid(18432))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
-                .fluidInputs(Neutronium.getFluid(10368))
-                .fluidInputs(FLUIX.getFluid(4608))
+                .fluidInputs(Neutronium.getFluid(9216))
                 .outputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(1).get())
                 .duration(1200).EUt(VA[UV])
                 .buildAndRegister();
@@ -271,37 +272,70 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENERGY_CLUSTER, 4)
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
-                .inputs(MetaTileEntities.HULL[UHV].getStackForm(1))
-                .input(circuit, MarkerMaterials.Tier.UHV, 4)
+                .input(MetaTileEntities.HULL[UV])
+                .input(circuit, MarkerMaterials.Tier.UV, 4)
                 .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 2))
                 .input(COVER_SOLAR_PANEL_UV, 1)
+                .fluidInputs(VIBRANT_ALLOY.getFluid(18432))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
-                .fluidInputs(Neutronium.getFluid(10368))
-                .fluidInputs(VIBRANT_ALLOY.getFluid(4608))
+                .fluidInputs(Neutronium.getFluid(9216))
                 .outputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 1, 0))
                 .duration(1200).EUt(VA[UV])
                 .buildAndRegister();
 
         // GTE ME Storage Fake Component
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(screw, Neutronium, 4)
-                .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), NBTMatcher.EQUAL_TO, NBTCondition.ANY)
-                .input(ULTIMATE_BATTERY, 4)
-                .inputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(1).get())
-                .inputs(AEAApi.instance().items().cell16384kPart().maybeStack(4).get())
-                .inputs(AEAApi.instance().items().cell4096kPartFluid().maybeStack(4).get())
+                .input(screw, Neutronium, 8)
+                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .inputs(new ItemStack(ItemDefinition.instance.cell256kPart().maybeItem().get(), 16, 3))
+                .inputs(new ItemStack(ItemDefinition.instance.cell256kPart().maybeItem().get(), 16, 6))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
-                .fluidInputs(Neutronium.getFluid(10368))
+                .fluidInputs(Neutronium.getFluid(9216))
                 .output(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 1)
                 .duration(1200).EUt(VA[UV])
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
-
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.HULL[UHV])
+                .input(DAFeatures.chaoticEnergyCore, 8)
+                .input(DAFeatures.chaosStabilizerCore, 8)
+                .inputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(4).get())
+                .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
+                .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
+                .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
+                .duration(2000).EUt(VA[UHV])
+                .buildAndRegister();
 
         // Creative Quantum Tank
-
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.CREATIVE_ENERGY, 4)
+                .input(QUANTUM_STAR, 64)
+                .input(ELECTRIC_PUMP_UV, 64)
+                .input(FLUID_REGULATOR_UV, 64)
+                .input(EMITTER_UV, 64)
+                .input(WETWARE_MAINFRAME_UHV, 64)
+                .fluidInputs(SolderingAlloy.getFluid(36864))
+                .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
+                .outputs(MetaTileEntities.CREATIVE_TANK.getStackForm())
+                .duration(2000).EUt(VA[UHV])
+                .buildAndRegister();
 
         // Creative Quantum Chest
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.CREATIVE_TANK, 16)
+                .input(QUANTUM_STAR, 64)
+                .input(CONVEYOR_MODULE_UV, 64)
+                .input(ROBOT_ARM_UV, 64)
+                .input(EMITTER_UV, 64)
+                .input(WETWARE_MAINFRAME_UHV, 64)
+                .input(NAN_CERTIFICATE)
+                .fluidInputs(SolderingAlloy.getFluid(36864))
+                .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
+                .outputs(MetaTileEntities.CREATIVE_CHEST.getStackForm())
+                .duration(2000).EUt(VA[UHV])
+                .buildAndRegister();
     }
 }

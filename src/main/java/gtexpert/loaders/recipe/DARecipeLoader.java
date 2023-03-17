@@ -76,7 +76,7 @@ public class DARecipeLoader {
     private static void tools() {
         // Chaotic Staff of Power
         GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.draconicStaffOfPower, 1))
+                .input(DEFeatures.draconicStaffOfPower, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
@@ -89,7 +89,7 @@ public class DARecipeLoader {
 
         // Chaotic Bow
         GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.draconicBow, 1))
+                .input(DEFeatures.draconicBow, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
@@ -102,7 +102,7 @@ public class DARecipeLoader {
 
         // Chaotic Helm
         GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.draconicHelm, 1))
+                .input(DEFeatures.draconicHelm, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
@@ -115,7 +115,7 @@ public class DARecipeLoader {
 
         // Chaotic Chestplate
         GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.draconicChest, 1))
+                .input(DEFeatures.draconicChest, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
@@ -128,7 +128,7 @@ public class DARecipeLoader {
 
         // Chaotic Leggings
         GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.draconicLegs, 1))
+                .input(DEFeatures.draconicLegs, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
@@ -141,7 +141,7 @@ public class DARecipeLoader {
 
         // Chaotic Boots
         GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.draconicBoots, 1))
+                .input(DEFeatures.draconicBoots, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)

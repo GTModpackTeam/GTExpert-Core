@@ -199,21 +199,22 @@ public class CEUOverrideRecipeLoader {
         // Wood sticks
         ModHandler.removeRecipeByOutput(new ItemStack(Items.STICK, 2));
         ModHandler.removeRecipeByOutput(new ItemStack(Items.STICK, 4));
-        ModHandler.addShapedRecipe("stick_saw", new ItemStack(Items.STICK, 2), "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
-        ModHandler.addShapedRecipe("stick_normal", new ItemStack(Items.STICK, 1), "P", "P", 'P', new UnificationEntry(plank, Wood));
+        ModHandler.addMirroredShapedRecipe("stick_saw", new ItemStack(Items.STICK, 2), "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
+        ModHandler.addMirroredShapedRecipe("stick_normal", new ItemStack(Items.STICK, 1), "P", "P", 'P', new UnificationEntry(plank, Wood));
 
         // Wood planks
         List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
                 .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
                 .collect(Collectors.toList());
-        List<ItemStack> allWoodPlanks = OreDictUnifier.getAllWithOreDictionaryName("plankWood").stream()
-                .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
-                .collect(Collectors.toList());
         for (int i = 0; i < allWoodLogs.size(); i++) {
-            ModHandler.removeRecipeByOutput(GTUtility.copyAmount(2, allWoodPlanks.get(i)));
-            ModHandler.removeRecipeByOutput(GTUtility.copyAmount(4, allWoodPlanks.get(i)));
-            ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copyAmount(1, allWoodPlanks.get(i)), allWoodLogs.get(i));
-            ModHandler.addShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(2, allWoodPlanks.get(i)), "s", "P", "P", 'P', allWoodPlanks.get(i));
+            Pair<IRecipe, ItemStack> outputPair = ModHandler.getRecipeOutput(null, allWoodLogs.get(i));
+            ItemStack plankStack = outputPair.getValue();
+            if (plankStack.isEmpty()) continue;
+
+            ModHandler.removeRecipeByOutput(GTUtility.copyAmount(2, plankStack));
+            ModHandler.removeRecipeByOutput(GTUtility.copyAmount(4, plankStack));
+            ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copyAmount(1, plankStack), allWoodLogs.get(i));
+            ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(2, plankStack), "s", "P", "P", 'P', allWoodLogs.get(i));
         }
     }
 }
