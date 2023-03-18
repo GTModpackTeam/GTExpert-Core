@@ -16,7 +16,6 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
 import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -187,17 +186,6 @@ public class EIORecipeLoader {
                 .output(dust, VIVID_ALLOY, 2)
                 .duration(40).EUt(VA[EV])
                 .buildAndRegister();
-
-
-        // Vial Extractor
-        registerMachineRecipe(VIAL_EXTRACTOR, "VRV", "PMF", "WCW",
-                'V', ModObject.itemSoulVial.getItem(),
-                'R', SENSOR,
-                'P', PISTON,
-                'M', HULL,
-                'F', PUMP,
-                'W', CABLE,
-                'C', CIRCUIT);
     }
 
     private static void items() {

@@ -138,8 +138,6 @@ dependencies {
     implementation (files("libs/gregtech-1.12.2-2.5.4-beta-deobf.jar"))
     //implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
-    implementation fg.deobf("curse.maven:ae-additions-extra-cells-2-fork-${aea_pid}:${aea_fid}")
-    implementation fg.deobf("curse.maven:shadowfacts-forgelin-${sff_pid}:${sff_fid}")
     implementation fg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
     implementation fg.deobf("curse.maven:ender-io-conduits-${eic_pid}:${eic_fid}")
     implementation fg.deobf("curse.maven:endercore-${eco_pid}:${eco_fid}")
@@ -150,6 +148,8 @@ dependencies {
     implementation fg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
     implementation fg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
     implementation fg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
+    implementation fg.deobf("curse.maven:ae-additions-extra-cells-2-fork-${aea_pid}:${aea_fid}")
+    implementation fg.deobf("curse.maven:shadowfacts-forgelin-${sff_pid}:${sff_fid}")
 
     // Soft Dependencies
     implementation "mezz.jei:jei_1.12.2:${jei_version}"
