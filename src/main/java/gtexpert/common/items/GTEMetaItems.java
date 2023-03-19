@@ -1,7 +1,7 @@
 package gtexpert.common.items;
+
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
-import gregtech.common.items.armor.MetaArmor;
 
 public final class GTEMetaItems {
 

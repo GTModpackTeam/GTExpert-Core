@@ -13,6 +13,10 @@ gtexpert.machine.void_ore_miner.tooltip.1=§6Mines out 32 Ores based on the inpu
 gtexpert.machine.void_ore_miner.tooltip.2=§6The outputs will be doubled with a Nether or End ore!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6Requires 576mb Enderpearl and 10000mb Drilling Fluid per operation§r
 gtexpert.machine.extreme_mixer.zpm.name=Elite Extreme Mixer III
+gtexpert.machine.draconium_fusion.name=Draconic Fusion Crafter
+gtexpert.machine.draconium_fusion.tooltip=It feels strong and powerful?
+gtexpert.machine.awakened_draconium_fusion.name=Draconic Fusion Crafter II
+gtexpert.machine.awakened_draconium_fusion.tooltip=It feels strong and powerful?
 
 # singleblock
 gtexpert.machine.vial_extractor.tooltip=Soul of a Lost Undead?
@@ -29,6 +33,8 @@ gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
 tile.gte_metal_casing.greenhouse_casing.name=Corrosion Proof Galvalume Machine Casing
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
 tile.gte_metal_casing.void_ore_miner_casing.name=Voiding Proof NM-HEA NP Machine Casing
+tile.gte_metal_casing.draconium_casing.name=Dragon Proof Draconium Machine Casing
+tile.gte_metal_casing.awakened_draconium_casing.name=Dragon Proof Awakened Draconium Machine Casing
 tile.sawmill_conveyor.name=Sawmill Conveyor
 
 # material
@@ -36,8 +42,11 @@ material.galvalume=Galvalume
 material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
 material.naquadah_rocket_fuel=Naquadah Rocket Fuel
 material.dragon=Dragon
+material.chaos=Chaos
+material.cryotheum=Cryotheum
+material.pyrotheum=Pyrotheum
 material.draconium=Draconium
-material.draconium_awakened=Awakened Draconium
+material.awakened_draconium=Awakened Draconium
 material.electrical_steel=Electrical Steel
 material.energetic_alloy=Energetic Alloy
 material.vibrant_alloy=Vibrant Alloy
@@ -72,6 +81,7 @@ recipemap.greenhouse.name=Greenhouse
 recipemap.vial_extractor.name=Vial Extractor
 recipemap.extreme_mixer.name=Extreme Mixer
 recipemap.void_ore_miner.name=Void Ore Miner
-
+recipemap.draconium_fusion.name=Draconic Fusion Crafter
+recipemap.awakened_draconium_fusion.name=Draconic Fusion Crafter
 #misc
 gtexpert.multiblock.needsun=The Controller must be able to See the Sun!

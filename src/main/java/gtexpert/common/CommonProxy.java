@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -19,6 +20,8 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.function.Function;
 import static gtexpert.common.GTEMetaBlocks.*;
+
+import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = "gtexpert")
 public class CommonProxy {
@@ -35,18 +38,18 @@ public class CommonProxy {
     }
 
     @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+    public static void registerBlocks(RegistryEvent.@NotNull Register<Block> event) {
         event.getRegistry().register(GTE_BLOCK_METAL_CASING);
         event.getRegistry().register(BLOCK_SAWMILL_CONVEYOR);
     }
 
     @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
+    public static void registerItems(RegistryEvent.@NotNull Register<Item> event) {
         event.getRegistry().register(createItemBlock(GTE_BLOCK_METAL_CASING, VariantItemBlock::new));
         event.getRegistry().register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
     }
 
-    private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
+    private static <T extends Block> @NotNull ItemBlock createItemBlock(@NotNull T block, @NotNull Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
         itemBlock.setRegistryName(block.getRegistryName());
         return itemBlock;
@@ -62,9 +65,11 @@ public class CommonProxy {
         // Main recipe registration
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
-        CEUOverrideRecipes.init();
+        CEUOverrideRecipeLoader.init();
         GTERecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();
+        DERecipeLoader.init();
+        DARecipeLoader.init();
     }
 }

@@ -6,19 +6,18 @@ import gregtech.api.util.GTUtility;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nonnull;
-
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 import static gregtech.common.metatileentities.MetaTileEntities.registerSimpleMetaTileEntity;
 
+import org.jetbrains.annotations.NotNull;
+
 public class GTEMetaTileEntities {
-
-    public static GTESimpleMachineMetaTileEntity[] EXTREME_MIXER = new GTESimpleMachineMetaTileEntity[1]; //ZPM Only
-
+    public static GTESimpleMachineMetaTileEntity @NotNull [] EXTREME_MIXER = new GTESimpleMachineMetaTileEntity[1]; //ZPM Only
     public static MetaTileEntitySawmill SAWMILL;
-    public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
+    public static SimpleMachineMetaTileEntity @NotNull [] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
+    public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
+    public static MetaTileEntityDraconiumAwakenedFusion AWAKENED_DRACONIUM_FUSION;
 
     public static void init() {
         /*
@@ -54,10 +53,12 @@ public class GTEMetaTileEntities {
         //multiblocks :12000~
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));
         VOIDOREMINER = registerMetaTileEntity(12003, new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
+        DRACONIUM_FUSION = registerMetaTileEntity(12004, new MetaTileEntityDraconiumFusion(gteId("draconium_fusion")));
+        AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005, new MetaTileEntityDraconiumAwakenedFusion(gteId("awakened_draconium_fusion")));
     }
 
-    @Nonnull
-    private static ResourceLocation gteId(String name) {
+    @NotNull
+    private static ResourceLocation gteId(@NotNull String name) {
         return new ResourceLocation("gtexpert", name);
     }
 }

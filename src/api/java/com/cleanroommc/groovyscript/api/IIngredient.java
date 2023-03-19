@@ -4,7 +4,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.function.Predicate;
 
 /**
@@ -18,7 +19,7 @@ public interface IIngredient extends IResourceStack, Predicate<ItemStack> {
 
     ItemStack[] getMatchingStacks();
 
-    default ItemStack applyTransform(ItemStack matchedInput) {
+    default @NotNull ItemStack applyTransform(@NotNull ItemStack matchedInput) {
         return matchedInput.getItem().hasContainerItem(matchedInput) ? matchedInput.getItem().getContainerItem(matchedInput) : ItemStack.EMPTY;
     }
 
@@ -40,22 +41,22 @@ public interface IIngredient extends IResourceStack, Predicate<ItemStack> {
         }
 
         @Override
-        public IIngredient exactCopy() {
+        public @NotNull IIngredient exactCopy() {
             return this;
         }
 
         @Override
-        public Ingredient toMcIngredient() {
+        public @NotNull Ingredient toMcIngredient() {
             return Ingredient.EMPTY;
         }
 
         @Override
-        public ItemStack[] getMatchingStacks() {
+        public ItemStack @NotNull [] getMatchingStacks() {
             return new ItemStack[]{ItemStack.EMPTY};
         }
 
         @Override
-        public boolean test(ItemStack stack) {
+        public boolean test(@NotNull ItemStack stack) {
             return stack.isEmpty();
         }
     };
@@ -66,12 +67,12 @@ public interface IIngredient extends IResourceStack, Predicate<ItemStack> {
     IIngredient ANY = new IIngredient() {
 
         @Override
-        public IIngredient exactCopy() {
+        public @NotNull IIngredient exactCopy() {
             return this;
         }
 
         @Override
-        public Ingredient toMcIngredient() {
+        public @NotNull Ingredient toMcIngredient() {
             return new Ingredient() {
                 @Override
                 public boolean apply(@Nullable ItemStack p_apply_1_) {

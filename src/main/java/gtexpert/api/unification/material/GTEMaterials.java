@@ -1,6 +1,7 @@
 package gtexpert.api.unification.material;
 
 import gregtech.api.unification.material.Material;
+import net.minecraftforge.fml.common.Loader;
 
 /**
  * Material Registration.
@@ -50,9 +51,6 @@ public class GTEMaterials {
     public static Material Galvalume;
     public static Material NM_HEA_NPs;
     public static Material NAQUADAH_ROCKET_FUEL;
-    //public static Material DRAGON;
-    //public static Material DRACONIUM;
-    //public static Material DRACONIUM_AWAKENED;
     public static Material SOUL_SAND;
     public static Material CHORUS_FRUIT;
     public static Material ELECTRICAL_STEEL;
@@ -74,6 +72,12 @@ public class GTEMaterials {
     public static Material CHARGED_CERTUS_QUARTZ;
     public static Material FLUIX;
     public static Material FLUIX_ALLOY;
+    public static Material CRYOTHEUM;
+    public static Material PYROTHEUM;
+    public static Material DRAGON;
+    public static Material CHAOS;
+    public static Material DRACONIUM;
+    public static Material AWAKENED_DRACONIUM;
 
     // Second Degree Materials
 
@@ -87,6 +91,9 @@ public class GTEMaterials {
         GTEFirstDegreeMaterials.init(); // 24001 - 24100
         EIOFirstDegreeMaterials.init(); // 24101 - 24150
         AEFirstDegreeMaterials.init();  // 24151 - 24175
-        //DraconicDegreeMaterials.init();  // 24176 - 24200
+
+        if (Loader.isModLoaded("draconicevolution")) {
+            DEDegreeMaterials.init(); // 24176 - 24200
+        }
     }
 }

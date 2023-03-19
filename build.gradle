@@ -61,7 +61,7 @@ if (project.use_eclipse.toBoolean()) {
 
 minecraft {
     mappings channel: "${mcp_mappings_channel}", version: "${mcp_mappings_version}"
-    if (project.has_access_transformer.toBoolean()) {
+    if (project.use_access_transformer.toBoolean()) {
         // accessTransformer = file('src/main/resources/META-INF/gtexpert_at.cfg')
     }
 
@@ -102,13 +102,21 @@ repositories {
         name = 'Cleanroom Maven'
         url = 'https://maven.cleanroommc.com'
     }
+    maven { // JEI
+        name = 'Progwml6 Maven'
+        url = 'https://dvs1.progwml6.com/files/maven'
+    }
+    maven { // CraftTweaker and JEI Backup
+        name = 'BlameJared Maven'
+        url = 'https://maven.blamejared.com'
+    }
+    maven {  // Autoconfig and Autosave
+        name = 'Mod Maven'
+        url = 'https://modmaven.dev'
+    }
     maven {
         name = 'Sponge Powered'
         url = 'https://repo.spongepowered.org/maven'
-    }
-    maven {
-        name = 'Mod Maven'
-        url = 'https://modmaven.dev'
     }
     maven {
         name = 'Curse Maven'
@@ -126,21 +134,26 @@ dependencies {
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
     implementation fg.deobf("curse.maven:codechicken-lib-1-8-${ccl_pid}:${ccl_fid}")
-    implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
-    //implementation (files("libs/gregtech-1.12.2-2.5.3-beta-deobf.jar"))
+    //implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
+    implementation (files("libs/gregtech-1.12.2-2.5.4-beta-deobf.jar"))
     //implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
     implementation fg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
+    implementation fg.deobf("curse.maven:ender-io-conduits-${eic_pid}:${eic_fid}")
     implementation fg.deobf("curse.maven:endercore-${eco_pid}:${eco_fid}")
     implementation "info.loenwind.autoconfig:AutoConfig:${minecraft_version}-${autoconfig_version}"
     implementation "info.loenwind.autosave:AutoSave:${minecraft_version}-${autosave_version}"
-    //implementation fg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
-    //implementation fg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
-    //implementation fg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
+    implementation fg.deobf("curse.maven:baubles-${bal_pid}:${bal_fid}")
+    implementation fg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
+    implementation fg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
+    implementation fg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
+    implementation fg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
+    implementation fg.deobf("curse.maven:ae-additions-extra-cells-2-fork-${aea_pid}:${aea_fid}")
+    implementation fg.deobf("curse.maven:shadowfacts-forgelin-${sff_pid}:${sff_fid}")
 
     // Soft Dependencies
-    implementation "curse.maven:crafttweaker-${crt_pid}:${crt_fid}"
-    implementation fg.deobf("curse.maven:jei-${jei_pid}:${jei_fid}")
+    implementation "mezz.jei:jei_1.12.2:${jei_version}"
+    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crt_version}"
     implementation fg.deobf("curse.maven:top-${top_pid}:${top_fid}")
     implementation fg.deobf("curse.maven:ctm-${ctm_pid}:${ctm_fid}")
 
@@ -149,6 +162,8 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest:${hamcrest_version}")
 
     // Compile-Time Dependencies
+    compileOnly "org.jetbrains:annotations:${annotations_version}"
+    annotationProcessor "org.jetbrains:annotations:${annotations_version}"
     compileOnly "org.projectlombok:lombok:${lombok_version}"
     annotationProcessor "org.projectlombok:lombok:${lombok_version}"
 
@@ -304,8 +319,8 @@ private void processJarTask(task) {
             if (project.use_mixins.toBoolean()) {
                 attribute_map['TweakClass'] = 'org.spongepowered.asm.launch.MixinTweaker'
             }
-            if (project.has_access_transformer.toBoolean()) {
-                attribute_map['FMLAT'] = 'gregtech_at.cfg'
+            if (project.use_access_transformer.toBoolean()) {
+                attribute_map['FMLAT'] = 'gtexpert_at.cfg'
             }
             attributes(attribute_map)
         }
