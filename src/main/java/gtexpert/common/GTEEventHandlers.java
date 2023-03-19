@@ -22,6 +22,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import org.jetbrains.annotations.NotNull;
+
 @Mod.EventBusSubscriber(
         modid = "gtexpert"
 )
@@ -34,7 +36,7 @@ public class GTEEventHandlers {
     @SubscribeEvent(
             priority = EventPriority.NORMAL
     )
-    public static void onEntityLivingFallEvent(LivingFallEvent event) {
+    public static void onEntityLivingFallEvent(@NotNull LivingFallEvent event) {
         if (event.getEntity() instanceof EntityPlayerMP) {
             EntityPlayerMP player = (EntityPlayerMP)event.getEntity();
             ItemStack armor = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);

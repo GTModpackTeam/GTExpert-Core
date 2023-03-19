@@ -1,68 +1,41 @@
 package gtexpert.loaders.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.fluids.MetaFluids;
-import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.ingredients.GTRecipeInput;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialFlag;
-import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTUtility;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
-import gregtech.common.metatileentities.MetaTileEntities;
-import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
-import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import appeng.api.AEApi;
 import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
 import appeng.api.definitions.IParts;
 import crazypants.enderio.base.init.ModObject;
-import net.minecraft.init.Blocks;
+import gtexpert.common.items.GTEMetaItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
-import org.apache.commons.lang3.tuple.Pair;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.metatileentities.MetaTileEntities.HULL;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 
 public class AERecipeLoader {
+    private static final IItems aeItems = AEApi.instance().definitions().items();
+    private static final IBlocks aeBlocks = AEApi.instance().definitions().blocks();
+    private static final IMaterials aeMaterials = AEApi.instance().definitions().materials();
+    private static final IParts aeParts = AEApi.instance().definitions().parts();
+
     public static void init() {
-        IItems aeItems = AEApi.instance().definitions().items();
-        IBlocks aeBlocks = AEApi.instance().definitions().blocks();
-        IMaterials aeMaterials = AEApi.instance().definitions().materials();
-        IParts aeParts = AEApi.instance().definitions().parts();
+        materias();
+        items();
+        tools();
+    }
 
-
+    private static void materias() {
         // ########################################
         // Sky Stone
         // ########################################
@@ -90,85 +63,6 @@ public class AERecipeLoader {
                 .notConsumable(aeBlocks.skyStoneBlock().maybeStack(1).get())
                 .outputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
                 .duration(100).EUt(VA[HV])
-                .buildAndRegister();
-
-
-        // ########################################
-        // Inscriber
-        // ########################################
-        // Press
-        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, NetherQuartz)
-                .input(block, Iron, 1)
-                .outputs(aeMaterials.siliconPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[HV])
-                .buildAndRegister();
-        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, CHARGED_CERTUS_QUARTZ)
-                .input(block, Iron, 1)
-                .outputs(aeMaterials.logicProcessorPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[HV])
-                .buildAndRegister();
-        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, CertusQuartz)
-                .input(block, Iron, 1)
-                .outputs(aeMaterials.calcProcessorPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[HV])
-                .buildAndRegister();
-        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, FLUIX)
-                .input(block, Iron, 1)
-                .outputs(aeMaterials.engProcessorPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Circuit
-        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(aeMaterials.siliconPress().maybeStack(1).get())
-                .input(plate, Silicon, 1)
-                .outputs(aeMaterials.siliconPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[HV])
-                .buildAndRegister();
-        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(aeMaterials.logicProcessorPress().maybeStack(1).get())
-                .input(plate, Gold, 1)
-                .outputs(aeMaterials.logicProcessorPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[HV])
-                .buildAndRegister();
-        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(aeMaterials.calcProcessorPress().maybeStack(1).get())
-                .input(plate, CertusQuartz, 1)
-                .outputs(aeMaterials.calcProcessorPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[HV])
-                .buildAndRegister();
-        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(aeMaterials.engProcessorPress().maybeStack(1).get())
-                .input(plate, Diamond, 1)
-                .outputs(aeMaterials.engProcessorPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Processor
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.siliconPrint().maybeStack(1).get())
-                .inputs(aeMaterials.logicProcessorPrint().maybeStack(1).get())
-                .fluidInputs(Redstone.getFluid(144))
-                .outputs(aeMaterials.logicProcessor().maybeStack(1).get())
-                .duration(20).EUt(VA[HV])
-                .buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.siliconPrint().maybeStack(1).get())
-                .inputs(aeMaterials.calcProcessorPrint().maybeStack(1).get())
-                .fluidInputs(Redstone.getFluid(144))
-                .outputs(aeMaterials.calcProcessor().maybeStack(1).get())
-                .duration(20).EUt(VA[HV])
-                .buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.siliconPrint().maybeStack(1).get())
-                .inputs(aeMaterials.engProcessorPrint().maybeStack(1).get())
-                .fluidInputs(Redstone.getFluid(144))
-                .outputs(aeMaterials.engProcessor().maybeStack(1).get())
-                .duration(20).EUt(VA[HV])
                 .buildAndRegister();
 
 
@@ -248,13 +142,8 @@ public class AERecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/certus_quartz_block"));
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/certus_quartz_block_pure"));
         ModHandler.removeRecipeByOutput(aeMaterials.certusQuartzCrystal().maybeStack(4).get());
-        ModHandler.addShapelessRecipe("ae2_certus_quartz_block", aeBlocks.quartzBlock().maybeStack(1).get(), new UnificationEntry(block, CertusQuartz));
-        ModHandler.addShapelessRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, CertusQuartz), aeBlocks.quartzBlock().maybeStack(1).get());
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.certusQuartzCrystal().maybeStack(4).get())
-                .output(block, CertusQuartz, 1)
-                .duration(300).EUt(2)
-                .buildAndRegister();
+        ModHandler.addMirroredShapedRecipe("ae2_certus_quartz_block", aeBlocks.quartzBlock().maybeStack(1).get(), "B", 'B', new UnificationEntry(block, CertusQuartz));
+        ModHandler.addMirroredShapedRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, CertusQuartz), "B", 'B', aeBlocks.quartzBlock().maybeStack(1).get());
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(8).get())
                 .output(block, CertusQuartz, 1)
@@ -279,13 +168,13 @@ public class AERecipeLoader {
                 .inputs(aeBlocks.quartzBlock().maybeStack(1).get())
                 .fluidInputs(DistilledWater.getFluid(11))
                 .output(plate, CertusQuartz, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(240).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(aeBlocks.quartzBlock().maybeStack(1).get())
                 .fluidInputs(Water.getFluid(15))
                 .output(plate, CertusQuartz, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(300).EUt(VA[LV])
                 .buildAndRegister();
 
 
@@ -469,13 +358,13 @@ public class AERecipeLoader {
                 .inputs(aeBlocks.fluixBlock().maybeStack(1).get())
                 .fluidInputs(DistilledWater.getFluid(11))
                 .output(plate, FLUIX, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(240).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(aeBlocks.fluixBlock().maybeStack(1).get())
                 .fluidInputs(Water.getFluid(15))
                 .output(plate, FLUIX, 4)
-                .duration(160).EUt(VA[LV])
+                .duration(300).EUt(VA[LV])
                 .buildAndRegister();
 
         // Lens
@@ -501,5 +390,241 @@ public class AERecipeLoader {
                 .output(dust, FLUIX_ALLOY, 8)
                 .duration(200).EUt(VA[HV])
                 .buildAndRegister();
+    }
+
+    private static void items() {
+        // Silicon Processor Press
+        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .notConsumable(lens, NetherQuartz)
+                .input(block, Iron, 1)
+                .outputs(aeMaterials.siliconPress().maybeStack(1).get())
+                .duration(2000).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Logic Processor Press
+        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .notConsumable(lens, CHARGED_CERTUS_QUARTZ)
+                .input(block, Iron, 1)
+                .outputs(aeMaterials.logicProcessorPress().maybeStack(1).get())
+                .duration(2000).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Calc Processor Press
+        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .notConsumable(lens, CertusQuartz)
+                .input(block, Iron, 1)
+                .outputs(aeMaterials.calcProcessorPress().maybeStack(1).get())
+                .duration(2000).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Engineer Processor Press
+        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .notConsumable(lens, FLUIX)
+                .input(block, Iron, 1)
+                .outputs(aeMaterials.engProcessorPress().maybeStack(1).get())
+                .duration(2000).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Silicon Circuit
+        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                .notConsumable(aeMaterials.siliconPress().maybeStack(1).get())
+                .input(plate, Silicon, 1)
+                .outputs(aeMaterials.siliconPrint().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Logic Circuit
+        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                .notConsumable(aeMaterials.logicProcessorPress().maybeStack(1).get())
+                .input(plate, Gold, 1)
+                .outputs(aeMaterials.logicProcessorPrint().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Calc Circuit
+        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                .notConsumable(aeMaterials.calcProcessorPress().maybeStack(1).get())
+                .input(plate, CertusQuartz, 1)
+                .outputs(aeMaterials.calcProcessorPrint().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Engineer Circuit
+        RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                .notConsumable(aeMaterials.engProcessorPress().maybeStack(1).get())
+                .input(plate, Diamond, 1)
+                .outputs(aeMaterials.engProcessorPrint().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Logic Processor
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.siliconPrint().maybeStack(1).get())
+                .inputs(aeMaterials.logicProcessorPrint().maybeStack(1).get())
+                .fluidInputs(Redstone.getFluid(144))
+                .outputs(aeMaterials.logicProcessor().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Calc Processor
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.siliconPrint().maybeStack(1).get())
+                .inputs(aeMaterials.calcProcessorPrint().maybeStack(1).get())
+                .fluidInputs(Redstone.getFluid(144))
+                .outputs(aeMaterials.calcProcessor().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Engineer Processor
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(aeMaterials.siliconPrint().maybeStack(1).get())
+                .inputs(aeMaterials.engProcessorPrint().maybeStack(1).get())
+                .fluidInputs(Redstone.getFluid(144))
+                .outputs(aeMaterials.engProcessor().maybeStack(1).get())
+                .duration(20).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Formation Core
+//        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "materials/formationcore"));
+//        ModHandler.addShapedRecipe("formation_core", aeMaterials.formationCore().maybeStack(1).get(),
+//                "SES", "LQL", "SES",
+//                'S', OreDictUnifier.get(stick, Aluminium),
+//                'E', aeMaterials.engProcessor().maybeStack(1).get(),
+//                'L', aeMaterials.logicProcessor().maybeStack(1).get(),
+//                'Q', OreDictUnifier.get(gem, NetherQuartz));
+//        ModHandler.addShapedRecipe("formation_core_pure", aeMaterials.formationCore().maybeStack(2).get(),
+//                "SES", "LQL", "SES",
+//                'S', OreDictUnifier.get(stick, Aluminium),
+//                'E', aeMaterials.engProcessor().maybeStack(1).get(),
+//                'L', aeMaterials.logicProcessor().maybeStack(1).get(),
+//                'Q', aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get());
+//        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                .circuitMeta(1)
+//                .input(stick, Aluminium, 2)
+//                .inputs(aeMaterials.engProcessor().maybeStack(1).get())
+//                .inputs(aeMaterials.logicProcessor().maybeStack(1).get())
+//                .inputs(
+//                        OreDictUnifier.get(gem, NetherQuartz, 1),
+//                        aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get()
+//                )
+//                .outputs(aeMaterials.formationCore().maybeStack(4).get())
+//                .duration(20).EUt(VA[EV])
+//                .buildAndRegister();
+
+        // Annihilation Core
+//        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "materials/annihilationcore"));
+//        ModHandler.addShapedRecipe("annihilation_core", aeMaterials.annihilationCore().maybeStack(1).get(),
+//                "SES", "LQL", "SES",
+//                'S', OreDictUnifier.get(stick, Aluminium),
+//                'E', aeMaterials.engProcessor().maybeStack(1).get(),
+//                'L', aeMaterials.logicProcessor().maybeStack(1).get(),
+//                'Q', OreDictUnifier.get(gem, CertusQuartz));
+//        ModHandler.addShapedRecipe("annihilation_core_pure", aeMaterials.annihilationCore().maybeStack(2).get(),
+//                "SES", "LQL", "SES",
+//                'S', OreDictUnifier.get(stick, Aluminium),
+//                'E', aeMaterials.engProcessor().maybeStack(1).get(),
+//                'L', aeMaterials.logicProcessor().maybeStack(1).get(),
+//                'Q', aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get());
+//        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                .circuitMeta(2)
+//                .input(stick, Aluminium, 2)
+//                .inputs(aeMaterials.engProcessor().maybeStack(1).get())
+//                .inputs(aeMaterials.logicProcessor().maybeStack(1).get())
+//                .inputs(
+//                        OreDictUnifier.get(gem, CertusQuartz, 1),
+//                        aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get()
+//                )
+//                .outputs(aeMaterials.annihilationCore().maybeStack(4).get())
+//                .duration(20).EUt(VA[EV])
+//                .buildAndRegister();
+
+        // Matrix Core
+//        ModHandler.addShapedRecipe("matrix_core", GTEMetaItems.MATRIX_CORE.getStackForm(1),
+//                "SFS", "AQA", "SFS",
+//                'S', OreDictUnifier.get(stick, Aluminium),
+//                'F', aeMaterials.formationCore().maybeStack(1).get(),
+//                'A', aeMaterials.annihilationCore().maybeStack(1).get(),
+//                'Q', OreDictUnifier.get(gem, FLUIX));
+//        ModHandler.addShapedRecipe("matrix_core_pure", GTEMetaItems.MATRIX_CORE.getStackForm(2),
+//                "SFS", "AQA", "SFS",
+//                'S', OreDictUnifier.get(stick, Aluminium),
+//                'F', aeMaterials.formationCore().maybeStack(1).get(),
+//                'A', aeMaterials.annihilationCore().maybeStack(1).get(),
+//                'Q', aeMaterials.purifiedFluixCrystal().maybeStack(1).get());
+//        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                .circuitMeta(3)
+//                .input(stick, Aluminium, 2)
+//                .inputs(aeMaterials.formationCore().maybeStack(1).get())
+//                .inputs(aeMaterials.annihilationCore().maybeStack(1).get())
+//                .inputs(
+//                        OreDictUnifier.get(gem, FLUIX, 1),
+//                        aeMaterials.purifiedFluixCrystal().maybeStack(1).get()
+//                )
+//                .outputs(GTEMetaItems.MATRIX_CORE.getStackForm(4))
+//                .duration(20).EUt(VA[EV])
+//                .buildAndRegister();
+//        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                .circuitMeta(4)
+//                .input(stick, Aluminium, 6)
+//                .inputs(aeMaterials.engProcessor().maybeStack(4).get())
+//                .inputs(
+//                        OreDictUnifier.get(gem, NetherQuartz, 1),
+//                        aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get()
+//                )
+//                .inputs(
+//                        OreDictUnifier.get(gem, CertusQuartz, 1),
+//                        aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get()
+//                )
+//                .inputs(
+//                        OreDictUnifier.get(gem, FLUIX, 1),
+//                        aeMaterials.purifiedFluixCrystal().maybeStack(1).get()
+//                )
+//                .outputs(GTEMetaItems.MATRIX_CORE.getStackForm(4))
+//                .duration(20).EUt(VA[EV])
+//                .buildAndRegister();
+    }
+
+    private static void tools() {
+        // Nether Quartz Normal Tools
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "nether_quartz_axe"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "nether_quartz_hoe"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "nether_quartz_pickaxe"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "nether_quartz_shovel"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "nether_quartz_sword"));
+
+        // Nether Quartz Cutting Knife
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_cutting_knife"));
+        ModHandler.addShapedRecipe("nether_quartz_cutting_knife", aeItems.netherQuartzKnife().maybeStack(1).get(),
+                "fPh", "QSQ", " S ",
+                'Q', new ItemStack(Items.QUARTZ),
+                'P', OreDictUnifier.get(plate, NetherQuartz),
+                'S', OreDictUnifier.get(stick, Wood));
+
+        // Nether Quartz Wrench
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_wrench"));
+        ModHandler.addShapedRecipe("ether_quartz_wrench", aeItems.netherQuartzWrench().maybeStack(1).get(),
+                "PhP", " P ", " P ",
+                'P', OreDictUnifier.get(plate, NetherQuartz));
+
+        // Certus Quartz Normal Tools
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "certus_quartz_axe"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "certus_quartz_hoe"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "certus_quartz_pickaxe"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "certus_quartz_shovel"));
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "certus_quartz_sword"));
+
+        // Certus Quartz Cutting Knife
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_cutting_knife"));
+        ModHandler.addShapedRecipe("certus_quartz_cutting_knife", aeItems.certusQuartzKnife().maybeStack(1).get(),
+                "fPh", "QSQ", " S ",
+                'Q', aeMaterials.certusQuartzCrystal().maybeStack(1).get(),
+                'P', OreDictUnifier.get(plate, CertusQuartz),
+                'S', OreDictUnifier.get(stick, Wood));
+
+        // Certus Quartz Wrench
+        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_wrench"));
+        ModHandler.addShapedRecipe("certus_quartz_wrench", aeItems.certusQuartzWrench().maybeStack(1).get(),
+                "PhP", " P ", " P ",
+                'P', OreDictUnifier.get(plate, CertusQuartz));
     }
 }

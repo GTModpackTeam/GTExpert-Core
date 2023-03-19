@@ -7,8 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
 import static gregtech.common.blocks.MetaBlocks.statePropertiesToString;
+
+import org.jetbrains.annotations.NotNull;
 
 public class GTEMetaBlocks {
 
@@ -22,7 +23,7 @@ public class GTEMetaBlocks {
     }
 
     @SideOnly(Side.CLIENT)
-    private static void registerItemModel(Block block) {
+    private static void registerItemModel(@NotNull Block block) {
         for (IBlockState state : block.getBlockState().getValidStates()) {
             //noinspection ConstantConditions
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block),
