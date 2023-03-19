@@ -11,6 +11,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
+import gregtech.common.items.ToolItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
@@ -75,6 +76,11 @@ public class DERecipeLoader {
                 .fluidInputs(EnderEye.getFluid(144))
                 .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, DRAGON, 2)
+                .duration(400).EUt(VA[LuV])
+                .buildAndRegister();
+        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(DEFeatures.chaosShard, 1, 1))
+                .output(dust, DRAGON, 1)
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
@@ -87,7 +93,7 @@ public class DERecipeLoader {
                 .input(dust, DRAGON, 1)
                 .fluidInputs(Water.getFluid(250))
                 .chancedOutput(new ItemStack(DEFeatures.chaosShard, 1, 1), 7000, 1000)
-                .duration(1200).EUt(VA[LuV])
+                .duration(2400).EUt(VA[LuV])
                 .buildAndRegister();
 
         // Chaos Dust
@@ -625,45 +631,42 @@ public class DERecipeLoader {
 
         // Axe of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","wyvern_axe"));
-        //GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-        //        //.inputNBT(GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(DRACONIUM)), NBTMatcher.ANY, NBTCondition.create(NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(NBTTagType.STRING, "Material", "draconium"))) // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
-        //        .input(Items.DIAMOND_AXE)
-        //        .input(plate, DRACONIUM, 2)
-        //        .input(DEFeatures.wyvernCore, 1)
-        //        .input(DEFeatures.wyvernEnergyCore, 1)
-        //        .fluidInputs(CRYOTHEUM.getFluid(9216))
-        //        .outputs(new ItemStack(DEFeatures.wyvernAxe, 1))
-        //        .fluidOutputs(PYROTHEUM.getFluid(2304))
-        //        .duration(200).EUt(VA[LuV])
-        //        .buildAndRegister();
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .inputNBT(GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(DRACONIUM)), NBTMatcher.ANY, NBTCondition.create(NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(NBTTagType.STRING, "Material", "draconium"))) // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
+                .input(plate, DRACONIUM, 2)
+                .input(DEFeatures.wyvernCore, 1)
+                .input(DEFeatures.wyvernEnergyCore, 1)
+                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .outputs(new ItemStack(DEFeatures.wyvernAxe, 1))
+                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
 
         // Pickaxe of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","wyvern_pick"));
-        //GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-        //        //.inputNBT(GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(DRACONIUM)), NBTMatcher.ANY, NBTCondition.create(NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(NBTTagType.STRING, "Material", "draconium"))) // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
-        //        .input(Items.DIAMOND_PICKAXE)
-        //        .input(plate, DRACONIUM, 2)
-        //        .input(DEFeatures.wyvernCore, 1)
-        //        .input(DEFeatures.wyvernEnergyCore, 1)
-        //        .fluidInputs(CRYOTHEUM.getFluid(9216))
-        //        .outputs(new ItemStack(DEFeatures.wyvernPick, 1))
-        //        .fluidOutputs(PYROTHEUM.getFluid(2304))
-        //        .duration(200).EUt(VA[LuV])
-        //        .buildAndRegister();
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .inputNBT(GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(DRACONIUM)), NBTMatcher.ANY, NBTCondition.create(NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(NBTTagType.STRING, "Material", "draconium"))) // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
+                .input(plate, DRACONIUM, 2)
+                .input(DEFeatures.wyvernCore, 1)
+                .input(DEFeatures.wyvernEnergyCore, 1)
+                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .outputs(new ItemStack(DEFeatures.wyvernPick, 1))
+                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
 
         // Shovel of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","wyvern_shovel"));
-        //GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-        //        //.inputNBT(GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(DRACONIUM)), NBTMatcher.ANY, NBTCondition.create(NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(NBTTagType.STRING, "Material", "draconium"))) // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
-        //        .input(Items.DIAMOND_SHOVEL)
-        //        .input(plate, DRACONIUM, 2)
-        //        .input(DEFeatures.wyvernCore, 1)
-        //        .input(DEFeatures.wyvernEnergyCore, 1)
-        //        .fluidInputs(CRYOTHEUM.getFluid(9216))
-        //        .outputs(new ItemStack(DEFeatures.wyvernShovel, 1))
-        //        .fluidOutputs(PYROTHEUM.getFluid(2304))
-        //        .duration(200).EUt(VA[LuV])
-        //        .buildAndRegister();
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .inputNBT(GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(DRACONIUM)), NBTMatcher.ANY, NBTCondition.create(NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(NBTTagType.STRING, "Material", "draconium"))) // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
+                .input(plate, DRACONIUM, 2)
+                .input(DEFeatures.wyvernCore, 1)
+                .input(DEFeatures.wyvernEnergyCore, 1)
+                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .outputs(new ItemStack(DEFeatures.wyvernShovel, 1))
+                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
 
         // Sword of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","wyvern_sword"));
