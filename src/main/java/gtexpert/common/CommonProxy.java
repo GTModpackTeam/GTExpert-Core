@@ -69,12 +69,7 @@ public class CommonProxy {
         GTERecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();
-
-        if (Loader.isModLoaded("draconicevolution")) {
-            DERecipeLoader.init();
-        }
-        if (Loader.isModLoaded("draconicadditions")) {
-            DARecipeLoader.init();
-        }
+        DERecipeLoader.init();
+        DARecipeLoader.init();
     }
 }

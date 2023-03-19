@@ -46,7 +46,7 @@ public class DEDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x7C46B0).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(7200, BlastProperty.GasTier.HIGHER, 30720, 600)
-                .flags(GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_PLATE, GENERATE_ROD, GENERATE_RING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
+                .flags(GENERATE_ROD, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_PLATE, GENERATE_ROD, GENERATE_RING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
                 .toolStats(ToolProperty.Builder.of(80.0F, 2.0F, 3072, 5)
                         .enchantability(14).build())
                 .rotorStats(18.0f, 4.0f, 3072)

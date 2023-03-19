@@ -142,8 +142,8 @@ public class AERecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/certus_quartz_block"));
         ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/certus_quartz_block_pure"));
         ModHandler.removeRecipeByOutput(aeMaterials.certusQuartzCrystal().maybeStack(4).get());
-        ModHandler.addShapelessRecipe("ae2_certus_quartz_block", aeBlocks.quartzBlock().maybeStack(1).get(), new UnificationEntry(block, CertusQuartz));
-        ModHandler.addShapelessRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, CertusQuartz), aeBlocks.quartzBlock().maybeStack(1).get());
+        ModHandler.addMirroredShapedRecipe("ae2_certus_quartz_block", aeBlocks.quartzBlock().maybeStack(1).get(), "B", 'B', new UnificationEntry(block, CertusQuartz));
+        ModHandler.addMirroredShapedRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, CertusQuartz), "B", 'B', aeBlocks.quartzBlock().maybeStack(1).get());
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(8).get())
                 .output(block, CertusQuartz, 1)

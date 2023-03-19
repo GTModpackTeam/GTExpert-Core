@@ -100,226 +100,16 @@ public class DERecipeLoader {
                 .duration(1200).EUt(VA[ZPM])
                 .buildAndRegister();
 
-
-        // ########################################
-        // Draconium
-        // ########################################
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, DRACONIUM, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(ingot, DRACONIUM, 9));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ARC_FURNACE_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM, 1)},
-                new FluidStack[]{Oxygen.getFluid(882)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM, 1)},
-                new FluidStack[]{DRACONIUM.getFluid(1296)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
-                new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},
-                new FluidStack[]{DRACONIUM.getFluid(1296)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM, 1)},
-                new FluidStack[]{Lubricant.getFluid(18)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM, 1)},
-                new FluidStack[]{DistilledWater.getFluid(55)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, DRACONIUM, 1)},
-                new FluidStack[]{Water.getFluid(73)}
-        );
-
-        // Fluid
-        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM, 1)
-                .fluidOutputs(DRACONIUM.getFluid(1296))
-                .duration(882).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Dust
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM, 1)
-                .output(dust, DRACONIUM, 9)
-                .duration(882).EUt(32)
-                .buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, DRAGON, 1)
-                .input(dust, Obsidian, 1)
-                .fluidInputs(LiquidEnderAir.getFluid(8000))
-                .fluidInputs(EnderPearl.getFluid(576))
-                .output(dust, DRACONIUM, 2)
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
-
-        // Nugget
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "nugget"));
-
-        // Ingot
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconium_ingot"));
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconium_ingot_1"));
-        RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM, 1)
-                .fluidInputs(Oxygen.getFluid(882))
-                .output(ingot, DRACONIUM, 9)
-                .duration(882).EUt(VA[LV])
-                .buildAndRegister();
-
-        // Block
+        // Draconium Block
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconium_block"));
-        RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
-                .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(DRACONIUM.getFluid(1296))
-                .output(DEFeatures.draconiumBlock, 1)
-                .duration(90).EUt(7)
-                .buildAndRegister();
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .input(ingot, DRACONIUM, 9)
-                .output(DEFeatures.draconiumBlock, 1)
-                .duration(300).EUt(2)
-                .buildAndRegister();
-        RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
-                .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(DRACONIUM.getFluid(1296))
-                .output(DEFeatures.draconiumBlock, 1)
-                .duration(98).EUt(7)
-                .buildAndRegister();
+        ModHandler.addMirroredShapedRecipe("de_draconium_block", new ItemStack(DEFeatures.draconiumBlock), "B", 'B', OreDictUnifier.get(block, DRACONIUM));
+        ModHandler.addMirroredShapedRecipe("ceu_draconium_block", OreDictUnifier.get(block, DRACONIUM), "B", 'B', new ItemStack(DEFeatures.draconiumBlock));
 
-        // Plate
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM, 1)
-                .fluidInputs(Lubricant.getFluid(18))
-                .output(plate, DRACONIUM, 9)
-                .duration(784).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM, 1)
-                .fluidInputs(DistilledWater.getFluid(55))
-                .output(plate, DRACONIUM, 9)
-                .duration(1176).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, DRACONIUM, 1)
-                .fluidInputs(Water.getFluid(73))
-                .output(plate, DRACONIUM, 9)
-                .duration(1568).EUt(VA[LV])
-                .buildAndRegister();
-
-
-        // ########################################
-        // Awakened Draconium
-        // ########################################
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(ingot, AWAKENED_DRACONIUM, 9));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ARC_FURNACE_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
-                new FluidStack[]{Oxygen.getFluid(882)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
-                new FluidStack[]{AWAKENED_DRACONIUM.getFluid(1296)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
-                new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},
-                new FluidStack[]{AWAKENED_DRACONIUM.getFluid(1296)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
-                new FluidStack[]{Lubricant.getFluid(18)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
-                new FluidStack[]{DistilledWater.getFluid(55)}
-        );
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, AWAKENED_DRACONIUM, 1)},
-                new FluidStack[]{Water.getFluid(73)}
-        );
-
-        // Fluid
-        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(block, AWAKENED_DRACONIUM, 1)
-                .fluidOutputs(AWAKENED_DRACONIUM.getFluid(1296))
-                .duration(882).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Dust
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .input(block, AWAKENED_DRACONIUM, 1)
-                .output(dust, AWAKENED_DRACONIUM, 9)
-                .duration(882).EUt(32)
-                .buildAndRegister();
-
-        // Nugget
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","nugget_1"));
-
-        // Ingot
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","draconic_ingot"));
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","draconic_ingot_1"));
-        RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
-                .input(block, AWAKENED_DRACONIUM, 1)
-                .fluidInputs(Oxygen.getFluid(882))
-                .output(ingot, AWAKENED_DRACONIUM, 9)
-                .duration(882).EUt(VA[LV])
-                .buildAndRegister();
-
-        // Block
+        // Awakened Draconium Block
         OreDictionary.registerOre("blockAwakenedDraconium", DEFeatures.draconicBlock);
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","draconic_block"));
-        RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
-                .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(AWAKENED_DRACONIUM.getFluid(1296))
-                .output(DEFeatures.draconicBlock, 1)
-                .duration(90).EUt(7)
-                .buildAndRegister();
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .input(ingot, AWAKENED_DRACONIUM, 9)
-                .output(DEFeatures.draconicBlock, 1)
-                .duration(300).EUt(2)
-                .buildAndRegister();
-        RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
-                .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(AWAKENED_DRACONIUM.getFluid(1296))
-                .output(DEFeatures.draconicBlock, 1)
-                .duration(98).EUt(7)
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(DEFeatures.dragonHeart, 1)
-                .input(block, DRACONIUM, 4)
-                .output(DEFeatures.draconicBlock, 3)
-                .output(dustSmall, DarkAsh, 1)
-                .explosivesAmount(2)
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(DEFeatures.dragonHeart, 1)
-                .input(block, DRACONIUM, 4)
-                .output(DEFeatures.draconicBlock, 3)
-                .output(dustSmall, DarkAsh, 1)
-                .explosivesType(MetaItems.DYNAMITE.getStackForm())
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-
-        // Plate
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, AWAKENED_DRACONIUM, 1)
-                .fluidInputs(Lubricant.getFluid(18))
-                .output(plate, AWAKENED_DRACONIUM, 9)
-                .duration(784).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, AWAKENED_DRACONIUM, 1)
-                .fluidInputs(DistilledWater.getFluid(55))
-                .output(plate, AWAKENED_DRACONIUM, 9)
-                .duration(1176).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, AWAKENED_DRACONIUM, 1)
-                .fluidInputs(Water.getFluid(73))
-                .output(plate, AWAKENED_DRACONIUM, 9)
-                .duration(1568).EUt(VA[LV])
-                .buildAndRegister();
+        ModHandler.addMirroredShapedRecipe("de_draconic_block", new ItemStack(DEFeatures.draconicBlock), "B", 'B', OreDictUnifier.get(block, AWAKENED_DRACONIUM));
+        ModHandler.addMirroredShapedRecipe("ceu_draconic_block", OreDictUnifier.get(block, AWAKENED_DRACONIUM), "B", 'B', new ItemStack(DEFeatures.draconicBlock));
     }
 
     private static void items() {
@@ -640,15 +430,15 @@ public class DERecipeLoader {
         // Dislocator Receptacle
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","dislocator_receptacle"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(DEFeatures.wyvernCore, 1)
+                .input(DEFeatures.draconicCore, 1)
                 .input(DEFeatures.infusedObsidian, 1)
                 .input(plate, DRACONIUM, 7)
                 .outputs(new ItemStack(DEFeatures.dislocatorReceptacle, 1, 0))
-                .duration(100).EUt(VA[LuV])
+                .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
 
         // Energy Infuser
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution","energy_infuser"));
+        ModHandler.removeRecipeByOutput(new ItemStack(DEFeatures.energyInfuser, 1, 0));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 3)
                 .inputs(new ItemStack(DEFeatures.particleGenerator, 1, 2))
