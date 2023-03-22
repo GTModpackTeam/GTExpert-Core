@@ -25,13 +25,13 @@ import java.util.List;
 
 public class EIORecipeLoader {
     public static void init() {
-        materias();
+        materials();
         items();
         tools();
         fluid();
     }
 
-    private static void materias() {
+    private static void materials() {
         // Soul Sand Dust
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(Blocks.SOUL_SAND))

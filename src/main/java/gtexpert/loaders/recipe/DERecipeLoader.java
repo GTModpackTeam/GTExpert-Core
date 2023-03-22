@@ -34,13 +34,13 @@ import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class DERecipeLoader {
     public static void init() {
-        materias();
+        materials();
         items();
         blocks();
         tools();
     }
 
-    private static void materias() {
+    private static void materials() {
         // Cryotheum Dust
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(2)

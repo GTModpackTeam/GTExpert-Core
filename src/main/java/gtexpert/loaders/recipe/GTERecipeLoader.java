@@ -51,13 +51,14 @@ import java.util.stream.Collectors;
 
 public class GTERecipeLoader {
     public static void init() {
-        materias();
+        materials();
+        items();
         blocks();
         tools();
         end_contents();
     }
 
-    private static void materias() {
+    private static void materials() {
         // Nether Star Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Diamond, 1)
@@ -115,12 +116,144 @@ public class GTERecipeLoader {
                 .buildAndRegister();
     }
 
+    private static void items() {
+        // Remove solar panels
+        ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_ULV.getStackForm());
+        ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_LV.getStackForm());
+
+        // Solar Panel (8V)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(COVER_SOLAR_PANEL, 8)
+                .input(Blocks.DAYLIGHT_DETECTOR, 8)
+                .input(circuit, MarkerMaterials.Tier.ULV, 4)
+                .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT_WAFER, 4)
+                .input(Blocks.GLASS)
+                .input(MetaTileEntities.TRANSFORMER[0])
+                .fluidInputs(Silicon.getFluid(L))
+                .fluidInputs(SolderingAlloy.getFluid(L))
+                .output(COVER_SOLAR_PANEL_ULV)
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
+
+        // Solar Panel (LV)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(COVER_SOLAR_PANEL_ULV, 4)
+                .input(SENSOR_LV, 8)
+                .input(circuit, MarkerMaterials.Tier.LV, 4)
+                .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT_WAFER, 8)
+                .inputs(AEApi.instance().definitions().blocks().quartzGlass().maybeStack(1).get())
+                .input(MetaTileEntities.TRANSFORMER[1])
+                .fluidInputs(Silicon.getFluid(L * 2))
+                .fluidInputs(SolderingAlloy.getFluid(L * 2))
+                .output(COVER_SOLAR_PANEL_LV)
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
+
+        // Solar Panel (MV)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(COVER_SOLAR_PANEL_LV, 4)
+                .input(SENSOR_MV, 8)
+                .input(circuit, MarkerMaterials.Tier.MV, 4)
+                .input(LOW_POWER_INTEGRATED_CIRCUIT_WAFER, 4)
+                .input(ModObject.blockFusedGlass.getBlockNN())
+                .input(MetaTileEntities.TRANSFORMER[2])
+                .fluidInputs(Silicon.getFluid(L * 3))
+                .fluidInputs(SolderingAlloy.getFluid(L * 3))
+                .output(COVER_SOLAR_PANEL_MV)
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
+
+        // Solar Panel (HV)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(COVER_SOLAR_PANEL_MV, 4)
+                .input(SENSOR_HV, 8)
+                .input(circuit, MarkerMaterials.Tier.HV, 4)
+                .input(LOW_POWER_INTEGRATED_CIRCUIT_WAFER, 8)
+                .input(ModObject.blockFusedQuartz.getBlockNN())
+                .input(MetaTileEntities.TRANSFORMER[3])
+                .fluidInputs(Silicon.getFluid(L * 4))
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .output(COVER_SOLAR_PANEL_HV)
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
+
+        // Solar Panel (EV)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(COVER_SOLAR_PANEL_HV, 4)
+                .input(SENSOR_EV, 8)
+                .input(circuit, MarkerMaterials.Tier.EV, 4)
+                .input(POWER_INTEGRATED_CIRCUIT, 4)
+                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
+                .input(MetaTileEntities.TRANSFORMER[4])
+                .fluidInputs(Silicon.getFluid(L * 5))
+                .fluidInputs(SolderingAlloy.getFluid(L * 5))
+                .output(COVER_SOLAR_PANEL_EV)
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
+
+        // Solar Panel (IV)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(COVER_SOLAR_PANEL_EV, 4)
+                .input(SENSOR_IV, 8)
+                .input(circuit, MarkerMaterials.Tier.IV, 4)
+                .input(POWER_INTEGRATED_CIRCUIT, 8)
+                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
+                .input(MetaTileEntities.TRANSFORMER[5])
+                .fluidInputs(Silicon.getFluid(L * 6))
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                .output(COVER_SOLAR_PANEL_IV)
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
+
+        // Solar Panel (LuV)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(COVER_SOLAR_PANEL_IV, 4)
+                .input(SENSOR_LuV, 8)
+                .input(circuit, MarkerMaterials.Tier.LuV, 4)
+                .input(HIGH_POWER_INTEGRATED_CIRCUIT, 8)
+                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
+                .input(MetaTileEntities.TRANSFORMER[6])
+                .fluidInputs(Silicon.getFluid(L * 7))
+                .fluidInputs(SolderingAlloy.getFluid(L * 7))
+                .output(COVER_SOLAR_PANEL_LUV)
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
+
+        // Solar Panel (ZPM)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(COVER_SOLAR_PANEL_LUV, 4)
+                .input(SENSOR_ZPM, 8)
+                .input(circuit, MarkerMaterials.Tier.ZPM, 4)
+                .input(HIGH_POWER_INTEGRATED_CIRCUIT, 16)
+                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
+                .input(MetaTileEntities.TRANSFORMER[7])
+                .fluidInputs(Silicon.getFluid(L * 8))
+                .fluidInputs(SolderingAlloy.getFluid(L * 8))
+                .output(COVER_SOLAR_PANEL_ZPM)
+                .duration(100).EUt(VA[ZPM])
+                .buildAndRegister();
+
+        // Solar Panel (UV)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(COVER_SOLAR_PANEL_ZPM, 4)
+                .input(SENSOR_UV, 8)
+                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 32)
+                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
+                .input(MetaTileEntities.TRANSFORMER[8])
+                .fluidInputs(Silicon.getFluid(L * 9))
+                .fluidInputs(SolderingAlloy.getFluid(L * 9))
+                .output(COVER_SOLAR_PANEL_UV)
+                .duration(100).EUt(VA[UV])
+                .buildAndRegister();
+    }
+
     private static void blocks() {
         // Extreme Mixer
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(MetaTileEntities.MIXER[ZPM].getStackForm())
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm())
-                .outputs(EXTREME_MIXER[0].getStackForm())
+                .output(EXTREME_MIXER[0])
                 .duration(200).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -149,7 +282,7 @@ public class GTERecipeLoader {
                 .input(ORE_DICTIONARY_FILTER)
                 .input(gear, NaquadahAlloy, 4)
                 .fluidInputs(SolderingAlloy.getFluid(18432))
-                .outputs(VOIDOREMINER.getStackForm())
+                .output(VOIDOREMINER)
                 .duration(600).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -240,7 +373,7 @@ public class GTERecipeLoader {
 
         // Vial Extractor
         MetaTileEntityLoader.registerMachineRecipe(VIAL_EXTRACTOR, "VRV", "PMF", "WCW",
-                'V', ModObject.itemSoulVial.getItem(),
+                'V', ModObject.itemSoulVial.getItemNN(),
                 'R', SENSOR,
                 'P', PISTON,
                 'M', HULL,
@@ -282,7 +415,7 @@ public class GTERecipeLoader {
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
                 .input(MetaTileEntities.HULL[UV])
                 .input(circuit, MarkerMaterials.Tier.UV, 4)
-                .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 2))
+                .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 3))
                 .input(COVER_SOLAR_PANEL_UV, 1)
                 .fluidInputs(VIBRANT_ALLOY.getFluid(18432))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
@@ -333,7 +466,7 @@ public class GTERecipeLoader {
 
         // Creative Quantum Chest
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(MetaTileEntities.CREATIVE_TANK, 16)
+                .input(MetaTileEntities.CREATIVE_TANK, 8)
                 .input(QUANTUM_STAR, 64)
                 .input(CONVEYOR_MODULE_UV, 64)
                 .input(ROBOT_ARM_UV, 64)

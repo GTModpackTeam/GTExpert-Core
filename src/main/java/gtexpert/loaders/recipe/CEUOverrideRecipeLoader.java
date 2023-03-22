@@ -26,11 +26,20 @@ import static gregtech.api.unification.material.Materials.*;
 
 public class CEUOverrideRecipeLoader {
     public static void init() {
-        materias();
+        materials();
         woods();
     }
 
-    private static void materias() {
+    private static void materials() {
+        // Iron Nugget
+        ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Iron, 9), OreDictUnifier.get(ingot, Iron, 1));
+
+        // Wrought Iron Nugget
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(nugget, WroughtIron, 1), OreDictUnifier.get(nugget, WroughtIron, 1));
+
+        // Wrought Iron Ingot
+        ModHandler.addShapedRecipe("wrought_iron_ingot", OreDictUnifier.get(ingot, WroughtIron, 1), "XXX", "XXX", "XXX", 'X', OreDictUnifier.get(nugget, WroughtIron, 1));
+
         // Glowstone Dust
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Glowstone, 2));
         RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
