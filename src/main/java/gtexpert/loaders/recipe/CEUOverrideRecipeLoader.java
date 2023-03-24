@@ -208,8 +208,8 @@ public class CEUOverrideRecipeLoader {
         // Wood sticks
         ModHandler.removeRecipeByOutput(new ItemStack(Items.STICK, 2));
         ModHandler.removeRecipeByOutput(new ItemStack(Items.STICK, 4));
-        ModHandler.addMirroredShapedRecipe("stick_saw", new ItemStack(Items.STICK, 2), "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
         ModHandler.addMirroredShapedRecipe("stick_normal", new ItemStack(Items.STICK, 1), "P", "P", 'P', new UnificationEntry(plank, Wood));
+        ModHandler.addMirroredShapedRecipe("stick_saw", new ItemStack(Items.STICK, 2), "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
 
         // Wood planks
         List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()

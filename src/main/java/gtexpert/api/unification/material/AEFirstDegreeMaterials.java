@@ -6,6 +6,7 @@ import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.material.properties.FluidProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
+import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
@@ -40,7 +41,7 @@ public class AEFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x4A3954).iconSet(MaterialIconSet.SHINY)
                 .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
-                .blastTemp(2700, GasTier.LOW, 480, 1072)
+                .blastTemp(2700, GasTier.LOW, VA[HV], 1072)
                 .components(FLUIX, 2, Carbon, 2, Silicon, 1, Iron, 1)
                 .build();
         FLUIX_ALLOY.setFormula("(Si2O4(Si(FeS2)5)(CrAl2O3)Hg3))2C2SiFe?", true);
