@@ -325,17 +325,16 @@ public class GTERecipeLoader {
         List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
                 .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
                 .collect(Collectors.toList());
-
         for (ItemStack allWoodLog : allWoodLogs) {
             Pair<IRecipe, ItemStack> outputPair = ModHandler.getRecipeOutput(null, allWoodLog);
             ItemStack plankStack = outputPair.getValue();
             if (plankStack.isEmpty()) continue;
 
-            //Sawmill Recipes
             GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
                     .inputs(GTUtility.copyAmount(6, allWoodLog))
                     .fluidInputs(Water.getFluid(1000))
-                    .outputs(GTUtility.copyAmount(48, plankStack), OreDictUnifier.get(dust, Wood, 12))
+                    .output(plankStack.getItem(), 48)
+                    .output(dust, Wood, 12)
                     .duration(200).EUt(VA[ULV])
                     .buildAndRegister();
         }
@@ -390,7 +389,7 @@ public class GTERecipeLoader {
                 'R', new UnificationEntry(plate, Rubber),
                 'L', Items.LEATHER_BOOTS,
                 'P', ELECTRIC_PISTON_LV,
-                'B', BATTERY_LV_LITHIUM);
+                'B', BATTERY_LV_SODIUM);
     }
 
     private static void end_contents() {

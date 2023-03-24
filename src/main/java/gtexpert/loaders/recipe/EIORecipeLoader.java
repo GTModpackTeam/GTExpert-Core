@@ -25,10 +25,138 @@ import java.util.List;
 
 public class EIORecipeLoader {
     public static void init() {
+        fluid();
         materials();
         items();
         tools();
-        fluid();
+    }
+
+    private static void fluid() {
+        // XP Juice
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(2)
+                .input(dust, Gold, 2)
+                .fluidInputs(Blaze.getFluid(288))
+                .fluidInputs(Glowstone.getFluid(576))
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
+                .duration(200).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.CANNER_RECIPES.recipeBuilder()
+                .input(Items.GLASS_BOTTLE, 1)
+                .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
+                .output(Items.EXPERIENCE_BOTTLE, 1)
+                .duration(100).EUt(2)
+                .buildAndRegister();
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .input(Items.EXPERIENCE_BOTTLE, 1)
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
+                .output(Items.GLASS_BOTTLE, 1)
+                .duration(400).EUt(2)
+                .buildAndRegister();
+
+        // Nutrient Distillation
+        List<ItemStack> nutrientDistillationItems = new ArrayList<>();
+        nutrientDistillationItems.add(new ItemStack(Items.PORKCHOP, 4));
+        nutrientDistillationItems.add(new ItemStack(Items.BEEF, 4));
+        nutrientDistillationItems.add(new ItemStack(Items.CHICKEN, 4));
+        nutrientDistillationItems.add(new ItemStack(Items.RABBIT, 4));
+        nutrientDistillationItems.add(new ItemStack(Items.MUTTON, 4));
+        nutrientDistillationItems.add(new ItemStack(Items.FISH, 8));
+        for (ItemStack itemStack : nutrientDistillationItems) {
+            RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                    .circuitMeta(2)
+                    .inputs(itemStack)
+                    .input(Items.SPIDER_EYE, 2)
+                    .fluidInputs(Water.getFluid(1000))
+                    .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                    .duration(100).EUt(VA[LV])
+                    .buildAndRegister();
+        }
+
+        // Dew of Void
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(ModObject.itemMaterial.getItemNN(), 2, 35)
+                .input(dust, END_STEEL, 2)
+                .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                .fluidOutputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(ModObject.itemMaterial.getItemNN(), 2, 35)
+                .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                .fluidInputs(END_STEEL.getFluid(288))
+                .fluidOutputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Vapor of levity
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(ModObject.itemMaterial.getItemNN(), 2, 36)
+                .input(ModObject.itemMaterial.getItemNN(), 2, 34)
+                .fluidInputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
+                .fluidOutputs(new FluidStack(Fluids.VAPOR_OF_LEVITY.getFluid(), 1000))
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Hootch
+        List<ItemStack> hootchItems = new ArrayList<>();
+        hootchItems.add(new ItemStack(Items.WHEAT_SEEDS, 4));
+        hootchItems.add(new ItemStack(Items.DYE, 4, 3));
+        hootchItems.add(new ItemStack(Items.BEETROOT_SEEDS, 4));
+        hootchItems.add(new ItemStack(Items.PUMPKIN_SEEDS, 2));
+        hootchItems.add(new ItemStack(Items.MELON_SEEDS, 2));
+        hootchItems.add(new ItemStack(Items.POISONOUS_POTATO, 1));
+        for (ItemStack itemStack : hootchItems) {
+            RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                    .circuitMeta(2)
+                    .inputs(itemStack)
+                    .input(Items.SUGAR, 1)
+                    .fluidInputs(Water.getFluid(2000))
+                    .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
+                    .duration(200).EUt(VA[HV])
+                    .buildAndRegister();
+        }
+
+        // Fire Water
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(dust, Redstone, 2)
+                .fluidInputs(Blaze.getFluid(1152))
+                .fluidOutputs(new FluidStack(Fluids.FIRE_WATER.getFluid(), 1000))
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Sunshine
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(dust, Glowstone, 2)
+                .input(Blocks.DOUBLE_PLANT, 1)
+                .fluidInputs(new FluidStack(Fluids.FIRE_WATER.getFluid(), 250))
+                .fluidOutputs(new FluidStack(Fluids.LIQUID_SUNSHINE.getFluid(), 250))
+                .duration(56).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Cloud Seed
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(dust, Silver, 2)
+                .fluidInputs(Water.getFluid(3500))
+                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 3500))
+                .duration(300).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Concentrated Cloud
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(dust, Electrum, 2)
+                .input(Items.SNOWBALL, 1)
+                .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 3500))
+                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1500))
+                .duration(200).EUt(VA[HV])
+                .buildAndRegister();
     }
 
     private static void materials() {
@@ -277,133 +405,5 @@ public class EIORecipeLoader {
         ModHandler.addShapedRecipe("yeta_wrench", new ItemStack(ModObject.itemYetaWrench.getItemNN(), 1, 0),
                 "PhP", " P ", " P ",
                 'P', OreDictUnifier.get(plate, ELECTRICAL_STEEL));
-    }
-
-    private static void fluid() {
-        // XP Juice
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(2)
-                .input(dust, Gold, 2)
-                .fluidInputs(Blaze.getFluid(288))
-                .fluidInputs(Glowstone.getFluid(576))
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
-                .duration(200).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CANNER_RECIPES.recipeBuilder()
-                .input(Items.GLASS_BOTTLE, 1)
-                .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
-                .output(Items.EXPERIENCE_BOTTLE, 1)
-                .duration(100).EUt(2)
-                .buildAndRegister();
-        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(Items.EXPERIENCE_BOTTLE, 1)
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
-                .output(Items.GLASS_BOTTLE, 1)
-                .duration(400).EUt(2)
-                .buildAndRegister();
-
-        // Nutrient Distillation
-        List<ItemStack> nutrientDistillationItems = new ArrayList<>();
-        nutrientDistillationItems.add(new ItemStack(Items.PORKCHOP, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.BEEF, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.CHICKEN, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.RABBIT, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.MUTTON, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.FISH, 8));
-        for (ItemStack itemStack : nutrientDistillationItems) {
-            RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .inputs(itemStack)
-                    .input(Items.SPIDER_EYE, 2)
-                    .fluidInputs(Water.getFluid(1000))
-                    .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
-                    .duration(100).EUt(VA[LV])
-                    .buildAndRegister();
-        }
-
-        // Dew of Void
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(ModObject.itemMaterial.getItemNN(), 2, 35)
-                .input(dust, END_STEEL, 2)
-                .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
-                .fluidOutputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
-                .duration(100).EUt(VA[HV])
-                .buildAndRegister();
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(ModObject.itemMaterial.getItemNN(), 2, 35)
-                .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
-                .fluidInputs(END_STEEL.getFluid(288))
-                .fluidOutputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
-                .duration(100).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Vapor of levity
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(ModObject.itemMaterial.getItemNN(), 2, 36)
-                .input(ModObject.itemMaterial.getItemNN(), 2, 34)
-                .fluidInputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
-                .fluidOutputs(new FluidStack(Fluids.VAPOR_OF_LEVITY.getFluid(), 1000))
-                .duration(100).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Hootch
-        List<ItemStack> hootchItems = new ArrayList<>();
-        hootchItems.add(new ItemStack(Items.WHEAT_SEEDS, 4));
-        hootchItems.add(new ItemStack(Items.DYE, 4, 3));
-        hootchItems.add(new ItemStack(Items.BEETROOT_SEEDS, 4));
-        hootchItems.add(new ItemStack(Items.PUMPKIN_SEEDS, 2));
-        hootchItems.add(new ItemStack(Items.MELON_SEEDS, 2));
-        hootchItems.add(new ItemStack(Items.POISONOUS_POTATO, 1));
-        for (ItemStack itemStack : hootchItems) {
-            RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .inputs(itemStack)
-                    .input(Items.SUGAR, 1)
-                    .fluidInputs(Water.getFluid(2000))
-                    .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
-                    .duration(200).EUt(VA[HV])
-                    .buildAndRegister();
-        }
-
-        // Fire Water
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(dust, Redstone, 2)
-                .fluidInputs(Blaze.getFluid(1152))
-                .fluidOutputs(new FluidStack(Fluids.FIRE_WATER.getFluid(), 1000))
-                .duration(100).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Sunshine
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(dust, Glowstone, 2)
-                .input(Blocks.DOUBLE_PLANT, 1)
-                .fluidInputs(new FluidStack(Fluids.FIRE_WATER.getFluid(), 250))
-                .fluidOutputs(new FluidStack(Fluids.LIQUID_SUNSHINE.getFluid(), 250))
-                .duration(56).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Cloud Seed
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(dust, Silver, 2)
-                .fluidInputs(Water.getFluid(3500))
-                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 3500))
-                .duration(300).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Concentrated Cloud
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(dust, Electrum, 2)
-                .input(Items.SNOWBALL, 1)
-                .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 3500))
-                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1500))
-                .duration(200).EUt(VA[HV])
-                .buildAndRegister();
     }
 }

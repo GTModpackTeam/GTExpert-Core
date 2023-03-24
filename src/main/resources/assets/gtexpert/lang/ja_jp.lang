@@ -1,5 +1,5 @@
 # Japanese by GTModpackTeam
-# 日本語ローカライズ担当： Quarri6343
+
 
 # multiblock
 gtexpert.machine.sawmill.name=製材機
@@ -12,6 +12,10 @@ gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づい�
 gtexpert.machine.void_ore_miner.tooltip.2=§6ネザーかエンド鉱石を消費することでで生産量が倍になります!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です。§r
 gtexpert.machine.extreme_mixer.zpm.name=精鋭型エクストリームミキサー III
+gtexpert.machine.draconium_fusion.name=ドラコニック融合機
+gtexpert.machine.draconium_fusion.tooltip=なんだか強そうですね?
+gtexpert.machine.awakened_draconium_fusion.name=ドラコニック融合機 II
+gtexpert.machine.awakened_draconium_fusion.tooltip=なんだか強そうですね?
 
 # singleblock
 gtexpert.machine.vial_extractor.tooltip=故も知らぬ不死のソウル?
@@ -28,6 +32,8 @@ gtexpert.machine.vial_extractor.uv.name=究極型魂抽出器
 tile.gte_metal_casing.greenhouse_casing.name=ガルバリウム製対腐食マシン外装
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
 tile.gte_metal_casing.void_ore_miner_casing.name=対虚無マシン外装
+tile.gte_metal_casing.draconium_casing.name=ドラコニウムマシン外装
+tile.gte_metal_casing.awakened_draconium_casing.name=覚醒ドラコニウムマシン外装
 tile.sawmill_conveyor.name=製材機用コンベア
 
 # material
@@ -35,6 +41,9 @@ material.galvalume=ガルバリウム
 material.nm_hea_nps=貴金属ハイエントロピーナノ合金
 material.naquadah_rocket_fuel=ナクアダロケット燃料
 material.dragon=ドラゴン
+material.chaos=カオス
+material.cryotheum=クリオジウム
+material.pyrotheum=パイロジウム
 material.draconium=ドラコニウム
 material.awakened_draconium=覚醒ドラコニウム
 material.soul_sand=ソウルサンド
@@ -71,6 +80,8 @@ recipemap.greenhouse.name=温室
 recipemap.vial_extractor.name=魂抽出器
 recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
+recipemap.draconium_fusion.name=ドラコニック融合機
+recipemap.awakened_draconium_fusion.name=ドラコニック融合機
 
 #misc
 gtexpert.multiblock.needsun=コントローラーは必ず空に面する必要があります!
