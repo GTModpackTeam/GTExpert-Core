@@ -42,10 +42,10 @@ public class DARecipeLoader {
                 .input(RANDOM_ACCESS_MEMORY, 48)
                 .input(wireFine, AWAKENED_DRACONIUM, 32)
                 .fluidInputs(Redstone.getFluid(5184))
-                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .fluidInputs(CRYOTHEUM.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DAFeatures.chaoticEnergyCore, 1)
-                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(400).EUt(614400)
                 .buildAndRegister();
         GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -55,10 +55,10 @@ public class DARecipeLoader {
                 .input(RANDOM_ACCESS_MEMORY, 48)
                 .input(wireFine, AWAKENED_DRACONIUM, 32)
                 .fluidInputs(Redstone.getFluid(5184))
-                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .fluidInputs(CRYOTHEUM.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DAFeatures.chaoticEnergyCore, 1)
-                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(400).EUt(614400)
                 .buildAndRegister();
     }
@@ -69,9 +69,9 @@ public class DARecipeLoader {
                 .inputNBT(DAFeatures.chaosContainer, 1, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
                 .input(DEFeatures.infusedObsidian, 4)
                 .input(DEFeatures.draconicCore, 4)
-                .fluidInputs(CRYOTHEUM.getFluid(18432))
+                .fluidInputs(CRYOTHEUM.getFluid(32000))
                 .output(DAFeatures.chaosLiquefier, 1)
-                .fluidOutputs(PYROTHEUM.getFluid(4608))
+                .fluidOutputs(PYROTHEUM.getFluid(8000))
                 .duration(200).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -80,7 +80,7 @@ public class DARecipeLoader {
                 .input(DEFeatures.reactorCore, 4)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(DEFeatures.infusedObsidian, 4)
-                .fluidInputs(PYROTHEUM.getFluid(18432))
+                .fluidInputs(PYROTHEUM.getFluid(48000))
                 .output(DAFeatures.chaosStabilizerCore, 1)
                 .duration(1200).EUt(VA[UHV])
                 .buildAndRegister();
@@ -91,9 +91,9 @@ public class DARecipeLoader {
                 .input(plate, STELLAR_ALLOY, 4)
                 .input(stick, STELLAR_ALLOY, 4)
                 .input(ring, Titanium, 4)
-                .fluidInputs(CRYOTHEUM.getFluid(9216))
+                .fluidInputs(CRYOTHEUM.getFluid(16000))
                 .output(DAFeatures.capacitorSupplier, 1)
-                .fluidOutputs(PYROTHEUM.getFluid(2304))
+                .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
     }
@@ -106,9 +106,9 @@ public class DARecipeLoader {
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DAFeatures.chaoticEnergyCore, 1)
-                .fluidInputs(CRYOTHEUM.getFluid(27648))
+                .fluidInputs(CRYOTHEUM.getFluid(48000))
                 .outputs(new ItemStack(DAFeatures.chaoticStaffOfPower, 1))
-                .fluidOutputs(PYROTHEUM.getFluid(6912))
+                .fluidOutputs(PYROTHEUM.getFluid(12000))
                 .duration(600).EUt(VA[UHV])
                 .buildAndRegister();
 
@@ -119,9 +119,9 @@ public class DARecipeLoader {
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DAFeatures.chaoticEnergyCore, 1)
-                .fluidInputs(CRYOTHEUM.getFluid(27648))
+                .fluidInputs(CRYOTHEUM.getFluid(48000))
                 .outputs(new ItemStack(DAFeatures.chaoticBow, 1))
-                .fluidOutputs(PYROTHEUM.getFluid(6912))
+                .fluidOutputs(PYROTHEUM.getFluid(12000))
                 .duration(600).EUt(VA[UHV])
                 .buildAndRegister();
 
@@ -132,9 +132,9 @@ public class DARecipeLoader {
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DAFeatures.chaoticEnergyCore, 1)
-                .fluidInputs(CRYOTHEUM.getFluid(27648))
+                .fluidInputs(CRYOTHEUM.getFluid(48000))
                 .outputs(new ItemStack(DAFeatures.chaoticHelm, 1))
-                .fluidOutputs(PYROTHEUM.getFluid(6912))
+                .fluidOutputs(PYROTHEUM.getFluid(12000))
                 .duration(600).EUt(VA[UHV])
                 .buildAndRegister();
 
@@ -145,9 +145,9 @@ public class DARecipeLoader {
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DAFeatures.chaoticEnergyCore, 1)
-                .fluidInputs(CRYOTHEUM.getFluid(27648))
+                .fluidInputs(CRYOTHEUM.getFluid(48000))
                 .outputs(new ItemStack(DAFeatures.chaoticChest, 1))
-                .fluidOutputs(PYROTHEUM.getFluid(6912))
+                .fluidOutputs(PYROTHEUM.getFluid(12000))
                 .duration(600).EUt(VA[UHV])
                 .buildAndRegister();
 
@@ -158,9 +158,9 @@ public class DARecipeLoader {
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DAFeatures.chaoticEnergyCore, 1)
-                .fluidInputs(CRYOTHEUM.getFluid(27648))
+                .fluidInputs(CRYOTHEUM.getFluid(48000))
                 .outputs(new ItemStack(DAFeatures.chaoticLegs, 1))
-                .fluidOutputs(PYROTHEUM.getFluid(6912))
+                .fluidOutputs(PYROTHEUM.getFluid(12000))
                 .duration(600).EUt(VA[UHV])
                 .buildAndRegister();
 
@@ -171,9 +171,9 @@ public class DARecipeLoader {
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DAFeatures.chaoticEnergyCore, 1)
-                .fluidInputs(CRYOTHEUM.getFluid(27648))
+                .fluidInputs(CRYOTHEUM.getFluid(48000))
                 .outputs(new ItemStack(DAFeatures.chaoticBoots, 1))
-                .fluidOutputs(PYROTHEUM.getFluid(6912))
+                .fluidOutputs(PYROTHEUM.getFluid(12000))
                 .duration(600).EUt(VA[UHV])
                 .buildAndRegister();
 
@@ -183,9 +183,9 @@ public class DARecipeLoader {
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DAFeatures.chaoticEnergyCore, 1)
-                .fluidInputs(CRYOTHEUM.getFluid(27648))
+                .fluidInputs(CRYOTHEUM.getFluid(48000))
                 .outputs(new ItemStack(DAFeatures.chaosContainer, 1))
-                .fluidOutputs(PYROTHEUM.getFluid(6912))
+                .fluidOutputs(PYROTHEUM.getFluid(12000))
                 .duration(100).EUt(VA[UHV])
                 .buildAndRegister();
 
