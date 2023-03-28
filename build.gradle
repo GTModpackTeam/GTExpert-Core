@@ -62,7 +62,7 @@ if (project.use_eclipse.toBoolean()) {
 minecraft {
     mappings channel: "${mcp_mappings_channel}", version: "${mcp_mappings_version}"
     if (project.use_access_transformer.toBoolean()) {
-        // accessTransformer = file('src/main/resources/META-INF/gtexpert_at.cfg')
+        accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     }
 
     runs {
@@ -225,7 +225,7 @@ if (project.build_sourceJar.toBoolean()) {
 sourceSets {
     main {
         if (project.use_mixins.toBoolean()) {
-            ext.refMap = 'mixins.' + archives_base_name + '.refmap.json'
+            ext.refMap = 'mixins.' + project.archives_base_name + '.refmap.json'
         }
 
         java {
@@ -320,7 +320,7 @@ private void processJarTask(task) {
                 attribute_map['TweakClass'] = 'org.spongepowered.asm.launch.MixinTweaker'
             }
             if (project.use_access_transformer.toBoolean()) {
-                attribute_map['FMLAT'] = 'gtexpert_at.cfg'
+                attribute_map['FMLAT'] = project.archives_base_name + '_at.cfg'
             }
             attributes(attribute_map)
         }

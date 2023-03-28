@@ -325,17 +325,25 @@ public class GTERecipeLoader {
         List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
                 .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
                 .collect(Collectors.toList());
-        for (ItemStack allWoodLog : allWoodLogs) {
-            Pair<IRecipe, ItemStack> outputPair = ModHandler.getRecipeOutput(null, allWoodLog);
+        for (int i = 0; i < allWoodLogs.size(); i++) {
+            Pair<IRecipe, ItemStack> outputPair = ModHandler.getRecipeOutput(null, allWoodLogs.get(i));
             ItemStack plankStack = outputPair.getValue();
             if (plankStack.isEmpty()) continue;
 
             GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
-                    .inputs(GTUtility.copyAmount(6, allWoodLog))
+                    .circuitMeta(1)
+                    .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
                     .fluidInputs(Water.getFluid(1000))
-                    .output(plankStack.getItem(), 48)
+                    .outputs(GTUtility.copyAmount(48, plankStack))
                     .output(dust, Wood, 12)
                     .duration(200).EUt(VA[ULV])
+                    .buildAndRegister();
+            GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
+                    .circuitMeta(2)
+                    .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
+                    .fluidInputs(Water.getFluid(2500))
+                    .outputs(GTUtility.copyAmount(60, plankStack))
+                    .duration(500).EUt(VA[ULV])
                     .buildAndRegister();
         }
 
