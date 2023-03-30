@@ -1,12 +1,13 @@
 package gtexpert.loaders.recipe;
 
+import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
-import gregtech.common.items.MetaItems;
+import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.recipes.GTERecipeMaps;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -220,6 +221,17 @@ public class CEUOverrideRecipeLoader {
                 .output(Blocks.REDSTONE_LAMP)
                 .duration(100).EUt(1)
                 .buildAndRegister();
+
+        // Crafting Station
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(2)
+                .input(plank, Wood, 4)
+                .input(OreDictNames.chestWood.toString(), 2)
+                .input(slab, Wood, 1)
+                .input(Blocks.CRAFTING_TABLE)
+                .output(MetaTileEntities.WORKBENCH)
+                .duration(100).EUt(16)
+                .buildAndRegister();
     }
 
     private static void woods() {
@@ -242,6 +254,22 @@ public class CEUOverrideRecipeLoader {
             ModHandler.removeRecipeByOutput(GTUtility.copyAmount(4, plankStack));
             ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copyAmount(1, plankStack), allWoodLogs.get(i));
             ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(2, plankStack), "s", "P", "P", 'P', allWoodLogs.get(i));
+
+            GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
+                    .fluidInputs(Water.getFluid(1000))
+                    .outputs(GTUtility.copyAmount(48, plankStack))
+                    .output(dust, Wood, 12)
+                    .duration(300).EUt(VA[ULV])
+                    .buildAndRegister();
+            GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
+                    .circuitMeta(2)
+                    .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
+                    .fluidInputs(Water.getFluid(2500))
+                    .outputs(GTUtility.copyAmount(60, plankStack))
+                    .duration(600).EUt(VA[ULV])
+                    .buildAndRegister();
         }
     }
 }

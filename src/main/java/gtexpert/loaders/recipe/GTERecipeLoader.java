@@ -321,32 +321,6 @@ public class GTERecipeLoader {
                 .duration(100).EUt(VA[MV])
                 .buildAndRegister();
 
-        // Wood Recipes
-        List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
-                .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
-                .collect(Collectors.toList());
-        for (int i = 0; i < allWoodLogs.size(); i++) {
-            Pair<IRecipe, ItemStack> outputPair = ModHandler.getRecipeOutput(null, allWoodLogs.get(i));
-            ItemStack plankStack = outputPair.getValue();
-            if (plankStack.isEmpty()) continue;
-
-            GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
-                    .circuitMeta(1)
-                    .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
-                    .fluidInputs(Water.getFluid(1000))
-                    .outputs(GTUtility.copyAmount(48, plankStack))
-                    .output(dust, Wood, 12)
-                    .duration(200).EUt(VA[ULV])
-                    .buildAndRegister();
-            GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
-                    .fluidInputs(Water.getFluid(2500))
-                    .outputs(GTUtility.copyAmount(60, plankStack))
-                    .duration(500).EUt(VA[ULV])
-                    .buildAndRegister();
-        }
-
         // Void Ore Miner Recipes
         List<Material> materialOres = new ArrayList<>();
         for (Material material : GregTechAPI.MATERIAL_REGISTRY) {

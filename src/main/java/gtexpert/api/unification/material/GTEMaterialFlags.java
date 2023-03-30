@@ -24,6 +24,6 @@ public class GTEMaterialFlags {
         Quartzite.addFlags(GENERATE_ROD);
 
         // Glowstone
-        Glowstone.setFormula("Au(Si(FeS2)5(CrAl2O3)Hg3)");
+        Glowstone.setFormula("Au(Si(FeS2)5(CrAl2O3)Hg3)", true);
     }
 }
