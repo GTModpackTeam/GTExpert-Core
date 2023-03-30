@@ -640,6 +640,19 @@ public class DERecipeLoader {
                 .outputs(new ItemStack(DEFeatures.energyCrystal, 1, 8))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
+
+        // Draconium Chest
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .input(Blocks.FURNACE, 5)
+                .input(DEFeatures.wyvernCore, 2)
+                .input(MetaTileEntities.WORKBENCH)
+                .input(MetaTileEntities.TUNGSTENSTEEL_CRATE)
+                .fluidInputs(CRYOTHEUM.getFluid(8000))
+                .fluidInputs(DRACONIUM.getFluid(1152))
+                .output(DEFeatures.draconiumChest)
+                .fluidOutputs(PYROTHEUM.getFluid(2000))
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
     }
 
     private static void tools() {
