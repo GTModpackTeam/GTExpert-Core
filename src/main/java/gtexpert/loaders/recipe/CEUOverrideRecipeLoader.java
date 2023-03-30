@@ -15,18 +15,18 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CEUOverrideRecipeLoader {
     public static void init() {
         materials();
+        blocks();
         woods();
     }
 
@@ -34,11 +34,17 @@ public class CEUOverrideRecipeLoader {
         // Iron Nugget
         ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Iron, 9), OreDictUnifier.get(ingot, Iron, 1));
 
+        // Gold Nugget
+        ModHandler.addShapelessRecipe("gold_nugget", OreDictUnifier.get(nugget, Gold, 9), OreDictUnifier.get(ingot, Gold, 1));
+
         // Wrought Iron Nugget
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(nugget, WroughtIron, 1), OreDictUnifier.get(nugget, WroughtIron, 1));
 
         // Wrought Iron Ingot
         ModHandler.addShapedRecipe("wrought_iron_ingot", OreDictUnifier.get(ingot, WroughtIron, 1), "XXX", "XXX", "XXX", 'X', OreDictUnifier.get(nugget, WroughtIron, 1));
+
+        // Stone Rod
+        ModHandler.addMirroredShapedRecipe("stone_rod", OreDictUnifier.get(stick, Stone), "s", "S", 'S', new UnificationEntry(block, Stone));
 
         // Glowstone Dust
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Glowstone, 2));
@@ -201,6 +207,18 @@ public class CEUOverrideRecipeLoader {
                 .fluidInputs(Water.getFluid(15))
                 .output(plate, CertusQuartz, 4)
                 .duration(300).EUt(VA[LV])
+                .buildAndRegister();
+    }
+
+    private static void blocks() {
+        // Redstone Lamp
+        ModHandler.removeRecipeByName(new ResourceLocation("gregtech", "redstone_lamp"));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(plate, Redstone, 4)
+                .input(plate, Glowstone, 4)
+                .output(Blocks.REDSTONE_LAMP)
+                .duration(100).EUt(1)
                 .buildAndRegister();
     }
 

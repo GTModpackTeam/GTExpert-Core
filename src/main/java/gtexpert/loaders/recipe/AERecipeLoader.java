@@ -35,6 +35,12 @@ public class AERecipeLoader {
     }
 
     private static void materials() {
+        // Iron Ingot
+        ModHandler.removeFurnaceSmelting(aeMaterials.ironDust().maybeStack(1).get());
+
+        // Gold Ingot
+        ModHandler.removeFurnaceSmelting(aeMaterials.goldDust().maybeStack(1).get());
+
         // ########################################
         // Sky Stone
         // ########################################

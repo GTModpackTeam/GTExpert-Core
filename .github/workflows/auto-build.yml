@@ -29,7 +29,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build --scan
+          arguments: build
           generate-job-summary: true
 
       - name: Upload Jars
