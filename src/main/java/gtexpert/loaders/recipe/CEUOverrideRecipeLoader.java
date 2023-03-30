@@ -261,14 +261,14 @@ public class CEUOverrideRecipeLoader {
                     .fluidInputs(Water.getFluid(1000))
                     .outputs(GTUtility.copyAmount(48, plankStack))
                     .output(dust, Wood, 12)
-                    .duration(300).EUt(VA[ULV])
+                    .duration(300).EUt(VA[LV])
                     .buildAndRegister();
             GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
                     .circuitMeta(2)
                     .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
                     .fluidInputs(Water.getFluid(2500))
                     .outputs(GTUtility.copyAmount(60, plankStack))
-                    .duration(600).EUt(VA[ULV])
+                    .duration(600).EUt(VA[LV])
                     .buildAndRegister();
         }
     }
