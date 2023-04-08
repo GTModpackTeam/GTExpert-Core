@@ -28,7 +28,7 @@ public class GTERecipeMaps {
             .setSound(GTSoundEvents.COMPRESSOR);
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> SAWMill_RECIPES = new RecipeMap<>("sawmill", 2, 2, 1, 0, new SimpleRecipeBuilder(), false)
+    public static final RecipeMap<SimpleRecipeBuilder> SAWMILL_RECIPES = new RecipeMap<>("sawmill", 2, 2, 1, 0, new SimpleRecipeBuilder(), false)
             .setSlotOverlay(false, false, GuiTextures.SAWBLADE_OVERLAY)
             .setSlotOverlay(true, false, false, GuiTextures.CUTTER_OVERLAY)
             .setSlotOverlay(true, false, true, GuiTextures.DUST_OVERLAY)

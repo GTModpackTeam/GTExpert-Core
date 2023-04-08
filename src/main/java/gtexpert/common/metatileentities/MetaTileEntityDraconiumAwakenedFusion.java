@@ -15,7 +15,6 @@ import gtexpert.common.GTEMetaBlocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
@@ -41,7 +40,6 @@ public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockCo
                         .or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('#', air())
-                .where(' ', any())
                 .build();
     }
 
