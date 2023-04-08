@@ -7,7 +7,7 @@ import net.minecraftforge.fml.relauncher.Side;
 @Mod.EventBusSubscriber(modid = "gtexpert", value = Side.CLIENT)
 public class GTETextures {
     public static SimpleOverlayRenderer SAWMILL_CASING;
-    public static OrientedOverlayRenderer SAWMILL_OVERLAY;
+    public static OrientedOverlayRenderer SAWMILL_OVERLAY = new OrientedOverlayRenderer("sawmill");
     public static OrientedOverlayRenderer EXTREME_MIXER_OVERLAY = new OrientedOverlayRenderer("extreme_mixer");
     public static OrientedOverlayRenderer VIAL_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("vial_extractor");
     public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;

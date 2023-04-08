@@ -255,7 +255,7 @@ public class CEUOverrideRecipeLoader {
             ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copyAmount(1, plankStack), allWoodLogs.get(i));
             ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(2, plankStack), "s", "P", "P", 'P', allWoodLogs.get(i));
 
-            GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
+            GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
                     .circuitMeta(1)
                     .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
                     .fluidInputs(Water.getFluid(1000))
@@ -263,7 +263,7 @@ public class CEUOverrideRecipeLoader {
                     .output(dust, Wood, 12)
                     .duration(300).EUt(VA[LV])
                     .buildAndRegister();
-            GTERecipeMaps.SAWMill_RECIPES.recipeBuilder()
+            GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
                     .circuitMeta(2)
                     .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
                     .fluidInputs(Water.getFluid(2500))
