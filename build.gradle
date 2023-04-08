@@ -28,6 +28,9 @@ plugins {
     id 'wtf.gofancy.fancygradle' version "${fancy_gradle_version}"
 }
 
+if (project.use_mixins.toBoolean()) {
+    apply plugin: 'org.spongepowered.mixin'
+}
 
 version = project.mod_version
 group = project.maven_group
@@ -61,12 +64,13 @@ if (project.use_eclipse.toBoolean()) {
 
 minecraft {
     mappings channel: "${mcp_mappings_channel}", version: "${mcp_mappings_version}"
-    if (project.use_access_transformer.toBoolean()) {
-        accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (project.has_access_transformer.toBoolean()) {
+        accessTransformer = file("src/main/resources/META-INF/${project.archives_base_name}_at.cfg")
     }
 
     runs {
         client {
+            //noinspection GroovyAssignabilityCheck
             workingDirectory project.file('run')
             if (project.use_coremod.toBoolean()) {
                 jvmArg '-Dfml.coreMods.load=' + coremod_plugin_class_name
@@ -82,6 +86,7 @@ minecraft {
         }
 
         server {
+            //noinspection GroovyAssignabilityCheck
             workingDirectory project.file('run')
             if (project.use_coremod.toBoolean()) {
                 jvmArg '-Dfml.coreMods.load=' + coremod_plugin_class_name
@@ -115,15 +120,15 @@ repositories {
         url = 'https://modmaven.dev'
     }
     maven {
-        name = 'Sponge Powered'
-        url = 'https://repo.spongepowered.org/maven'
-    }
-    maven {
         name = 'Curse Maven'
         url = 'https://www.cursemaven.com'
         content {
             includeGroup 'curse.maven'
         }
+    }
+    maven {
+        name = 'Sponge Maven'
+        url = 'https://repo.spongepowered.org/maven'
     }
 }
 
@@ -134,8 +139,8 @@ dependencies {
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
     implementation fg.deobf("curse.maven:codechicken-lib-1-8-${ccl_pid}:${ccl_fid}")
-    //implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
-    implementation (files("libs/gregtech-1.12.2-2.5.4-beta-deobf.jar"))
+    implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
+    //implementation (files("libs/gregtech-1.12.2-2.5.4-beta-deobf.jar"))
     implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
     implementation fg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
@@ -171,8 +176,7 @@ dependencies {
         fg.deobf "com.cleanroommc:assetmover:${assetmover_version}"
     }
     if (project.use_mixins.toBoolean()) {
-        compileOnly "zone.rong:mixinbooter:${mixinbooter_version}"
-        runtimeOnly "zone.rong:mixinbooter:${mixinbooter_version}"
+        implementation "zone.rong:mixinbooter:${mixinbooter_version}"
         annotationProcessor "org.spongepowered:mixin:${mixin_annotations_version}:processor"
     }
 
@@ -319,7 +323,7 @@ private void processJarTask(task) {
             if (project.use_mixins.toBoolean()) {
                 attribute_map['TweakClass'] = 'org.spongepowered.asm.launch.MixinTweaker'
             }
-            if (project.use_access_transformer.toBoolean()) {
+            if (project.has_access_transformer.toBoolean()) {
                 attribute_map['FMLAT'] = project.archives_base_name + '_at.cfg'
             }
             attributes(attribute_map)
