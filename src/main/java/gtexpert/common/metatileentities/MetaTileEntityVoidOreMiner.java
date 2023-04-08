@@ -18,7 +18,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
@@ -52,15 +51,14 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
                 .build();
     }
 
-    @NotNull
-    @Override
-    protected ICubeRenderer getFrontOverlay() {
-        return Textures.ITEM_VOIDING_ADVANCED;
-    }
-
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return GTETextures.VOID_ORE_MINER_CASING;
+    }
+
+    @Override
+    protected @NotNull ICubeRenderer getFrontOverlay() {
+        return Textures.ITEM_VOIDING_ADVANCED;
     }
 
     @Override

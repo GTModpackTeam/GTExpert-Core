@@ -6,6 +6,7 @@ import gregtech.api.util.GTUtility;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import net.minecraft.util.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 
 public class GTEMetaTileEntities {
@@ -55,7 +56,8 @@ public class GTEMetaTileEntities {
         AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005, new MetaTileEntityDraconiumAwakenedFusion(gteId("awakened_draconium_fusion")));
     }
 
-    private static ResourceLocation gteId(String name) {
+    @NotNull
+    private static ResourceLocation gteId(@NotNull String name) {
         return new ResourceLocation("gtexpert", name);
     }
 }

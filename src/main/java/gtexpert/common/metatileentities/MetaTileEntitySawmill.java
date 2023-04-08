@@ -16,15 +16,13 @@ import gtexpert.common.GTEMetaBlocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
-
     public MetaTileEntitySawmill(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GTERecipeMaps.SAWMill_RECIPES);
+        super(metaTileEntityId, GTERecipeMaps.SAWMILL_RECIPES);
     }
 
     @Override
@@ -33,7 +31,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    protected @NotNull BlockPattern createStructurePattern() {
+    protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("CFC", "C#C", "C#C")
                 .aisle("CFC", "G#G", "CCC")
@@ -46,24 +44,22 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
                 .where('G', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
                 .where('F', blocks(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR))
                 .where('#', air())
-                .where(' ', any())
                 .build();
     }
 
-    @NotNull
     @Override
-    protected ICubeRenderer getFrontOverlay() {
+    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
+        return GTETextures.SAWMILL_CASING;
+    }
+
+    @Override
+    protected @NotNull ICubeRenderer getFrontOverlay() {
         return GTETextures.SAWMILL_OVERLAY;
     }
 
     @Override
     public boolean hasMaintenanceMechanics() {
         return false;
-    }
-
-    @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GTETextures.SAWMILL_CASING;
     }
 
     @Override
