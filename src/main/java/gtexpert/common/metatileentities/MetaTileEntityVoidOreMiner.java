@@ -47,6 +47,7 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
                         .or(autoAbilities(true, true, true, true, true, false, false)))
                 .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER)))
                 .where('F', states(MetaBlocks.FRAMES.get(GTEMaterials.NM_HEA_NPs).getBlock(GTEMaterials.NM_HEA_NPs)))
+                .where('#', air())
                 .where(' ', any())
                 .build();
     }

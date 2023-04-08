@@ -88,12 +88,10 @@ public class GTEMaterials {
     // Unknown Composition Materials
 
     public static void init() {
+        GTEMaterialFlags.init();
         GTEFirstDegreeMaterials.init(); // 24001 - 24100
         EIOFirstDegreeMaterials.init(); // 24101 - 24150
         AEFirstDegreeMaterials.init();  // 24151 - 24175
-
-        if (Loader.isModLoaded("draconicevolution")) {
-            DEDegreeMaterials.init(); // 24176 - 24200
-        }
+        DEDegreeMaterials.init();       // 24176 - 24200
     }
 }

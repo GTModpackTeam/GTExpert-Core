@@ -4,12 +4,11 @@ import gregtech.api.fluids.fluidType.FluidTypes;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
-import gregtech.api.unification.material.properties.FluidProperty;
-import gregtech.api.unification.material.properties.PropertyKey;
 import static gregtech.api.GTValues.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gregicality.multiblocks.api.unification.GCYMMaterialFlags.DISABLE_ALLOY_BLAST;
 
 public class EIOFirstDegreeMaterials {
     /**
@@ -35,8 +34,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x949494).iconSet(MaterialIconSet.METALLIC)
-                .blastTemp(2700, GasTier.HIGH, 480, 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR, DISABLE_DECOMPOSITION)
+                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR, DISABLE_ALLOY_BLAST)
                 .components(Steel, 1, Coal, 1, Silicon, 1)
                 .build();
 
@@ -45,8 +44,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xED8009).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(2700, GasTier.HIGH, 480, 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR, DISABLE_DECOMPOSITION)
+                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR, DISABLE_ALLOY_BLAST)
                 .components(Redstone, 1, Gold, 1, Glowstone, 1)
                 .build();
         ENERGETIC_ALLOY.setFormula("Au2(Si(FeS2)5(CrAl2O3)Hg3)2", true);
@@ -56,8 +55,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xBAC63F).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(2700, GasTier.HIGH, 480, 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR, DISABLE_DECOMPOSITION)
+                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR, DISABLE_ALLOY_BLAST)
                 .components(ENERGETIC_ALLOY, 1, EnderPearl, 1)
                 .build();
         VIBRANT_ALLOY.setFormula("BeK4N5(Au2(Si(FeS2)5(CrAl2O3)Hg3)2)", true);
@@ -67,8 +66,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x942323).iconSet(MaterialIconSet.DULL)
-                .blastTemp(2700, GasTier.HIGH, 480, 120)
-                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
+                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
+                .flags(GENERATE_PLATE, DISABLE_ALLOY_BLAST)
                 .components(RedAlloy, 1, Silicon, 1)
                 .build();
 
@@ -77,8 +76,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xD1A79B).iconSet(MaterialIconSet.ROUGH)
-                .blastTemp(1700, GasTier.HIGH, 480, 120)
-                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
+                .blastTemp(1700, GasTier.HIGH, VA[HV], 120)
+                .flags(GENERATE_PLATE, DISABLE_ALLOY_BLAST)
                 .components(Iron, 1, REDSTONE_ALLOY, 1)
                 .build();
 
@@ -87,8 +86,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x6EAC7D).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(2700, GasTier.HIGH, 480, 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION)
+                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
+                .flags(GENERATE_PLATE, GENERATE_ROD, DISABLE_ALLOY_BLAST)
                 .components(Iron, 1, EnderPearl, 1)
                 .build();
 
@@ -97,8 +96,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x5F5F5F).iconSet(MaterialIconSet.METALLIC)
-                .blastTemp(2700, GasTier.HIGH, 480, 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_BOLT_SCREW, GENERATE_FRAME, DISABLE_DECOMPOSITION)
+                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_BOLT_SCREW, GENERATE_FRAME, DISABLE_ALLOY_BLAST)
                 .components(Iron, 1, Coal, 1, Obsidian, 1)
                 .build();
 
@@ -107,8 +106,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x5A4226).iconSet(MaterialIconSet.DULL)
-                .blastTemp(3600, GasTier.HIGH, 480, 600)
-                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
+                .blastTemp(3600, GasTier.HIGH, VA[HV], 600)
+                .flags(GENERATE_PLATE, DISABLE_ALLOY_BLAST)
                 .components(Gold, 1, Ash, 1, SOUL_SAND, 1)
                 .build();
 
@@ -117,8 +116,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xBCB682).iconSet(MaterialIconSet.METALLIC)
-                .blastTemp(4500, GasTier.HIGHER, 1920, 1072)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_BOLT_SCREW, DISABLE_DECOMPOSITION)
+                .blastTemp(4500, GasTier.HIGHER, VA[EV], 1072)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_BOLT_SCREW, DISABLE_ALLOY_BLAST)
                 .components(Endstone, 1, DARK_STEEL, 1, Obsidian, 1)
                 .build();
         END_STEEL.setFormula("FeC(MgFeSi2O4)2?", true);
@@ -128,8 +127,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x524C53).iconSet(MaterialIconSet.ROUGH)
-                .blastTemp(1700, GasTier.HIGHER, 1920, 1072)
-                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
+                .blastTemp(1700, GasTier.HIGHER, VA[EV], 1072)
+                .flags(GENERATE_PLATE, DISABLE_ALLOY_BLAST)
                 .components(Platinum, 1, Iron, 1, Aluminium, 1)
                 .build();
 
@@ -138,8 +137,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x9FE4E4).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(4500, GasTier.HIGHER, 1920, 600)
-                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
+                .blastTemp(4500, GasTier.HIGHER, VA[EV], 600)
+                .flags(GENERATE_PLATE, DISABLE_ALLOY_BLAST)
                 .components(Gold, 1, Platinum, 1, Emerald, 1, VIBRANT_ALLOY, 1)
                 .build();
 
@@ -148,8 +147,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xA877A8).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, 1920, 600)
-                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
+                .blastTemp(5400, GasTier.HIGHER, VA[EV], 600)
+                .flags(GENERATE_PLATE, DISABLE_ALLOY_BLAST)
                 .components(END_STEEL, 1, CHORUS_FRUIT, 1)
                 .build();
 
@@ -158,8 +157,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xDBDECC).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(7200, GasTier.HIGHER, 30720, 600)
-                .flags(GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION)
+                .blastTemp(7200, GasTier.HIGHER, VA[LuV], 600)
+                .flags(GENERATE_PLATE, GENERATE_ROD, DISABLE_ALLOY_BLAST)
                 .components(NetherStar, 1, MELODIC_ALLOY, 1, Clay, 1)
                 .build();
 
@@ -168,8 +167,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xE79EDB).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, 1920, 600)
-                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
+                .blastTemp(5400, GasTier.HIGHER, VA[EV], 600)
+                .flags(GENERATE_PLATE, DISABLE_ALLOY_BLAST)
                 .components(MELODIC_ALLOY, 1, RawRubber, 2)
                 .build();
 
@@ -178,8 +177,8 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x598DB3).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, 1920, 1072)
-                .flags(DISABLE_DECOMPOSITION)
+                .blastTemp(5400, GasTier.HIGHER, VA[EV], 1072)
+                .flags(DISABLE_ALLOY_BLAST)
                 .components(Silver, 1, Redstone, 1, Glowstone, 1)
                 .build();
 
@@ -189,7 +188,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x469BB1).iconSet(MaterialIconSet.SHINY)
                 .blastTemp(5400, GasTier.HIGHER, 1920, 1072)
-                .flags(DISABLE_DECOMPOSITION)
+                .flags(DISABLE_ALLOY_BLAST)
                 .components(ENERGETIC_SILVER, 1, EnderPearl, 1)
                 .build();
     }

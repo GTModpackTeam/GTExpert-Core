@@ -11,7 +11,6 @@ import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
 import appeng.api.definitions.IParts;
 import crazypants.enderio.base.init.ModObject;
-import gtexpert.common.items.GTEMetaItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,12 +29,18 @@ public class AERecipeLoader {
     private static final IParts aeParts = AEApi.instance().definitions().parts();
 
     public static void init() {
-        materias();
+        materials();
         items();
         tools();
     }
 
-    private static void materias() {
+    private static void materials() {
+        // Iron Ingot
+        ModHandler.removeFurnaceSmelting(aeMaterials.ironDust().maybeStack(1).get());
+
+        // Gold Ingot
+        ModHandler.removeFurnaceSmelting(aeMaterials.goldDust().maybeStack(1).get());
+
         // ########################################
         // Sky Stone
         // ########################################
