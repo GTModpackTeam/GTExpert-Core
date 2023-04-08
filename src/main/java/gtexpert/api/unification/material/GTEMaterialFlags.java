@@ -25,5 +25,13 @@ public class GTEMaterialFlags {
 
         // Glowstone
         Glowstone.setFormula("Au(Si(FeS2)5(CrAl2O3)Hg3)", true);
+
+        // Osmium
+        Osmium.setProperty(PropertyKey.ORE, new OreProperty());
+        Osmium.getProperty(PropertyKey.ORE).setOreByProducts(Iridium);
+
+        // Iridium
+        Iridium.setProperty(PropertyKey.ORE, new OreProperty());
+        Iridium.getProperty(PropertyKey.ORE).setOreByProducts(Platinum, Osmium);
     }
 }
