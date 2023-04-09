@@ -1,33 +1,33 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "model": "minecraft:cube_all"
+  "forge_marker" : 1,
+  "defaults" : {
+    "model" : "minecraft:cube_all"
   },
-  "variants": {
-    "variant": {
-      "greenhouse_casing": {
-        "textures": {
-          "all": "gregtech:blocks/greenhouse_casing"
+  "variants" : {
+    "variant" : {
+      "greenhouse_casing" : {
+        "textures" : {
+          "all" : "gregtech:blocks/greenhouse_casing"
         }
       },
-      "sawmill_casing": {
-        "textures": {
-          "all": "gregtech:blocks/sawmill_casing"
+      "sawmill_casing" : {
+        "textures" : {
+          "all" : "gregtech:blocks/sawmill_casing"
         }
       },
-      "void_ore_miner_casing": {
-        "textures": {
-          "all": "gregtech:blocks/void_ore_miner_casing"
+      "void_ore_miner_casing" : {
+        "textures" : {
+          "all" : "gregtech:blocks/void_ore_miner_casing"
         }
       },
-      "draconium_casing": {
-          "textures": {
-          "all": "gregtech:blocks/draconium_casing"
-          }
+      "draconium_casing" : {
+        "textures" : {
+          "all" : "gregtech:blocks/draconium_casing"
+        }
       },
-      "awakened_draconium_casing": {
-        "textures": {
-          "all": "gregtech:blocks/awakened_draconium_casing"
+      "awakened_draconium_casing" : {
+        "textures" : {
+          "all" : "gregtech:blocks/awakened_draconium_casing"
         }
       }
     }

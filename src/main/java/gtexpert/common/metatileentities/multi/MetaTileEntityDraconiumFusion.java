@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities;
+package gtexpert.common.metatileentities.multi;
 
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -17,16 +17,17 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 
-public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockController {
-    public MetaTileEntityDraconiumAwakenedFusion(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES);
+public class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
+    public MetaTileEntityDraconiumFusion(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, GTERecipeMaps.DRACONIUM_FUSION_RECIPES);
     }
 
     @Override
     public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityDraconiumAwakenedFusion(metaTileEntityId);
+        return new MetaTileEntityDraconiumFusion(metaTileEntityId);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockCo
                 .aisle("CCC", "C#C", "CMC")
                 .aisle("CCC", "CSC", "CCC")
                 .where('S', selfPredicate())
-                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING)).setMinGlobalLimited(15)
+                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING)).setMinGlobalLimited(15)
                         .or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('#', air())
@@ -44,7 +45,7 @@ public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockCo
     }
 
     @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) { return GTETextures.AWAKENED_DRACONIUM_CASING; }
+    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {return GTETextures.DRACONIUM_CASING;}
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {

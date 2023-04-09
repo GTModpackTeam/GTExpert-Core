@@ -4,11 +4,12 @@ import gregtech.api.fluids.fluidType.FluidTypes;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
+
+import static gregicality.multiblocks.api.unification.GCYMMaterialFlags.DISABLE_ALLOY_BLAST;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gregicality.multiblocks.api.unification.GCYMMaterialFlags.DISABLE_ALLOY_BLAST;
 
 public class EIOFirstDegreeMaterials {
     /**

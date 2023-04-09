@@ -2,7 +2,6 @@ package gtexpert.common;
 
 
 import gregtech.api.items.armor.ArmorMetaItem;
-import gregtech.api.util.GTUtility;
 import gtexpert.common.items.GTEMetaItems;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -21,7 +20,6 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
 import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(
@@ -38,32 +36,30 @@ public class GTEEventHandlers {
     )
     public static void onEntityLivingFallEvent(@NotNull LivingFallEvent event) {
         if (event.getEntity() instanceof EntityPlayerMP) {
-            EntityPlayerMP player = (EntityPlayerMP)event.getEntity();
+            EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
             ItemStack armor = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
             if (player.fallDistance < 3.2F) {
                 return;
             }
 
-            if (!armor.isEmpty() && armor.getItem() instanceof ArmorMetaItem && ((ArmorMetaItem<?>)armor.getItem()).getItem(armor).equals(GTEMetaItems.PISTON_BOOTS)) {
-                ISpecialArmor.ArmorProperties properties = ((ArmorMetaItem)(armor.getItem())).getProperties(player, armor, DamageSource.FALL, (int)(player.fallDistance), EntityEquipmentSlot.FEET.getSlotIndex());
-                if(properties.AbsorbRatio > 0){
+            if (!armor.isEmpty() && armor.getItem() instanceof ArmorMetaItem && ((ArmorMetaItem<?>) armor.getItem()).getItem(armor).equals(GTEMetaItems.PISTON_BOOTS)) {
+                ISpecialArmor.ArmorProperties properties = ((ArmorMetaItem) (armor.getItem())).getProperties(player, armor, DamageSource.FALL, (int) (player.fallDistance), EntityEquipmentSlot.FEET.getSlotIndex());
+                if (properties.AbsorbRatio > 0) {
                     event.setCanceled(true);
                     EntityLivingBase entityLivingBase = event.getEntityLiving();
 
                     PotionEffect potioneffect = event.getEntityLiving().getActivePotionEffect(MobEffects.JUMP_BOOST);
-                    float f = potioneffect == null ? 0.0F : (float)(potioneffect.getAmplifier() + 1);
+                    float f = potioneffect == null ? 0.0F : (float) (potioneffect.getAmplifier() + 1);
                     int i = MathHelper.ceil((properties.AbsorbRatio - f) * event.getDamageMultiplier());
 
-                    if (i > 0)
-                    {
-                        entityLivingBase.attackEntityFrom(DamageSource.FALL, (float)i);
+                    if (i > 0) {
+                        entityLivingBase.attackEntityFrom(DamageSource.FALL, (float) i);
                         int j = MathHelper.floor(entityLivingBase.posX);
                         int k = MathHelper.floor(entityLivingBase.posY - 0.20000000298023224D);
                         int l = MathHelper.floor(entityLivingBase.posZ);
                         IBlockState iblockstate = entityLivingBase.world.getBlockState(new BlockPos(j, k, l));
 
-                        if (iblockstate.getMaterial() != Material.AIR)
-                        {
+                        if (iblockstate.getMaterial() != Material.AIR) {
                             SoundType soundtype = iblockstate.getBlock().getSoundType(iblockstate, entityLivingBase.world, new BlockPos(j, k, l), entityLivingBase);
                             entityLivingBase.playSound(soundtype.getFallSound(), soundtype.getVolume() * 0.5F, soundtype.getPitch() * 0.75F);
                         }

@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtexpert:items/metaitems/gte_me_fake_component"
+  "parent" : "item/generated",
+  "textures" : {
+    "layer0" : "gtexpert:items/metaitems/gte_me_fake_component"
   }
 }

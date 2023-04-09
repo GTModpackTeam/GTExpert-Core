@@ -7,9 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import static gregtech.common.blocks.MetaBlocks.statePropertiesToString;
-
 import org.jetbrains.annotations.NotNull;
+
+import static gregtech.common.blocks.MetaBlocks.statePropertiesToString;
 
 public class GTEMetaBlocks {
 

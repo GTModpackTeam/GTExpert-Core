@@ -19,9 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
 
 public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
     private float charge = 0.0F;
@@ -37,7 +35,7 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
 
         updateStepHeight(player);
 
-        if(container.canUse(energyPerUse / 100) && (player.onGround) && KeyBind.VANILLA_FORWARD.isKeyDown(player) && (player.isSprinting())){
+        if (container.canUse(energyPerUse / 100) && (player.onGround) && KeyBind.VANILLA_FORWARD.isKeyDown(player) && (player.isSprinting())) {
             byte consumerTicks = data.getByte("consumerTicks");
 
             ++consumerTicks;

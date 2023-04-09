@@ -1,30 +1,21 @@
 package gtexpert.loaders.recipe;
 
-import gregtech.api.recipes.GTRecipeHandler;
+import com.brandon3055.draconicevolution.DEFeatures;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.common.items.MetaItems;
 import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.endergy.init.EndergyObject;
-import com.brandon3055.draconicevolution.DEFeatures;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
+
 import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class DARecipeLoader {
     public static void init() {

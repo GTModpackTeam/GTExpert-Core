@@ -5,8 +5,10 @@ import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.util.GTUtility;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
+import gtexpert.common.metatileentities.multi.*;
 import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
+
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 
 public class GTEMetaTileEntities {
