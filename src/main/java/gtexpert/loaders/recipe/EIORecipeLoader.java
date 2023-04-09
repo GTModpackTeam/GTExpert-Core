@@ -1,30 +1,48 @@
 package gtexpert.loaders.recipe;
 
+import crazypants.enderio.base.fluid.Fluids;
+import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.endergy.init.EndergyObject;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
 import gregtech.common.items.MetaItems;
-import crazypants.enderio.base.fluid.Fluids;
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.endergy.init.EndergyObject;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
-import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
+
 public class EIORecipeLoader {
     public static void init() {
+        // craftNutrientDistillation
+        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.PORKCHOP));
+        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.BEEF));
+        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.CHICKEN));
+        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.RABBIT));
+        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.MUTTON));
+        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.FISH, 1, 0));
+        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.FISH, 1, 1));
+        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.FISH, 1, 2));
+
+        // craftHootch
+        OreDictionary.registerOre("craftHootch", new ItemStack(Items.SUGAR));
+        OreDictionary.registerOre("craftHootch", new ItemStack(Items.WHEAT_SEEDS));
+        OreDictionary.registerOre("craftHootch", new ItemStack(Items.DYE, 1, 3));
+        OreDictionary.registerOre("craftHootch", new ItemStack(Items.BEETROOT_SEEDS));
+        OreDictionary.registerOre("craftHootch", new ItemStack(Items.PUMPKIN_SEEDS));
+        OreDictionary.registerOre("craftHootch", new ItemStack(Items.MELON_SEEDS));
+        OreDictionary.registerOre("craftHootch", new ItemStack(Items.POISONOUS_POTATO));
+
         fluid();
         materials();
         items();
@@ -55,23 +73,14 @@ public class EIORecipeLoader {
                 .buildAndRegister();
 
         // Nutrient Distillation
-        List<ItemStack> nutrientDistillationItems = new ArrayList<>();
-        nutrientDistillationItems.add(new ItemStack(Items.PORKCHOP, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.BEEF, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.CHICKEN, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.RABBIT, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.MUTTON, 4));
-        nutrientDistillationItems.add(new ItemStack(Items.FISH, 8));
-        for (ItemStack itemStack : nutrientDistillationItems) {
-            RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .inputs(itemStack)
-                    .input(Items.SPIDER_EYE, 2)
-                    .fluidInputs(Water.getFluid(1000))
-                    .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
-                    .duration(100).EUt(VA[LV])
-                    .buildAndRegister();
-        }
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(3)
+                .input("craftNutrientDistillation", 8)
+                .input(Items.SPIDER_EYE, 2)
+                .fluidInputs(Water.getFluid(1000))
+                .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                .duration(100).EUt(VA[LV])
+                .buildAndRegister();
 
         // Dew of Void
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -102,23 +111,14 @@ public class EIORecipeLoader {
                 .buildAndRegister();
 
         // Hootch
-        List<ItemStack> hootchItems = new ArrayList<>();
-        hootchItems.add(new ItemStack(Items.WHEAT_SEEDS, 4));
-        hootchItems.add(new ItemStack(Items.DYE, 4, 3));
-        hootchItems.add(new ItemStack(Items.BEETROOT_SEEDS, 4));
-        hootchItems.add(new ItemStack(Items.PUMPKIN_SEEDS, 2));
-        hootchItems.add(new ItemStack(Items.MELON_SEEDS, 2));
-        hootchItems.add(new ItemStack(Items.POISONOUS_POTATO, 1));
-        for (ItemStack itemStack : hootchItems) {
-            RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .inputs(itemStack)
-                    .input(Items.SUGAR, 1)
-                    .fluidInputs(Water.getFluid(2000))
-                    .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
-                    .duration(200).EUt(VA[HV])
-                    .buildAndRegister();
-        }
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(2)
+                .input("craftHootch", 4)
+                .input(Items.SUGAR, 1)
+                .fluidInputs(Water.getFluid(2000))
+                .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
+                .duration(200).EUt(VA[HV])
+                .buildAndRegister();
 
         // Fire Water
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -153,8 +153,8 @@ public class EIORecipeLoader {
                 .circuitMeta(1)
                 .input(dust, Electrum, 2)
                 .input(Items.SNOWBALL, 1)
-                .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 3500))
-                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1500))
+                .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1000))
+                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED_CONCENTRATED.getFluid(), 500))
                 .duration(200).EUt(VA[HV])
                 .buildAndRegister();
     }
@@ -366,7 +366,7 @@ public class EIORecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaItems.BATTERY_HULL_HV, 1)
                 .input(circuit, MarkerMaterials.Tier.HV, 1)
-                .fluidInputs(ENERGETIC_SILVER.getFluid(1152))
+                .fluidInputs(Silver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorSilver.getItemNN(), 1)
                 .duration(56).EUt(VA[HV])
                 .buildAndRegister();

@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -14,7 +13,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
 import org.jetbrains.annotations.NotNull;
 
 public class BlockSawmillConveyor extends Block {
@@ -38,17 +36,16 @@ public class BlockSawmillConveyor extends Block {
     }
 
     @Override
-    protected @NotNull BlockStateContainer createBlockState(){ return new BlockStateContainer(this, FACING);}
+    protected @NotNull BlockStateContainer createBlockState() {return new BlockStateContainer(this, FACING);}
 
     @Override
     public int getMetaFromState(@NotNull IBlockState state) {return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();}
 
     @NotNull
-    public IBlockState getStateFromMeta(int meta) { return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));}
+    public IBlockState getStateFromMeta(int meta) {return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));}
 
     @Override
-    public @NotNull IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @NotNull EntityLivingBase placer)
-    {
+    public @NotNull IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @NotNull EntityLivingBase placer) {
         return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 }

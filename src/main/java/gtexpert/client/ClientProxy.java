@@ -1,7 +1,7 @@
 package gtexpert.client;
 
-import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.CommonProxy;
+import gtexpert.common.GTEMetaBlocks;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

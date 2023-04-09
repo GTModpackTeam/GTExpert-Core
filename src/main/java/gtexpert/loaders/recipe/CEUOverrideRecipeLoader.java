@@ -4,6 +4,7 @@ import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
@@ -16,13 +17,14 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
 
 public class CEUOverrideRecipeLoader {
     public static void init() {
@@ -67,6 +69,53 @@ public class CEUOverrideRecipeLoader {
                 .chancedOutput(dust, Sulfur, 9900, 100)
                 .duration(160).EUt(20)
                 .buildAndRegister();
+
+        // ########################################
+        // Ice (Bug Fix)
+        // ########################################
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
+                new ItemStack[]{OreDictUnifier.get(dust, Ice, 1)},
+                new FluidStack[]{Ice.getFluid(144)}
+        );
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
+                new ItemStack[]{OreDictUnifier.get(block, Ice, 1)},
+                new FluidStack[]{Ice.getFluid(144)}
+        );
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_HEATER_RECIPES,
+                new ItemStack[]{IntCircuitIngredient.getIntegratedCircuit(1)},
+                new FluidStack[]{Ice.getFluid(144)}
+        );
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
+                new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},
+                new FluidStack[]{Ice.getFluid(144)}
+        );
+
+        // Fluid
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .input(dust, Ice, 1)
+                .fluidOutputs(Ice.getFluid(1000))
+                .duration(6).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .input(block, Ice, 1)
+                .fluidOutputs(Ice.getFluid(1000))
+                .duration(6).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.FLUID_HEATER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .fluidInputs(Ice.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .duration(32).EUt(4)
+                .buildAndRegister();
+
+        // Block
+        RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
+                .notConsumable(SHAPE_MOLD_BLOCK.getStackForm())
+                .fluidInputs(Ice.getFluid(1000))
+                .output(block, Ice, 1)
+                .duration(6).EUt(7)
+                .buildAndRegister();
+
 
         // ########################################
         // Quartzite (Bug Fix)
@@ -253,7 +302,7 @@ public class CEUOverrideRecipeLoader {
             ModHandler.removeRecipeByOutput(GTUtility.copyAmount(2, plankStack));
             ModHandler.removeRecipeByOutput(GTUtility.copyAmount(4, plankStack));
             ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copyAmount(1, plankStack), allWoodLogs.get(i));
-            ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(2, plankStack), "s", "P", "P", 'P', allWoodLogs.get(i));
+            ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(2, plankStack), "s", "P", 'P', allWoodLogs.get(i));
 
             GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
                     .circuitMeta(1)

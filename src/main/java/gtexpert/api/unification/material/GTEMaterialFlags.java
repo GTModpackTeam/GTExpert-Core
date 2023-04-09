@@ -1,6 +1,8 @@
 package gtexpert.api.unification.material;
 
 import gregtech.api.unification.material.properties.*;
+import net.minecraftforge.fml.common.Loader;
+
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 
@@ -11,6 +13,7 @@ public class GTEMaterialFlags {
 
         // Ender Eye
         EnderEye.setProperty(PropertyKey.FLUID, new FluidProperty());
+        EnderEye.setFormula("(BeK4N5)(CS)", true);
 
         // NetherQuartz
         NetherQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
@@ -26,12 +29,13 @@ public class GTEMaterialFlags {
         // Glowstone
         Glowstone.setFormula("Au(Si(FeS2)5(CrAl2O3)Hg3)", true);
 
-        // Osmium
-        Osmium.setProperty(PropertyKey.ORE, new OreProperty());
-        Osmium.getProperty(PropertyKey.ORE).setOreByProducts(Iridium);
+        // Gregification error fix
+        if (!Loader.isModLoaded("gregification")) {
+            // Osmium
+            Osmium.setProperty(PropertyKey.ORE, new OreProperty());
 
-        // Iridium
-        Iridium.setProperty(PropertyKey.ORE, new OreProperty());
-        Iridium.getProperty(PropertyKey.ORE).setOreByProducts(Platinum, Osmium);
+            // Iridium
+            Iridium.setProperty(PropertyKey.ORE, new OreProperty());
+        }
     }
 }

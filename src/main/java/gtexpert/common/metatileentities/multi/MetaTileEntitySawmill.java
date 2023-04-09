@@ -1,11 +1,11 @@
-package gtexpert.common.metatileentities;
+package gtexpert.common.metatileentities.multi;
 
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-import gregtech.api.pattern.*;
-import gregtech.api.unification.material.Materials;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -18,6 +18,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 
 public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
@@ -31,19 +32,19 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("CFC", "C#C", "C#C")
-                .aisle("CFC", "G#G", "CCC")
-                .aisle("CFC", "G#G", "C#C")
-                .aisle("CFC", "G#G", "CCC")
-                .aisle("CFC", "S#C", "C#C")
+                .aisle("CFC", "C#C", "C C")
+                .aisle(" F ", " # ", "CCC")
+                .aisle(" F ", " # ", "C C")
+                .aisle(" F ", " # ", "CCC")
+                .aisle("CFC", "S#C", "C C")
                 .where('S', selfPredicate())
                 .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill)).setMinGlobalLimited(15)
-                        .or(autoAbilities(true, false, true, true, true, true, false)))
-                .where('G', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
+                        .or(autoAbilities(true, false, true, true, true, false, false)))
                 .where('F', blocks(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR))
                 .where('#', air())
+                .where(' ', any())
                 .build();
     }
 

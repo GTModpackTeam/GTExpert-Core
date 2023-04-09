@@ -92,6 +92,9 @@ public class GTEMaterials {
         GTEFirstDegreeMaterials.init(); // 24001 - 24100
         EIOFirstDegreeMaterials.init(); // 24101 - 24150
         AEFirstDegreeMaterials.init();  // 24151 - 24175
-        DEDegreeMaterials.init();       // 24176 - 24200
+
+        if (Loader.isModLoaded("draconicevolution") && Loader.isModLoaded("draconicadditions")) {
+            DEDegreeMaterials.init(); // 24176 - 24200
+        }
     }
 }

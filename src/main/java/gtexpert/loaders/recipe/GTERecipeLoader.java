@@ -1,53 +1,44 @@
 package gtexpert.loaders.recipe;
 
+import appeng.api.AEApi;
+import com.the9grounds.aeadditions.api.AEAApi;
+import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.powertools.init.PowerToolObject;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
-import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockFusionCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.powertools.init.PowerToolObject;
-import appeng.api.AEApi;
-import com.the9grounds.aeadditions.api.AEAApi;
-import net.foxmcloud.draconicadditions.DAFeatures;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import org.apache.commons.lang3.tuple.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class GTERecipeLoader {
     public static void init() {
@@ -59,6 +50,12 @@ public class GTERecipeLoader {
     }
 
     private static void materials() {
+        // Osmium
+        Osmium.getProperty(PropertyKey.ORE).setOreByProducts(Iridium);
+
+        // Iridium
+        Iridium.getProperty(PropertyKey.ORE).setOreByProducts(Platinum, Osmium);
+
         // Nether Star Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Diamond, 1)
@@ -102,6 +99,30 @@ public class GTERecipeLoader {
                 .output(dust, NM_HEA_NPs, 8)
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
+        RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, NM_HEA_NPs, 1)
+                .output(dust, Gold, 1)
+                .output(dust, Silver, 1)
+                .output(dust, Ruthenium, 1)
+                .output(dust, Rhodium, 1)
+                .output(dust, Palladium, 1)
+                .output(dust, Osmium, 1)
+                .fluidOutputs(Iridium.getFluid(144))
+                .fluidOutputs(Platinum.getFluid(144))
+                .duration(10).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
+                .input(dust, NM_HEA_NPs, 1)
+                .output(dust, Gold, 1)
+                .output(dust, Silver, 1)
+                .output(dust, Ruthenium, 1)
+                .output(dust, Rhodium, 1)
+                .output(dust, Palladium, 1)
+                .output(dust, Osmium, 1)
+                .fluidOutputs(Iridium.getFluid(144))
+                .fluidOutputs(Platinum.getFluid(144))
+                .duration(10).EUt(VA[LV])
+                .buildAndRegister();
 
         // Naquadah Rocket Fuel
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -118,14 +139,23 @@ public class GTERecipeLoader {
 
     private static void items() {
         // Remove solar panels
+        ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL.getStackForm());
         ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_ULV.getStackForm());
         ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_LV.getStackForm());
+
+        // Solar Panel
+        ModHandler.addShapedRecipe("solar_panel_basic", COVER_SOLAR_PANEL.getStackForm(1),
+                "SGS", "CFC",
+                'S', SILICON_WAFER,
+                'G', Blocks.GLASS_PANE,
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                'F', CARBON_FIBER_PLATE);
 
         // Solar Panel (8V)
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL, 8)
                 .input(Blocks.DAYLIGHT_DETECTOR, 8)
-                .input(circuit, MarkerMaterials.Tier.ULV, 4)
+                .input(NAND_CHIP_ULV, 4)
                 .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 4)
                 .input(Blocks.GLASS)
                 .input(MetaTileEntities.TRANSFORMER[0])
@@ -139,7 +169,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_ULV, 4)
                 .input(SENSOR_LV, 8)
-                .input(circuit, MarkerMaterials.Tier.LV, 4)
+                .input(MICROPROCESSOR_LV, 4)
                 .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
                 .inputs(AEApi.instance().definitions().blocks().quartzGlass().maybeStack(1).get())
                 .input(MetaTileEntities.TRANSFORMER[1])
@@ -153,7 +183,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_LV, 4)
                 .input(SENSOR_MV, 8)
-                .input(circuit, MarkerMaterials.Tier.MV, 4)
+                .input(INTEGRATED_CIRCUIT_MV, 4)
                 .input(LOW_POWER_INTEGRATED_CIRCUIT, 4)
                 .input(ModObject.blockFusedQuartz.getBlockNN())
                 .input(MetaTileEntities.TRANSFORMER[2])
@@ -167,7 +197,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_MV, 4)
                 .input(SENSOR_HV, 8)
-                .input(circuit, MarkerMaterials.Tier.HV, 4)
+                .input(NANO_PROCESSOR_HV, 4)
                 .input(LOW_POWER_INTEGRATED_CIRCUIT, 8)
                 .input(ModObject.blockFusedGlass.getBlockNN())
                 .input(MetaTileEntities.TRANSFORMER[3])
@@ -181,7 +211,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_HV, 4)
                 .input(SENSOR_EV, 8)
-                .input(circuit, MarkerMaterials.Tier.EV, 4)
+                .input(WORKSTATION_EV, 4)
                 .input(POWER_INTEGRATED_CIRCUIT, 4)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
                 .input(MetaTileEntities.TRANSFORMER[4])
@@ -195,7 +225,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_EV, 4)
                 .input(SENSOR_IV, 8)
-                .input(circuit, MarkerMaterials.Tier.IV, 4)
+                .input(MAINFRAME_IV, 4)
                 .input(POWER_INTEGRATED_CIRCUIT, 8)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
                 .input(MetaTileEntities.TRANSFORMER[5])
@@ -209,7 +239,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_IV, 4)
                 .input(SENSOR_LuV, 8)
-                .input(circuit, MarkerMaterials.Tier.LuV, 4)
+                .input(NANO_MAINFRAME_LUV, 4)
                 .input(HIGH_POWER_INTEGRATED_CIRCUIT, 8)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
                 .input(MetaTileEntities.TRANSFORMER[6])
@@ -223,7 +253,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_LUV, 4)
                 .input(SENSOR_ZPM, 8)
-                .input(circuit, MarkerMaterials.Tier.ZPM, 4)
+                .input(QUANTUM_MAINFRAME_ZPM, 4)
                 .input(HIGH_POWER_INTEGRATED_CIRCUIT, 16)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
                 .input(MetaTileEntities.TRANSFORMER[7])
@@ -237,7 +267,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_ZPM, 4)
                 .input(SENSOR_UV, 8)
-                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(CRYSTAL_MAINFRAME_UV, 4)
                 .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 32)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
                 .input(MetaTileEntities.TRANSFORMER[8])
@@ -271,13 +301,13 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.HULL[ZPM])
                 .input(frameGt, NaquadahAlloy, 4)
-                .input(circuit, MarkerMaterials.Tier.ZPM,4)
+                .input(circuit, MarkerMaterials.Tier.ZPM, 4)
                 .input(ELECTRIC_MOTOR_ZPM, 4)
                 .input(ELECTRIC_PUMP_ZPM, 4)
-                .input(CONVEYOR_MODULE_ZPM,4)
-                .input(ELECTRIC_PISTON_ZPM,4)
-                .input(ROBOT_ARM_ZPM,4)
-                .input(EMITTER_ZPM,4)
+                .input(CONVEYOR_MODULE_ZPM, 4)
+                .input(ELECTRIC_PISTON_ZPM, 4)
+                .input(ROBOT_ARM_ZPM, 4)
+                .input(EMITTER_ZPM, 4)
                 .input(SENSOR_ZPM, 4)
                 .input(ORE_DICTIONARY_FILTER)
                 .input(gear, NaquadahAlloy, 4)
@@ -287,7 +317,7 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Treated Wood Machine Casing
-        ModHandler.addShapedRecipe("casing_treated_wood", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,2),
+        ModHandler.addShapedRecipe("casing_treated_wood", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, TreatedWood),
                 'F', new UnificationEntry(frameGt, TreatedWood));
@@ -317,7 +347,7 @@ public class GTERecipeLoader {
                 .input(frameGt, TreatedWood, 1)
                 .input(Items.LEATHER, 3)
                 .fluidInputs(Glue.getFluid(100))
-                .output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR,1)
+                .output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR, 1)
                 .duration(100).EUt(VA[MV])
                 .buildAndRegister();
 
@@ -328,26 +358,26 @@ public class GTERecipeLoader {
                 materialOres.add(material);
             }
         }
-        for(Material materialOre : materialOres){
+        for (Material materialOre : materialOres) {
             GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
                     .input(ore, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(ore, materialOre,32)
+                    .output(ore, materialOre, 32)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
             GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
                     .input(oreNetherrack, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(oreNetherrack, materialOre,64)
+                    .output(oreNetherrack, materialOre, 64)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
             GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
                     .input(oreEndstone, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(oreEndstone, materialOre,64)
+                    .output(oreEndstone, materialOre, 64)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
         }
@@ -380,7 +410,7 @@ public class GTERecipeLoader {
                 .input(ENERGY_CLUSTER, 4)
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
                 .input(MetaTileEntities.HULL[UV])
-                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(CRYSTAL_MAINFRAME_UV, 4)
                 .inputs(AEApi.instance().definitions().blocks().energyCellDense().maybeStack(8).get())
                 .input(COVER_SOLAR_PANEL_UV, 1)
                 .fluidInputs(FLUIX.getFluid(18432))
@@ -395,7 +425,7 @@ public class GTERecipeLoader {
                 .input(ENERGY_CLUSTER, 4)
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
                 .input(MetaTileEntities.HULL[UV])
-                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(CRYSTAL_MAINFRAME_UV, 4)
                 .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 3))
                 .input(COVER_SOLAR_PANEL_UV, 1)
                 .fluidInputs(VIBRANT_ALLOY.getFluid(18432))
@@ -408,7 +438,7 @@ public class GTERecipeLoader {
         // GTE ME Storage Fake Component
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(screw, Neutronium, 8)
-                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(CRYSTAL_MAINFRAME_UV, 4)
                 .inputs(new ItemStack(AEAApi.instance().items().cell256kPart().maybeItem().get(), 16, 3))
                 .inputs(new ItemStack(AEAApi.instance().items().cell256kPart().maybeItem().get(), 16, 6))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
@@ -418,18 +448,18 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(MetaTileEntities.HULL[UHV])
-                .input(DAFeatures.chaoticEnergyCore, 8)
-                .input(DAFeatures.chaosStabilizerCore, 8)
-                .inputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(4).get())
-                .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
-                .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
-                .fluidInputs(SolderingAlloy.getFluid(18432))
-                .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
-                .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
-                .duration(2000).EUt(VA[UHV])
-                .buildAndRegister();
+        if (!Loader.isModLoaded("draconicevolution") && !Loader.isModLoaded("draconicadditions")) {
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(MetaTileEntities.HULL[UHV])
+                    .inputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(4).get())
+                    .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.ANY, NBTCondition.ANY)
+                    .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                    .fluidInputs(SolderingAlloy.getFluid(18432))
+                    .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
+                    .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
+                    .duration(2000).EUt(VA[UHV])
+                    .buildAndRegister();
+        }
 
         // Creative Quantum Tank
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
