@@ -8,7 +8,6 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-
 import org.jetbrains.annotations.NotNull;
 
 public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalCasingType> {
@@ -30,7 +29,7 @@ public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalC
     }
 
     public enum MetalCasingType implements IStringSerializable {
-        
+
         SAWMill("sawmill_casing"),
         VOID_ORE_MINER("void_ore_miner_casing"),
         DRACONIUM_CASING("draconium_casing"),

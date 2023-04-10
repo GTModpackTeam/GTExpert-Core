@@ -1,23 +1,12 @@
 package gtexpert.loaders.recipe;
 
-import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.items.MetaItems;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.oredict.OreDictionary;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gregtech.api.GTValues.*;
+
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class VanillaOverrideRecipes {
     public static void init() {

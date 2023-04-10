@@ -1,9 +1,10 @@
 package gtexpert.common.items;
 
 import gregtech.api.items.metaitem.StandardMetaItem;
+
 import static gtexpert.common.items.GTEMetaItems.*;
 
-public class GTEMetaItem1  extends StandardMetaItem {
+public class GTEMetaItem1 extends StandardMetaItem {
 
     public GTEMetaItem1() {
         super();

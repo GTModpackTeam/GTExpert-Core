@@ -34,8 +34,8 @@ if (project.use_mixins.toBoolean()) {
 
 version = project.mod_version
 group = project.maven_group
-archivesBaseName = "${project.archives_base_name}-${project.minecraft_version}"
-java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+archivesBaseName = "GTExpert-Core-${project.minecraft_version}"
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 
 if (project.use_intellij_idea.toBoolean()) {
     apply {
@@ -169,8 +169,6 @@ dependencies {
     // Compile-Time Dependencies
     compileOnly "org.jetbrains:annotations:${annotations_version}"
     annotationProcessor "org.jetbrains:annotations:${annotations_version}"
-    compileOnly "org.projectlombok:lombok:${lombok_version}"
-    annotationProcessor "org.projectlombok:lombok:${lombok_version}"
 
     if (project.use_assetmover.toBoolean()) {
         fg.deobf "com.cleanroommc:assetmover:${assetmover_version}"
@@ -229,7 +227,7 @@ if (project.build_sourceJar.toBoolean()) {
 sourceSets {
     main {
         if (project.use_mixins.toBoolean()) {
-            ext.refMap = 'mixins.' + project.archives_base_name + '.refmap.json'
+            ext.refMap = "mixins.${project.archives_base_name}.refmap.json"
         }
 
         java {

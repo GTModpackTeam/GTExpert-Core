@@ -1,26 +1,27 @@
 package gtexpert.loaders.recipe;
 
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.items.MetaItems;
 import appeng.api.AEApi;
 import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
 import appeng.api.definitions.IParts;
 import crazypants.enderio.base.init.ModObject;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.items.MetaItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
+
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
 
 public class AERecipeLoader {
     private static final IItems aeItems = AEApi.instance().definitions().items();

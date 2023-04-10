@@ -1,23 +1,25 @@
-[{
-  "modid": "gtexpert",
-  "name": "GTExpert-Core",
-  "description": "a coremod for the GregTech Expert 2 modpack",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": [
-    "Quarri6343",
-    "tier940"
-  ],
-  "logoFile": "assets/gregtech/textures/gui/icon/gtexpert_core_logo_high_resolution.png",
-  "dependencies": [
-    "chickenchunks",
-    "gregtech",
-    "appliedenergistics2",
-    "endercore",
-    "enderio",
-    "draconicevolution",
-    "draconicadditions"
-  ]
-}]
+[
+  {
+    "modid" : "gtexpert",
+    "name" : "GTExpert-Core",
+    "description" : "a coremod for the GregTech Expert 2 modpack",
+    "version" : "${version}",
+    "mcversion" : "${mcversion}",
+    "url" : "",
+    "updateUrl" : "",
+    "authorList" : [
+      "Quarri6343",
+      "tier940"
+    ],
+    "logoFile" : "assets/gregtech/textures/gui/icon/gtexpert_core_logo_high_resolution.png",
+    "dependencies" : [
+      "chickenchunks",
+      "gregtech",
+      "appliedenergistics2",
+      "endercore",
+      "enderio",
+      "draconicevolution",
+      "draconicadditions"
+    ]
+  }
+]

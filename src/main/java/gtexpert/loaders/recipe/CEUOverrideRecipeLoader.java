@@ -16,13 +16,14 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
 
 public class CEUOverrideRecipeLoader {
     public static void init() {

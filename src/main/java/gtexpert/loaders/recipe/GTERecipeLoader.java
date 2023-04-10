@@ -1,53 +1,44 @@
 package gtexpert.loaders.recipe;
 
+import appeng.api.AEApi;
+import com.the9grounds.aeadditions.api.AEAApi;
+import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.powertools.init.PowerToolObject;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
-import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockFusionCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.powertools.init.PowerToolObject;
-import appeng.api.AEApi;
-import com.the9grounds.aeadditions.api.AEAApi;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import org.apache.commons.lang3.tuple.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class GTERecipeLoader {
     public static void init() {
@@ -271,13 +262,13 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.HULL[ZPM])
                 .input(frameGt, NaquadahAlloy, 4)
-                .input(circuit, MarkerMaterials.Tier.ZPM,4)
+                .input(circuit, MarkerMaterials.Tier.ZPM, 4)
                 .input(ELECTRIC_MOTOR_ZPM, 4)
                 .input(ELECTRIC_PUMP_ZPM, 4)
-                .input(CONVEYOR_MODULE_ZPM,4)
-                .input(ELECTRIC_PISTON_ZPM,4)
-                .input(ROBOT_ARM_ZPM,4)
-                .input(EMITTER_ZPM,4)
+                .input(CONVEYOR_MODULE_ZPM, 4)
+                .input(ELECTRIC_PISTON_ZPM, 4)
+                .input(ROBOT_ARM_ZPM, 4)
+                .input(EMITTER_ZPM, 4)
                 .input(SENSOR_ZPM, 4)
                 .input(ORE_DICTIONARY_FILTER)
                 .input(gear, NaquadahAlloy, 4)
@@ -287,7 +278,7 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Treated Wood Machine Casing
-        ModHandler.addShapedRecipe("casing_treated_wood", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,2),
+        ModHandler.addShapedRecipe("casing_treated_wood", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, TreatedWood),
                 'F', new UnificationEntry(frameGt, TreatedWood));
@@ -317,7 +308,7 @@ public class GTERecipeLoader {
                 .input(frameGt, TreatedWood, 1)
                 .input(Items.LEATHER, 3)
                 .fluidInputs(Glue.getFluid(100))
-                .output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR,1)
+                .output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR, 1)
                 .duration(100).EUt(VA[MV])
                 .buildAndRegister();
 
@@ -328,26 +319,26 @@ public class GTERecipeLoader {
                 materialOres.add(material);
             }
         }
-        for(Material materialOre : materialOres){
+        for (Material materialOre : materialOres) {
             GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
                     .input(ore, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(ore, materialOre,32)
+                    .output(ore, materialOre, 32)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
             GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
                     .input(oreNetherrack, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(oreNetherrack, materialOre,64)
+                    .output(oreNetherrack, materialOre, 64)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
             GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
                     .input(oreEndstone, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(oreEndstone, materialOre,64)
+                    .output(oreEndstone, materialOre, 64)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
         }

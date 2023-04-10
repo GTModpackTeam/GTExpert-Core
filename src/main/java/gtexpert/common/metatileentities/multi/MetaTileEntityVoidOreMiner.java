@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities;
+package gtexpert.common.metatileentities.multi;
 
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -20,6 +20,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 
 public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {

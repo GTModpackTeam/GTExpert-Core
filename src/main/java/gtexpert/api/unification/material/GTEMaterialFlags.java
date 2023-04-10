@@ -1,6 +1,7 @@
 package gtexpert.api.unification.material;
 
 import gregtech.api.unification.material.properties.*;
+
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 

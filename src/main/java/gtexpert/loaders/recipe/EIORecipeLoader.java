@@ -1,27 +1,25 @@
 package gtexpert.loaders.recipe;
 
+import crazypants.enderio.base.fluid.Fluids;
+import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.endergy.init.EndergyObject;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
 import gregtech.common.items.MetaItems;
-import crazypants.enderio.base.fluid.Fluids;
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.endergy.init.EndergyObject;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
-import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
 
 public class EIORecipeLoader {
     public static void init() {

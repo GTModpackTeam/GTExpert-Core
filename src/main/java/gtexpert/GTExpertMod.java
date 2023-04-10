@@ -1,17 +1,13 @@
 package gtexpert;
 
 import gregtech.api.GTValues;
-import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.CommonProxy;
-import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.Mod;
-import codechicken.lib.CodeChickenLib;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
-
 import org.jetbrains.annotations.NotNull;
 
 @Mod(modid = "gtexpert",

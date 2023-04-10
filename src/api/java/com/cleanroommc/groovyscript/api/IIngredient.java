@@ -3,9 +3,9 @@ package com.cleanroommc.groovyscript.api;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.function.Predicate;
 
 /**
