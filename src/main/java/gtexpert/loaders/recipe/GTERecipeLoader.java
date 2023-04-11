@@ -50,6 +50,12 @@ public class GTERecipeLoader {
     }
 
     private static void materials() {
+        // Osmium
+        Osmium.getProperty(PropertyKey.ORE).setOreByProducts(Iridium);
+
+        // Iridium
+        Iridium.getProperty(PropertyKey.ORE).setOreByProducts(Platinum, Osmium);
+
         // Nether Star Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Diamond, 1)
