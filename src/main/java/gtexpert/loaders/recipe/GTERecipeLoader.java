@@ -99,6 +99,30 @@ public class GTERecipeLoader {
                 .output(dust, NM_HEA_NPs, 8)
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
+        RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, NM_HEA_NPs, 1)
+                .output(dust, Gold, 1)
+                .output(dust, Silver, 1)
+                .output(dust, Ruthenium, 1)
+                .output(dust, Rhodium, 1)
+                .output(dust, Palladium, 1)
+                .output(dust, Osmium, 1)
+                .fluidOutputs(Iridium.getFluid(144))
+                .fluidOutputs(Platinum.getFluid(144))
+                .duration(10).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
+                .input(dust, NM_HEA_NPs, 1)
+                .output(dust, Gold, 1)
+                .output(dust, Silver, 1)
+                .output(dust, Ruthenium, 1)
+                .output(dust, Rhodium, 1)
+                .output(dust, Palladium, 1)
+                .output(dust, Osmium, 1)
+                .fluidOutputs(Iridium.getFluid(144))
+                .fluidOutputs(Platinum.getFluid(144))
+                .duration(10).EUt(VA[LV])
+                .buildAndRegister();
 
         // Naquadah Rocket Fuel
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -246,14 +270,6 @@ public class GTERecipeLoader {
     }
 
     private static void blocks() {
-        // Extreme Mixer
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(MetaTileEntities.MIXER[ZPM].getStackForm())
-                .inputs(FIELD_GENERATOR_ZPM.getStackForm())
-                .output(EXTREME_MIXER[0])
-                .duration(200).EUt(VA[ZPM])
-                .buildAndRegister();
-
         // Sawmill
         ModHandler.addShapedRecipe("gtexpert.machine.sawmill", SAWMILL.getStackForm(),
                 "SBs", "MHM", "COC",
@@ -263,25 +279,6 @@ public class GTERecipeLoader {
                 'H', MetaTileEntities.HULL[MV].getStackForm(),
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
                 'O', CONVEYOR_MODULE_MV.getStackForm());
-
-        // Void Ore Miner
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(MetaTileEntities.HULL[ZPM])
-                .input(frameGt, NaquadahAlloy, 4)
-                .input(circuit, MarkerMaterials.Tier.ZPM, 4)
-                .input(ELECTRIC_MOTOR_ZPM, 4)
-                .input(ELECTRIC_PUMP_ZPM, 4)
-                .input(CONVEYOR_MODULE_ZPM, 4)
-                .input(ELECTRIC_PISTON_ZPM, 4)
-                .input(ROBOT_ARM_ZPM, 4)
-                .input(EMITTER_ZPM, 4)
-                .input(SENSOR_ZPM, 4)
-                .input(ORE_DICTIONARY_FILTER)
-                .input(gear, NaquadahAlloy, 4)
-                .fluidInputs(SolderingAlloy.getFluid(18432))
-                .output(VOIDOREMINER)
-                .duration(600).EUt(VA[ZPM])
-                .buildAndRegister();
 
         // Treated Wood Machine Casing
         ModHandler.addShapedRecipe("casing_treated_wood", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
