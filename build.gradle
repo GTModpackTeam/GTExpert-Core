@@ -78,7 +78,7 @@ minecraft {
             if (project.use_mixins.toBoolean()) {
                 jvmArg '-Dmixin.hotSwap=true'
                 jvmArg '-Dmixin.checks.interfaces=true'
-                jvmArg '-Dmixin.debug=true'
+                jvmArg '-Dmixin.debug.export=true'
             }
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
