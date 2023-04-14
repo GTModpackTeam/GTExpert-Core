@@ -50,6 +50,12 @@ public class GTERecipeLoader {
     }
 
     private static void materials() {
+        // Osmium
+        Osmium.getProperty(PropertyKey.ORE).setOreByProducts(Iridium);
+
+        // Iridium
+        Iridium.getProperty(PropertyKey.ORE).setOreByProducts(Platinum, Osmium);
+
         // Nether Star Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Diamond, 1)
@@ -92,6 +98,30 @@ public class GTERecipeLoader {
                 .input(dust, Platinum, 1)
                 .output(dust, NM_HEA_NPs, 8)
                 .duration(100).EUt(VA[ZPM])
+                .buildAndRegister();
+        RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, NM_HEA_NPs, 1)
+                .output(dust, Gold, 1)
+                .output(dust, Silver, 1)
+                .output(dust, Ruthenium, 1)
+                .output(dust, Rhodium, 1)
+                .output(dust, Palladium, 1)
+                .output(dust, Osmium, 1)
+                .fluidOutputs(Iridium.getFluid(144))
+                .fluidOutputs(Platinum.getFluid(144))
+                .duration(10).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
+                .input(dust, NM_HEA_NPs, 1)
+                .output(dust, Gold, 1)
+                .output(dust, Silver, 1)
+                .output(dust, Ruthenium, 1)
+                .output(dust, Rhodium, 1)
+                .output(dust, Palladium, 1)
+                .output(dust, Osmium, 1)
+                .fluidOutputs(Iridium.getFluid(144))
+                .fluidOutputs(Platinum.getFluid(144))
+                .duration(10).EUt(VA[LV])
                 .buildAndRegister();
 
         // Naquadah Rocket Fuel

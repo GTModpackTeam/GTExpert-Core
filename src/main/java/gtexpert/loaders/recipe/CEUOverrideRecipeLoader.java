@@ -254,7 +254,7 @@ public class CEUOverrideRecipeLoader {
             ModHandler.removeRecipeByOutput(GTUtility.copyAmount(2, plankStack));
             ModHandler.removeRecipeByOutput(GTUtility.copyAmount(4, plankStack));
             ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copyAmount(1, plankStack), allWoodLogs.get(i));
-            ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(2, plankStack), "s", "P", "P", 'P', allWoodLogs.get(i));
+            ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(2, plankStack), "s", "P", 'P', allWoodLogs.get(i));
 
             GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
                     .circuitMeta(1)
