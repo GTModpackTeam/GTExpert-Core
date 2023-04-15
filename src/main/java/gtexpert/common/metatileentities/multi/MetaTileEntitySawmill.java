@@ -34,17 +34,18 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     @Override
     protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("CFC", "C#C", "C#C")
+                .aisle("CFC", "C#C", "C C")
                 .aisle("CFC", "G#G", "CCC")
-                .aisle("CFC", "G#G", "C#C")
+                .aisle("CFC", "G#G", "C C")
                 .aisle("CFC", "G#G", "CCC")
-                .aisle("CFC", "S#C", "C#C")
+                .aisle("CFC", "S#C", "C C")
                 .where('S', selfPredicate())
-                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill)).setMinGlobalLimited(24)
+                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill)).setMinGlobalLimited(21)
                         .or(autoAbilities(true, false, true, true, true, true, false)))
                 .where('G', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
                 .where('F', blocks(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR))
                 .where('#', air())
+                .where(' ', any())
                 .build();
     }
 
