@@ -1,7 +1,7 @@
 [
   {
     "modid" : "gtexpert",
-    "name" : "GTExpert-Core",
+    "name" : "GTExpert Core",
     "description" : "a coremod for the GregTech Expert 2 modpack",
     "version" : "${version}",
     "mcversion" : "${mcversion}",

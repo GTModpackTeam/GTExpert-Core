@@ -11,7 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -22,9 +21,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
-import static gtexpert.common.GTEMetaBlocks.*;
-
-import org.jetbrains.annotations.NotNull;
+import static gtexpert.common.GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR;
+import static gtexpert.common.GTEMetaBlocks.GTE_BLOCK_METAL_CASING;
 
 @Mod.EventBusSubscriber(modid = "gtexpert")
 public class CommonProxy {
@@ -70,14 +68,11 @@ public class CommonProxy {
         // anything here is safe to call removals in
         VanillaOverrideRecipes.init();
         CEUOverrideRecipeLoader.init();
+        GTFOOverrideRecipeLoader.init();
         GTERecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();
         DERecipeLoader.init();
         DARecipeLoader.init();
-
-        if (Loader.isModLoaded("gregtechfoodoption")) {
-            GTFOOverrideRecipeLoader.init();
-        }
     }
 }
