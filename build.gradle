@@ -140,7 +140,7 @@ dependencies {
     // therefore we manually deobf the regular jar
     implementation fg.deobf("curse.maven:codechicken-lib-1-8-${ccl_pid}:${ccl_fid}")
     implementation fg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
-    //implementation (files("libs/gregtech-1.12.2-2.5.4-beta-deobf.jar"))
+    //implementation (files("libs/gregtech-1.12.2-2.6.1-beta-deobf.jar"))
     implementation fg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
     implementation fg.deobf("curse.maven:gregtech-food-option-${gfo_pid}:${gfo_fid}")
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
