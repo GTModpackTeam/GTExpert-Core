@@ -1,14 +1,24 @@
 package gtexpert.api.recipes;
 
 import crafttweaker.annotations.ZenRegister;
+import gregtech.api.GTValues;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
+import gregtech.api.gui.widgets.ProgressWidget.MoveType;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.builders.*;
+import gregtech.api.recipes.ingredients.GTRecipeInput;
+import gregtech.api.recipes.machines.*;
+import gregtech.api.unification.material.Materials;
 import gregtech.core.sound.GTSoundEvents;
 import gtexpert.api.gui.GTEGuiTextures;
+import net.minecraft.init.SoundEvents;
+import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenProperty;
+
+import static gregtech.api.GTValues.*;
 
 @ZenExpansion("mods.gregtech.recipe.RecipeMaps")
 @ZenRegister
@@ -42,7 +52,17 @@ public class GTERecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> DRACONIUM_FUSION_RECIPES = new RecipeMap<>("draconium_fusion", 6, 3, 3, 1, new SimpleRecipeBuilder(), false)
             .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
-            .setSound(GTSoundEvents.ASSEMBLER);
+            .setSound(GTSoundEvents.ASSEMBLER)
+            .onRecipeBuild(recipeBuilder -> {
+                    GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                            .inputs(recipeBuilder.getInputs().toArray(new GTRecipeInput[0]))
+                            .fluidInputs(recipeBuilder.getFluidInputs())
+                            .outputs(recipeBuilder.getOutputs())
+                            .fluidOutputs(recipeBuilder.getFluidOutputs())
+                            .duration(recipeBuilder.getDuration())
+                            .EUt(recipeBuilder.getEUt())
+                            .buildAndRegister();
+            });
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> AWAKENED_DRACONIUM_FUSION_RECIPES = new RecipeMap<>("awakened_draconium_fusion", 6, 3, 3, 1, new SimpleRecipeBuilder(), false)

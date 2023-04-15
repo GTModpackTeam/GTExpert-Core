@@ -727,7 +727,7 @@ public class DERecipeLoader {
         // Sword of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_sword"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputNBT(NANO_SABER, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
+                .inputNBT(NANO_SABER, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, DRACONIUM, 2)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 1)
@@ -753,7 +753,7 @@ public class DERecipeLoader {
         // Wyvern Helm
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_helm"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputNBT(QUANTUM_HELMET, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
+                .inputNBT(QUANTUM_HELMET, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, DRACONIUM, 6)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 1)
@@ -766,7 +766,7 @@ public class DERecipeLoader {
         // Wyvern Chest
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_chest"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputNBT(QUANTUM_CHESTPLATE_ADVANCED, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
+                .inputNBT(QUANTUM_CHESTPLATE_ADVANCED, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, DRACONIUM, 6)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 1)
@@ -779,7 +779,7 @@ public class DERecipeLoader {
         // Wyvern Legs
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_legs"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputNBT(QUANTUM_LEGGINGS, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
+                .inputNBT(QUANTUM_LEGGINGS, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, DRACONIUM, 6)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 1)
@@ -792,7 +792,7 @@ public class DERecipeLoader {
         // Wyvern Boots
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_boots"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputNBT(QUANTUM_BOOTS, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
+                .inputNBT(QUANTUM_BOOTS, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, DRACONIUM, 6)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 1)
@@ -804,7 +804,7 @@ public class DERecipeLoader {
 
         // Draconic Axe
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.wyvernAxe, 1))
+                .inputNBT(DEFeatures.wyvernAxe, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
@@ -816,7 +816,7 @@ public class DERecipeLoader {
 
         // Draconic Pickaxe
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.wyvernPick, 1))
+                .inputNBT(DEFeatures.wyvernPick, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
@@ -828,7 +828,7 @@ public class DERecipeLoader {
 
         // Draconic Shovel
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.wyvernShovel, 1))
+                .inputNBT(DEFeatures.wyvernShovel, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
@@ -840,7 +840,7 @@ public class DERecipeLoader {
 
         // Draconic Sword
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.wyvernSword, 1))
+                .inputNBT(DEFeatures.wyvernSword, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
@@ -852,7 +852,7 @@ public class DERecipeLoader {
 
         // Draconic Bow
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.wyvernBow, 1))
+                .inputNBT(DEFeatures.wyvernBow, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
@@ -865,10 +865,10 @@ public class DERecipeLoader {
         // Draconic Staff of Power
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(plate, DRACONIUM, 6)
-                .input(DEFeatures.draconicAxe, 1)
-                .input(DEFeatures.draconicPick, 1)
-                .input(DEFeatures.draconicShovel, 1)
-                .input(DEFeatures.draconicSword, 1)
+                .inputNBT(DEFeatures.draconicAxe, NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(DEFeatures.draconicPick, NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(DEFeatures.draconicShovel, NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(DEFeatures.draconicSword, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(DEFeatures.draconicCore, 4)
                 .fluidInputs(CRYOTHEUM.getFluid(32000))
                 .outputs(new ItemStack(DEFeatures.draconicStaffOfPower, 1))
@@ -878,7 +878,7 @@ public class DERecipeLoader {
 
         // Draconic Helm
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.wyvernHelm, 1))
+                .inputNBT(DEFeatures.wyvernHelm, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
@@ -890,7 +890,7 @@ public class DERecipeLoader {
 
         // Draconic Chest
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.wyvernChest, 1))
+                .inputNBT(DEFeatures.wyvernChest, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
@@ -902,7 +902,7 @@ public class DERecipeLoader {
 
         // Draconic Legs
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.wyvernLegs, 1))
+                .inputNBT(DEFeatures.wyvernLegs, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
@@ -914,7 +914,7 @@ public class DERecipeLoader {
 
         // Draconic Boots
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(DEFeatures.wyvernBoots, 1))
+                .inputNBT(DEFeatures.wyvernBoots, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(plate, AWAKENED_DRACONIUM, 2)
                 .input(DEFeatures.draconicCore, 4)
                 .input(DEFeatures.draconicEnergyCore, 1)
