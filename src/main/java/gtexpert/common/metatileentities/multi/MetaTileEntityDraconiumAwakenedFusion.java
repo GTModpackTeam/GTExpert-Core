@@ -37,7 +37,7 @@ public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockCo
                 .aisle("CCC", "C#C", "CMC")
                 .aisle("CCC", "CSC", "CCC")
                 .where('S', selfPredicate())
-                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING)).setMinGlobalLimited(15)
+                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING)).setMinGlobalLimited(18)
                         .or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('#', air())
