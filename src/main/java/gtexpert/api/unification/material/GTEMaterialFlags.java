@@ -13,6 +13,7 @@ public class GTEMaterialFlags {
 
         // Ender Eye
         EnderEye.setProperty(PropertyKey.FLUID, new FluidProperty());
+        EnderEye.setFormula("(BeK4N5)(CS)", true);
 
         // NetherQuartz
         NetherQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());

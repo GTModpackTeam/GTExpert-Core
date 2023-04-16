@@ -52,20 +52,20 @@ public class GTERecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> DRACONIUM_FUSION_RECIPES = new RecipeMap<>("draconium_fusion", 6, 3, 3, 1, new SimpleRecipeBuilder(), false)
             .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
-            .setSound(GTSoundEvents.ASSEMBLER)
+            .setSound(GTSoundEvents.ARC)
             .onRecipeBuild(recipeBuilder -> {
-                    GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                            .inputs(recipeBuilder.getInputs().toArray(new GTRecipeInput[0]))
-                            .fluidInputs(recipeBuilder.getFluidInputs())
-                            .outputs(recipeBuilder.getOutputs())
-                            .fluidOutputs(recipeBuilder.getFluidOutputs())
-                            .duration(recipeBuilder.getDuration())
-                            .EUt(recipeBuilder.getEUt())
-                            .buildAndRegister();
+                GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                        .inputs(recipeBuilder.getInputs().toArray(new GTRecipeInput[0]))
+                        .fluidInputs(recipeBuilder.getFluidInputs())
+                        .outputs(recipeBuilder.getOutputs())
+                        .fluidOutputs(recipeBuilder.getFluidOutputs())
+                        .duration(recipeBuilder.getDuration())
+                        .EUt(recipeBuilder.getEUt())
+                        .buildAndRegister();
             });
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> AWAKENED_DRACONIUM_FUSION_RECIPES = new RecipeMap<>("awakened_draconium_fusion", 6, 3, 3, 1, new SimpleRecipeBuilder(), false)
             .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
-            .setSound(GTSoundEvents.ASSEMBLER);
+            .setSound(GTSoundEvents.ARC);
 }
