@@ -74,6 +74,7 @@ public class CommonProxy {
         EIORecipeLoader.init();
         DERecipeLoader.init();
         DARecipeLoader.init();
+        DraconicUpgradeRecipeLoader.init();
 
         if (Loader.isModLoaded("gregtechfoodoption")) {
             GTFORecipeLoader.init();

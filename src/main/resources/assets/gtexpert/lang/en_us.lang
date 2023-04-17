@@ -82,6 +82,14 @@ recipemap.extreme_mixer.name=Extreme Mixer
 recipemap.void_ore_miner.name=Void Ore Miner
 recipemap.draconium_fusion.name=Draconic Fusion Crafter
 recipemap.awakened_draconium_fusion.name=Draconic Fusion Crafter
+recipemap.draconic_fusion_tier_up.name=Draconic Equipment Tier-Up
+recipemap.awakened_draconic_fusion_tier_up.name=Draconic Equipment Tier-Up
+recipemap.draconic_fusion_tier_up.property.1=Preserves upgrade info
+recipemap.draconic_fusion_tier_up.property.2= and stored energy
+recipemap.draconic_fusion_upgrade.name=Draconic Equipment Upgrades
+recipemap.awakened_draconic_fusion_upgrade.name=Draconic Equipment Upgrades
+recipemap.draconic_fusion_upgrade.property.1=Preserves upgrade info
+recipemap.draconic_fusion_upgrade.property.2= and stored energy
 
 #misc
 gtexpert.multiblock.needsun=The Controller must be able to See the Sun!
