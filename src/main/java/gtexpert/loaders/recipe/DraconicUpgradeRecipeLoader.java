@@ -17,6 +17,7 @@ import gtexpert.GTExpertMod;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.recipes.draconicupgrade.tierup.TierUpRecipeBuilder;
 import gtexpert.api.recipes.draconicupgrade.upgrade.UpgradeRecipeBuilder;
+import gtexpert.api.recipes.ingredients.GTENBTMatchers;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -39,27 +40,27 @@ public class DraconicUpgradeRecipeLoader {
         // Axe of the Wyvern
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(DRACONIUM)).setNBTMatchingCondition(
-                    NBTMatcher.ANY, NBTCondition.create(
-                            NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
-                                    NBTTagType.STRING, "Material", "draconium"))), // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
+                        GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
+                                NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
+                                        NBTTagType.STRING, "Material", "draconium"))),
                 new ItemStack(DEFeatures.wyvernAxe),
                 Tier.WYVERN,
                 2);
         // Pickaxe of the Wyvern
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(DRACONIUM)).setNBTMatchingCondition(
-                        NBTMatcher.ANY, NBTCondition.create(
+                        GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
-                                        NBTTagType.STRING, "Material", "draconium"))), // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
+                                        NBTTagType.STRING, "Material", "draconium"))),
                 new ItemStack(DEFeatures.wyvernPick),
                 Tier.WYVERN,
                 2);
         // Shovel of the Wyvern
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(DRACONIUM)).setNBTMatchingCondition(
-                        NBTMatcher.ANY, NBTCondition.create(
+                        GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
-                                        NBTTagType.STRING, "Material", "draconium"))), // TODO: Fix NBTMatcher(add NBTMatcher.CONTAINS)
+                                        NBTTagType.STRING, "Material", "draconium"))),
                 new ItemStack(DEFeatures.wyvernShovel),
                 Tier.WYVERN,
                 2);

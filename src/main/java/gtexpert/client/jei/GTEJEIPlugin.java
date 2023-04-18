@@ -9,7 +9,7 @@ import mezz.jei.api.JEIPlugin;
 import org.jetbrains.annotations.NotNull;
 
 @JEIPlugin
-public class GTE2JEIPlugin implements IModPlugin {
+public class GTEJEIPlugin implements IModPlugin {
 
     @Override
     public void register(@NotNull IModRegistry registry) {

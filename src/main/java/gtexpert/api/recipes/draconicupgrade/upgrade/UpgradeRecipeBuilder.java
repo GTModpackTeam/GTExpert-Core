@@ -9,18 +9,15 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.ValidationResult;
+import gtexpert.api.recipes.ingredients.GTENBTMatchers;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Objects;
 
 public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 
@@ -108,7 +105,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         UpgradeHelper.setUpgradeLevel(output, upgradeName, upgradeLevel);
         inputs.add(0, GTRecipeItemInput.getOrCreate(input)
                 .setNBTMatchingCondition(
-                        EQUAL_TO_RECURSIVE, NBTCondition.create(
+                        GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, UpgradeHelper.UPGRADE_TAG, NBTCondition.create(
                                         NBTTagType.BYTE, upgradeName, (byte) currentLevel))));
         outputs.add(output);
@@ -168,40 +165,4 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
                 .append(UpgradeRecipeProperty.getInstance().getKey(), getFusionRecipe())
                 .toString();
     }
-
-    /**
-     * Return true if tag has an entry where the value is equal to the condition's value.
-     * If NBTTagCompound is found, evaluates recursively.
-     */
-    private static final NBTMatcher EQUAL_TO_RECURSIVE = new NBTMatcher() {
-        @Override
-        public boolean evaluate(@Nullable NBTTagCompound tag, @Nullable NBTCondition condition)  {
-            if (condition == null || condition.tagType == null) {
-                return false;
-            }
-            if (NBTMatcher.hasKey(tag, condition.nbtKey, condition.tagType.typeId)) {
-                if (NBTTagType.isNumeric(condition.tagType)) {
-                    return Objects.equals(tag.getLong(condition.nbtKey), ((Number) condition.value).longValue());
-                }
-                switch (condition.tagType) {
-                    case BYTE_ARRAY:
-                        return tag.getByteArray(condition.nbtKey).equals(condition.value);
-                    case STRING:
-                        return tag.getString(condition.nbtKey).equals(condition.value);
-                    case LIST:
-                    case LONG_ARRAY:
-                        return false; // skip as we don't have AT
-                    case COMPOUND:
-                        if (condition.value instanceof NBTCondition) {
-                            return evaluate(tag.getCompoundTag(condition.nbtKey), (NBTCondition) condition.value);
-                        } else {
-                            return tag.getCompoundTag(condition.nbtKey).equals(condition.value);
-                        }
-                    case INT_ARRAY:
-                        return tag.getIntArray(condition.nbtKey).equals(condition.value);
-                }
-            }
-            return false;
-        }
-    };
 }
