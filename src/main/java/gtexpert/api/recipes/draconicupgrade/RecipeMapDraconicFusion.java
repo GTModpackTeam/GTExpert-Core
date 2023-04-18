@@ -1,9 +1,14 @@
 package gtexpert.api.recipes.draconicupgrade;
 
+import cofh.redstoneflux.api.IEnergyContainerItem;
+import com.brandon3055.brandonscore.utils.ItemNBTHelper;
 import com.brandon3055.draconicevolution.api.fusioncrafting.IFusionRecipe;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
+import gregtech.api.capability.FeCompat;
+import gregtech.api.capability.GregtechCapabilities;
+import gregtech.api.capability.IElectricItem;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
@@ -97,9 +102,22 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
             return null;
         }
 
+        ItemStack outputStack = fusionRecipe.getRecipeOutput(catalyst);
+
+        // convert GTEU to FE
+        IElectricItem inputElectricItem = catalyst.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
+        if (inputElectricItem != null) {
+            long euCharge = inputElectricItem.getCharge();
+            int feCharge = (int) Math.min(euCharge * FeCompat.ratio(false), Integer.MAX_VALUE);
+            if (outputStack.getItem() instanceof IEnergyContainerItem) {
+                IEnergyContainerItem outputEnergyItem = (IEnergyContainerItem) outputStack.getItem();
+                ItemNBTHelper.setInteger(outputStack, "Energy", Math.min(feCharge, outputEnergyItem.getMaxEnergyStored(outputStack)));
+            }
+        }
+
         Recipe retRecipe = gtRecipe.copy();
-        retRecipe.getOutputs().clear(); // This assumes output has only 1 slot
-        retRecipe.getOutputs().add(fusionRecipe.getRecipeOutput(catalyst));
+        retRecipe.getOutputs().clear(); // This assumes there's only 1 output
+        retRecipe.getOutputs().add(outputStack);
         return retRecipe;
     }
 
