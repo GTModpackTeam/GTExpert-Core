@@ -8,7 +8,6 @@ import com.brandon3055.draconicevolution.items.ToolUpgrade;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
-import gregtech.api.recipes.ingredients.nbtmatch.ListNBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
@@ -17,7 +16,6 @@ import gregtech.api.util.GTLog;
 import gregtech.api.util.ValidationResult;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -110,7 +108,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         UpgradeHelper.setUpgradeLevel(output, upgradeName, upgradeLevel);
         inputs.add(0, GTRecipeItemInput.getOrCreate(input)
                 .setNBTMatchingCondition(
-                        EQUAL_WITH_DEFAULT_RECURSIVE, NBTCondition.create(
+                        EQUAL_TO_RECURSIVE, NBTCondition.create(
                                 NBTTagType.COMPOUND, UpgradeHelper.UPGRADE_TAG, NBTCondition.create(
                                         NBTTagType.BYTE, upgradeName, (byte) currentLevel))));
         outputs.add(output);
@@ -173,10 +171,9 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 
     /**
      * Return true if tag has an entry where the value is equal to the condition's value.
-     * Also return true if tag is not present and condition expects default value of the tag type.
      * If NBTTagCompound is found, evaluates recursively.
      */
-    private static final NBTMatcher EQUAL_WITH_DEFAULT_RECURSIVE = new NBTMatcher() {
+    private static final NBTMatcher EQUAL_TO_RECURSIVE = new NBTMatcher() {
         @Override
         public boolean evaluate(@Nullable NBTTagCompound tag, @Nullable NBTCondition condition)  {
             if (condition == null || condition.tagType == null) {
@@ -202,34 +199,9 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
                         }
                     case INT_ARRAY:
                         return tag.getIntArray(condition.nbtKey).equals(condition.value);
-                    default:
-                        return false;
-                }
-            } else {
-                if (NBTTagType.isNumeric(condition.tagType)) {
-                    return ((Number) condition.value).longValue() == 0;
-                }
-                switch (condition.tagType) {
-                    case BYTE_ARRAY:
-                        return ((byte[]) condition.value).length == 0;
-                    case STRING:
-                        return ((String) condition.value).isEmpty();
-                    case LIST:
-                        if (condition instanceof ListNBTCondition) {
-                            return ((NBTTagList) condition.value).isEmpty();
-                        } else {
-                            return false;
-                        }
-                    case COMPOUND:
-                        return ((NBTTagCompound) condition.value).isEmpty();
-                    case INT_ARRAY:
-                        return ((int[]) condition.value).length == 0;
-                    case LONG_ARRAY:
-                        return false; // skip as we don't have AT
-                    default:
-                        return false;
                 }
             }
+            return false;
         }
     };
 }
