@@ -1,4 +1,4 @@
-package gtexpert.api.recipes.draconicupgrade;
+package gtexpert.api.recipes.draconic;
 
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;

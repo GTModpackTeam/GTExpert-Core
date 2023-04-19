@@ -1,10 +1,11 @@
-package gtexpert.loaders.recipe;
+package gtexpert.loaders.recipe.ingredients;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
 import crazypants.enderio.base.init.ModObject;
 import gregtech.api.items.toolitem.ToolHelper;
+import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
@@ -15,13 +16,14 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.ToolItems;
 import gtexpert.GTExpertMod;
 import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.api.recipes.draconicupgrade.tierup.TierUpRecipeBuilder;
-import gtexpert.api.recipes.draconicupgrade.upgrade.UpgradeRecipeBuilder;
+import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
+import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.recipes.ingredients.GTENBTMatchers;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -38,63 +40,73 @@ public class DraconicUpgradeRecipeLoader {
 
     private static void tierUp() {
         // Axe of the Wyvern
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_axe"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(DRACONIUM)).setNBTMatchingCondition(
                         GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", "draconium"))),
                 new ItemStack(DEFeatures.wyvernAxe),
-                Tier.WYVERN,
-                2);
+                Tier.WYVERN, 2);
+
         // Pickaxe of the Wyvern
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_pick"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(DRACONIUM)).setNBTMatchingCondition(
                         GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", "draconium"))),
                 new ItemStack(DEFeatures.wyvernPick),
-                Tier.WYVERN,
-                2);
+                Tier.WYVERN, 2);
+
         // Shovel of the Wyvern
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_shovel"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(DRACONIUM)).setNBTMatchingCondition(
                         GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", "draconium"))),
                 new ItemStack(DEFeatures.wyvernShovel),
-                Tier.WYVERN,
-                2);
+                Tier.WYVERN, 2);
+
         // Sword of the Wyvern
-        addTierUpRecipe(
-                NANO_SABER.getStackForm(),
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_sword"));
+        addTierUpRecipe(NANO_SABER.getStackForm(),
                 new ItemStack(DEFeatures.wyvernSword),
-                Tier.WYVERN,
-                2);
+                Tier.WYVERN, 2);
+
         // Bow of the Wyvern
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_bow"));
         addTierUpRecipe(
-                new ItemStack(ModObject.itemDarkSteelBow.getItemNN()),
+                GTRecipeItemInput.getOrCreate(new ItemStack(ModObject.itemEndSteelBow.getItemNN())).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 new ItemStack(DEFeatures.wyvernBow),
-                Tier.WYVERN,
-                2);
+                Tier.WYVERN, 2);
+
         // Wyvern Helm
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_helm"));
         addTierUpRecipe(
                 QUANTUM_HELMET.getStackForm(),
                 new ItemStack(DEFeatures.wyvernHelm),
-                Tier.WYVERN,
-                6);
+                Tier.WYVERN, 6);
+
         // Wyvern Chest
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_chest"));
         addTierUpRecipe(
                 QUANTUM_CHESTPLATE.getStackForm(),
                 new ItemStack(DEFeatures.wyvernChest),
                 Tier.WYVERN,
                 6);
+
         // Wyvern Legs
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_legs"));
         addTierUpRecipe(
                 QUANTUM_LEGGINGS.getStackForm(),
                 new ItemStack(DEFeatures.wyvernLegs),
                 Tier.WYVERN,
                 6);
+
         // Wyvern Boots
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_boots"));
         addTierUpRecipe(
                 QUANTUM_BOOTS.getStackForm(),
                 new ItemStack(DEFeatures.wyvernBoots),
@@ -105,32 +117,32 @@ public class DraconicUpgradeRecipeLoader {
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernAxe),
                 new ItemStack(DEFeatures.draconicAxe),
-                Tier.DRACONIC
-        );
+                Tier.DRACONIC);
+
         // Draconic Pickaxe
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernPick),
                 new ItemStack(DEFeatures.draconicPick),
-                Tier.DRACONIC
-        );
+                Tier.DRACONIC);
+
         // Draconic Shovel
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernShovel),
                 new ItemStack(DEFeatures.draconicShovel),
-                Tier.DRACONIC
-        );
+                Tier.DRACONIC);
+
         // Draconic Sword
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernSword),
                 new ItemStack(DEFeatures.draconicSword),
-                Tier.DRACONIC
-        );
+                Tier.DRACONIC);
+
         // Draconic Bow
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernBow),
                 new ItemStack(DEFeatures.draconicBow),
-                Tier.DRACONIC
-        );
+                Tier.DRACONIC);
+
         // Draconic Staff of Power
         GTERecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.recipeBuilder()
                 .catalyst(GTRecipeItemInput.getOrCreate(new ItemStack(DEFeatures.draconicPick)).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY))
@@ -144,67 +156,66 @@ public class DraconicUpgradeRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(8000))
                 .duration(400).EUt(VA[ZPM])
                 .buildAndRegister();
+
         // Draconic Helm
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernHelm),
                 new ItemStack(DEFeatures.draconicHelm),
-                Tier.DRACONIC
-        );
+                Tier.DRACONIC);
+
         // Draconic Chest
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernChest),
                 new ItemStack(DEFeatures.draconicChest),
-                Tier.DRACONIC
-        );
+                Tier.DRACONIC);
+
         // Draconic Legs
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernLegs),
                 new ItemStack(DEFeatures.draconicLegs),
-                Tier.DRACONIC
-        );
+                Tier.DRACONIC);
+
         // Draconic Boots
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernBoots),
                 new ItemStack(DEFeatures.draconicBoots),
-                Tier.DRACONIC
-        );
+                Tier.DRACONIC);
 
         // Chaotic Staff of Power
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicStaffOfPower),
                 new ItemStack(DAFeatures.chaoticStaffOfPower),
-                Tier.CHAOTIC
-        );
+                Tier.CHAOTIC);
+
         // Chaotic Bow
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicBow),
                 new ItemStack(DAFeatures.chaoticBow),
-                Tier.CHAOTIC
-        );
+                Tier.CHAOTIC);
+
         // Chaotic Helm
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicHelm),
                 new ItemStack(DAFeatures.chaoticHelm),
-                Tier.CHAOTIC
-        );
+                Tier.CHAOTIC);
+
         // Chaotic Chest
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicChest),
                 new ItemStack(DAFeatures.chaoticChest),
-                Tier.CHAOTIC
-        );
+                Tier.CHAOTIC);
+
         // Chaotic Leggings
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicLegs),
                 new ItemStack(DAFeatures.chaoticLegs),
-                Tier.CHAOTIC
-        );
+                Tier.CHAOTIC);
+
         // Chaotic Boots
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicBoots),
                 new ItemStack(DAFeatures.chaoticBoots),
-                Tier.CHAOTIC
-        );
+                Tier.CHAOTIC);
     }
 
     private static void addTierUpRecipe(ItemStack catalyst, ItemStack result, Tier tier) {
@@ -228,9 +239,7 @@ public class DraconicUpgradeRecipeLoader {
         }
         TierUpRecipeBuilder recipeBuilder = recipeMap.recipeBuilder();
 
-        recipeBuilder
-                .catalyst(catalyst)
-                .result(result);
+        recipeBuilder.catalyst(catalyst).result(result);
 
         switch (tier) {
             case WYVERN:
@@ -319,10 +328,7 @@ public class DraconicUpgradeRecipeLoader {
                         }
                         UpgradeRecipeBuilder recipeBuilder = recipeMap.recipeBuilder();
 
-                        recipeBuilder
-                                .catalyst(stack)
-                                .upgradeName(upgradeName)
-                                .level(currentLevel);
+                        recipeBuilder.catalyst(stack).upgradeName(upgradeName).level(currentLevel);
 
                         if (currentLevel == 0) {
                             recipeBuilder

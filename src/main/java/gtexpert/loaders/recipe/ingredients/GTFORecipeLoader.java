@@ -1,4 +1,4 @@
-package gtexpert.loaders.recipe;
+package gtexpert.loaders.recipe.ingredients;
 
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.RecipeMaps;
