@@ -24,7 +24,7 @@ import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import net.foxmcloud.draconicadditions.DAFeatures;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -448,18 +448,18 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(MetaTileEntities.HULL[UHV])
-                .input(DAFeatures.chaoticEnergyCore, 8)
-                .input(DAFeatures.chaosStabilizerCore, 8)
-                .inputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(4).get())
-                .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.EQUAL_TO, NBTCondition.ANY)
-                .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
-                .fluidInputs(SolderingAlloy.getFluid(18432))
-                .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
-                .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
-                .duration(2000).EUt(VA[UHV])
-                .buildAndRegister();
+        if (!Loader.isModLoaded("draconicevolution") && !Loader.isModLoaded("draconicadditions")) {
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(MetaTileEntities.HULL[UHV])
+                    .inputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(4).get())
+                    .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.ANY, NBTCondition.ANY)
+                    .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                    .fluidInputs(SolderingAlloy.getFluid(18432))
+                    .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
+                    .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
+                    .duration(2000).EUt(VA[UHV])
+                    .buildAndRegister();
+        }
 
         // Creative Quantum Tank
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()

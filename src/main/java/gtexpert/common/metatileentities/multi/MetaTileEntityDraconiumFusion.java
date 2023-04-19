@@ -8,6 +8,7 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
+import gtexpert.api.capability.MultiblockRecipeLogicNoCache;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEBlockMetalCasing;
@@ -21,8 +22,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
+
     public MetaTileEntityDraconiumFusion(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GTERecipeMaps.DRACONIUM_FUSION_RECIPES);
+        this.recipeMapWorkable = new MultiblockRecipeLogicNoCache(this);
     }
 
     @Override
