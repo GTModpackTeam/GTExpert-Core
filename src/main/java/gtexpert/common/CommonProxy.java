@@ -6,6 +6,7 @@ import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import gtexpert.loaders.recipe.*;
+import gtexpert.loaders.recipe.ingredients.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -72,10 +73,11 @@ public class CommonProxy {
         GTERecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();
-        DERecipeLoader.init();
-        DARecipeLoader.init();
-        DraconicUpgradeRecipeLoader.init();
 
+        if (Loader.isModLoaded("draconicevolution") && Loader.isModLoaded("draconicadditions")) {
+            DraconicRecipeLoader.init();
+            DraconicUpgradeRecipeLoader.init();
+        }
         if (Loader.isModLoaded("gregtechfoodoption")) {
             GTFORecipeLoader.init();
         }

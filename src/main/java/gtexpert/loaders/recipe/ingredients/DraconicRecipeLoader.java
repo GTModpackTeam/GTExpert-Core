@@ -1,18 +1,24 @@
-package gtexpert.loaders.recipe;
+package gtexpert.loaders.recipe.ingredients;
 
+import appeng.api.AEApi;
 import com.brandon3055.draconicevolution.DEFeatures;
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;
+import crazypants.enderio.powertools.init.PowerToolObject;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.ingredients.GTRecipeItemInput;
+import gregtech.api.recipes.ingredients.nbtmatch.*;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.items.GTEMetaItems;
+import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -26,7 +32,7 @@ import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
-public class DERecipeLoader {
+public class DraconicRecipeLoader {
     public static void init() {
         fluid();
         materials();
@@ -74,6 +80,9 @@ public class DERecipeLoader {
     }
 
     private static void materials() {
+        // ########################################
+        // Draconic Evolution
+        // ########################################
         // Dragon Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, END_STEEL, 1)
@@ -156,6 +165,18 @@ public class DERecipeLoader {
     }
 
     private static void items() {
+        // ########################################
+        // Draconic Evolution
+        // ########################################
+        // Dragon Heart
+        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
+                .input(STEM_CELLS, 8)
+                .input(Items.EGG, 16)
+                .fluidInputs(DRACONIUM.getFluid(1152))
+                .output(DEFeatures.dragonHeart, 1)
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
+
         // Advanced Dislocators
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, DRACONIUM, 4)
@@ -467,9 +488,172 @@ public class DERecipeLoader {
                 .outputs(new ItemStack(DEFeatures.reactorCore, 1, 0))
                 .duration(1200).EUt(VA[LuV])
                 .buildAndRegister();
+
+        // Upgrade Key (RF Capacity)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade"));
+        ModHandler.addShapedRecipe("tool_upgrade", new ItemStack(DEFeatures.toolUpgrade, 1, 0),
+                "LCL", "DED", "LCL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'E', new ItemStack(DEFeatures.wyvernEnergyCore, 1, 0));
+
+        // Upgrade Key (Dig Speed)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_1"));
+        ModHandler.addShapedRecipe("tool_upgrade_1", new ItemStack(DEFeatures.toolUpgrade, 1, 1),
+                "LCL", "DPD", "LCL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'P', Items.GOLDEN_PICKAXE);
+
+        // Upgrade Key (Dig AOE)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_2"));
+        ModHandler.addShapedRecipe("tool_upgrade_2", new ItemStack(DEFeatures.toolUpgrade, 1, 2),
+                "LCL", "DED", "LCL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'E', AEApi.instance().definitions().materials().fluixPearl().maybeStack(1).get());
+
+        // Upgrade Key (Attack Damage)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_3"));
+        ModHandler.addShapedRecipe("tool_upgrade_3", new ItemStack(DEFeatures.toolUpgrade, 1, 3),
+                "LCL", "DSD", "LCL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'S', Items.GOLDEN_SWORD);
+
+        // Upgrade Key (Attack AOE)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_4"));
+        ModHandler.addShapedRecipe("tool_upgrade_4", new ItemStack(DEFeatures.toolUpgrade, 1, 4),
+                "LCL", "DSD", "LCL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'S', Items.DIAMOND_SWORD);
+
+        // Upgrade Key (Arrow Damage)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_5"));
+        ModHandler.addShapedRecipe("tool_upgrade_5", new ItemStack(DEFeatures.toolUpgrade, 1, 5),
+                "LCG", "DAD", "LCL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'G', OreDictUnifier.get(screw, RoseGold, 1),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'A', Items.ARROW);
+
+        // Upgrade Key (Draw Speed)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_6"));
+        ModHandler.addShapedRecipe("tool_upgrade_6", new ItemStack(DEFeatures.toolUpgrade, 1, 6),
+                "LCL", "DAD", "LCG",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'G', OreDictUnifier.get(stickLong, RoseGold, 1),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'A', ModObject.itemEndSteelBow.getItemNN());
+
+        // Upgrade Key (Arrow Speed)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_7"));
+        ModHandler.addShapedRecipe("tool_upgrade_7", new ItemStack(DEFeatures.toolUpgrade, 1, 7),
+                "LCF", "DAD", "LCL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'F', Items.FEATHER,
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'A', Items.ARROW);
+
+        // Upgrade Key (Shield Capacity)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_8"));
+        ModHandler.addShapedRecipe("tool_upgrade_8", new ItemStack(DEFeatures.toolUpgrade, 1, 8),
+                "LCL", "DAD", "LCL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'A', ModObject.itemEndSteelChestplate.getItemNN());
+
+        // Upgrade Key (Shield Recharge)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_9"));
+        ModHandler.addShapedRecipe("tool_upgrade_9", new ItemStack(DEFeatures.toolUpgrade, 1, 9),
+                "LCL", "DAD", "LCL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'A', EndergyObject.itemStellarAlloyChestplate.getItemNN());
+
+        // Upgrade Key (Movement Speed)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_10"));
+        ModHandler.addShapedRecipe("tool_upgrade_10", new ItemStack(DEFeatures.toolUpgrade, 1, 10),
+                "LCL", "DSD", "LBL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'S', Items.GOLDEN_BOOTS,
+                'B', OreDictUnifier.get(block, Redstone, 1));
+
+        // Upgrade Key (Jump Boost)
+        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_11"));
+        ModHandler.addShapedRecipe("tool_upgrade_11", new ItemStack(DEFeatures.toolUpgrade, 1, 11),
+                "LCL", "DSD", "LBL",
+                'L', OreDictUnifier.get(plate, Lapis, 1),
+                'C', new ItemStack(DEFeatures.draconicCore, 1, 0),
+                'D', OreDictUnifier.get(plate, DRACONIUM, 1),
+                'S', Items.GOLDEN_BOOTS,
+                'B', Blocks.SLIME_BLOCK);
+
+
+        // ########################################
+        // Draconic Additions
+        // ########################################
+        // Chaotic Energy Core
+        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .input(WETWARE_CIRCUIT_BOARD, 2)
+                .input(DEFeatures.chaoticCore, 1)
+                .input(DEFeatures.chaosShard, 4, 0)
+                .input(RANDOM_ACCESS_MEMORY, 48)
+                .input(wireFine, AWAKENED_DRACONIUM, 32)
+                .fluidInputs(Redstone.getFluid(5184))
+                .fluidInputs(CRYOTHEUM.getFluid(16000))
+                .fluidInputs(Polyethylene.getFluid(288))
+                .output(DAFeatures.chaoticEnergyCore, 1)
+                .fluidOutputs(PYROTHEUM.getFluid(4000))
+                .duration(400).EUt(614400)
+                .buildAndRegister();
+        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .input(WETWARE_CIRCUIT_BOARD, 2)
+                .input(DEFeatures.chaoticCore, 1)
+                .input(DEFeatures.chaosShard, 4, 0)
+                .input(RANDOM_ACCESS_MEMORY, 48)
+                .input(wireFine, AWAKENED_DRACONIUM, 32)
+                .fluidInputs(Redstone.getFluid(5184))
+                .fluidInputs(CRYOTHEUM.getFluid(16000))
+                .fluidInputs(Polytetrafluoroethylene.getFluid(144))
+                .output(DAFeatures.chaoticEnergyCore, 1)
+                .fluidOutputs(PYROTHEUM.getFluid(4000))
+                .duration(400).EUt(614400)
+                .buildAndRegister();
     }
 
     private static void blocks() {
+        // Infinite GT Energy Unit Emitter
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.HULL[UHV])
+                .input(DAFeatures.chaoticEnergyCore, 8)
+                .input(DAFeatures.chaosStabilizerCore, 8)
+                .inputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(4).get())
+                .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.ANY, NBTCondition.ANY)
+                .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
+                .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
+                .duration(2000).EUt(VA[UHV])
+                .buildAndRegister();
+
+
+        // ########################################
+        // Draconic Evolution
+        // ########################################
         // Dislocator Receptacle
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "dislocator_receptacle"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -646,9 +830,49 @@ public class DERecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(2000))
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
+
+
+        // ########################################
+        // Draconic Additions
+        // ########################################
+        // Chaos Liquefier
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .inputNBT(DAFeatures.chaosContainer, 1, NBTMatcher.ANY, NBTCondition.ANY)
+                .input(DEFeatures.infusedObsidian, 4)
+                .input(DEFeatures.draconicCore, 4)
+                .fluidInputs(CRYOTHEUM.getFluid(32000))
+                .output(DAFeatures.chaosLiquefier, 1)
+                .fluidOutputs(PYROTHEUM.getFluid(8000))
+                .duration(200).EUt(VA[ZPM])
+                .buildAndRegister();
+
+        // Chaotic Stability Core
+        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .input(DEFeatures.reactorCore, 4)
+                .input(DEFeatures.chaosShard, 4, 0)
+                .input(DEFeatures.infusedObsidian, 4)
+                .fluidInputs(PYROTHEUM.getFluid(48000))
+                .output(DAFeatures.chaosStabilizerCore, 1)
+                .duration(1200).EUt(VA[UHV])
+                .buildAndRegister();
+
+        // Capacitor Supplier
+        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .input(Blocks.END_ROD, 1)
+                .input(plate, STELLAR_ALLOY, 4)
+                .input(stick, STELLAR_ALLOY, 4)
+                .input(ring, Titanium, 4)
+                .fluidInputs(CRYOTHEUM.getFluid(16000))
+                .output(DAFeatures.capacitorSupplier, 1)
+                .fluidOutputs(PYROTHEUM.getFluid(4000))
+                .duration(100).EUt(VA[LuV])
+                .buildAndRegister();
     }
 
     private static void tools() {
+        // ########################################
+        // Draconic Evolution
+        // ########################################
         // Crystal Binder
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "crystal_binder"));
         ModHandler.addShapedRecipe("crystal_binder", new ItemStack(DEFeatures.crystalBinder, 1, 0),
@@ -678,5 +902,55 @@ public class DERecipeLoader {
                 .outputs(new ItemStack(DEFeatures.draconiumCapacitor, 1, 1))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
+
+
+        // ########################################
+        // Draconic Additions
+        // ########################################
+        // Chaos Container
+        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .inputNBT(DEFeatures.dislocator, NBTMatcher.ANY, NBTCondition.ANY)
+                .input(DEFeatures.infusedObsidian, 2)
+                .input(DEFeatures.chaoticCore, 1)
+                .input(DAFeatures.chaoticEnergyCore, 1)
+                .fluidInputs(CRYOTHEUM.getFluid(48000))
+                .outputs(new ItemStack(DAFeatures.chaosContainer, 1))
+                .fluidOutputs(PYROTHEUM.getFluid(12000))
+                .duration(100).EUt(VA[UHV])
+                .buildAndRegister();
+
+        // Portable Wired Wyvern Charger
+        ModHandler.addShapedRecipe("portable_wired_charger_1", new ItemStack(DAFeatures.pwc, 1, 1),
+                "DDD", "ICI", "DDD",
+                'D', OreDictUnifier.get(plate, DARK_STEEL),
+                'I', OreDictUnifier.get(plate, Iron),
+                'C', new ItemStack(DEFeatures.wyvernCore));
+
+        // Portable Wired Wyvern Discharger
+        ModHandler.addShapedRecipe("portable_wired_discharger_1", new ItemStack(DAFeatures.pwd, 1, 1),
+                "DDD", "GCG", "DDD",
+                'D', OreDictUnifier.get(plate, DARK_STEEL),
+                'G', OreDictUnifier.get(plate, Gold),
+                'C', new ItemStack(DEFeatures.wyvernCore));
+
+        // Wyvern Necklace of Shielding
+        ModHandler.addShapedRecipe("wyvern_shield_necklace", new ItemStack(DAFeatures.wyvernShieldNecklace, 1),
+                "SSS", "SES", " C ",
+                'S', OreDictUnifier.get(stick, RoseGold),
+                'E', new ItemStack(DEFeatures.wyvernEnergyCore),
+                'C', new ItemStack(DEFeatures.wyvernCore));
+
+        // Draconic Belt of Overloading
+        ModHandler.addShapedRecipe("overload_belt", new ItemStack(DAFeatures.overloadBelt, 1),
+                "SSS", "SLS", " C ",
+                'S', OreDictUnifier.get(stick, DRACONIUM),
+                'C', new ItemStack(DEFeatures.awakenedCore),
+                'L', Items.LEATHER);
+
+        // Ring of Inertia Cancellation
+        ModHandler.addShapedRecipe("inertia_cancel_ring", new ItemStack(DAFeatures.inertiaCancelRing, 1),
+                "SES", "E E", "SES",
+                'S', OreDictUnifier.get(stick, RoseGold),
+                'E', new ItemStack(DEFeatures.wyvernEnergyCore));
     }
 }
