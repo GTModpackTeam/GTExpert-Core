@@ -366,7 +366,7 @@ public class EIORecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaItems.BATTERY_HULL_HV, 1)
                 .input(circuit, MarkerMaterials.Tier.HV, 1)
-                .fluidInputs(ENERGETIC_SILVER.getFluid(1152))
+                .fluidInputs(Silver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorSilver.getItemNN(), 1)
                 .duration(56).EUt(VA[HV])
                 .buildAndRegister();

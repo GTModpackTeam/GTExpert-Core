@@ -139,14 +139,23 @@ public class GTERecipeLoader {
 
     private static void items() {
         // Remove solar panels
+        ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL.getStackForm());
         ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_ULV.getStackForm());
         ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_LV.getStackForm());
+
+        // Solar Panel
+        ModHandler.addShapedRecipe("solar_panel_basic", COVER_SOLAR_PANEL.getStackForm(1),
+                "SGS", "CFC",
+                'S', SILICON_WAFER,
+                'G', Blocks.GLASS_PANE,
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                'F', CARBON_FIBER_PLATE);
 
         // Solar Panel (8V)
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL, 8)
                 .input(Blocks.DAYLIGHT_DETECTOR, 8)
-                .input(circuit, MarkerMaterials.Tier.ULV, 4)
+                .input(NAND_CHIP_ULV, 4)
                 .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 4)
                 .input(Blocks.GLASS)
                 .input(MetaTileEntities.TRANSFORMER[0])
@@ -160,7 +169,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_ULV, 4)
                 .input(SENSOR_LV, 8)
-                .input(circuit, MarkerMaterials.Tier.LV, 4)
+                .input(MICROPROCESSOR_LV, 4)
                 .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
                 .inputs(AEApi.instance().definitions().blocks().quartzGlass().maybeStack(1).get())
                 .input(MetaTileEntities.TRANSFORMER[1])
@@ -174,7 +183,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_LV, 4)
                 .input(SENSOR_MV, 8)
-                .input(circuit, MarkerMaterials.Tier.MV, 4)
+                .input(INTEGRATED_CIRCUIT_MV, 4)
                 .input(LOW_POWER_INTEGRATED_CIRCUIT, 4)
                 .input(ModObject.blockFusedQuartz.getBlockNN())
                 .input(MetaTileEntities.TRANSFORMER[2])
@@ -188,7 +197,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_MV, 4)
                 .input(SENSOR_HV, 8)
-                .input(circuit, MarkerMaterials.Tier.HV, 4)
+                .input(NANO_PROCESSOR_HV, 4)
                 .input(LOW_POWER_INTEGRATED_CIRCUIT, 8)
                 .input(ModObject.blockFusedGlass.getBlockNN())
                 .input(MetaTileEntities.TRANSFORMER[3])
@@ -202,7 +211,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_HV, 4)
                 .input(SENSOR_EV, 8)
-                .input(circuit, MarkerMaterials.Tier.EV, 4)
+                .input(WORKSTATION_EV, 4)
                 .input(POWER_INTEGRATED_CIRCUIT, 4)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
                 .input(MetaTileEntities.TRANSFORMER[4])
@@ -216,7 +225,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_EV, 4)
                 .input(SENSOR_IV, 8)
-                .input(circuit, MarkerMaterials.Tier.IV, 4)
+                .input(MAINFRAME_IV, 4)
                 .input(POWER_INTEGRATED_CIRCUIT, 8)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
                 .input(MetaTileEntities.TRANSFORMER[5])
@@ -230,7 +239,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_IV, 4)
                 .input(SENSOR_LuV, 8)
-                .input(circuit, MarkerMaterials.Tier.LuV, 4)
+                .input(NANO_MAINFRAME_LUV, 4)
                 .input(HIGH_POWER_INTEGRATED_CIRCUIT, 8)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
                 .input(MetaTileEntities.TRANSFORMER[6])
@@ -244,7 +253,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_LUV, 4)
                 .input(SENSOR_ZPM, 8)
-                .input(circuit, MarkerMaterials.Tier.ZPM, 4)
+                .input(QUANTUM_MAINFRAME_ZPM, 4)
                 .input(HIGH_POWER_INTEGRATED_CIRCUIT, 16)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
                 .input(MetaTileEntities.TRANSFORMER[7])
@@ -258,7 +267,7 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COVER_SOLAR_PANEL_ZPM, 4)
                 .input(SENSOR_UV, 8)
-                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(CRYSTAL_MAINFRAME_UV, 4)
                 .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 32)
                 .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
                 .input(MetaTileEntities.TRANSFORMER[8])
@@ -401,7 +410,7 @@ public class GTERecipeLoader {
                 .input(ENERGY_CLUSTER, 4)
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
                 .input(MetaTileEntities.HULL[UV])
-                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(CRYSTAL_MAINFRAME_UV, 4)
                 .inputs(AEApi.instance().definitions().blocks().energyCellDense().maybeStack(8).get())
                 .input(COVER_SOLAR_PANEL_UV, 1)
                 .fluidInputs(FLUIX.getFluid(18432))
@@ -416,7 +425,7 @@ public class GTERecipeLoader {
                 .input(ENERGY_CLUSTER, 4)
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
                 .input(MetaTileEntities.HULL[UV])
-                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(CRYSTAL_MAINFRAME_UV, 4)
                 .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 3))
                 .input(COVER_SOLAR_PANEL_UV, 1)
                 .fluidInputs(VIBRANT_ALLOY.getFluid(18432))
@@ -429,7 +438,7 @@ public class GTERecipeLoader {
         // GTE ME Storage Fake Component
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(screw, Neutronium, 8)
-                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(CRYSTAL_MAINFRAME_UV, 4)
                 .inputs(new ItemStack(AEAApi.instance().items().cell256kPart().maybeItem().get(), 16, 3))
                 .inputs(new ItemStack(AEAApi.instance().items().cell256kPart().maybeItem().get(), 16, 6))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
