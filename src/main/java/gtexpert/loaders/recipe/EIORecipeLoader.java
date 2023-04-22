@@ -153,8 +153,8 @@ public class EIORecipeLoader {
                 .circuitMeta(1)
                 .input(dust, Electrum, 2)
                 .input(Items.SNOWBALL, 1)
-                .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 3500))
-                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1500))
+                .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1000))
+                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED_CONCENTRATED.getFluid(), 500))
                 .duration(200).EUt(VA[HV])
                 .buildAndRegister();
     }
