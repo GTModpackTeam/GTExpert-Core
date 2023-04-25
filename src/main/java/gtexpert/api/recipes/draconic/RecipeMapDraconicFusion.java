@@ -17,6 +17,7 @@ import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
 import gtexpert.api.recipes.draconic.tierup.TierUpRecipeProperty;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeProperty;
+import gtexpert.api.util.GTELog;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.Constants;
@@ -90,15 +91,15 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private Recipe setupOutput(Recipe gtRecipe, List<ItemStack> inputs, IFusionRecipe fusionRecipe) {
         if (fusionRecipe == null) {
-            GTExpertMod.logger.warn("Recipe found, but property not found");
-            GTExpertMod.logger.warn("Recipe: " + gtRecipe);
+            GTELog.logger.warn("Recipe found, but property not found");
+            GTELog.logger.warn("Recipe: " + gtRecipe);
             return null;
         }
         ItemStack catalyst = findCatalyst(inputs, fusionRecipe);
         if (catalyst == null) {
-            GTExpertMod.logger.warn("Recipe found, but actual catalyst not found in the GT recipe");
-            GTExpertMod.logger.warn("Recipe: " + gtRecipe);
-            GTExpertMod.logger.warn("Expected catalyst: " + fusionRecipe.getRecipeCatalyst());
+            GTELog.logger.warn("Recipe found, but actual catalyst not found in the GT recipe");
+            GTELog.logger.warn("Recipe: " + gtRecipe);
+            GTELog.logger.warn("Expected catalyst: " + fusionRecipe.getRecipeCatalyst());
             return null;
         }
 
