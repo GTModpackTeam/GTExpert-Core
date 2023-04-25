@@ -9,11 +9,11 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.ValidationResult;
-import gtexpert.api.recipes.ingredients.GTENBTMatchers;
 import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -105,7 +105,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         UpgradeHelper.setUpgradeLevel(output, upgradeName, upgradeLevel);
         inputs.add(0, GTRecipeItemInput.getOrCreate(input)
                 .setNBTMatchingCondition(
-                        GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
+                        NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, UpgradeHelper.UPGRADE_TAG, NBTCondition.create(
                                         NBTTagType.BYTE, upgradeName, (byte) currentLevel))));
         outputs.add(output);

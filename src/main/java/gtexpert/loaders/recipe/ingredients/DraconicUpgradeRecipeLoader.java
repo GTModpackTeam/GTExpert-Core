@@ -18,7 +18,6 @@ import gtexpert.GTExpertMod;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
-import gtexpert.api.recipes.ingredients.GTENBTMatchers;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -43,7 +42,7 @@ public class DraconicUpgradeRecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_axe"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(DRACONIUM)).setNBTMatchingCondition(
-                        GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
+                        NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", "draconium"))),
                 new ItemStack(DEFeatures.wyvernAxe),
@@ -53,7 +52,7 @@ public class DraconicUpgradeRecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_pick"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(DRACONIUM)).setNBTMatchingCondition(
-                        GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
+                        NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", "draconium"))),
                 new ItemStack(DEFeatures.wyvernPick),
@@ -63,7 +62,7 @@ public class DraconicUpgradeRecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_shovel"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(DRACONIUM)).setNBTMatchingCondition(
-                        GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
+                        NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", "draconium"))),
                 new ItemStack(DEFeatures.wyvernShovel),
