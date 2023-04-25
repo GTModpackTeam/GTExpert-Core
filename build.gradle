@@ -163,6 +163,7 @@ dependencies {
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crt_version}"
     implementation fg.deobf("curse.maven:top-${top_pid}:${top_fid}")
     implementation fg.deobf("curse.maven:ctm-${ctm_pid}:${ctm_fid}")
+    implementation fg.deobf("curse.maven:groovyscript-${grs_pid}:${grs_fid}")
 
     // Tests
     testImplementation("org.junit.jupiter:junit-jupiter:${junit_version}")
