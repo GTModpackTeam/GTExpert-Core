@@ -18,6 +18,7 @@ import gtexpert.GTExpertMod;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
+import gtexpert.api.util.GTELog;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -312,7 +313,7 @@ public class DraconicUpgradeRecipeLoader {
 
         for (ItemStack stack : upgradableItems) {
             if (!(stack.getItem() instanceof IUpgradableItem)) {
-                GTExpertMod.logger.error("Item {} is not an instance of IUpgradableItem!", stack);
+                GTELog.logger.warn("Item {} is not an instance of IUpgradableItem!", stack);
                 continue;
             }
             IUpgradableItem item = (IUpgradableItem) stack.getItem();

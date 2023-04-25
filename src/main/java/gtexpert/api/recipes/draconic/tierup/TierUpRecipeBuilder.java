@@ -8,8 +8,8 @@ import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.util.EnumValidationResult;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.ValidationResult;
+import gtexpert.api.util.GTELog;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -49,15 +49,15 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
         super.validate();
 
         if (catalyst == null) {
-            GTLog.logger.error("Catalyst has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Catalyst has not been set", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         }
         if (result == null) {
-            GTLog.logger.error("Result has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Result has not been set", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         }
         if (!outputs.isEmpty()) {
-            GTLog.logger.error("Do not manually add item output", new IllegalArgumentException());
+            GTELog.logger.error("Do not manually add item output", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         }
 

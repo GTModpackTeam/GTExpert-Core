@@ -12,8 +12,8 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.util.EnumValidationResult;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.ValidationResult;
+import gtexpert.api.util.GTELog;
 import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -56,11 +56,11 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         super.validate();
 
         if (upgradeName == null) {
-            GTLog.logger.error("Upgrade name has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Upgrade name has not been set", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         }
         if (currentLevel < 0) {
-            GTLog.logger.error("Level has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Level has not been set", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         }
 
@@ -69,16 +69,16 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         }
 
         if (catalyst == null) {
-            GTLog.logger.error("Catalyst has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Catalyst has not been set", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         } else if (!(catalyst.getItem() instanceof IUpgradableItem)) {
-            GTLog.logger.error("Catalyst is not an instance of IUpgradableItem", new IllegalArgumentException());
+            GTELog.logger.error("Catalyst is not an instance of IUpgradableItem", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         } else if (!((IUpgradableItem) catalyst.getItem()).getValidUpgrades(catalyst).contains(upgradeName)) {
-            GTLog.logger.error("Upgrade " + upgradeName + " is not valid for this catalyst", new IllegalArgumentException());
+            GTELog.logger.error("Upgrade " + upgradeName + " is not valid for this catalyst", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         } else if (((IUpgradableItem) catalyst.getItem()).getMaxUpgradeLevel(catalyst, upgradeName) < currentLevel + 1) {
-            GTLog.logger.error("Max level of upgrade " + upgradeName + " is " + ((IUpgradableItem) catalyst.getItem()).getMaxUpgradeLevel(catalyst, upgradeName) + ", which supplied level is going to exceed", new IllegalArgumentException());
+            GTELog.logger.error("Max level of upgrade " + upgradeName + " is " + ((IUpgradableItem) catalyst.getItem()).getMaxUpgradeLevel(catalyst, upgradeName) + ", which supplied level is going to exceed", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         }
 

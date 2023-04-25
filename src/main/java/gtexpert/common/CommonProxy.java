@@ -3,6 +3,7 @@ package gtexpert.common;
 import gregtech.api.GregTechAPI;
 import gregtech.api.block.VariantItemBlock;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.GTELog;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import gtexpert.loaders.recipe.*;
@@ -42,12 +43,16 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.@NotNull Register<Block> event) {
+        GTELog.logger.info("Registering blocks...");
+
         event.getRegistry().register(GTE_BLOCK_METAL_CASING);
         event.getRegistry().register(BLOCK_SAWMILL_CONVEYOR);
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.@NotNull Register<Item> event) {
+        GTELog.logger.info("Registering items...");
+
         event.getRegistry().register(createItemBlock(GTE_BLOCK_METAL_CASING, VariantItemBlock::new));
         event.getRegistry().register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
     }
@@ -65,6 +70,8 @@ public class CommonProxy {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        GTELog.logger.info("Registering recipes...");
+
         // Main recipe registration
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
