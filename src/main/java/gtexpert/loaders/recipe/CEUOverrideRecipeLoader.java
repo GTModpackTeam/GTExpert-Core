@@ -8,6 +8,7 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
+import gregtech.common.ConfigHolder;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.recipes.GTERecipeMaps;
 import net.minecraft.init.Blocks;
@@ -284,6 +285,8 @@ public class CEUOverrideRecipeLoader {
     }
 
     private static void woods() {
+        if (!ConfigHolder.recipes.nerfWoodCrafting) return;
+
         // Wood sticks
         ModHandler.removeRecipeByOutput(new ItemStack(Items.STICK, 2));
         ModHandler.removeRecipeByOutput(new ItemStack(Items.STICK, 4));
