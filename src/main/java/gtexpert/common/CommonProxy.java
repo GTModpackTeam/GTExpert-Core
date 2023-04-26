@@ -2,6 +2,7 @@ package gtexpert.common;
 
 import gregtech.api.GregTechAPI;
 import gregtech.api.block.VariantItemBlock;
+import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.items.GTEMetaItems;
@@ -27,7 +28,7 @@ import java.util.function.Function;
 import static gtexpert.common.GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR;
 import static gtexpert.common.GTEMetaBlocks.GTE_BLOCK_METAL_CASING;
 
-@Mod.EventBusSubscriber(modid = "gtexpert")
+@Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent e) {
@@ -81,11 +82,11 @@ public class CommonProxy {
         AERecipeLoader.init();
         EIORecipeLoader.init();
 
-        if (Loader.isModLoaded("draconicevolution") && Loader.isModLoaded("draconicadditions")) {
+        if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
             DraconicRecipeLoader.init();
             DraconicUpgradeRecipeLoader.init();
         }
-        if (Loader.isModLoaded("gregtechfoodoption")) {
+        if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
             GTFORecipeLoader.init();
         }
     }
