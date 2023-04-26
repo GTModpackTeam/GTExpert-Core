@@ -75,7 +75,7 @@ public class GTESimpleMachineMetaTileEntity extends WorkableTieredMetaTileEntity
     }
 
     public GTESimpleMachineMetaTileEntity(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, ICubeRenderer renderer, int tier, boolean hasFrontFacing,
-                                       Function<Integer, Integer> tankScalingFunction) {
+                                          Function<Integer, Integer> tankScalingFunction) {
         super(metaTileEntityId, recipeMap, renderer, tier, tankScalingFunction);
         this.hasFrontFacing = hasFrontFacing;
         this.chargerInventory = new ItemStackHandler(1);
