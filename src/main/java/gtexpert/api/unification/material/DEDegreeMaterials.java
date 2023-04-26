@@ -8,6 +8,7 @@ import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.material.properties.ToolProperty;
 
 import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gtexpert.api.unification.Elements.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
