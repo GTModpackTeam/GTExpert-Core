@@ -43,11 +43,10 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
                 .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
                 .aisle("XXSXX", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
                 .where('S', selfPredicate())
-                .where('X', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER)).setMinGlobalLimited(15)
+                .where('X', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER)).setMinGlobalLimited(45)
                         .or(autoAbilities(true, true, true, true, true, false, false)))
                 .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER)))
                 .where('F', states(MetaBlocks.FRAMES.get(GTEMaterials.NM_HEA_NPs).getBlock(GTEMaterials.NM_HEA_NPs)))
-                .where('#', air())
                 .where(' ', any())
                 .build();
     }

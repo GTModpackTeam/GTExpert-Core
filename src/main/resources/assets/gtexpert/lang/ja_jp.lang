@@ -82,6 +82,14 @@ recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 recipemap.draconium_fusion.name=ドラコニック融合機
 recipemap.awakened_draconium_fusion.name=ドラコニック融合機
+recipemap.draconic_fusion_tier_up.name=ドラコニック装備のランクアップ
+recipemap.awakened_draconic_fusion_tier_up.name=ドラコニック装備のランクアップ
+recipemap.draconic_fusion_tier_up.property.1=アップグレードの状態と蓄電量は
+recipemap.draconic_fusion_tier_up.property.2= 保持されます
+recipemap.draconic_fusion_upgrade.name=ドラコニック装備のアップグレード
+recipemap.awakened_draconic_fusion_upgrade.name=ドラコニック装備のアップグレード
+recipemap.draconic_fusion_upgrade.property.1=アップグレードの状態と蓄電量は
+recipemap.draconic_fusion_upgrade.property.2= 保持されます
 
 #misc
 gtexpert.multiblock.needsun=コントローラーは必ず空に面する必要があります!

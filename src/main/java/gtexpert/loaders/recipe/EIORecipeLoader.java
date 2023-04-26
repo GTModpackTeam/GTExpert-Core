@@ -153,8 +153,8 @@ public class EIORecipeLoader {
                 .circuitMeta(1)
                 .input(dust, Electrum, 2)
                 .input(Items.SNOWBALL, 1)
-                .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 3500))
-                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1500))
+                .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1000))
+                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED_CONCENTRATED.getFluid(), 500))
                 .duration(200).EUt(VA[HV])
                 .buildAndRegister();
     }
@@ -366,7 +366,7 @@ public class EIORecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaItems.BATTERY_HULL_HV, 1)
                 .input(circuit, MarkerMaterials.Tier.HV, 1)
-                .fluidInputs(ENERGETIC_SILVER.getFluid(1152))
+                .fluidInputs(Silver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorSilver.getItemNN(), 1)
                 .duration(56).EUt(VA[HV])
                 .buildAndRegister();
