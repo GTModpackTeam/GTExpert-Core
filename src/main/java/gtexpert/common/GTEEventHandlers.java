@@ -2,6 +2,7 @@ package gtexpert.common;
 
 
 import gregtech.api.items.armor.ArmorMetaItem;
+import gtexpert.api.GTEValues;
 import gtexpert.common.items.GTEMetaItems;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -22,9 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
-@Mod.EventBusSubscriber(
-        modid = "gtexpert"
-)
+@Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTEEventHandlers {
 
     public GTEEventHandlers() {

@@ -3,6 +3,7 @@ package gtexpert.common.metatileentities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.util.GTUtility;
+import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.multi.*;
@@ -60,6 +61,6 @@ public class GTEMetaTileEntities {
 
     @NotNull
     private static ResourceLocation gteId(@NotNull String name) {
-        return new ResourceLocation("gtexpert", name);
+        return new ResourceLocation(GTEValues.MODID, name);
     }
 }

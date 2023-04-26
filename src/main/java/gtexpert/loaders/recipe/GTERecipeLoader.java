@@ -20,6 +20,7 @@ import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
+import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
@@ -448,7 +449,7 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
-        if (!Loader.isModLoaded("draconicevolution") && !Loader.isModLoaded("draconicadditions")) {
+        if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(MetaTileEntities.HULL[UHV])
                     .inputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(4).get())
