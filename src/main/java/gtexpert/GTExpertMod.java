@@ -1,6 +1,7 @@
 package gtexpert;
 
 import gregtech.api.GTValues;
+import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
@@ -10,13 +11,15 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.jetbrains.annotations.NotNull;
 
-@Mod(modid = "gtexpert",
+@Mod(modid = GTEValues.MODID,
         name = "GTExpert-Core",
-        acceptedMinecraftVersions = "[1.12,1.13)",
+        version = GTEVersion.VERSION,
         dependencies = GTValues.MOD_VERSION_DEP)
 public class GTExpertMod {
 
-    @SidedProxy(modId = "gtexpert", clientSide = "gtexpert.client.ClientProxy", serverSide = "gtexpert.common.CommonProxy")
+    @SidedProxy(modId = GTEValues.MODID,
+            clientSide = "gtexpert.client.ClientProxy",
+            serverSide = "gtexpert.common.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.Instance
