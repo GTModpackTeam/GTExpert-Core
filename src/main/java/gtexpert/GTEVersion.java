@@ -15,5 +15,6 @@ public final class GTEVersion {
     //This is the String formatted version, minus extra information, used for the @Mod annotation version
     public static final String VERSION = MAJOR + "." + MINOR + "." + REVISION;
 
-    private GTEVersion() {    }
+    private GTEVersion() {
+    }
 }

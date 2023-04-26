@@ -313,7 +313,7 @@ public class DraconicUpgradeRecipeLoader {
 
         for (ItemStack stack : upgradableItems) {
             if (!(stack.getItem() instanceof IUpgradableItem)) {
-                GTELog.logger.warn("Item {} is not an instance of IUpgradableItem!", stack);
+                GTELog.logger.error("Item {} is not an instance of IUpgradableItem!", stack);
                 continue;
             }
             IUpgradableItem item = (IUpgradableItem) stack.getItem();
