@@ -15,13 +15,16 @@ import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockFusionCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
+import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
+import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import net.minecraftforge.fml.common.Loader;
@@ -138,144 +141,202 @@ public class GTERecipeLoader {
     }
 
     private static void items() {
-        // Remove solar panels
-        ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL.getStackForm());
-        ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_ULV.getStackForm());
-        ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_LV.getStackForm());
+        if (!ConfigHolder.machines.enableHighTierSolars) return;
+        if (GTEConfigHolder.hardSolarPanel) {
+            // Remove solar panels
+            ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL.getStackForm());
+            ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_ULV.getStackForm());
+            ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_LV.getStackForm());
 
-        // Solar Panel
-        ModHandler.addShapedRecipe("solar_panel_basic", COVER_SOLAR_PANEL.getStackForm(1),
-                "SGS", "CFC",
-                'S', SILICON_WAFER,
-                'G', Blocks.GLASS_PANE,
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                'F', CARBON_FIBER_PLATE);
+            // Solar Panel
+            ModHandler.addShapedRecipe("solar_panel_basic", COVER_SOLAR_PANEL.getStackForm(1),
+                    "SGS", "CFC",
+                    'S', SILICON_WAFER,
+                    'G', Blocks.GLASS_PANE,
+                    'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'F', CARBON_FIBER_PLATE);
 
-        // Solar Panel (8V)
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(COVER_SOLAR_PANEL, 8)
-                .input(Blocks.DAYLIGHT_DETECTOR, 8)
-                .input(NAND_CHIP_ULV, 4)
-                .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 4)
-                .input(Blocks.GLASS)
-                .input(MetaTileEntities.TRANSFORMER[0])
-                .fluidInputs(Silicon.getFluid(L))
-                .fluidInputs(SolderingAlloy.getFluid(L))
-                .output(COVER_SOLAR_PANEL_ULV)
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
+            // Solar Panel (8V)
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(COVER_SOLAR_PANEL, 8)
+                    .input(Blocks.DAYLIGHT_DETECTOR, 8)
+                    .input(NAND_CHIP_ULV, 4)
+                    .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 4)
+                    .input(Blocks.GLASS)
+                    .input(MetaTileEntities.TRANSFORMER[0])
+                    .fluidInputs(Silicon.getFluid(L))
+                    .fluidInputs(SolderingAlloy.getFluid(L))
+                    .output(COVER_SOLAR_PANEL_ULV)
+                    .duration(100).EUt(VA[LuV])
+                    .buildAndRegister();
 
-        // Solar Panel (LV)
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(COVER_SOLAR_PANEL_ULV, 4)
-                .input(SENSOR_LV, 8)
-                .input(MICROPROCESSOR_LV, 4)
-                .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
-                .inputs(AEApi.instance().definitions().blocks().quartzGlass().maybeStack(1).get())
-                .input(MetaTileEntities.TRANSFORMER[1])
-                .fluidInputs(Silicon.getFluid(L * 2))
-                .fluidInputs(SolderingAlloy.getFluid(L * 2))
-                .output(COVER_SOLAR_PANEL_LV)
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
+            // Solar Panel (LV)
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(COVER_SOLAR_PANEL_ULV, 4)
+                    .input(SENSOR_LV, 8)
+                    .input(MICROPROCESSOR_LV, 4)
+                    .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
+                    .inputs(AEApi.instance().definitions().blocks().quartzGlass().maybeStack(1).get())
+                    .input(MetaTileEntities.TRANSFORMER[1])
+                    .fluidInputs(Silicon.getFluid(L * 2))
+                    .fluidInputs(SolderingAlloy.getFluid(L * 2))
+                    .output(COVER_SOLAR_PANEL_LV)
+                    .duration(100).EUt(VA[LuV])
+                    .buildAndRegister();
 
-        // Solar Panel (MV)
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(COVER_SOLAR_PANEL_LV, 4)
-                .input(SENSOR_MV, 8)
-                .input(INTEGRATED_CIRCUIT_MV, 4)
-                .input(LOW_POWER_INTEGRATED_CIRCUIT, 4)
-                .input(ModObject.blockFusedQuartz.getBlockNN())
-                .input(MetaTileEntities.TRANSFORMER[2])
-                .fluidInputs(Silicon.getFluid(L * 3))
-                .fluidInputs(SolderingAlloy.getFluid(L * 3))
-                .output(COVER_SOLAR_PANEL_MV)
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
+            // Solar Panel (MV)
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(COVER_SOLAR_PANEL_LV, 4)
+                    .input(SENSOR_MV, 8)
+                    .input(INTEGRATED_CIRCUIT_MV, 4)
+                    .input(LOW_POWER_INTEGRATED_CIRCUIT, 4)
+                    .input(ModObject.blockFusedQuartz.getBlockNN())
+                    .input(MetaTileEntities.TRANSFORMER[2])
+                    .fluidInputs(Silicon.getFluid(L * 3))
+                    .fluidInputs(SolderingAlloy.getFluid(L * 3))
+                    .output(COVER_SOLAR_PANEL_MV)
+                    .duration(100).EUt(VA[LuV])
+                    .buildAndRegister();
 
-        // Solar Panel (HV)
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(COVER_SOLAR_PANEL_MV, 4)
-                .input(SENSOR_HV, 8)
-                .input(NANO_PROCESSOR_HV, 4)
-                .input(LOW_POWER_INTEGRATED_CIRCUIT, 8)
-                .input(ModObject.blockFusedGlass.getBlockNN())
-                .input(MetaTileEntities.TRANSFORMER[3])
-                .fluidInputs(Silicon.getFluid(L * 4))
-                .fluidInputs(SolderingAlloy.getFluid(L * 4))
-                .output(COVER_SOLAR_PANEL_HV)
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
+            // Solar Panel (HV)
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(COVER_SOLAR_PANEL_MV, 4)
+                    .input(SENSOR_HV, 8)
+                    .input(NANO_PROCESSOR_HV, 4)
+                    .input(LOW_POWER_INTEGRATED_CIRCUIT, 8)
+                    .input(ModObject.blockFusedGlass.getBlockNN())
+                    .input(MetaTileEntities.TRANSFORMER[3])
+                    .fluidInputs(Silicon.getFluid(L * 4))
+                    .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                    .output(COVER_SOLAR_PANEL_HV)
+                    .duration(100).EUt(VA[LuV])
+                    .buildAndRegister();
 
-        // Solar Panel (EV)
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(COVER_SOLAR_PANEL_HV, 4)
-                .input(SENSOR_EV, 8)
-                .input(WORKSTATION_EV, 4)
-                .input(POWER_INTEGRATED_CIRCUIT, 4)
-                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
-                .input(MetaTileEntities.TRANSFORMER[4])
-                .fluidInputs(Silicon.getFluid(L * 5))
-                .fluidInputs(SolderingAlloy.getFluid(L * 5))
-                .output(COVER_SOLAR_PANEL_EV)
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
+            // Solar Panel (EV)
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(COVER_SOLAR_PANEL_HV, 4)
+                    .input(SENSOR_EV, 8)
+                    .input(WORKSTATION_EV, 4)
+                    .input(POWER_INTEGRATED_CIRCUIT, 4)
+                    .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
+                    .input(MetaTileEntities.TRANSFORMER[4])
+                    .fluidInputs(Silicon.getFluid(L * 5))
+                    .fluidInputs(SolderingAlloy.getFluid(L * 5))
+                    .output(COVER_SOLAR_PANEL_EV)
+                    .duration(100).EUt(VA[LuV])
+                    .buildAndRegister();
 
-        // Solar Panel (IV)
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(COVER_SOLAR_PANEL_EV, 4)
-                .input(SENSOR_IV, 8)
-                .input(MAINFRAME_IV, 4)
-                .input(POWER_INTEGRATED_CIRCUIT, 8)
-                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
-                .input(MetaTileEntities.TRANSFORMER[5])
-                .fluidInputs(Silicon.getFluid(L * 6))
-                .fluidInputs(SolderingAlloy.getFluid(L * 6))
-                .output(COVER_SOLAR_PANEL_IV)
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
+            // Solar Panel (IV)
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(COVER_SOLAR_PANEL_EV, 4)
+                    .input(SENSOR_IV, 8)
+                    .input(MAINFRAME_IV, 4)
+                    .input(POWER_INTEGRATED_CIRCUIT, 8)
+                    .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
+                    .input(MetaTileEntities.TRANSFORMER[5])
+                    .fluidInputs(Silicon.getFluid(L * 6))
+                    .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                    .output(COVER_SOLAR_PANEL_IV)
+                    .duration(100).EUt(VA[LuV])
+                    .buildAndRegister();
 
-        // Solar Panel (LuV)
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(COVER_SOLAR_PANEL_IV, 4)
-                .input(SENSOR_LuV, 8)
-                .input(NANO_MAINFRAME_LUV, 4)
-                .input(HIGH_POWER_INTEGRATED_CIRCUIT, 8)
-                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
-                .input(MetaTileEntities.TRANSFORMER[6])
-                .fluidInputs(Silicon.getFluid(L * 7))
-                .fluidInputs(SolderingAlloy.getFluid(L * 7))
-                .output(COVER_SOLAR_PANEL_LUV)
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
+            // Solar Panel (LuV)
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(COVER_SOLAR_PANEL_IV, 4)
+                    .input(SENSOR_LuV, 8)
+                    .input(NANO_MAINFRAME_LUV, 4)
+                    .input(HIGH_POWER_INTEGRATED_CIRCUIT, 8)
+                    .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
+                    .input(MetaTileEntities.TRANSFORMER[6])
+                    .fluidInputs(Silicon.getFluid(L * 7))
+                    .fluidInputs(SolderingAlloy.getFluid(L * 7))
+                    .output(COVER_SOLAR_PANEL_LUV)
+                    .duration(100).EUt(VA[LuV])
+                    .buildAndRegister();
 
-        // Solar Panel (ZPM)
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(COVER_SOLAR_PANEL_LUV, 4)
-                .input(SENSOR_ZPM, 8)
-                .input(QUANTUM_MAINFRAME_ZPM, 4)
-                .input(HIGH_POWER_INTEGRATED_CIRCUIT, 16)
-                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
-                .input(MetaTileEntities.TRANSFORMER[7])
-                .fluidInputs(Silicon.getFluid(L * 8))
-                .fluidInputs(SolderingAlloy.getFluid(L * 8))
-                .output(COVER_SOLAR_PANEL_ZPM)
-                .duration(100).EUt(VA[ZPM])
-                .buildAndRegister();
+            // Solar Panel (ZPM)
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(COVER_SOLAR_PANEL_LUV, 4)
+                    .input(SENSOR_ZPM, 8)
+                    .input(QUANTUM_MAINFRAME_ZPM, 4)
+                    .input(HIGH_POWER_INTEGRATED_CIRCUIT, 16)
+                    .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
+                    .input(MetaTileEntities.TRANSFORMER[7])
+                    .fluidInputs(Silicon.getFluid(L * 8))
+                    .fluidInputs(SolderingAlloy.getFluid(L * 8))
+                    .output(COVER_SOLAR_PANEL_ZPM)
+                    .duration(100).EUt(VA[ZPM])
+                    .buildAndRegister();
 
-        // Solar Panel (UV)
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(COVER_SOLAR_PANEL_ZPM, 4)
-                .input(SENSOR_UV, 8)
-                .input(CRYSTAL_MAINFRAME_UV, 4)
-                .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 32)
-                .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
-                .input(MetaTileEntities.TRANSFORMER[8])
-                .fluidInputs(Silicon.getFluid(L * 9))
-                .fluidInputs(SolderingAlloy.getFluid(L * 9))
-                .output(COVER_SOLAR_PANEL_UV)
-                .duration(100).EUt(VA[UV])
-                .buildAndRegister();
+            // Solar Panel (UV)
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(COVER_SOLAR_PANEL_ZPM, 4)
+                    .input(SENSOR_UV, 8)
+                    .input(CRYSTAL_MAINFRAME_UV, 4)
+                    .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 32)
+                    .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
+                    .input(MetaTileEntities.TRANSFORMER[8])
+                    .fluidInputs(Silicon.getFluid(L * 9))
+                    .fluidInputs(SolderingAlloy.getFluid(L * 9))
+                    .output(COVER_SOLAR_PANEL_UV)
+                    .duration(100).EUt(VA[UV])
+                    .buildAndRegister();
+        }
+        else {
+            // Solar Panel (8V)
+            ModHandler.addShapedRecipe("solar_panel_basic_gt5u", COVER_SOLAR_PANEL_ULV.getStackForm(1),
+                    "SSS", "SCS", "SSS",
+                    'S', COVER_SOLAR_PANEL,
+                    'C', new UnificationEntry(circuit, MarkerMaterials.Tier.HV));
+
+            // Solar Panel (LV)
+            ModHandler.addShapedRecipe("solar_panel_lv_gt5u", COVER_SOLAR_PANEL_LV.getStackForm(1),
+                    " S ", "SCS", " S ",
+                    'S', COVER_SOLAR_PANEL_ULV,
+                    'C', MetaTileEntities.TRANSFORMER[0].getStackForm());
+
+            // Solar Panel (MV)
+            ModHandler.addShapedRecipe("solar_panel_mv_gt5u", COVER_SOLAR_PANEL_MV.getStackForm(1),
+                    " S ", "SCS", " S ",
+                    'S', COVER_SOLAR_PANEL_LV,
+                    'C', MetaTileEntities.TRANSFORMER[1].getStackForm());
+
+            // Solar Panel (HV)
+            ModHandler.addShapedRecipe("solar_panel_hv_gt5u", COVER_SOLAR_PANEL_HV.getStackForm(1),
+                    " S ", "SCS", " S ",
+                    'S', COVER_SOLAR_PANEL_MV,
+                    'C', MetaTileEntities.TRANSFORMER[2].getStackForm());
+
+            // Solar Panel (EV)
+            ModHandler.addShapedRecipe("solar_panel_ev_gt5u", COVER_SOLAR_PANEL_EV.getStackForm(1),
+                    " S ", "SCS", " S ",
+                    'S', COVER_SOLAR_PANEL_HV,
+                    'C', MetaTileEntities.TRANSFORMER[3].getStackForm());
+
+            // Solar Panel (IV)
+            ModHandler.addShapedRecipe("solar_panel_iv_gt5u", COVER_SOLAR_PANEL_IV.getStackForm(1),
+                    " S ", "SCS", " S ",
+                    'S', COVER_SOLAR_PANEL_EV,
+                    'C', MetaTileEntities.TRANSFORMER[4].getStackForm());
+
+            // Solar Panel (LuV)
+            ModHandler.addShapedRecipe("solar_panel_luv_gt5u", COVER_SOLAR_PANEL_LUV.getStackForm(1),
+                    " S ", "SCS", " S ",
+                    'S', COVER_SOLAR_PANEL_IV,
+                    'C', MetaTileEntities.TRANSFORMER[5].getStackForm());
+
+            // Solar Panel (ZPM)
+            ModHandler.addShapedRecipe("solar_panel_zpm_gt5u", COVER_SOLAR_PANEL_ZPM.getStackForm(1),
+                    " S ", "SCS", " S ",
+                    'S', COVER_SOLAR_PANEL_LUV,
+                    'C', MetaTileEntities.TRANSFORMER[6].getStackForm());
+
+            // Solar Panel (UV)
+            ModHandler.addShapedRecipe("solar_panel_uv_gt5u", COVER_SOLAR_PANEL_UV.getStackForm(1),
+                    " S ", "SCS", " S ",
+                    'S', COVER_SOLAR_PANEL_ZPM,
+                    'C', MetaTileEntities.TRANSFORMER[7].getStackForm());
+        }
     }
 
     private static void blocks() {
@@ -448,7 +509,7 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
-        if (!Loader.isModLoaded("draconicevolution") && !Loader.isModLoaded("draconicadditions")) {
+        if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(MetaTileEntities.HULL[UHV])
                     .inputs(AEApi.instance().definitions().blocks().energyCellCreative().maybeStack(4).get())
