@@ -2,6 +2,7 @@ package gtexpert.loaders.recipe;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+import gtexpert.api.GTEValues;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 
@@ -15,19 +16,19 @@ public class VanillaOverrideRecipes {
 
     private static void blocks() {
         // Diorite
-        ModHandler.removeRecipeByName(new ResourceLocation("minecraft", "diorite"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "diorite"));
 
         // Granite
-        ModHandler.removeRecipeByName(new ResourceLocation("minecraft", "granite"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "granite"));
 
         // Andesite
-        ModHandler.removeRecipeByName(new ResourceLocation("minecraft", "andesite"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "andesite"));
 
         // Comparator
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "misc/vanilla_comparator"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/vanilla_comparator"));
 
         // Daylight Sensor
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "misc/vanilla_daylight_detector"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/vanilla_daylight_detector"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(gem, NetherQuartz, 3)
                 .input(slab, Wood, 2)

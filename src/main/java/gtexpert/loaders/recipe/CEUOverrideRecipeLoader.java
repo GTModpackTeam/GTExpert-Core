@@ -266,7 +266,7 @@ public class CEUOverrideRecipeLoader {
 
     private static void blocks() {
         // Redstone Lamp
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech", "redstone_lamp"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "redstone_lamp"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(plate, Redstone, 4)
@@ -289,8 +289,8 @@ public class CEUOverrideRecipeLoader {
 
     private static void woods() {
         // Wood sticks
-        ModHandler.removeRecipeByName(new ResourceLocation("minecraft", "stick_normal"));
-        ModHandler.removeRecipeByName(new ResourceLocation("minecraft", "stick_saw"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "stick_normal"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "stick_saw"));
         ModHandler.addMirroredShapedRecipe("stick_normal", GTEConfigHolder.moreNerfWoodCrafting ? new ItemStack(Items.STICK, 1) : new ItemStack(Items.STICK, 2), "P", "P", 'P', new UnificationEntry(plank, Wood));
         ModHandler.addMirroredShapedRecipe("stick_saw", GTEConfigHolder.moreNerfWoodCrafting ? new ItemStack(Items.STICK, 2) : new ItemStack(Items.STICK, 4), "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
 

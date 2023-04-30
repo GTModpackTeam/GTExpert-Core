@@ -14,6 +14,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.*;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
@@ -137,13 +138,13 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconium Block
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconium_block"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconium_block"));
         ModHandler.addMirroredShapedRecipe("de_draconium_block", new ItemStack(DEFeatures.draconiumBlock), "B", 'B', OreDictUnifier.get(block, DRACONIUM));
         ModHandler.addMirroredShapedRecipe("ceu_draconium_block", OreDictUnifier.get(block, DRACONIUM), "B", 'B', new ItemStack(DEFeatures.draconiumBlock));
 
         // Awakened Draconium Block
         OreDictionary.registerOre("blockAwakenedDraconium", DEFeatures.draconicBlock);
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconic_block"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_block"));
         ModHandler.addMirroredShapedRecipe("de_draconic_block", new ItemStack(DEFeatures.draconicBlock), "B", 'B', OreDictUnifier.get(block, AWAKENED_DRACONIUM));
         ModHandler.addMirroredShapedRecipe("ceu_draconic_block", OreDictUnifier.get(block, AWAKENED_DRACONIUM), "B", 'B', new ItemStack(DEFeatures.draconicBlock));
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
@@ -187,7 +188,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Wyvern Core
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_core"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_core"));
         RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ADVANCED_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorEnergeticSilver.getItemNN(), 4)
@@ -210,7 +211,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconic Core
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconic_core"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_core"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(EXTREME_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorCrystalline.getItemNN(), 4)
@@ -297,7 +298,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Wyvern Energy Core
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_energy_core"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_energy_core"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(EXTREME_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.wyvernCore, 1)
@@ -324,7 +325,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconic Energy Core
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconic_energy_core"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_energy_core"));
         GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.draconicCore, 1)
@@ -351,7 +352,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Energy Core
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_storage_core"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_storage_core"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(MetaTileEntities.HULL[LuV])
@@ -363,7 +364,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Energy Pylon
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_pylon"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_pylon"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(MetaTileEntities.HULL[LuV])
@@ -377,7 +378,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Reactor Stabilizer Frame
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "reactor_part"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 1)
                 .input(stick, DARK_STEEL, 6)
@@ -387,7 +388,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Reactor Stabilizer Inner Rotor
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part_1"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "reactor_part_1"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 1)
                 .input(plate, DRACONIUM, 3)
@@ -397,7 +398,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Reactor Stabilizer Outer Rotor
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part_2"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "reactor_part_2"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 1)
                 .input(plate, Diamond, 3)
@@ -407,7 +408,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Reactor Stabilizer Rotor Assembly
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part_3"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "reactor_part_3"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 1)
                 .input(stick, DRACONIUM, 2)
@@ -418,7 +419,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Reactor Stabilizer Focus Ring
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "reactor_part_4"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "reactor_part_4"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 1)
                 .input(stick, Diamond, 4)
@@ -490,7 +491,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Upgrade Key (RF Capacity)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade"));
         ModHandler.addShapedRecipe("tool_upgrade", new ItemStack(DEFeatures.toolUpgrade, 1, 0),
                 "LCL", "DED", "LCL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -499,7 +500,7 @@ public class DraconicRecipeLoader {
                 'E', new ItemStack(DEFeatures.wyvernEnergyCore, 1, 0));
 
         // Upgrade Key (Dig Speed)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_1"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_1"));
         ModHandler.addShapedRecipe("tool_upgrade_1", new ItemStack(DEFeatures.toolUpgrade, 1, 1),
                 "LCL", "DPD", "LCL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -508,7 +509,7 @@ public class DraconicRecipeLoader {
                 'P', Items.GOLDEN_PICKAXE);
 
         // Upgrade Key (Dig AOE)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_2"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_2"));
         ModHandler.addShapedRecipe("tool_upgrade_2", new ItemStack(DEFeatures.toolUpgrade, 1, 2),
                 "LCL", "DED", "LCL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -517,7 +518,7 @@ public class DraconicRecipeLoader {
                 'E', AEApi.instance().definitions().materials().fluixPearl().maybeStack(1).get());
 
         // Upgrade Key (Attack Damage)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_3"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_3"));
         ModHandler.addShapedRecipe("tool_upgrade_3", new ItemStack(DEFeatures.toolUpgrade, 1, 3),
                 "LCL", "DSD", "LCL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -526,7 +527,7 @@ public class DraconicRecipeLoader {
                 'S', Items.GOLDEN_SWORD);
 
         // Upgrade Key (Attack AOE)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_4"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_4"));
         ModHandler.addShapedRecipe("tool_upgrade_4", new ItemStack(DEFeatures.toolUpgrade, 1, 4),
                 "LCL", "DSD", "LCL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -535,7 +536,7 @@ public class DraconicRecipeLoader {
                 'S', Items.DIAMOND_SWORD);
 
         // Upgrade Key (Arrow Damage)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_5"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_5"));
         ModHandler.addShapedRecipe("tool_upgrade_5", new ItemStack(DEFeatures.toolUpgrade, 1, 5),
                 "LCG", "DAD", "LCL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -545,7 +546,7 @@ public class DraconicRecipeLoader {
                 'A', Items.ARROW);
 
         // Upgrade Key (Draw Speed)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_6"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_6"));
         ModHandler.addShapedRecipe("tool_upgrade_6", new ItemStack(DEFeatures.toolUpgrade, 1, 6),
                 "LCL", "DAD", "LCG",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -555,7 +556,7 @@ public class DraconicRecipeLoader {
                 'A', ModObject.itemEndSteelBow.getItemNN());
 
         // Upgrade Key (Arrow Speed)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_7"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_7"));
         ModHandler.addShapedRecipe("tool_upgrade_7", new ItemStack(DEFeatures.toolUpgrade, 1, 7),
                 "LCF", "DAD", "LCL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -565,7 +566,7 @@ public class DraconicRecipeLoader {
                 'A', Items.ARROW);
 
         // Upgrade Key (Shield Capacity)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_8"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_8"));
         ModHandler.addShapedRecipe("tool_upgrade_8", new ItemStack(DEFeatures.toolUpgrade, 1, 8),
                 "LCL", "DAD", "LCL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -574,7 +575,7 @@ public class DraconicRecipeLoader {
                 'A', ModObject.itemEndSteelChestplate.getItemNN());
 
         // Upgrade Key (Shield Recharge)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_9"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_9"));
         ModHandler.addShapedRecipe("tool_upgrade_9", new ItemStack(DEFeatures.toolUpgrade, 1, 9),
                 "LCL", "DAD", "LCL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -583,7 +584,7 @@ public class DraconicRecipeLoader {
                 'A', EndergyObject.itemStellarAlloyChestplate.getItemNN());
 
         // Upgrade Key (Movement Speed)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_10"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_10"));
         ModHandler.addShapedRecipe("tool_upgrade_10", new ItemStack(DEFeatures.toolUpgrade, 1, 10),
                 "LCL", "DSD", "LBL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -593,7 +594,7 @@ public class DraconicRecipeLoader {
                 'B', OreDictUnifier.get(block, Redstone, 1));
 
         // Upgrade Key (Jump Boost)
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "tool_upgrade_11"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "tool_upgrade_11"));
         ModHandler.addShapedRecipe("tool_upgrade_11", new ItemStack(DEFeatures.toolUpgrade, 1, 11),
                 "LCL", "DSD", "LBL",
                 'L', OreDictUnifier.get(plate, Lapis, 1),
@@ -655,7 +656,7 @@ public class DraconicRecipeLoader {
         // Draconic Evolution
         // ########################################
         // Dislocator Receptacle
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "dislocator_receptacle"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "dislocator_receptacle"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.draconicCore, 1)
                 .input(DEFeatures.infusedObsidian, 1)
@@ -675,7 +676,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Celestial Manipulator
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "celestial_manipulator"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "celestial_manipulator"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(Items.CLOCK, 1)
                 .input(plate, DRACONIUM, 4)
@@ -688,10 +689,10 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Dislocation Normalization Field Projector
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "item_dislocation_inhibitor"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "item_dislocation_inhibitor"));
 
         // Particle Generator
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "particle_generator"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "particle_generator"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(block, Redstone, 4)
                 .input(stick, Blaze, 4)
@@ -701,7 +702,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Energy Core Stabilizer
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "particle_generator_1"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "particle_generator_1"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(block, Diamond, 4)
                 .input(stick, Blaze, 4)
@@ -755,7 +756,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Infused Obsidian
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "infused_obsidian"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "infused_obsidian"));
         ModHandler.addShapedRecipe("infused_obsidian", new ItemStack(DEFeatures.infusedObsidian, 1, 0),
                 "BOB", "ODO", "BOB",
                 'B', Items.BLAZE_POWDER,
@@ -764,11 +765,11 @@ public class DraconicRecipeLoader {
         );
 
         // Basic Energy Relay Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_crystal"));
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_crystal_5"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_5"));
 
         // Wyvern Energy Relay Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_crystal_1"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_1"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(plate, Diamond, 4)
@@ -789,13 +790,13 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Basic Energy I/O Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_crystal_2"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_2"));
 
         // Basic Wireless Energy Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_crystal_8"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_8"));
 
         // Wyvern Wireless Energy Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_crystal_9"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_9"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(gem, EnderPearl, 4)
@@ -807,7 +808,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconic Wireless Energy Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "energy_crystal_10"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_10"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(gem, EnderPearl, 4)
@@ -874,7 +875,7 @@ public class DraconicRecipeLoader {
         // Draconic Evolution
         // ########################################
         // Crystal Binder
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "crystal_binder"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "crystal_binder"));
         ModHandler.addShapedRecipe("crystal_binder", new ItemStack(DEFeatures.crystalBinder, 1, 0),
                 "PhP", " R ", " C ",
                 'P', OreDictUnifier.get(plate, DRACONIUM),
@@ -882,7 +883,7 @@ public class DraconicRecipeLoader {
                 'C', DEFeatures.wyvernCore);
 
         // Wyvern Flux Capacitor
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconium_capacitor"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconium_capacitor"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
                 .inputs(new ItemStack(DEFeatures.wyvernEnergyCore, 4, 0))
@@ -893,7 +894,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconic Flux Capacitor
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "draconium_capacitor_1"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconium_capacitor_1"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
                 .inputs(new ItemStack(DEFeatures.draconiumCapacitor, 4, 0))

@@ -12,18 +12,15 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.jetbrains.annotations.NotNull;
 
 @Mod(modid = GTEValues.MODID,
-        name = "GTExpert-Core",
+        name = GTEValues.MODNAME,
         version = GTEVersion.VERSION,
         dependencies = GTValues.MOD_VERSION_DEP)
 public class GTExpertMod {
-
-    @SidedProxy(modId = GTEValues.MODID,
-            clientSide = "gtexpert.client.ClientProxy",
-            serverSide = "gtexpert.common.CommonProxy")
-    public static CommonProxy proxy;
-
     @Mod.Instance
     public static GTExpertMod instance;
+
+    @SidedProxy(modId = GTEValues.MODID, clientSide = "gtexpert.client.ClientProxy", serverSide = "gtexpert.common.CommonProxy")
+    public static CommonProxy proxy;
 
     @Mod.EventHandler
     public void preInit(@NotNull FMLPreInitializationEvent event) {
