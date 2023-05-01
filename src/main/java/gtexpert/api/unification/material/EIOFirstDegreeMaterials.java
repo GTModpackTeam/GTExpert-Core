@@ -158,7 +158,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xDBDECC).iconSet(MaterialIconSet.SHINY)
                 .blastTemp(7200, GasTier.HIGHER, VA[LuV], 600)
-                .flags(GENERATE_PLATE, GENERATE_ROD)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD)
                 .components(NetherStar, 1, MELODIC_ALLOY, 1, Clay, 1)
                 .build();
 

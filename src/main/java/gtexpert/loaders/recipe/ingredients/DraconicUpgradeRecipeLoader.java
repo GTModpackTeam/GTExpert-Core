@@ -14,7 +14,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.ToolItems;
-import gtexpert.GTExpertMod;
+import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
@@ -41,7 +41,7 @@ public class DraconicUpgradeRecipeLoader {
 
     private static void tierUp() {
         // Axe of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_axe"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_axe"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(DRACONIUM)).setNBTMatchingCondition(
                         GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
@@ -51,7 +51,7 @@ public class DraconicUpgradeRecipeLoader {
                 Tier.WYVERN, 2);
 
         // Pickaxe of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_pick"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_pick"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(DRACONIUM)).setNBTMatchingCondition(
                         GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
@@ -61,7 +61,7 @@ public class DraconicUpgradeRecipeLoader {
                 Tier.WYVERN, 2);
 
         // Shovel of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_shovel"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_shovel"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(DRACONIUM)).setNBTMatchingCondition(
                         GTENBTMatchers.RECURSIVE_EQUAL_TO, NBTCondition.create(
@@ -71,27 +71,27 @@ public class DraconicUpgradeRecipeLoader {
                 Tier.WYVERN, 2);
 
         // Sword of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_sword"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_sword"));
         addTierUpRecipe(NANO_SABER.getStackForm(),
                 new ItemStack(DEFeatures.wyvernSword),
                 Tier.WYVERN, 2);
 
         // Bow of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_bow"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_bow"));
         addTierUpRecipe(
                 GTRecipeItemInput.getOrCreate(new ItemStack(ModObject.itemEndSteelBow.getItemNN())).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 new ItemStack(DEFeatures.wyvernBow),
                 Tier.WYVERN, 2);
 
         // Wyvern Helm
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_helm"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_helm"));
         addTierUpRecipe(
                 QUANTUM_HELMET.getStackForm(),
                 new ItemStack(DEFeatures.wyvernHelm),
                 Tier.WYVERN, 6);
 
         // Wyvern Chest
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_chest"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_chest"));
         addTierUpRecipe(
                 QUANTUM_CHESTPLATE.getStackForm(),
                 new ItemStack(DEFeatures.wyvernChest),
@@ -99,7 +99,7 @@ public class DraconicUpgradeRecipeLoader {
                 6);
 
         // Wyvern Legs
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_legs"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_legs"));
         addTierUpRecipe(
                 QUANTUM_LEGGINGS.getStackForm(),
                 new ItemStack(DEFeatures.wyvernLegs),
@@ -107,7 +107,7 @@ public class DraconicUpgradeRecipeLoader {
                 6);
 
         // Wyvern Boots
-        ModHandler.removeRecipeByName(new ResourceLocation("draconicevolution", "wyvern_boots"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_boots"));
         addTierUpRecipe(
                 QUANTUM_BOOTS.getStackForm(),
                 new ItemStack(DEFeatures.wyvernBoots),
