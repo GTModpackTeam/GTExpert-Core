@@ -12,4 +12,7 @@ public class GTEConfigHolder {
     @Config.Comment({"Change to a recipe using Assembly Line.",
             "CEu's enableHighTierSolars to true to reflect.", "Default: false"})
     public static boolean hardSolarPanel = false;
+
+    @Config.Comment({"Tools and Armors recipes to GT standards.", "Default: false"})
+    public static boolean hardToolArmorRecipes = false;
 }

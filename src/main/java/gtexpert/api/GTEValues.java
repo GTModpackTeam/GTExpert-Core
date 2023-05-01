@@ -1,7 +1,10 @@
 package gtexpert.api;
 
 public class GTEValues {
+    public static final String MODNAME = "GTExpert-Core";
     public static final String MODID = "gtexpert",
+            MODID_VANILLA = "minecraft",
+            MODID_CEU = "gregtech",
             MODID_GCYM = "gcym",
             MODID_GCYS = "gcys",
             MODID_GF = "gregification",
