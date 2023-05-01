@@ -9,9 +9,6 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 
 public class GTEMaterialFlags {
     public static void init() {
-        // Treated Wood
-        TreatedWood.addFlags(GENERATE_LONG_ROD);
-
         // Ender Peral
         EnderPearl.setProperty(PropertyKey.FLUID, new FluidProperty());
 
