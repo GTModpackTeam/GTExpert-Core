@@ -16,6 +16,7 @@ import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.recipes.ingredients.draconic.GTEDraconicRecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
@@ -212,7 +213,7 @@ public class DraconicRecipeLoader {
 
         // Draconic Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_core"));
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(EXTREME_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorCrystalline.getItemNN(), 4)
                 .input(DEFeatures.wyvernCore, 1)
@@ -225,7 +226,7 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(200).EUt(38400)
                 .buildAndRegister();
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(EXTREME_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorCrystalline.getItemNN(), 4)
                 .input(DEFeatures.wyvernCore, 1)
@@ -240,7 +241,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Awakened Core
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(ELITE_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorMelodic.getItemNN(), 4)
                 .input(DEFeatures.draconicCore, 1)
@@ -253,7 +254,7 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(400).EUt(153600)
                 .buildAndRegister();
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(ELITE_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorMelodic.getItemNN(), 4)
                 .input(DEFeatures.draconicCore, 1)
@@ -268,7 +269,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Chaotic Core
-        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorStellar.getItemNN(), 4)
                 .input(DEFeatures.awakenedCore, 1)
@@ -282,7 +283,7 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(600).EUt(614400)
                 .buildAndRegister();
-        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(EndergyObject.itemCapacitorStellar.getItemNN(), 4)
                 .input(DEFeatures.awakenedCore, 1)
@@ -299,7 +300,7 @@ public class DraconicRecipeLoader {
 
         // Wyvern Energy Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_energy_core"));
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(EXTREME_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(RANDOM_ACCESS_MEMORY, 32)
@@ -311,7 +312,7 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(100).EUt(9600)
                 .buildAndRegister();
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(EXTREME_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(RANDOM_ACCESS_MEMORY, 32)
@@ -326,7 +327,7 @@ public class DraconicRecipeLoader {
 
         // Draconic Energy Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_energy_core"));
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.draconicCore, 1)
                 .input(RANDOM_ACCESS_MEMORY, 40)
@@ -338,7 +339,7 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(200).EUt(38400)
                 .buildAndRegister();
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 1)
                 .input(DEFeatures.draconicCore, 1)
                 .input(RANDOM_ACCESS_MEMORY, 40)
@@ -429,7 +430,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Reactor Stabilizer
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.reactorPart, 1, 3)
                 .input(DEFeatures.reactorPart, 1, 4)
                 .input(DEFeatures.wyvernCore, 1)
@@ -441,7 +442,7 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(400).EUt(38400)
                 .buildAndRegister();
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.reactorPart, 1, 3)
                 .input(DEFeatures.reactorPart, 1, 4)
                 .input(DEFeatures.wyvernCore, 1)
@@ -455,7 +456,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Reactor Energy Injector
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.reactorPart, 4, 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 4)
@@ -467,7 +468,7 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(400).EUt(38400)
                 .buildAndRegister();
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.reactorPart, 4, 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 4)
@@ -481,7 +482,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconic Reactor Core
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.chaosShard, 1, 0)
                 .fluidInputs(DRACONIUM.getFluid(1152))
                 .fluidInputs(AWAKENED_DRACONIUM.getFluid(1152))
@@ -608,7 +609,7 @@ public class DraconicRecipeLoader {
         // Draconic Additions
         // ########################################
         // Chaotic Energy Core
-        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
@@ -621,7 +622,7 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(4000))
                 .duration(400).EUt(614400)
                 .buildAndRegister();
-        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD, 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
@@ -820,7 +821,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconium Chest
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(Blocks.FURNACE, 5)
                 .input(DEFeatures.wyvernCore, 2)
                 .input(MetaTileEntities.WORKBENCH)
@@ -837,7 +838,7 @@ public class DraconicRecipeLoader {
         // Draconic Additions
         // ########################################
         // Chaos Liquefier
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputNBT(DAFeatures.chaosContainer, 1, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(DEFeatures.infusedObsidian, 4)
                 .input(DEFeatures.draconicCore, 4)
@@ -848,7 +849,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Chaotic Stability Core
-        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.reactorCore, 4)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(DEFeatures.infusedObsidian, 4)
@@ -858,7 +859,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Capacitor Supplier
-        GTERecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(Blocks.END_ROD, 1)
                 .input(plate, STELLAR_ALLOY, 4)
                 .input(stick, STELLAR_ALLOY, 4)
@@ -909,7 +910,7 @@ public class DraconicRecipeLoader {
         // Draconic Additions
         // ########################################
         // Chaos Container
-        GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputNBT(DEFeatures.dislocator, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(DEFeatures.infusedObsidian, 2)
                 .input(DEFeatures.chaoticCore, 1)
