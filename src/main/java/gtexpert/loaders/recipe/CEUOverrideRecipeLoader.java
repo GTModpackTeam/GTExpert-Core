@@ -289,8 +289,8 @@ public class CEUOverrideRecipeLoader {
 
     private static void woods() {
         // Wood sticks
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "stick_normal"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "stick_saw"));
+        ModHandler.removeRecipeByName(new ResourceLocation(ConfigHolder.recipes.nerfWoodCrafting ? GTEValues.MODID_CEU : GTEValues.MODID_VANILLA, "stick_normal"));
+        if (GTEConfigHolder.moreNerfWoodCrafting) ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "stick_saw"));
         ModHandler.addMirroredShapedRecipe("stick_normal", GTEConfigHolder.moreNerfWoodCrafting ? new ItemStack(Items.STICK, 1) : new ItemStack(Items.STICK, 2), "P", "P", 'P', new UnificationEntry(plank, Wood));
         ModHandler.addMirroredShapedRecipe("stick_saw", GTEConfigHolder.moreNerfWoodCrafting ? new ItemStack(Items.STICK, 2) : new ItemStack(Items.STICK, 4), "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
 
