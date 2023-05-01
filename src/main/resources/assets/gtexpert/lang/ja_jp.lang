@@ -4,8 +4,6 @@
 # multiblock
 gtexpert.machine.sawmill.name=製材機
 gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らないで..
-gtexpert.machine.greenhouse.name=温室
-gtexpert.machine.greenhouse.tooltip=工業用栽培器
 gtexpert.machine.void_ore_miner.name=亜空間型鉱石採掘機
 gtexpert.machine.void_ore_miner.tooltip=スターゲート建設機
 gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します。§r
@@ -29,7 +27,6 @@ gtexpert.machine.vial_extractor.zpm.name=精鋭型魂抽出器 III
 gtexpert.machine.vial_extractor.uv.name=究極型魂抽出器
 
 # block
-tile.gte_metal_casing.greenhouse_casing.name=ガルバリウム製対腐食マシン外装
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
 tile.gte_metal_casing.void_ore_miner_casing.name=対虚無マシン外装
 tile.gte_metal_casing.draconium_casing.name=ドラコニウムマシン外装
@@ -37,7 +34,7 @@ tile.gte_metal_casing.awakened_draconium_casing.name=覚醒ドラコニウムマ
 tile.sawmill_conveyor.name=製材機用コンベア
 
 # material
-material.galvalume=ガルバリウム
+material.galvalume=ガルバリウム (Deprecated)
 material.nm_hea_nps=貴金属ハイエントロピーナノ合金
 material.naquadah_rocket_fuel=ナクアダロケット燃料
 material.dragon=ドラゴン

@@ -79,16 +79,6 @@ public class GTERecipeLoader {
                 .duration(50).EUt(VA[HV])
                 .buildAndRegister();
 
-        // Galvalume Dust
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(dust, Steel, 4)
-                .input(dust, Zinc, 1)
-                .input(dust, Aluminium, 1)
-                .output(dust, Galvalume, 6)
-                .duration(50).EUt(VA[LV])
-                .buildAndRegister();
-
         // NM_HEA_NPs Dust
         GTERecipeMaps.EXTREME_MIXER_RECIPES.recipeBuilder()
                 .input(dust, Gold, 1)
@@ -341,11 +331,11 @@ public class GTERecipeLoader {
 
     private static void blocks() {
         // Extreme Mixer
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(MetaTileEntities.MIXER[ZPM].getStackForm())
-                .inputs(FIELD_GENERATOR_ZPM.getStackForm())
-                .output(EXTREME_MIXER[0])
-                .duration(200).EUt(VA[ZPM])
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .input(EXTREME_MIXER[0])
+                .outputs(MetaTileEntities.MIXER[ZPM].getStackForm())
+                .outputs(FIELD_GENERATOR_ZPM.getStackForm())
+                .duration(20).EUt(VA[LV])
                 .buildAndRegister();
 
         // Sawmill
