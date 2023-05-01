@@ -8,6 +8,7 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.ConfigHolder;
+import gregtech.common.items.MetaItems;
 import gtexpert.common.GTEConfigHolder;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -17,10 +18,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.Materials.Silver;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.plate;
-import static gregtech.common.items.MetaItems.BATTERY_HULL_HV;
+import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 
 public class EIORecipeLoader {
@@ -320,7 +319,7 @@ public class EIORecipeLoader {
     private static void items() {
         // Basic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(BATTERY_HULL_HV, 1)
+                .input(MetaItems.BATTERY_HULL_HV, 1)
                 .input(circuit, MarkerMaterials.Tier.HV, 1)
                 .fluidInputs(ELECTRICAL_STEEL.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 0)
@@ -365,7 +364,7 @@ public class EIORecipeLoader {
 
         // Silver Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(BATTERY_HULL_HV, 1)
+                .input(MetaItems.BATTERY_HULL_HV, 1)
                 .input(circuit, MarkerMaterials.Tier.HV, 1)
                 .fluidInputs(Silver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorSilver.getItemNN(), 1)
