@@ -12,6 +12,7 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
+import gtexpert.api.GTEValues;
 import gtexpert.common.GTEConfigHolder;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -112,7 +113,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Block
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/quartz_block_pure"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/quartz_block_pure"));
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(8).get())
                 .output(block, NetherQuartz, 1)
@@ -167,8 +168,8 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Block
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/certus_quartz_block"));
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/certus_quartz_block_pure"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/certus_quartz_block"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/certus_quartz_block_pure"));
         ModHandler.removeRecipeByOutput(aeMaterials.certusQuartzCrystal().maybeStack(4).get());
         ModHandler.addMirroredShapedRecipe("ae2_certus_quartz_block", aeBlocks.quartzBlock().maybeStack(1).get(), "B", 'B', new UnificationEntry(block, CertusQuartz));
         ModHandler.addMirroredShapedRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, CertusQuartz), "B", 'B', aeBlocks.quartzBlock().maybeStack(1).get());
@@ -355,8 +356,8 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Block
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/fluix_block"));
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "decorative/fluix_block_pure"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/fluix_block"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/fluix_block_pure"));
         ModHandler.removeRecipeByOutput(aeMaterials.fluixCrystal().maybeStack(4).get());
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(aeMaterials.fluixCrystal().maybeStack(4).get())
@@ -422,7 +423,7 @@ public class AERecipeLoader {
 
     private static void blocks() {
         // Quartz Fiber
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "network/parts/quartz_fiber_part"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/parts/quartz_fiber_part"));
         ModHandler.addMirroredShapedRecipe("nether_quartz_cutter_wire", aeParts.quartzFiber().maybeStack(1).get(), "Px", 'P', OreDictUnifier.get(plate, NetherQuartz));
         ModHandler.addMirroredShapedRecipe("certus_quartz_cutter_wire", aeParts.quartzFiber().maybeStack(1).get(), "Px", 'P', OreDictUnifier.get(plate, CertusQuartz));
         ModHandler.addMirroredShapedRecipe("quartzite_cutter_wire", aeParts.quartzFiber().maybeStack(1).get(), "Px", 'P', OreDictUnifier.get(plate, Quartzite));
@@ -436,7 +437,7 @@ public class AERecipeLoader {
 
     private static void items() {
         // Formation Core
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "materials/formationcore"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "materials/formationcore"));
         ModHandler.addShapedRecipe("formation_core", aeMaterials.formationCore().maybeStack(1).get(),
                 "SES", "LQL", "SES",
                 'S', OreDictUnifier.get(stick, Aluminium),
@@ -460,7 +461,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Annihilation Core
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "materials/annihilationcore"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "materials/annihilationcore"));
         ModHandler.addShapedRecipe("annihilation_core", aeMaterials.annihilationCore().maybeStack(1).get(),
                 "SES", "CQC", "SES",
                 'S', OreDictUnifier.get(stick, Aluminium),
@@ -614,7 +615,7 @@ public class AERecipeLoader {
         if (!ConfigHolder.recipes.hardToolArmorRecipes && !GTEConfigHolder.hardToolArmorRecipes) return;
 
         // Nether Quartz Axe
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_axe"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_axe"));
         ModHandler.addShapedRecipe("nether_quartz_axe", aeItems.netherQuartzAxe().maybeStack(1).get(),
                 "PQf", "PS ", "hS ",
                 'P', OreDictUnifier.get(plate, NetherQuartz),
@@ -622,7 +623,7 @@ public class AERecipeLoader {
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Nether Quartz Hoe
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_hoe"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_hoe"));
         ModHandler.addShapedRecipe("nether_quartz_hoe", aeItems.netherQuartzHoe().maybeStack(1).get(),
                 "PQf", "hS ", " S ",
                 'P', OreDictUnifier.get(plate, NetherQuartz),
@@ -630,7 +631,7 @@ public class AERecipeLoader {
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Nether Quartz Pickaxe
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_pickaxe"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_pickaxe"));
         ModHandler.addShapedRecipe("nether_quartz_pickaxe", aeItems.netherQuartzPick().maybeStack(1).get(),
                 "PQQ", "hSf", " S ",
                 'P', OreDictUnifier.get(plate, NetherQuartz),
@@ -638,21 +639,21 @@ public class AERecipeLoader {
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Nether Quartz Shovel
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_spade"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_spade"));
         ModHandler.addShapedRecipe("nether_quartz_spade", aeItems.netherQuartzShovel().maybeStack(1).get(),
                 "hPf", " S ", " S ",
                 'P', OreDictUnifier.get(plate, NetherQuartz),
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Nether Quartz Sword
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_sword"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_sword"));
         ModHandler.addShapedRecipe("nether_quartz_sword", aeItems.netherQuartzSword().maybeStack(1).get(),
                 " P ", "hPf", " S ",
                 'P', OreDictUnifier.get(plate, NetherQuartz),
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Nether Quartz Cutting Knife
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_cutting_knife"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_cutting_knife"));
         ModHandler.addShapedRecipe("nether_quartz_cutting_knife", aeItems.netherQuartzKnife().maybeStack(1).get(),
                 "fPh", "QSQ", " S ",
                 'Q', new ItemStack(Items.QUARTZ),
@@ -660,13 +661,13 @@ public class AERecipeLoader {
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Nether Quartz Wrench
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/nether_quartz_wrench"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_wrench"));
         ModHandler.addShapedRecipe("ether_quartz_wrench", aeItems.netherQuartzWrench().maybeStack(1).get(),
                 "PhP", " P ", " P ",
                 'P', OreDictUnifier.get(plate, NetherQuartz));
 
         // Certus Quartz Axe
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_axe"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_axe"));
         ModHandler.addShapedRecipe("certus_quartz_axe", aeItems.certusQuartzAxe().maybeStack(1).get(),
                 "PQf", "PS ", "hS ",
                 'Q', aeMaterials.certusQuartzCrystal().maybeStack(1).get(),
@@ -674,7 +675,7 @@ public class AERecipeLoader {
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Certus Quartz Hoe
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_hoe"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_hoe"));
         ModHandler.addShapedRecipe("certus_quartz_hoe", aeItems.certusQuartzHoe().maybeStack(1).get(),
                 "PQf", "hS ", " S ",
                 'Q', aeMaterials.certusQuartzCrystal().maybeStack(1).get(),
@@ -682,7 +683,7 @@ public class AERecipeLoader {
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Certus Quartz Pickaxe
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_pickaxe"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_pickaxe"));
         ModHandler.addShapedRecipe("certus_quartz_pickaxe", aeItems.certusQuartzPick().maybeStack(1).get(),
                 "PQQ", "hSf", " S ",
                 'Q', aeMaterials.certusQuartzCrystal().maybeStack(1).get(),
@@ -690,21 +691,21 @@ public class AERecipeLoader {
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Certus Quartz Shovel
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_spade"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_spade"));
         ModHandler.addShapedRecipe("certus_quartz_spade", aeItems.certusQuartzShovel().maybeStack(1).get(),
                 "hPf", " S ", " S ",
                 'P', OreDictUnifier.get(plate, CertusQuartz),
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Certus Quartz Sword
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_sword"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_sword"));
         ModHandler.addShapedRecipe("certus_quartz_sword", aeItems.certusQuartzSword().maybeStack(1).get(),
                 " P ", "hPf", " S ",
                 'P', OreDictUnifier.get(plate, CertusQuartz),
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Certus Quartz Cutting Knife
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_cutting_knife"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_cutting_knife"));
         ModHandler.addShapedRecipe("certus_quartz_cutting_knife", aeItems.certusQuartzKnife().maybeStack(1).get(),
                 "fPh", "QSQ", " S ",
                 'Q', aeMaterials.certusQuartzCrystal().maybeStack(1).get(),
@@ -712,7 +713,7 @@ public class AERecipeLoader {
                 'S', OreDictUnifier.get(stick, Wood));
 
         // Certus Quartz Wrench
-        ModHandler.removeRecipeByName(new ResourceLocation("appliedenergistics2", "tools/certus_quartz_wrench"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_wrench"));
         ModHandler.addShapedRecipe("certus_quartz_wrench", aeItems.certusQuartzWrench().maybeStack(1).get(),
                 "PhP", " P ", " P ",
                 'P', OreDictUnifier.get(plate, CertusQuartz));
