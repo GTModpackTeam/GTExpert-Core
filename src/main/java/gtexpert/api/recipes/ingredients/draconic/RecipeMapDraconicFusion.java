@@ -1,4 +1,4 @@
-package gtexpert.api.recipes.draconic;
+package gtexpert.api.recipes.ingredients.draconic;
 
 import cofh.redstoneflux.api.IEnergyContainerItem;
 import com.brandon3055.brandonscore.utils.ItemNBTHelper;
@@ -12,11 +12,10 @@ import gregtech.api.capability.IElectricItem;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gtexpert.GTExpertMod;
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeProperty;
-import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
-import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeProperty;
+import gtexpert.api.recipes.ingredients.draconic.tierup.TierUpRecipeBuilder;
+import gtexpert.api.recipes.ingredients.draconic.tierup.TierUpRecipeProperty;
+import gtexpert.api.recipes.ingredients.draconic.upgrade.UpgradeRecipeBuilder;
+import gtexpert.api.recipes.ingredients.draconic.upgrade.UpgradeRecipeProperty;
 import gtexpert.api.util.GTELog;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
