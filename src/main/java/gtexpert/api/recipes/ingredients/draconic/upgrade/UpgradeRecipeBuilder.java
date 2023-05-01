@@ -1,4 +1,4 @@
-package gtexpert.api.recipes.draconic.upgrade;
+package gtexpert.api.recipes.ingredients.draconic.upgrade;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
@@ -9,7 +9,6 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
