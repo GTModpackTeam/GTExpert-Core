@@ -37,22 +37,27 @@ public class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController
     protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("CCC", "CCC", "CCC")
-                .aisle("CCC", "C#C", "CMC")
+                .aisle("CCC", "C#C", "CCC")
                 .aisle("CCC", "CSC", "CCC")
                 .where('S', selfPredicate())
-                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING)).setMinGlobalLimited(17)
-                        .or(autoAbilities(true, true, true, true, true, true, false)))
-                .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
+                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING)).setMinGlobalLimited(15).or(autoAbilities()))
                 .where('#', air())
                 .build();
     }
 
     @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {return GTETextures.DRACONIUM_CASING;}
+    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
+        return GTETextures.DRACONIUM_CASING;
+    }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
+    }
+
+    @Override
+    public boolean hasMufflerMechanics() {
+        return true;
     }
 
     @Override
