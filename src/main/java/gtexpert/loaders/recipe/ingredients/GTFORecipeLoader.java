@@ -77,6 +77,10 @@ public class GTFORecipeLoader {
     private static void woods() {
         if (GTEConfigHolder.moreNerfWoodCrafting) return;
 
+        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "banana")
+                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 0), "banana_planks")
+                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(0), 1, 0))
+                .build());
         registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "orange")
                 .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 1), "orange_planks")
                 .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(0), 1, 4))
@@ -101,8 +105,8 @@ public class GTFORecipeLoader {
                 .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 6), "olive_planks")
                 .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(1), 1, 8))
                 .build());
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "rainbow")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 7), "rainbow_planks")
+        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "rainbowwood")
+                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 7), "rainbowwood_planks")
                 .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(1), 1, 12))
                 .build());
         registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "nutmeg")
