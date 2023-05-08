@@ -95,7 +95,7 @@ public class GTEMaterials {
         AEFirstDegreeMaterials.init();  // 24151 - 24175
 
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
-            DEDegreeMaterials.init(); // 24176 - 24200
+            DEFirstDegreeMaterials.init(); // 24176 - 24200
         }
     }
 }

@@ -35,7 +35,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x949494).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR)
+                .flags(EXT_METAL, GENERATE_GEAR)
                 .components(Steel, 1, Coal, 1, Silicon, 1)
                 .build();
 
@@ -45,7 +45,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xED8009).iconSet(MaterialIconSet.SHINY)
                 .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR)
+                .flags(EXT_METAL, GENERATE_GEAR)
                 .components(Redstone, 1, Gold, 1, Glowstone, 1)
                 .build();
         ENERGETIC_ALLOY.setFormula("Au2(Si(FeS2)5(CrAl2O3)Hg3)2", true);
@@ -56,7 +56,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xBAC63F).iconSet(MaterialIconSet.SHINY)
                 .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR)
+                .flags(EXT_METAL, GENERATE_GEAR)
                 .components(ENERGETIC_ALLOY, 1, EnderPearl, 1)
                 .build();
         VIBRANT_ALLOY.setFormula("BeK4N5(Au2(Si(FeS2)5(CrAl2O3)Hg3)2)", true);
@@ -87,7 +87,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x6EAC7D).iconSet(MaterialIconSet.SHINY)
                 .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD)
+                .flags(EXT_METAL)
                 .components(Iron, 1, EnderPearl, 1)
                 .build();
 
@@ -97,7 +97,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x5F5F5F).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_BOLT_SCREW, GENERATE_FRAME)
+                .flags(EXT2_METAL, GENERATE_RING, GENERATE_FRAME)
                 .components(Iron, 1, Coal, 1, Obsidian, 1)
                 .build();
 
@@ -117,7 +117,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xBCB682).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(4500, GasTier.HIGHER, VA[EV], 1072)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_BOLT_SCREW)
+                .flags(EXT2_METAL, GENERATE_RING)
                 .components(Endstone, 1, DARK_STEEL, 1, Obsidian, 1)
                 .build();
         END_STEEL.setFormula("FeC(MgFeSi2O4)2?", true);
@@ -158,7 +158,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xDBDECC).iconSet(MaterialIconSet.SHINY)
                 .blastTemp(7200, GasTier.HIGHER, VA[LuV], 600)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD)
+                .flags(EXT_METAL, GENERATE_LONG_ROD)
                 .components(NetherStar, 1, MELODIC_ALLOY, 1, Clay, 1)
                 .build();
 
