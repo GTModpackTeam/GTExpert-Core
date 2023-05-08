@@ -1,6 +1,6 @@
 package gtexpert;
 
-import gregtech.api.GTValues;
+import gregtech.GTInternalTags;
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.CommonProxy;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 @Mod(modid = GTEValues.MODID,
         name = GTEValues.MODNAME,
         version = GTEVersion.VERSION,
-        dependencies = GTValues.MOD_VERSION_DEP)
+        dependencies = GTInternalTags.DEP_VERSION_STRING)
 public class GTExpertMod {
     @Mod.Instance
     public static GTExpertMod instance;
