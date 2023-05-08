@@ -1,4 +1,4 @@
-package gtexpert.api.recipes.ingredients.draconic.tierup;
+package gtexpert.api.recipes.draconic.tierup;
 
 import com.brandon3055.draconicevolution.lib.ToolUpgradeRecipe;
 import gregtech.api.recipes.recipeproperties.RecipeProperty;

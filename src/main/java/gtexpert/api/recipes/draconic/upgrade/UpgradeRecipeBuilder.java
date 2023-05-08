@@ -1,4 +1,4 @@
-package gtexpert.api.recipes.ingredients.draconic.upgrade;
+package gtexpert.api.recipes.draconic.upgrade;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;

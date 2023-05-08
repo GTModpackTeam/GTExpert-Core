@@ -2,7 +2,7 @@ package gtexpert.integration.jei;
 
 import gregtech.api.GTValues;
 import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.ingredients.draconic.GTEDraconicRecipeMaps;
+import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
