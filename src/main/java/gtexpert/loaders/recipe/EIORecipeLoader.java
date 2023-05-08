@@ -401,7 +401,7 @@ public class EIORecipeLoader {
     }
 
     private static void tools() {
-        if (!ConfigHolder.recipes.hardToolArmorRecipes && !GTEConfigHolder.hardToolArmorRecipes) return;
+        if (!ConfigHolder.recipes.hardToolArmorRecipes || !GTEConfigHolder.hardToolArmorRecipes) return;
 
         // Dark Helm
         ModHandler.addShapedRecipe("dark_steel_helmet", new ItemStack(ModObject.itemDarkSteelHelmet.getItemNN(), 1),
