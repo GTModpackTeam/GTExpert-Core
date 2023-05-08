@@ -625,7 +625,7 @@ public class AERecipeLoader {
     }
 
     private static void tools() {
-        if (!ConfigHolder.recipes.hardToolArmorRecipes && !GTEConfigHolder.hardToolArmorRecipes) return;
+        if (!ConfigHolder.recipes.hardToolArmorRecipes || !GTEConfigHolder.hardToolArmorRecipes) return;
 
         // Nether Quartz Axe
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_axe"));
