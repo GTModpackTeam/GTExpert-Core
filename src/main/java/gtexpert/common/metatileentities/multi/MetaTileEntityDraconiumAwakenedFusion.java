@@ -45,9 +45,7 @@ public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockCo
     }
 
     @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GTETextures.AWAKENED_DRACONIUM_CASING;
-    }
+    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) { return GTETextures.AWAKENED_DRACONIUM_CASING; }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {
