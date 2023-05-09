@@ -20,7 +20,7 @@ public class DEFirstDegreeMaterials {
     public static void init() {
         // Cryotheum
         CRYOTHEUM = new Material.Builder(24176, "cryotheum")
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(203)
+                .fluid(FluidTypes.LIQUID, false).fluidTemp(2)
                 .color(0x00B6FF).iconSet(MaterialIconSet.FLUID)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(Electrotine, 1, EnderPearl, 1, Ice, 4)
