@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 @Mod(modid = GTEValues.MODID,
         name = GTEValues.MODNAME,
-        version = GTEVersion.VERSION,
+        version = Tags.VERSION,
         dependencies = GTInternalTags.DEP_VERSION_STRING)
 public class GTExpertMod {
     @Mod.Instance
