@@ -7,7 +7,7 @@ plugins {
     id("maven-publish")
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
     id("eclipse")
-    id("com.gtnewhorizons.retrofuturagradle") version "1.3.9"
+    id("com.gtnewhorizons.retrofuturagradle") version "1.3.11"
     id("com.matthewprenger.cursegradle") version "1.4.0"
 }
 
@@ -20,11 +20,13 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
         // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
-        vendor.set(org.gradle.jvm.toolchain.JvmVendorSpec.AZUL)
+        vendor.set(JvmVendorSpec.AZUL)
     }
     // Generate sources and javadocs jars when building and publishing
     withSourcesJar()
-    withJavadocJar()
+    // javadoc jar throws errors on incomplete docs
+    // docs are also contained in the sources jar, so omit the javadoc-only jar
+    //withJavadocJar()
 }
 
 tasks.withType(JavaCompile).configureEach {
