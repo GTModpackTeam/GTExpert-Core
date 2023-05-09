@@ -13,9 +13,6 @@ public class GTEConfigHolder {
             "CEu's enableHighTierSolars to true to reflect.", "Default: false"})
     public static boolean hardSolarPanel = false;
 
-    @Config.Comment({"Tools and Armors recipes to GT standards.", "Default: false"})
-    public static boolean hardToolArmorRecipes = false;
-
     @Config.Comment({"AE2 Voltage Tier.", "Default: 1 (LV)"})
     @Config.RangeInt(min = 1, max = 14)
     public static int voltageTierAE2 = 1;

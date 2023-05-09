@@ -9,7 +9,7 @@ gtexpert.machine.void_ore_miner.tooltip=星门建造机
 gtexpert.machine.void_ore_miner.tooltip.1=§6采掘32个矿石基于输入的矿石§r
 gtexpert.machine.void_ore_miner.tooltip.2=§6输入下界或末地矿石以获得双倍生产量!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6一次的动作需要576mb的Enderpearl与10000mb的钻井液§r
-gtexpert.machine.extreme_mixer.zpm.name=精英极限搅拌机 III
+gtexpert.machine.extreme_mixer.name=精英极限搅拌机
 
 # singleblock
 gtexpert.machine.vial_extractor.tooltip=黑暗之魂?

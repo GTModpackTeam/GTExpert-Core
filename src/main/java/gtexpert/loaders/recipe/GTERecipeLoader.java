@@ -379,6 +379,11 @@ public class GTERecipeLoader {
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
                 .duration(50).EUt(16)
                 .buildAndRegister();
+        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 1))
+                .output(dust, Wood, 4)
+                .duration(225).EUt(8)
+                .buildAndRegister();
 
         // Void Ore Miner Casing
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()

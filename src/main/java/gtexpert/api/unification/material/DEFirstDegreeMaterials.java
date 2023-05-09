@@ -13,14 +13,14 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gtexpert.api.unification.Elements.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 
-public class DEDegreeMaterials {
+public class DEFirstDegreeMaterials {
     /**
      * 24176 - 24200
      */
     public static void init() {
         // Cryotheum
         CRYOTHEUM = new Material.Builder(24176, "cryotheum")
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(203)
+                .fluid(FluidTypes.LIQUID, false).fluidTemp(2)
                 .color(0x00B6FF).iconSet(MaterialIconSet.FLUID)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(Electrotine, 1, EnderPearl, 1, Ice, 4)
@@ -49,11 +49,11 @@ public class DEDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x7C46B0).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(7200, GasTier.HIGHER, VA[LuV], 600)
-                .flags(GENERATE_ROD, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_PLATE, GENERATE_ROD, GENERATE_RING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
+                .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_RING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
                 .components(DRAGON, 1, Obsidian, 1, EnderPearl, 4, LiquidEnderAir, 8)
-                .toolStats(ToolProperty.Builder.of(80.0F, 2.0F, 3072, 5)
+                .toolStats(ToolProperty.Builder.of(80.0F, 2.0F, 4096, 5)
                         .enchantability(14).build())
-                .rotorStats(18.0f, 4.0f, 3072)
+                .rotorStats(18.0f, 4.0f, 4096)
                 .element(De)
                 .build();
 
@@ -63,10 +63,10 @@ public class DEDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xFF6C00).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(7200, GasTier.HIGHEST, VA[LuV], 600)
-                .flags(GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_PLATE, GENERATE_ROD, GENERATE_RING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
-                .toolStats(ToolProperty.Builder.of(100.0F, 2.0F, 5120, 6)
+                .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_RING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
+                .toolStats(ToolProperty.Builder.of(100.0F, 2.0F, 6144, 6)
                         .enchantability(18).build())
-                .rotorStats(22.0f, 6.0f, 5120)
+                .rotorStats(22.0f, 6.0f, 6144)
                 .element(De1)
                 .build();
 
