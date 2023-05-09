@@ -135,13 +135,13 @@ dependencies {
     compileOnly "org.jetbrains:annotations:${annotations_version}"
     annotationProcessor "org.jetbrains:annotations:${annotations_version}"
 
-    if (project.use_mixins.toBoolean()) {
-        api ("org.spongepowered:mixin:0.8.3") {transitive = false}
-        annotationProcessor('org.ow2.asm:asm-debug-all:5.2')
-        annotationProcessor('com.google.guava:guava:24.1.1-jre')
-        annotationProcessor('com.google.code.gson:gson:2.8.6')
-        annotationProcessor ("org.spongepowered:mixin:0.8.3") {transitive = false}
-    }
+//    if (project.use_mixins.toBoolean()) {
+    api("org.spongepowered:mixin:0.8.3") {transitive = false}
+    annotationProcessor('org.ow2.asm:asm-debug-all:5.2')
+    annotationProcessor('com.google.guava:guava:24.1.1-jre')
+    annotationProcessor('com.google.code.gson:gson:2.8.6')
+    annotationProcessor("org.spongepowered:mixin:0.8.3") {transitive = false}
+//    }
 
 }
 
