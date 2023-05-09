@@ -54,9 +54,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    protected @NotNull ICubeRenderer getFrontOverlay() {
-        return GTETextures.SAWMILL_OVERLAY;
-    }
+    protected @NotNull ICubeRenderer getFrontOverlay() { return GTETextures.SAWMILL_OVERLAY; }
 
     @Override
     public boolean hasMaintenanceMechanics() {
