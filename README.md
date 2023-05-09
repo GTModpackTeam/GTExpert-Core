@@ -3,9 +3,6 @@
 is a coremod for the GregTech Expert 2 modpack.\
 Using this outside the modpack is not supported.
 
-## Development
-You need to manually put [EnderCore](https://www.curseforge.com/minecraft/mc-mods/endercore/download/2972849) jar in `run/mods` folder to execute `runClient`.
-
 ## Credits
 
 I modified some textures from [GTCE unofficial](https://www.curseforge.com/minecraft/mc-mods/gregtech-ce-unofficial) under LGPL-3.0 License\

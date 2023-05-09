@@ -107,8 +107,7 @@ dependencies {
     implementation rfg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
     implementation rfg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
     implementation rfg.deobf("curse.maven:ender-io-conduits-${eic_pid}:${eic_fid}")
-    // See https://discord.com/channels/926486493562814515/926783373232447509/1105423610040029224
-    compileOnly rfg.deobf("curse.maven:endercore-${eco_pid}:${eco_fid}")
+    implementation rfg.deobf("curse.maven:endercore-${eco_pid}:${eco_fid}")
     implementation "info.loenwind.autoconfig:AutoConfig:${minecraft_version}-${autoconfig_version}"
     implementation "info.loenwind.autosave:AutoSave:${minecraft_version}-${autosave_version}"
     implementation rfg.deobf("curse.maven:baubles-${bal_pid}:${bal_fid}")
@@ -143,6 +142,8 @@ dependencies {
     annotationProcessor('com.google.code.gson:gson:2.8.6')
     annotationProcessor("org.spongepowered:mixin:0.8.3") {transitive = false}
 
+    // Boot error fix
+    runtimeOnly (files("libs/EnderCore-1.12.2-0.5.76-core.jar"))
 }
 
 def mixinConfigRefMap = 'mixins.' + project.archives_base_name + '.refmap.json'
@@ -160,9 +161,9 @@ if (project.use_mixins.toBoolean()) {
             new File(mixinTmpDir).mkdirs()
         }
         options.compilerArgs += [
-                "-AreobfSrgFile=${tasks.reobfJar.srg.get().asFile}",
-                "-AoutSrgFile=${mixinSrg}",
-                "-AoutRefMapFile=${refMap}",
+            "-AreobfSrgFile=${tasks.reobfJar.srg.get().asFile}",
+            "-AoutSrgFile=${mixinSrg}",
+            "-AoutRefMapFile=${refMap}",
         ]
     }
 }
@@ -179,13 +180,13 @@ if (project.use_access_transformer.toBoolean()) {
 processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property 'version', project.version
-    inputs.property 'mcversion', project.minecraft.version
+    inputs.property 'mcversion', minecraft_version
     // replace stuff in mcmod.info, nothing else
     filesMatching(['mcmod.info', 'pack.mcmeta']) { fcd ->
         // replace version and mcversion
         fcd.expand (
-                'version': project.version,
-                'mcversion': project.minecraft.version
+            'version': project.version,
+            'mcversion': minecraft_version
         )
     }
 
@@ -203,15 +204,15 @@ processResources {
 jar {
     manifest {
         def attribute_map = [:]
-        if (project.use_coremod.toBoolean()) {
-            attribute_map['FMLCorePlugin'] = project.coremod_plugin_class_name
-            if (project.include_mod.toBoolean()) {
+        if (use_coremod.toBoolean()) {
+            attribute_map['FMLCorePlugin'] = coremod_plugin_class_name
+            if (include_mod.toBoolean()) {
                 attribute_map['FMLCorePluginContainsFMLMod'] = true
                 attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == "build"
             }
         }
-		if (project.use_access_transformer.toBoolean()) {
-            attribute_map['FMLAT'] = project.archives_base_name + '_at.cfg'
+		if (use_access_transformer.toBoolean()) {
+            attribute_map['FMLAT'] = archives_base_name + '_at.cfg'
         }
         attributes(attribute_map)
     }
@@ -240,7 +241,7 @@ idea {
             afterEvaluate {
                 javacAdditionalOptions = "-encoding utf8"
                 moduleJavacAdditionalOptions = [
-                        (project.name + ".main"): tasks.compileJava.options.compilerArgs.collect { '"' + it + '"' }.join(' ')
+                    (project.name + ".main"): tasks.compileJava.options.compilerArgs.collect { '"' + it + '"' }.join(' ')
                 ]
             }
         }
