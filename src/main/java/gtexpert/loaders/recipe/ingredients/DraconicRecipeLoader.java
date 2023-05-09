@@ -11,6 +11,7 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.nbtmatch.*;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.GTEValues;
@@ -48,13 +49,12 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(CRYOTHEUM.getFluid(1000))
                 .duration(400).EUt(VA[LuV])
                 .buildAndRegister();
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(2)
+        RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                 .input(dust, Electrotine, 1)
-                .input(dust, EnderPearl, 1)
                 .fluidInputs(Ice.getFluid(4000))
+                .fluidInputs(EnderPearl.getFluid(144))
                 .fluidOutputs(CRYOTHEUM.getFluid(100))
-                .duration(300).EUt(VA[LuV])
+                .duration(150).EUt(VA[LuV])
                 .buildAndRegister();
 
         // Pyrotheum
@@ -737,6 +737,10 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconum Casing
+        ModHandler.addShapedRecipe("casing_draconum", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2),
+                "PhP", "PFP", "PwP",
+                'P', new UnificationEntry(plate, DRACONIUM),
+                'F', new UnificationEntry(frameGt, DRACONIUM));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(6)
                 .input(plate, DRACONIUM, 6)
@@ -744,14 +748,40 @@ public class DraconicRecipeLoader {
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
+        RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
+                .fluidInputs(Oxygen.getFluid(224))
+                .output(ingot, DRACONIUM, 4)
+                .duration(225).EUt(30)
+                .buildAndRegister();
+        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
+                .output(dust, DRACONIUM, 4)
+                .duration(225).EUt(8)
+                .buildAndRegister();
 
         // Awakened Draconum Casing
+        ModHandler.addShapedRecipe("casing_awakened_draconum", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2),
+                "PhP", "PFP", "PwP",
+                'P', new UnificationEntry(plate, AWAKENED_DRACONIUM),
+                'F', new UnificationEntry(frameGt, AWAKENED_DRACONIUM));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(6)
                 .input(plate, AWAKENED_DRACONIUM, 6)
                 .input(frameGt, AWAKENED_DRACONIUM, 1)
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[ZPM])
+                .buildAndRegister();
+        RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))
+                .fluidInputs(Oxygen.getFluid(224))
+                .output(ingot, AWAKENED_DRACONIUM, 4)
+                .duration(225).EUt(30)
+                .buildAndRegister();
+        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))
+                .output(dust, AWAKENED_DRACONIUM, 4)
+                .duration(225).EUt(8)
                 .buildAndRegister();
 
         // Infused Obsidian
