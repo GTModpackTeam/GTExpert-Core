@@ -31,6 +31,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,10 +142,43 @@ public class GTERecipeLoader {
             // Solar Panel
             ModHandler.addShapedRecipe("solar_panel_basic", COVER_SOLAR_PANEL.getStackForm(1),
                     "SGS", "CFC",
+                    //'S', "craftWafer",
                     'S', SILICON_WAFER,
-                    'G', Blocks.GLASS_PANE,
+                    'G', paneGlass,
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'F', CARBON_FIBER_PLATE);
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(SILICON_WAFER, 2)
+                    .input("paneGlass", 1)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
+                    .input(CARBON_FIBER_PLATE, 1)
+                    .output(COVER_SOLAR_PANEL, 1)
+                    .duration(20).EUt(VA[LuV])
+                    .buildAndRegister();
+//            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                    .input(GLOWSTONE_WAFER, 4)
+//                    .input("paneGlass", 1)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
+//                    .input(CARBON_FIBER_PLATE, 1)
+//                    .output(COVER_SOLAR_PANEL, 1)
+//                    .duration(20).EUt(VA[LuV])
+//                    .buildAndRegister();
+//            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                    .input(NAQUADAH_WAFER, 8)
+//                    .input("paneGlass", 1)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
+//                    .input(CARBON_FIBER_PLATE, 1)
+//                    .output(COVER_SOLAR_PANEL, 1)
+//                    .duration(20).EUt(VA[LuV])
+//                    .buildAndRegister();
+//            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                    .input(NEUTRONIUM_WAFER, 16)
+//                    .input("paneGlass", 1)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
+//                    .input(CARBON_FIBER_PLATE, 1)
+//                    .output(COVER_SOLAR_PANEL, 1)
+//                    .duration(20).EUt(VA[LuV])
+//                    .buildAndRegister();
 
             // Solar Panel (8V)
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
