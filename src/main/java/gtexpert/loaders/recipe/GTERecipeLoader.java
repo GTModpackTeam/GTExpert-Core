@@ -46,6 +46,12 @@ import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class GTERecipeLoader {
     public static void init() {
+        // craftWafer
+        OreDictionary.registerOre("craftWafer", SILICON_WAFER.getStackForm());
+        OreDictionary.registerOre("craftWafer", GLOWSTONE_WAFER.getStackForm());
+        OreDictionary.registerOre("craftWafer", NAQUADAH_WAFER.getStackForm());
+        OreDictionary.registerOre("craftWafer", NEUTRONIUM_WAFER.getStackForm());
+
         materials();
         items();
         blocks();
@@ -148,35 +154,76 @@ public class GTERecipeLoader {
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'F', CARBON_FIBER_PLATE);
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    //.input("craftWafer", 2)
                     .input(SILICON_WAFER, 2)
                     .input("paneGlass", 1)
                     .input(circuit, MarkerMaterials.Tier.ULV, 2)
                     .input(CARBON_FIBER_PLATE, 1)
                     .output(COVER_SOLAR_PANEL, 1)
-                    .duration(20).EUt(VA[LuV])
+                    .duration(20).EUt(VA[ULV])
                     .buildAndRegister();
 //            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-//                    .input(GLOWSTONE_WAFER, 4)
-//                    .input("paneGlass", 1)
-//                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
-//                    .input(CARBON_FIBER_PLATE, 1)
-//                    .output(COVER_SOLAR_PANEL, 1)
-//                    .duration(20).EUt(VA[LuV])
+//                    .circuitMeta(2)
+//                    .input(SILICON_WAFER, 16)
+//                    .input("paneGlass", 8)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 16)
+//                    .input(CARBON_FIBER_PLATE, 8)
+//                    .output(COVER_SOLAR_PANEL, 8)
+//                    .duration(20).EUt(VA[LV])
 //                    .buildAndRegister();
 //            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-//                    .input(NAQUADAH_WAFER, 8)
-//                    .input("paneGlass", 1)
-//                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
-//                    .input(CARBON_FIBER_PLATE, 1)
-//                    .output(COVER_SOLAR_PANEL, 1)
-//                    .duration(20).EUt(VA[LuV])
+//                    .circuitMeta(3)
+//                    .input(SILICON_WAFER, 32)
+//                    .input("paneGlass", 16)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 32)
+//                    .input(CARBON_FIBER_PLATE, 16)
+//                    .output(COVER_SOLAR_PANEL, 16)
+//                    .duration(20).EUt(VA[MV])
 //                    .buildAndRegister();
 //            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-//                    .input(NEUTRONIUM_WAFER, 16)
-//                    .input("paneGlass", 1)
-//                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
-//                    .input(CARBON_FIBER_PLATE, 1)
-//                    .output(COVER_SOLAR_PANEL, 1)
+//                    .circuitMeta(4)
+//                    .input(SILICON_WAFER, 64)
+//                    .input("paneGlass", 32)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 64)
+//                    .input(CARBON_FIBER_PLATE, 32)
+//                    .output(COVER_SOLAR_PANEL, 32)
+//                    .duration(20).EUt(VA[HV])
+//                    .buildAndRegister();
+//            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                    .circuitMeta(5)
+//                    .input(SILICON_WAFER, 128)
+//                    .input("paneGlass", 64)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 128)
+//                    .input(CARBON_FIBER_PLATE, 64)
+//                    .output(COVER_SOLAR_PANEL, 64)
+//                    .duration(20).EUt(VA[EV])
+//                    .buildAndRegister();
+//            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                    .circuitMeta(2)
+//                    .input(GLOWSTONE_WAFER, 2)
+//                    .input("paneGlass", 2)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 4)
+//                    .input(CARBON_FIBER_PLATE, 2)
+//                    .output(COVER_SOLAR_PANEL, 2)
+//                    .duration(20).EUt(VA[MV])
+//                    .buildAndRegister();
+//            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                    .circuitMeta(3)
+//                    .input(NAQUADAH_WAFER, 2)
+//                    .input("paneGlass", 4)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 8)
+//                    .input(CARBON_FIBER_PLATE, 4)
+//                    .output(COVER_SOLAR_PANEL, 4)
+//                    .duration(20).EUt(VA[EV])
+//                    .buildAndRegister();
+//            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+//                    .circuitMeta(4)
+//                    .input(NEUTRONIUM_WAFER, 2)
+//                    .input("paneGlass", 8)
+//                    .input(circuit, MarkerMaterials.Tier.ULV, 16)
+//                    .input(CARBON_FIBER_PLATE, 8)
+//                    .output(COVER_SOLAR_PANEL, 8)
 //                    .duration(20).EUt(VA[LuV])
 //                    .buildAndRegister();
 
