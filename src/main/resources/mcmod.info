@@ -5,11 +5,11 @@
     "description" : "a coremod for the GregTech Expert 2 modpack",
     "version" : "${version}",
     "mcversion" : "${mcversion}",
-    "url" : "",
-    "updateUrl" : "",
+    "url" : "https://www.curseforge.com/minecraft/mc-mods/gte2-coremod",
     "authorList" : [
       "Quarri6343",
-      "tier940"
+      "tier940",
+      "miozune"
     ],
     "logoFile" : "assets/gregtech/textures/gui/icon/gtexpert_core_logo_high_resolution.png",
     "dependencies" : [

@@ -2,13 +2,21 @@ import com.gtnewhorizons.retrofuturagradle.mcp.ReobfuscatedJar
 import org.jetbrains.gradle.ext.Gradle
 
 plugins {
-    id("java")
-    id("java-library")
-    id("maven-publish")
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
-    id("eclipse")
-    id("com.gtnewhorizons.retrofuturagradle") version "1.3.11"
-    id("com.matthewprenger.cursegradle") version "1.4.0"
+    id('java')
+    id('java-library')
+    id('maven-publish')
+    id('idea')
+    id('org.jetbrains.gradle.plugin.idea-ext') version "$idea_ext_version"
+    id('com.gtnewhorizons.retrofuturagradle') version "$rfg_version"
+    //id('net.darkhax.curseforgegradle') version "$curseforge_gradle_version" apply false
+    //id('com.modrinth.minotaur') version "$minotaur_version" apply false
+}
+
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+    }
 }
 
 version = project.mod_version
@@ -18,7 +26,7 @@ archivesBaseName = project.archives_base_name
 // Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
+        languageVersion.set(JavaLanguageVersion.of(java_version))
         // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
         vendor.set(JvmVendorSpec.AZUL)
     }
@@ -90,11 +98,12 @@ repositories {
 
 dependencies {
     if (project.use_assetmover.toBoolean()) {
-        implementation 'com.cleanroommc:assetmover:2.0'
+        implementation "com.cleanroommc:assetmover:${assetmover_version}"
     }
+
     // manually enable without enabling use_mixins
     // See https://discord.com/channels/926486493562814515/926783373232447509/1105391634071425034
-    implementation 'zone.rong:mixinbooter:7.0'
+    implementation "zone.rong:mixinbooter:${mixinbooter_version}"
 
     // Hard Dependencies
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
@@ -127,8 +136,8 @@ dependencies {
     implementation rfg.deobf("curse.maven:groovyscript-${grs_pid}:${grs_fid}")
 
     // Tests
-    testImplementation("org.junit.jupiter:junit-jupiter:${junit_version}")
-    testImplementation("org.hamcrest:hamcrest:${hamcrest_version}")
+    testImplementation "org.junit.jupiter:junit-jupiter:${junit_version}"
+    testImplementation "org.hamcrest:hamcrest:${hamcrest_version}"
 
     // Compile-Time Dependencies
     compileOnly "org.jetbrains:annotations:${annotations_version}"
@@ -136,17 +145,17 @@ dependencies {
 
     // manually enable without enabling use_mixins
     // See https://discord.com/channels/926486493562814515/926783373232447509/1105391634071425034
-    api("org.spongepowered:mixin:0.8.3") {transitive = false}
-    annotationProcessor('org.ow2.asm:asm-debug-all:5.2')
-    annotationProcessor('com.google.guava:guava:24.1.1-jre')
-    annotationProcessor('com.google.code.gson:gson:2.8.6')
-    annotationProcessor("org.spongepowered:mixin:0.8.3") {transitive = false}
+    api("org.spongepowered:mixin:${mixin_version}") { transitive = false }
+    annotationProcessor "org.ow2.asm:asm-debug-all:${asm_debug_version}"
+    annotationProcessor "com.google.guava:guava:${guava_version}-jre"
+    annotationProcessor "com.google.code.gson:gson:${gson_version}"
+    annotationProcessor("org.spongepowered:mixin:${mixin_version}") { transitive = false }
 
     // Boot error fix
     runtimeOnly (files("libs/EnderCore-1.12.2-0.5.76-core.jar"))
 }
 
-def mixinConfigRefMap = 'mixins.' + project.archives_base_name + '.refmap.json'
+def mixinConfigRefMap = 'mixins.' + project.maven_group + '.refmap.json'
 def mixinTmpDir = buildDir.path + File.separator + 'tmp' + File.separator + 'mixins'
 def refMap = "${mixinTmpDir}" + File.separator + mixinConfigRefMap
 def mixinSrg = "${mixinTmpDir}" + File.separator + "mixins.srg"
@@ -212,40 +221,51 @@ jar {
             }
         }
 		if (use_access_transformer.toBoolean()) {
-            attribute_map['FMLAT'] = archives_base_name + '_at.cfg'
+            attribute_map['FMLAT'] = maven_group + '_at.cfg'
         }
         attributes(attribute_map)
     }
+
     // Add all embedded dependencies into the jar
-    from(provider{ configurations.embed.collect {it.isDirectory() ? it : zipTree(it)} })
+    from provider {
+        configurations.embed.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
 }
 
 idea {
-    module { inheritOutputDirs = true }
-    project { settings {
-        runConfigurations {
-            "1. Run Client"(Gradle) {
-                taskNames = ["runClient"]
+    module {
+        inheritOutputDirs = true
+        downloadJavadoc = true
+        downloadSources = true
+    }
+    project {
+        settings {
+            runConfigurations {
+                "1. Run Client"(Gradle) {
+                    taskNames = ["runClient"]
+                }
+                "2. Run Server"(Gradle) {
+                    taskNames = ["runServer"]
+                }
+                "3. Run Obfuscated Client"(Gradle) {
+                    taskNames = ["runObfClient"]
+                }
+                "4. Run Obfuscated Server"(Gradle) {
+                    taskNames = ["runObfServer"]
+                }
             }
-            "2. Run Server"(Gradle) {
-                taskNames = ["runServer"]
-            }
-            "3. Run Obfuscated Client"(Gradle) {
-                taskNames = ["runObfClient"]
-            }
-            "4. Run Obfuscated Server"(Gradle) {
-                taskNames = ["runObfServer"]
+            compiler.javac {
+                afterEvaluate {
+                    javacAdditionalOptions = "-encoding utf8"
+                    moduleJavacAdditionalOptions = [
+                        (project.name + ".main"): tasks.compileJava.options.compilerArgs.collect { '"' + it + '"' }.join(' ')
+                    ]
+                }
             }
         }
-        compiler.javac {
-            afterEvaluate {
-                javacAdditionalOptions = "-encoding utf8"
-                moduleJavacAdditionalOptions = [
-                    (project.name + ".main"): tasks.compileJava.options.compilerArgs.collect { '"' + it + '"' }.join(' ')
-                ]
-            }
-        }
-    }}
+    }
 }
 
 tasks.named("processIdeaSettings").configure {
