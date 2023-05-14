@@ -424,23 +424,25 @@ public class GTERecipeLoader {
                 'O', CONVEYOR_MODULE_MV.getStackForm());
 
         // Void Ore Miner
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(MetaTileEntities.HULL[ZPM])
-                .input(frameGt, NaquadahAlloy, 4)
-                .input(circuit, MarkerMaterials.Tier.ZPM, 4)
-                .input(ELECTRIC_MOTOR_ZPM, 4)
-                .input(ELECTRIC_PUMP_ZPM, 4)
-                .input(CONVEYOR_MODULE_ZPM, 4)
-                .input(ELECTRIC_PISTON_ZPM, 4)
-                .input(ROBOT_ARM_ZPM, 4)
-                .input(EMITTER_ZPM, 4)
-                .input(SENSOR_ZPM, 4)
-                .input(ORE_DICTIONARY_FILTER)
-                .input(gear, NaquadahAlloy, 4)
-                .fluidInputs(SolderingAlloy.getFluid(18432))
-                .output(VOIDOREMINER)
-                .duration(600).EUt(VA[ZPM])
-                .buildAndRegister();
+        if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(MetaTileEntities.HULL[ZPM])
+                    .input(frameGt, NaquadahAlloy, 4)
+                    .input(circuit, MarkerMaterials.Tier.ZPM, 4)
+                    .input(ELECTRIC_MOTOR_ZPM, 4)
+                    .input(ELECTRIC_PUMP_ZPM, 4)
+                    .input(CONVEYOR_MODULE_ZPM, 4)
+                    .input(ELECTRIC_PISTON_ZPM, 4)
+                    .input(ROBOT_ARM_ZPM, 4)
+                    .input(EMITTER_ZPM, 4)
+                    .input(SENSOR_ZPM, 4)
+                    .input(ORE_DICTIONARY_FILTER)
+                    .input(gear, NaquadahAlloy, 4)
+                    .fluidInputs(SolderingAlloy.getFluid(18432))
+                    .output(VOIDOREMINER)
+                    .duration(600).EUt(VA[ZPM])
+                    .buildAndRegister();
+        }
 
         // Treated Wood Machine Casing
         ModHandler.addShapedRecipe("casing_treated_wood", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
