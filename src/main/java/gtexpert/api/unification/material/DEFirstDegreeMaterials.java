@@ -64,9 +64,9 @@ public class DEFirstDegreeMaterials {
                 .color(0xFF6C00).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(7200, GasTier.HIGHEST, VA[LuV], 600)
                 .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_RING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
-                .toolStats(ToolProperty.Builder.of(100.0F, 2.0F, 6144, 6)
-                        .enchantability(18).build())
-                .rotorStats(22.0f, 6.0f, 6144)
+                .toolStats(ToolProperty.Builder.of(120.0F, 2.0F, 7168, 6)
+                        .enchantability(20).build())
+                .rotorStats(21.5f, 7.5f, 7168)
                 .element(De1)
                 .build();
 
