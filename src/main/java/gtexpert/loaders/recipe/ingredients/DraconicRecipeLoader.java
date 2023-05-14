@@ -11,6 +11,7 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.nbtmatch.*;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -636,6 +637,25 @@ public class DraconicRecipeLoader {
     }
 
     private static void blocks() {
+        // Void Ore Miner
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.HULL[UV])
+                .input(frameGt, Darmstadtium, 4)
+                .input(DEFeatures.awakenedCore, 4)
+                .input(ELECTRIC_MOTOR_UV, 4)
+                .input(ELECTRIC_PUMP_UV, 4)
+                .input(CONVEYOR_MODULE_UV, 4)
+                .input(ELECTRIC_PISTON_UV, 4)
+                .input(ROBOT_ARM_UV, 4)
+                .input(EMITTER_UV, 4)
+                .input(SENSOR_UV, 4)
+                .input(ORE_DICTIONARY_FILTER)
+                .input(gear, Darmstadtium, 4)
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .output(VOIDOREMINER)
+                .duration(600).EUt(VA[UV])
+                .buildAndRegister();
+
         // Infinite GT Energy Unit Emitter
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.HULL[UHV])
