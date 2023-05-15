@@ -97,14 +97,6 @@ repositories {
 }
 
 dependencies {
-    if (project.use_assetmover.toBoolean()) {
-        implementation "com.cleanroommc:assetmover:${assetmover_version}"
-    }
-
-    // manually enable without enabling use_mixins
-    // See https://discord.com/channels/926486493562814515/926783373232447509/1105391634071425034
-    implementation "zone.rong:mixinbooter:${mixinbooter_version}"
-
     // Hard Dependencies
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
@@ -133,7 +125,11 @@ dependencies {
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crt_version}"
     implementation rfg.deobf("curse.maven:top-${top_pid}:${top_fid}")
     implementation rfg.deobf("curse.maven:ctm-${ctm_pid}:${ctm_fid}")
-    implementation rfg.deobf("curse.maven:groovyscript-${grs_pid}:${grs_fid}")
+
+    // use a local jar for GroovyScript to avoid a bug from Mixin and ForgeGradle,
+    // causing crashes at run-time when deobfuscated
+    implementation files("libs/groovyscript-0.4.0.jar")
+    //implementation rfg.deobf("curse.maven:groovyscript-${grs_pid}:${grs_fid}")
 
     // Tests
     testImplementation "org.junit.jupiter:junit-jupiter:${junit_version}"
@@ -142,14 +138,20 @@ dependencies {
     // Compile-Time Dependencies
     compileOnly "org.jetbrains:annotations:${annotations_version}"
     annotationProcessor "org.jetbrains:annotations:${annotations_version}"
+    if (project.use_assetmover.toBoolean()) {
+        implementation "com.cleanroommc:assetmover:${assetmover_version}"
+    }
 
-    // manually enable without enabling use_mixins
-    // See https://discord.com/channels/926486493562814515/926783373232447509/1105391634071425034
+    // GroovyScript dependency
+    implementation "zone.rong:mixinbooter:${mixinbooter_version}"
+
+    // Mixin dependencies
     api("org.spongepowered:mixin:${mixin_version}") { transitive = false }
-    annotationProcessor "org.ow2.asm:asm-debug-all:${asm_debug_version}"
-    annotationProcessor "com.google.guava:guava:${guava_version}-jre"
-    annotationProcessor "com.google.code.gson:gson:${gson_version}"
     annotationProcessor("org.spongepowered:mixin:${mixin_version}") { transitive = false }
+
+    annotationProcessor("org.ow2.asm:asm-debug-all:${asm_debug_version}")
+    annotationProcessor("com.google.guava:guava:${guava_version}-jre")
+    annotationProcessor("com.google.code.gson:gson:${gson_version}")
 
     // Boot error fix
     runtimeOnly (files("libs/EnderCore-1.12.2-0.5.76-core.jar"))
@@ -264,6 +266,27 @@ idea {
                     ]
                 }
             }
+        }
+    }
+}
+
+// Create API library jar
+tasks.register('apiJar', Jar) {
+    archiveClassifier.set 'api'
+    from(sourceSets.main.java) {
+        include maven_group + '/api/**'
+    }
+
+    from(sourceSets.main.output) {
+        include maven_group + '/api/**'
+    }
+}
+
+sourceSets {
+    test {
+        java {
+            compileClasspath += patchedMc.output + mcLauncher.output
+            runtimeClasspath += patchedMc.output + mcLauncher.output
         }
     }
 }
