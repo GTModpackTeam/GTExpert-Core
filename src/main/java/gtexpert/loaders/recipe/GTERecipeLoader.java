@@ -31,6 +31,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,16 +78,6 @@ public class GTERecipeLoader {
                 .fluidInputs(Blaze.getFluid(144))
                 .fluidOutputs(EnderEye.getFluid(144))
                 .duration(50).EUt(VA[HV])
-                .buildAndRegister();
-
-        // Galvalume Dust
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(dust, Steel, 4)
-                .input(dust, Zinc, 1)
-                .input(dust, Aluminium, 1)
-                .output(dust, Galvalume, 6)
-                .duration(50).EUt(VA[LV])
                 .buildAndRegister();
 
         // NM_HEA_NPs Dust
@@ -152,9 +143,83 @@ public class GTERecipeLoader {
             ModHandler.addShapedRecipe("solar_panel_basic", COVER_SOLAR_PANEL.getStackForm(1),
                     "SGS", "CFC",
                     'S', SILICON_WAFER,
-                    'G', Blocks.GLASS_PANE,
+                    'G', paneGlass,
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'F', CARBON_FIBER_PLATE);
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .input(SILICON_WAFER, 2)
+                    .input("paneGlass", 1)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
+                    .input(CARBON_FIBER_PLATE, 1)
+                    .output(COVER_SOLAR_PANEL, 1)
+                    .duration(20).EUt(VA[ULV])
+                    .buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .input(GLOWSTONE_WAFER, 2)
+                    .input("paneGlass", 4)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 8)
+                    .input(CARBON_FIBER_PLATE, 4)
+                    .output(COVER_SOLAR_PANEL, 4)
+                    .duration(20).EUt(VA[MV])
+                    .buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .input(NAQUADAH_WAFER, 2)
+                    .input("paneGlass", 8)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 16)
+                    .input(CARBON_FIBER_PLATE, 8)
+                    .output(COVER_SOLAR_PANEL, 8)
+                    .duration(20).EUt(VA[EV])
+                    .buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .input(NEUTRONIUM_WAFER, 2)
+                    .input("paneGlass", 16)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 32)
+                    .input(CARBON_FIBER_PLATE, 16)
+                    .output(COVER_SOLAR_PANEL, 16)
+                    .duration(20).EUt(VA[LuV])
+                    .buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(2)
+                    .input(SILICON_WAFER, 16)
+                    .input("paneGlass", 8)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 16)
+                    .input(CARBON_FIBER_PLATE, 8)
+                    .output(COVER_SOLAR_PANEL, 8)
+                    .duration(20).EUt(VA[LV])
+                    .buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(3)
+                    .input(SILICON_WAFER, 32)
+                    .input("paneGlass", 16)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 32)
+                    .input(CARBON_FIBER_PLATE, 16)
+                    .output(COVER_SOLAR_PANEL, 16)
+                    .duration(20).EUt(VA[MV])
+                    .buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(4)
+                    .input(SILICON_WAFER, 64)
+                    .input("paneGlass", 32)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 64)
+                    .input(CARBON_FIBER_PLATE, 32)
+                    .output(COVER_SOLAR_PANEL, 32)
+                    .duration(20).EUt(VA[HV])
+                    .buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(5)
+                    .input(SILICON_WAFER, 64)
+                    .input(SILICON_WAFER, 64)
+                    .input("paneGlass", 64)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 64)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 64)
+                    .input(CARBON_FIBER_PLATE, 64)
+                    .output(COVER_SOLAR_PANEL, 64)
+                    .duration(20).EUt(VA[EV])
+                    .buildAndRegister();
 
             // Solar Panel (8V)
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -174,7 +239,7 @@ public class GTERecipeLoader {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(COVER_SOLAR_PANEL_ULV, 4)
                     .input(SENSOR_LV, 8)
-                    .input(MICROPROCESSOR_LV, 4)
+                    .input(INTEGRATED_CIRCUIT_LV, 4)
                     .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
                     .inputs(AEApi.instance().definitions().blocks().quartzGlass().maybeStack(1).get())
                     .input(MetaTileEntities.TRANSFORMER[1])
@@ -202,7 +267,7 @@ public class GTERecipeLoader {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(COVER_SOLAR_PANEL_MV, 4)
                     .input(SENSOR_HV, 8)
-                    .input(NANO_PROCESSOR_HV, 4)
+                    .input(INTEGRATED_CIRCUIT_HV, 4)
                     .input(LOW_POWER_INTEGRATED_CIRCUIT, 8)
                     .input(ModObject.blockFusedGlass.getBlockNN())
                     .input(MetaTileEntities.TRANSFORMER[3])
@@ -341,11 +406,11 @@ public class GTERecipeLoader {
 
     private static void blocks() {
         // Extreme Mixer
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(MetaTileEntities.MIXER[ZPM].getStackForm())
-                .inputs(FIELD_GENERATOR_ZPM.getStackForm())
-                .output(EXTREME_MIXER[0])
-                .duration(200).EUt(VA[ZPM])
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .input(EXTREME_MIXER[0])
+                .outputs(MetaTileEntities.MIXER[ZPM].getStackForm())
+                .outputs(FIELD_GENERATOR_ZPM.getStackForm())
+                .duration(20).EUt(VA[LV])
                 .buildAndRegister();
 
         // Sawmill
@@ -359,23 +424,25 @@ public class GTERecipeLoader {
                 'O', CONVEYOR_MODULE_MV.getStackForm());
 
         // Void Ore Miner
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(MetaTileEntities.HULL[ZPM])
-                .input(frameGt, NaquadahAlloy, 4)
-                .input(circuit, MarkerMaterials.Tier.ZPM, 4)
-                .input(ELECTRIC_MOTOR_ZPM, 4)
-                .input(ELECTRIC_PUMP_ZPM, 4)
-                .input(CONVEYOR_MODULE_ZPM, 4)
-                .input(ELECTRIC_PISTON_ZPM, 4)
-                .input(ROBOT_ARM_ZPM, 4)
-                .input(EMITTER_ZPM, 4)
-                .input(SENSOR_ZPM, 4)
-                .input(ORE_DICTIONARY_FILTER)
-                .input(gear, NaquadahAlloy, 4)
-                .fluidInputs(SolderingAlloy.getFluid(18432))
-                .output(VOIDOREMINER)
-                .duration(600).EUt(VA[ZPM])
-                .buildAndRegister();
+        if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(MetaTileEntities.HULL[ZPM])
+                    .input(frameGt, NaquadahAlloy, 4)
+                    .input(circuit, MarkerMaterials.Tier.ZPM, 4)
+                    .input(ELECTRIC_MOTOR_ZPM, 4)
+                    .input(ELECTRIC_PUMP_ZPM, 4)
+                    .input(CONVEYOR_MODULE_ZPM, 4)
+                    .input(ELECTRIC_PISTON_ZPM, 4)
+                    .input(ROBOT_ARM_ZPM, 4)
+                    .input(EMITTER_ZPM, 4)
+                    .input(SENSOR_ZPM, 4)
+                    .input(ORE_DICTIONARY_FILTER)
+                    .input(gear, NaquadahAlloy, 4)
+                    .fluidInputs(SolderingAlloy.getFluid(18432))
+                    .output(VOIDOREMINER)
+                    .duration(600).EUt(VA[ZPM])
+                    .buildAndRegister();
+        }
 
         // Treated Wood Machine Casing
         ModHandler.addShapedRecipe("casing_treated_wood", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
@@ -388,6 +455,11 @@ public class GTERecipeLoader {
                 .input(frameGt, TreatedWood, 1)
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
                 .duration(50).EUt(16)
+                .buildAndRegister();
+        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 1))
+                .output(dust, Wood, 4)
+                .duration(225).EUt(8)
                 .buildAndRegister();
 
         // Void Ore Miner Casing

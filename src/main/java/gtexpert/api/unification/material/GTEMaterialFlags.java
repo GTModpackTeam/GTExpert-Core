@@ -30,6 +30,9 @@ public class GTEMaterialFlags {
         // Glowstone
         Glowstone.setFormula("Au(Si(FeS2)5(CrAl2O3)Hg3)", true);
 
+        // Darmstadtium
+        Darmstadtium.addFlags(GENERATE_GEAR, GENERATE_FRAME);
+
         // Gregification error fix
         if (!Loader.isModLoaded(GTEValues.MODID_GF)) {
             // Osmium

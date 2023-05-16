@@ -4,14 +4,12 @@
 # multiblock
 gtexpert.machine.sawmill.name=Sawmill
 gtexpert.machine.sawmill.tooltip=Nooo! Do not saw me..
-gtexpert.machine.greenhouse.name=Greenhouse
-gtexpert.machine.greenhouse.tooltip=Industrial Wood producer
 gtexpert.machine.void_ore_miner.name=Void Ore Miner
 gtexpert.machine.void_ore_miner.tooltip=Stargate Builder
 gtexpert.machine.void_ore_miner.tooltip.1=§6Mines out 32 Ores based on the input Ore §r
 gtexpert.machine.void_ore_miner.tooltip.2=§6The outputs will be doubled with a Nether or End ore!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6Requires 576mb Enderpearl and 10000mb Drilling Fluid per operation§r
-gtexpert.machine.extreme_mixer.zpm.name=Elite Extreme Mixer III
+gtexpert.machine.extreme_mixer.name=Elite Extreme Mixer (Deprecated)
 gtexpert.machine.draconium_fusion.name=Draconic Fusion Crafter
 gtexpert.machine.draconium_fusion.tooltip=It feels strong and powerful?
 gtexpert.machine.awakened_draconium_fusion.name=Draconic Fusion Crafter II
@@ -29,7 +27,6 @@ gtexpert.machine.vial_extractor.zpm.name=Elite Vial Extractor III
 gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
 
 # block
-tile.gte_metal_casing.greenhouse_casing.name=Corrosion Proof Galvalume Machine Casing
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
 tile.gte_metal_casing.void_ore_miner_casing.name=Voiding Proof NM-HEA NP Machine Casing
 tile.gte_metal_casing.draconium_casing.name=Dragon Proof Draconium Machine Casing
@@ -37,7 +34,7 @@ tile.gte_metal_casing.awakened_draconium_casing.name=Dragon Proof Awakened Draco
 tile.sawmill_conveyor.name=Sawmill Conveyor
 
 # material
-material.galvalume=Galvalume
+material.galvalume=Galvalume (Deprecated)
 material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
 material.naquadah_rocket_fuel=Naquadah Rocket Fuel
 material.dragon=Dragon

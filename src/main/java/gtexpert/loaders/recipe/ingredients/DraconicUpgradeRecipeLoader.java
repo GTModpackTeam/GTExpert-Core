@@ -15,7 +15,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.ToolItems;
 import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.util.GTELog;
@@ -144,7 +144,7 @@ public class DraconicUpgradeRecipeLoader {
                 Tier.DRACONIC);
 
         // Draconic Staff of Power
-        GTERecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.recipeBuilder()
                 .catalyst(GTRecipeItemInput.getOrCreate(new ItemStack(DEFeatures.draconicPick)).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY))
                 .result(new ItemStack(DEFeatures.draconicStaffOfPower))
                 .input(plate, DRACONIUM, 6)
@@ -233,9 +233,9 @@ public class DraconicUpgradeRecipeLoader {
     private static void addTierUpRecipe(GTRecipeInput catalyst, ItemStack result, Tier tier, int plateAmount) {
         RecipeMap<TierUpRecipeBuilder> recipeMap;
         if (tier == Tier.CHAOTIC) {
-            recipeMap = GTERecipeMaps.AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES;
+            recipeMap = GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES;
         } else {
-            recipeMap = GTERecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES;
+            recipeMap = GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES;
         }
         TierUpRecipeBuilder recipeBuilder = recipeMap.recipeBuilder();
 
@@ -322,9 +322,9 @@ public class DraconicUpgradeRecipeLoader {
                     if (item.getValidUpgrades(stack).contains(upgradeName) && item.getMaxUpgradeLevel(stack, upgradeName) >= currentLevel + 1) {
                         RecipeMap<UpgradeRecipeBuilder> recipeMap;
                         if (currentLevel == 0 || currentLevel == 1) {
-                            recipeMap = GTERecipeMaps.DRACONIC_FUSION_UPGRADE_FAKE_RECIPES;
+                            recipeMap = GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_FAKE_RECIPES;
                         } else {
-                            recipeMap = GTERecipeMaps.AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES;
+                            recipeMap = GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES;
                         }
                         UpgradeRecipeBuilder recipeBuilder = recipeMap.recipeBuilder();
 

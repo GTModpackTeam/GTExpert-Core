@@ -3,13 +3,12 @@ package gtexpert.common.metatileentities.multi;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import gtexpert.api.capability.MultiblockRecipeLogicNoCache;
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
@@ -24,7 +23,7 @@ import java.util.List;
 public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockController {
 
     public MetaTileEntityDraconiumAwakenedFusion(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GTERecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES);
+        super(metaTileEntityId, GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES);
         this.recipeMapWorkable = new MultiblockRecipeLogicNoCache(this);
     }
 
@@ -37,22 +36,25 @@ public class MetaTileEntityDraconiumAwakenedFusion extends RecipeMapMultiblockCo
     protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("CCC", "CCC", "CCC")
-                .aisle("CCC", "C#C", "CMC")
+                .aisle("CCC", "C#C", "CCC")
                 .aisle("CCC", "CSC", "CCC")
                 .where('S', selfPredicate())
-                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING)).setMinGlobalLimited(18)
-                        .or(autoAbilities(true, true, true, true, true, true, false)))
-                .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
+                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING)).setMinGlobalLimited(15).or(autoAbilities()))
                 .where('#', air())
                 .build();
     }
 
     @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {return GTETextures.AWAKENED_DRACONIUM_CASING;}
+    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) { return GTETextures.AWAKENED_DRACONIUM_CASING; }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
+    }
+
+    @Override
+    public boolean hasMufflerMechanics() {
+        return true;
     }
 
     @Override

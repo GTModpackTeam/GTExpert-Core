@@ -1,7 +1,7 @@
 ## GTExpert-Core
 
 is a coremod for the GregTech Expert 2 modpack.\
-using it outside of the modpack is not guaranteed.
+Using this outside the modpack is not supported.
 
 ## Credits
 

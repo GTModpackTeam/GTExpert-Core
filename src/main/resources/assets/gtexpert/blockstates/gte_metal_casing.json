@@ -5,11 +5,6 @@
   },
   "variants" : {
     "variant" : {
-      "greenhouse_casing" : {
-        "textures" : {
-          "all" : "gregtech:blocks/greenhouse_casing"
-        }
-      },
       "sawmill_casing" : {
         "textures" : {
           "all" : "gregtech:blocks/sawmill_casing"

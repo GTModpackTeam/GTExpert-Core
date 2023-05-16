@@ -12,11 +12,10 @@ import gregtech.api.capability.IElectricItem;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gtexpert.GTExpertMod;
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeProperty;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeProperty;
+import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
+import gtexpert.api.recipes.draconic.tierup.TierUpRecipeProperty;
 import gtexpert.api.util.GTELog;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -25,22 +24,17 @@ import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private final RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap;
-    private final List<Recipe> upgradeRecipes = new ArrayList<>();
+    private final RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap;
 
-    public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs, int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder, boolean isHidden, RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap, RecipeMapOnRecipeCompileHook<UpgradeRecipeBuilder> upgradeRecipeMap) {
+    public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs, int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder, boolean isHidden, RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap, RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap) {
         super(unlocalizedName, maxInputs, maxOutputs, maxFluidInputs, maxFluidOutputs, defaultRecipeBuilder, isHidden);
         this.tierUpRecipeMap = tierUpRecipeMap;
-        upgradeRecipeMap.setRecipeMapToHook(this);
-    }
-
-    public void hookAddRecipe(Recipe recipe) {
-        upgradeRecipes.add(recipe);
+        this.upgradeRecipeMap = upgradeRecipeMap;
     }
 
     @Nullable
@@ -67,7 +61,7 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
         //     example: #lookup -> [draconic_helm -> [tool_upgrade@9], draconic_helm -> [tool_upgrade@8], ...], instead of [draconic_helm -> [tool_upgrade@9, tool_upgrade@8]]
         // But when searching recipe, an itemstack can match (`equals`) to multiple branches.
         //     example: when draconic_helm with no upgrade is passed as input, it can match to all branches accepts basic upgrade
-        for (Recipe recipe : upgradeRecipes) {
+        for (Recipe recipe : upgradeRecipeMap.getRecipeList()) {
             if (recipe.getEUt() <= voltage && recipe.matches(false, inputs, fluidInputs)) {
                 return setupOutput(recipe, inputs, recipe.getProperty(UpgradeRecipeProperty.getInstance(), null));
             }

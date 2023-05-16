@@ -28,7 +28,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build --no-daemon
+          arguments: build --scan --no-daemon
           generate-job-summary: true
 
       - name: Upload Jars
