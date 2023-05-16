@@ -77,16 +77,6 @@ public class GTFORecipeLoader {
     }
 
     private static void materials() {
-        // Bismuth Bronze
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .input(dust, Bismuth, 1)
-                .input(dust, Zinc, 1)
-                .input(dust, Copper, 3)
-                .output(dust, BismuthBronze, 1)
-                .duration(660).EUt(VA[LV])
-                .buildAndRegister();
-
         // AmmoniumChloride * 2 & SodiumBicarbonate * 6
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .circuitMeta(2)
