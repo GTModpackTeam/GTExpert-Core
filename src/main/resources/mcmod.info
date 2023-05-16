@@ -15,6 +15,7 @@
     "dependencies" : [
       "chickenchunks",
       "gregtech",
+      "gcym",
       "appliedenergistics2",
       "aeadditions",
       "endercore",
