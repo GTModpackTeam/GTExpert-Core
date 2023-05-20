@@ -17,6 +17,7 @@ import java.util.List;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class GTFORecipeLoader {
     public static void init() {
@@ -31,6 +32,7 @@ public class GTFORecipeLoader {
         OreDictionary.registerOre("craftSludge", new ItemStack(Items.FISH, 1, 2));
 
         fluid();
+        materials();
     }
 
     private static void fluid() {
@@ -67,6 +69,29 @@ public class GTFORecipeLoader {
                 .fluidInputs(Water.getFluid(200))
                 .fluidOutputs(GTFOMaterialHandler.Sludge.getFluid(100))
                 .duration(500).EUt(VA[LV])
+                .buildAndRegister();
+    }
+
+    private static void materials() {
+        // AmmoniumChloride * 2 & SodiumBicarbonate * 6
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                .circuitMeta(2)
+                .fluidInputs(CarbonDioxide.getFluid(1000))
+                .fluidInputs(Ammonia.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
+                .input(dust, Salt, 2)
+                .output(dust, AmmoniumChloride, 2)
+                .output(dust, SodiumBicarbonate, 6)
+                .duration(100).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                .circuitMeta(2)
+                .fluidInputs(CarbonDioxide.getFluid(1000))
+                .fluidInputs(Ammonia.getFluid(1000))
+                .fluidInputs(SaltWater.getFluid(1000))
+                .output(dust, AmmoniumChloride, 2)
+                .output(dust, SodiumBicarbonate, 6)
+                .duration(200).EUt(VA[LV])
                 .buildAndRegister();
     }
 }

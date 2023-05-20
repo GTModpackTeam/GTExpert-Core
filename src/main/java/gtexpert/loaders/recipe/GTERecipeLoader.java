@@ -11,6 +11,7 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
@@ -492,11 +493,14 @@ public class GTERecipeLoader {
             }
         }
         for (Material materialOre : materialOres) {
+            List<ItemStack> ores = OreDictUnifier.getAll(new UnificationEntry(ore, materialOre));
+            ItemStack oreStack = ores.get(ores.size() - 1);
+            oreStack.setCount(32);
             GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
                     .input(ore, materialOre)
                     .fluidInputs(EnderPearl.getFluid(576))
                     .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(ore, materialOre, 32)
+                    .outputs(oreStack)
                     .duration(20).EUt(VA[ZPM])
                     .buildAndRegister();
             GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()

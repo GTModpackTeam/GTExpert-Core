@@ -104,7 +104,6 @@ dependencies {
     //implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-${ceu_pid}:${ceu_fid}")
     implementation (files("libs/gregtech-2.6.2-beta-dev.jar"))
     implementation rfg.deobf("curse.maven:gregicality-multiblocks-${gcm_pid}:${gcm_fid}")
-    implementation rfg.deobf("curse.maven:gregtech-food-option-${gfo_pid}:${gfo_fid}")
     implementation rfg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
     implementation rfg.deobf("curse.maven:enderio-${eio_pid}:${eio_fid}")
     implementation rfg.deobf("curse.maven:ender-io-conduits-${eic_pid}:${eic_fid}")
