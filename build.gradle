@@ -70,20 +70,20 @@ tasks.injectTags.configure {
 }
 
 repositories {
-    maven {
+    maven { // MixinBooter
+        name = 'Cleanroom Maven'
         url = 'https://maven.cleanroommc.com'
     }
-    maven { url = "https://repo.spongepowered.org/maven" }
-    //maven { url "https://maven.mcmoddev.com/" }
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
+    maven { // Mixin
+        name = 'Sponge Maven'
+        url = 'https://repo.spongepowered.org/maven'
     }
-    maven { // JEI
-        name = 'Progwml6 Maven'
-        url = 'https://dvs1.progwml6.com/files/maven'
+    maven { // CurseForge
+        name = 'Curse Maven'
+        url = 'https://www.cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
     }
     maven { // CraftTweaker and JEI Backup
         name = 'BlameJared Maven'
