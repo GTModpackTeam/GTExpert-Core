@@ -285,6 +285,36 @@ public class CEUOverrideRecipeLoader {
                 .output(MetaTileEntities.WORKBENCH)
                 .duration(100).EUt(16)
                 .buildAndRegister();
+
+        // Ultra High Voltage 4x Battery Buffer
+        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.4", MetaTileEntities.BATTERY_BUFFER[0][UHV].getStackForm(),
+                "WTW", "WMW",
+                'M', MetaTileEntities.HULL[UHV].getStackForm(),
+                'W', new UnificationEntry(wireGtQuadruple, Europium),
+                'T', OreDictNames.chestWood);
+
+        // Ultra High Voltage 8x Battery Buffer
+        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.8", MetaTileEntities.BATTERY_BUFFER[1][UHV].getStackForm(),
+                "WTW", "WMW",
+                'M', MetaTileEntities.HULL[UHV].getStackForm(),
+                'W', new UnificationEntry(wireGtOctal, Europium),
+                'T', OreDictNames.chestWood);
+
+        // Ultra High Voltage 16x Battery Buffer
+        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.16", MetaTileEntities.BATTERY_BUFFER[2][UHV].getStackForm(),
+                "WTW", "WMW",
+                'M', MetaTileEntities.HULL[UHV].getStackForm(),
+                'W', new UnificationEntry(wireGtHex, Europium),
+                'T', OreDictNames.chestWood);
+
+        // Ultra High Voltage Turbo Charger
+        ModHandler.addShapedRecipe("gregtech.machine.turbo_charger.uhv", MetaTileEntities.CHARGER[UHV].getStackForm(),
+                "QTQ", "QMQ", "WCW",
+                'M', MetaTileEntities.HULL[UHV].getStackForm(),
+                'Q', new UnificationEntry(wireGtQuadruple, Europium),
+                'W', new UnificationEntry(cableGtSingle, Europium),
+                'C', WETWARE_MAINFRAME_UHV,
+                'T', OreDictNames.chestWood);
     }
 
     private static void woods() {
