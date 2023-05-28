@@ -36,7 +36,6 @@ public class GTFORecipeLoader {
 
         fluid();
         materials();
-        woods();
     }
 
     private static void fluid() {
@@ -97,46 +96,5 @@ public class GTFORecipeLoader {
                 .output(dust, SodiumBicarbonate, 6)
                 .duration(200).EUt(VA[LV])
                 .buildAndRegister();
-    }
-
-    private static void woods() {
-        if (GTEConfigHolder.moreNerfWoodCrafting) return;
-
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "banana")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 0), "banana_planks")
-                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(0), 1, 0))
-                .build());
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "orange")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 1), "orange_planks")
-                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(0), 1, 4))
-                .build());
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "mango")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 2), "mango_planks")
-                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(0), 1, 8))
-                .build());
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "apricot")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 3), "apricot_planks")
-                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(0), 1, 12))
-                .build());
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "lemon")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 4), "lemon_planks")
-                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(1), 1, 0))
-                .build());
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "lime")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 5), "lime_planks")
-                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(1), 1, 4))
-                .build());
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "olive")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 6), "olive_planks")
-                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(1), 1, 8))
-                .build());
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "rainbowwood")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 7), "rainbowwood_planks")
-                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(1), 1, 12))
-                .build());
-        registerWoodTypeRecipe(new WoodTypeEntry.Builder(GTEValues.MODID_GTFO, "nutmeg")
-                .planks(new ItemStack(GTFOMetaBlocks.GTFO_PLANKS.get(0), 1, 8), "nutmeg_planks")
-                .log(new ItemStack(GTFOMetaBlocks.GTFO_LOGS.get(2), 1, 0))
-                .build());
     }
 }
