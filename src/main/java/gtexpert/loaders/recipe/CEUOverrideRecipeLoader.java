@@ -355,32 +355,31 @@ public class CEUOverrideRecipeLoader {
                     .duration(800).EUt(VA[LV])
                     .buildAndRegister();
 
-            // GTFO only patch
-            if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
-                if (allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 0)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 1)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 2)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 3)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 0)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 1))) return;
+            // Add Cutter recipes for all wood logs
+            if (allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 0)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 1)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 2)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 3)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 0)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 1))) return;
+            if (Loader.isModLoaded(GTEValues.MODID_GTFO)) return;
 
-                RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                        .inputs(allWoodLogs.get(i))
-                        .fluidInputs(Lubricant.getFluid(1))
-                        .outputs(GTUtility.copyAmount(6, plankStack))
-                        .output(dust, Wood, 2)
-                        .duration(200).EUt(7)
-                        .buildAndRegister();
-                RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                        .inputs(allWoodLogs.get(i))
-                        .fluidInputs(DistilledWater.getFluid(3))
-                        .outputs(GTUtility.copyAmount(6, plankStack))
-                        .output(dust, Wood, 2)
-                        .duration(300).EUt(7)
-                        .buildAndRegister();
-                RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                        .inputs(allWoodLogs.get(i))
-                        .fluidInputs(Water.getFluid(4))
-                        .outputs(GTUtility.copyAmount(6, plankStack))
-                        .output(dust, Wood, 2)
-                        .duration(400).EUt(7)
-                        .buildAndRegister();
-            }
+            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                    .inputs(allWoodLogs.get(i))
+                    .fluidInputs(Lubricant.getFluid(1))
+                    .outputs(GTUtility.copyAmount(6, plankStack))
+                    .output(dust, Wood, 2)
+                    .duration(200).EUt(7)
+                    .buildAndRegister();
+            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                    .inputs(allWoodLogs.get(i))
+                    .fluidInputs(DistilledWater.getFluid(3))
+                    .outputs(GTUtility.copyAmount(6, plankStack))
+                    .output(dust, Wood, 2)
+                    .duration(300).EUt(7)
+                    .buildAndRegister();
+            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                    .inputs(allWoodLogs.get(i))
+                    .fluidInputs(Water.getFluid(4))
+                    .outputs(GTUtility.copyAmount(6, plankStack))
+                    .output(dust, Wood, 2)
+                    .duration(400).EUt(7)
+                    .buildAndRegister();
         }
     }
 }
