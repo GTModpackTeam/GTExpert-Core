@@ -20,6 +20,8 @@ public class GTEMetaTileEntities {
     public static final MetaTileEntityExtremeMixer[] EXTREME_MIXER = new MetaTileEntityExtremeMixer[ZPM];
     public static MetaTileEntitySawmill SAWMILL;
     public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
+    public static SimpleMachineMetaTileEntity[] SLICE_N_SPLICE = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
+    public static SimpleMachineMetaTileEntity[] SOUL_BINDER = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
     public static MetaTileEntityDraconiumAwakenedFusion AWAKENED_DRACONIUM_FUSION;
@@ -53,6 +55,9 @@ public class GTEMetaTileEntities {
 
         // VIAL_EXTRACTOR 11010~11022
         registerSimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES, GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.hvCappedTankSizeFunction);
+
+        // Slice_N_Splice 11026
+        registerSimpleMetaTileEntity(SLICE_N_SPLICE, 11026, "slice_n_splice", GTERecipeMaps.SLICE_N_SPLICE_RECIPES, GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.defaultTankSizeFunction);
 
 
         // multiblocks :12000~
