@@ -16,6 +16,7 @@ gtexpert.machine.awakened_draconium_fusion.name=ドラコニック融合機 II
 gtexpert.machine.awakened_draconium_fusion.tooltip=なんだか強そうですね?
 
 # singleblock
+# Vial Extractor
 gtexpert.machine.vial_extractor.tooltip=故も知らぬ不死のソウル?
 gtexpert.machine.vial_extractor.lv.name=基本型魂抽出器
 gtexpert.machine.vial_extractor.mv.name=発展型魂抽出器
@@ -25,6 +26,16 @@ gtexpert.machine.vial_extractor.iv.name=精鋭型魂抽出器
 gtexpert.machine.vial_extractor.luv.name=精鋭型魂抽出器 II
 gtexpert.machine.vial_extractor.zpm.name=精鋭型魂抽出器 III
 gtexpert.machine.vial_extractor.uv.name=究極型魂抽出器
+
+# Slice'N'Splice
+gtexpert.machine.slice_n_splice.lv.name=基本型スライスンスプライス
+gtexpert.machine.slice_n_splice.mv.name=発展型スライスンスプライス
+gtexpert.machine.slice_n_splice.hv.name=発展型スライスンスプライス II
+gtexpert.machine.slice_n_splice.ev.name=発展型スライスンスプライス III
+gtexpert.machine.slice_n_splice.iv.name=精鋭型スライスンスプライス
+gtexpert.machine.slice_n_splice.luv.name=精鋭型スライスンスプライス II
+gtexpert.machine.slice_n_splice.zpm.name=精鋭型スライスンスプライス III
+gtexpert.machine.slice_n_splice.uv.name=究極型スライスンスプライス
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
@@ -75,6 +86,7 @@ metaitem.piston_boots.tooltip=トロッコのように走り、ピストンの�
 recipemap.sawmill.name=製材機
 recipemap.greenhouse.name=温室
 recipemap.vial_extractor.name=魂抽出器
+recipemap.slice'n'splice.name=スライスンスプライス
 recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 recipemap.draconium_fusion.name=ドラコニック融合機

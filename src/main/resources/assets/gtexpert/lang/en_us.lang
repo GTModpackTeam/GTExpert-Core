@@ -16,6 +16,7 @@ gtexpert.machine.awakened_draconium_fusion.name=Draconic Fusion Crafter II
 gtexpert.machine.awakened_draconium_fusion.tooltip=It feels strong and powerful?
 
 # singleblock
+# Vial Extractor
 gtexpert.machine.vial_extractor.tooltip=Soul of a Lost Undead?
 gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
 gtexpert.machine.vial_extractor.mv.name=Advanced Vial Extractor
@@ -25,6 +26,16 @@ gtexpert.machine.vial_extractor.iv.name=Elite Vial Extractor
 gtexpert.machine.vial_extractor.luv.name=Elite Vial Extractor II
 gtexpert.machine.vial_extractor.zpm.name=Elite Vial Extractor III
 gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
+
+# Slice'N'Splice　
+gtexpert.machine.slice_n_splice.lv.name=Basic Slice'N'Splice
+gtexpert.machine.slice_n_splice.mv.name=Advanced Slice'N'Splice
+gtexpert.machine.slice_n_splice.hv.name=Advanced Slice'N'Splice II
+gtexpert.machine.slice_n_splice.ev.name=Advanced  Slice'N'Splice III
+gtexpert.machine.slice_n_splice.iv.name=Elite Slice'N'Splice
+gtexpert.machine.slice_n_splice.luv.name=Elite Slice'N'Splice II
+gtexpert.machine.slice_n_splice.zpm.name=Elite Slice'N'Splice III
+gtexpert.machine.slice_n_splice.uv.name=Ultimate Slice'N'Splice
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
@@ -75,6 +86,7 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 recipemap.sawmill.name=Saw Mill
 recipemap.greenhouse.name=Greenhouse
 recipemap.vial_extractor.name=Vial Extractor
+recipemap.slice'n'splice.name=Slice'N'Splice
 recipemap.extreme_mixer.name=Extreme Mixer
 recipemap.void_ore_miner.name=Void Ore Miner
 recipemap.draconium_fusion.name=Draconic Fusion Crafter
