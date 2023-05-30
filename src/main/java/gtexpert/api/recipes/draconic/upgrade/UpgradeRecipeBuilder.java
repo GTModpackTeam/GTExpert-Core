@@ -116,7 +116,8 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
                 upgradeKey,
                 0,
                 currentLevel,
-                upgradeLevel
+                upgradeLevel,
+                input
         ));
         inputs.add(1, GTRecipeItemInput.getOrCreate(upgradeKey, upgradeKey.getCount()).setNonConsumable());
     }
