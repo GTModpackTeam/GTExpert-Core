@@ -3,6 +3,8 @@ package gtexpert.api.recipes.draconic;
 import cofh.redstoneflux.api.IEnergyContainerItem;
 import com.brandon3055.brandonscore.utils.ItemNBTHelper;
 import com.brandon3055.draconicevolution.api.fusioncrafting.IFusionRecipe;
+import com.brandon3055.draconicevolution.api.fusioncrafting.SimpleFusionRecipe;
+import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
@@ -90,7 +92,7 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
             return null;
         }
         ItemStack catalyst = findCatalyst(inputs, fusionRecipe);
-        if (catalyst == null) {
+        if (catalyst.isEmpty()) {
             GTELog.logger.warn("Recipe found, but actual catalyst not found in the GT recipe");
             GTELog.logger.warn("Recipe: " + gtRecipe);
             GTELog.logger.warn("Expected catalyst: " + fusionRecipe.getRecipeCatalyst());
@@ -116,12 +118,36 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
         return retRecipe;
     }
 
+    @NotNull
     private ItemStack findCatalyst(List<ItemStack> inputs, IFusionRecipe fusionRecipe) {
+        ItemStack expectedCatalyst = getCatalyst(fusionRecipe);
+        if (expectedCatalyst == null || expectedCatalyst.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
         for (ItemStack input : inputs) {
-            if (fusionRecipe.isRecipeCatalyst(input)) {
+            if (expectedCatalyst.getItem() == input.getItem()
+                    && expectedCatalyst.getItemDamage() == input.getItemDamage()
+                    && fusionRecipe.isRecipeCatalyst(input)) {
                 return input;
             }
         }
-        return null;
+        return ItemStack.EMPTY;
+    }
+
+    @Nullable
+    private static ItemStack getCatalyst(IFusionRecipe fusionRecipe) {
+        if (fusionRecipe instanceof SimpleFusionRecipe) {
+            return fusionRecipe.getRecipeCatalyst();
+        } else if (fusionRecipe instanceof FusionUpgradeRecipe) {
+            List<Object> ingredients = ((FusionUpgradeRecipe) fusionRecipe).getRecipeIngredients();
+            if (ingredients.isEmpty() || !(ingredients.get(0) instanceof ItemStack)) {
+                GTELog.logger.warn("Unknown ingredient: " + (ingredients.isEmpty() ? "empty" : ingredients.get(0)));
+                GTELog.logger.warn("Recipe: " + fusionRecipe);
+                return null;
+            }
+            return (ItemStack) ingredients.get(0);
+        } else {
+            throw new RuntimeException("Unknown type of IFusionRecipe: " + fusionRecipe.getClass().getName());
+        }
     }
 }
