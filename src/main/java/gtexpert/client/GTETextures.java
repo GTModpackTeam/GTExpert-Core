@@ -1,12 +1,10 @@
 package gtexpert.client;
 
-import gregtech.api.GTValues;
-import gregtech.client.renderer.CubeRendererState;
+
 import gregtech.client.renderer.texture.cube.*;
 import gtexpert.api.GTEValues;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID, value = Side.CLIENT)
 public class GTETextures {

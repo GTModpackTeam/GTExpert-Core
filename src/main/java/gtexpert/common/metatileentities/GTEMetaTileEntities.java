@@ -3,7 +3,6 @@ package gtexpert.common.metatileentities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.util.GTUtility;
-import gregtech.common.metatileentities.electric.MetaTileEntityHull;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;

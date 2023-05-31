@@ -5,23 +5,32 @@ import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.ingredients.GTRecipeItemInput;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.common.GTEConfigHolder;
+import net.minecraft.entity.EntityList;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import javax.annotation.Nonnull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 
 public class EIORecipeLoader {
@@ -54,6 +63,7 @@ public class EIORecipeLoader {
         items();
         tools();
         slice_n_splice();
+        soul_binder();
     }
 
     private static void fluid() {
@@ -682,11 +692,77 @@ public class EIORecipeLoader {
                 .duration(100).EUt(50).buildAndRegister();
     }
 
+    private static final @Nonnull ResourceLocation PIG = new ResourceLocation("pig");
+    private static final @Nonnull ResourceLocation ZOMBIE = new ResourceLocation("zombie");
+    private static final @Nonnull ResourceLocation ZOMBIE_V = new ResourceLocation("zombie_villager");
+    private static final @Nonnull ResourceLocation HUSK = new ResourceLocation("husk");
+    private static final @Nonnull ResourceLocation WITCH = new ResourceLocation("witch");
+    private static final @Nonnull ResourceLocation WITCH_EZ = new ResourceLocation("enderzoo", "witherwitch");
+    private static final @Nonnull ResourceLocation WITCH_EIOZ = new ResourceLocation("enderiozoo", "witherwitch");
+
+    //private final ResourceLocation entityId;
+    //private final EntityLivingBase entity;
+
     private static void soul_binder(){
+        List<ResourceLocation> mobAll = new ArrayList<>();
+        List<String> mobZombie = new ArrayList<>();
+        List<String> mobWitch = new ArrayList<>();
+        String ENTITY_ID_KEY = "entityId";
+        for (ResourceLocation name : EntityList.getEntityNameList()) {
+            if (!EntityList.ENTITY_EGGS.containsKey(name)) {
+                continue;
+            }
+            /*
+
+
+             */
+
+
+            mobAll.add(name);
+            //for (ResourceLocation all : mobAll)
+            if (name == ZOMBIE || name == ZOMBIE_V || name == HUSK) {
+                /*
+                GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+                        .input(GTRecipeItemInput.getOrCreate(new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1))
+                                .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
+                                        NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
+                        .input(ModObject.itemMaterial.getItemNN(), 1, 41)
+                        .output(ModObject.itemMaterial.getItemNN(), 1, 42)
+                        .duration(10000).EUt(100).buildAndRegister();*/
+
+                mobZombie.add(name.toString());
+            }
+            if (name == WITCH || name == WITCH_EZ || name == WITCH_EIOZ) {
+                mobWitch.add(name.toString());
+            }
+        }
         //Enticing Crystal 17
         //Sentient Ender 44
         //Frank'N'Zombie 42
+        /*
+        GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+                .input(GTRecipeItemInput.getOrCreate(new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 0))
+                        .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
+                                NBTCondition.create(NBTTagType.STRING,"entityId", "minecraft:zombie"))
+                )
+                .input(ModObject.itemMaterial.getItemNN(), 1, 41)
+                .output(ModObject.itemSoulVial.getItemNN())
+                .output(ModObject.itemMaterial.getItemNN(), 1, 42)
+                .duration(10000).EUt(100).buildAndRegister();
+                */
+
+        /*
+        GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+                .inputNBT(stack.getItem(), NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:zombie"))
+                .input(ModObject.itemMaterial.getItemNN(), 1, 41)
+                .output(ModObject.itemSoulVial.getItemNN())
+                .output(ModObject.itemMaterial.getItemNN(), 1, 42)
+                .duration(10000).EUt(100).buildAndRegister();
+                */
+
         //Broken Spawner
         //
     }
+
 }
+
