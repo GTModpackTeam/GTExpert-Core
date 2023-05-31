@@ -45,6 +45,32 @@ public class SoulRecipeLoader {
             if (!EntityList.ENTITY_EGGS.containsKey(name)) {
                 continue;
             }
+            ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setString("entityId", name.toString());
+            stack.setTagCompound(tag);
+
+            // SoulBinder - Soul Filter
+            GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+                    .input(GTRecipeItemInput.getOrCreate(stack)
+                            .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
+                                    NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
+                    .input(ModObject.itemBasicItemFilter.getItem())
+                    .fluidInputs(new FluidStack(xp, 4320))
+                    .output(ModObject.itemSoulFilterNormal.getItemNN())
+                    .duration(10000).EUt(100).buildAndRegister();
+
+            // Big Soul Filter
+            GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+                    .input(GTRecipeItemInput.getOrCreate(stack)
+                            .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
+                                    NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
+                    .input(ModObject.itemBigItemFilter.getItem())
+                    .fluidInputs(new FluidStack(xp, 4320))
+                    .output(ModObject.itemSoulFilterBig.getItemNN())
+                    .duration(10000).EUt(100).buildAndRegister();
+
+            // Broken Spawner
         }
     }
 
@@ -152,6 +178,7 @@ public class SoulRecipeLoader {
                 NBTTagCompound tag = new NBTTagCompound();
                 tag.setString("entityId", Spider);
                 stack.setTagCompound(tag);
+
                 //Vial Extractor
                 GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
                         .input(GTRecipeItemInput.getOrCreate(stack)
@@ -211,7 +238,7 @@ public class SoulRecipeLoader {
                 tag.setString("entityId", Witch);
                 stack.setTagCompound(tag);
 
-                // Soul Binder - Sentient Ender 44
+                // Soul Binder - Sentient Ender
                 GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
                         .input(GTRecipeItemInput.getOrCreate(stack)
                                 .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
