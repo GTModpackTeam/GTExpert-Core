@@ -61,7 +61,6 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 
 # recipemaps
 recipemap.sawmill.name=锯木机
-recipemap.greenhouse.name=温室
 recipemap.vial_extractor.name=灵魂提取机
 recipemap.extreme_mixer.name=极限搅拌机
 recipemap.void_ore_miner.name=虚空矿物采掘机
