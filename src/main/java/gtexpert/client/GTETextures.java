@@ -1,5 +1,6 @@
 package gtexpert.client;
 
+import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.*;
 import gtexpert.api.GTEValues;
 import net.minecraftforge.fml.common.Mod;
@@ -11,6 +12,7 @@ public class GTETextures {
     public static OrientedOverlayRenderer SAWMILL_OVERLAY = new OrientedOverlayRenderer("sawmill");
     public static OrientedOverlayRenderer EXTREME_MIXER_OVERLAY = new OrientedOverlayRenderer("extreme_mixer");
     public static OrientedOverlayRenderer VIAL_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("vial_extractor");
+    public static OrientedOverlayRenderer AUTO_CHISEL_OVERLAY = new OrientedOverlayRenderer("auto_chisel");
     public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;
     public static SimpleOverlayRenderer DRACONIUM_CASING;
     public static SimpleOverlayRenderer AWAKENED_DRACONIUM_CASING;

@@ -25,6 +25,9 @@ gtexpert.machine.vial_extractor.iv.name=Elite Vial Extractor
 gtexpert.machine.vial_extractor.luv.name=Elite Vial Extractor II
 gtexpert.machine.vial_extractor.zpm.name=Elite Vial Extractor III
 gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
+gtexpert.machine.auto_chisel.lv.name=Basic Auto Chisel
+gtexpert.machine.auto_chisel.mv.name=Advanced Auto Chisel
+gtexpert.machine.auto_chisel.hv.name=Advanced Auto Chisel II
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
@@ -73,9 +76,9 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 
 # recipemaps
 recipemap.sawmill.name=Saw Mill
-recipemap.greenhouse.name=Greenhouse
 recipemap.vial_extractor.name=Vial Extractor
 recipemap.extreme_mixer.name=Extreme Mixer
+recipemap.auto_chisel.name=Auto Chisel
 recipemap.void_ore_miner.name=Void Ore Miner
 recipemap.draconium_fusion.name=Draconic Fusion Crafter
 recipemap.awakened_draconium_fusion.name=Draconic Fusion Crafter

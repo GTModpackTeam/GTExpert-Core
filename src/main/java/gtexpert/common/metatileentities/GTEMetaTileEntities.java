@@ -3,6 +3,7 @@ package gtexpert.common.metatileentities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.util.GTUtility;
+import gregtech.client.renderer.texture.Textures;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
@@ -12,17 +13,18 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import org.jetbrains.annotations.NotNull;
 
-import static gregtech.api.GTValues.ZPM;
+import static gregtech.api.GTValues.*;
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 import static gregtech.common.metatileentities.MetaTileEntities.registerSimpleMetaTileEntity;
 
 public class GTEMetaTileEntities {
-    public static final MetaTileEntityExtremeMixer[] EXTREME_MIXER = new MetaTileEntityExtremeMixer[ZPM];
+    public static final MetaTileEntityExtremeMixer[] EXTREME_MIXER = new MetaTileEntityExtremeMixer[1];
+    public static final MetaTileEntityAutoChisel[] AUTO_CHISEL = new MetaTileEntityAutoChisel[3];
     public static MetaTileEntitySawmill SAWMILL;
     public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
-    public static MetaTileEntityDraconiumAwakenedFusion AWAKENED_DRACONIUM_FUSION;
+    public static MetaTileEntityDraconiumFusion AWAKENED_DRACONIUM_FUSION;
 
     public static void init() {
         /*
@@ -54,6 +56,10 @@ public class GTEMetaTileEntities {
         // VIAL_EXTRACTOR 11010~11022
         registerSimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES, GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.hvCappedTankSizeFunction);
 
+        // AUTO_CHISEL 11023~11025
+        AUTO_CHISEL[0] = registerMetaTileEntity(11023, new MetaTileEntityAutoChisel(gteId("auto_chisel.lv"), GTERecipeMaps.AUTO_CHISEL_RECIPES, GTETextures.AUTO_CHISEL_OVERLAY, LV, true));
+        AUTO_CHISEL[1] = registerMetaTileEntity(11024, new MetaTileEntityAutoChisel(gteId("auto_chisel.mv"), GTERecipeMaps.AUTO_CHISEL_RECIPES, GTETextures.AUTO_CHISEL_OVERLAY, MV, true));
+        AUTO_CHISEL[2] = registerMetaTileEntity(11025, new MetaTileEntityAutoChisel(gteId("auto_chisel.hv"), GTERecipeMaps.AUTO_CHISEL_RECIPES, GTETextures.AUTO_CHISEL_OVERLAY, HV, true));
 
         // multiblocks :12000~
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));
@@ -61,8 +67,8 @@ public class GTEMetaTileEntities {
         VOIDOREMINER = registerMetaTileEntity(12003, new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
 
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
-            DRACONIUM_FUSION = registerMetaTileEntity(12004, new MetaTileEntityDraconiumFusion(gteId("draconium_fusion")));
-            AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005, new MetaTileEntityDraconiumAwakenedFusion(gteId("awakened_draconium_fusion")));
+            DRACONIUM_FUSION = registerMetaTileEntity(12004, new MetaTileEntityDraconiumFusion.TierDraconic(gteId("draconium_fusion")));
+            AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005, new MetaTileEntityDraconiumFusion.TierAwakened(gteId("awakened_draconium_fusion")));
         }
     }
 

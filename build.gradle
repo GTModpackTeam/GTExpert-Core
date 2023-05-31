@@ -26,7 +26,7 @@ archivesBaseName = project.archives_base_name
 // Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(java_version))
+        languageVersion.set(JavaLanguageVersion.of(project.java_version))
         // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
         vendor.set(JvmVendorSpec.AZUL)
     }
@@ -50,7 +50,7 @@ minecraft {
     mcVersion = '1.12.2'
     def args = ["-ea:${project.group}"]
     if (project.use_coremod.toBoolean()) {
-        args << '-Dfml.coreMods.load=' + coremod_plugin_class_name
+        args << '-Dfml.coreMods.load=' + project.coremod_plugin_class_name
     }
     if (project.use_mixins.toBoolean()) {
         args << '-Dmixin.hotSwap=true'
@@ -115,11 +115,7 @@ dependencies {
     implementation rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-${aea_pid}:${aea_fid}")
 
     // Soft Dependencies
-    implementation rfg.deobf("curse.maven:gregtech-food-option-${gfo_pid}:${gfo_fid}")
-    implementation rfg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
-    implementation rfg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
-    implementation rfg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
-    implementation rfg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
+    compileOnlyApi rfg.deobf("curse.maven:gregtech-food-option-${gfo_pid}:${gfo_fid}")
     implementation "mezz.jei:jei_1.12.2:${jei_version}"
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crt_version}"
     implementation rfg.deobf("curse.maven:top-${top_pid}:${top_fid}")
@@ -130,15 +126,22 @@ dependencies {
     implementation files("libs/groovyscript-0.4.0.jar")
     //implementation rfg.deobf("curse.maven:groovyscript-${grs_pid}:${grs_fid}")
 
-    // Tests
-    testImplementation "org.junit.jupiter:junit-jupiter:${junit_version}"
-    testImplementation "org.hamcrest:hamcrest:${hamcrest_version}"
+    // Debug Draconic Evolution/Additions
+    compileOnlyApi rfg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
+    compileOnlyApi rfg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
+    compileOnlyApi rfg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
+    compileOnlyApi rfg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
+    if (project.debug_de.toBoolean()) {
+        implementation rfg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
+        implementation rfg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
+        implementation rfg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
+        implementation rfg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
+    }
 
-    // Compile-Time Dependencies
-    compileOnly "org.jetbrains:annotations:${annotations_version}"
-    annotationProcessor "org.jetbrains:annotations:${annotations_version}"
-    if (project.use_assetmover.toBoolean()) {
-        implementation "com.cleanroommc:assetmover:${assetmover_version}"
+    // Debug Chisel
+    compileOnlyApi rfg.deobf("curse.maven:chisel-${chi_pid}:${chi_fid}")
+    if (project.debug_chisel.toBoolean()) {
+        implementation rfg.deobf("curse.maven:chisel-${chi_pid}:${chi_fid}")
     }
 
     // GroovyScript dependency
@@ -190,13 +193,13 @@ if (project.use_access_transformer.toBoolean()) {
 processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property 'version', project.version
-    inputs.property 'mcversion', minecraft_version
+    inputs.property 'mcversion', project.minecraft_version
     // replace stuff in mcmod.info, nothing else
     filesMatching(['mcmod.info', 'pack.mcmeta']) { fcd ->
         // replace version and mcversion
         fcd.expand (
             'version': project.version,
-            'mcversion': minecraft_version
+            'mcversion': project.minecraft_version
         )
     }
 
@@ -215,14 +218,14 @@ jar {
     manifest {
         def attribute_map = [:]
         if (use_coremod.toBoolean()) {
-            attribute_map['FMLCorePlugin'] = coremod_plugin_class_name
+            attribute_map['FMLCorePlugin'] = project.coremod_plugin_class_name
             if (include_mod.toBoolean()) {
                 attribute_map['FMLCorePluginContainsFMLMod'] = true
                 attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == "build"
             }
         }
 		if (use_access_transformer.toBoolean()) {
-            attribute_map['FMLAT'] = maven_group + '_at.cfg'
+            attribute_map['FMLAT'] = project.maven_group + '_at.cfg'
         }
         attributes(attribute_map)
     }

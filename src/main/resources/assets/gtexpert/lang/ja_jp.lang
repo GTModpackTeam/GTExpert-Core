@@ -25,6 +25,9 @@ gtexpert.machine.vial_extractor.iv.name=精鋭型魂抽出器
 gtexpert.machine.vial_extractor.luv.name=精鋭型魂抽出器 II
 gtexpert.machine.vial_extractor.zpm.name=精鋭型魂抽出器 III
 gtexpert.machine.vial_extractor.uv.name=究極型魂抽出器
+gtexpert.machine.auto_chisel.lv.name=基本型自動彫刻機
+gtexpert.machine.auto_chisel.mv.name=発展型自動彫刻機
+gtexpert.machine.auto_chisel.hv.name=発展型自動彫刻機 II
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
@@ -73,8 +76,8 @@ metaitem.piston_boots.tooltip=トロッコのように走り、ピストンの�
 
 # recipemaps
 recipemap.sawmill.name=製材機
-recipemap.greenhouse.name=温室
 recipemap.vial_extractor.name=魂抽出器
+recipemap.auto_chisel.name=自動彫刻機
 recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 recipemap.draconium_fusion.name=ドラコニック融合機
