@@ -63,7 +63,6 @@ public class EIORecipeLoader {
         items();
         tools();
         slice_n_splice();
-        soul_binder();
     }
 
     private static void fluid() {
@@ -691,78 +690,5 @@ public class EIORecipeLoader {
                 .output(ModObject.blockEndermanSkull.getItemNN(), 1, 2)
                 .duration(100).EUt(50).buildAndRegister();
     }
-
-    private static final @Nonnull ResourceLocation PIG = new ResourceLocation("pig");
-    private static final @Nonnull ResourceLocation ZOMBIE = new ResourceLocation("zombie");
-    private static final @Nonnull ResourceLocation ZOMBIE_V = new ResourceLocation("zombie_villager");
-    private static final @Nonnull ResourceLocation HUSK = new ResourceLocation("husk");
-    private static final @Nonnull ResourceLocation WITCH = new ResourceLocation("witch");
-    private static final @Nonnull ResourceLocation WITCH_EZ = new ResourceLocation("enderzoo", "witherwitch");
-    private static final @Nonnull ResourceLocation WITCH_EIOZ = new ResourceLocation("enderiozoo", "witherwitch");
-
-    //private final ResourceLocation entityId;
-    //private final EntityLivingBase entity;
-
-    private static void soul_binder(){
-        List<ResourceLocation> mobAll = new ArrayList<>();
-        List<String> mobZombie = new ArrayList<>();
-        List<String> mobWitch = new ArrayList<>();
-        String ENTITY_ID_KEY = "entityId";
-        for (ResourceLocation name : EntityList.getEntityNameList()) {
-            if (!EntityList.ENTITY_EGGS.containsKey(name)) {
-                continue;
-            }
-            /*
-
-
-             */
-
-
-            mobAll.add(name);
-            //for (ResourceLocation all : mobAll)
-            if (name == ZOMBIE || name == ZOMBIE_V || name == HUSK) {
-                /*
-                GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                        .input(GTRecipeItemInput.getOrCreate(new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1))
-                                .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                        NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
-                        .input(ModObject.itemMaterial.getItemNN(), 1, 41)
-                        .output(ModObject.itemMaterial.getItemNN(), 1, 42)
-                        .duration(10000).EUt(100).buildAndRegister();*/
-
-                mobZombie.add(name.toString());
-            }
-            if (name == WITCH || name == WITCH_EZ || name == WITCH_EIOZ) {
-                mobWitch.add(name.toString());
-            }
-        }
-        //Enticing Crystal 17
-        //Sentient Ender 44
-        //Frank'N'Zombie 42
-        /*
-        GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                .input(GTRecipeItemInput.getOrCreate(new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 0))
-                        .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                NBTCondition.create(NBTTagType.STRING,"entityId", "minecraft:zombie"))
-                )
-                .input(ModObject.itemMaterial.getItemNN(), 1, 41)
-                .output(ModObject.itemSoulVial.getItemNN())
-                .output(ModObject.itemMaterial.getItemNN(), 1, 42)
-                .duration(10000).EUt(100).buildAndRegister();
-                */
-
-        /*
-        GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                .inputNBT(stack.getItem(), NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:zombie"))
-                .input(ModObject.itemMaterial.getItemNN(), 1, 41)
-                .output(ModObject.itemSoulVial.getItemNN())
-                .output(ModObject.itemMaterial.getItemNN(), 1, 42)
-                .duration(10000).EUt(100).buildAndRegister();
-                */
-
-        //Broken Spawner
-        //
-    }
-
 }
 

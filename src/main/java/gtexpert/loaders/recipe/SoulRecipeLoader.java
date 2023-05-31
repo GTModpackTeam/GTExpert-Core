@@ -7,9 +7,11 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gtexpert.api.recipes.GTERecipeMaps;
+import net.minecraft.entity.EntityList;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -38,7 +40,13 @@ public class SoulRecipeLoader {
         recipeZombie();
     }
 
-    public static void recipeAll() {}
+    public static void recipeAll() {
+        for (ResourceLocation name : EntityList.getEntityNameList()) {
+            if (!EntityList.ENTITY_EGGS.containsKey(name)) {
+                continue;
+            }
+        }
+    }
 
     public static void recipeBlaze() {
         ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
