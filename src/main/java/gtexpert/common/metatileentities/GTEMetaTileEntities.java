@@ -22,7 +22,7 @@ public class GTEMetaTileEntities {
     public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
-    public static MetaTileEntityDraconiumAwakenedFusion AWAKENED_DRACONIUM_FUSION;
+    public static MetaTileEntityDraconiumFusion AWAKENED_DRACONIUM_FUSION;
 
     public static void init() {
         /*
@@ -61,8 +61,8 @@ public class GTEMetaTileEntities {
         VOIDOREMINER = registerMetaTileEntity(12003, new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
 
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
-            DRACONIUM_FUSION = registerMetaTileEntity(12004, new MetaTileEntityDraconiumFusion(gteId("draconium_fusion")));
-            AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005, new MetaTileEntityDraconiumAwakenedFusion(gteId("awakened_draconium_fusion")));
+            DRACONIUM_FUSION = registerMetaTileEntity(12004, new MetaTileEntityDraconiumFusion.TierDraconic(gteId("draconium_fusion")));
+            AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005, new MetaTileEntityDraconiumFusion.TierAwakened(gteId("awakened_draconium_fusion")));
         }
     }
 
