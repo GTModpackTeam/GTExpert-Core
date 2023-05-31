@@ -24,7 +24,9 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class SoulRecipeLoader {
 
-    private static Fluid xp = FluidRegistry.getFluid("xpjuice");
+    // This code was created under the advice of miozune.
+
+    private static final Fluid xp = FluidRegistry.getFluid("xpjuice");
     public static void init(){
         recipeAll();
         recipeBlaze();
@@ -57,6 +59,7 @@ public class SoulRecipeLoader {
                                     NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
                     .input(ModObject.itemBasicItemFilter.getItem())
                     .fluidInputs(new FluidStack(xp, 4320))
+                    .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemSoulFilterNormal.getItemNN())
                     .duration(10000).EUt(100).buildAndRegister();
 
@@ -67,10 +70,24 @@ public class SoulRecipeLoader {
                                     NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
                     .input(ModObject.itemBigItemFilter.getItem())
                     .fluidInputs(new FluidStack(xp, 4320))
+                    .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemSoulFilterBig.getItemNN())
                     .duration(10000).EUt(100).buildAndRegister();
 
             // Broken Spawner
+            ItemStack output = new ItemStack(ModObject.itemBrokenSpawner.getItemNN());
+            output.setTagCompound(stack.getTagCompound());
+            GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+                    .input(GTRecipeItemInput.getOrCreate(stack)
+                            .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
+                                    NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
+                    .inputNBT(ModObject.itemBrokenSpawner.getItemNN(), NBTMatcher.ANY, NBTCondition.ANY)
+                    .fluidInputs(new FluidStack(xp, 4320))
+                    .output(ModObject.itemSoulVial.getItemNN())
+                    .outputs(output)
+                    .duration(10000).EUt(100).buildAndRegister();
+
+
         }
     }
 
@@ -85,9 +102,9 @@ public class SoulRecipeLoader {
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                 NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:blaze")))
+                .output(ModObject.itemSoulVial.getItemNN())
                 .output(Items.BLAZE_ROD, 10)
                 .output(Items.ROTTEN_FLESH, 10)
-                .output(ModObject.itemSoulVial.getItemNN())
                 .fluidOutputs(new FluidStack(xp, 1000))
                 .duration(600).EUt(30).buildAndRegister();
     }
@@ -103,9 +120,9 @@ public class SoulRecipeLoader {
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                 NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:creeper")))
+                .output(ModObject.itemSoulVial.getItemNN())
                 .output(Items.SKULL, 10, 4)
                 .output(Items.GUNPOWDER, 10)
-                .output(ModObject.itemSoulVial.getItemNN())
                 .fluidOutputs(new FluidStack(xp, 1000))
                 .duration(600).EUt(30).buildAndRegister();
     }
@@ -121,9 +138,9 @@ public class SoulRecipeLoader {
                     .input(GTRecipeItemInput.getOrCreate(stack)
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                                      NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:enderman")))
+                    .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.blockEndermanSkull.getItemNN(), 10, 0)
                     .output(Items.ENDER_PEARL, 10)
-                    .output(ModObject.itemSoulVial.getItemNN())
                     .fluidOutputs(new FluidStack(xp, 1000))
                     .duration(600).EUt(30).buildAndRegister();
     }
@@ -139,9 +156,9 @@ public class SoulRecipeLoader {
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                 NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:skeleton")))
+                .output(ModObject.itemSoulVial.getItemNN())
                 .output(Items.SKULL, 10, 0)
                 .output(Items.BONE, 10)
-                .output(ModObject.itemSoulVial.getItemNN())
                 .fluidOutputs(new FluidStack(xp, 1000))
                 .duration(600).EUt(30).buildAndRegister();
 }
@@ -161,9 +178,9 @@ public class SoulRecipeLoader {
                         .input(GTRecipeItemInput.getOrCreate(stack)
                                 .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                         NBTCondition.create(NBTTagType.STRING, "entityId", Slime)))
+                        .output(ModObject.itemSoulVial.getItemNN())
                         .output(Items.SLIME_BALL, 10)
                         .output(Items.ROTTEN_FLESH, 10)
-                        .output(ModObject.itemSoulVial.getItemNN())
                         .fluidOutputs(new FluidStack(xp, 2000))
                         .duration(600).EUt(30).buildAndRegister();
             }
@@ -184,9 +201,9 @@ public class SoulRecipeLoader {
                         .input(GTRecipeItemInput.getOrCreate(stack)
                                 .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                         NBTCondition.create(NBTTagType.STRING, "entityId", Spider)))
+                        .output(ModObject.itemSoulVial.getItemNN())
                         .output(Items.SPIDER_EYE, 10)
                         .output(Items.STRING, 10)
-                        .output(ModObject.itemSoulVial.getItemNN())
                         .fluidOutputs(new FluidStack(xp, 1000))
                         .duration(600).EUt(30).buildAndRegister();
             }
@@ -203,8 +220,8 @@ public class SoulRecipeLoader {
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                 NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:zombie_pigman")))
-                .output(Items.ROTTEN_FLESH, 10)
                 .output(ModObject.itemSoulVial.getItemNN())
+                .output(Items.ROTTEN_FLESH, 10)
                 .chancedOutput(ingot, Gold, 250, 250)
                 .fluidOutputs(new FluidStack(xp, 1000))
                 .duration(600).EUt(30).buildAndRegister();
@@ -223,6 +240,7 @@ public class SoulRecipeLoader {
                                 NBTCondition.create(NBTTagType.STRING,"entityId", "minecraft:villager")))
                 .input(gem, Emerald)
                 .fluidInputs(new FluidStack(xp, 800))
+                .output(ModObject.itemSoulVial.getItemNN())
                 .output(ModObject.itemMaterial.getItemNN(), 1, 17)
                 .duration(10000).EUt(100).buildAndRegister();
     }
@@ -262,9 +280,9 @@ public class SoulRecipeLoader {
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                 NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:wither_skeleton")))
+                .output(ModObject.itemSoulVial.getItemNN())
                 .output(Items.SKULL, 5, 1)
                 .output(Items.BONE, 5)
-                .output(ModObject.itemSoulVial.getItemNN())
                 .chancedOutput(new ItemStack(Items.COAL), 250, 250)
                 .fluidOutputs(new FluidStack(xp, 1000))
                 .duration(600).EUt(30).buildAndRegister();
@@ -297,9 +315,9 @@ public class SoulRecipeLoader {
                     .input(GTRecipeItemInput.getOrCreate(stack)
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                     NBTCondition.create(NBTTagType.STRING, "entityId", Zombie)))
+                    .output(ModObject.itemSoulVial.getItemNN())
                     .output(Items.SKULL, 10, 2)
                     .output(Items.ROTTEN_FLESH, 10)
-                    .output(ModObject.itemSoulVial.getItemNN())
                     .chancedOutput(ingot, Iron, 100, 0)
                     .fluidOutputs(new FluidStack(xp, 1000))
                     .duration(600).EUt(30).buildAndRegister();
