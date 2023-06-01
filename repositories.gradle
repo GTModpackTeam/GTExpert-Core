@@ -1,0 +1,27 @@
+// Add any additional repositories for your dependencies here
+
+repositories {
+    maven { // MixinBooter
+        name 'Cleanroom Maven'
+        url 'https://maven.cleanroommc.com'
+    }
+    maven { // Mixin
+        name 'Sponge Maven'
+        url 'https://repo.spongepowered.org/maven'
+    }
+    maven { // CurseForge
+        name 'Curse Maven'
+        url 'https://www.cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
+    maven { // CraftTweaker and JEI Backup
+        name 'BlameJared Maven'
+        url 'https://maven.blamejared.com'
+    }
+    maven {  // Autoconfig and Autosave
+        name 'Mod Maven'
+        url 'https://modmaven.dev'
+    }
+}

@@ -1,0 +1,66 @@
+//file:noinspection DependencyNotationArgument
+// TODO remove when fixed in RFG ^
+/*
+ * Add your dependencies here. Common configurations:
+ *  - implementation("group:name:version:classifier"): if you need this for internal implementation details of the mod.
+ *       Available at compiletime and runtime for your environment.
+ *
+ *  - compileOnlyApi("g:n:v:c"): if you need this for internal implementation details of the mod.
+ *       Available at compiletime but not runtime for your environment.
+ *
+ *  - annotationProcessor("g:n:v:c"): mostly for java compiler plugins, if you know you need this, use it, otherwise don't worry
+ *
+ *  - testCONFIG("g:n:v:c"): replace CONFIG by one of the above, same as above but for the test sources instead of main
+ *
+ * You can exclude transitive dependencies (dependencies of the chosen dependency) by appending { transitive = false } if needed.
+ *
+ * To add a mod with CurseMaven, replace '("g:n:v:c")' in the above with 'rfg.deobf("curse.maven:project_slug-project_id:file_id")'
+ * Example: implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4527757")
+ *
+ * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
+ */
+dependencies {
+    // Hard Dependencies
+    // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
+    // therefore we manually deobf the regular jar
+    implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848")
+    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4527757")
+    //implementation (files("libs/gregtech-1.12.2-2.6.1-beta-deobf.jar"))
+    implementation rfg.deobf("curse.maven:gregicality-multiblocks-564858:4529101")
+    implementation rfg.deobf("curse.maven:ae2-extended-life-570458:4505114")
+    implementation rfg.deobf("curse.maven:enderio-64578:3328811")
+    implementation rfg.deobf("curse.maven:ender-io-conduits-304346:3328808")
+    implementation rfg.deobf("curse.maven:endercore-231868:2972849")
+    implementation "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2"
+    implementation "info.loenwind.autosave:AutoSave:1.12.2-1.0.11"
+    implementation rfg.deobf("curse.maven:baubles-227083:2518667")
+    implementation rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")
+    implementation rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371")
+
+    // Soft Dependencies
+    compileOnlyApi rfg.deobf("curse.maven:gregtech-food-option-477021:4555292")
+    implementation "mezz.jei:jei_1.12.2:4.16.1.302"
+    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.687"
+    implementation rfg.deobf("curse.maven:top-245211:2667280")
+    implementation rfg.deobf("curse.maven:ctm-267602:2915363")
+
+    // use a local jar for GroovyScript to avoid a bug from Mixin and ForgeGradle,
+    // causing crashes at run-time when deobfuscated
+    implementation files("libs/groovyscript-0.4.0.jar")
+    //implementation rfg.deobf("curse.maven:groovyscript-687577:4399621")
+
+    // Debug Draconic Evolution/Additions
+    compileOnlyApi rfg.deobf("curse.maven:redstone-flux-270789:2920436")
+    compileOnlyApi rfg.deobf("curse.maven:brandons-core-231382:3408276")
+    compileOnlyApi rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
+    compileOnlyApi rfg.deobf("curse.maven:draconicadditions-314515:3514704")
+    if (project.debug_de.toBoolean()) {
+        implementation rfg.deobf("curse.maven:redstone-flux-270789:2920436")
+        implementation rfg.deobf("curse.maven:brandons-core-231382:3408276")
+        implementation rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
+        implementation rfg.deobf("curse.maven:draconicadditions-314515:3514704")
+    }
+
+    // Boot error fix
+    runtimeOnly (files("libs/EnderCore-1.12.2-0.5.76-core.jar"))
+}
