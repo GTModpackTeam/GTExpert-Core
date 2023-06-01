@@ -15,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Loader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -248,8 +249,8 @@ public class SoulRecipeLoader {
     public static void recipeWitch() {
             List<String> witch = new ArrayList<>();
             witch.add("minecraft:witch");
-            witch.add("enderzoo:witherwitch");
-            witch.add("enderiozoo:witherwitch");
+            if (Loader.isModLoaded("enderzoo")) {witch.add("enderzoo:witherwitch");}
+            if (Loader.isModLoaded("enderiozoo")) {witch.add("enderiozoo:witherwitch");}
             for (String Witch : witch) {
                 ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
                 NBTTagCompound tag = new NBTTagCompound();
