@@ -64,7 +64,7 @@ public class SoulRecipeLoader {
                     .output(ModObject.itemSoulFilterNormal.getItemNN())
                     .duration(10000).EUt(100).buildAndRegister();
 
-            // Big Soul Filter
+            // SoulBinder - Big Soul Filter
             GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
                     .input(GTRecipeItemInput.getOrCreate(stack)
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
@@ -75,7 +75,7 @@ public class SoulRecipeLoader {
                     .output(ModObject.itemSoulFilterBig.getItemNN())
                     .duration(10000).EUt(100).buildAndRegister();
 
-            // Broken Spawner
+            // SoulBinder - Broken Spawner
             ItemStack output = new ItemStack(ModObject.itemBrokenSpawner.getItemNN());
             output.setTagCompound(stack.getTagCompound());
             GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
@@ -96,8 +96,8 @@ public class SoulRecipeLoader {
         ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
         NBTTagCompound tag = new NBTTagCompound();
         tag.setString("entityId", "minecraft:blaze");
-
         stack.setTagCompound(tag);
+
         //Vial Extractor
         GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
                 .input(GTRecipeItemInput.getOrCreate(stack)
@@ -162,7 +162,7 @@ public class SoulRecipeLoader {
                 .output(Items.BONE, 10)
                 .fluidOutputs(new FluidStack(xp, 1000))
                 .duration(600).EUt(30).buildAndRegister();
-}
+    }
 
     public static void recipeSlime() {
             List<String> slime = new ArrayList<>();
@@ -322,7 +322,6 @@ public class SoulRecipeLoader {
                     .chancedOutput(ingot, Iron, 100, 0)
                     .fluidOutputs(new FluidStack(xp, 1000))
                     .duration(600).EUt(30).buildAndRegister();
-
         }
     }
 }

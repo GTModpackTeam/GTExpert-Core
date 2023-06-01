@@ -29,23 +29,39 @@ gtexpert.machine.vial_extractor.uv.name=究極型魂抽出器
 
 # Slice'N'Splice
 gtexpert.machine.slice_n_splice.lv.name=基本型スライスンスプライス
+gtexpert.machine.slice_n_splice.lv.tooltip=スライスした頭と様々な便利品を接合。
 gtexpert.machine.slice_n_splice.mv.name=発展型スライスンスプライス
+gtexpert.machine.slice_n_splice.mv.tooltip=スライスした頭と様々な便利品を接合。
 gtexpert.machine.slice_n_splice.hv.name=発展型スライスンスプライス II
+gtexpert.machine.slice_n_splice.hv.tooltip=スライスした頭と様々な便利品を接合。
 gtexpert.machine.slice_n_splice.ev.name=発展型スライスンスプライス III
+gtexpert.machine.slice_n_splice.ev.tooltip=スライスした頭と様々な便利品を接合。
 gtexpert.machine.slice_n_splice.iv.name=精鋭型スライスンスプライス
+gtexpert.machine.slice_n_splice.iv.tooltip=スライスした頭と様々な便利品を接合。
 gtexpert.machine.slice_n_splice.luv.name=精鋭型スライスンスプライス II
+gtexpert.machine.slice_n_splice.luv.tooltip=スライスした頭と様々な便利品を接合。
 gtexpert.machine.slice_n_splice.zpm.name=精鋭型スライスンスプライス III
+gtexpert.machine.slice_n_splice.zpm.tooltip=スライスした頭と様々な便利品を接合。
 gtexpert.machine.slice_n_splice.uv.name=究極型スライスンスプライス
+gtexpert.machine.slice_n_splice.uv.tooltip=スライスした頭と様々な便利品を接合。
 
 # Soul Binder
 gtexpert.machine.soul_binder.lv.name=基本型ソウルバインダー
+gtexpert.machine.soul_binder.lv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 gtexpert.machine.soul_binder.mv.name=発展型ソウルバインダー
+gtexpert.machine.soul_binder.mv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 gtexpert.machine.soul_binder.hv.name=発展型ソウルバインダー II
+gtexpert.machine.soul_binder.hv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 gtexpert.machine.soul_binder.ev.name=発展型ソウルバインダー III
+gtexpert.machine.soul_binder.ev.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 gtexpert.machine.soul_binder.iv.name=精鋭型ソウルバインダー
+gtexpert.machine.soul_binder.iv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 gtexpert.machine.soul_binder.luv.name=精鋭型ソウルバインダー II
+gtexpert.machine.soul_binder.luv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 gtexpert.machine.soul_binder.zpm.name=精鋭型ソウルバインダー III
+gtexpert.machine.soul_binder.zpm.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 gtexpert.machine.soul_binder.uv.name=究極型ソウルバインダー
+gtexpert.machine.soul_binder.uv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
