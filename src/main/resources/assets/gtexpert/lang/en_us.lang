@@ -31,11 +31,21 @@ gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
 gtexpert.machine.slice_n_splice.lv.name=Basic Slice'N'Splice
 gtexpert.machine.slice_n_splice.mv.name=Advanced Slice'N'Splice
 gtexpert.machine.slice_n_splice.hv.name=Advanced Slice'N'Splice II
-gtexpert.machine.slice_n_splice.ev.name=Advanced  Slice'N'Splice III
+gtexpert.machine.slice_n_splice.ev.name=Advanced Slice'N'Splice III
 gtexpert.machine.slice_n_splice.iv.name=Elite Slice'N'Splice
 gtexpert.machine.slice_n_splice.luv.name=Elite Slice'N'Splice II
 gtexpert.machine.slice_n_splice.zpm.name=Elite Slice'N'Splice III
 gtexpert.machine.slice_n_splice.uv.name=Ultimate Slice'N'Splice
+
+# Soul Binder
+gtexpert.machine.soul_binder.lv.name=Basic Soul Binder
+gtexpert.machine.soul_binder.mv.name=Advanced Soul Binder
+gtexpert.machine.soul_binder.hv.name=Advanced Soul Binder II
+gtexpert.machine.soul_binder.ev.name=Advanced Soul Binder III
+gtexpert.machine.soul_binder.iv.name=Elite Soul Binder
+gtexpert.machine.soul_binder.luv.name=Elite Soul Binder II
+gtexpert.machine.soul_binder.zpm.name=Elite Soul Binder III
+gtexpert.machine.soul_binder.uv.name=Ultimate Soul Binder
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
@@ -87,6 +97,7 @@ recipemap.sawmill.name=Saw Mill
 recipemap.greenhouse.name=Greenhouse
 recipemap.vial_extractor.name=Vial Extractor
 recipemap.slice'n'splice.name=Slice'N'Splice
+recipemap.soul_binder.name=Soul Binder
 recipemap.extreme_mixer.name=Extreme Mixer
 recipemap.void_ore_miner.name=Void Ore Miner
 recipemap.draconium_fusion.name=Draconic Fusion Crafter

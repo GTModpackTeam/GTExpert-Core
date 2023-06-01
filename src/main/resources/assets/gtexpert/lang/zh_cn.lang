@@ -33,6 +33,16 @@ gtexpert.machine.slice_n_splice.luv.name=精英头颅装配机 II
 gtexpert.machine.slice_n_splice.zpm.name=精英头颅装配机 III
 gtexpert.machine.slice_n_splice.uv.name=终极头颅装配机
 
+# Soul Binder
+gtexpert.machine.soul_binder.lv.name=基础灵魂绑定器
+gtexpert.machine.soul_binder.mv.name=进阶灵魂绑定器
+gtexpert.machine.soul_binder.hv.name=进阶灵魂绑定器 II
+gtexpert.machine.soul_binder.ev.name=进阶灵魂绑定器 III
+gtexpert.machine.soul_binder.iv.name=精英灵魂绑定器
+gtexpert.machine.soul_binder.luv.name=精英灵魂绑定器 II
+gtexpert.machine.soul_binder.zpm.name=精英灵魂绑定器 III
+gtexpert.machine.soul_binder.uv.name=终极灵魂绑定器
+
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木机械外壳
 tile.gte_metal_casing.void_ore_miner_casing.name=抗虚空NM-HEA NP机械外壳
@@ -75,6 +85,7 @@ recipemap.sawmill.name=锯木机
 recipemap.greenhouse.name=温室
 recipemap.vial_extractor.name=灵魂提取机
 recipemap.slice'n'splice.name=头颅装配机
+recipemap.soul_binder.name=灵魂绑定器
 recipemap.extreme_mixer.name=极限搅拌机
 recipemap.void_ore_miner.name=虚空矿物采掘机
 
