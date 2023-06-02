@@ -38,11 +38,9 @@ dependencies {
     implementation rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371")
 
     // Soft Dependencies
-    runtimeOnly rfg.deobf("curse.maven:gregtech-food-option-477021:4555292")
-    implementation "mezz.jei:jei_1.12.2:4.16.1.302"
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.687"
-    implementation rfg.deobf("curse.maven:top-245211:2667280")
     implementation rfg.deobf("curse.maven:ctm-267602:2915363")
+    compileOnly rfg.deobf("curse.maven:gregtech-food-option-477021:4555292")
 
     // use a local jar for GroovyScript to avoid a bug from Mixin and ForgeGradle,
     // causing crashes at run-time when deobfuscated
@@ -50,10 +48,10 @@ dependencies {
     //implementation rfg.deobf("curse.maven:groovyscript-687577:4399621")
 
     // Debug Draconic Evolution/Additions
-    runtimeOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436")
-    compileOnlyApi rfg.deobf("curse.maven:brandons-core-231382:3408276")
-    compileOnlyApi rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
-    compileOnlyApi rfg.deobf("curse.maven:draconicadditions-314515:3514704")
+    compileOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436")
+    compileOnly rfg.deobf("curse.maven:brandons-core-231382:3408276")
+    compileOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
+    compileOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704")
     if (project.debug_de.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436")
         runtimeOnly rfg.deobf("curse.maven:brandons-core-231382:3408276")
