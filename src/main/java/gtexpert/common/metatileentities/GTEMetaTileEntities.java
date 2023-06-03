@@ -13,13 +13,14 @@ import net.minecraftforge.fml.common.Loader;
 import org.jetbrains.annotations.NotNull;
 
 import static gregtech.api.GTValues.ZPM;
-import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
-import static gregtech.common.metatileentities.MetaTileEntities.registerSimpleMetaTileEntity;
+import static gregtech.common.metatileentities.MetaTileEntities.*;
 
 public class GTEMetaTileEntities {
     public static final MetaTileEntityExtremeMixer[] EXTREME_MIXER = new MetaTileEntityExtremeMixer[ZPM];
     public static MetaTileEntitySawmill SAWMILL;
     public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
+    public static SimpleMachineMetaTileEntity[] SLICE_N_SPLICE = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
+    public static SimpleMachineMetaTileEntity[] SOUL_BINDER = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
     public static MetaTileEntityDraconiumFusion AWAKENED_DRACONIUM_FUSION;
@@ -54,6 +55,11 @@ public class GTEMetaTileEntities {
         // VIAL_EXTRACTOR 11010~11022
         registerSimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES, GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.hvCappedTankSizeFunction);
 
+        // SLICE_N_SPLICE 11026~11038
+        registerSimpleMetaTileEntity(SLICE_N_SPLICE, 11026, "slice_n_splice", GTERecipeMaps.SLICE_N_SPLICE_RECIPES, GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.defaultTankSizeFunction);
+
+        // SOUL_BINDER 11039~11051
+        registerSimpleMetaTileEntity(SOUL_BINDER, 11039, "soul_binder", GTERecipeMaps.SOUL_BINDER_RECIPES, GTETextures.SOUL_BINDER_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.defaultTankSizeFunction);
 
         // multiblocks :12000~
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));

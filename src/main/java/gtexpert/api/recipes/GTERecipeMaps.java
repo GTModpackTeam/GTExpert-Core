@@ -22,7 +22,7 @@ public class GTERecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> VIAL_EXTRACTOR_RECIPES = new RecipeMap<>("vial_extractor", 1, 4, 0, 1, new SimpleRecipeBuilder(), false)
-            .setSlotOverlay(false, false, GuiTextures.EXTRACTOR_OVERLAY)
+            .setSlotOverlay(false, false, GTEGuiTextures.SOULVIAL_FULL_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, ProgressWidget.MoveType.HORIZONTAL)
             .setSound(GTSoundEvents.COMPRESSOR);
 
@@ -38,4 +38,15 @@ public class GTERecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> VOID_ORE_MINER_RECIPES = new RecipeMap<>("void_ore_miner", 1, 1, 2, 0, new SimpleRecipeBuilder(), false)
             .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOID, ProgressWidget.MoveType.VERTICAL)
             .setSound(GTSoundEvents.DRILL_TOOL);
+
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> SLICE_N_SPLICE_RECIPES = new RecipeMap<>("slice'n'splice", 6, 1, 0, 0, new SimpleRecipeBuilder(), false)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_SLICE, ProgressWidget.MoveType.HORIZONTAL)
+            .setSound(GTSoundEvents.CUT);
+
+    public static final RecipeMap<SimpleRecipeBuilder> SOUL_BINDER_RECIPES = new RecipeMap<>("soul_binder", 2, 2, 1, 0, new SimpleRecipeBuilder(), false)
+            .setSlotOverlay(false, false, false, GTEGuiTextures.SOULVIAL_FULL_OVERLAY)
+            .setSlotOverlay(true, false, false, GTEGuiTextures.SOULVIAL_EMPTY_OVRELAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_CANNER, ProgressWidget.MoveType.HORIZONTAL)
+            .setSound(GTSoundEvents.ASSEMBLER);
 }
