@@ -14,7 +14,7 @@ public class GTETextures {
     public static OrientedOverlayRenderer VIAL_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("vial_extractor");
     public static OrientedOverlayRenderer SLICE_N_SPLICE_OVERLAY = new OrientedOverlayRenderer("slice_n_splice");
     public static OrientedOverlayRenderer SOUL_BINDER_OVERLAY = new OrientedOverlayRenderer("soul_binder");
-    public static OrientedOverlayRenderer SPAWNER_OVERLAY = new OrientedOverlayRenderer("electric_spawner");
+    public static OrientedOverlayRenderer SPAWNER_OVERLAY = new OrientedOverlayRenderer("powered_spawner");
     public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;
     public static SimpleOverlayRenderer DRACONIUM_CASING;
     public static SimpleOverlayRenderer AWAKENED_DRACONIUM_CASING;
