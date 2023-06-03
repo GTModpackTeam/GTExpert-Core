@@ -63,6 +63,24 @@ gtexpert.machine.soul_binder.zpm.tooltip=魂とアイテムを結合させる。
 gtexpert.machine.soul_binder.uv.name=究極型ソウルバインダー
 gtexpert.machine.soul_binder.uv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 
+# Powered Spawner
+gtexpert.machine.powered_spawner.lv.name=基本型電動スポナー
+gtexpert.machine.powered_spawner.lv.tooltip=
+gtexpert.machine.powered_spawner.mv.name=発展型電動スポナー
+gtexpert.machine.powered_spawner.mv.tooltip=
+gtexpert.machine.powered_spawner.hv.name=発展型電動スポナー II
+gtexpert.machine.powered_spawner.hv.tooltip=
+gtexpert.machine.powered_spawner.ev.name=発展型電動スポナー III
+gtexpert.machine.powered_spawner.ev.tooltip=
+gtexpert.machine.powered_spawner.iv.name=精鋭型電動スポナー
+gtexpert.machine.powered_spawner.iv.tooltip=
+gtexpert.machine.powered_spawner.luv.name=精鋭型電動スポナー II
+gtexpert.machine.powered_spawner.luv.tooltip=
+gtexpert.machine.powered_spawner.zpm.name=精鋭型電動スポナー III
+gtexpert.machine.powered_spawner.zpm.tooltip=
+gtexpert.machine.powered_spawner.uv.name=究極型電動スポナー
+gtexpert.machine.powered_spawner.uv.tooltip=
+
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
 tile.gte_metal_casing.void_ore_miner_casing.name=対虚無マシン外装

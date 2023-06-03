@@ -63,6 +63,24 @@ gtexpert.machine.soul_binder.zpm.tooltip=Bind the soul to the item. Used to conv
 gtexpert.machine.soul_binder.uv.name=Ultimate Soul Binder
 gtexpert.machine.soul_binder.uv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner
 
+# Powered Spawer
+gtexpert.machine.powered_spawner.lv.name=Basic Powered Spawner
+gtexpert.machine.powered_spawner.lv.tooltip=
+gtexpert.machine.powered_spawner.mv.name=Advanced Powered Spawner
+gtexpert.machine.powered_spawner.mv.tooltip=
+gtexpert.machine.powered_spawner.hv.name=Advanced Powered Spawner II
+gtexpert.machine.powered_spawner.hv.tooltip=
+gtexpert.machine.powered_spawner.ev.name=Advanced Powered Spawner III
+gtexpert.machine.powered_spawner.ev.tooltip=
+gtexpert.machine.powered_spawner.iv.name=Elite Powered Spawner
+gtexpert.machine.powered_spawner.iv.tooltip=
+gtexpert.machine.powered_spawner.luv.name=Elite Powered Spawner II
+gtexpert.machine.powered_spawner.luv.tooltip=
+gtexpert.machine.powered_spawner.zpm.name=Elite Powered Spawner III
+gtexpert.machine.powered_spawner.zpm.tooltip=
+gtexpert.machine.powered_spawner.uv.name=Ultimate Powered Spawner
+gtexpert.machine.powered_spawner.uv.tooltip=
+
 # block
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
 tile.gte_metal_casing.void_ore_miner_casing.name=Voiding Proof NM-HEA NP Machine Casing
