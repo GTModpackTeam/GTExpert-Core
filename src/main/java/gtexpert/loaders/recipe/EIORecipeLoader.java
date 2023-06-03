@@ -43,8 +43,8 @@ public class EIORecipeLoader {
         OreDictionary.registerOre("craftHootch", new ItemStack(Items.POISONOUS_POTATO));
 
         // eio.capacitor
-        OreDictionary.registerOre("eio.capacitor", new ItemStack(ModObject.itemBasicCapacitor.getItemNN(), 1, 0));
-        OreDictionary.registerOre("eio.capacitor", new ItemStack(EndergyObject.itemCapacitorSilver.getItemNN(), 1));
+        OreDictionary.registerOre("craftCapacitorEIO", new ItemStack(ModObject.itemBasicCapacitor.getItemNN(), 1, 0));
+        OreDictionary.registerOre("craftCapacitorEIO", new ItemStack(EndergyObject.itemCapacitorSilver.getItemNN(), 1));
 
         fluid();
         materials();
@@ -607,7 +607,7 @@ public class EIORecipeLoader {
                 .input(Items.SKULL, 1, 0)
                 .input(plate, ENERGETIC_ALLOY)
                 .input(MetaItems.SILICON_WAFER, 1)
-                .input("eio.capacitor", 1)
+                .input("craftCapacitorEIO", 1)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .output(ModObject.itemMaterial.getItemNN(), 1, 40)
                 .duration(100).EUt(50).buildAndRegister();
@@ -640,7 +640,7 @@ public class EIORecipeLoader {
                 .input(Items.SKULL, 1, 0)
                 .input(plate, SOULARIUM)
                 .input(MetaItems.SILICON_WAFER, 1)
-                .input("eio.capacitor", 1)
+                .input("craftCapacitorEIO", 1)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .output(ModObject.itemMaterial.getItemNN(), 1, 45)
                 .duration(100).EUt(50).buildAndRegister();
@@ -662,7 +662,7 @@ public class EIORecipeLoader {
                 .input(ModObject.blockEndermanSkull.getItemNN(), 1, 0)
                 .input(plate, SOULARIUM)
                 .input(MetaItems.SILICON_WAFER, 1)
-                .input("eio.capacitor", 1)
+                .input("craftCapacitorEIO", 1)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .output(ModObject.blockEndermanSkull.getItemNN(), 1, 2)
                 .duration(100).EUt(50).buildAndRegister();

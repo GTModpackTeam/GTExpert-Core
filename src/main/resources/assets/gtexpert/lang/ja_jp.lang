@@ -46,21 +46,21 @@ gtexpert.machine.slice_n_splice.uv.name=究極型スライスンスプライス
 gtexpert.machine.slice_n_splice.uv.tooltip=スライスした頭と様々な便利品を接合。
 
 # Soul Binder
-gtexpert.machine.soul_binder.lv.name=基本型ソウルバインダー
+gtexpert.machine.soul_binder.lv.name=基本型魂拘束器
 gtexpert.machine.soul_binder.lv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
-gtexpert.machine.soul_binder.mv.name=発展型ソウルバインダー
+gtexpert.machine.soul_binder.mv.name=発展型魂拘束器
 gtexpert.machine.soul_binder.mv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
-gtexpert.machine.soul_binder.hv.name=発展型ソウルバインダー II
+gtexpert.machine.soul_binder.hv.name=発展型魂拘束器ー II
 gtexpert.machine.soul_binder.hv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
-gtexpert.machine.soul_binder.ev.name=発展型ソウルバインダー III
+gtexpert.machine.soul_binder.ev.name=発展型魂拘束器 III
 gtexpert.machine.soul_binder.ev.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
-gtexpert.machine.soul_binder.iv.name=精鋭型ソウルバインダー
+gtexpert.machine.soul_binder.iv.name=精鋭型魂拘束器
 gtexpert.machine.soul_binder.iv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
-gtexpert.machine.soul_binder.luv.name=精鋭型ソウルバインダー II
+gtexpert.machine.soul_binder.luv.name=精鋭型魂拘束器 II
 gtexpert.machine.soul_binder.luv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
-gtexpert.machine.soul_binder.zpm.name=精鋭型ソウルバインダー III
+gtexpert.machine.soul_binder.zpm.name=精鋭型魂拘束器 III
 gtexpert.machine.soul_binder.zpm.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
-gtexpert.machine.soul_binder.uv.name=究極型ソウルバインダー
+gtexpert.machine.soul_binder.uv.name=究極型魂拘束器
 gtexpert.machine.soul_binder.uv.tooltip=魂とアイテムを結合させる。壊れたスポナーに魂を込めることも可能。
 
 # Powered Spawner
@@ -131,7 +131,7 @@ recipemap.sawmill.name=製材機
 recipemap.greenhouse.name=温室
 recipemap.vial_extractor.name=魂抽出器
 recipemap.slice'n'splice.name=スライスンスプライス
-recipemap.soul_binder.name=ソウルバインダー
+recipemap.soul_binder.name=魂拘束器
 recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 recipemap.draconium_fusion.name=ドラコニック融合機
