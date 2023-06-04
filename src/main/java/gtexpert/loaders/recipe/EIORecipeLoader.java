@@ -9,7 +9,7 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
-import gtexpert.common.GTEConfigHolder;
+import gtexpert.api.recipes.GTERecipeMaps;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -19,7 +19,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 
 public class EIORecipeLoader {
@@ -43,10 +42,15 @@ public class EIORecipeLoader {
         OreDictionary.registerOre("craftHootch", new ItemStack(Items.MELON_SEEDS));
         OreDictionary.registerOre("craftHootch", new ItemStack(Items.POISONOUS_POTATO));
 
+        // eio.capacitor
+        OreDictionary.registerOre("craftCapacitorEIO", new ItemStack(ModObject.itemBasicCapacitor.getItemNN(), 1, 0));
+        OreDictionary.registerOre("craftCapacitorEIO", new ItemStack(EndergyObject.itemCapacitorSilver.getItemNN(), 1));
+
         fluid();
         materials();
         items();
         tools();
+        slice_n_splice();
     }
 
     private static void fluid() {
@@ -593,5 +597,85 @@ public class EIORecipeLoader {
                     "PhP", " P ", " P ",
                     'P', OreDictUnifier.get(plate, ELECTRICAL_STEEL));
         }
+
+    }
+
+    private static void slice_n_splice(){
+        // Zombie Electrode
+        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+                .input(plate, ENERGETIC_ALLOY)
+                .input(Items.SKULL, 1, 0)
+                .input(plate, ENERGETIC_ALLOY)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .input("craftCapacitorEIO", 1)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .output(ModObject.itemMaterial.getItemNN(), 1, 40)
+                .duration(400).EUt(VA[LV]).buildAndRegister();
+
+        // Z-Logic Controller
+        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+                .input(plate, SOULARIUM)
+                .input(Items.SKULL, 1, 2)
+                .input(plate, SOULARIUM)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .input(dust, Redstone)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .output(ModObject.itemMaterial.getItemNN(), 1, 41)
+                .duration(400).EUt(VA[LV]).buildAndRegister();
+
+        // Ender Resonator
+        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+                .input(plate, SOULARIUM)
+                .input(ModObject.blockEndermanSkull.getItemNN(), 1, 0)
+                .input(plate, SOULARIUM)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .input(plate, VIBRANT_ALLOY)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .output(ModObject.itemMaterial.getItemNN(), 1, 43)
+                .duration(400).EUt(VA[LV]).buildAndRegister();
+
+        // Skeletal Controller
+        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+                .input(plate, SOULARIUM)
+                .input(Items.SKULL, 1, 0)
+                .input(plate, SOULARIUM)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .input("craftCapacitorEIO", 1)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .output(ModObject.itemMaterial.getItemNN(), 1, 45)
+                .duration(400).EUt(VA[LV]).buildAndRegister();
+
+        // Guardian Diode
+        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+                .input(plate, ENERGETIC_ALLOY)
+                .input(Items.PRISMARINE_SHARD, 1, 0)
+                .input(plate, ENERGETIC_ALLOY)
+                .input(ModObject.itemMaterial.getItemNN(), 1, 14)
+                .input(MetaItems.SILICON_WAFER,1)
+                .input(ModObject.itemMaterial.getItemNN(), 1, 14)
+                .output(ModObject.itemMaterial.getItemNN(), 1, 56)
+                .duration(400).EUt(VA[LV]).buildAndRegister();
+
+        // Tormented Enderman Head
+        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+                .input(plate, SOULARIUM)
+                .input(ModObject.blockEndermanSkull.getItemNN(), 1, 0)
+                .input(plate, SOULARIUM)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .input("craftCapacitorEIO", 1)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .output(ModObject.blockEndermanSkull.getItemNN(), 1, 2)
+                .duration(400).EUt(VA[LV]).buildAndRegister();
+
+        // Totemic Capacitor
+        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+                .input(plate, SOULARIUM)
+                .input(Items.TOTEM_OF_UNDYING, 1, 0)
+                .input(plate, SOULARIUM)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .input(EndergyObject.itemCapacitorMelodic.getItemNN(), 1)
+                .input(MetaItems.SILICON_WAFER, 1)
+                .output(ModObject.blockEndermanSkull.getItemNN(), 1, 2)
+                .duration(400).EUt(VA[LV]).buildAndRegister();
     }
 }

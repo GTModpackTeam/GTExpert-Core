@@ -12,15 +12,53 @@ gtexpert.machine.void_ore_miner.tooltip.3=§6一次的动作需要576mb的Enderp
 gtexpert.machine.extreme_mixer.name=精英极限搅拌机
 
 # singleblock
-gtexpert.machine.vial_extractor.tooltip=黑暗之魂?
+# Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=基础灵魂提取机
+gtexpert.machine.vial_extractor.lv.tooltip=黑暗之魂?/n§d作者:§f§f @tier940
 gtexpert.machine.vial_extractor.mv.name=进阶灵魂提取机
+gtexpert.machine.vial_extractor.mv.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.hv.name=进阶灵魂提取机 II
+gtexpert.machine.vial_extractor.hv.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.ev.name=进阶灵魂提取机 III
+gtexpert.machine.vial_extractor.ev.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.iv.name=精英灵魂提取机
+gtexpert.machine.vial_extractor.iv.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.luv.name=精英灵魂提取机 II
+gtexpert.machine.vial_extractor.luv.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.zpm.name=精英灵魂提取机 III
+gtexpert.machine.vial_extractor.zpm.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.uv.name=终极灵魂提取机
+gtexpert.machine.vial_extractor.uv.tooltip=黑暗之魂?/n§d作者:§f @tier940
+
+# Slice'N'Splice
+gtexpert.machine.slice_n_splice.lv.name=基础头颅装配机
+gtexpert.machine.slice_n_splice.mv.name=进阶头颅装配机
+gtexpert.machine.slice_n_splice.hv.name=进阶头颅装配机 II
+gtexpert.machine.slice_n_splice.ev.name=进阶头颅装配机 III
+gtexpert.machine.slice_n_splice.iv.name=精英头颅装配机
+gtexpert.machine.slice_n_splice.luv.name=精英头颅装配机 II
+gtexpert.machine.slice_n_splice.zpm.name=精英头颅装配机 III
+gtexpert.machine.slice_n_splice.uv.name=终极头颅装配机
+
+# Soul Binder
+gtexpert.machine.soul_binder.lv.name=基础灵魂绑定器
+gtexpert.machine.soul_binder.mv.name=进阶灵魂绑定器
+gtexpert.machine.soul_binder.hv.name=进阶灵魂绑定器 II
+gtexpert.machine.soul_binder.ev.name=进阶灵魂绑定器 III
+gtexpert.machine.soul_binder.iv.name=精英灵魂绑定器
+gtexpert.machine.soul_binder.luv.name=精英灵魂绑定器 II
+gtexpert.machine.soul_binder.zpm.name=精英灵魂绑定器 III
+gtexpert.machine.soul_binder.uv.name=终极灵魂绑定器
+
+# Powered Spawner
+gtexpert.machine.powered_spawner.lv.name=基础电动刷怪笼
+gtexpert.machine.powered_spawner.mv.name=进阶电动刷怪笼
+gtexpert.machine.powered_spawner.hv.name=进阶电动刷怪笼 II
+gtexpert.machine.powered_spawner.ev.name=进阶电动刷怪笼 III
+gtexpert.machine.powered_spawner.iv.name=精英电动刷怪笼
+gtexpert.machine.powered_spawner.luv.name=精英电动刷怪笼 II
+gtexpert.machine.powered_spawner.zpm.name=精英电动刷怪笼 III
+gtexpert.machine.powered_spawner.uv.name=终极电动刷怪笼
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木机械外壳
@@ -62,6 +100,8 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 # recipemaps
 recipemap.sawmill.name=锯木机
 recipemap.vial_extractor.name=灵魂提取机
+recipemap.slice'n'splice.name=头颅装配机
+recipemap.soul_binder.name=灵魂绑定器
 recipemap.extreme_mixer.name=极限搅拌机
 recipemap.void_ore_miner.name=虚空矿物采掘机
 
