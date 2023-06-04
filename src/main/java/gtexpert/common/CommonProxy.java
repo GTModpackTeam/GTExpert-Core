@@ -81,7 +81,7 @@ public class CommonProxy {
         GTERecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();
-        SoulRecipeLoader.init();
+        EIOSoulRecipeLoader.init();
 
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
             DraconicRecipeLoader.init();

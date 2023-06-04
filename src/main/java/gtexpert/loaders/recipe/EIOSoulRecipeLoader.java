@@ -1,6 +1,7 @@
 package gtexpert.loaders.recipe;
 
 
+import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
@@ -13,21 +14,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-public class SoulRecipeLoader {
+public class EIOSoulRecipeLoader {
 
     // This code was created under the advice of miozune.
-
-    private static final Fluid xp = FluidRegistry.getFluid("xpjuice");
     public static void init(){
         recipeAll();
         recipeBlaze();
@@ -59,10 +58,10 @@ public class SoulRecipeLoader {
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                     NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
                     .input(ModObject.itemBasicItemFilter.getItem())
-                    .fluidInputs(new FluidStack(xp, 4320))
+                    .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 4320))
                     .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemSoulFilterNormal.getItemNN())
-                    .duration(10000).EUt(100).buildAndRegister();
+                    .duration(1000).EUt(VA[HV]).buildAndRegister();
 
             // SoulBinder - Big Soul Filter
             GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
@@ -70,10 +69,10 @@ public class SoulRecipeLoader {
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                     NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
                     .input(ModObject.itemBigItemFilter.getItem())
-                    .fluidInputs(new FluidStack(xp, 4320))
+                    .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 4320))
                     .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemSoulFilterBig.getItemNN())
-                    .duration(10000).EUt(100).buildAndRegister();
+                    .duration(1000).EUt(VA[HV]).buildAndRegister();
 
             // SoulBinder - Broken Spawner
             ItemStack output = new ItemStack(ModObject.itemBrokenSpawner.getItemNN());
@@ -83,12 +82,10 @@ public class SoulRecipeLoader {
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                     NBTCondition.create(NBTTagType.STRING,"entityId", name.toString())))
                     .inputNBT(ModObject.itemBrokenSpawner.getItemNN(), NBTMatcher.ANY, NBTCondition.ANY)
-                    .fluidInputs(new FluidStack(xp, 4320))
+                    .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 4320))
                     .output(ModObject.itemSoulVial.getItemNN())
                     .outputs(output)
-                    .duration(10000).EUt(100).buildAndRegister();
-
-
+                    .duration(1000).EUt(VA[HV]).buildAndRegister();
         }
     }
 
@@ -98,7 +95,7 @@ public class SoulRecipeLoader {
         tag.setString("entityId", "minecraft:blaze");
         stack.setTagCompound(tag);
 
-        //Vial Extractor
+        // Vial Extractor
         GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
@@ -106,7 +103,7 @@ public class SoulRecipeLoader {
                 .output(ModObject.itemSoulVial.getItemNN())
                 .output(Items.BLAZE_ROD, 10)
                 .output(Items.ROTTEN_FLESH, 10)
-                .fluidOutputs(new FluidStack(xp, 1000))
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
                 .duration(600).EUt(30).buildAndRegister();
     }
 
@@ -116,7 +113,7 @@ public class SoulRecipeLoader {
         tag.setString("entityId", "minecraft:creeper");
         stack.setTagCompound(tag);
 
-        //Vial Extractor
+        // Vial Extractor
         GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
@@ -124,7 +121,7 @@ public class SoulRecipeLoader {
                 .output(ModObject.itemSoulVial.getItemNN())
                 .output(Items.SKULL, 10, 4)
                 .output(Items.GUNPOWDER, 10)
-                .fluidOutputs(new FluidStack(xp, 1000))
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
                 .duration(600).EUt(30).buildAndRegister();
     }
 
@@ -134,7 +131,7 @@ public class SoulRecipeLoader {
             tag.setString("entityId", "minecraft:enderman");
             stack.setTagCompound(tag);
 
-             //Vial Extractor
+             // Vial Extractor
             GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
                     .input(GTRecipeItemInput.getOrCreate(stack)
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
@@ -142,7 +139,7 @@ public class SoulRecipeLoader {
                     .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.blockEndermanSkull.getItemNN(), 10, 0)
                     .output(Items.ENDER_PEARL, 10)
-                    .fluidOutputs(new FluidStack(xp, 1000))
+                    .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
                     .duration(600).EUt(30).buildAndRegister();
     }
 
@@ -152,7 +149,7 @@ public class SoulRecipeLoader {
         tag.setString("entityId", "minecraft:skeleton");
         stack.setTagCompound(tag);
 
-        //Vial Extractor
+        // Vial Extractor
         GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
@@ -160,7 +157,7 @@ public class SoulRecipeLoader {
                 .output(ModObject.itemSoulVial.getItemNN())
                 .output(Items.SKULL, 10, 0)
                 .output(Items.BONE, 10)
-                .fluidOutputs(new FluidStack(xp, 1000))
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
                 .duration(600).EUt(30).buildAndRegister();
     }
 
@@ -174,7 +171,7 @@ public class SoulRecipeLoader {
                 tag.setString("entityId", Slime);
                 stack.setTagCompound(tag);
 
-            //Vial Extractor
+            // Vial Extractor
                 GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
                         .input(GTRecipeItemInput.getOrCreate(stack)
                                 .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
@@ -182,7 +179,7 @@ public class SoulRecipeLoader {
                         .output(ModObject.itemSoulVial.getItemNN())
                         .output(Items.SLIME_BALL, 10)
                         .output(Items.ROTTEN_FLESH, 10)
-                        .fluidOutputs(new FluidStack(xp, 2000))
+                        .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 2000))
                         .duration(600).EUt(30).buildAndRegister();
             }
     }
@@ -197,7 +194,7 @@ public class SoulRecipeLoader {
                 tag.setString("entityId", Spider);
                 stack.setTagCompound(tag);
 
-                //Vial Extractor
+                // Vial Extractor
                 GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
                         .input(GTRecipeItemInput.getOrCreate(stack)
                                 .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
@@ -205,7 +202,7 @@ public class SoulRecipeLoader {
                         .output(ModObject.itemSoulVial.getItemNN())
                         .output(Items.SPIDER_EYE, 10)
                         .output(Items.STRING, 10)
-                        .fluidOutputs(new FluidStack(xp, 1000))
+                        .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
                         .duration(600).EUt(30).buildAndRegister();
             }
     }
@@ -216,7 +213,7 @@ public class SoulRecipeLoader {
         tag.setString("entityId", "minecraft:zombie_pigman");
         stack.setTagCompound(tag);
 
-        //Vial Extractor
+        // Vial Extractor
         GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
@@ -224,7 +221,7 @@ public class SoulRecipeLoader {
                 .output(ModObject.itemSoulVial.getItemNN())
                 .output(Items.ROTTEN_FLESH, 10)
                 .chancedOutput(ingot, Gold, 250, 250)
-                .fluidOutputs(new FluidStack(xp, 1000))
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
                 .duration(600).EUt(30).buildAndRegister();
     }
 
@@ -240,10 +237,10 @@ public class SoulRecipeLoader {
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                 NBTCondition.create(NBTTagType.STRING,"entityId", "minecraft:villager")))
                 .input(gem, Emerald)
-                .fluidInputs(new FluidStack(xp, 800))
+                .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 576))
                 .output(ModObject.itemSoulVial.getItemNN())
                 .output(ModObject.itemMaterial.getItemNN(), 1, 17)
-                .duration(10000).EUt(100).buildAndRegister();
+                .duration(1000).EUt(VA[HV]).buildAndRegister();
     }
 
     public static void recipeWitch() {
@@ -263,10 +260,10 @@ public class SoulRecipeLoader {
                                 .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                         NBTCondition.create(NBTTagType.STRING, "entityId", Witch)))
                         .input(ModObject.itemMaterial.getItemNN(), 1, 43)
-                        .fluidInputs(new FluidStack(xp, 800))
+                        .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 8640))
                         .output(ModObject.itemSoulVial.getItemNN())
                         .output(ModObject.itemMaterial.getItemNN(), 1, 44)
-                        .duration(10000).EUt(100).buildAndRegister();
+                        .duration(1000).EUt(VA[HV]).buildAndRegister();
             }
     }
 
@@ -285,7 +282,7 @@ public class SoulRecipeLoader {
                 .output(Items.SKULL, 5, 1)
                 .output(Items.BONE, 5)
                 .chancedOutput(new ItemStack(Items.COAL), 250, 250)
-                .fluidOutputs(new FluidStack(xp, 1000))
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
                 .duration(600).EUt(30).buildAndRegister();
     }
 
@@ -306,10 +303,10 @@ public class SoulRecipeLoader {
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                     NBTCondition.create(NBTTagType.STRING, "entityId", Zombie)))
                     .input(ModObject.itemMaterial.getItemNN(), 1, 41)
-                    .fluidInputs(new FluidStack(xp, 800))
+                    .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 8640))
                     .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemMaterial.getItemNN(), 1, 42)
-                    .duration(10000).EUt(100).buildAndRegister();
+                    .duration(1000).EUt(VA[HV]).buildAndRegister();
 
             // Vial Extractor
             GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
@@ -320,7 +317,7 @@ public class SoulRecipeLoader {
                     .output(Items.SKULL, 10, 2)
                     .output(Items.ROTTEN_FLESH, 10)
                     .chancedOutput(ingot, Iron, 100, 0)
-                    .fluidOutputs(new FluidStack(xp, 1000))
+                    .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
                     .duration(600).EUt(30).buildAndRegister();
         }
     }

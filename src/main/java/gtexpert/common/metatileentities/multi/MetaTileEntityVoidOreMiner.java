@@ -67,6 +67,7 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
         tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.1"));
         tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.2"));
         tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.3"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.4"));
     }
 
     @Override

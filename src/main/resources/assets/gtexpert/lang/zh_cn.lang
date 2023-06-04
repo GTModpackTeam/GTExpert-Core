@@ -13,15 +13,22 @@ gtexpert.machine.extreme_mixer.name=精英极限搅拌机
 
 # singleblock
 # Vial Extractor
-gtexpert.machine.vial_extractor.tooltip=黑暗之魂?
 gtexpert.machine.vial_extractor.lv.name=基础灵魂提取机
+gtexpert.machine.vial_extractor.lv.tooltip=黑暗之魂?/n§d作者:§f§f @tier940
 gtexpert.machine.vial_extractor.mv.name=进阶灵魂提取机
+gtexpert.machine.vial_extractor.mv.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.hv.name=进阶灵魂提取机 II
+gtexpert.machine.vial_extractor.hv.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.ev.name=进阶灵魂提取机 III
+gtexpert.machine.vial_extractor.ev.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.iv.name=精英灵魂提取机
+gtexpert.machine.vial_extractor.iv.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.luv.name=精英灵魂提取机 II
+gtexpert.machine.vial_extractor.luv.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.zpm.name=精英灵魂提取机 III
+gtexpert.machine.vial_extractor.zpm.tooltip=黑暗之魂?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.uv.name=终极灵魂提取机
+gtexpert.machine.vial_extractor.uv.tooltip=黑暗之魂?/n§d作者:§f @tier940
 
 # Slice'N'Splice
 gtexpert.machine.slice_n_splice.lv.name=基础头颅装配机
