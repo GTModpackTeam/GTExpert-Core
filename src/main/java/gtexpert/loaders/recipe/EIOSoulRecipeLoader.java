@@ -64,7 +64,7 @@ public class EIOSoulRecipeLoader {
                     .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 4320))
                     .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemSoulFilterNormal.getItemNN())
-                    .duration(1000).EUt(VA[HV]).buildAndRegister();
+                    .duration(1000).EUt(VA[LV]).buildAndRegister();
 
             // SoulBinder - Big Soul Filter
             GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
@@ -75,7 +75,7 @@ public class EIOSoulRecipeLoader {
                     .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 4320))
                     .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemSoulFilterBig.getItemNN())
-                    .duration(1000).EUt(VA[HV]).buildAndRegister();
+                    .duration(1000).EUt(VA[LV]).buildAndRegister();
 
             // SoulBinder - Broken Spawner
             ItemStack output = new ItemStack(ModObject.itemBrokenSpawner.getItemNN());
@@ -88,7 +88,7 @@ public class EIOSoulRecipeLoader {
                     .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 4320))
                     .output(ModObject.itemSoulVial.getItemNN())
                     .outputs(output)
-                    .duration(1000).EUt(VA[HV]).buildAndRegister();
+                    .duration(1000).EUt(VA[LV]).buildAndRegister();
         }
     }
 
@@ -243,7 +243,7 @@ public class EIOSoulRecipeLoader {
                 .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 576))
                 .output(ModObject.itemSoulVial.getItemNN())
                 .output(ModObject.itemMaterial.getItemNN(), 1, 17)
-                .duration(1000).EUt(VA[HV]).buildAndRegister();
+                .duration(1000).EUt(VA[LV]).buildAndRegister();
     }
 
     private static void recipeWitch() {
@@ -266,7 +266,7 @@ public class EIOSoulRecipeLoader {
                         .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 8640))
                         .output(ModObject.itemSoulVial.getItemNN())
                         .output(ModObject.itemMaterial.getItemNN(), 1, 44)
-                        .duration(1000).EUt(VA[HV]).buildAndRegister();
+                        .duration(1000).EUt(VA[LV]).buildAndRegister();
             }
     }
 
@@ -309,7 +309,7 @@ public class EIOSoulRecipeLoader {
                     .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 8640))
                     .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemMaterial.getItemNN(), 1, 42)
-                    .duration(1000).EUt(VA[HV]).buildAndRegister();
+                    .duration(1000).EUt(VA[LV]).buildAndRegister();
 
             // Vial Extractor
             GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
