@@ -1,6 +1,7 @@
 package gtexpert.loaders.recipe;
 
 import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.machines.init.MachineObject;
 import crazypants.enderio.powertools.init.PowerToolObject;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
@@ -528,6 +529,7 @@ public class GTERecipeLoader {
                 'C', CIRCUIT);
 
         // Slice'N'Splice
+        ModHandler.addShapelessRecipe("slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(), new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(SLICE_N_SPLICE, "PSP", "CHC", "MBM",
                 'P', new UnificationEntry(plate, SOULARIUM),
                 'S', "itemSkull",
@@ -537,6 +539,7 @@ public class GTERecipeLoader {
                 'B', ModObject.blockDarkIronBars.getItemNN());
 
         // Soul Binder
+        ModHandler.addShapelessRecipe("soul_binder", SOUL_BINDER[HV].getStackForm(), new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(SOUL_BINDER, "PSP", "CHC", "MZM",
                 'P', new UnificationEntry(plate, SOULARIUM),
                 'S', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 43),
@@ -546,6 +549,7 @@ public class GTERecipeLoader {
                 'Z', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 41));
 
         // Powered Spawer
+        //ModHandler.addShapelessRecipe("powered_spawner", POWERED_SPAWNER[HV].getStackForm(), new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
     }
 
     private static void tools() {

@@ -1,6 +1,7 @@
 package gtexpert.integration.chisel;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import team.chisel.api.carving.CarvingUtils;
 
 public class ChiselHelper {
@@ -12,6 +13,7 @@ public class ChiselHelper {
     public static void addVariation(String groupName, ItemStack stack) {
         CarvingUtils.getChiselRegistry()
                 .addVariation(groupName, CarvingUtils.variationFor(stack, stack.getItemDamage()));
+        OreDictionary.registerOre(groupName, stack);
     }
 
     public static void removeVariation(ItemStack stack, String groupName) {

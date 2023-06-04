@@ -23,7 +23,4 @@ public class MetaTileEntityExtremeMixer extends SimpleMachineMetaTileEntity {
         return new MetaTileEntityExtremeMixer(this.metaTileEntityId, this.workable.getRecipeMap(), this.renderer,
                 this.getTier(), this.hasFrontFacing(), this.getTankScalingFunction());
     }
-
-    @Override
-    public SoundEvent getSound() { return GTSoundEvents.MIXER; }
 }

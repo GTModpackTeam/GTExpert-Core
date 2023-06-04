@@ -21,11 +21,11 @@ gtexpert.machine.awakened_draconium_fusion.tooltip=なんだか強そうです�
 
 # singleblock
 # Auto Chisel
-gtexpert.machine.auto_chisel.lv.name=基本型自動彫刻機
+gtexpert.machine.auto_chisel.lv.name=[WIP] 基本型自動彫刻機
 gtexpert.machine.auto_chisel.lv.tooltip=あなたの理想、彫刻します/n§d作者:§f @tier940
-gtexpert.machine.auto_chisel.mv.name=発展型自動彫刻機
+gtexpert.machine.auto_chisel.mv.name=[WIP] 発展型自動彫刻機
 gtexpert.machine.auto_chisel.mv.tooltip=あなたの理想、彫刻します/n§d作者:§f @tier940
-gtexpert.machine.auto_chisel.hv.name=発展型自動彫刻機 II
+gtexpert.machine.auto_chisel.hv.name=[WIP] 発展型自動彫刻機 II
 gtexpert.machine.auto_chisel.hv.tooltip=あなたの理想、彫刻します/n§d作者:§f @tier940
 
 # Vial Extractor
