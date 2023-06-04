@@ -520,14 +520,34 @@ public class GTERecipeLoader {
         }
 
         // Vial Extractor
-        MetaTileEntityLoader.registerMachineRecipe(VIAL_EXTRACTOR, "VRV", "PMF", "WCW",
+        MetaTileEntityLoader.registerMachineRecipe(VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
                 'V', ModObject.itemSoulVial.getItemNN(),
                 'R', SENSOR,
                 'P', PISTON,
-                'M', HULL,
+                'H', HULL,
                 'F', PUMP,
                 'W', CABLE,
                 'C', CIRCUIT);
+
+        // Slice'N'Splice
+        MetaTileEntityLoader.registerMachineRecipe(SLICE_N_SPLICE, "PSP", "CHC", "MBM",
+                'P', new UnificationEntry(plate, SOULARIUM),
+                'S', "itemSkull",
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.HV),
+                'H', HULL,
+                'M', MOTOR,
+                'B', ModObject.blockDarkIronBars.getItemNN());
+
+        // Soul Binder
+        MetaTileEntityLoader.registerMachineRecipe(SOUL_BINDER, "PSP", "CHC", "MZM",
+                'P', new UnificationEntry(plate, SOULARIUM),
+                'S', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 43),
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.HV),
+                'H', HULL,
+                'M', MOTOR,
+                'Z', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 41));
+
+        // Powered Spawer
     }
 
     private static void tools() {

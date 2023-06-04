@@ -4,82 +4,93 @@
 # multiblock
 gtexpert.machine.sawmill.name=Sawmill
 gtexpert.machine.sawmill.tooltip=Nooo! Do not saw me..
+gtexpert.machine.sawmill.tooltip.1=§dAuthor:§f @Quarri6343
 gtexpert.machine.void_ore_miner.name=Void Ore Miner
 gtexpert.machine.void_ore_miner.tooltip=Stargate Builder
 gtexpert.machine.void_ore_miner.tooltip.1=§6Mines out 32 Ores based on the input Ore §r
 gtexpert.machine.void_ore_miner.tooltip.2=§6The outputs will be doubled with a Nether or End ore!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6Requires 576mb Enderpearl and 10000mb Drilling Fluid per operation§r
-gtexpert.machine.extreme_mixer.name=Elite Extreme Mixer (Deprecated)
+gtexpert.machine.void_ore_miner.tooltip.4=§dAuthor:§f @Quarri6343
+gtexpert.machine.extreme_mixer.name=(Deprecated)Elite Extreme Mixer
+gtexpert.machine.extreme_mixer.tooltip=§dAuthor:§f @Quarri6343
 gtexpert.machine.draconium_fusion.name=Draconic Fusion Crafter
 gtexpert.machine.draconium_fusion.tooltip=It feels strong and powerful?
+gtexpert.machine.draconium_fusion.tooltip.1=§dAuthor:§f @miozune, @tier940
 gtexpert.machine.awakened_draconium_fusion.name=Draconic Fusion Crafter II
 gtexpert.machine.awakened_draconium_fusion.tooltip=It feels strong and powerful?
 
 # singleblock
 # Vial Extractor
-gtexpert.machine.vial_extractor.tooltip=Soul of a Lost Undead?
 gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
+gtexpert.machine.vial_extractor.lv.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
 gtexpert.machine.vial_extractor.mv.name=Advanced Vial Extractor
+gtexpert.machine.vial_extractor.mv.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
 gtexpert.machine.vial_extractor.hv.name=Advanced Vial Extractor II
+gtexpert.machine.vial_extractor.hv.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
 gtexpert.machine.vial_extractor.ev.name=Advanced Vial Extractor III
+gtexpert.machine.vial_extractor.ev.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
 gtexpert.machine.vial_extractor.iv.name=Elite Vial Extractor
+gtexpert.machine.vial_extractor.iv.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
 gtexpert.machine.vial_extractor.luv.name=Elite Vial Extractor II
+gtexpert.machine.vial_extractor.luv.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
 gtexpert.machine.vial_extractor.zpm.name=Elite Vial Extractor III
+gtexpert.machine.vial_extractor.zpm.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
 gtexpert.machine.vial_extractor.uv.name=Ultimate Vial Extractor
+gtexpert.machine.vial_extractor.uv.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
 
-# Slice'N'Splice　
+# Slice'N'Splice
 gtexpert.machine.slice_n_splice.lv.name=Basic Slice'N'Splice
-gtexpert.machine.slice_n_splice.lv.tooltip=Slices heads and splices in all sorts of useful things
+gtexpert.machine.slice_n_splice.lv.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
 gtexpert.machine.slice_n_splice.mv.name=Advanced Slice'N'Splice
-gtexpert.machine.slice_n_splice.mv.tooltip=Slices heads and splices in all sorts of useful things
+gtexpert.machine.slice_n_splice.mv.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
 gtexpert.machine.slice_n_splice.hv.name=Advanced Slice'N'Splice II
-gtexpert.machine.slice_n_splice.hv.tooltip=Slices heads and splices in all sorts of useful things
+gtexpert.machine.slice_n_splice.hv.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
 gtexpert.machine.slice_n_splice.ev.name=Advanced Slice'N'Splice III
-gtexpert.machine.slice_n_splice.ev.tooltip=Slices heads and splices in all sorts of useful things
+gtexpert.machine.slice_n_splice.ev.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
 gtexpert.machine.slice_n_splice.iv.name=Elite Slice'N'Splice
-gtexpert.machine.slice_n_splice.iv.tooltip=Slices heads and splices in all sorts of useful things
+gtexpert.machine.slice_n_splice.iv.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
 gtexpert.machine.slice_n_splice.luv.name=Elite Slice'N'Splice II
-gtexpert.machine.slice_n_splice.luv.tooltip=Slices heads and splices in all sorts of useful things
+gtexpert.machine.slice_n_splice.luv.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
 gtexpert.machine.slice_n_splice.zpm.name=Elite Slice'N'Splice III
-gtexpert.machine.slice_n_splice.zpm.tooltip=Slices heads and splices in all sorts of useful things
+gtexpert.machine.slice_n_splice.zpm.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
 gtexpert.machine.slice_n_splice.uv.name=Ultimate Slice'N'Splice
-gtexpert.machine.slice_n_splice.uv.tooltip=Slices heads and splices in all sorts of useful things
+gtexpert.machine.slice_n_splice.uv.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
 
 # Soul Binder
 gtexpert.machine.soul_binder.lv.name=Basic Soul Binder
-gtexpert.machine.soul_binder.lv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner
+gtexpert.machine.soul_binder.lv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner/n§dAuthor:§f @MrKono
 gtexpert.machine.soul_binder.mv.name=Advanced Soul Binder
-gtexpert.machine.soul_binder.mv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner
+gtexpert.machine.soul_binder.mv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner/n§dAuthor:§f @MrKono
 gtexpert.machine.soul_binder.hv.name=Advanced Soul Binder II
-gtexpert.machine.soul_binder.hv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner
+gtexpert.machine.soul_binder.hv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner/n§dAuthor:§f @MrKono
 gtexpert.machine.soul_binder.ev.name=Advanced Soul Binder III
-gtexpert.machine.soul_binder.ev.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner
+gtexpert.machine.soul_binder.ev.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner/n§dAuthor:§f @MrKono
 gtexpert.machine.soul_binder.iv.name=Elite Soul Binder
-gtexpert.machine.soul_binder.iv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner
+gtexpert.machine.soul_binder.iv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner/n§dAuthor:§f @MrKono
 gtexpert.machine.soul_binder.luv.name=Elite Soul Binder II
-gtexpert.machine.soul_binder.luv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner
+gtexpert.machine.soul_binder.luv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner/n§dAuthor:§f @MrKono
 gtexpert.machine.soul_binder.zpm.name=Elite Soul Binder III
-gtexpert.machine.soul_binder.zpm.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner
+gtexpert.machine.soul_binder.zpm.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner/n§dAuthor:§f @MrKono
 gtexpert.machine.soul_binder.uv.name=Ultimate Soul Binder
-gtexpert.machine.soul_binder.uv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner
+gtexpert.machine.soul_binder.uv.tooltip=Bind the soul to the item. Used to convert the type of a broken spawner/n§dAuthor:§f @MrKono
 
 # Powered Spawer
 gtexpert.machine.powered_spawner.lv.name=Basic Powered Spawner
-gtexpert.machine.powered_spawner.lv.tooltip=
+gtexpert.machine.powered_spawner.lv.tooltip=Can be used in place of a spawner to spawn various monsters/n§dAuthor:§f @MrKono, @miozune
 gtexpert.machine.powered_spawner.mv.name=Advanced Powered Spawner
-gtexpert.machine.powered_spawner.mv.tooltip=
+gtexpert.machine.powered_spawner.mv.tooltip=Can be used in place of a spawner to spawn various monsters/n§dAuthor:§f @MrKono, @miozune
 gtexpert.machine.powered_spawner.hv.name=Advanced Powered Spawner II
-gtexpert.machine.powered_spawner.hv.tooltip=
+gtexpert.machine.powered_spawner.hv.tooltip=Can be used in place of a spawner to spawn various monsters/n§dAuthor:§f @MrKono, @miozune
 gtexpert.machine.powered_spawner.ev.name=Advanced Powered Spawner III
-gtexpert.machine.powered_spawner.ev.tooltip=
+gtexpert.machine.powered_spawner.ev.tooltip=Can be used in place of a spawner to spawn various monsters/n§dAuthor:§f @MrKono, @miozune
 gtexpert.machine.powered_spawner.iv.name=Elite Powered Spawner
-gtexpert.machine.powered_spawner.iv.tooltip=
+gtexpert.machine.powered_spawner.iv.tooltip=Can be used in place of a spawner to spawn various monsters/n§dAuthor:§f @MrKono, @miozune
 gtexpert.machine.powered_spawner.luv.name=Elite Powered Spawner II
-gtexpert.machine.powered_spawner.luv.tooltip=
+gtexpert.machine.powered_spawner.luv.tooltip=Can be used in place of a spawner to spawn various monsters/n§dAuthor:§f @MrKono, @miozune
 gtexpert.machine.powered_spawner.zpm.name=Elite Powered Spawner III
-gtexpert.machine.powered_spawner.zpm.tooltip=
+gtexpert.machine.powered_spawner.zpm.tooltip=Can be used in place of a spawner to spawn various monsters/n§dAuthor:§f @MrKono, @miozune
 gtexpert.machine.powered_spawner.uv.name=Ultimate Powered Spawner
-gtexpert.machine.powered_spawner.uv.tooltip=
+gtexpert.machine.powered_spawner.uv.tooltip=Can be used in place of a spawner to spawn various monsters/n§dAuthor:§f @MrKono, @miozune
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
@@ -89,7 +100,7 @@ tile.gte_metal_casing.awakened_draconium_casing.name=Dragon Proof Awakened Draco
 tile.sawmill_conveyor.name=Sawmill Conveyor
 
 # material
-material.galvalume=Galvalume (Deprecated)
+material.galvalume=(Deprecated)Galvalume
 material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
 material.naquadah_rocket_fuel=Naquadah Rocket Fuel
 material.dragon=Dragon
