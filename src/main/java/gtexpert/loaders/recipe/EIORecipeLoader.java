@@ -610,7 +610,7 @@ public class EIORecipeLoader {
                 .input("craftCapacitorEIO", 1)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .output(ModObject.itemMaterial.getItemNN(), 1, 40)
-                .duration(200).EUt(VA[HV]).buildAndRegister();
+                .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Z-Logic Controller
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
@@ -621,7 +621,7 @@ public class EIORecipeLoader {
                 .input(dust, Redstone)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .output(ModObject.itemMaterial.getItemNN(), 1, 41)
-                .duration(200).EUt(VA[HV]).buildAndRegister();
+                .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Ender Resonator
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
@@ -632,7 +632,7 @@ public class EIORecipeLoader {
                 .input(plate, VIBRANT_ALLOY)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .output(ModObject.itemMaterial.getItemNN(), 1, 43)
-                .duration(200).EUt(VA[HV]).buildAndRegister();
+                .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Skeletal Controller
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
@@ -643,7 +643,7 @@ public class EIORecipeLoader {
                 .input("craftCapacitorEIO", 1)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .output(ModObject.itemMaterial.getItemNN(), 1, 45)
-                .duration(200).EUt(VA[HV]).buildAndRegister();
+                .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Guardian Diode
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
@@ -654,7 +654,7 @@ public class EIORecipeLoader {
                 .input(MetaItems.SILICON_WAFER,1)
                 .input(ModObject.itemMaterial.getItemNN(), 1, 14)
                 .output(ModObject.itemMaterial.getItemNN(), 1, 56)
-                .duration(200).EUt(VA[HV]).buildAndRegister();
+                .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Tormented Enderman Head
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
@@ -665,7 +665,7 @@ public class EIORecipeLoader {
                 .input("craftCapacitorEIO", 1)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .output(ModObject.blockEndermanSkull.getItemNN(), 1, 2)
-                .duration(200).EUt(VA[HV]).buildAndRegister();
+                .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Totemic Capacitor
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
@@ -676,6 +676,6 @@ public class EIORecipeLoader {
                 .input(EndergyObject.itemCapacitorMelodic.getItemNN(), 1)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .output(ModObject.blockEndermanSkull.getItemNN(), 1, 2)
-                .duration(200).EUt(VA[HV]).buildAndRegister();
+                .duration(400).EUt(VA[LV]).buildAndRegister();
     }
 }

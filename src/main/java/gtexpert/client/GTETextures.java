@@ -1,6 +1,5 @@
 package gtexpert.client;
 
-
 import gregtech.client.renderer.texture.cube.*;
 import gtexpert.api.GTEValues;
 import net.minecraftforge.fml.common.Mod;

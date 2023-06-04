@@ -531,7 +531,7 @@ public class GTERecipeLoader {
         MetaTileEntityLoader.registerMachineRecipe(SLICE_N_SPLICE, "PSP", "CHC", "MBM",
                 'P', new UnificationEntry(plate, SOULARIUM),
                 'S', "itemSkull",
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.HV),
+                'C', CIRCUIT,
                 'H', HULL,
                 'M', MOTOR,
                 'B', ModObject.blockDarkIronBars.getItemNN());
@@ -540,7 +540,7 @@ public class GTERecipeLoader {
         MetaTileEntityLoader.registerMachineRecipe(SOUL_BINDER, "PSP", "CHC", "MZM",
                 'P', new UnificationEntry(plate, SOULARIUM),
                 'S', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 43),
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.HV),
+                'C', CIRCUIT,
                 'H', HULL,
                 'M', MOTOR,
                 'Z', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 41));
