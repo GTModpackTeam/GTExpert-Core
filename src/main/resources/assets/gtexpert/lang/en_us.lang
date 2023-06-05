@@ -18,6 +18,9 @@ gtexpert.machine.draconium_fusion.tooltip=It feels strong and powerful?
 gtexpert.machine.draconium_fusion.tooltip.1=§dAuthor:§f @miozune, @tier940
 gtexpert.machine.awakened_draconium_fusion.name=Draconic Fusion Crafter II
 gtexpert.machine.awakened_draconium_fusion.tooltip=It feels strong and powerful?
+gtexpert.machine.advanced_mega_blast_furnace.name=Advanced Mega Blast Furnace
+gtexpert.machine.advanced_mega_blast_furnace.tooltip=§dAuthor:§f @Quarri6343
+gtexpert.machine.electric_blast_furnace.tooltip.1=1mb Liquid Helium = 1K Temp.
 
 # singleblock
 # Vial Extractor
@@ -157,3 +160,4 @@ recipemap.draconic_fusion_upgrade.property.2= and stored energy
 
 #misc
 gtexpert.multiblock.needsun=The Controller must be able to See the Sun!
+gtexpert.multiblock.mega_blast_furnace.max_temperature=Estimated Current Temperature: %s
