@@ -81,7 +81,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
 
     @Override
     protected void updateRecipeProgress() {
-        // We don't override `canProgressRecipe` to check this condition, as it runs only per second
+        // We don't override `canProgressRecipe` to check this condition, as it runs only once per second,
         // and we want to stop spawn immediately when redstone is shut down
         //
         // spawn mode -> require redstone signal

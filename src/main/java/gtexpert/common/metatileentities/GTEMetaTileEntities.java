@@ -88,7 +88,7 @@ public class GTEMetaTileEntities {
         return new ResourceLocation(GTEValues.MODID, name);
     }
 
-    // TODO: Use GT method after update
+    // TODO: This method will be included in the next update of CEu
     /**
      * @param mteCreator Takes tier and voltage name for the machine and outputs MTE to register
      */

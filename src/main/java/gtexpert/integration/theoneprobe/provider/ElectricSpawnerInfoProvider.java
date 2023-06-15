@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 
 public class ElectricSpawnerInfoProvider implements IProbeInfoProvider {
+
     @Override
     public String getID() {
         return GTEValues.MODID + ":electric_spawner";
