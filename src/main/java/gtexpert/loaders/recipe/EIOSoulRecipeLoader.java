@@ -3,6 +3,8 @@ package gtexpert.loaders.recipe;
 
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
+import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
@@ -14,12 +16,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -29,23 +32,14 @@ public class EIOSoulRecipeLoader {
 
     // This code was created under the advice of miozune.
     public static void init(){
-        recipeAll();
-        recipeBlaze();
-        recipeCreeper();
-        recipeEnderman();
-        recipeSkeleton();
-        recipeSlime();
-        recipeSpider();
-        recipePigman();
+        soulBinderRecipes();
+        vialExtractorRecipes();
         recipeVillager();
         recipeWitch();
-        recipeWitherSkeleton();
         recipeZombie();
-        recipeGuardian();
-        recipeSquid();
     }
 
-    private static void recipeAll() {
+    private static void soulBinderRecipes() {
         for (ResourceLocation name : EntityList.getEntityNameList()) {
             if (!EntityList.ENTITY_EGGS.containsKey(name)) {
                 continue;
@@ -92,140 +86,28 @@ public class EIOSoulRecipeLoader {
         }
     }
 
-    private static void recipeBlaze() {
-        ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setString("entityId", "minecraft:blaze");
-        stack.setTagCompound(tag);
-
-        // Vial Extractor
-        GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                .input(GTRecipeItemInput.getOrCreate(stack)
-                        .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:blaze")))
-                .output(ModObject.itemSoulVial.getItemNN())
-                .output(Items.BLAZE_ROD, 10)
-                .output(Items.ROTTEN_FLESH, 10)
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                .duration(600).EUt(30).buildAndRegister();
-    }
-
-    private static void recipeCreeper() {
-        ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setString("entityId", "minecraft:creeper");
-        stack.setTagCompound(tag);
-
-        // Vial Extractor
-        GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                .input(GTRecipeItemInput.getOrCreate(stack)
-                        .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:creeper")))
-                .output(ModObject.itemSoulVial.getItemNN())
-                .output(Items.SKULL, 10, 4)
-                .output(Items.GUNPOWDER, 10)
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                .duration(600).EUt(30).buildAndRegister();
-    }
-
-    private static void recipeEnderman() {
-            ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-            NBTTagCompound tag = new NBTTagCompound();
-            tag.setString("entityId", "minecraft:enderman");
-            stack.setTagCompound(tag);
-
-             // Vial Extractor
-            GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                    .input(GTRecipeItemInput.getOrCreate(stack)
-                            .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                                     NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:enderman")))
-                    .output(ModObject.itemSoulVial.getItemNN())
-                    .output(ModObject.blockEndermanSkull.getItemNN(), 10, 0)
-                    .output(Items.ENDER_PEARL, 10)
-                    .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                    .duration(600).EUt(30).buildAndRegister();
-    }
-
-    private static void recipeSkeleton() {
-        ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setString("entityId", "minecraft:skeleton");
-        stack.setTagCompound(tag);
-
-        // Vial Extractor
-        GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                .input(GTRecipeItemInput.getOrCreate(stack)
-                        .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:skeleton")))
-                .output(ModObject.itemSoulVial.getItemNN())
-                .output(Items.SKULL, 10, 0)
-                .output(Items.BONE, 10)
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                .duration(600).EUt(30).buildAndRegister();
-    }
-
-    private static void recipeSlime() {
-            List<String> slime = new ArrayList<>();
-            slime.add("minecraft:slime");
-            slime.add("minecraft:magma_cube");
-            for (String Slime : slime) {
-                ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-                NBTTagCompound tag = new NBTTagCompound();
-                tag.setString("entityId", Slime);
-                stack.setTagCompound(tag);
-
-            // Vial Extractor
-                GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                        .input(GTRecipeItemInput.getOrCreate(stack)
-                                .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                        NBTCondition.create(NBTTagType.STRING, "entityId", Slime)))
-                        .output(ModObject.itemSoulVial.getItemNN())
-                        .output(Items.SLIME_BALL, 10)
-                        .output(Items.ROTTEN_FLESH, 10)
-                        .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 2000))
-                        .duration(600).EUt(30).buildAndRegister();
-            }
-    }
-
-    private static void recipeSpider() {
-            List<String> spider = new ArrayList<>();
-            spider.add("minecraft:spider");
-            //spider.add("minecraft:cave_spider");
-            for (String Spider : spider) {
-                ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-                NBTTagCompound tag = new NBTTagCompound();
-                tag.setString("entityId", Spider);
-                stack.setTagCompound(tag);
-
-                // Vial Extractor
-                GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                        .input(GTRecipeItemInput.getOrCreate(stack)
-                                .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                        NBTCondition.create(NBTTagType.STRING, "entityId", Spider)))
-                        .output(ModObject.itemSoulVial.getItemNN())
-                        .output(Items.SPIDER_EYE, 10)
-                        .output(Items.STRING, 10)
-                        .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                        .duration(600).EUt(30).buildAndRegister();
-            }
-    }
-
-    private static void recipePigman() {
-        ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setString("entityId", "minecraft:zombie_pigman");
-        stack.setTagCompound(tag);
-
-        // Vial Extractor
-        GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                .input(GTRecipeItemInput.getOrCreate(stack)
-                        .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:zombie_pigman")))
-                .output(ModObject.itemSoulVial.getItemNN())
-                .output(Items.ROTTEN_FLESH, 10)
-                .chancedOutput(ingot, Gold, 250, 250)
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                .duration(600).EUt(30).buildAndRegister();
+    private static void vialExtractorRecipes() {
+        registerVialExtractorRecipe("minecraft:blaze", new ItemStack(Items.BLAZE_ROD, 10), new ItemStack(Items.ROTTEN_FLESH, 10));
+        registerVialExtractorRecipe("minecraft:creeper", new ItemStack(Items.SKULL, 10, 4), new ItemStack(Items.GUNPOWDER, 10));
+        registerVialExtractorRecipe("minecraft:enderman", new ItemStack(ModObject.blockEndermanSkull.getItemNN(), 10, 0), new ItemStack(Items.ENDER_PEARL, 10));
+        registerVialExtractorRecipe("minecraft:skeleton", new ItemStack(Items.SKULL, 10, 0), new ItemStack(Items.BONE, 10));
+        for (String slime : Arrays.asList("minecraft:slime", "minecraft:magma_cube")) {
+            registerVialExtractorRecipe(slime, 2000, new ItemStack(Items.SLIME_BALL, 10), new ItemStack(Items.ROTTEN_FLESH, 10));
+        }
+        registerVialExtractorRecipe("minecraft:spider", new ItemStack(Items.SPIDER_EYE, 10), new ItemStack(Items.STRING, 10));
+        registerVialExtractorRecipe("minecraft:zombie_pigman", 1000, builder ->
+                builder.output(Items.ROTTEN_FLESH, 10).chancedOutput(ingot, Gold, 250, 250));
+        registerVialExtractorRecipe("minecraft:wither_skeleton", new ItemStack(Items.SKULL, 5, 1), new ItemStack(Items.BONE, 5));
+        for (String zombie : Arrays.asList("minecraft:zombie", "minecraft:husk", "minecraft:zombie_villager")) {
+            registerVialExtractorRecipe(zombie, 1000, builder ->
+                    builder.output(Items.SKULL, 10, 2)
+                            .output(Items.ROTTEN_FLESH, 10)
+                            .chancedOutput(ingot, Iron, 100, 0));
+        }
+        for (String guardian : Arrays.asList("minecraft:guardian", "minecraft:elder_guardian")) {
+            registerVialExtractorRecipe(guardian, new ItemStack(Items.PRISMARINE_SHARD, 5), new ItemStack(Blocks.SPONGE, 1, 1));
+        }
+        registerVialExtractorRecipe("minecraft:squid", new ItemStack(Items.DYE, 10, 0));
     }
 
     private static void recipeVillager() {
@@ -247,54 +129,31 @@ public class EIOSoulRecipeLoader {
     }
 
     private static void recipeWitch() {
-            List<String> witch = new ArrayList<>();
-            witch.add("minecraft:witch");
-            if (Loader.isModLoaded("enderzoo")) {witch.add("enderzoo:witherwitch");}
-            if (Loader.isModLoaded("enderiozoo")) {witch.add("enderiozoo:witherwitch");}
-            for (String Witch : witch) {
-                ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-                NBTTagCompound tag = new NBTTagCompound();
-                tag.setString("entityId", Witch);
-                stack.setTagCompound(tag);
+        List<String> witch = new ArrayList<>();
+        witch.add("minecraft:witch");
+        if (Loader.isModLoaded("enderzoo")) {witch.add("enderzoo:witherwitch");}
+        if (Loader.isModLoaded("enderiozoo")) {witch.add("enderiozoo:witherwitch");}
+        for (String Witch : witch) {
+            ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setString("entityId", Witch);
+            stack.setTagCompound(tag);
 
-                // Soul Binder - Sentient Ender
-                GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                        .input(GTRecipeItemInput.getOrCreate(stack)
-                                .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                        NBTCondition.create(NBTTagType.STRING, "entityId", Witch)))
-                        .input(ModObject.itemMaterial.getItemNN(), 1, 43)
-                        .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 8640))
-                        .output(ModObject.itemSoulVial.getItemNN())
-                        .output(ModObject.itemMaterial.getItemNN(), 1, 44)
-                        .duration(1000).EUt(VA[LV]).buildAndRegister();
-            }
-    }
-
-    private static void recipeWitherSkeleton() {
-        ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setString("entityId", "minecraft:wither_skeleton");
-        stack.setTagCompound(tag);
-
-        // Vial Extractor
-        GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                .input(GTRecipeItemInput.getOrCreate(stack)
-                        .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:wither_skeleton")))
-                .output(ModObject.itemSoulVial.getItemNN())
-                .output(Items.SKULL, 5, 1)
-                .output(Items.BONE, 5)
-                .chancedOutput(new ItemStack(Items.COAL), 250, 250)
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                .duration(600).EUt(30).buildAndRegister();
+            // Soul Binder - Sentient Ender
+            GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+                    .input(GTRecipeItemInput.getOrCreate(stack)
+                            .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
+                                    NBTCondition.create(NBTTagType.STRING, "entityId", Witch)))
+                    .input(ModObject.itemMaterial.getItemNN(), 1, 43)
+                    .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 8640))
+                    .output(ModObject.itemSoulVial.getItemNN())
+                    .output(ModObject.itemMaterial.getItemNN(), 1, 44)
+                    .duration(1000).EUt(VA[LV]).buildAndRegister();
+        }
     }
 
     private static void recipeZombie() {
-        List<String> zombie = new ArrayList<>();
-        zombie.add("minecraft:zombie");
-        zombie.add("minecraft:husk");
-        zombie.add("minecraft:zombie_villager");
-        for (String Zombie : zombie) {
+        for (String Zombie : Arrays.asList("minecraft:zombie", "minecraft:husk", "minecraft:zombie_villager")) {
             ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
             NBTTagCompound tag = new NBTTagCompound();
             tag.setString("entityId", Zombie);
@@ -310,58 +169,48 @@ public class EIOSoulRecipeLoader {
                     .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemMaterial.getItemNN(), 1, 42)
                     .duration(1000).EUt(VA[LV]).buildAndRegister();
-
-            // Vial Extractor
-            GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                    .input(GTRecipeItemInput.getOrCreate(stack)
-                            .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                    NBTCondition.create(NBTTagType.STRING, "entityId", Zombie)))
-                    .output(ModObject.itemSoulVial.getItemNN())
-                    .output(Items.SKULL, 10, 2)
-                    .output(Items.ROTTEN_FLESH, 10)
-                    .chancedOutput(ingot, Iron, 100, 0)
-                    .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                    .duration(600).EUt(30).buildAndRegister();
         }
     }
 
-    private static void  recipeGuardian() {
-        List<String> guardian = new ArrayList<>();
-        guardian.add("minecraft:guardian");
-        guardian.add("minecraft:elder_guardian");
-        for (String Guardian : guardian) {
-            ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-            NBTTagCompound tag = new NBTTagCompound();
-            tag.setString("entityId", Guardian);
-            stack.setTagCompound(tag);
-
-            // Vial Extractor
-            GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
-                    .input(GTRecipeItemInput.getOrCreate(stack)
-                            .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                    NBTCondition.create(NBTTagType.STRING, "entityId", Guardian)))
-                    .output(ModObject.itemSoulVial.getItemNN())
-                    .output(Items.PRISMARINE_SHARD, 5)
-                    .outputs(new ItemStack(Blocks.SPONGE, 1, 1))
-                    .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                    .duration(600).EUt(30).buildAndRegister();
-        }
-    }
-
-    private static void recipeSquid() {
+    /**
+     * @param entityName Name of entity, `modID:entityName`
+     * @param xpAmount Amount of Liquid XP to output
+     * @param applyForRecipeBuilder Methods to call for recipe builder
+     */
+    private static void registerVialExtractorRecipe(String entityName, int xpAmount, Consumer<RecipeBuilder<SimpleRecipeBuilder>> applyForRecipeBuilder) {
         ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
         NBTTagCompound tag = new NBTTagCompound();
-        tag.setString("entityId", "minecraft:squid");
+        tag.setString("entityId", entityName);
         stack.setTagCompound(tag);
 
-        // Vial Extractor
-        GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder()
+        RecipeBuilder<SimpleRecipeBuilder> recipeBuilder = GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder();
+
+        recipeBuilder
                 .input(GTRecipeItemInput.getOrCreate(stack)
-                        .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:squid")))
+                .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
+                        NBTCondition.create(NBTTagType.STRING, "entityId", entityName)))
                 .output(ModObject.itemSoulVial.getItemNN())
-                .outputs(new ItemStack(Items.DYE, 10, 0))
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 1000))
-                .duration(600).EUt(30).buildAndRegister();
+                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), xpAmount));
+
+        applyForRecipeBuilder.accept(recipeBuilder);
+
+        recipeBuilder.duration(600).EUt(30).buildAndRegister();
+    }
+
+    /**
+     * @param entityName Name of entity, `modID:entityName`
+     * @param xpAmount Amount of Liquid XP to output
+     * @param outputs Item outputs, except for empty vial
+     */
+    private static void registerVialExtractorRecipe(String entityName, int xpAmount, ItemStack... outputs) {
+        registerVialExtractorRecipe(entityName, xpAmount, builder -> builder.outputs(outputs));
+    }
+
+    /**
+     * @param entityName Name of entity, `modID:entityName`
+     * @param outputs Item outputs, except for empty vial
+     */
+    private static void registerVialExtractorRecipe(String entityName, ItemStack... outputs) {
+        registerVialExtractorRecipe(entityName, 1000, outputs);
     }
 }
