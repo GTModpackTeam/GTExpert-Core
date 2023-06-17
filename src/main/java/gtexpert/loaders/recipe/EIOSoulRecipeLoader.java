@@ -194,7 +194,7 @@ public class EIOSoulRecipeLoader {
 
         applyForRecipeBuilder.accept(recipeBuilder);
 
-        recipeBuilder.duration(600).EUt(30).buildAndRegister();
+        recipeBuilder.duration(600).EUt(VA[LV]).buildAndRegister();
     }
 
     /**
