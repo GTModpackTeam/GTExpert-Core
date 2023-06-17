@@ -8,6 +8,7 @@ import gregtech.api.recipes.RecipeMap;
 import java.util.function.Supplier;
 
 public class SingleblockRecipeLogicNoCache extends RecipeLogicEnergy {
+
     public SingleblockRecipeLogicNoCache(MetaTileEntity tileEntity, RecipeMap<?> recipeMap,
                                          Supplier<IEnergyContainer> energyContainer) {
         super(tileEntity, recipeMap, energyContainer);

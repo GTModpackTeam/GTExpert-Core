@@ -2,13 +2,16 @@ package gtexpert.integration.theoneprobe.provider;
 
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+
 import gtexpert.api.GTEValues;
 import gtexpert.common.metatileentities.single.MetaTileEntityElectricSpawner;
-import mcjty.theoneprobe.api.*;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import mcjty.theoneprobe.api.*;
 
 import javax.annotation.Nonnull;
 
@@ -20,7 +23,8 @@ public class ElectricSpawnerInfoProvider implements IProbeInfoProvider {
     }
 
     @Override
-    public void addProbeInfo(@Nonnull ProbeMode mode, @Nonnull IProbeInfo probeInfo, @Nonnull EntityPlayer player, @Nonnull World world, @Nonnull IBlockState blockState, @Nonnull IProbeHitData data) {
+    public void addProbeInfo(@Nonnull ProbeMode mode, @Nonnull IProbeInfo probeInfo, @Nonnull EntityPlayer player,
+                             @Nonnull World world, @Nonnull IBlockState blockState, @Nonnull IProbeHitData data) {
         if (!blockState.getBlock().hasTileEntity(blockState)) return;
         TileEntity tileEntity = world.getTileEntity(data.getPos());
         if (!(tileEntity instanceof MetaTileEntityHolder)) return;

@@ -1,10 +1,8 @@
 package gtexpert.loaders.recipe.ingredients;
 
-import gregtech.api.GTValues;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.RecipeMaps;
-import gtexpert.api.GTEValues;
-import net.minecraft.init.Blocks;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -19,6 +17,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.api.util.GTEUtils.getModFluid;
 
 public class GTFORecipeLoader {
+
     public static void init() {
         // craftSludge
         OreDictionary.registerOre("craftSludge", new ItemStack(Items.PORKCHOP));
@@ -47,13 +46,11 @@ public class GTFORecipeLoader {
         craftSludge.add(new ItemStack(Items.FISH, 1, 2));
         for (ItemStack itemStack : craftSludge) {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MIXER_RECIPES,
-                    new ItemStack[]{itemStack},
-                    new FluidStack[]{SulfuricAcid.getFluid(200)}
-            );
+                    new ItemStack[] { itemStack },
+                    new FluidStack[] { SulfuricAcid.getFluid(200) });
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MIXER_RECIPES,
-                    new ItemStack[]{itemStack},
-                    new FluidStack[]{Water.getFluid(400)}
-            );
+                    new ItemStack[] { itemStack },
+                    new FluidStack[] { Water.getFluid(400) });
         }
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(1)

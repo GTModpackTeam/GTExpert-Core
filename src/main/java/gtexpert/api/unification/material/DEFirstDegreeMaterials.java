@@ -1,11 +1,12 @@
 package gtexpert.api.unification.material;
 
-import gregicality.multiblocks.api.fluids.fluidType.GCYMFluidTypes;
 import gregtech.api.fluids.fluidType.FluidTypes;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.material.properties.ToolProperty;
+
+import gregicality.multiblocks.api.fluids.fluidType.GCYMFluidTypes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -14,6 +15,7 @@ import static gtexpert.api.unification.Elements.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 
 public class DEFirstDegreeMaterials {
+
     /**
      * 24176 - 24200
      */
@@ -49,7 +51,9 @@ public class DEFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x7C46B0).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(7200, GasTier.HIGHER, VA[LuV], 600)
-                .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_RING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
+                .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_RING,
+                        EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES,
+                        EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
                 .components(DRAGON, 1, Obsidian, 1, EnderPearl, 4, LiquidEnderAir, 8)
                 .toolStats(ToolProperty.Builder.of(80.0F, 2.0F, 4096, 5)
                         .enchantability(14).build())
@@ -63,7 +67,9 @@ public class DEFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xFF6C00).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(7200, GasTier.HIGHEST, VA[LuV], 600)
-                .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_RING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
+                .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_RING,
+                        EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES,
+                        EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
                 .toolStats(ToolProperty.Builder.of(120.0F, 2.0F, 7168, 6)
                         .enchantability(20).build())
                 .rotorStats(21.5f, 7.5f, 7168)

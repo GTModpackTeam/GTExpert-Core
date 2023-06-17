@@ -10,9 +10,11 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import gregtech.common.ConfigHolder;
 import gregtech.common.metatileentities.MetaTileEntities;
+
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEConfigHolder;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -20,6 +22,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
+
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
@@ -31,6 +34,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 
 public class CEUOverrideRecipeLoader {
+
     public static void init() {
         materials();
         items();
@@ -40,19 +44,24 @@ public class CEUOverrideRecipeLoader {
 
     private static void materials() {
         // Iron Nugget
-        ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Iron, 9), OreDictUnifier.get(ingot, Iron, 1));
+        ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Iron, 9),
+                OreDictUnifier.get(ingot, Iron, 1));
 
         // Gold Nugget
-        ModHandler.addShapelessRecipe("gold_nugget", OreDictUnifier.get(nugget, Gold, 9), OreDictUnifier.get(ingot, Gold, 1));
+        ModHandler.addShapelessRecipe("gold_nugget", OreDictUnifier.get(nugget, Gold, 9),
+                OreDictUnifier.get(ingot, Gold, 1));
 
         // Wrought Iron Nugget
-        ModHandler.addSmeltingRecipe(OreDictUnifier.get(nugget, WroughtIron, 1), OreDictUnifier.get(nugget, WroughtIron, 1));
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(nugget, WroughtIron, 1),
+                OreDictUnifier.get(nugget, WroughtIron, 1));
 
         // Wrought Iron Ingot
-        ModHandler.addShapedRecipe("wrought_iron_ingot", OreDictUnifier.get(ingot, WroughtIron, 1), "XXX", "XXX", "XXX", 'X', OreDictUnifier.get(nugget, WroughtIron, 1));
+        ModHandler.addShapedRecipe("wrought_iron_ingot", OreDictUnifier.get(ingot, WroughtIron, 1), "XXX", "XXX", "XXX",
+                'X', OreDictUnifier.get(nugget, WroughtIron, 1));
 
         // Stone Rod
-        ModHandler.addMirroredShapedRecipe("stone_rod", OreDictUnifier.get(stick, Stone), "s", "S", 'S', new UnificationEntry(block, Stone));
+        ModHandler.addMirroredShapedRecipe("stone_rod", OreDictUnifier.get(stick, Stone), "s", "S", 'S',
+                new UnificationEntry(block, Stone));
 
         // Glowstone Dust
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Glowstone, 2));
@@ -79,21 +88,17 @@ public class CEUOverrideRecipeLoader {
         // Ice (Bug Fix)
         // ########################################
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(dust, Ice, 1)},
-                new FluidStack[]{Ice.getFluid(144)}
-        );
+                new ItemStack[] { OreDictUnifier.get(dust, Ice, 1) },
+                new FluidStack[] { Ice.getFluid(144) });
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, Ice, 1)},
-                new FluidStack[]{Ice.getFluid(144)}
-        );
+                new ItemStack[] { OreDictUnifier.get(block, Ice, 1) },
+                new FluidStack[] { Ice.getFluid(144) });
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_HEATER_RECIPES,
-                new ItemStack[]{IntCircuitIngredient.getIntegratedCircuit(1)},
-                new FluidStack[]{Ice.getFluid(144)}
-        );
+                new ItemStack[] { IntCircuitIngredient.getIntegratedCircuit(1) },
+                new FluidStack[] { Ice.getFluid(144) });
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
-                new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},
-                new FluidStack[]{Ice.getFluid(144)}
-        );
+                new ItemStack[] { SHAPE_MOLD_BLOCK.getStackForm() },
+                new FluidStack[] { Ice.getFluid(144) });
 
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
@@ -121,7 +126,6 @@ public class CEUOverrideRecipeLoader {
                 .duration(6).EUt(VA[ULV])
                 .buildAndRegister();
 
-
         // ########################################
         // Quartzite (Bug Fix)
         // ########################################
@@ -129,17 +133,14 @@ public class CEUOverrideRecipeLoader {
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, Quartzite, 9));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES, OreDictUnifier.get(block, Quartzite, 1));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, Quartzite, 1)},
-                new FluidStack[]{Lubricant.getFluid(3)}
-        );
+                new ItemStack[] { OreDictUnifier.get(block, Quartzite, 1) },
+                new FluidStack[] { Lubricant.getFluid(3) });
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, Quartzite, 1)},
-                new FluidStack[]{DistilledWater.getFluid(11)}
-        );
+                new ItemStack[] { OreDictUnifier.get(block, Quartzite, 1) },
+                new FluidStack[] { DistilledWater.getFluid(11) });
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, Quartzite, 1)},
-                new FluidStack[]{Water.getFluid(15)}
-        );
+                new ItemStack[] { OreDictUnifier.get(block, Quartzite, 1) },
+                new FluidStack[] { Water.getFluid(15) });
 
         // Dust
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
@@ -182,33 +183,28 @@ public class CEUOverrideRecipeLoader {
                 .duration(300).EUt(VA[LV])
                 .buildAndRegister();
 
-
         // ########################################
         // Certus Quartz (Bug Fix)
         // ########################################
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, CertusQuartz, 1));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, CertusQuartz, 9));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES, OreDictUnifier.get(block, CertusQuartz, 1));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES,
+                OreDictUnifier.get(block, CertusQuartz, 1));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, CertusQuartz, 1)},
-                new FluidStack[]{CertusQuartz.getFluid(1296)}
-        );
+                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
+                new FluidStack[] { CertusQuartz.getFluid(1296) });
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
-                new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},
-                new FluidStack[]{CertusQuartz.getFluid(1296)}
-        );
+                new ItemStack[] { SHAPE_MOLD_BLOCK.getStackForm() },
+                new FluidStack[] { CertusQuartz.getFluid(1296) });
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, CertusQuartz, 1)},
-                new FluidStack[]{Lubricant.getFluid(3)}
-        );
+                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
+                new FluidStack[] { Lubricant.getFluid(3) });
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, CertusQuartz, 1)},
-                new FluidStack[]{DistilledWater.getFluid(11)}
-        );
+                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
+                new FluidStack[] { DistilledWater.getFluid(11) });
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(block, CertusQuartz, 1)},
-                new FluidStack[]{Water.getFluid(15)}
-        );
+                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
+                new FluidStack[] { Water.getFluid(15) });
 
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
@@ -268,9 +264,8 @@ public class CEUOverrideRecipeLoader {
     private static void items() {
         // Tiny Pile of Ashes (Bookshelf Override)
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ARC_FURNACE_RECIPES,
-                new ItemStack[]{new ItemStack(Blocks.BOOKSHELF)},
-                new FluidStack[]{Oxygen.getFluid(21)}
-        );
+                new ItemStack[] { new ItemStack(Blocks.BOOKSHELF) },
+                new FluidStack[] { Oxygen.getFluid(21) });
         RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
                 .input("bookshelf")
                 .fluidInputs(Oxygen.getFluid(21))
@@ -311,21 +306,24 @@ public class CEUOverrideRecipeLoader {
                 .buildAndRegister();
 
         // Ultra High Voltage 4x Battery Buffer
-        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.4", MetaTileEntities.BATTERY_BUFFER[0][UHV].getStackForm(),
+        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.4",
+                MetaTileEntities.BATTERY_BUFFER[0][UHV].getStackForm(),
                 "WTW", "WMW",
                 'M', MetaTileEntities.HULL[UHV].getStackForm(),
                 'W', new UnificationEntry(wireGtQuadruple, Europium),
                 'T', OreDictNames.chestWood);
 
         // Ultra High Voltage 8x Battery Buffer
-        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.8", MetaTileEntities.BATTERY_BUFFER[1][UHV].getStackForm(),
+        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.8",
+                MetaTileEntities.BATTERY_BUFFER[1][UHV].getStackForm(),
                 "WTW", "WMW",
                 'M', MetaTileEntities.HULL[UHV].getStackForm(),
                 'W', new UnificationEntry(wireGtOctal, Europium),
                 'T', OreDictNames.chestWood);
 
         // Ultra High Voltage 16x Battery Buffer
-        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.16", MetaTileEntities.BATTERY_BUFFER[2][UHV].getStackForm(),
+        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.16",
+                MetaTileEntities.BATTERY_BUFFER[2][UHV].getStackForm(),
                 "WTW", "WMW",
                 'M', MetaTileEntities.HULL[UHV].getStackForm(),
                 'W', new UnificationEntry(wireGtHex, Europium),
@@ -345,9 +343,15 @@ public class CEUOverrideRecipeLoader {
         // Wood sticks
         if (ConfigHolder.recipes.nerfWoodCrafting) {
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "stick_normal"));
-            ModHandler.addMirroredShapedRecipe("stick_normal", GTEConfigHolder.moreNerfWoodCrafting ? new ItemStack(Items.STICK, 1) : new ItemStack(Items.STICK, 2), "P", "P", 'P', new UnificationEntry(plank, Wood));
+            ModHandler.addMirroredShapedRecipe("stick_normal", GTEConfigHolder.moreNerfWoodCrafting ?
+                    new ItemStack(Items.STICK, 1) : new ItemStack(Items.STICK, 2), "P", "P", 'P',
+                    new UnificationEntry(plank, Wood));
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "stick_saw"));
-            ModHandler.addMirroredShapedRecipe("stick_saw", GTEConfigHolder.moreNerfWoodCrafting ? new ItemStack(Items.STICK, 2) : new ItemStack(Items.STICK, 4), "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
+            ModHandler
+                    .addMirroredShapedRecipe("stick_saw",
+                            GTEConfigHolder.moreNerfWoodCrafting ? new ItemStack(Items.STICK, 2) :
+                                    new ItemStack(Items.STICK, 4),
+                            "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
         }
 
         // Wood planks
@@ -359,10 +363,20 @@ public class CEUOverrideRecipeLoader {
             ItemStack plankStack = outputPair.getValue();
             if (plankStack.isEmpty()) continue;
 
-            ModHandler.removeRecipeByOutput(GTUtility.copyAmount(ConfigHolder.recipes.nerfWoodCrafting ? 2 : 4, plankStack));
-            ModHandler.removeRecipeByOutput(GTUtility.copyAmount(ConfigHolder.recipes.nerfWoodCrafting ? 4 : 6, plankStack));
-            ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copyAmount(ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.moreNerfWoodCrafting ? 1 : 2 : 4, plankStack), allWoodLogs.get(i));
-            ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copyAmount(ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.moreNerfWoodCrafting ? 2 : 4 : 6, plankStack), "s", "P", 'P', allWoodLogs.get(i));
+            ModHandler.removeRecipeByOutput(
+                    GTUtility.copyAmount(ConfigHolder.recipes.nerfWoodCrafting ? 2 : 4, plankStack));
+            ModHandler.removeRecipeByOutput(
+                    GTUtility.copyAmount(ConfigHolder.recipes.nerfWoodCrafting ? 4 : 6, plankStack));
+            ModHandler.addShapelessRecipe("plank_" + i,
+                    GTUtility.copyAmount(
+                            ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.moreNerfWoodCrafting ? 1 : 2 : 4,
+                            plankStack),
+                    allWoodLogs.get(i));
+            ModHandler.addMirroredShapedRecipe("plank_saw_" + i,
+                    GTUtility.copyAmount(
+                            ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.moreNerfWoodCrafting ? 2 : 4 : 6,
+                            plankStack),
+                    "s", "P", 'P', allWoodLogs.get(i));
             GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
                     .circuitMeta(1)
                     .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
@@ -380,7 +394,13 @@ public class CEUOverrideRecipeLoader {
                     .buildAndRegister();
 
             // Add Cutter recipes for all wood logs
-            if (allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 0)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 1)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 2)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 3)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 0)) || allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 1))) return;
+            if (allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 0)) ||
+                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 1)) ||
+                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 2)) ||
+                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 3)) ||
+                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 0)) ||
+                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 1)))
+                return;
             if (Loader.isModLoaded(GTEValues.MODID_GTFO)) return;
 
             RecipeMaps.CUTTER_RECIPES.recipeBuilder()

@@ -1,5 +1,23 @@
 package gtexpert.api.recipes.draconic;
 
+import gregtech.api.capability.FeCompat;
+import gregtech.api.capability.GregtechCapabilities;
+import gregtech.api.capability.IElectricItem;
+import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+
+import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
+import gtexpert.api.recipes.draconic.tierup.TierUpRecipeProperty;
+import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
+import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeProperty;
+import gtexpert.api.util.GTELog;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.fluids.FluidStack;
+
 import cofh.redstoneflux.api.IEnergyContainerItem;
 import com.brandon3055.brandonscore.utils.ItemNBTHelper;
 import com.brandon3055.draconicevolution.api.fusioncrafting.IFusionRecipe;
@@ -8,32 +26,21 @@ import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
-import gregtech.api.capability.FeCompat;
-import gregtech.api.capability.GregtechCapabilities;
-import gregtech.api.capability.IElectricItem;
-import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
-import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeProperty;
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeProperty;
-import gtexpert.api.util.GTELog;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.fluids.FluidStack;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private final RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap;
     private final RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap;
 
-    public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs, int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder, boolean isHidden, RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap, RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap) {
+    public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
+                                   int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder,
+                                   boolean isHidden, RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap,
+                                   RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap) {
         super(unlocalizedName, maxInputs, maxOutputs, maxFluidInputs, maxFluidOutputs, defaultRecipeBuilder, isHidden);
         this.tierUpRecipeMap = tierUpRecipeMap;
         this.upgradeRecipeMap = upgradeRecipeMap;
@@ -51,18 +58,23 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
         Recipe tierUpRecipe = tierUpRecipeMap.findRecipe(voltage, inputs, fluidInputs, exactVoltage);
         if (tierUpRecipe != null) {
-            return setupOutput(tierUpRecipe, inputs, tierUpRecipe.getProperty(TierUpRecipeProperty.getInstance(), null));
+            return setupOutput(tierUpRecipe, inputs,
+                    tierUpRecipe.getProperty(TierUpRecipeProperty.getInstance(), null));
         }
 
         // We need to manually search RecipeMap here.
         //
-        // RecipeMap#recurseIngredientTreeFindRecipe only searches branch first found (`Either<Recipe, Branch> result = targetMap.get(obj);`).
+        // RecipeMap#recurseIngredientTreeFindRecipe only searches branch first found (`Either<Recipe, Branch> result =
+        // targetMap.get(obj);`).
         // This is fine in most of the situations, but here it's not;
         //
-        // When recipes get added, many of the catalyst objects are not equal each other, as they don't have level-0 tag and UpgradeRecipeBuilder#EQUAL_TO_RECURSIVE returns false, hence all the recipes are added as separate nodes.
-        //     example: #lookup -> [draconic_helm -> [tool_upgrade@9], draconic_helm -> [tool_upgrade@8], ...], instead of [draconic_helm -> [tool_upgrade@9, tool_upgrade@8]]
+        // When recipes get added, many of the catalyst objects are not equal each other, as they don't have level-0 tag
+        // and UpgradeRecipeBuilder#EQUAL_TO_RECURSIVE returns false, hence all the recipes are added as separate nodes.
+        // example: #lookup -> [draconic_helm -> [tool_upgrade@9], draconic_helm -> [tool_upgrade@8], ...], instead of
+        // [draconic_helm -> [tool_upgrade@9, tool_upgrade@8]]
         // But when searching recipe, an itemstack can match (`equals`) to multiple branches.
-        //     example: when draconic_helm with no upgrade is passed as input, it can match to all branches accepts basic upgrade
+        // example: when draconic_helm with no upgrade is passed as input, it can match to all branches accepts basic
+        // upgrade
         for (Recipe recipe : upgradeRecipeMap.getRecipeList()) {
             if (recipe.getEUt() <= voltage && recipe.matches(false, inputs, fluidInputs)) {
                 return setupOutput(recipe, inputs, recipe.getProperty(UpgradeRecipeProperty.getInstance(), null));
@@ -108,7 +120,8 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
             int feCharge = (int) Math.min(euCharge * FeCompat.ratio(false), Integer.MAX_VALUE);
             if (outputStack.getItem() instanceof IEnergyContainerItem) {
                 IEnergyContainerItem outputEnergyItem = (IEnergyContainerItem) outputStack.getItem();
-                ItemNBTHelper.setInteger(outputStack, "Energy", Math.min(feCharge, outputEnergyItem.getMaxEnergyStored(outputStack)));
+                ItemNBTHelper.setInteger(outputStack, "Energy",
+                        Math.min(feCharge, outputEnergyItem.getMaxEnergyStored(outputStack)));
             }
         }
 
@@ -125,9 +138,8 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
             return ItemStack.EMPTY;
         }
         for (ItemStack input : inputs) {
-            if (expectedCatalyst.getItem() == input.getItem()
-                    && expectedCatalyst.getItemDamage() == input.getItemDamage()
-                    && fusionRecipe.isRecipeCatalyst(input)) {
+            if (expectedCatalyst.getItem() == input.getItem() &&
+                    expectedCatalyst.getItemDamage() == input.getItemDamage() && fusionRecipe.isRecipeCatalyst(input)) {
                 return input;
             }
         }

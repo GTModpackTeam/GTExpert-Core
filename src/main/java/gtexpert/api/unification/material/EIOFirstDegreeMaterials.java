@@ -11,6 +11,7 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 
 public class EIOFirstDegreeMaterials {
+
     /**
      * 24101 - 24150
      */

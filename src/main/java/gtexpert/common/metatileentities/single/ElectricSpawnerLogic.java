@@ -1,11 +1,5 @@
 package gtexpert.common.metatileentities.single;
 
-import com.enderio.core.client.render.BoundingBox;
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.base.item.soulvial.ItemSoulVial;
-import crazypants.enderio.machines.config.config.SpawnerConfig;
-import crazypants.enderio.machines.machine.spawner.BlockPoweredSpawner;
-import crazypants.enderio.util.CapturedMob;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.RecipeLogicEnergy;
@@ -13,7 +7,9 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.logic.OverclockingLogic;
 import gregtech.api.util.GTTransferUtils;
 import gregtech.api.util.GTUtility;
+
 import gtexpert.api.capability.GTEDataCodes;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
@@ -27,12 +23,20 @@ import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
+import com.enderio.core.client.render.BoundingBox;
+import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.base.item.soulvial.ItemSoulVial;
+import crazypants.enderio.machines.config.config.SpawnerConfig;
+import crazypants.enderio.machines.machine.spawner.BlockPoweredSpawner;
+import crazypants.enderio.util.CapturedMob;
+
 import java.util.Collections;
 import java.util.function.Supplier;
+import javax.annotation.Nonnull;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static gregtech.api.GTValues.ULV;
 
@@ -153,7 +157,8 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
             return true;
         }
 
-        if (!metaTileEntity.canVoidRecipeItemOutputs() && !GTTransferUtils.addItemsToItemHandler(getOutputInventory(), true, Collections.singletonList(outputItem))) {
+        if (!metaTileEntity.canVoidRecipeItemOutputs() && !GTTransferUtils.addItemsToItemHandler(getOutputInventory(),
+                true, Collections.singletonList(outputItem))) {
             this.isOutputsFull = true;
             return false;
         }
@@ -166,7 +171,8 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         // TODO: adjust energy consumption
         int eut = 30;
         int duration = 10 * 20;
-        this.overclockResults = OverclockingLogic.standardOverclockingLogic(eut, getMaximumOverclockVoltage(), duration, getNumberOfOCs(eut), 1, 1);
+        this.overclockResults = OverclockingLogic.standardOverclockingLogic(eut, getMaximumOverclockVoltage(), duration,
+                getNumberOfOCs(eut), 1, 1);
 
         return hasEnoughPower(overclockResults);
     }
@@ -269,9 +275,11 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         cleanupUnspawnedEntity(entity);
     }
 
-    private boolean isAreaClear(World world, Class<? extends Entity> entityClass, int spawnRangeXZ, int spawnRangeY, int amount) {
+    private boolean isAreaClear(World world, Class<? extends Entity> entityClass, int spawnRangeXZ, int spawnRangeY,
+                                int amount) {
         if (amount > 0) {
-            return world.getEntitiesWithinAABB(entityClass, new BoundingBox(metaTileEntity.getPos()).expand(spawnRangeXZ, spawnRangeY, spawnRangeXZ),
+            return world.getEntitiesWithinAABB(entityClass,
+                    new BoundingBox(metaTileEntity.getPos()).expand(spawnRangeXZ, spawnRangeY, spawnRangeXZ),
                     EntitySelectors.IS_ALIVE).size() < amount;
         }
         return true;
@@ -279,10 +287,9 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
 
     private boolean canSpawnEntity(EntityLiving entityliving) {
         // this is the logic from ForgeEventFactory.canEntitySpawnSpawner() with some additions
-        switch (SpawnerConfig.poweredSpawnerUseForgeSpawnChecks.get()
-                ? ForgeEventFactory.canEntitySpawn(entityliving, entityliving.world, (float) entityliving.posX, (float) entityliving.posY, (float) entityliving.posZ,
-                null)
-                : Event.Result.DEFAULT) {
+        switch (SpawnerConfig.poweredSpawnerUseForgeSpawnChecks.get() ? ForgeEventFactory.canEntitySpawn(entityliving,
+                entityliving.world, (float) entityliving.posX, (float) entityliving.posY, (float) entityliving.posZ,
+                null) : Event.Result.DEFAULT) {
             case ALLOW:
                 return true;
             case DEFAULT:
@@ -381,8 +388,8 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         if (ent == null) {
             return null;
         }
-        if (SpawnerConfig.poweredSpawnerMaxPlayerDistance.get() <= 0 && SpawnerConfig.poweredSpawnerDespawnTimeSeconds.get() > 0
-                && ent instanceof EntityLiving) {
+        if (SpawnerConfig.poweredSpawnerMaxPlayerDistance.get() <= 0 &&
+                SpawnerConfig.poweredSpawnerDespawnTimeSeconds.get() > 0 && ent instanceof EntityLiving) {
             ent.getEntityData().setLong(BlockPoweredSpawner.KEY_SPAWNED_BY_POWERED_SPAWNER, world.getTotalWorldTime());
             ((EntityLiving) ent).enablePersistence();
         }
