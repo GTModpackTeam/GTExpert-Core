@@ -17,6 +17,8 @@
  * To add a mod with CurseMaven, replace '("g:n:v:c")' in the above with 'rfg.deobf("curse.maven:project_slug-project_id:file_id")'
  * Example: implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4527757")
  *
+ * To shadow a dependency, use 'shadowImplementation'. For more info, see https://github.com/GregTechCEu/Buildscripts/blob/master/docs/shadow.md
+ *
  * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
 dependencies {
@@ -57,6 +59,12 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:brandons-core-231382:3408276")
         runtimeOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
         runtimeOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704")
+    }
+
+    // Debug Chisel
+    compileOnly rfg.deobf("curse.maven:chisel-235279:2915375")
+    if (project.debug_chisel.toBoolean()) {
+        implementation rfg.deobf("curse.maven:chisel-235279:2915375")
     }
 
     // Boot error fix
