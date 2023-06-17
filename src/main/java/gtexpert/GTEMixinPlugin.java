@@ -1,9 +1,10 @@
 package gtexpert;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
+
+import org.jetbrains.annotations.Nullable;
 
 @IFMLLoadingPlugin.MCVersion("1.12.2")
 public class GTEMixinPlugin implements IFMLLoadingPlugin {
@@ -25,9 +26,7 @@ public class GTEMixinPlugin implements IFMLLoadingPlugin {
     }
 
     @Override
-    public void injectData(Map<String, Object> map) {
-
-    }
+    public void injectData(Map<String, Object> map) {}
 
     @Override
     public String getAccessTransformerClass() {

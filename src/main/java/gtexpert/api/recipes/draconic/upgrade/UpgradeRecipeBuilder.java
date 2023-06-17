@@ -1,10 +1,5 @@
 package gtexpert.api.recipes.draconic.upgrade;
 
-import com.brandon3055.draconicevolution.DEFeatures;
-import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
-import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
-import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
-import com.brandon3055.draconicevolution.items.ToolUpgrade;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
@@ -13,9 +8,18 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
+
 import gtexpert.api.util.GTELog;
+
 import net.minecraft.item.ItemStack;
+
+import com.brandon3055.draconicevolution.DEFeatures;
+import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
+import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
+import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
+import com.brandon3055.draconicevolution.items.ToolUpgrade;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,7 +49,8 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
             return super.applyProperty(key, value);
         }
         if (!(value instanceof FusionUpgradeRecipe)) {
-            throw new IllegalArgumentException("Property for draconic upgrade must be an instance of FusionUpgradeRecipe!");
+            throw new IllegalArgumentException(
+                    "Property for draconic upgrade must be an instance of FusionUpgradeRecipe!");
         }
         this.applyProperty(UpgradeRecipeProperty.getInstance(), value);
         return true;
@@ -75,12 +80,16 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
             GTELog.logger.error("Catalyst is not an instance of IUpgradableItem", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         } else if (!((IUpgradableItem) catalyst.getItem()).getValidUpgrades(catalyst).contains(upgradeName)) {
-            GTELog.logger.error("Upgrade " + upgradeName + " is not valid for this catalyst", new IllegalArgumentException());
+            GTELog.logger.error("Upgrade " + upgradeName + " is not valid for this catalyst",
+                    new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
-        } else if (((IUpgradableItem) catalyst.getItem()).getMaxUpgradeLevel(catalyst, upgradeName) < currentLevel + 1) {
-            GTELog.logger.error("Max level of upgrade " + upgradeName + " is " + ((IUpgradableItem) catalyst.getItem()).getMaxUpgradeLevel(catalyst, upgradeName) + ", which supplied level is going to exceed", new IllegalArgumentException());
-            recipeStatus = EnumValidationResult.INVALID;
-        }
+        } else
+            if (((IUpgradableItem) catalyst.getItem()).getMaxUpgradeLevel(catalyst, upgradeName) < currentLevel + 1) {
+                GTELog.logger.error("Max level of upgrade " + upgradeName + " is " +
+                        ((IUpgradableItem) catalyst.getItem()).getMaxUpgradeLevel(catalyst, upgradeName) +
+                        ", which supplied level is going to exceed", new IllegalArgumentException());
+                recipeStatus = EnumValidationResult.INVALID;
+            }
 
         return this.recipeStatus;
     }
@@ -117,8 +126,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
                 0,
                 currentLevel,
                 upgradeLevel,
-                input
-        ));
+                input));
         inputs.add(1, GTRecipeItemInput.getOrCreate(upgradeKey, upgradeKey.getCount()).setNonConsumable());
     }
 

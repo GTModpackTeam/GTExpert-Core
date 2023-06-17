@@ -1,6 +1,5 @@
 package gtexpert.api.recipes.draconic.tierup;
 
-import com.brandon3055.draconicevolution.lib.ToolUpgradeRecipe;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
@@ -9,10 +8,15 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
+
 import gtexpert.api.util.GTELog;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+
+import com.brandon3055.draconicevolution.lib.ToolUpgradeRecipe;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,7 +42,8 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
             return super.applyProperty(key, value);
         }
         if (!(value instanceof ToolUpgradeRecipe)) {
-            throw new IllegalArgumentException("Property for draconic upgrade must be an instance of ToolUpgradeRecipe!");
+            throw new IllegalArgumentException(
+                    "Property for draconic upgrade must be an instance of ToolUpgradeRecipe!");
         }
         this.applyProperty(TierUpRecipeProperty.getInstance(), value);
         return true;

@@ -31,8 +31,10 @@ public class GTEFirstDegreeMaterials {
                 .ingot()
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xa90000).iconSet(MaterialIconSet.METALLIC)
-                .flags(EXT_METAL, GENERATE_FRAME, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE)
-                .components(Gold, 1, Silver, 1, Ruthenium, 1, Rhodium, 1, Palladium, 1, Osmium, 1, Iridium, 1, Platinum, 1)
+                .flags(EXT_METAL, GENERATE_FRAME, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES,
+                        EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE)
+                .components(Gold, 1, Silver, 1, Ruthenium, 1, Rhodium, 1, Palladium, 1, Osmium, 1, Iridium, 1, Platinum,
+                        1)
                 .blastTemp(9001, GasTier.HIGHER, VA[ZPM], 1000)
                 .build();
 

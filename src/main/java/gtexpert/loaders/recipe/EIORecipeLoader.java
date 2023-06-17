@@ -1,20 +1,23 @@
 package gtexpert.loaders.recipe;
 
-import crazypants.enderio.base.fluid.Fluids;
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.endergy.init.EndergyObject;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
+
 import gtexpert.api.recipes.GTERecipeMaps;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import crazypants.enderio.base.fluid.Fluids;
+import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.endergy.init.EndergyObject;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -22,6 +25,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 
 public class EIORecipeLoader {
+
     public static void init() {
         // craftNutrientDistillation
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.PORKCHOP));
@@ -268,7 +272,7 @@ public class EIORecipeLoader {
 
         // Crystalline Alloy
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                //.input(ModObject.itemMaterial.getItemNN(), 1, 34)
+                // .input(ModObject.itemMaterial.getItemNN(), 1, 34)
                 .input(dust, Gold, 1)
                 .input(dust, Platinum, 1)
                 .input(dust, Emerald, 1)
@@ -412,12 +416,14 @@ public class EIORecipeLoader {
                     'P', OreDictUnifier.get(plate, DARK_STEEL));
 
             // Dark Chest
-            ModHandler.addShapedRecipe("dark_steel_chestplate", new ItemStack(ModObject.itemDarkSteelChestplate.getItemNN(), 1),
+            ModHandler.addShapedRecipe("dark_steel_chestplate",
+                    new ItemStack(ModObject.itemDarkSteelChestplate.getItemNN(), 1),
                     "PhP", "PPP", "PPP",
                     'P', OreDictUnifier.get(plate, DARK_STEEL));
 
             // Dark Leggings
-            ModHandler.addShapedRecipe("dark_steel_leggings", new ItemStack(ModObject.itemDarkSteelLeggings.getItemNN(), 1),
+            ModHandler.addShapedRecipe("dark_steel_leggings",
+                    new ItemStack(ModObject.itemDarkSteelLeggings.getItemNN(), 1),
                     "PPP", "PhP", "P P",
                     'P', OreDictUnifier.get(plate, DARK_STEEL));
 
@@ -433,13 +439,15 @@ public class EIORecipeLoader {
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 56));
 
             // Ender Chest
-            ModHandler.addShapedRecipe("end_steel_chestplate", new ItemStack(ModObject.itemEndSteelChestplate.getItemNN(), 1),
+            ModHandler.addShapedRecipe("end_steel_chestplate",
+                    new ItemStack(ModObject.itemEndSteelChestplate.getItemNN(), 1),
                     "PhP", "PGP", "PPP",
                     'P', OreDictUnifier.get(plate, END_STEEL),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 56));
 
             // Ender Leggings
-            ModHandler.addShapedRecipe("end_steel_leggings", new ItemStack(ModObject.itemEndSteelLeggings.getItemNN(), 1),
+            ModHandler.addShapedRecipe("end_steel_leggings",
+                    new ItemStack(ModObject.itemEndSteelLeggings.getItemNN(), 1),
                     "PPP", "PhP", "PGP",
                     'P', OreDictUnifier.get(plate, END_STEEL),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 56));
@@ -451,25 +459,29 @@ public class EIORecipeLoader {
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 56));
 
             // Stellar Helm
-            ModHandler.addShapedRecipe("stellar_alloy_helmet", new ItemStack(EndergyObject.itemStellarAlloyHelmet.getItemNN(), 1),
+            ModHandler.addShapedRecipe("stellar_alloy_helmet",
+                    new ItemStack(EndergyObject.itemStellarAlloyHelmet.getItemNN(), 1),
                     "PPP", "PhP", " G ",
                     'P', OreDictUnifier.get(plate, STELLAR_ALLOY),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 44));
 
             // Stellar Chest
-            ModHandler.addShapedRecipe("stellar_alloy_chestplate", new ItemStack(EndergyObject.itemStellarAlloyChestplate.getItemNN(), 1),
+            ModHandler.addShapedRecipe("stellar_alloy_chestplate",
+                    new ItemStack(EndergyObject.itemStellarAlloyChestplate.getItemNN(), 1),
                     "PhP", "PGP", "PPP",
                     'P', OreDictUnifier.get(plate, STELLAR_ALLOY),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 44));
 
             // Stellar Leggings
-            ModHandler.addShapedRecipe("stellar_alloy_leggings", new ItemStack(EndergyObject.itemStellarAlloyLeggings.getItemNN(), 1),
+            ModHandler.addShapedRecipe("stellar_alloy_leggings",
+                    new ItemStack(EndergyObject.itemStellarAlloyLeggings.getItemNN(), 1),
                     "PPP", "PhP", "PGP",
                     'P', OreDictUnifier.get(plate, STELLAR_ALLOY),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 44));
 
             // Stellar Boots
-            ModHandler.addShapedRecipe("stellar_alloy_boots", new ItemStack(EndergyObject.itemStellarAlloyBoots.getItemNN(), 1),
+            ModHandler.addShapedRecipe("stellar_alloy_boots",
+                    new ItemStack(EndergyObject.itemStellarAlloyBoots.getItemNN(), 1),
                     "PhP", "PGP",
                     'P', OreDictUnifier.get(plate, STELLAR_ALLOY),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 44));
@@ -482,7 +494,8 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stick, DARK_STEEL));
 
             // Dark Pickaxe
-            ModHandler.addShapedRecipe("dark_steel_pickaxe", new ItemStack(ModObject.itemDarkSteelPickaxe.getItemNN(), 1),
+            ModHandler.addShapedRecipe("dark_steel_pickaxe",
+                    new ItemStack(ModObject.itemDarkSteelPickaxe.getItemNN(), 1),
                     "PII", "hSf", " S ",
                     'P', OreDictUnifier.get(plate, DARK_STEEL),
                     'I', OreDictUnifier.get(ingot, DARK_STEEL),
@@ -539,7 +552,8 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stickLong, END_STEEL));
 
             // Ender Pickaxe
-            ModHandler.addShapedRecipe("ender_steel_pickaxe", new ItemStack(ModObject.itemEndSteelPickaxe.getItemNN(), 1),
+            ModHandler.addShapedRecipe("ender_steel_pickaxe",
+                    new ItemStack(ModObject.itemEndSteelPickaxe.getItemNN(), 1),
                     "PII", "hGf", " S ",
                     'P', OreDictUnifier.get(plate, END_STEEL),
                     'I', OreDictUnifier.get(ingot, END_STEEL),
@@ -570,7 +584,8 @@ public class EIORecipeLoader {
                     'P', OreDictUnifier.get(plate, END_STEEL));
 
             // Stellar Axe
-            ModHandler.addShapedRecipe("stellar_alloy_axe", new ItemStack(EndergyObject.itemStellarAlloyAxe.getItemNN(), 1),
+            ModHandler.addShapedRecipe("stellar_alloy_axe",
+                    new ItemStack(EndergyObject.itemStellarAlloyAxe.getItemNN(), 1),
                     "PIf", "PO ", "hS ",
                     'P', OreDictUnifier.get(plate, STELLAR_ALLOY),
                     'I', OreDictUnifier.get(ingot, STELLAR_ALLOY),
@@ -578,7 +593,8 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stickLong, STELLAR_ALLOY));
 
             // Stellar Pickaxe
-            ModHandler.addShapedRecipe("stellar_alloy_pickaxe", new ItemStack(EndergyObject.itemStellarAlloyPickaxe.getItemNN(), 1),
+            ModHandler.addShapedRecipe("stellar_alloy_pickaxe",
+                    new ItemStack(EndergyObject.itemStellarAlloyPickaxe.getItemNN(), 1),
                     "PII", "hOf", " S ",
                     'P', OreDictUnifier.get(plate, STELLAR_ALLOY),
                     'I', OreDictUnifier.get(ingot, STELLAR_ALLOY),
@@ -586,7 +602,8 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stickLong, STELLAR_ALLOY));
 
             // Stellar Sword
-            ModHandler.addShapedRecipe("stellar_alloy_sword", new ItemStack(EndergyObject.itemStellarAlloySword.getItemNN(), 1),
+            ModHandler.addShapedRecipe("stellar_alloy_sword",
+                    new ItemStack(EndergyObject.itemStellarAlloySword.getItemNN(), 1),
                     " P ", "hOf", " S ",
                     'P', OreDictUnifier.get(plate, STELLAR_ALLOY),
                     'O', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 44),
@@ -597,10 +614,9 @@ public class EIORecipeLoader {
                     "PhP", " P ", " P ",
                     'P', OreDictUnifier.get(plate, ELECTRICAL_STEEL));
         }
-
     }
 
-    private static void slice_n_splice(){
+    private static void slice_n_splice() {
         // Zombie Electrode
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, ENERGETIC_ALLOY)
@@ -651,7 +667,7 @@ public class EIORecipeLoader {
                 .input(Items.PRISMARINE_SHARD, 1, 0)
                 .input(plate, ENERGETIC_ALLOY)
                 .input(ModObject.itemMaterial.getItemNN(), 1, 14)
-                .input(MetaItems.SILICON_WAFER,1)
+                .input(MetaItems.SILICON_WAFER, 1)
                 .input(ModObject.itemMaterial.getItemNN(), 1, 14)
                 .output(ModObject.itemMaterial.getItemNN(), 1, 56)
                 .duration(400).EUt(VA[LV]).buildAndRegister();

@@ -5,8 +5,7 @@ import gregtech.api.items.metaitem.MetaItem;
 
 public final class GTEMetaItems {
 
-    private GTEMetaItems() {
-    }
+    private GTEMetaItems() {}
 
     public static MetaItem<?>.MetaValueItem GTE_ME_FAKE_COMPONENT;
     public static MetaItem<?>.MetaValueItem MATRIX_CORE;

@@ -1,6 +1,5 @@
 package gtexpert.loaders.recipe;
 
-import crazypants.enderio.base.init.ModObject;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
@@ -10,15 +9,19 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
+
 import gtexpert.api.GTEValues;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.integration.ae.AEHelper;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
+
+import crazypants.enderio.base.init.ModObject;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -29,6 +32,7 @@ import static gtexpert.api.util.GTEUtils.getModItem;
 import static gtexpert.common.items.GTEMetaItems.MATRIX_CORE;
 
 public class AERecipeLoader {
+
     private static final Material[] tierMaterials = new Material[] {
             WroughtIron,
             Steel,
@@ -50,12 +54,14 @@ public class AERecipeLoader {
 
         // craftNetherQuartz
         OreDictionary.registerOre("craftNetherQuartz", OreDictUnifier.get(gem, NetherQuartz));
-        OreDictionary.registerOre("craftNetherQuartz", AEHelper.aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get());
+        OreDictionary.registerOre("craftNetherQuartz",
+                AEHelper.aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get());
 
         // craftCertusQuartz
         OreDictionary.registerOre("craftCertusQuartz", OreDictUnifier.get(gem, CertusQuartz));
         OreDictionary.registerOre("craftCertusQuartz", AEHelper.aeMaterials.certusQuartzCrystal().maybeStack(1).get());
-        OreDictionary.registerOre("craftCertusQuartz", AEHelper.aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get());
+        OreDictionary.registerOre("craftCertusQuartz",
+                AEHelper.aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get());
 
         // craftFluix
         OreDictionary.registerOre("craftFluix", AEHelper.aeMaterials.fluixCrystal().maybeStack(1).get());
@@ -103,7 +109,6 @@ public class AERecipeLoader {
                 .duration(100).EUt(VA[GTEConfigHolder.voltageTierAE2])
                 .buildAndRegister();
 
-
         // ########################################
         // Neter Quartz
         // ########################################
@@ -135,7 +140,6 @@ public class AERecipeLoader {
                 .output(stick, NetherQuartz, 1)
                 .duration(40).EUt(16)
                 .buildAndRegister();
-
 
         // ########################################
         // Certus Quartz
@@ -180,8 +184,11 @@ public class AERecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/certus_quartz_block"));
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/certus_quartz_block_pure"));
         ModHandler.removeRecipeByOutput(AEHelper.aeMaterials.certusQuartzCrystal().maybeStack(4).get());
-        ModHandler.addMirroredShapedRecipe("ae2_certus_quartz_block", AEHelper.aeBlocks.quartzBlock().maybeStack(1).get(), "B", 'B', new UnificationEntry(block, CertusQuartz));
-        ModHandler.addMirroredShapedRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, CertusQuartz), "B", 'B', AEHelper.aeBlocks.quartzBlock().maybeStack(1).get());
+        ModHandler.addMirroredShapedRecipe("ae2_certus_quartz_block",
+                AEHelper.aeBlocks.quartzBlock().maybeStack(1).get(), "B", 'B',
+                new UnificationEntry(block, CertusQuartz));
+        ModHandler.addMirroredShapedRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, CertusQuartz), "B", 'B',
+                AEHelper.aeBlocks.quartzBlock().maybeStack(1).get());
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.purifiedCertusQuartzCrystal().maybeStack(8).get())
                 .output(block, CertusQuartz, 1)
@@ -215,12 +222,13 @@ public class AERecipeLoader {
                 .duration(300).EUt(VA[LV])
                 .buildAndRegister();
 
-
         // ########################################
         // Charged Certus Quartz
         // ########################################
-        OreDictionary.registerOre("gemChargedCertusQuartz", AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
-        OreDictionary.registerOre("crystalChargedCertusQuartz", AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
+        OreDictionary.registerOre("gemChargedCertusQuartz",
+                AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
+        OreDictionary.registerOre("crystalChargedCertusQuartz",
+                AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
 
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
@@ -286,7 +294,6 @@ public class AERecipeLoader {
                 .output(dustSmall, CHARGED_CERTUS_QUARTZ, 1)
                 .duration(1200).EUt(VA[MV])
                 .buildAndRegister();
-
 
         // ########################################
         // Fluix
@@ -413,7 +420,6 @@ public class AERecipeLoader {
                 .duration(1200).EUt(VA[MV])
                 .buildAndRegister();
 
-
         // ########################################
         // Fluix Alloy
         // ########################################
@@ -433,9 +439,12 @@ public class AERecipeLoader {
     private static void blocks() {
         // Quartz Fiber
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/parts/quartz_fiber_part"));
-        ModHandler.addMirroredShapedRecipe("nether_quartz_cutter_wire", AEHelper.aeParts.quartzFiber().maybeStack(1).get(), "Px", 'P', OreDictUnifier.get(plate, NetherQuartz));
-        ModHandler.addMirroredShapedRecipe("certus_quartz_cutter_wire", AEHelper.aeParts.quartzFiber().maybeStack(1).get(), "Px", 'P', OreDictUnifier.get(plate, CertusQuartz));
-        ModHandler.addMirroredShapedRecipe("quartzite_cutter_wire", AEHelper.aeParts.quartzFiber().maybeStack(1).get(), "Px", 'P', OreDictUnifier.get(plate, Quartzite));
+        ModHandler.addMirroredShapedRecipe("nether_quartz_cutter_wire",
+                AEHelper.aeParts.quartzFiber().maybeStack(1).get(), "Px", 'P', OreDictUnifier.get(plate, NetherQuartz));
+        ModHandler.addMirroredShapedRecipe("certus_quartz_cutter_wire",
+                AEHelper.aeParts.quartzFiber().maybeStack(1).get(), "Px", 'P', OreDictUnifier.get(plate, CertusQuartz));
+        ModHandler.addMirroredShapedRecipe("quartzite_cutter_wire", AEHelper.aeParts.quartzFiber().maybeStack(1).get(),
+                "Px", 'P', OreDictUnifier.get(plate, Quartzite));
         RecipeMaps.WIREMILL_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input("craftStickQuartz", 1)
@@ -445,7 +454,8 @@ public class AERecipeLoader {
 
         // 1k Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1k_storage"));
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1k_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.emptyStorageCell().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.cell1kPart().maybeStack(1).get())
@@ -461,7 +471,8 @@ public class AERecipeLoader {
 
         // 4k Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_4k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_4k_storage"));
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_4k_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.emptyStorageCell().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.cell4kPart().maybeStack(1).get())
@@ -477,7 +488,8 @@ public class AERecipeLoader {
 
         // 16k Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_16k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_16k_storage"));
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_16k_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.emptyStorageCell().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.cell16kPart().maybeStack(1).get())
@@ -493,7 +505,8 @@ public class AERecipeLoader {
 
         // 64k Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_64k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_64k_storage"));
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_64k_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.emptyStorageCell().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.cell64kPart().maybeStack(1).get())
@@ -509,7 +522,8 @@ public class AERecipeLoader {
 
         // 1k Fluid Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_1k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_1k_storage"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_1k_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .inputs(AEHelper.aeMaterials.fluidCell1kPart().maybeStack(1).get())
@@ -517,7 +531,8 @@ public class AERecipeLoader {
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputNBT(AEHelper.aeItems.fluidCell1k().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(AEHelper.aeItems.fluidCell1k().maybeStack(1).get().getItem(), NBTMatcher.ANY,
+                        NBTCondition.ANY)
                 .outputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .outputs(AEHelper.aeMaterials.fluidCell1kPart().maybeStack(1).get())
                 .duration(10).EUt(VA[ULV])
@@ -525,7 +540,8 @@ public class AERecipeLoader {
 
         // 4k Fluid Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_4k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_4k_storage"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_4k_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .inputs(AEHelper.aeMaterials.fluidCell4kPart().maybeStack(1).get())
@@ -533,7 +549,8 @@ public class AERecipeLoader {
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputNBT(AEHelper.aeItems.fluidCell4k().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(AEHelper.aeItems.fluidCell4k().maybeStack(1).get().getItem(), NBTMatcher.ANY,
+                        NBTCondition.ANY)
                 .outputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .outputs(AEHelper.aeMaterials.fluidCell4kPart().maybeStack(1).get())
                 .duration(10).EUt(VA[ULV])
@@ -541,7 +558,8 @@ public class AERecipeLoader {
 
         // 16k Fluid Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_16k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_16k_storage"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_16k_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .inputs(AEHelper.aeMaterials.fluidCell16kPart().maybeStack(1).get())
@@ -549,7 +567,8 @@ public class AERecipeLoader {
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputNBT(AEHelper.aeItems.fluidCell16k().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(AEHelper.aeItems.fluidCell16k().maybeStack(1).get().getItem(), NBTMatcher.ANY,
+                        NBTCondition.ANY)
                 .outputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .outputs(AEHelper.aeMaterials.fluidCell16kPart().maybeStack(1).get())
                 .duration(10).EUt(VA[ULV])
@@ -557,7 +576,8 @@ public class AERecipeLoader {
 
         // 64k Fluid Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_64k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_64k_storage"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_64k_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .inputs(AEHelper.aeMaterials.fluidCell64kPart().maybeStack(1).get())
@@ -565,15 +585,18 @@ public class AERecipeLoader {
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputNBT(AEHelper.aeItems.fluidCell64k().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(AEHelper.aeItems.fluidCell64k().maybeStack(1).get().getItem(), NBTMatcher.ANY,
+                        NBTCondition.ANY)
                 .outputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .outputs(AEHelper.aeMaterials.fluidCell64kPart().maybeStack(1).get())
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
 
         // 2³ Spatial Storage Cell
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_2_cubed"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_2_cubed_storage"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_2_cubed"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_2_cubed_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 0))
                 .inputs(AEHelper.aeMaterials.cell2SpatialPart().maybeStack(1).get())
@@ -581,15 +604,18 @@ public class AERecipeLoader {
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputNBT(AEHelper.aeItems.spatialCell2().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(AEHelper.aeItems.spatialCell2().maybeStack(1).get().getItem(), NBTMatcher.ANY,
+                        NBTCondition.ANY)
                 .outputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 0))
                 .outputs(AEHelper.aeMaterials.cell2SpatialPart().maybeStack(1).get())
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
 
         // 16³ Spatial Cell
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_16_cubed"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_16_cubed_storage"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_16_cubed"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_16_cubed_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 0))
                 .inputs(AEHelper.aeMaterials.cell16SpatialPart().maybeStack(1).get())
@@ -597,15 +623,18 @@ public class AERecipeLoader {
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputNBT(AEHelper.aeItems.spatialCell16().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(AEHelper.aeItems.spatialCell16().maybeStack(1).get().getItem(), NBTMatcher.ANY,
+                        NBTCondition.ANY)
                 .outputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 0))
                 .outputs(AEHelper.aeMaterials.cell16SpatialPart().maybeStack(1).get())
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
 
         // 128³ Spatial Cell
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_128_cubed"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_128_cubed_storage"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_128_cubed"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cells/spatial_storage_cell_128_cubed_storage"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 0))
                 .inputs(AEHelper.aeMaterials.cell128SpatialPart().maybeStack(1).get())
@@ -613,7 +642,8 @@ public class AERecipeLoader {
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputNBT(AEHelper.aeItems.spatialCell128().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                .inputNBT(AEHelper.aeItems.spatialCell128().maybeStack(1).get().getItem(), NBTMatcher.ANY,
+                        NBTCondition.ANY)
                 .outputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 0))
                 .outputs(AEHelper.aeMaterials.cell128SpatialPart().maybeStack(1).get())
                 .duration(10).EUt(VA[ULV])
@@ -669,7 +699,8 @@ public class AERecipeLoader {
 
         // 16384k Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/item/owncasing/16384k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/item/extracasing/16384k"));
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/item/extracasing/16384k"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 0))
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 3))
@@ -701,7 +732,8 @@ public class AERecipeLoader {
 
         // 1024k Fluid Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/fluid/owncasing/1024k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/fluid/extracasing/1024k"));
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/fluid/extracasing/1024k"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 5))
@@ -717,7 +749,8 @@ public class AERecipeLoader {
 
         // 4096k Fluid Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/fluid/owncasing/4096k"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/fluid/extracasing/4096k"));
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/fluid/extracasing/4096k"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1))
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 6))
@@ -877,7 +910,8 @@ public class AERecipeLoader {
                 'Q', "craftCertusQuartz",
                 'E', AEHelper.aeMaterials.engProcessor().maybeStack(1).get(),
                 'C', AEHelper.aeMaterials.calcProcessor().maybeStack(1).get());
-        ModHandler.addShapedRecipe("annihilation_core_pure", AEHelper.aeMaterials.annihilationCore().maybeStack(2).get(),
+        ModHandler.addShapedRecipe("annihilation_core_pure",
+                AEHelper.aeMaterials.annihilationCore().maybeStack(2).get(),
                 "SES", "CQC", "SES",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1]),
                 'Q', AEHelper.aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get(),
@@ -1061,8 +1095,10 @@ public class AERecipeLoader {
                     'S', OreDictUnifier.get(stick, Wood));
 
             // Nether Quartz Cutting Knife
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_cutting_knife"));
-            ModHandler.addShapedRecipe("nether_quartz_cutting_knife", AEHelper.aeItems.netherQuartzKnife().maybeStack(1).get(),
+            ModHandler
+                    .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_cutting_knife"));
+            ModHandler.addShapedRecipe("nether_quartz_cutting_knife",
+                    AEHelper.aeItems.netherQuartzKnife().maybeStack(1).get(),
                     "fPh", "QSQ", " S ",
                     'Q', new ItemStack(Items.QUARTZ),
                     'P', OreDictUnifier.get(plate, NetherQuartz),
@@ -1113,8 +1149,10 @@ public class AERecipeLoader {
                     'S', OreDictUnifier.get(stick, Wood));
 
             // Certus Quartz Cutting Knife
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_cutting_knife"));
-            ModHandler.addShapedRecipe("certus_quartz_cutting_knife", AEHelper.aeItems.certusQuartzKnife().maybeStack(1).get(),
+            ModHandler
+                    .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_cutting_knife"));
+            ModHandler.addShapedRecipe("certus_quartz_cutting_knife",
+                    AEHelper.aeItems.certusQuartzKnife().maybeStack(1).get(),
                     "fPh", "QSQ", " S ",
                     'Q', "gemCertusQuartz",
                     'P', OreDictUnifier.get(plate, CertusQuartz),
@@ -1122,7 +1160,8 @@ public class AERecipeLoader {
 
             // Certus Quartz Wrench
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/certus_quartz_wrench"));
-            ModHandler.addShapedRecipe("certus_quartz_wrench", AEHelper.aeItems.certusQuartzWrench().maybeStack(1).get(),
+            ModHandler.addShapedRecipe("certus_quartz_wrench",
+                    AEHelper.aeItems.certusQuartzWrench().maybeStack(1).get(),
                     "PhP", " P ", " P ",
                     'P', OreDictUnifier.get(plate, CertusQuartz));
         }
