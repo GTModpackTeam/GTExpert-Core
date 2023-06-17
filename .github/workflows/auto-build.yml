@@ -35,9 +35,8 @@ jobs:
             notifications
             wrapper
 
-      - name: Publish to GitHub
-        uses: softprops/action-gh-release@v1
+      - name: Upload Jars
+        uses: actions/upload-artifact@v3
         with:
-          files: "build/libs/*.jar"
-          generate_release_notes: true
-          fail_on_unmatched_files: true
+          name: GTExpert-Core
+          path: build/libs/*.jar
