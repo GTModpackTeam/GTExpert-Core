@@ -1,6 +1,7 @@
 package gtexpert.common.metatileentities;
 
 import gregtech.api.GTValues;
+import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.util.GTUtility;
 import gtexpert.api.GTEValues;
@@ -12,6 +13,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.BiFunction;
+
 import static gregtech.api.GTValues.*;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 
@@ -22,6 +25,7 @@ public class GTEMetaTileEntities {
     public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static SimpleMachineMetaTileEntity[] SLICE_N_SPLICE = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static SimpleMachineMetaTileEntity[] SOUL_BINDER = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
+    public static MetaTileEntityElectricSpawner[] ELECTRIC_SPAWNER = new MetaTileEntityElectricSpawner[GTValues.V.length - 1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
     public static MetaTileEntityDraconiumFusion AWAKENED_DRACONIUM_FUSION;
@@ -67,6 +71,13 @@ public class GTEMetaTileEntities {
         // SOUL_BINDER 11036~11048
         registerSimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", GTERecipeMaps.SOUL_BINDER_RECIPES, GTETextures.SOUL_BINDER_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.defaultTankSizeFunction);
 
+        // ELECTRIC_SPAWNER 11049~11061
+        registerMetaTileEntities(
+                ELECTRIC_SPAWNER,
+                11049,
+                "electric_spawner",
+                (tier, voltageName) -> new MetaTileEntityElectricSpawner(gteId(String.format("%s.%s", "electric_spawner", voltageName)), GTETextures.SPAWNER_OVERLAY, tier));
+
         // multiblocks :12000~
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));
         // = registerMetaTileEntity(12002, new MetaTileEntityVoidOreMiner(gteId("####")));
@@ -81,5 +92,24 @@ public class GTEMetaTileEntities {
     @NotNull
     private static ResourceLocation gteId(@NotNull String name) {
         return new ResourceLocation(GTEValues.MODID, name);
+    }
+
+    // TODO: This method will be included in the next update of CEu
+    /**
+     * @param mteCreator Takes tier and voltage name for the machine and outputs MTE to register
+     */
+    private static <T extends MetaTileEntity> void registerMetaTileEntities(
+            T[] machines,
+            int startId,
+            String name,
+            BiFunction<Integer, String, T> mteCreator) {
+        for (int i = 0; i < machines.length - 1; i++) {
+            if (i > 4 && !getMidTier(name)) continue;
+            if (i > 7 && !getHighTier(name)) break;
+
+            String voltageName = GTValues.VN[i + 1].toLowerCase();
+            machines[i + 1] = registerMetaTileEntity(startId + i,
+                    mteCreator.apply(i + 1, voltageName));
+        }
     }
 }

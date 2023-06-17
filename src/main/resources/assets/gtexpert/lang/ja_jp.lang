@@ -82,23 +82,23 @@ gtexpert.machine.soul_binder.zpm.tooltip=魂とアイテムを結合させ、壊
 gtexpert.machine.soul_binder.uv.name=究極型魂拘束器
 gtexpert.machine.soul_binder.uv.tooltip=魂とアイテムを結合させ、壊れたスポナーに魂を込めることも可能/n§d作者:§f @MrKono
 
-# Powered Spawner
-gtexpert.machine.powered_spawner.lv.name=基本型電動スポナー
-gtexpert.machine.powered_spawner.lv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @MrKono, @miozune
-gtexpert.machine.powered_spawner.mv.name=発展型電動スポナー
-gtexpert.machine.powered_spawner.mv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @MrKono, @miozune
-gtexpert.machine.powered_spawner.hv.name=発展型電動スポナー II
-gtexpert.machine.powered_spawner.hv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @MrKono, @miozune
-gtexpert.machine.powered_spawner.ev.name=発展型電動スポナー III
-gtexpert.machine.powered_spawner.ev.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @MrKono, @miozune
-gtexpert.machine.powered_spawner.iv.name=精鋭型電動スポナー
-gtexpert.machine.powered_spawner.iv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @MrKono, @miozune
-gtexpert.machine.powered_spawner.luv.name=精鋭型電動スポナー II
-gtexpert.machine.powered_spawner.luv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @MrKono, @miozune
-gtexpert.machine.powered_spawner.zpm.name=精鋭型電動スポナー III
-gtexpert.machine.powered_spawner.zpm.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @MrKono, @miozune
-gtexpert.machine.powered_spawner.uv.name=究極型電動スポナー
-gtexpert.machine.powered_spawner.uv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @MrKono, @miozune
+# Electric Spawner
+gtexpert.machine.electric_spawner.lv.name=基本型電動スポナー
+gtexpert.machine.electric_spawner.lv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.mv.name=発展型電動スポナー
+gtexpert.machine.electric_spawner.mv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.hv.name=発展型電動スポナー II
+gtexpert.machine.electric_spawner.hv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.ev.name=発展型電動スポナー III
+gtexpert.machine.electric_spawner.ev.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.iv.name=精鋭型電動スポナー
+gtexpert.machine.electric_spawner.iv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.luv.name=精鋭型電動スポナー II
+gtexpert.machine.electric_spawner.luv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.zpm.name=精鋭型電動スポナー III
+gtexpert.machine.electric_spawner.zpm.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.uv.name=究極型電動スポナー
+gtexpert.machine.electric_spawner.uv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
@@ -166,4 +166,6 @@ recipemap.draconic_fusion_upgrade.property.2= 保持されます
 
 #misc
 gtexpert.multiblock.needsun=コントローラーは必ず空に面する必要があります!
-
+gtexpert.gui.electric_spawner_mode.spawn=スポーンモード
+gtexpert.gui.electric_spawner_mode.capture=捕獲モード
+gtexpert.gui.needs_redstone=動作にはレッドストーン入力が必要です
