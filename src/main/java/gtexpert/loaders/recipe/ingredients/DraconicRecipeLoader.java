@@ -1,31 +1,33 @@
 package gtexpert.loaders.recipe.ingredients;
 
-import appeng.api.AEApi;
-import com.brandon3055.draconicevolution.DEFeatures;
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.endergy.init.EndergyObject;
-import crazypants.enderio.powertools.init.PowerToolObject;
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.nbtmatch.*;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
+
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
+
+import appeng.api.AEApi;
+import com.brandon3055.draconicevolution.DEFeatures;
+import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.endergy.init.EndergyObject;
+import crazypants.enderio.powertools.init.PowerToolObject;
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -35,6 +37,7 @@ import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class DraconicRecipeLoader {
+
     public static void init() {
         fluid();
         materials();
@@ -139,14 +142,18 @@ public class DraconicRecipeLoader {
 
         // Draconium Block
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconium_block"));
-        ModHandler.addMirroredShapedRecipe("de_draconium_block", new ItemStack(DEFeatures.draconiumBlock), "B", 'B', OreDictUnifier.get(block, DRACONIUM));
-        ModHandler.addMirroredShapedRecipe("ceu_draconium_block", OreDictUnifier.get(block, DRACONIUM), "B", 'B', new ItemStack(DEFeatures.draconiumBlock));
+        ModHandler.addMirroredShapedRecipe("de_draconium_block", new ItemStack(DEFeatures.draconiumBlock), "B", 'B',
+                OreDictUnifier.get(block, DRACONIUM));
+        ModHandler.addMirroredShapedRecipe("ceu_draconium_block", OreDictUnifier.get(block, DRACONIUM), "B", 'B',
+                new ItemStack(DEFeatures.draconiumBlock));
 
         // Awakened Draconium Block
         OreDictionary.registerOre("blockAwakenedDraconium", DEFeatures.draconicBlock);
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_block"));
-        ModHandler.addMirroredShapedRecipe("de_draconic_block", new ItemStack(DEFeatures.draconicBlock), "B", 'B', OreDictUnifier.get(block, AWAKENED_DRACONIUM));
-        ModHandler.addMirroredShapedRecipe("ceu_draconic_block", OreDictUnifier.get(block, AWAKENED_DRACONIUM), "B", 'B', new ItemStack(DEFeatures.draconicBlock));
+        ModHandler.addMirroredShapedRecipe("de_draconic_block", new ItemStack(DEFeatures.draconicBlock), "B", 'B',
+                OreDictUnifier.get(block, AWAKENED_DRACONIUM));
+        ModHandler.addMirroredShapedRecipe("ceu_draconic_block", OreDictUnifier.get(block, AWAKENED_DRACONIUM), "B",
+                'B', new ItemStack(DEFeatures.draconicBlock));
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.dragonHeart, 1)
                 .input(block, DRACONIUM, 4)
@@ -603,7 +610,6 @@ public class DraconicRecipeLoader {
                 'S', Items.GOLDEN_BOOTS,
                 'B', Blocks.SLIME_BLOCK);
 
-
         // ########################################
         // Draconic Additions
         // ########################################
@@ -669,7 +675,6 @@ public class DraconicRecipeLoader {
                 .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                 .duration(2000).EUt(VA[UHV])
                 .buildAndRegister();
-
 
         // ########################################
         // Draconic Evolution
@@ -757,7 +762,9 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconum Casing
-        ModHandler.addShapedRecipe("casing_draconum", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2),
+        ModHandler.addShapedRecipe("casing_draconum",
+                GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, DRACONIUM),
                 'F', new UnificationEntry(frameGt, DRACONIUM));
@@ -765,23 +772,28 @@ public class DraconicRecipeLoader {
                 .circuitMeta(6)
                 .input(plate, DRACONIUM, 6)
                 .input(frameGt, DRACONIUM, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2))
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
         RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
                 .fluidInputs(Oxygen.getFluid(224))
                 .output(ingot, DRACONIUM, 4)
-                .duration(225).EUt(30)
+                .duration(225).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
                 .output(dust, DRACONIUM, 4)
                 .duration(225).EUt(8)
                 .buildAndRegister();
 
         // Awakened Draconum Casing
-        ModHandler.addShapedRecipe("casing_awakened_draconum", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2),
+        ModHandler.addShapedRecipe("casing_awakened_draconum",
+                GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, AWAKENED_DRACONIUM),
                 'F', new UnificationEntry(frameGt, AWAKENED_DRACONIUM));
@@ -789,17 +801,20 @@ public class DraconicRecipeLoader {
                 .circuitMeta(6)
                 .input(plate, AWAKENED_DRACONIUM, 6)
                 .input(frameGt, AWAKENED_DRACONIUM, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2))
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
         RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))
                 .fluidInputs(Oxygen.getFluid(224))
                 .output(ingot, AWAKENED_DRACONIUM, 4)
-                .duration(225).EUt(30)
+                .duration(225).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))
                 .output(dust, AWAKENED_DRACONIUM, 4)
                 .duration(225).EUt(8)
                 .buildAndRegister();
@@ -810,8 +825,7 @@ public class DraconicRecipeLoader {
                 "BOB", "ODO", "BOB",
                 'B', Items.BLAZE_POWDER,
                 'O', ModObject.blockReinforcedObsidian.getBlockNN(),
-                'D', OreDictUnifier.get(dust, DRACONIUM)
-        );
+                'D', OreDictUnifier.get(dust, DRACONIUM));
 
         // Basic Energy Relay Crystal
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal"));
@@ -880,7 +894,6 @@ public class DraconicRecipeLoader {
                 .fluidOutputs(PYROTHEUM.getFluid(2000))
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
-
 
         // ########################################
         // Draconic Additions
@@ -952,7 +965,6 @@ public class DraconicRecipeLoader {
                 .outputs(new ItemStack(DEFeatures.draconiumCapacitor, 1, 1))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
-
 
         // ########################################
         // Draconic Additions

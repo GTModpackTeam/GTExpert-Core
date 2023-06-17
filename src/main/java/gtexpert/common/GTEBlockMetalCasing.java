@@ -1,6 +1,7 @@
 package gtexpert.common;
 
 import gregtech.api.block.VariantBlock;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -8,6 +9,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+
 import org.jetbrains.annotations.NotNull;
 
 public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalCasingType> {
@@ -24,7 +26,8 @@ public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalC
     }
 
     @Override
-    public boolean canCreatureSpawn(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull EntityLiving.SpawnPlacementType type) {
+    public boolean canCreatureSpawn(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos,
+                                    @NotNull EntityLiving.SpawnPlacementType type) {
         return false;
     }
 

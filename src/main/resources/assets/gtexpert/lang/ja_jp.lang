@@ -4,27 +4,101 @@
 # multiblock
 gtexpert.machine.sawmill.name=製材機
 gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らないで..
+gtexpert.machine.sawmill.tooltip.1=§d作者:§f @Quarri6343
 gtexpert.machine.void_ore_miner.name=亜空間型鉱石採掘機
 gtexpert.machine.void_ore_miner.tooltip=スターゲート建設機
 gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します。§r
 gtexpert.machine.void_ore_miner.tooltip.2=§6ネザーかエンド鉱石を消費することでで生産量が倍になります!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です。§r
-gtexpert.machine.extreme_mixer.name=精鋭型エクストリームミキサー
+gtexpert.machine.void_ore_miner.tooltip.4=§d作者:§f @Quarri6343
+gtexpert.machine.extreme_mixer.name=(非推奨)精鋭型エクストリームミキサー
+gtexpert.machine.extreme_mixer.tooltip=§d作者:§f @Quarri6343
 gtexpert.machine.draconium_fusion.name=ドラコニック融合機
 gtexpert.machine.draconium_fusion.tooltip=なんだか強そうですね?
+gtexpert.machine.draconium_fusion.tooltip.1=§d作者:§f @miozune, @tier940
 gtexpert.machine.awakened_draconium_fusion.name=ドラコニック融合機 II
 gtexpert.machine.awakened_draconium_fusion.tooltip=なんだか強そうですね?
 
 # singleblock
-gtexpert.machine.vial_extractor.tooltip=故も知らぬ不死のソウル?
+# Auto Chisel
+gtexpert.machine.auto_chisel.lv.name=[WIP] 基本型自動彫刻機
+gtexpert.machine.auto_chisel.lv.tooltip=あなたの理想、彫刻します/n§d作者:§f @tier940
+gtexpert.machine.auto_chisel.mv.name=[WIP] 発展型自動彫刻機
+gtexpert.machine.auto_chisel.mv.tooltip=あなたの理想、彫刻します/n§d作者:§f @tier940
+gtexpert.machine.auto_chisel.hv.name=[WIP] 発展型自動彫刻機 II
+gtexpert.machine.auto_chisel.hv.tooltip=あなたの理想、彫刻します/n§d作者:§f @tier940
+
+# Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=基本型魂抽出器
+gtexpert.machine.vial_extractor.lv.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.mv.name=発展型魂抽出器
+gtexpert.machine.vial_extractor.mv.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.hv.name=発展型魂抽出器 II
+gtexpert.machine.vial_extractor.hv.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.ev.name=発展型魂抽出器 III
+gtexpert.machine.vial_extractor.ev.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.iv.name=精鋭型魂抽出器
+gtexpert.machine.vial_extractor.iv.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.luv.name=精鋭型魂抽出器 II
+gtexpert.machine.vial_extractor.luv.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.zpm.name=精鋭型魂抽出器 III
+gtexpert.machine.vial_extractor.zpm.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
 gtexpert.machine.vial_extractor.uv.name=究極型魂抽出器
+gtexpert.machine.vial_extractor.uv.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
+
+# Slice'N'Splice
+gtexpert.machine.slice_n_splice.lv.name=基本型頭顱調整機
+gtexpert.machine.slice_n_splice.lv.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
+gtexpert.machine.slice_n_splice.mv.name=発展型頭顱調整機
+gtexpert.machine.slice_n_splice.mv.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
+gtexpert.machine.slice_n_splice.hv.name=発展型頭顱調整機 II
+gtexpert.machine.slice_n_splice.hv.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
+gtexpert.machine.slice_n_splice.ev.name=発展型頭顱調整機 III
+gtexpert.machine.slice_n_splice.ev.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
+gtexpert.machine.slice_n_splice.iv.name=精鋭型頭顱調整機
+gtexpert.machine.slice_n_splice.iv.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
+gtexpert.machine.slice_n_splice.luv.name=精鋭型頭顱調整機 II
+gtexpert.machine.slice_n_splice.luv.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
+gtexpert.machine.slice_n_splice.zpm.name=精鋭型頭顱調整機 III
+gtexpert.machine.slice_n_splice.zpm.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
+gtexpert.machine.slice_n_splice.uv.name=究極型頭顱調整機
+gtexpert.machine.slice_n_splice.uv.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
+
+# Soul Binder
+gtexpert.machine.soul_binder.lv.name=基本型魂拘束器
+gtexpert.machine.soul_binder.lv.tooltip=魂とアイテムを結合させ、壊れたスポナーに魂を込めることも可能/n§d作者:§f @MrKono
+gtexpert.machine.soul_binder.mv.name=発展型魂拘束器
+gtexpert.machine.soul_binder.mv.tooltip=魂とアイテムを結合させ、壊れたスポナーに魂を込めることも可能/n§d作者:§f @MrKono
+gtexpert.machine.soul_binder.hv.name=発展型魂拘束器 II
+gtexpert.machine.soul_binder.hv.tooltip=魂とアイテムを結合させ、壊れたスポナーに魂を込めることも可能/n§d作者:§f @MrKono
+gtexpert.machine.soul_binder.ev.name=発展型魂拘束器 III
+gtexpert.machine.soul_binder.ev.tooltip=魂とアイテムを結合させ、壊れたスポナーに魂を込めることも可能/n§d作者:§f @MrKono
+gtexpert.machine.soul_binder.iv.name=精鋭型魂拘束器
+gtexpert.machine.soul_binder.iv.tooltip=魂とアイテムを結合させ、壊れたスポナーに魂を込めることも可能/n§d作者:§f @MrKono
+gtexpert.machine.soul_binder.luv.name=精鋭型魂拘束器 II
+gtexpert.machine.soul_binder.luv.tooltip=魂とアイテムを結合させ、壊れたスポナーに魂を込めることも可能/n§d作者:§f @MrKono
+gtexpert.machine.soul_binder.zpm.name=精鋭型魂拘束器 III
+gtexpert.machine.soul_binder.zpm.tooltip=魂とアイテムを結合させ、壊れたスポナーに魂を込めることも可能/n§d作者:§f @MrKono
+gtexpert.machine.soul_binder.uv.name=究極型魂拘束器
+gtexpert.machine.soul_binder.uv.tooltip=魂とアイテムを結合させ、壊れたスポナーに魂を込めることも可能/n§d作者:§f @MrKono
+
+# Electric Spawner
+gtexpert.machine.electric_spawner.lv.name=基本型電動スポナー
+gtexpert.machine.electric_spawner.lv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.mv.name=発展型電動スポナー
+gtexpert.machine.electric_spawner.mv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.hv.name=発展型電動スポナー II
+gtexpert.machine.electric_spawner.hv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.ev.name=発展型電動スポナー III
+gtexpert.machine.electric_spawner.ev.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.iv.name=精鋭型電動スポナー
+gtexpert.machine.electric_spawner.iv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.luv.name=精鋭型電動スポナー II
+gtexpert.machine.electric_spawner.luv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.zpm.name=精鋭型電動スポナー III
+gtexpert.machine.electric_spawner.zpm.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
+gtexpert.machine.electric_spawner.uv.name=究極型電動スポナー
+gtexpert.machine.electric_spawner.uv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
@@ -34,7 +108,7 @@ tile.gte_metal_casing.awakened_draconium_casing.name=覚醒ドラコニウムマ
 tile.sawmill_conveyor.name=製材機用コンベア
 
 # material
-material.galvalume=ガルバリウム (Deprecated)
+material.galvalume=(非推奨)ガルバリウム
 material.nm_hea_nps=貴金属ハイエントロピーナノ合金
 material.naquadah_rocket_fuel=ナクアダロケット燃料
 material.dragon=ドラゴン
@@ -73,8 +147,10 @@ metaitem.piston_boots.tooltip=トロッコのように走り、ピストンの�
 
 # recipemaps
 recipemap.sawmill.name=製材機
-recipemap.greenhouse.name=温室
 recipemap.vial_extractor.name=魂抽出器
+recipemap.auto_chisel.name=自動彫刻機
+recipemap.slice'n'splice.name=頭顱調整機
+recipemap.soul_binder.name=魂拘束器
 recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 recipemap.draconium_fusion.name=ドラコニック融合機
@@ -90,3 +166,6 @@ recipemap.draconic_fusion_upgrade.property.2= 保持されます
 
 #misc
 gtexpert.multiblock.needsun=コントローラーは必ず空に面する必要があります!
+gtexpert.gui.electric_spawner_mode.spawn=スポーンモード
+gtexpert.gui.electric_spawner_mode.capture=捕獲モード
+gtexpert.gui.needs_redstone=動作にはレッドストーン入力が必要です

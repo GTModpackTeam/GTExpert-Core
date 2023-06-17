@@ -1,13 +1,16 @@
 package gtexpert.api.unification.material;
 
 import gregtech.api.unification.material.properties.*;
+
 import gtexpert.api.GTEValues;
+
 import net.minecraftforge.fml.common.Loader;
 
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 
 public class GTEMaterialFlags {
+
     public static void init() {
         // Ender Peral
         EnderPearl.setProperty(PropertyKey.FLUID, new FluidProperty());

@@ -1,9 +1,5 @@
 package gtexpert.loaders.recipe.ingredients;
 
-import com.brandon3055.draconicevolution.DEFeatures;
-import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
-import com.brandon3055.draconicevolution.items.ToolUpgrade;
-import crazypants.enderio.base.init.ModObject;
 import gregtech.api.items.toolitem.ToolHelper;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMap;
@@ -14,16 +10,23 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.ToolItems;
+
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.util.GTELog;
+
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+
+import com.brandon3055.draconicevolution.DEFeatures;
+import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
+import com.brandon3055.draconicevolution.items.ToolUpgrade;
+import crazypants.enderio.base.init.ModObject;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -78,7 +81,8 @@ public class DraconicUpgradeRecipeLoader {
         // Bow of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_bow"));
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(new ItemStack(ModObject.itemEndSteelBow.getItemNN())).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
+                GTRecipeItemInput.getOrCreate(new ItemStack(ModObject.itemEndSteelBow.getItemNN()))
+                        .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 new ItemStack(DEFeatures.wyvernBow),
                 Tier.WYVERN, 2);
 
@@ -145,7 +149,8 @@ public class DraconicUpgradeRecipeLoader {
 
         // Draconic Staff of Power
         GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.recipeBuilder()
-                .catalyst(GTRecipeItemInput.getOrCreate(new ItemStack(DEFeatures.draconicPick)).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY))
+                .catalyst(GTRecipeItemInput.getOrCreate(new ItemStack(DEFeatures.draconicPick))
+                        .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY))
                 .result(new ItemStack(DEFeatures.draconicStaffOfPower))
                 .input(plate, DRACONIUM, 6)
                 .inputNBT(DEFeatures.draconicAxe, NBTMatcher.ANY, NBTCondition.ANY)
@@ -227,7 +232,9 @@ public class DraconicUpgradeRecipeLoader {
     }
 
     private static void addTierUpRecipe(ItemStack catalyst, ItemStack result, Tier tier, int plateAmount) {
-        addTierUpRecipe(GTRecipeItemInput.getOrCreate(catalyst).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY), result, tier, plateAmount);
+        addTierUpRecipe(
+                GTRecipeItemInput.getOrCreate(catalyst).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
+                result, tier, plateAmount);
     }
 
     private static void addTierUpRecipe(GTRecipeInput catalyst, ItemStack result, Tier tier, int plateAmount) {
@@ -319,7 +326,8 @@ public class DraconicUpgradeRecipeLoader {
             IUpgradableItem item = (IUpgradableItem) stack.getItem();
             for (String upgradeName : ToolUpgrade.NAME_TO_ID.keySet()) {
                 for (int currentLevel = 0; currentLevel < ToolUpgrade.NAME_MAX_LEVEL.get(upgradeName); currentLevel++) {
-                    if (item.getValidUpgrades(stack).contains(upgradeName) && item.getMaxUpgradeLevel(stack, upgradeName) >= currentLevel + 1) {
+                    if (item.getValidUpgrades(stack).contains(upgradeName) &&
+                            item.getMaxUpgradeLevel(stack, upgradeName) >= currentLevel + 1) {
                         RecipeMap<UpgradeRecipeBuilder> recipeMap;
                         if (currentLevel == 0 || currentLevel == 1) {
                             recipeMap = GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_FAKE_RECIPES;

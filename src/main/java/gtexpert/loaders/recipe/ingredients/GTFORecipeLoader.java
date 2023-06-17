@@ -1,14 +1,8 @@
 package gtexpert.loaders.recipe.ingredients;
 
-import gregtech.api.GTValues;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.loaders.WoodTypeEntry;
-import gregtechfoodoption.GTFOMaterialHandler;
-import gregtechfoodoption.block.GTFOMetaBlocks;
-import gtexpert.api.GTEValues;
-import gtexpert.common.GTEConfigHolder;
-import net.minecraft.init.Blocks;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -20,9 +14,10 @@ import java.util.List;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.loaders.recipe.WoodRecipeLoader.registerWoodTypeRecipe;
+import static gtexpert.api.util.GTEUtils.getModFluid;
 
 public class GTFORecipeLoader {
+
     public static void init() {
         // craftSludge
         OreDictionary.registerOre("craftSludge", new ItemStack(Items.PORKCHOP));
@@ -51,26 +46,24 @@ public class GTFORecipeLoader {
         craftSludge.add(new ItemStack(Items.FISH, 1, 2));
         for (ItemStack itemStack : craftSludge) {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MIXER_RECIPES,
-                    new ItemStack[]{itemStack},
-                    new FluidStack[]{SulfuricAcid.getFluid(200)}
-            );
+                    new ItemStack[] { itemStack },
+                    new FluidStack[] { SulfuricAcid.getFluid(200) });
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MIXER_RECIPES,
-                    new ItemStack[]{itemStack},
-                    new FluidStack[]{Water.getFluid(400)}
-            );
+                    new ItemStack[] { itemStack },
+                    new FluidStack[] { Water.getFluid(400) });
         }
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input("craftSludge", 1)
                 .fluidInputs(SulfuricAcid.getFluid(200))
-                .fluidOutputs(GTFOMaterialHandler.Sludge.getFluid(200))
+                .fluidOutputs(getModFluid("gtfo_sludge", 200))
                 .duration(250).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
                 .input("craftSludge", 1)
                 .fluidInputs(Water.getFluid(200))
-                .fluidOutputs(GTFOMaterialHandler.Sludge.getFluid(100))
+                .fluidOutputs(getModFluid("gtfo_sludge", 100))
                 .duration(500).EUt(VA[LV])
                 .buildAndRegister();
     }
