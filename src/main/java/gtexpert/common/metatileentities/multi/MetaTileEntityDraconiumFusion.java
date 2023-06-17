@@ -23,7 +23,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
-
     public MetaTileEntityDraconiumFusion(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap);
         this.recipeMapWorkable = new MultiblockRecipeLogicNoCache(this);

@@ -90,5 +90,8 @@ public class CommonProxy {
         if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
             GTFORecipeLoader.init();
         }
+        if (Loader.isModLoaded(GTEValues.MODID_CHISEL)) {
+            ChiselRecipeLoader.init();
+        }
     }
 }

@@ -14,5 +14,6 @@ public class GTEValues {
             MODID_AE = "appliedenergistics2",
             MODID_AEA = "aeadditions",
             MODID_DE = "draconicevolution",
-            MODID_DA = "draconicadditions";
+            MODID_DA = "draconicadditions",
+            MODID_CHISEL = "chisel";
 }
