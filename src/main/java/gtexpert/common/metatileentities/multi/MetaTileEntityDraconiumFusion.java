@@ -8,21 +8,25 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
+
 import gtexpert.api.capability.MultiblockRecipeLogicNoCache;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
+
     public MetaTileEntityDraconiumFusion(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap);
         this.recipeMapWorkable = new MultiblockRecipeLogicNoCache(this);
@@ -35,7 +39,9 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
                 .aisle("CCC", "C#C", "CCC")
                 .aisle("CCC", "CSC", "CCC")
                 .where('S', selfPredicate())
-                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(getCasingType())).setMinGlobalLimited(15).or(autoAbilities()))
+                .where('C',
+                        states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(getCasingType())).setMinGlobalLimited(15)
+                                .or(autoAbilities()))
                 .where('#', air())
                 .build();
     }
@@ -48,7 +54,8 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
+                               boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.draconium_fusion.tooltip.1"));
     }

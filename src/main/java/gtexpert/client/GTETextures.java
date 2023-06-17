@@ -1,13 +1,15 @@
 package gtexpert.client;
 
-import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.*;
+
 import gtexpert.api.GTEValues;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID, value = Side.CLIENT)
 public class GTETextures {
+
     public static SimpleOverlayRenderer SAWMILL_CASING;
     public static OrientedOverlayRenderer SAWMILL_OVERLAY = new OrientedOverlayRenderer("sawmill");
     public static OrientedOverlayRenderer EXTREME_MIXER_OVERLAY = new OrientedOverlayRenderer("extreme_mixer");

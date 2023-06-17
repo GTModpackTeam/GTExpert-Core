@@ -8,10 +8,10 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockLamp;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.loaders.recipe.MetaTileEntityLoader;
+
 import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.integration.chisel.ChiselHelper;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -19,10 +19,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
+
 import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
-
-import java.util.List;
 
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -33,9 +32,9 @@ import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
 import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.util.GTEUtils.getModItem;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.AUTO_CHISEL;
 
 public class ChiselRecipeLoader {
+
     public static void init() {
         // craftChisel
         OreDictionary.registerOre("craftChisel", new ItemStack(ChiselItems.chisel_iron));
@@ -48,7 +47,8 @@ public class ChiselRecipeLoader {
 
     private static void blocks() {
         // Oak Bookshelf
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack(Blocks.PLANKS, 6, 0), new ItemStack(Items.BOOK, 3));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack(Blocks.PLANKS, 6, 0),
+                new ItemStack(Items.BOOK, 3));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(Blocks.PLANKS, 6, 0))
                 .inputs(new ItemStack(Items.BOOK, 3))
@@ -128,13 +128,13 @@ public class ChiselRecipeLoader {
                 'P', "paneGlass",
                 'T', "craftChisel",
                 'S', new UnificationEntry(slab, Stone));
-//        MetaTileEntityLoader.registerMachineRecipe(AUTO_CHISEL, "BSB", "THT", "MCM",
-//                'B', new UnificationEntry(toolHeadBuzzSaw, Invar),
-//                'S', SENSOR,
-//                'T', "craftChisel",
-//                'H', HULL,
-//                'M', MOTOR,
-//                'C', CIRCUIT);
+        // MetaTileEntityLoader.registerMachineRecipe(AUTO_CHISEL, "BSB", "THT", "MCM",
+        // 'B', new UnificationEntry(toolHeadBuzzSaw, Invar),
+        // 'S', SENSOR,
+        // 'T', "craftChisel",
+        // 'H', HULL,
+        // 'M', MOTOR,
+        // 'C', CIRCUIT);
 
         // Glass Pane
         if (ConfigHolder.recipes.hardGlassRecipes) {
@@ -146,13 +146,17 @@ public class ChiselRecipeLoader {
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/japanese"));
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassdungeon"));
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glasslight"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-ornatesteel"));
+            ModHandler.removeRecipeByName(
+                    new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-ornatesteel"));
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-screen"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-steelframe"));
+            ModHandler
+                    .removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-steelframe"));
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassstone"));
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassstreak"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-thickgrid"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/a1-glasswindow-ironfencemodern"));
+            ModHandler
+                    .removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-thickgrid"));
+            ModHandler.removeRecipeByName(
+                    new ResourceLocation(GTEValues.MODID_CHISEL, "glass/a1-glasswindow-ironfencemodern"));
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chrono"));
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chinese2"));
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/japanese2"));
@@ -176,16 +180,16 @@ public class ChiselRecipeLoader {
         ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(ANTIMATTER_HAZARD));
         ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(HIGH_TEMPERATURE_HAZARD));
         ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(VOID_HAZARD));
-//        List<ItemStack> hazardSigns = OreDictionary.getOres("hazardSign");
-//        for (ItemStack hazardSign : hazardSigns) {
-//            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-//                    .notConsumable(hazardSign)
-//                    .input("hazardSign")
-//                    .outputs(hazardSign)
-//                    .duration(20)
-//                    .EUt(VA[ULV])
-//                    .buildAndRegister();
-//        }
+        // List<ItemStack> hazardSigns = OreDictionary.getOres("hazardSign");
+        // for (ItemStack hazardSign : hazardSigns) {
+        // GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+        // .notConsumable(hazardSign)
+        // .input("hazardSign")
+        // .outputs(hazardSign)
+        // .duration(20)
+        // .EUt(VA[ULV])
+        // .buildAndRegister();
+        // }
 
         // Hazard Sign 2
         ChiselHelper.addGroup("hazardSign1");
@@ -314,7 +318,8 @@ public class ChiselRecipeLoader {
                 ChiselHelper.addGroup("lamp_" + color);
                 for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
                     ChiselHelper.addVariation("lamp_" + color, getModItem("projectred-illumination", "lamp", 1, i));
-                    ChiselHelper.addVariation("lamp_" + color, getModItem("projectred-illumination", "lamp", 1, i + 16));
+                    ChiselHelper.addVariation("lamp_" + color,
+                            getModItem("projectred-illumination", "lamp", 1, i + 16));
                     ChiselHelper.addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
                 }
 
@@ -324,8 +329,7 @@ public class ChiselRecipeLoader {
                     ChiselHelper.addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
                 }
             }
-        }
-        else {
+        } else {
             for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);

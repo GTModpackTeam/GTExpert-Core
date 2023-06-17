@@ -1,6 +1,7 @@
 package gtexpert.integration.theoneprobe;
 
 import gtexpert.integration.theoneprobe.provider.ElectricSpawnerInfoProvider;
+
 import mcjty.theoneprobe.TheOneProbe;
 
 public class TOPProviders {

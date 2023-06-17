@@ -1,6 +1,7 @@
 package gtexpert.api;
 
 public class GTEValues {
+
     public static final String MODNAME = "GTExpert-Core";
     public static final String MODID = "gtexpert",
             MODID_VANILLA = "minecraft",

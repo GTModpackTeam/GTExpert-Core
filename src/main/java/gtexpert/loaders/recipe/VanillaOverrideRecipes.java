@@ -4,7 +4,9 @@ import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
+
 import gtexpert.api.GTEValues;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -15,6 +17,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class VanillaOverrideRecipes {
+
     public static void init() {
         // bookshelf
         OreDictionary.registerOre("bookshelf", new ItemStack(Blocks.BOOKSHELF));

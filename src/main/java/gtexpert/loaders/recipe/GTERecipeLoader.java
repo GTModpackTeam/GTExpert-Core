@@ -1,8 +1,5 @@
 package gtexpert.loaders.recipe;
 
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.machines.init.MachineObject;
-import crazypants.enderio.powertools.init.PowerToolObject;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
@@ -21,6 +18,7 @@ import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
+
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
@@ -28,10 +26,15 @@ import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.integration.ae.AEHelper;
-import net.minecraftforge.fml.common.Loader;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
+
+import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.machines.init.MachineObject;
+import crazypants.enderio.powertools.init.PowerToolObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +49,7 @@ import static gtexpert.api.util.GTEUtils.getModItem;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class GTERecipeLoader {
+
     public static void init() {
         materials();
         items();
@@ -347,8 +351,7 @@ public class GTERecipeLoader {
                     .output(COVER_SOLAR_PANEL_UV)
                     .duration(100).EUt(VA[UV])
                     .buildAndRegister();
-        }
-        else {
+        } else {
             // Solar Panel (8V)
             ModHandler.addShapedRecipe("solar_panel_basic_gt5u", COVER_SOLAR_PANEL_ULV.getStackForm(1),
                     "SSS", "SCS", "SSS",
@@ -446,7 +449,8 @@ public class GTERecipeLoader {
         }
 
         // Treated Wood Machine Casing
-        ModHandler.addShapedRecipe("casing_treated_wood", GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
+        ModHandler.addShapedRecipe("casing_treated_wood",
+                GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, TreatedWood),
                 'F', new UnificationEntry(frameGt, TreatedWood));
@@ -454,11 +458,13 @@ public class GTERecipeLoader {
                 .circuitMeta(6)
                 .input(plate, TreatedWood, 6)
                 .input(frameGt, TreatedWood, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
                 .duration(50).EUt(16)
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 1))
+                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,
+                        1))
                 .output(dust, Wood, 4)
                 .duration(225).EUt(8)
                 .buildAndRegister();
@@ -471,7 +477,8 @@ public class GTERecipeLoader {
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm())
                 .input(plate, NM_HEA_NPs, 6)
                 .fluidInputs(EnderPearl.getFluid(GTValues.L * 2))
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER, 2))
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER, 2))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -530,7 +537,8 @@ public class GTERecipeLoader {
                 'C', CIRCUIT);
 
         // Slice'N'Splice
-        ModHandler.addShapelessRecipe("slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(), new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
+        ModHandler.addShapelessRecipe("slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(),
+                new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(SLICE_N_SPLICE, "PSP", "CHC", "MBM",
                 'P', new UnificationEntry(plate, SOULARIUM),
                 'S', "itemSkull",
@@ -540,7 +548,8 @@ public class GTERecipeLoader {
                 'B', ModObject.blockDarkIronBars.getItemNN());
 
         // Soul Binder
-        ModHandler.addShapelessRecipe("soul_binder", SOUL_BINDER[HV].getStackForm(), new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
+        ModHandler.addShapelessRecipe("soul_binder", SOUL_BINDER[HV].getStackForm(),
+                new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(SOUL_BINDER, "PEP", "CHC", "MZM",
                 'P', new UnificationEntry(plate, SOULARIUM),
                 'E', "skullEnderResonator",
@@ -550,7 +559,8 @@ public class GTERecipeLoader {
                 'Z', "skullZombieController");
 
         // Electric Spawner
-        ModHandler.addShapelessRecipe("electric_spawner", ELECTRIC_SPAWNER[HV].getStackForm(), new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
+        ModHandler.addShapelessRecipe("electric_spawner", ELECTRIC_SPAWNER[HV].getStackForm(),
+                new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
                 'P', new UnificationEntry(plate, CONSTRUCTION_ALLOY),
                 'E', "skullSentientEnder",
