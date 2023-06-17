@@ -25,6 +25,8 @@ public class GTEMetaTileEntities {
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
     public static MetaTileEntityDraconiumFusion AWAKENED_DRACONIUM_FUSION;
+    
+    public static MetaTileEntityAdvancedMegaBlastFurnace ADVANCED_MEGA_BLAST_FURNACE;
 
     public static void init() {
         /*
@@ -71,6 +73,7 @@ public class GTEMetaTileEntities {
         SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));
         // = registerMetaTileEntity(12002, new MetaTileEntityVoidOreMiner(gteId("####")));
         VOIDOREMINER = registerMetaTileEntity(12003, new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
+        ADVANCED_MEGA_BLAST_FURNACE = registerMetaTileEntity(12006, new MetaTileEntityAdvancedMegaBlastFurnace(gteId("advanced_mega_blast_furnace")));
 
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
             DRACONIUM_FUSION = registerMetaTileEntity(12004, new MetaTileEntityDraconiumFusion.TierDraconic(gteId("draconium_fusion")));

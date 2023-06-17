@@ -18,6 +18,9 @@ gtexpert.machine.draconium_fusion.tooltip=なんだか強そうですね?
 gtexpert.machine.draconium_fusion.tooltip.1=§d作者:§f @miozune, @tier940
 gtexpert.machine.awakened_draconium_fusion.name=ドラコニック融合機 II
 gtexpert.machine.awakened_draconium_fusion.tooltip=なんだか強そうですね?
+gtexpert.machine.advanced_mega_blast_furnace.name=無限加熱高炉
+gtexpert.machine.advanced_mega_blast_furnace.tooltip=§d作者:§f @Quarri6343
+gtexpert.machine.electric_blast_furnace.tooltip.1=液体ヘリウムを1mb入れると温度が1K上がる。
 
 # singleblock
 # Auto Chisel
@@ -166,4 +169,5 @@ recipemap.draconic_fusion_upgrade.property.2= 保持されます
 
 #misc
 gtexpert.multiblock.needsun=コントローラーは必ず空に面する必要があります!
+gtexpert.multiblock.mega_blast_furnace.max_temperature=次回稼働予測温度: %s
 
