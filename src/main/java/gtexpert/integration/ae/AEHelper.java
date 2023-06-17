@@ -5,8 +5,6 @@ import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
 import appeng.api.definitions.IParts;
-import com.the9grounds.aeadditions.api.AEAApi;
-import com.the9grounds.aeadditions.api.definitions.IItemDefinition;
 import net.minecraft.item.ItemStack;
 
 public class AEHelper {
@@ -14,7 +12,6 @@ public class AEHelper {
     public static IBlocks aeBlocks = AEApi.instance().definitions().blocks();
     public static IMaterials aeMaterials = AEApi.instance().definitions().materials();
     public static IParts aeParts = AEApi.instance().definitions().parts();
-    public static IItemDefinition aeaItems = AEAApi.instance().items();
 
     public static void addInscriberRecipe(ItemStack stack) {}
 

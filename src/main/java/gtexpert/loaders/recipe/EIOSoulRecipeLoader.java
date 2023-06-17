@@ -9,6 +9,7 @@ import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
+import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import net.minecraft.entity.EntityList;
 import net.minecraft.init.Blocks;
@@ -34,6 +35,7 @@ public class EIOSoulRecipeLoader {
     public static void init(){
         soulBinderRecipes();
         vialExtractorRecipes();
+        recipeCaw();
         recipeVillager();
         recipeWitch();
         recipeZombie();
@@ -91,6 +93,9 @@ public class EIOSoulRecipeLoader {
         registerVialExtractorRecipe("minecraft:creeper", new ItemStack(Items.SKULL, 10, 4), new ItemStack(Items.GUNPOWDER, 10));
         registerVialExtractorRecipe("minecraft:enderman", new ItemStack(ModObject.blockEndermanSkull.getItemNN(), 10, 0), new ItemStack(Items.ENDER_PEARL, 10));
         registerVialExtractorRecipe("minecraft:skeleton", new ItemStack(Items.SKULL, 10, 0), new ItemStack(Items.BONE, 10));
+        registerVialExtractorRecipe("minecraft:ghast", new ItemStack(Items.GHAST_TEAR, 5));
+        registerVialExtractorRecipe("minecraft:shulker", new ItemStack(Items.SHULKER_SHELL, 5));
+        registerVialExtractorRecipe("minecraft:wither", 4000, new ItemStack(Items.NETHER_STAR, 2));
         for (String slime : Arrays.asList("minecraft:slime", "minecraft:magma_cube")) {
             registerVialExtractorRecipe(slime, 2000, new ItemStack(Items.SLIME_BALL, 10), new ItemStack(Items.ROTTEN_FLESH, 10));
         }
@@ -108,6 +113,26 @@ public class EIOSoulRecipeLoader {
             registerVialExtractorRecipe(guardian, new ItemStack(Items.PRISMARINE_SHARD, 5), new ItemStack(Blocks.SPONGE, 1, 1));
         }
         registerVialExtractorRecipe("minecraft:squid", new ItemStack(Items.DYE, 10, 0));
+        registerVialExtractorRecipe("minecraft:pig", new ItemStack(Items.PORKCHOP, 10));
+        registerVialExtractorRecipe("minecraft:sheep", new ItemStack(Items.MUTTON, 10), new ItemStack(Blocks.WOOL, 5));
+        registerVialExtractorRecipe("minecraft:chicken", 200, new ItemStack(Items.CHICKEN, 5), new ItemStack(Items.FEATHER, 2));
+        registerVialExtractorRecipe("minecraft:rabbit", 200, builder ->
+                builder.output(Items.RABBIT, 5)
+                        .output(Items.RABBIT_HIDE, 2)
+                        .chancedOutput(new ItemStack(Items.RABBIT_FOOT, 1), 2000, 0));
+    }
+
+    private static void recipeCaw() {
+        List<String> caw = new ArrayList<>();
+        caw.add("minecraft:cow");
+        if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {caw.add(GTEValues.MODID_GTFO + ":italian_buffalo");}
+        for (String Caw : caw) {
+            ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setString("entityId", Caw);
+            stack.setTagCompound(tag);
+            registerVialExtractorRecipe(Caw, new ItemStack(Items.BEEF, 10), new ItemStack(Items.LEATHER, 5));
+        }
     }
 
     private static void recipeVillager() {

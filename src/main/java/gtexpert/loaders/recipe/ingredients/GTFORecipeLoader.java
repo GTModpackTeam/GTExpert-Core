@@ -4,7 +4,6 @@ import gregtech.api.GTValues;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gtexpert.api.GTEValues;
-import gtexpert.api.util.GTEUtils;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -17,6 +16,7 @@ import java.util.List;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gtexpert.api.util.GTEUtils.getModFluid;
 
 public class GTFORecipeLoader {
     public static void init() {
@@ -59,14 +59,14 @@ public class GTFORecipeLoader {
                 .circuitMeta(1)
                 .input("craftSludge", 1)
                 .fluidInputs(SulfuricAcid.getFluid(200))
-                .fluidOutputs(GTEUtils.getModFluid("gtfo_sludge", 200))
+                .fluidOutputs(getModFluid("gtfo_sludge", 200))
                 .duration(250).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
                 .input("craftSludge", 1)
                 .fluidInputs(Water.getFluid(200))
-                .fluidOutputs(GTEUtils.getModFluid("gtfo_sludge", 100))
+                .fluidOutputs(getModFluid("gtfo_sludge", 100))
                 .duration(500).EUt(VA[LV])
                 .buildAndRegister();
     }

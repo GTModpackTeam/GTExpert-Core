@@ -772,7 +772,7 @@ public class DraconicRecipeLoader {
                 .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
                 .fluidInputs(Oxygen.getFluid(224))
                 .output(ingot, DRACONIUM, 4)
-                .duration(225).EUt(30)
+                .duration(225).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
@@ -796,7 +796,7 @@ public class DraconicRecipeLoader {
                 .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))
                 .fluidInputs(Oxygen.getFluid(224))
                 .output(ingot, AWAKENED_DRACONIUM, 4)
-                .duration(225).EUt(30)
+                .duration(225).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))

@@ -14,6 +14,7 @@ public class GTEValues {
             MODID_EIO = "enderio",
             MODID_AE = "appliedenergistics2",
             MODID_AEA = "aeadditions",
+            MODID_EXCPU = "extracpus",
             MODID_DE = "draconicevolution",
             MODID_DA = "draconicadditions",
             MODID_CHISEL = "chisel";
