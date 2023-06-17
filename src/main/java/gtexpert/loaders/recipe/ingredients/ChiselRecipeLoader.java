@@ -1,15 +1,23 @@
 package gtexpert.loaders.recipe.ingredients;
 
+import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.BlockLamp;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.integration.chisel.ChiselHelper;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
@@ -24,6 +32,7 @@ import static gregtech.common.blocks.MetaBlocks.*;
 import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
 import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
+import static gtexpert.api.util.GTEUtils.getModItem;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.AUTO_CHISEL;
 
 public class ChiselRecipeLoader {
@@ -38,6 +47,55 @@ public class ChiselRecipeLoader {
     }
 
     private static void blocks() {
+        // Oak Bookshelf
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack(Blocks.PLANKS, 6, 0), new ItemStack(Items.BOOK, 3));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(Blocks.PLANKS, 6, 0))
+                .inputs(new ItemStack(Items.BOOK, 3))
+                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_oak", 1, 0))
+                .duration(100).EUt(4)
+                .buildAndRegister();
+
+        // Spruce Bookshelf
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(Blocks.PLANKS, 6, 1))
+                .inputs(new ItemStack(Items.BOOK, 3))
+                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_spruce", 1, 0))
+                .duration(100).EUt(4)
+                .buildAndRegister();
+
+        // Birch Bookshelf
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(Blocks.PLANKS, 6, 2))
+                .inputs(new ItemStack(Items.BOOK, 3))
+                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_birch", 1, 0))
+                .duration(100).EUt(4)
+                .buildAndRegister();
+
+        // Jungle Bookshelf
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(Blocks.PLANKS, 6, 3))
+                .inputs(new ItemStack(Items.BOOK, 3))
+                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_jungle", 1, 0))
+                .duration(100).EUt(4)
+                .buildAndRegister();
+
+        // Acacia Bookshelf
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(Blocks.PLANKS, 6, 4))
+                .inputs(new ItemStack(Items.BOOK, 3))
+                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_acacia", 1, 0))
+                .duration(100).EUt(4)
+                .buildAndRegister();
+
+        // Dark Oak Bookshelf
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(Blocks.PLANKS, 6, 5))
+                .inputs(new ItemStack(Items.BOOK, 3))
+                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_darkoak", 1, 0))
+                .duration(100).EUt(4)
+                .buildAndRegister();
+
         // Material Blocks
         if (ConfigHolder.recipes.disableManualCompression) {
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "charcoal_uncraft"));
@@ -125,7 +183,7 @@ public class ChiselRecipeLoader {
 //                    .input("hazardSign")
 //                    .outputs(hazardSign)
 //                    .duration(20)
-//                    .EUt(7)
+//                    .EUt(VA[ULV])
 //                    .buildAndRegister();
 //        }
 
@@ -242,6 +300,48 @@ public class ChiselRecipeLoader {
         ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(WINDMILL_A).getItemVariant(CONCRETE_DARK));
         ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(WINDMILL_B).getItemVariant(CONCRETE_DARK));
         ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(BRICKS_SQUARE).getItemVariant(CONCRETE_DARK));
+
+        // Lamp
+        if (Loader.isModLoaded("projectred-illumination")) {
+            for (int i = 0; i < 31; i++) {
+                ModHandler.removeRecipeByOutput(getModItem("projectred-illumination", "lamp", 1, i));
+            }
+
+            for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+                EnumDyeColor color = EnumDyeColor.byMetadata(i);
+                BlockLamp lamp = MetaBlocks.LAMPS.get(color);
+
+                ChiselHelper.addGroup("lamp_" + color);
+                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
+                    ChiselHelper.addVariation("lamp_" + color, getModItem("projectred-illumination", "lamp", 1, i));
+                    ChiselHelper.addVariation("lamp_" + color, getModItem("projectred-illumination", "lamp", 1, i + 16));
+                    ChiselHelper.addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                }
+
+                lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
+                ChiselHelper.addGroup("lamp_borderless_" + color);
+                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
+                    ChiselHelper.addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                }
+            }
+        }
+        else {
+            for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+                EnumDyeColor color = EnumDyeColor.byMetadata(i);
+                BlockLamp lamp = MetaBlocks.LAMPS.get(color);
+
+                ChiselHelper.addGroup("lamp_" + color);
+                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
+                    ChiselHelper.addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                }
+
+                lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
+                ChiselHelper.addGroup("lamp_borderless_" + color);
+                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
+                    ChiselHelper.addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                }
+            }
+        }
     }
 
     private static void tools() {

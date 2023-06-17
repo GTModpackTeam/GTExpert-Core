@@ -67,13 +67,13 @@ public class EIORecipeLoader {
                 .input(Items.GLASS_BOTTLE, 1)
                 .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
                 .output(Items.EXPERIENCE_BOTTLE, 1)
-                .duration(20).EUt(30)
+                .duration(20).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CANNER_RECIPES.recipeBuilder()
                 .input(Items.EXPERIENCE_BOTTLE, 1)
                 .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
                 .output(Items.GLASS_BOTTLE, 1)
-                .duration(20).EUt(30)
+                .duration(20).EUt(VA[LV])
                 .buildAndRegister();
 
         // Nutrient Distillation

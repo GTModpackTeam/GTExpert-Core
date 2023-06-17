@@ -33,6 +33,7 @@ import static gregtech.common.items.MetaItems.*;
 public class CEUOverrideRecipeLoader {
     public static void init() {
         materials();
+        items();
         blocks();
         woods();
     }
@@ -117,7 +118,7 @@ public class CEUOverrideRecipeLoader {
                 .notConsumable(SHAPE_MOLD_BLOCK.getStackForm())
                 .fluidInputs(Ice.getFluid(1000))
                 .output(block, Ice, 1)
-                .duration(6).EUt(7)
+                .duration(6).EUt(VA[ULV])
                 .buildAndRegister();
 
 
@@ -240,7 +241,7 @@ public class CEUOverrideRecipeLoader {
                 .notConsumable(SHAPE_MOLD_BLOCK)
                 .fluidInputs(CertusQuartz.getFluid(576))
                 .output(block, CertusQuartz, 1)
-                .duration(20).EUt(7)
+                .duration(20).EUt(VA[ULV])
                 .buildAndRegister();
 
         // Plate
@@ -261,6 +262,29 @@ public class CEUOverrideRecipeLoader {
                 .fluidInputs(Water.getFluid(15))
                 .output(plate, CertusQuartz, 4)
                 .duration(300).EUt(VA[LV])
+                .buildAndRegister();
+    }
+
+    private static void items() {
+        // Tiny Pile of Ashes (Bookshelf Override)
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ARC_FURNACE_RECIPES,
+                new ItemStack[]{new ItemStack(Blocks.BOOKSHELF)},
+                new FluidStack[]{Oxygen.getFluid(21)}
+        );
+        RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
+                .input("bookshelf")
+                .fluidInputs(Oxygen.getFluid(21))
+                .output(dustTiny, Ash, 16)
+                .duration(1).EUt(VA[LV])
+                .buildAndRegister();
+
+        // Chad & Wood Pulp (Bookshelf Override)
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, new ItemStack(Blocks.BOOKSHELF));
+        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
+                .input("bookshelf")
+                .output(dust, Paper, 9)
+                .output(dust, Wood, 6)
+                .duration(196).EUt(2)
                 .buildAndRegister();
     }
 
@@ -364,21 +388,21 @@ public class CEUOverrideRecipeLoader {
                     .fluidInputs(Lubricant.getFluid(1))
                     .outputs(GTUtility.copyAmount(6, plankStack))
                     .output(dust, Wood, 2)
-                    .duration(200).EUt(7)
+                    .duration(200).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                     .inputs(allWoodLogs.get(i))
                     .fluidInputs(DistilledWater.getFluid(3))
                     .outputs(GTUtility.copyAmount(6, plankStack))
                     .output(dust, Wood, 2)
-                    .duration(300).EUt(7)
+                    .duration(300).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                     .inputs(allWoodLogs.get(i))
                     .fluidInputs(Water.getFluid(4))
                     .outputs(GTUtility.copyAmount(6, plankStack))
                     .output(dust, Wood, 2)
-                    .duration(400).EUt(7)
+                    .duration(400).EUt(VA[ULV])
                     .buildAndRegister();
         }
     }
