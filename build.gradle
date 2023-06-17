@@ -138,6 +138,12 @@ dependencies {
         implementation rfg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
     }
 
+    // Debug Chisel
+    compileOnlyApi rfg.deobf("curse.maven:chisel-${chi_pid}:${chi_fid}")
+    if (project.debug_chisel.toBoolean()) {
+        implementation rfg.deobf("curse.maven:chisel-${chi_pid}:${chi_fid}")
+    }
+
     // GroovyScript dependency
     implementation "zone.rong:mixinbooter:${mixinbooter_version}"
 
