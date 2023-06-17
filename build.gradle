@@ -115,7 +115,6 @@ dependencies {
     implementation rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-${aea_pid}:${aea_fid}")
 
     // Soft Dependencies
-    compileOnlyApi rfg.deobf("curse.maven:gregtech-food-option-${gfo_pid}:${gfo_fid}")
     implementation "mezz.jei:jei_1.12.2:${jei_version}"
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crt_version}"
     implementation rfg.deobf("curse.maven:top-${top_pid}:${top_fid}")
@@ -127,10 +126,10 @@ dependencies {
     //implementation rfg.deobf("curse.maven:groovyscript-${grs_pid}:${grs_fid}")
 
     // Debug Draconic Evolution/Additions
-    compileOnlyApi rfg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
-    compileOnlyApi rfg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
-    compileOnlyApi rfg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
-    compileOnlyApi rfg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
+    compileOnly rfg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
+    compileOnly rfg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
+    compileOnly rfg.deobf("curse.maven:draconic-evolution-${dre_pid}:${dre_fid}")
+    compileOnly rfg.deobf("curse.maven:draconicadditions-${dra_pid}:${dra_fid}")
     if (project.debug_de.toBoolean()) {
         implementation rfg.deobf("curse.maven:redstone-flux-${ref_pid}:${ref_fid}")
         implementation rfg.deobf("curse.maven:brandons-core-${brc_pid}:${brc_fid}")
@@ -139,7 +138,7 @@ dependencies {
     }
 
     // Debug Chisel
-    compileOnlyApi rfg.deobf("curse.maven:chisel-${chi_pid}:${chi_fid}")
+    compileOnly rfg.deobf("curse.maven:chisel-${chi_pid}:${chi_fid}")
     if (project.debug_chisel.toBoolean()) {
         implementation rfg.deobf("curse.maven:chisel-${chi_pid}:${chi_fid}")
     }
