@@ -7,6 +7,7 @@ import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
+import gtexpert.integration.theoneprobe.TOPProviders;
 import gtexpert.loaders.recipe.*;
 import gtexpert.loaders.recipe.ingredients.*;
 import net.minecraft.block.Block;
@@ -37,6 +38,9 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent e) {
+        if (Loader.isModLoaded(GTEValues.MODID_TOP)) {
+            TOPProviders.init();
+        }
     }
 
     public void postInit(FMLPostInitializationEvent e) {
@@ -81,6 +85,7 @@ public class CommonProxy {
         GTERecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();
+        EIOSoulRecipeLoader.init();
 
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
             DraconicRecipeLoader.init();
@@ -88,6 +93,9 @@ public class CommonProxy {
         }
         if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
             GTFORecipeLoader.init();
+        }
+        if (Loader.isModLoaded(GTEValues.MODID_CHISEL)) {
+            ChiselRecipeLoader.init();
         }
     }
 }
