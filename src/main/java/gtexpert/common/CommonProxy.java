@@ -86,6 +86,7 @@ public class CommonProxy {
         VanillaOverrideRecipes.init();
         CEUOverrideRecipeLoader.init();
         GTERecipeLoader.init();
+        GTEWoodRecipeLoader.init();
         AERecipeLoader.init();
         EIORecipeLoader.init();
         EIOSoulRecipeLoader.init();

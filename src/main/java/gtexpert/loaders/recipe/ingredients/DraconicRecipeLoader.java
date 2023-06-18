@@ -9,6 +9,8 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
@@ -27,7 +29,6 @@ import com.brandon3055.draconicevolution.DEFeatures;
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;
 import crazypants.enderio.powertools.init.PowerToolObject;
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;

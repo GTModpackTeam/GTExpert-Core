@@ -29,11 +29,11 @@ jobs:
         id: create-pull-request
         uses: peter-evans/create-pull-request@v4
         env:
-          GITHUB_TOKEN: ${{ secrets.BUILDSCRIPT_UPDATER_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.BUILDSCRIPT_UPDATER_TOKEN}}
         with:
-          token: ${{ secrets.BUILDSCRIPT_UPDATER_TOKEN }}
+          token: ${{secrets.BUILDSCRIPT_UPDATER_TOKEN}}
           committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          author: ${{github.actor}} <${{github.actor}}@users.noreply.github.com>
           add-paths: build.gradle
           commit-message: 'update build script version to ${{ steps.update-buildscript.outputs.NEW_VERSION }}'
           branch: gha-update-buildscript
