@@ -17,27 +17,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.Loader;
 
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Consumer;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.gem;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
 
 public class EIOSoulRecipeLoader {
 
-    // This code was created under the advice of miozune.
     public static void init() {
         soulBinderRecipes();
         vialExtractorRecipes();
-        recipeCaw();
         recipeVillager();
         recipeWitch();
         recipeZombie();
@@ -45,7 +42,7 @@ public class EIOSoulRecipeLoader {
 
     private static void soulBinderRecipes() {
         for (ResourceLocation name : EntityList.getEntityNameList()) {
-            if (!EntityList.ENTITY_EGGS.containsKey(name)) {
+            if (isEntityInvalid(name)) {
                 continue;
             }
             ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
@@ -129,20 +126,8 @@ public class EIOSoulRecipeLoader {
         registerVialExtractorRecipe("minecraft:rabbit", 200, builder -> builder.output(Items.RABBIT, 5)
                 .output(Items.RABBIT_HIDE, 2)
                 .chancedOutput(new ItemStack(Items.RABBIT_FOOT, 1), 2000, 0));
-    }
-
-    private static void recipeCaw() {
-        List<String> caw = new ArrayList<>();
-        caw.add("minecraft:cow");
-        if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
-            caw.add(GTEValues.MODID_GTFO + ":italian_buffalo");
-        }
-        for (String Caw : caw) {
-            ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
-            NBTTagCompound tag = new NBTTagCompound();
-            tag.setString("entityId", Caw);
-            stack.setTagCompound(tag);
-            registerVialExtractorRecipe(Caw, new ItemStack(Items.BEEF, 10), new ItemStack(Items.LEATHER, 5));
+        for (String cow : Arrays.asList("minecraft:cow", GTEValues.MODID_GTFO + ":italian_buffalo")) {
+            registerVialExtractorRecipe(cow, new ItemStack(Items.BEEF, 10), new ItemStack(Items.LEATHER, 5));
         }
     }
 
@@ -165,25 +150,18 @@ public class EIOSoulRecipeLoader {
     }
 
     private static void recipeWitch() {
-        List<String> witch = new ArrayList<>();
-        witch.add("minecraft:witch");
-        if (Loader.isModLoaded("enderzoo")) {
-            witch.add("enderzoo:witherwitch");
-        }
-        if (Loader.isModLoaded("enderiozoo")) {
-            witch.add("enderiozoo:witherwitch");
-        }
-        for (String Witch : witch) {
+        for (String witch : Arrays.asList("minecraft:witch", "enderzoo:witherwitch", "enderiozoo:witherwitch")) {
+            if (isEntityInvalid(witch)) continue;
             ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
             NBTTagCompound tag = new NBTTagCompound();
-            tag.setString("entityId", Witch);
+            tag.setString("entityId", witch);
             stack.setTagCompound(tag);
 
             // Soul Binder - Sentient Ender
             GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
                     .input(GTRecipeItemInput.getOrCreate(stack)
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                    NBTCondition.create(NBTTagType.STRING, "entityId", Witch)))
+                                    NBTCondition.create(NBTTagType.STRING, "entityId", witch)))
                     .input(ModObject.itemMaterial.getItemNN(), 1, 43)
                     .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 8640))
                     .output(ModObject.itemSoulVial.getItemNN())
@@ -193,17 +171,17 @@ public class EIOSoulRecipeLoader {
     }
 
     private static void recipeZombie() {
-        for (String Zombie : Arrays.asList("minecraft:zombie", "minecraft:husk", "minecraft:zombie_villager")) {
+        for (String zombie : Arrays.asList("minecraft:zombie", "minecraft:husk", "minecraft:zombie_villager")) {
             ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
             NBTTagCompound tag = new NBTTagCompound();
-            tag.setString("entityId", Zombie);
+            tag.setString("entityId", zombie);
             stack.setTagCompound(tag);
 
             // Soul Binder - Frank'N'Zombie
             GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
                     .input(GTRecipeItemInput.getOrCreate(stack)
                             .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                    NBTCondition.create(NBTTagType.STRING, "entityId", Zombie)))
+                                    NBTCondition.create(NBTTagType.STRING, "entityId", zombie)))
                     .input(ModObject.itemMaterial.getItemNN(), 1, 41)
                     .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 8640))
                     .output(ModObject.itemSoulVial.getItemNN())
@@ -219,6 +197,8 @@ public class EIOSoulRecipeLoader {
      */
     private static void registerVialExtractorRecipe(String entityName, int xpAmount,
                                                     Consumer<RecipeBuilder<SimpleRecipeBuilder>> applyForRecipeBuilder) {
+        if (isEntityInvalid(entityName)) return;
+
         ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
         NBTTagCompound tag = new NBTTagCompound();
         tag.setString("entityId", entityName);
@@ -253,5 +233,13 @@ public class EIOSoulRecipeLoader {
      */
     private static void registerVialExtractorRecipe(String entityName, ItemStack... outputs) {
         registerVialExtractorRecipe(entityName, 1000, outputs);
+    }
+
+    private static boolean isEntityInvalid(ResourceLocation resourceLocation) {
+        return !EntityList.ENTITY_EGGS.containsKey(resourceLocation);
+    }
+
+    private static boolean isEntityInvalid(String name) {
+        return isEntityInvalid(new ResourceLocation(name));
     }
 }
