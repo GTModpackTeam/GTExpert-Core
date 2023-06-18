@@ -25,7 +25,7 @@ jobs:
 
       - name: Check for Duplicate Tags
         run: |
-          if git rev-parse -q --verify "refs/tags/${{ github.ref }}" >/dev/null; then
+          if git rev-parse -q --verify "refs/tags/${{github.ref}}" >/dev/null; then
             echo "Tag already exists. A version bump is required."
             exit 1
           fi
@@ -39,7 +39,7 @@ jobs:
       - name: Build Project
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: 'build --build-cache --daemon' # use the daemon here so the rest of the process is faster
+          arguments: 'build --scan --build-cache --daemon' # use the daemon here so the rest of the process is faster
           generate-job-summary: false
           gradle-home-cache-includes: |
             caches
@@ -58,7 +58,6 @@ jobs:
         uses: gradle/gradle-build-action@v2
         env:
           CURSEFORGE_API_KEY: "${{secrets.CURSEFORGE_API_KEY}}"
-          CURSEFORGE_PROJECT_ID: "${{secrets.CURSEFORGE_PROJECT_ID}}"
           CHANGELOG_LOCATION: "${{env.CHANGELOG_LOCATION}}"
           RELEASE_TYPE: "${{env.RELEASE_TYPE}}"
         with:
