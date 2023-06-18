@@ -7,26 +7,14 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTUtility;
-import gregtech.common.ConfigHolder;
 import gregtech.common.metatileentities.MetaTileEntities;
 
 import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.common.GTEConfigHolder;
 
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.Loader;
-
-import org.apache.commons.lang3.tuple.Pair;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -39,7 +27,6 @@ public class CEUOverrideRecipeLoader {
         materials();
         items();
         blocks();
-        woods();
     }
 
     private static void materials() {
@@ -337,93 +324,5 @@ public class CEUOverrideRecipeLoader {
                 'W', new UnificationEntry(cableGtSingle, Europium),
                 'C', WETWARE_MAINFRAME_UHV,
                 'T', OreDictNames.chestWood);
-    }
-
-    private static void woods() {
-        // Wood sticks
-        if (ConfigHolder.recipes.nerfWoodCrafting) {
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "stick_normal"));
-            ModHandler.addMirroredShapedRecipe("stick_normal", GTEConfigHolder.moreNerfWoodCrafting ?
-                    new ItemStack(Items.STICK, 1) : new ItemStack(Items.STICK, 2), "P", "P", 'P',
-                    new UnificationEntry(plank, Wood));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "stick_saw"));
-            ModHandler
-                    .addMirroredShapedRecipe("stick_saw",
-                            GTEConfigHolder.moreNerfWoodCrafting ? new ItemStack(Items.STICK, 2) :
-                                    new ItemStack(Items.STICK, 4),
-                            "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
-        }
-
-        // Wood planks
-        List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
-                .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
-                .collect(Collectors.toList());
-        for (int i = 0; i < allWoodLogs.size(); i++) {
-            Pair<IRecipe, ItemStack> outputPair = ModHandler.getRecipeOutput(null, allWoodLogs.get(i));
-            ItemStack plankStack = outputPair.getValue();
-            if (plankStack.isEmpty()) continue;
-
-            ModHandler.removeRecipeByOutput(
-                    GTUtility.copyAmount(ConfigHolder.recipes.nerfWoodCrafting ? 2 : 4, plankStack));
-            ModHandler.removeRecipeByOutput(
-                    GTUtility.copyAmount(ConfigHolder.recipes.nerfWoodCrafting ? 4 : 6, plankStack));
-            ModHandler.addShapelessRecipe("plank_" + i,
-                    GTUtility.copyAmount(
-                            ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.moreNerfWoodCrafting ? 1 : 2 : 4,
-                            plankStack),
-                    allWoodLogs.get(i));
-            ModHandler.addMirroredShapedRecipe("plank_saw_" + i,
-                    GTUtility.copyAmount(
-                            ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.moreNerfWoodCrafting ? 2 : 4 : 6,
-                            plankStack),
-                    "s", "P", 'P', allWoodLogs.get(i));
-            GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
-                    .circuitMeta(1)
-                    .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
-                    .fluidInputs(Water.getFluid(1000))
-                    .outputs(GTUtility.copyAmount(48, plankStack))
-                    .output(dust, Wood, 12)
-                    .duration(600).EUt(VA[LV])
-                    .buildAndRegister();
-            GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .inputs(GTUtility.copyAmount(6, allWoodLogs.get(i)))
-                    .fluidInputs(Water.getFluid(2500))
-                    .outputs(GTUtility.copyAmount(60, plankStack))
-                    .duration(800).EUt(VA[LV])
-                    .buildAndRegister();
-
-            // Add Cutter recipes for all wood logs
-            if (allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 0)) ||
-                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 1)) ||
-                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 2)) ||
-                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG, 1, 3)) ||
-                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 0)) ||
-                    allWoodLogs.get(i).equals(new ItemStack(Blocks.LOG2, 1, 1)))
-                return;
-            if (Loader.isModLoaded(GTEValues.MODID_GTFO)) return;
-
-            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                    .inputs(allWoodLogs.get(i))
-                    .fluidInputs(Lubricant.getFluid(1))
-                    .outputs(GTUtility.copyAmount(6, plankStack))
-                    .output(dust, Wood, 2)
-                    .duration(200).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                    .inputs(allWoodLogs.get(i))
-                    .fluidInputs(DistilledWater.getFluid(3))
-                    .outputs(GTUtility.copyAmount(6, plankStack))
-                    .output(dust, Wood, 2)
-                    .duration(300).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                    .inputs(allWoodLogs.get(i))
-                    .fluidInputs(Water.getFluid(4))
-                    .outputs(GTUtility.copyAmount(6, plankStack))
-                    .output(dust, Wood, 2)
-                    .duration(400).EUt(VA[ULV])
-                    .buildAndRegister();
-        }
     }
 }
