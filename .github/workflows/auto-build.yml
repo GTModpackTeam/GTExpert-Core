@@ -28,7 +28,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: 'build --build-cache --daemon' # use the daemon here so the rest of the process is faster
+          arguments: 'build --scan --build-cache --daemon' # use the daemon here so the rest of the process is faster
           generate-job-summary: true
           gradle-home-cache-includes: |
             caches
