@@ -7,21 +7,24 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.MetaBlocks;
+
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
+
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
+
     public MetaTileEntitySawmill(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GTERecipeMaps.SAWMILL_RECIPES);
     }
@@ -40,8 +43,10 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
                 .aisle(" F ", " # ", "CCC")
                 .aisle("CFC", "S#C", "C C")
                 .where('S', selfPredicate())
-                .where('C', states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill)).setMinGlobalLimited(15)
-                        .or(autoAbilities(true, false, true, true, true, false, false)))
+                .where('C',
+                        states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                                .getState(GTEBlockMetalCasing.MetalCasingType.SAWMill)).setMinGlobalLimited(15)
+                                        .or(autoAbilities(true, false, true, true, true, false, false)))
                 .where('F', blocks(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR))
                 .where('#', air())
                 .where(' ', any())
@@ -54,7 +59,9 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    protected @NotNull ICubeRenderer getFrontOverlay() { return GTETextures.SAWMILL_OVERLAY; }
+    protected @NotNull ICubeRenderer getFrontOverlay() {
+        return GTETextures.SAWMILL_OVERLAY;
+    }
 
     @Override
     public boolean hasMaintenanceMechanics() {
@@ -62,8 +69,10 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
+                               boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtexpert.machine.sawmill.tooltip.1"));
     }
 
     @Override

@@ -13,6 +13,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import org.jetbrains.annotations.NotNull;
 
 public class BlockSawmillConveyor extends Block {
@@ -31,21 +32,30 @@ public class BlockSawmillConveyor extends Block {
     }
 
     @Override
-    public boolean canCreatureSpawn(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull EntityLiving.SpawnPlacementType type) {
+    public boolean canCreatureSpawn(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos,
+                                    @NotNull EntityLiving.SpawnPlacementType type) {
         return false;
     }
 
     @Override
-    protected @NotNull BlockStateContainer createBlockState() {return new BlockStateContainer(this, FACING);}
+    protected @NotNull BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, FACING);
+    }
 
     @Override
-    public int getMetaFromState(@NotNull IBlockState state) {return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();}
+    public int getMetaFromState(@NotNull IBlockState state) {
+        return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
+    }
 
     @NotNull
-    public IBlockState getStateFromMeta(int meta) {return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));}
+    public IBlockState getStateFromMeta(int meta) {
+        return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));
+    }
 
     @Override
-    public @NotNull IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @NotNull EntityLivingBase placer) {
+    public @NotNull IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX,
+                                                     float hitY, float hitZ, int meta,
+                                                     @NotNull EntityLivingBase placer) {
         return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 }

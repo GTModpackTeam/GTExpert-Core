@@ -6,6 +6,7 @@ import gregtech.api.items.armor.ArmorLogicSuite;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.input.KeyBind;
 import gregtech.common.items.armor.IStepAssist;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,9 +20,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
 import org.jetbrains.annotations.NotNull;
 
 public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
+
     private float charge = 0.0F;
 
     public PistonBoots(EntityEquipmentSlot slot, int energyPerUse, long maxCapacity, int tier) {
@@ -35,7 +38,8 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
 
         updateStepHeight(player);
 
-        if (container.canUse(energyPerUse / 100) && (player.onGround) && KeyBind.VANILLA_FORWARD.isKeyDown(player) && (player.isSprinting())) {
+        if (container.canUse(energyPerUse / 100) && (player.onGround) && KeyBind.VANILLA_FORWARD.isKeyDown(player) &&
+                (player.isSprinting())) {
             byte consumerTicks = data.getByte("consumerTicks");
 
             ++consumerTicks;
@@ -65,7 +69,8 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
                     if (this.charge == 1.0F) {
                         player.motionX *= 1.4D;
                         player.motionZ *= 1.4D;
-                        world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_PISTON_EXTEND, SoundCategory.PLAYERS, 1f, 1f);
+                        world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_PISTON_EXTEND,
+                                SoundCategory.PLAYERS, 1f, 1f);
                     }
 
                     player.motionY += this.charge * 0.13F;
@@ -80,7 +85,9 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
     }
 
     @Override
-    public ISpecialArmor.@NotNull ArmorProperties getProperties(EntityLivingBase player, @NotNull ItemStack armor, DamageSource source, double damage, EntityEquipmentSlot equipmentSlot) {
+    public ISpecialArmor.@NotNull ArmorProperties getProperties(EntityLivingBase player, @NotNull ItemStack armor,
+                                                                DamageSource source, double damage,
+                                                                EntityEquipmentSlot equipmentSlot) {
         IElectricItem container = armor.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
         int damageLimit = Integer.MAX_VALUE;
         if (source == DamageSource.FALL) {
@@ -98,7 +105,8 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
     }
 
     @Override
-    public void damageArmor(EntityLivingBase entity, @NotNull ItemStack itemStack, DamageSource source, int damage, EntityEquipmentSlot equipmentSlot) {
+    public void damageArmor(EntityLivingBase entity, @NotNull ItemStack itemStack, DamageSource source, int damage,
+                            EntityEquipmentSlot equipmentSlot) {
         IElectricItem item = itemStack.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
         if (item != null) {
             item.discharge((long) energyPerUse / 10 * damage, item.getTier(), true, false, false);

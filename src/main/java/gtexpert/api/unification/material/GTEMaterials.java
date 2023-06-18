@@ -1,7 +1,9 @@
 package gtexpert.api.unification.material;
 
 import gregtech.api.unification.material.Material;
+
 import gtexpert.api.GTEValues;
+
 import net.minecraftforge.fml.common.Loader;
 
 /**
@@ -10,14 +12,14 @@ import net.minecraftforge.fml.common.Loader;
  * All Material Builders should follow this general formatting:
  * <p>
  * material = new MaterialBuilder(id, name)
- * .ingot().fluid().ore()                <--- types
- * .color().iconSet()                    <--- appearance
- * .flags()                              <--- special generation
- * .element() / .components()            <--- composition
- * .toolStats()                          <---
- * .oreByProducts()                         | additional properties
- * ...                                   <---
- * .blastTemp()                          <--- blast temperature
+ * .ingot().fluid().ore() <--- types
+ * .color().iconSet() <--- appearance
+ * .flags() <--- special generation
+ * .element() / .components() <--- composition
+ * .toolStats() <---
+ * .oreByProducts() | additional properties
+ * ... <---
+ * .blastTemp() <--- blast temperature
  * .build();
  * <p>
  * Use defaults to your advantage! Some defaults:
