@@ -138,6 +138,7 @@ material.vivid_alloy=ビビッド合金
 material.fluix=フルーシュ
 material.fluix_alloy=フルーシュ合金
 material.charged_certus_quartz=チャージドケルタスクォーツ
+material.infinity=Infinity
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert 虚構MEストレージセル素材

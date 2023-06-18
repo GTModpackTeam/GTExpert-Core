@@ -45,7 +45,7 @@ public class DraconicUpgradeRecipeLoader {
         // Axe of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_axe"));
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(DRACONIUM)).setNBTMatchingCondition(
+                GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", "draconium"))),
@@ -55,7 +55,7 @@ public class DraconicUpgradeRecipeLoader {
         // Pickaxe of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_pick"));
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(DRACONIUM)).setNBTMatchingCondition(
+                GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", "draconium"))),
@@ -65,7 +65,7 @@ public class DraconicUpgradeRecipeLoader {
         // Shovel of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_shovel"));
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(DRACONIUM)).setNBTMatchingCondition(
+                GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", "draconium"))),
@@ -152,13 +152,13 @@ public class DraconicUpgradeRecipeLoader {
                 .catalyst(GTRecipeItemInput.getOrCreate(new ItemStack(DEFeatures.draconicPick))
                         .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY))
                 .result(new ItemStack(DEFeatures.draconicStaffOfPower))
-                .input(plate, DRACONIUM, 6)
+                .input(plate, Draconium, 6)
                 .inputNBT(DEFeatures.draconicAxe, NBTMatcher.ANY, NBTCondition.ANY)
                 .inputNBT(DEFeatures.draconicShovel, NBTMatcher.ANY, NBTCondition.ANY)
                 .inputNBT(DEFeatures.draconicSword, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(DEFeatures.draconicCore, 4)
-                .fluidInputs(CRYOTHEUM.getFluid(32000))
-                .fluidOutputs(PYROTHEUM.getFluid(8000))
+                .fluidInputs(Cryotheum.getFluid(32000))
+                .fluidOutputs(Pyrotheum.getFluid(8000))
                 .duration(400).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -251,20 +251,20 @@ public class DraconicUpgradeRecipeLoader {
         switch (tier) {
             case WYVERN:
                 recipeBuilder
-                        .input(plate, DRACONIUM, plateAmount)
+                        .input(plate, Draconium, plateAmount)
                         .input(DEFeatures.wyvernCore, 1)
                         .input(DEFeatures.wyvernEnergyCore, 1)
-                        .fluidInputs(CRYOTHEUM.getFluid(16000))
-                        .fluidOutputs(PYROTHEUM.getFluid(4000))
+                        .fluidInputs(Cryotheum.getFluid(16000))
+                        .fluidOutputs(Pyrotheum.getFluid(4000))
                         .duration(200).EUt(VA[LuV]);
                 break;
             case DRACONIC:
                 recipeBuilder
-                        .input(plate, AWAKENED_DRACONIUM, 2)
+                        .input(plate, AwakenedDraconium, 2)
                         .input(DEFeatures.draconicCore, 4)
                         .input(DEFeatures.draconicEnergyCore, 1)
-                        .fluidInputs(CRYOTHEUM.getFluid(32000))
-                        .fluidOutputs(PYROTHEUM.getFluid(8000))
+                        .fluidInputs(Cryotheum.getFluid(32000))
+                        .fluidOutputs(Pyrotheum.getFluid(8000))
                         .duration(400).EUt(VA[ZPM]);
                 break;
             case CHAOTIC:
@@ -273,8 +273,8 @@ public class DraconicUpgradeRecipeLoader {
                         .input(DEFeatures.infusedObsidian, 2)
                         .input(DEFeatures.chaoticCore, 1)
                         .input(DAFeatures.chaoticEnergyCore, 1)
-                        .fluidInputs(CRYOTHEUM.getFluid(48000))
-                        .fluidOutputs(PYROTHEUM.getFluid(12000))
+                        .fluidInputs(Cryotheum.getFluid(48000))
+                        .fluidOutputs(Pyrotheum.getFluid(12000))
                         .duration(600).EUt(VA[UHV]);
                 break;
         }
@@ -344,8 +344,8 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(OrePrefix.gem, Diamond, 2)
                                     .input(OrePrefix.gem, EnderEye, 2)
                                     .input(DEFeatures.wyvernCore)
-                                    .fluidInputs(CRYOTHEUM.getFluid(8000))
-                                    .fluidOutputs(PYROTHEUM.getFluid(2000))
+                                    .fluidInputs(Cryotheum.getFluid(8000))
+                                    .fluidOutputs(Pyrotheum.getFluid(2000))
                                     .duration(100).EUt(VA[IV]);
                         } else if (currentLevel == 1) {
                             recipeBuilder
@@ -353,8 +353,8 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(DEFeatures.wyvernCore, 2)
                                     .input(OrePrefix.gem, Emerald, 2)
                                     .input(DEFeatures.draconicCore)
-                                    .fluidInputs(CRYOTHEUM.getFluid(16000))
-                                    .fluidOutputs(PYROTHEUM.getFluid(4000))
+                                    .fluidInputs(Cryotheum.getFluid(16000))
+                                    .fluidOutputs(Pyrotheum.getFluid(4000))
                                     .duration(200).EUt(VA[LuV]);
                         } else if (currentLevel == 2) {
                             recipeBuilder
@@ -362,8 +362,8 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(DEFeatures.draconicCore, 2)
                                     .input(OrePrefix.block, Emerald, 2)
                                     .input(DEFeatures.awakenedCore)
-                                    .fluidInputs(CRYOTHEUM.getFluid(32000))
-                                    .fluidOutputs(PYROTHEUM.getFluid(8000))
+                                    .fluidInputs(Cryotheum.getFluid(32000))
+                                    .fluidOutputs(Pyrotheum.getFluid(8000))
                                     .duration(400).EUt(VA[ZPM]);
                         } else if (currentLevel == 3) {
                             recipeBuilder
@@ -371,8 +371,8 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(DEFeatures.awakenedCore, 2)
                                     .input(Blocks.DRAGON_EGG, 2)
                                     .input(DEFeatures.chaoticCore)
-                                    .fluidInputs(CRYOTHEUM.getFluid(48000))
-                                    .fluidOutputs(PYROTHEUM.getFluid(12000))
+                                    .fluidInputs(Cryotheum.getFluid(48000))
+                                    .fluidOutputs(Pyrotheum.getFluid(12000))
                                     .duration(600).EUt(VA[UHV]);
                         }
 

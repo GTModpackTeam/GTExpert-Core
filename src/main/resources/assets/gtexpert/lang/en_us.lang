@@ -138,6 +138,7 @@ material.vivid_alloy=Vivid Alloy
 material.fluix=Fluix
 material.fluix_alloy=Fluix Alloy
 material.charged_certus_quartz=Charged Certus Quartz
+material.infinity=Infinity
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME fake component
