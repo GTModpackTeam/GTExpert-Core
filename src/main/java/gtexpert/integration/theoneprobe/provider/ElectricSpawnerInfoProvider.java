@@ -27,12 +27,10 @@ public class ElectricSpawnerInfoProvider implements IProbeInfoProvider {
                              @Nonnull World world, @Nonnull IBlockState blockState, @Nonnull IProbeHitData data) {
         if (!blockState.getBlock().hasTileEntity(blockState)) return;
         TileEntity tileEntity = world.getTileEntity(data.getPos());
-        if (!(tileEntity instanceof MetaTileEntityHolder)) return;
-        MetaTileEntityHolder mteHolder = (MetaTileEntityHolder) tileEntity;
+        if (!(tileEntity instanceof MetaTileEntityHolder mteHolder)) return;
         MetaTileEntity mte = mteHolder.getMetaTileEntity();
-        if (!(mte instanceof MetaTileEntityElectricSpawner)) return;
+        if (!(mte instanceof MetaTileEntityElectricSpawner spawner)) return;
 
-        MetaTileEntityElectricSpawner spawner = (MetaTileEntityElectricSpawner) mte;
         probeInfo.text(TextStyleClass.WARNING + "{*" + spawner.getSpawnModeTranslationKey() + "*}");
         if (spawner.needsRedstone()) {
             probeInfo.text(TextStyleClass.WARNING + "{*gtexpert.gui.needs_redstone*}");

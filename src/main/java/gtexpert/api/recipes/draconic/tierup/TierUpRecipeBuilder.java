@@ -110,9 +110,8 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
         return this;
     }
 
-    public TierUpRecipeBuilder setFusionRecipe(ToolUpgradeRecipe fusionRecipe) {
+    public void setFusionRecipe(ToolUpgradeRecipe fusionRecipe) {
         applyProperty(TierUpRecipeProperty.getInstance(), fusionRecipe);
-        return this;
     }
 
     public GTRecipeInput getCatalyst() {

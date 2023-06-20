@@ -249,34 +249,28 @@ public class DraconicUpgradeRecipeLoader {
         recipeBuilder.catalyst(catalyst).result(result);
 
         switch (tier) {
-            case WYVERN:
-                recipeBuilder
-                        .input(plate, DRACONIUM, plateAmount)
-                        .input(DEFeatures.wyvernCore, 1)
-                        .input(DEFeatures.wyvernEnergyCore, 1)
-                        .fluidInputs(CRYOTHEUM.getFluid(16000))
-                        .fluidOutputs(PYROTHEUM.getFluid(4000))
-                        .duration(200).EUt(VA[LuV]);
-                break;
-            case DRACONIC:
-                recipeBuilder
-                        .input(plate, AWAKENED_DRACONIUM, 2)
-                        .input(DEFeatures.draconicCore, 4)
-                        .input(DEFeatures.draconicEnergyCore, 1)
-                        .fluidInputs(CRYOTHEUM.getFluid(32000))
-                        .fluidOutputs(PYROTHEUM.getFluid(8000))
-                        .duration(400).EUt(VA[ZPM]);
-                break;
-            case CHAOTIC:
-                recipeBuilder
-                        .input(DEFeatures.chaosShard, 4, 0)
-                        .input(DEFeatures.infusedObsidian, 2)
-                        .input(DEFeatures.chaoticCore, 1)
-                        .input(DAFeatures.chaoticEnergyCore, 1)
-                        .fluidInputs(CRYOTHEUM.getFluid(48000))
-                        .fluidOutputs(PYROTHEUM.getFluid(12000))
-                        .duration(600).EUt(VA[UHV]);
-                break;
+            case WYVERN -> recipeBuilder
+                    .input(plate, DRACONIUM, plateAmount)
+                    .input(DEFeatures.wyvernCore, 1)
+                    .input(DEFeatures.wyvernEnergyCore, 1)
+                    .fluidInputs(CRYOTHEUM.getFluid(16000))
+                    .fluidOutputs(PYROTHEUM.getFluid(4000))
+                    .duration(200).EUt(VA[LuV]);
+            case DRACONIC -> recipeBuilder
+                    .input(plate, AWAKENED_DRACONIUM, 2)
+                    .input(DEFeatures.draconicCore, 4)
+                    .input(DEFeatures.draconicEnergyCore, 1)
+                    .fluidInputs(CRYOTHEUM.getFluid(32000))
+                    .fluidOutputs(PYROTHEUM.getFluid(8000))
+                    .duration(400).EUt(VA[ZPM]);
+            case CHAOTIC -> recipeBuilder
+                    .input(DEFeatures.chaosShard, 4, 0)
+                    .input(DEFeatures.infusedObsidian, 2)
+                    .input(DEFeatures.chaoticCore, 1)
+                    .input(DAFeatures.chaoticEnergyCore, 1)
+                    .fluidInputs(CRYOTHEUM.getFluid(48000))
+                    .fluidOutputs(PYROTHEUM.getFluid(12000))
+                    .duration(600).EUt(VA[UHV]);
         }
         recipeBuilder.buildAndRegister();
     }
@@ -319,11 +313,10 @@ public class DraconicUpgradeRecipeLoader {
         };
 
         for (ItemStack stack : upgradableItems) {
-            if (!(stack.getItem() instanceof IUpgradableItem)) {
+            if (!(stack.getItem() instanceof IUpgradableItem item)) {
                 GTELog.logger.error("Item {} is not an instance of IUpgradableItem!", stack);
                 continue;
             }
-            IUpgradableItem item = (IUpgradableItem) stack.getItem();
             for (String upgradeName : ToolUpgrade.NAME_TO_ID.keySet()) {
                 for (int currentLevel = 0; currentLevel < ToolUpgrade.NAME_MAX_LEVEL.get(upgradeName); currentLevel++) {
                     if (item.getValidUpgrades(stack).contains(upgradeName) &&

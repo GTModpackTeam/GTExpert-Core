@@ -86,8 +86,7 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private void applyDefaultUpgradeTag(List<ItemStack> inputs) {
         for (ItemStack input : inputs) {
-            if (!(input.getItem() instanceof IUpgradableItem)) continue;
-            IUpgradableItem item = (IUpgradableItem) input.getItem();
+            if (!(input.getItem() instanceof IUpgradableItem item)) continue;
             for (String upgradeName : ToolUpgrade.NAME_TO_ID.keySet()) {
                 if (!item.getValidUpgrades(input).contains(upgradeName)) continue;
                 NBTTagCompound upgradeTag = input.getOrCreateSubCompound(UpgradeHelper.UPGRADE_TAG);
@@ -118,8 +117,7 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
         if (inputElectricItem != null) {
             long euCharge = inputElectricItem.getCharge();
             int feCharge = (int) Math.min(euCharge * FeCompat.ratio(false), Integer.MAX_VALUE);
-            if (outputStack.getItem() instanceof IEnergyContainerItem) {
-                IEnergyContainerItem outputEnergyItem = (IEnergyContainerItem) outputStack.getItem();
+            if (outputStack.getItem() instanceof IEnergyContainerItem outputEnergyItem) {
                 ItemNBTHelper.setInteger(outputStack, "Energy",
                         Math.min(feCharge, outputEnergyItem.getMaxEnergyStored(outputStack)));
             }

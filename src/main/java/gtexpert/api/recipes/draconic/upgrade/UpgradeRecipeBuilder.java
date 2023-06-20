@@ -145,9 +145,8 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         return this;
     }
 
-    public UpgradeRecipeBuilder setFusionRecipe(FusionUpgradeRecipe fusionRecipe) {
+    public void setFusionRecipe(FusionUpgradeRecipe fusionRecipe) {
         applyProperty(UpgradeRecipeProperty.getInstance(), fusionRecipe);
-        return this;
     }
 
     public ItemStack getCatalyst() {

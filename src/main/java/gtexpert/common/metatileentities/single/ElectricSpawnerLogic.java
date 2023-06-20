@@ -290,17 +290,19 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         switch (SpawnerConfig.poweredSpawnerUseForgeSpawnChecks.get() ? ForgeEventFactory.canEntitySpawn(entityliving,
                 entityliving.world, (float) entityliving.posX, (float) entityliving.posY, (float) entityliving.posZ,
                 null) : Event.Result.DEFAULT) {
-            case ALLOW:
+            case ALLOW -> {
                 return true;
-            case DEFAULT:
+            }
+            case DEFAULT -> {
                 if (SpawnerConfig.poweredSpawnerUseVanillaSpawnChecks.get()) {
                     return entityliving.getCanSpawnHere() && entityliving.isNotColliding(); // vanilla logic
                 } else {
                     return entityliving.isNotColliding();
                 }
-            case DENY:
-            default:
+            }
+            default -> {
                 return false;
+            }
         }
     }
 

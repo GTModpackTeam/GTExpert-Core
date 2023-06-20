@@ -30,7 +30,6 @@ import static gregtech.common.blocks.BlockWarningSign1.SignType.*;
 import static gregtech.common.blocks.MetaBlocks.*;
 import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
 import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
-import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.util.GTEUtils.getModItem;
 
 public class ChiselRecipeLoader {
