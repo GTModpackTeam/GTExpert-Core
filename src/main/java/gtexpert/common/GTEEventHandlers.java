@@ -34,8 +34,7 @@ public class GTEEventHandlers {
     @SubscribeEvent(
                     priority = EventPriority.NORMAL)
     public static void onEntityLivingFallEvent(@NotNull LivingFallEvent event) {
-        if (event.getEntity() instanceof EntityPlayerMP) {
-            EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
+        if (event.getEntity() instanceof EntityPlayerMP player) {
             ItemStack armor = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
             if (player.fallDistance < 3.2F) {
                 return;
@@ -43,7 +42,7 @@ public class GTEEventHandlers {
 
             if (!armor.isEmpty() && armor.getItem() instanceof ArmorMetaItem &&
                     ((ArmorMetaItem<?>) armor.getItem()).getItem(armor).equals(GTEMetaItems.PISTON_BOOTS)) {
-                ISpecialArmor.ArmorProperties properties = ((ArmorMetaItem) (armor.getItem())).getProperties(player,
+                ISpecialArmor.ArmorProperties properties = ((ArmorMetaItem<?>) (armor.getItem())).getProperties(player,
                         armor, DamageSource.FALL, (int) (player.fallDistance), EntityEquipmentSlot.FEET.getSlotIndex());
                 if (properties.AbsorbRatio > 0) {
                     event.setCanceled(true);
