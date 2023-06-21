@@ -85,43 +85,43 @@ public class EIOSoulRecipeLoader {
     }
 
     private static void vialExtractorRecipes() {
-        registerVialExtractorRecipe("minecraft:blaze", new ItemStack(Items.BLAZE_ROD, 10));
-        registerVialExtractorRecipe("minecraft:creeper", new ItemStack(Items.SKULL, 10, 4),
+        registerVialExtractorRecipe(true, "minecraft:blaze", new ItemStack(Items.BLAZE_ROD, 10));
+        registerVialExtractorRecipe(true, "minecraft:creeper", new ItemStack(Items.SKULL, 10, 4),
                 new ItemStack(Items.GUNPOWDER, 10));
-        registerVialExtractorRecipe("minecraft:enderman",
+        registerVialExtractorRecipe(true, "minecraft:enderman",
                 new ItemStack(ModObject.blockEndermanSkull.getItemNN(), 10, 0), new ItemStack(Items.ENDER_PEARL, 10));
-        registerVialExtractorRecipe("minecraft:skeleton", new ItemStack(Items.SKULL, 10, 0),
+        registerVialExtractorRecipe(true, "minecraft:skeleton", new ItemStack(Items.SKULL, 10, 0),
                 new ItemStack(Items.BONE, 10));
-        registerVialExtractorRecipe("minecraft:ghast", new ItemStack(Items.GHAST_TEAR, 5));
-        registerVialExtractorRecipe("minecraft:shulker", new ItemStack(Items.SHULKER_SHELL, 5));
-        registerVialExtractorRecipe("minecraft:wither", 4000, new ItemStack(Items.NETHER_STAR, 2));
+        registerVialExtractorRecipe(true, "minecraft:ghast", new ItemStack(Items.GHAST_TEAR, 5));
+        registerVialExtractorRecipe(true, "minecraft:shulker", new ItemStack(Items.SHULKER_SHELL, 5));
+        registerVialExtractorRecipe(true, "minecraft:wither", 4000, new ItemStack(Items.NETHER_STAR, 2));
         for (String slime : Arrays.asList("minecraft:slime", "minecraft:magma_cube")) {
-            registerVialExtractorRecipe(slime, 2000, new ItemStack(Items.SLIME_BALL, 10));
+            registerVialExtractorRecipe(true, slime, 2000, new ItemStack(Items.SLIME_BALL, 10));
         }
-        registerVialExtractorRecipe("minecraft:spider", new ItemStack(Items.SPIDER_EYE, 10),
+        registerVialExtractorRecipe(true, "minecraft:spider", new ItemStack(Items.SPIDER_EYE, 10),
                 new ItemStack(Items.STRING, 10));
-        registerVialExtractorRecipe("minecraft:zombie_pigman", 1000,
+        registerVialExtractorRecipe(true, "minecraft:zombie_pigman", 1000,
                 builder -> builder.output(Items.ROTTEN_FLESH, 10).chancedOutput(ingot, Gold, 250, 250));
-        registerVialExtractorRecipe("minecraft:wither_skeleton", new ItemStack(Items.SKULL, 5, 1),
+        registerVialExtractorRecipe(false, "minecraft:wither_skeleton", new ItemStack(Items.SKULL, 5, 1),
                 new ItemStack(Items.BONE, 5));
         for (String zombie : Arrays.asList("minecraft:zombie", "minecraft:husk", "minecraft:zombie_villager")) {
-            registerVialExtractorRecipe(zombie, 1000, builder -> builder.output(Items.SKULL, 10, 2)
+            registerVialExtractorRecipe(true, zombie, 1000, builder -> builder.output(Items.SKULL, 10, 2)
                     .output(Items.ROTTEN_FLESH, 10).chancedOutput(ingot, Iron, 100, 0));
         }
         for (String guardian : Arrays.asList("minecraft:guardian", "minecraft:elder_guardian")) {
-            registerVialExtractorRecipe(guardian, new ItemStack(Items.PRISMARINE_SHARD, 5),
+            registerVialExtractorRecipe(true, guardian, new ItemStack(Items.PRISMARINE_SHARD, 5),
                     new ItemStack(Blocks.SPONGE, 1, 1));
         }
-        registerVialExtractorRecipe("minecraft:squid", new ItemStack(Items.DYE, 10, 0));
-        registerVialExtractorRecipe("minecraft:pig", new ItemStack(Items.PORKCHOP, 10));
-        registerVialExtractorRecipe("minecraft:sheep", new ItemStack(Items.MUTTON, 10), new ItemStack(Blocks.WOOL, 5));
-        registerVialExtractorRecipe("minecraft:chicken", 200, new ItemStack(Items.CHICKEN, 5),
+        registerVialExtractorRecipe(true, "minecraft:squid", new ItemStack(Items.DYE, 10, 0));
+        registerVialExtractorRecipe(true, "minecraft:pig", new ItemStack(Items.PORKCHOP, 10));
+        registerVialExtractorRecipe(true, "minecraft:sheep", new ItemStack(Items.MUTTON, 10), new ItemStack(Blocks.WOOL, 5));
+        registerVialExtractorRecipe(true, "minecraft:chicken", 200, new ItemStack(Items.CHICKEN, 5),
                 new ItemStack(Items.FEATHER, 2));
-        registerVialExtractorRecipe("minecraft:rabbit", 200, builder -> builder.output(Items.RABBIT, 5)
+        registerVialExtractorRecipe(true, "minecraft:rabbit", 200, builder -> builder.output(Items.RABBIT, 5)
                 .output(Items.RABBIT_HIDE, 2)
                 .chancedOutput(new ItemStack(Items.RABBIT_FOOT, 1), 2000, 0));
         for (String cow : Arrays.asList("minecraft:cow", GTEValues.MODID_GTFO + ":italian_buffalo")) {
-            registerVialExtractorRecipe(cow, new ItemStack(Items.BEEF, 10), new ItemStack(Items.LEATHER, 5));
+            registerVialExtractorRecipe(true, cow, new ItemStack(Items.BEEF, 10), new ItemStack(Items.LEATHER, 5));
         }
     }
 
@@ -185,13 +185,14 @@ public class EIOSoulRecipeLoader {
     }
 
     /**
+     * @param skipEntityInvalidCheck Skip entity invalid check
      * @param entityName            Name of entity, `modID:entityName`
      * @param xpAmount              Amount of Liquid XP to output
      * @param applyForRecipeBuilder Methods to call for recipe builder
      */
-    private static void registerVialExtractorRecipe(String entityName, int xpAmount,
+    private static void registerVialExtractorRecipe(boolean skipEntityInvalidCheck, String entityName, int xpAmount,
                                                     Consumer<RecipeBuilder<SimpleRecipeBuilder>> applyForRecipeBuilder) {
-        if (isEntityInvalid(entityName)) return;
+        if (!skipEntityInvalidCheck && isEntityInvalid(entityName)) return;
 
         ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
         NBTTagCompound tag = new NBTTagCompound();
@@ -213,20 +214,22 @@ public class EIOSoulRecipeLoader {
     }
 
     /**
+     * @param skipEntityInvalidCheck Skip entity invalid check
      * @param entityName Name of entity, `modID:entityName`
      * @param xpAmount   Amount of Liquid XP to output
      * @param outputs    Item outputs, except for empty vial
      */
-    private static void registerVialExtractorRecipe(String entityName, int xpAmount, ItemStack... outputs) {
-        registerVialExtractorRecipe(entityName, xpAmount, builder -> builder.outputs(outputs));
+    private static void registerVialExtractorRecipe(boolean skipEntityInvalidCheck, String entityName, int xpAmount, ItemStack... outputs) {
+        registerVialExtractorRecipe(skipEntityInvalidCheck, entityName, xpAmount, builder -> builder.outputs(outputs));
     }
 
     /**
+     * @param skipEntityInvalidCheck Skip entity invalid check
      * @param entityName Name of entity, `modID:entityName`
      * @param outputs    Item outputs, except for empty vial
      */
-    private static void registerVialExtractorRecipe(String entityName, ItemStack... outputs) {
-        registerVialExtractorRecipe(entityName, 1000, outputs);
+    private static void registerVialExtractorRecipe(boolean skipEntityInvalidCheck, String entityName, ItemStack... outputs) {
+        registerVialExtractorRecipe(skipEntityInvalidCheck, entityName, 1000, outputs);
     }
 
     private static boolean isEntityInvalid(ResourceLocation resourceLocation) {
