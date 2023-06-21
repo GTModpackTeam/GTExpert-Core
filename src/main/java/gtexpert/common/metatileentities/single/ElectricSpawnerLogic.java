@@ -171,7 +171,8 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         int eut = 30;
         int duration = 10 * 20;
         this.overclockResults = OverclockingLogic.standardOverclockingLogic(eut, getMaximumOverclockVoltage(), duration,
-                getNumberOfOCs(eut), 1, 1);
+                getNumberOfOCs(eut), getOverclockingDurationDivisor(),
+                getOverclockingVoltageMultiplier());
 
         return hasEnoughPower(overclockResults);
     }
