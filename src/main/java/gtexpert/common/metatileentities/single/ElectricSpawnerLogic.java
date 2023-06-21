@@ -111,10 +111,9 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     protected void trySearchNewRecipe() {
         CapturedMob mobToSpawn = findMobToSpawn(getInputInventory());
         this.invalidInputsForRecipes = (mobToSpawn == null);
-
-        if (mobToSpawn == null) return;
-        Entity entityToSpawn = createEntity(mobToSpawn);
-        if (entityToSpawn == null) return;
+        if (isCapturedMobInvalid(mobToSpawn)) {
+            return;
+        }
         prepareWork(mobToSpawn);
     }
 
@@ -172,7 +171,8 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         int eut = 30;
         int duration = 10 * 20;
         this.overclockResults = OverclockingLogic.standardOverclockingLogic(eut, getMaximumOverclockVoltage(), duration,
-                getNumberOfOCs(eut), 1, 1);
+                getNumberOfOCs(eut), getOverclockingDurationDivisor(),
+                getOverclockingVoltageMultiplier());
 
         return hasEnoughPower(overclockResults);
     }
@@ -287,21 +287,21 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
 
     private boolean canSpawnEntity(EntityLiving entityliving) {
         // this is the logic from ForgeEventFactory.canEntitySpawnSpawner() with some additions
-        switch (SpawnerConfig.poweredSpawnerUseForgeSpawnChecks.get() ? ForgeEventFactory.canEntitySpawn(entityliving,
-                entityliving.world, (float) entityliving.posX, (float) entityliving.posY, (float) entityliving.posZ,
-                null) : Event.Result.DEFAULT) {
-            case ALLOW:
-                return true;
-            case DEFAULT:
+        return switch (SpawnerConfig.poweredSpawnerUseForgeSpawnChecks
+                .get() ? ForgeEventFactory.canEntitySpawn(entityliving,
+                        entityliving.world, (float) entityliving.posX, (float) entityliving.posY,
+                        (float) entityliving.posZ,
+                        null) : Event.Result.DEFAULT) {
+            case ALLOW -> true;
+            case DEFAULT -> {
                 if (SpawnerConfig.poweredSpawnerUseVanillaSpawnChecks.get()) {
-                    return entityliving.getCanSpawnHere() && entityliving.isNotColliding(); // vanilla logic
+                    yield entityliving.getCanSpawnHere() && entityliving.isNotColliding(); // vanilla logic
                 } else {
-                    return entityliving.isNotColliding();
+                    yield entityliving.isNotColliding();
                 }
-            case DENY:
-            default:
-                return false;
-        }
+            }
+            default -> false;
+        };
     }
 
     private void addDependents(final @Nonnull World world, final @Nonnull EntityLiving entity) {
@@ -380,6 +380,11 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         return mobToSpawn.toStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
     }
 
+    /**
+     * Creates new entity from captured mob.
+     * Note that this might actually spawn mob in the world, see EntityZombie#onInitialSpawn.
+     * Make sure to call {@link #cleanupUnspawnedEntity} if created entity does not get spawned.
+     */
     @Nullable
     private Entity createEntity(CapturedMob capturedMob) {
         World world = metaTileEntity.getWorld();
@@ -394,5 +399,13 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
             ((EntityLiving) ent).enablePersistence();
         }
         return ent;
+    }
+
+    private boolean isCapturedMobInvalid(CapturedMob capturedMob) {
+        if (capturedMob == null) return true;
+        Entity entityToSpawn = createEntity(capturedMob);
+        if (entityToSpawn == null) return true;
+        cleanupUnspawnedEntity(entityToSpawn);
+        return false;
     }
 }

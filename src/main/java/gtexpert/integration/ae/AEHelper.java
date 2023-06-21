@@ -10,10 +10,10 @@ import appeng.api.definitions.IParts;
 
 public class AEHelper {
 
-    public static IItems aeItems = AEApi.instance().definitions().items();
-    public static IBlocks aeBlocks = AEApi.instance().definitions().blocks();
-    public static IMaterials aeMaterials = AEApi.instance().definitions().materials();
-    public static IParts aeParts = AEApi.instance().definitions().parts();
+    public static final IItems aeItems = AEApi.instance().definitions().items();
+    public static final IBlocks aeBlocks = AEApi.instance().definitions().blocks();
+    public static final IMaterials aeMaterials = AEApi.instance().definitions().materials();
+    public static final IParts aeParts = AEApi.instance().definitions().parts();
 
     public static void addInscriberRecipe(ItemStack stack) {}
 

@@ -19,14 +19,12 @@ import net.minecraft.util.ResourceLocation;
 
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.Materials.Wood;
-import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gregtech.api.unification.ore.OrePrefix.plank;
+import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.api.util.GTUtility.copyAmount;
 import static gtexpert.api.util.GTEUtils.getModItem;
 
@@ -53,9 +51,10 @@ public class GTEWoodRecipeLoader {
     }
 
     private static void planks() {
-        List<ItemStack> allWoodLogs = OreDictUnifier.getAllWithOreDictionaryName("logWood").stream()
-                .flatMap(stack -> GTUtility.getAllSubItems(stack).stream())
-                .collect(Collectors.toList());
+        List<ItemStack> allWoodLogs = new ArrayList<>();
+        for (ItemStack stack : OreDictUnifier.getAllWithOreDictionaryName("logWood")) {
+            allWoodLogs.addAll(GTUtility.getAllSubItems(stack));
+        }
         for (int i = 0; i < allWoodLogs.size(); i++) {
             Pair<IRecipe, ItemStack> outputPair = ModHandler.getRecipeOutput(null, allWoodLogs.get(i));
             ItemStack plankStack = outputPair.getValue();

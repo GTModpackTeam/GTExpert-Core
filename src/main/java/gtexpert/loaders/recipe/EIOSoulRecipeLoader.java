@@ -18,17 +18,16 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
+import com.enderio.core.common.util.EntityUtil;
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-import static gregtech.api.GTValues.LV;
-import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.gem;
-import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class EIOSoulRecipeLoader {
 
@@ -42,9 +41,8 @@ public class EIOSoulRecipeLoader {
 
     private static void soulBinderRecipes() {
         for (ResourceLocation name : EntityList.getEntityNameList()) {
-            if (isEntityInvalid(name)) {
-                continue;
-            }
+            if (isEntityInvalid(name)) continue;
+
             ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
             NBTTagCompound tag = new NBTTagCompound();
             tag.setString("entityId", name.toString());
@@ -88,8 +86,7 @@ public class EIOSoulRecipeLoader {
     }
 
     private static void vialExtractorRecipes() {
-        registerVialExtractorRecipe("minecraft:blaze", new ItemStack(Items.BLAZE_ROD, 10),
-                new ItemStack(Items.ROTTEN_FLESH, 10));
+        registerVialExtractorRecipe("minecraft:blaze", new ItemStack(Items.BLAZE_ROD, 10));
         registerVialExtractorRecipe("minecraft:creeper", new ItemStack(Items.SKULL, 10, 4),
                 new ItemStack(Items.GUNPOWDER, 10));
         registerVialExtractorRecipe("minecraft:enderman",
@@ -100,8 +97,7 @@ public class EIOSoulRecipeLoader {
         registerVialExtractorRecipe("minecraft:shulker", new ItemStack(Items.SHULKER_SHELL, 5));
         registerVialExtractorRecipe("minecraft:wither", 4000, new ItemStack(Items.NETHER_STAR, 2));
         for (String slime : Arrays.asList("minecraft:slime", "minecraft:magma_cube")) {
-            registerVialExtractorRecipe(slime, 2000, new ItemStack(Items.SLIME_BALL, 10),
-                    new ItemStack(Items.ROTTEN_FLESH, 10));
+            registerVialExtractorRecipe(slime, 2000, new ItemStack(Items.SLIME_BALL, 10));
         }
         registerVialExtractorRecipe("minecraft:spider", new ItemStack(Items.SPIDER_EYE, 10),
                 new ItemStack(Items.STRING, 10));
@@ -111,8 +107,7 @@ public class EIOSoulRecipeLoader {
                 new ItemStack(Items.BONE, 5));
         for (String zombie : Arrays.asList("minecraft:zombie", "minecraft:husk", "minecraft:zombie_villager")) {
             registerVialExtractorRecipe(zombie, 1000, builder -> builder.output(Items.SKULL, 10, 2)
-                    .output(Items.ROTTEN_FLESH, 10)
-                    .chancedOutput(ingot, Iron, 100, 0));
+                    .output(Items.ROTTEN_FLESH, 10).chancedOutput(ingot, Iron, 100, 0));
         }
         for (String guardian : Arrays.asList("minecraft:guardian", "minecraft:elder_guardian")) {
             registerVialExtractorRecipe(guardian, new ItemStack(Items.PRISMARINE_SHARD, 5),
@@ -235,8 +230,8 @@ public class EIOSoulRecipeLoader {
         registerVialExtractorRecipe(entityName, 1000, outputs);
     }
 
-    private static boolean isEntityInvalid(ResourceLocation resourceLocation) {
-        return !EntityList.ENTITY_EGGS.containsKey(resourceLocation);
+    private static boolean isEntityInvalid(ResourceLocation name) {
+        return !EntityList.isRegistered(name) || !EntityUtil.isRegisteredMob(name);
     }
 
     private static boolean isEntityInvalid(String name) {
