@@ -111,10 +111,9 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     protected void trySearchNewRecipe() {
         CapturedMob mobToSpawn = findMobToSpawn(getInputInventory());
         this.invalidInputsForRecipes = (mobToSpawn == null);
-
-        if (mobToSpawn == null) return;
-        Entity entityToSpawn = createEntity(mobToSpawn);
-        if (entityToSpawn == null) return;
+        if (isCapturedMobInvalid(mobToSpawn)) {
+            return;
+        }
         prepareWork(mobToSpawn);
     }
 
@@ -380,6 +379,11 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         return mobToSpawn.toStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
     }
 
+    /**
+     * Creates new entity from captured mob.
+     * Note that this might actually spawn mob in the world, see EntityZombie#onInitialSpawn.
+     * Make sure to call {@link #cleanupUnspawnedEntity} if created entity does not get spawned.
+     */
     @Nullable
     private Entity createEntity(CapturedMob capturedMob) {
         World world = metaTileEntity.getWorld();
@@ -394,5 +398,13 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
             ((EntityLiving) ent).enablePersistence();
         }
         return ent;
+    }
+
+    private boolean isCapturedMobInvalid(CapturedMob capturedMob) {
+        if (capturedMob == null) return true;
+        Entity entityToSpawn = createEntity(capturedMob);
+        if (entityToSpawn == null) return true;
+        cleanupUnspawnedEntity(entityToSpawn);
+        return false;
     }
 }
