@@ -94,7 +94,7 @@ public class EIOSoulRecipeLoader {
                 new ItemStack(Items.BONE, 10));
         registerVialExtractorRecipe(true, "minecraft:ghast", new ItemStack(Items.GHAST_TEAR, 5));
         registerVialExtractorRecipe(true, "minecraft:shulker", new ItemStack(Items.SHULKER_SHELL, 5));
-        registerVialExtractorRecipe(true, "minecraft:wither", 4000, new ItemStack(Items.NETHER_STAR, 2));
+        registerVialExtractorRecipe(false, "minecraft:wither", 4000, new ItemStack(Items.NETHER_STAR, 2));
         for (String slime : Arrays.asList("minecraft:slime", "minecraft:magma_cube")) {
             registerVialExtractorRecipe(true, slime, 2000, new ItemStack(Items.SLIME_BALL, 10));
         }
@@ -102,7 +102,7 @@ public class EIOSoulRecipeLoader {
                 new ItemStack(Items.STRING, 10));
         registerVialExtractorRecipe(true, "minecraft:zombie_pigman", 1000,
                 builder -> builder.output(Items.ROTTEN_FLESH, 10).chancedOutput(ingot, Gold, 250, 250));
-        registerVialExtractorRecipe(false, "minecraft:wither_skeleton", new ItemStack(Items.SKULL, 5, 1),
+        registerVialExtractorRecipe(true, "minecraft:wither_skeleton", new ItemStack(Items.SKULL, 5, 1),
                 new ItemStack(Items.BONE, 5));
         for (String zombie : Arrays.asList("minecraft:zombie", "minecraft:husk", "minecraft:zombie_villager")) {
             registerVialExtractorRecipe(true, zombie, 1000, builder -> builder.output(Items.SKULL, 10, 2)
@@ -185,14 +185,14 @@ public class EIOSoulRecipeLoader {
     }
 
     /**
-     * @param skipEntityInvalidCheck Skip entity invalid check
+     * @param entityInvalidCheck    Entity invalid check
      * @param entityName            Name of entity, `modID:entityName`
      * @param xpAmount              Amount of Liquid XP to output
      * @param applyForRecipeBuilder Methods to call for recipe builder
      */
-    private static void registerVialExtractorRecipe(boolean skipEntityInvalidCheck, String entityName, int xpAmount,
+    private static void registerVialExtractorRecipe(boolean entityInvalidCheck, String entityName, int xpAmount,
                                                     Consumer<RecipeBuilder<SimpleRecipeBuilder>> applyForRecipeBuilder) {
-        if (!skipEntityInvalidCheck && isEntityInvalid(entityName)) return;
+        if (entityInvalidCheck && isEntityInvalid(entityName)) return;
 
         ItemStack stack = new ItemStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
         NBTTagCompound tag = new NBTTagCompound();
@@ -214,22 +214,22 @@ public class EIOSoulRecipeLoader {
     }
 
     /**
-     * @param skipEntityInvalidCheck Skip entity invalid check
+     * @param entityInvalidCheck Entity invalid check
      * @param entityName Name of entity, `modID:entityName`
      * @param xpAmount   Amount of Liquid XP to output
      * @param outputs    Item outputs, except for empty vial
      */
-    private static void registerVialExtractorRecipe(boolean skipEntityInvalidCheck, String entityName, int xpAmount, ItemStack... outputs) {
-        registerVialExtractorRecipe(skipEntityInvalidCheck, entityName, xpAmount, builder -> builder.outputs(outputs));
+    private static void registerVialExtractorRecipe(boolean entityInvalidCheck, String entityName, int xpAmount, ItemStack... outputs) {
+        registerVialExtractorRecipe(entityInvalidCheck, entityName, xpAmount, builder -> builder.outputs(outputs));
     }
 
     /**
-     * @param skipEntityInvalidCheck Skip entity invalid check
+     * @param entityInvalidCheck Entity invalid check
      * @param entityName Name of entity, `modID:entityName`
      * @param outputs    Item outputs, except for empty vial
      */
-    private static void registerVialExtractorRecipe(boolean skipEntityInvalidCheck, String entityName, ItemStack... outputs) {
-        registerVialExtractorRecipe(skipEntityInvalidCheck, entityName, 1000, outputs);
+    private static void registerVialExtractorRecipe(boolean entityInvalidCheck, String entityName, ItemStack... outputs) {
+        registerVialExtractorRecipe(entityInvalidCheck, entityName, 1000, outputs);
     }
 
     private static boolean isEntityInvalid(ResourceLocation resourceLocation) {
