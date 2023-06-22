@@ -99,7 +99,7 @@ public class GTERecipeLoader {
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
         RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust, NM_HEA_NPs, 1)
+                .input(dust, NM_HEA_NPs, 8)
                 .output(dust, Gold, 1)
                 .output(dust, Silver, 1)
                 .output(dust, Ruthenium, 1)
@@ -111,7 +111,7 @@ public class GTERecipeLoader {
                 .duration(10).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
-                .input(dust, NM_HEA_NPs, 1)
+                .input(dust, NM_HEA_NPs, 8)
                 .output(dust, Gold, 1)
                 .output(dust, Silver, 1)
                 .output(dust, Ruthenium, 1)
