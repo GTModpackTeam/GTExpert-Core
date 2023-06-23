@@ -22,9 +22,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 
 public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockController {
@@ -62,9 +62,8 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.machine.cracker.tooltip.1", new Object[0]));
     }
-
-    @Nonnull
-    protected ICubeRenderer getFrontOverlay() {
+    
+    protected @NotNull ICubeRenderer getFrontOverlay() {
         return Textures.CRACKING_UNIT_OVERLAY;
     }
 
