@@ -34,6 +34,8 @@ public class GTEMetaTileEntities {
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
     public static MetaTileEntityDraconiumFusion AWAKENED_DRACONIUM_FUSION;
+    
+    public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
 
     public static void init() {
         /*
@@ -109,6 +111,8 @@ public class GTEMetaTileEntities {
             AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005,
                     new MetaTileEntityDraconiumFusion.TierAwakened(gteId("awakened_draconium_fusion")));
         }
+
+        LARGE_CRACKER = registerMetaTileEntity(12006, new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
     }
 
     @NotNull
