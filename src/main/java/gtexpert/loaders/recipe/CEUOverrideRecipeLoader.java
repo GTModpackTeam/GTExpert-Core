@@ -317,7 +317,8 @@ public class CEUOverrideRecipeLoader {
                 'T', OreDictNames.chestWood);
 
         // Ultra High Voltage Turbo Charger
-        ModHandler.addShapedRecipe(true, "gregtech.machine.turbo_charger.uhv", MetaTileEntities.CHARGER[UHV].getStackForm(),
+        ModHandler.addShapedRecipe(true, "gregtech.machine.turbo_charger.uhv",
+                MetaTileEntities.CHARGER[UHV].getStackForm(),
                 "QTQ", "QMQ", "WCW",
                 'M', MetaTileEntities.HULL[UHV].getStackForm(),
                 'Q', new UnificationEntry(wireGtQuadruple, Europium),
