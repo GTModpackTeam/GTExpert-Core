@@ -51,7 +51,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
                 .aisle("XCCXCCX", "X##T##X", "XCCXCCX")
                 .aisle("XCCXCCX", "XCCSCCX", "XCCXCCX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(12).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(10).or(autoAbilities()))
                 .where('T', tieredCasing().or(states(getCasingState())))
                 .where('#', air())
                 .where('C', heatingCoils())
@@ -71,10 +71,12 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         if (isStructureFormed()) {
-            textList.add(new TextComponentTranslation("gregtech.multiblock.cracking_unit.energy", new Object[]{100 - 10 * this.coilTier}));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.cracking_unit.energy",
+                    100 - 10 * this.coilTier));
         }
     }
 
+    @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.machine.cracker.tooltip.1"));
