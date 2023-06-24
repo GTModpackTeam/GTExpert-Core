@@ -26,6 +26,7 @@ public class GTEMetaTileEntities {
     public static final MetaTileEntityExtremeMixer[] EXTREME_MIXER = new MetaTileEntityExtremeMixer[1];
     public static final MetaTileEntityAutoChisel[] AUTO_CHISEL = new MetaTileEntityAutoChisel[3];
     public static MetaTileEntitySawmill SAWMILL;
+    public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
     public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static SimpleMachineMetaTileEntity[] SLICE_N_SPLICE = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
     public static SimpleMachineMetaTileEntity[] SOUL_BINDER = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
@@ -34,8 +35,6 @@ public class GTEMetaTileEntities {
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
     public static MetaTileEntityDraconiumFusion AWAKENED_DRACONIUM_FUSION;
-    
-    public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
 
     public static void init() {
         /*
@@ -92,18 +91,18 @@ public class GTEMetaTileEntities {
                 GTETextures.SOUL_BINDER_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.defaultTankSizeFunction);
 
         // ELECTRIC_SPAWNER 11049~11061
-        registerMetaTileEntities(
-                ELECTRIC_SPAWNER,
-                11049,
-                "electric_spawner",
+        registerMetaTileEntities(ELECTRIC_SPAWNER, 11049, "electric_spawner",
                 (tier, voltageName) -> new MetaTileEntityElectricSpawner(
                         gteId(String.format("%s.%s", "electric_spawner", voltageName)), GTETextures.SPAWNER_OVERLAY,
                         tier));
 
         // multiblocks :12000~
-        SAWMILL = registerMetaTileEntity(12001, new MetaTileEntitySawmill(gteId("sawmill")));
-        // = registerMetaTileEntity(12002, new MetaTileEntityVoidOreMiner(gteId("####")));
-        VOIDOREMINER = registerMetaTileEntity(12003, new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
+        SAWMILL = registerMetaTileEntity(12001,
+                new MetaTileEntitySawmill(gteId("sawmill")));
+        LARGE_CRACKER = registerMetaTileEntity(12002,
+                new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
+        VOIDOREMINER = registerMetaTileEntity(12003,
+                new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
 
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
             DRACONIUM_FUSION = registerMetaTileEntity(12004,
@@ -111,8 +110,6 @@ public class GTEMetaTileEntities {
             AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005,
                     new MetaTileEntityDraconiumFusion.TierAwakened(gteId("awakened_draconium_fusion")));
         }
-
-        LARGE_CRACKER = registerMetaTileEntity(12006, new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
     }
 
     @NotNull
