@@ -127,7 +127,7 @@ public class ChiselRecipeLoader {
                 'P', "paneGlass",
                 'T', "craftChisel",
                 'S', new UnificationEntry(slab, Stone));
-        // MetaTileEntityLoader.registerMachineRecipe(AUTO_CHISEL, "BSB", "THT", "MCM",
+        // MetaTileEntityLoader.registerMachineRecipe(true, AUTO_CHISEL, "BSB", "THT", "MCM",
         // 'B', new UnificationEntry(toolHeadBuzzSaw, Invar),
         // 'S', SENSOR,
         // 'T', "craftChisel",
