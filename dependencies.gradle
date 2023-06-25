@@ -38,7 +38,6 @@ dependencies {
     implementation rfg.deobf("curse.maven:baubles-227083:2518667")
     implementation rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")
     implementation rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371")
-    implementation rfg.deobf("curse.maven:ez-storage2-245425:2530747")
 
     // Soft Dependencies
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.687"
@@ -66,6 +65,12 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:chisel-235279:2915375")
     if (project.debug_chisel.toBoolean()) {
         implementation rfg.deobf("curse.maven:chisel-235279:2915375")
+    }
+
+    // Debug mixins
+    compileOnly rfg.deobf("curse.maven:ez-storage2-245425:2530747")
+    if (project.debug_mixins.toBoolean()) {
+        implementation rfg.deobf("curse.maven:ez-storage2-245425:2530747")
     }
 
     // Boot error fix
