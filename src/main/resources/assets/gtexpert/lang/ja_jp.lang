@@ -18,6 +18,8 @@ gtexpert.machine.draconium_fusion.tooltip=なんだか強そうですね?
 gtexpert.machine.draconium_fusion.tooltip.1=§d作者:§f @miozune, @tier940
 gtexpert.machine.awakened_draconium_fusion.name=ドラコニック融合機 II
 gtexpert.machine.awakened_draconium_fusion.tooltip=なんだか強そうですね?
+gtexpert.machine.large_cracking_unit.name=大型接触分解装置
+gtexpert.machine.large_cracking_unit.tooltip=§d作者:§f @Quarri6343
 
 # singleblock
 # Auto Chisel

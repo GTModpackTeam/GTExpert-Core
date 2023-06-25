@@ -293,7 +293,7 @@ public class CEUOverrideRecipeLoader {
                 .buildAndRegister();
 
         // Ultra High Voltage 4x Battery Buffer
-        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.4",
+        ModHandler.addShapedRecipe(true, "gregtech.machine.battery_buffer.uhv.4",
                 MetaTileEntities.BATTERY_BUFFER[0][UHV].getStackForm(),
                 "WTW", "WMW",
                 'M', MetaTileEntities.HULL[UHV].getStackForm(),
@@ -301,7 +301,7 @@ public class CEUOverrideRecipeLoader {
                 'T', OreDictNames.chestWood);
 
         // Ultra High Voltage 8x Battery Buffer
-        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.8",
+        ModHandler.addShapedRecipe(true, "gregtech.machine.battery_buffer.uhv.8",
                 MetaTileEntities.BATTERY_BUFFER[1][UHV].getStackForm(),
                 "WTW", "WMW",
                 'M', MetaTileEntities.HULL[UHV].getStackForm(),
@@ -309,7 +309,7 @@ public class CEUOverrideRecipeLoader {
                 'T', OreDictNames.chestWood);
 
         // Ultra High Voltage 16x Battery Buffer
-        ModHandler.addShapedRecipe("gregtech.machine.battery_buffer.uhv.16",
+        ModHandler.addShapedRecipe(true, "gregtech.machine.battery_buffer.uhv.16",
                 MetaTileEntities.BATTERY_BUFFER[2][UHV].getStackForm(),
                 "WTW", "WMW",
                 'M', MetaTileEntities.HULL[UHV].getStackForm(),
@@ -317,7 +317,8 @@ public class CEUOverrideRecipeLoader {
                 'T', OreDictNames.chestWood);
 
         // Ultra High Voltage Turbo Charger
-        ModHandler.addShapedRecipe("gregtech.machine.turbo_charger.uhv", MetaTileEntities.CHARGER[UHV].getStackForm(),
+        ModHandler.addShapedRecipe(true, "gregtech.machine.turbo_charger.uhv",
+                MetaTileEntities.CHARGER[UHV].getStackForm(),
                 "QTQ", "QMQ", "WCW",
                 'M', MetaTileEntities.HULL[UHV].getStackForm(),
                 'Q', new UnificationEntry(wireGtQuadruple, Europium),
