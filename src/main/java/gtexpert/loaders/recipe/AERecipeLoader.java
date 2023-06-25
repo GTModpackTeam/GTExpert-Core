@@ -77,7 +77,6 @@ public class AERecipeLoader {
         for (int i = 0; i <= 16; i++) {
             craftGlassCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
         }
         for (Iterator<ItemStack> iterator = craftGlassCable.iterator(); iterator.hasNext();) {
             ItemStack stack = iterator.next();
@@ -90,6 +89,7 @@ public class AERecipeLoader {
         List<ItemStack> craftCoveredCable = new ArrayList<>();
         for (int i = 20; i <= 36; i++) {
             craftCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
         }
         for (Iterator<ItemStack> iterator = craftCoveredCable.iterator(); iterator.hasNext();) {
             ItemStack stack = iterator.next();
@@ -103,7 +103,6 @@ public class AERecipeLoader {
         for (int i = 40; i <= 56; i++) {
             craftSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-
         }
         for (Iterator<ItemStack> iterator = craftSmartCable.iterator(); iterator.hasNext();) {
             ItemStack stack = iterator.next();
