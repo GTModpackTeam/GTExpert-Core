@@ -1,8 +1,5 @@
 package gtexpert.mixins;
 
-import com.zerofall.ezstorage.item.EZItem;
-import com.zerofall.ezstorage.item.ItemDolly;
-import com.zerofall.ezstorage.tileentity.TileEntityStorageCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.state.IBlockState;
@@ -19,13 +16,18 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
+
+import com.zerofall.ezstorage.item.EZItem;
+import com.zerofall.ezstorage.item.ItemDolly;
+import com.zerofall.ezstorage.tileentity.TileEntityStorageCore;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Objects;
+
+import org.jetbrains.annotations.NotNull;
 
 @Mixin(ItemDolly.class)
 public abstract class MixinItemDolly extends EZItem {
@@ -35,13 +37,16 @@ public abstract class MixinItemDolly extends EZItem {
     }
 
     @Inject(method = "onItemUse", at = @At("HEAD"), remap = false, cancellable = true)
-    public void injectOnItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<EnumActionResult> cir) {
+    public void injectOnItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
+                                EnumFacing facing, float hitX, float hitY, float hitZ,
+                                CallbackInfoReturnable<EnumActionResult> cir) {
         cir.setReturnValue(EnumActionResult.PASS);
         cir.cancel();
     }
 
     @Override
-    public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, @NotNull EntityPlayer player, @NotNull EnumHand hand) {
+    public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, @NotNull EntityPlayer player,
+                                                             @NotNull EnumHand hand) {
         ItemStack heldItem = player.getHeldItem(hand);
         if (world.isRemote) {
             return new ActionResult<>(EnumActionResult.PASS, heldItem);
@@ -53,7 +58,8 @@ public abstract class MixinItemDolly extends EZItem {
         if (nbt != null && nbt.getBoolean("isFull")) {
             BlockPos placePos = pos.offset(raytraceresult.sideHit);
             Block block = Block.getBlockFromName(nbt.getString("blockType"));
-            if (block == null || !world.getBlockState(placePos).getBlock().isReplaceable(world, placePos) || !block.canPlaceBlockAt(world, placePos)) {
+            if (block == null || !world.getBlockState(placePos).getBlock().isReplaceable(world, placePos) ||
+                    !block.canPlaceBlockAt(world, placePos)) {
                 return new ActionResult<>(EnumActionResult.FAIL, heldItem);
             }
 
@@ -159,5 +165,4 @@ public abstract class MixinItemDolly extends EZItem {
             return 1;
         return super.getItemStackLimit(stack);
     }
-
 }

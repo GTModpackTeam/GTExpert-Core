@@ -11,5 +11,4 @@ public class GTEMixinLoader implements ILateMixinLoader {
     public List<String> getMixinConfigs() {
         return Lists.newArrayList("mixins.gtexpert.json");
     }
-
 }
