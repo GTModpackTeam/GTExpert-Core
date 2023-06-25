@@ -15,7 +15,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.util.GTUtility;
+import gregtech.api.util.LocalizationUtils;
 import gregtech.api.util.Position;
 import gregtech.api.util.Size;
 import gregtech.client.renderer.ICubeRenderer;
@@ -186,10 +186,7 @@ public class MetaTileEntityElectricSpawner extends SimpleMachineMetaTileEntity {
             @Override
             public void drawInForeground(int mouseX, int mouseY) {
                 if (!isMouseOverElement(mouseX, mouseY)) return;
-                List<String> hoverList = Arrays.asList(
-                        GTUtility.getForwardNewLineRegex().split(I18n.format(getSpawnModeTranslationKey(isPressed))));
-                // Use this after GTUtility cleanup
-                // List<String> hoverList = Arrays.asList(LocalizationUtils.formatLines(getSpawnModeTranslationKey()));
+                List<String> hoverList = Arrays.asList(LocalizationUtils.formatLines(getSpawnModeTranslationKey()));
                 drawHoveringText(ItemStack.EMPTY, hoverList, 300, mouseX, mouseY);
             }
         });
@@ -208,10 +205,7 @@ public class MetaTileEntityElectricSpawner extends SimpleMachineMetaTileEntity {
             @Override
             public void drawInForeground(int mouseX, int mouseY) {
                 if (!isMouseOverElement(mouseX, mouseY) || !needsRedstone()) return;
-                List<String> hoverList = Arrays
-                        .asList(GTUtility.getForwardNewLineRegex().split(I18n.format("gtexpert.gui.needs_redstone")));
-                // Use this after GTUtility cleanup
-                // List<String> hoverList = Arrays.asList(LocalizationUtils.formatLines("gtexpert.gui.needs_redstone"));
+                List<String> hoverList = Arrays.asList(LocalizationUtils.formatLines("gtexpert.gui.needs_redstone"));
                 drawHoveringText(ItemStack.EMPTY, hoverList, 300, mouseX, mouseY);
             }
         });

@@ -162,7 +162,7 @@ public class GTERecipeLoader {
                     .buildAndRegister();
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .circuitMeta(1)
-                    .input(GLOWSTONE_WAFER, 2)
+                    .input(PHOSPHORUS_WAFER, 2)
                     .input("paneGlass", 4)
                     .input(circuit, MarkerMaterials.Tier.ULV, 8)
                     .input(CARBON_FIBER_PLATE, 4)

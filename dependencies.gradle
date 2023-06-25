@@ -26,8 +26,8 @@ dependencies {
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
     implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848")
-    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4527757")
-    //implementation (files("libs/gregtech-1.12.2-2.6.1-beta-deobf.jar"))
+    //implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4527757")
+    implementation (files("libs/gregtech-1.12.2-2.6.2-beta-dev.jar"))
     implementation rfg.deobf("curse.maven:gregicality-multiblocks-564858:4529101")
     implementation rfg.deobf("curse.maven:ae2-extended-life-570458:4505114")
     implementation rfg.deobf("curse.maven:enderio-64578:3328811")

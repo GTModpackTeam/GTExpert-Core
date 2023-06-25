@@ -126,7 +126,6 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
             super(metaTileEntity);
         }
 
-        @Override
         protected void performNonOverclockBonuses(int[] resultOverclock) {
             int coilTier = ((MetaTileEntityLargeCrackingUnit) metaTileEntity).getCoilTier();
             if (coilTier > 0) {
