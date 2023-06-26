@@ -1,7 +1,8 @@
 package gtexpert;
 
-import com.google.common.collect.Lists;
 import net.minecraftforge.fml.common.Loader;
+
+import com.google.common.collect.Lists;
 import zone.rong.mixinbooter.ILateMixinLoader;
 
 import java.util.Collections;

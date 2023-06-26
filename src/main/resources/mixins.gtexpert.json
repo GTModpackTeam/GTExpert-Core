@@ -10,6 +10,7 @@
   "server": [
   ],
   "client": [
+    "MixinEZInventory"
   ],
   "injectors": {
     "defaultRequire": 1
