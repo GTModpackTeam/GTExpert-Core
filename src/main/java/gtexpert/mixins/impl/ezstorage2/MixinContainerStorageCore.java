@@ -1,0 +1,76 @@
+package gtexpert.mixins.impl.ezstorage2;
+
+import gtexpert.mixins.interfaces.ezstorage2.IMixinEZInventory;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemStack;
+
+import com.zerofall.ezstorage.gui.server.ContainerStorageCore;
+import com.zerofall.ezstorage.tileentity.TileEntityStorageCore;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.gen.Invoker;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(ContainerStorageCore.class)
+public abstract class MixinContainerStorageCore extends Container {
+
+    @Shadow(remap = false)
+    public TileEntityStorageCore tileEntity;
+
+    @Invoker(value = "rowCount", remap = false)
+    public abstract int invokeRowCount();
+
+    @Inject(method = "customSlotClick",
+            at = @At(value = "INVOKE",
+                     target = "Lcom/zerofall/ezstorage/util/EZInventory;getItemsAt(II)Lnet/minecraft/item/ItemStack;"),
+            remap = false,
+            cancellable = true)
+    public void injectCustomSlotClick(int slotId, int clickedButton, int mode, EntityPlayer playerIn,
+                                      CallbackInfoReturnable<ItemStack> cir) {
+        // Always return EMPTY since this return value is never used
+        cir.setReturnValue(ItemStack.EMPTY);
+
+        int type = 0;
+        if (clickedButton == 1) {
+            type = (mode == 0) ? 1 : 2;
+        }
+
+        boolean isShiftLeftClick = clickedButton == 0 && mode == 1;
+        int playerInventoryStartIndex = this.invokeRowCount() * 9;
+        int playerInventoryEndIndex = playerInventoryStartIndex + playerIn.inventory.mainInventory.size();
+
+        if (playerIn.inventory.getFirstEmptyStack() < 0 && isShiftLeftClick) {
+            ItemStack targetStack = ((IMixinEZInventory) (Object) this.tileEntity.inventory)
+                    .getItemWithoutExtractAt(slotId);
+            int emptyCapacity = this.inventorySlots.subList(playerInventoryStartIndex, playerInventoryEndIndex).stream()
+                    .mapToInt(slot -> {
+                        ItemStack slotStack = slot.getStack();
+                        if (slotStack.isItemEqual(targetStack) &&
+                                ItemStack.areItemStackTagsEqual(slotStack, targetStack)) {
+                            return slotStack.getMaxStackSize() - slotStack.getCount();
+                        }
+                        return 0;
+                    }).sum();
+
+            ItemStack retrievedStack = this.tileEntity.inventory.getItemsAt(slotId, type,
+                    Math.min(emptyCapacity, targetStack.getMaxStackSize()));
+            if (!retrievedStack.isEmpty()) {
+                this.mergeItemStack(retrievedStack, playerInventoryStartIndex, playerInventoryEndIndex, true);
+            }
+        } else {
+            ItemStack retrievedStack = this.tileEntity.inventory.getItemsAt(slotId, type);
+            if (!retrievedStack.isEmpty()) {
+                if (isShiftLeftClick) {
+                    this.mergeItemStack(retrievedStack, playerInventoryStartIndex, playerInventoryEndIndex, true);
+                } else {
+                    playerIn.inventory.setItemStack(retrievedStack);
+                }
+            }
+
+        }
+    }
+}
