@@ -1,4 +1,4 @@
-package gtexpert.mixins;
+package gtexpert.mixins.impl.ezstorage2;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;

@@ -1,16 +1,16 @@
 {
   "required": true,
-  "package": "gtexpert.mixins",
+  "package": "gtexpert.mixins.impl",
   "refmap": "mixins.gtexpert.refmap.json",
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinItemDolly"
+    "ezstorage2/MixinItemDolly"
   ],
   "server": [
   ],
   "client": [
-    "MixinEZInventory"
+    "ezstorage2/MixinEZInventory"
   ],
   "injectors": {
     "defaultRequire": 1
