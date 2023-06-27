@@ -59,4 +59,20 @@ public abstract class MixinEZInventory implements IMixinEZInventory {
         }
         return this.inventory.get(index).itemStack;
     }
+
+    @Override
+    public ItemStack input(ItemStack itemStack, int quantity, boolean sort) {
+        int stackCount = itemStack.getCount();
+        quantity = Math.min(itemStack.getCount(), quantity);
+
+        ItemStack inputStack = itemStack.copy();
+        inputStack.setCount(Math.min(stackCount, quantity));
+        ItemStack inputResult = ((EZInventory) (Object) this).input(inputStack, sort);
+        if (inputResult.isEmpty()) {
+            itemStack.shrink(quantity);
+        } else {
+            itemStack.setCount(stackCount - quantity + inputResult.getCount());
+        }
+        return itemStack;
+    }
 }
