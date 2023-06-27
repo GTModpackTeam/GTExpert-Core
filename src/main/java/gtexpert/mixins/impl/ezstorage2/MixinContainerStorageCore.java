@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 
 import com.zerofall.ezstorage.gui.server.ContainerStorageCore;
 import com.zerofall.ezstorage.tileentity.TileEntityStorageCore;
-import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.gen.Invoker;
@@ -20,7 +19,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import org.jetbrains.annotations.NotNull;
 
-@Debug(export = true)
 @Mixin(ContainerStorageCore.class)
 public abstract class MixinContainerStorageCore extends Container {
 

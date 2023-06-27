@@ -37,9 +37,9 @@ public abstract class MixinItemDolly extends EZItem {
     }
 
     @Inject(method = "onItemUse", at = @At("HEAD"), remap = false, cancellable = true)
-    public void injectOnItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-                                EnumFacing facing, float hitX, float hitY, float hitZ,
-                                CallbackInfoReturnable<EnumActionResult> cir) {
+    private void injectOnItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
+                                 EnumFacing facing, float hitX, float hitY, float hitZ,
+                                 CallbackInfoReturnable<EnumActionResult> cir) {
         cir.setReturnValue(EnumActionResult.PASS);
         cir.cancel();
     }
@@ -82,20 +82,12 @@ public abstract class MixinItemDolly extends EZItem {
             }
 
             if (player.isCreative()) {
-                nbt.setBoolean("isFull", false);
-                nbt.removeTag("blockType");
-                nbt.removeTag("isChest");
-                nbt.removeTag("isStorageCore");
-                nbt.removeTag("stored");
+                emptyDolly(nbt);
             } else {
                 ItemStack emptyDolly = heldItem.splitStack(1);
                 NBTTagCompound emptyDollyNBT = emptyDolly.getTagCompound();
                 if (emptyDollyNBT != null) {
-                    emptyDollyNBT.setBoolean("isFull", false);
-                    emptyDollyNBT.removeTag("blockType");
-                    emptyDollyNBT.removeTag("isChest");
-                    emptyDollyNBT.removeTag("isStorageCore");
-                    emptyDollyNBT.removeTag("stored");
+                    emptyDolly(emptyDollyNBT);
                 }
                 emptyDolly.damageItem(1, player);
 
@@ -124,13 +116,7 @@ public abstract class MixinItemDolly extends EZItem {
                 return new ActionResult<>(EnumActionResult.PASS, heldItem);
             }
 
-            NBTTagCompound distTag = new NBTTagCompound();
             NBTTagCompound storageData = tileEntity.writeToNBT(new NBTTagCompound());
-            distTag.setBoolean("isFull", true);
-            distTag.setString("blockType", Objects.requireNonNull(state.getBlock().getRegistryName()).toString());
-            distTag.setBoolean("isChest", isChest);
-            distTag.setBoolean("isStorageCore", isStorageCore);
-            distTag.setTag("stored", storageData);
 
             if (isStorageCore) {
                 world.setBlockToAir(pos);
@@ -141,21 +127,44 @@ public abstract class MixinItemDolly extends EZItem {
             }
 
             if (player.isCreative()) {
-                heldItem.setTagCompound(distTag);
+                fillDolly(heldItem, nbt, state, isChest, isStorageCore, storageData);
             } else {
-                ItemStack distItem = heldItem.splitStack(1);
-                distItem.setTagCompound(distTag);
+                ItemStack filledDolly = heldItem.splitStack(1);
+                NBTTagCompound filledDollyNBT = filledDolly.getTagCompound();
+                fillDolly(filledDolly, filledDollyNBT, state, isChest, isStorageCore, storageData);
 
                 if (heldItem.isEmpty()) {
-                    return new ActionResult<>(EnumActionResult.SUCCESS, distItem);
+                    return new ActionResult<>(EnumActionResult.SUCCESS, filledDolly);
                 }
 
-                if (!player.addItemStackToInventory(distItem)) {
-                    player.dropItem(distItem, false);
+                if (!player.addItemStackToInventory(filledDolly)) {
+                    player.dropItem(filledDolly, false);
                 }
             }
         }
         return new ActionResult<>(EnumActionResult.SUCCESS, heldItem);
+    }
+
+    private void emptyDolly(NBTTagCompound nbt) {
+        nbt.setBoolean("isFull", false);
+        nbt.removeTag("blockType");
+        nbt.removeTag("isChest");
+        nbt.removeTag("isStorageCore");
+        nbt.removeTag("stored");
+    }
+
+    private void fillDolly(ItemStack dolly, NBTTagCompound dollyNBT, IBlockState state, boolean isChest,
+                           boolean isStorageCore, NBTTagCompound storageData) {
+        if (dollyNBT == null) {
+            dollyNBT = new NBTTagCompound();
+            dolly.setTagCompound(dollyNBT);
+        }
+
+        dollyNBT.setBoolean("isFull", true);
+        dollyNBT.setString("blockType", Objects.requireNonNull(state.getBlock().getRegistryName()).toString());
+        dollyNBT.setBoolean("isChest", isChest);
+        dollyNBT.setBoolean("isStorageCore", isStorageCore);
+        dollyNBT.setTag("stored", storageData);
     }
 
     @Override

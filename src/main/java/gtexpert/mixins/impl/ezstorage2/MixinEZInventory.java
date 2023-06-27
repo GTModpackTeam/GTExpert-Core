@@ -20,10 +20,10 @@ import java.util.List;
 public abstract class MixinEZInventory implements IMixinEZInventory {
 
     @Shadow(remap = false)
-    public List<ItemGroup> inventory;
+    private List<ItemGroup> inventory;
 
     @Invoker(value = "extractStack", remap = false)
-    public abstract ItemStack invokeExtractStack(ItemGroup group, int size, boolean peek);
+    protected abstract ItemStack invokeExtractStack(ItemGroup group, int size, boolean peek);
 
     @Inject(method = "getItemsAt(IIIZ)Lnet/minecraft/item/ItemStack;",
             at = @At(value = "INVOKE",
@@ -32,9 +32,9 @@ public abstract class MixinEZInventory implements IMixinEZInventory {
             remap = false,
             locals = LocalCapture.CAPTURE_FAILHARD,
             cancellable = true)
-    public void injectGetItemsAtExtractStack(int index, int type, int size, boolean peek,
-                                             CallbackInfoReturnable<ItemStack> cir,
-                                             ItemGroup group, ItemStack stack) {
+    private void injectGetItemsAtExtractStack(int index, int type, int size, boolean peek,
+                                              CallbackInfoReturnable<ItemStack> cir,
+                                              ItemGroup group, ItemStack stack) {
         if (size == 0) {
             cir.setReturnValue(ItemStack.EMPTY);
             return;
