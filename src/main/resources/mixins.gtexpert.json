@@ -5,13 +5,13 @@
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ezstorage2/MixinItemDolly",
-    "ezstorage2/MixinContainerStorageCore"
+    "ezstorage2.MixinItemDolly",
+    "ezstorage2.MixinContainerStorageCore"
   ],
   "server": [
   ],
   "client": [
-    "ezstorage2/MixinEZInventory"
+    "ezstorage2.MixinEZInventory"
   ],
   "injectors": {
     "defaultRequire": 1
