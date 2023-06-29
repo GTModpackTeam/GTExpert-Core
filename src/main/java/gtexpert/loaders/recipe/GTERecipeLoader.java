@@ -488,7 +488,7 @@ public class GTERecipeLoader {
 
         // Void Ore Miner Recipes
         List<Material> materialOres = new ArrayList<>();
-        for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
+        for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
             if (material.hasProperty(PropertyKey.ORE)) {
                 materialOres.add(material);
             }

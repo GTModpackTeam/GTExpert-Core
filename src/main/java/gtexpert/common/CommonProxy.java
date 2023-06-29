@@ -2,6 +2,7 @@ package gtexpert.common;
 
 import gregtech.api.GregTechAPI;
 import gregtech.api.block.VariantItemBlock;
+import gregtech.api.unification.material.event.MaterialRegistryEvent;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
@@ -27,8 +28,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.function.Function;
 
-import org.jetbrains.annotations.NotNull;
-
 import static gtexpert.common.GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR;
 import static gtexpert.common.GTEMetaBlocks.GTE_BLOCK_METAL_CASING;
 
@@ -49,7 +48,7 @@ public class CommonProxy {
     public void postInit(FMLPostInitializationEvent e) {}
 
     @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.@NotNull Register<Block> event) {
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
         GTELog.logger.info("Registering blocks...");
 
         event.getRegistry().register(GTE_BLOCK_METAL_CASING);
@@ -57,22 +56,22 @@ public class CommonProxy {
     }
 
     @SubscribeEvent
-    public static void registerItems(RegistryEvent.@NotNull Register<Item> event) {
+    public static void registerItems(RegistryEvent.Register<Item> event) {
         GTELog.logger.info("Registering items...");
 
         event.getRegistry().register(createItemBlock(GTE_BLOCK_METAL_CASING, VariantItemBlock::new));
         event.getRegistry().register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
     }
 
-    private static <T extends Block> @NotNull ItemBlock createItemBlock(@NotNull T block,
-                                                                        @NotNull Function<T, ItemBlock> producer) {
+    private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
         itemBlock.setRegistryName(block.getRegistryName());
         return itemBlock;
     }
 
     @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void registerMaterials(GregTechAPI.MaterialEvent event) {
+    public static void createMaterialRegistry(MaterialRegistryEvent event) {
+        GregTechAPI.materialManager.createRegistry(GTEValues.MODID);
         GTEMaterials.init();
     }
 

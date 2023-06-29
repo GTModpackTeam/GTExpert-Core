@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.Loader;
 
 import java.util.function.BiFunction;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
@@ -112,8 +112,8 @@ public class GTEMetaTileEntities {
         }
     }
 
-    @NotNull
-    private static ResourceLocation gteId(@NotNull String name) {
+    @Nonnull
+    private static ResourceLocation gteId(@Nonnull String name) {
         return new ResourceLocation(GTEValues.MODID, name);
     }
 

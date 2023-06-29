@@ -29,16 +29,16 @@ import com.brandon3055.draconicevolution.items.ToolUpgrade;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private final RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap;
     private final RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap;
 
-    public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
-                                   int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder,
+    public RecipeMapDraconicFusion(@Nonnull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
+                                   int maxFluidOutputs, @Nonnull SimpleRecipeBuilder defaultRecipeBuilder,
                                    boolean isHidden, RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap,
                                    RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap) {
         super(unlocalizedName, maxInputs, maxOutputs, maxFluidInputs, maxFluidOutputs, defaultRecipeBuilder, isHidden);
@@ -129,7 +129,7 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
         return retRecipe;
     }
 
-    @NotNull
+    @Nonnull
     private ItemStack findCatalyst(List<ItemStack> inputs, IFusionRecipe fusionRecipe) {
         ItemStack expectedCatalyst = getCatalyst(fusionRecipe);
         if (expectedCatalyst == null || expectedCatalyst.isEmpty()) {

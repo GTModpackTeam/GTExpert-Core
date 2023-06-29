@@ -22,8 +22,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
 
@@ -33,7 +33,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     }
 
     @Override
-    protected @NotNull BlockPattern createStructurePattern() {
+    protected @Nonnull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("CCC", "CCC", "CCC")
                 .aisle("CCC", "C#C", "CCC")
@@ -54,7 +54,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
+    public void addInformation(ItemStack stack, @Nullable World player, @Nonnull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.draconium_fusion.tooltip.1"));

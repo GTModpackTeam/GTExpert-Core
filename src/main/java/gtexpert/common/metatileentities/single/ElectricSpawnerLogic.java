@@ -33,10 +33,9 @@ import crazypants.enderio.util.CapturedMob;
 
 import java.util.Collections;
 import java.util.function.Supplier;
-import javax.annotation.Nonnull;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static gregtech.api.GTValues.ULV;
 
@@ -46,7 +45,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     private CapturedMob mobToSpawn;
     private boolean needsRedstone = false;
 
-    public ElectricSpawnerLogic(@NotNull MetaTileEntity metaTileEntity, Supplier<IEnergyContainer> energyContainer) {
+    public ElectricSpawnerLogic(@Nonnull MetaTileEntity metaTileEntity, Supplier<IEnergyContainer> energyContainer) {
         super(metaTileEntity, null, energyContainer);
     }
 
@@ -136,7 +135,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     /**
      * {@link #prepareRecipe} equivalent
      */
-    private void prepareWork(@NotNull CapturedMob mobToSpawn) {
+    private void prepareWork(@Nonnull CapturedMob mobToSpawn) {
         ItemStack outputItem = createSoulVial(mobToSpawn);
         if (!setupAndConsumeInputs(outputItem)) {
             return;
@@ -147,7 +146,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     /**
      * {@link #setupAndConsumeRecipeInputs} equivalent
      */
-    private boolean setupAndConsumeInputs(@NotNull ItemStack outputItem) {
+    private boolean setupAndConsumeInputs(@Nonnull ItemStack outputItem) {
         if (!checkOverclock()) {
             return false;
         }
@@ -192,7 +191,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     /**
      * {@link #setupRecipe} equivalent
      */
-    private void setup(@NotNull CapturedMob mobToSpawn, @NotNull ItemStack outputItem) {
+    private void setup(@Nonnull CapturedMob mobToSpawn, @Nonnull ItemStack outputItem) {
         this.progressTime = 1;
         setMaxProgress(overclockResults[1]);
         this.recipeEUt = overclockResults[0];
@@ -334,7 +333,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void receiveCustomData(int dataId, @NotNull PacketBuffer buf) {
+    public void receiveCustomData(int dataId, @Nonnull PacketBuffer buf) {
         super.receiveCustomData(dataId, buf);
         if (dataId == GTEDataCodes.NEEDS_REDSTONE) {
             needsRedstone = buf.readBoolean();
@@ -342,18 +341,18 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void writeInitialData(@NotNull PacketBuffer buf) {
+    public void writeInitialData(@Nonnull PacketBuffer buf) {
         super.writeInitialData(buf);
         buf.writeBoolean(needsRedstone);
     }
 
     @Override
-    public void receiveInitialData(@NotNull PacketBuffer buf) {
+    public void receiveInitialData(@Nonnull PacketBuffer buf) {
         super.receiveInitialData(buf);
         needsRedstone = buf.readBoolean();
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public NBTTagCompound serializeNBT() {
         NBTTagCompound compound = super.serializeNBT();
@@ -369,14 +368,14 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void deserializeNBT(@NotNull NBTTagCompound compound) {
+    public void deserializeNBT(@Nonnull NBTTagCompound compound) {
         super.deserializeNBT(compound);
         this.spawnMode = compound.getBoolean("spawnMode");
         this.mobToSpawn = CapturedMob.create(compound.getCompoundTag("mobToSpawn"));
     }
 
-    @NotNull
-    private static ItemStack createSoulVial(@NotNull CapturedMob mobToSpawn) {
+    @Nonnull
+    private static ItemStack createSoulVial(@Nonnull CapturedMob mobToSpawn) {
         return mobToSpawn.toStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
     }
 

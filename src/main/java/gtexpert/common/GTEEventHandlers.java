@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTEEventHandlers {
@@ -33,7 +33,7 @@ public class GTEEventHandlers {
     // override GTCEu fall event to enable piston boots fall damage
     @SubscribeEvent(
                     priority = EventPriority.NORMAL)
-    public static void onEntityLivingFallEvent(@NotNull LivingFallEvent event) {
+    public static void onEntityLivingFallEvent(@Nonnull LivingFallEvent event) {
         if (event.getEntity() instanceof EntityPlayerMP player) {
             ItemStack armor = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
             if (player.fallDistance < 3.2F) {

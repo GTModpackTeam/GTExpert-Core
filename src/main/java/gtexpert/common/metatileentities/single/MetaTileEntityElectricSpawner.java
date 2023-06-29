@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.DoubleSupplier;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 public class MetaTileEntityElectricSpawner extends SimpleMachineMetaTileEntity {
 

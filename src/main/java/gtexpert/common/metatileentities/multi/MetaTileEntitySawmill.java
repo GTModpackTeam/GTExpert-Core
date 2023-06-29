@@ -20,8 +20,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
 
@@ -30,12 +30,12 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
+    public @Nonnull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
         return new MetaTileEntitySawmill(metaTileEntityId);
     }
 
     @Override
-    protected @NotNull BlockPattern createStructurePattern() {
+    protected @Nonnull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("CFC", "C#C", "C C")
                 .aisle(" F ", " # ", "CCC")
@@ -59,7 +59,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    protected @NotNull ICubeRenderer getFrontOverlay() {
+    protected @Nonnull ICubeRenderer getFrontOverlay() {
         return GTETextures.SAWMILL_OVERLAY;
     }
 
@@ -69,7 +69,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
+    public void addInformation(ItemStack stack, @Nullable World player, @Nonnull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.sawmill.tooltip.1"));
