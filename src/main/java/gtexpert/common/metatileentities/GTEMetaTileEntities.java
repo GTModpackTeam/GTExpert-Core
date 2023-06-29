@@ -7,19 +7,18 @@ import gregtech.api.util.GTUtility;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.util.GTEUtils;
 import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.multi.*;
 import gtexpert.common.metatileentities.single.*;
 
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 
 import java.util.function.BiFunction;
 
-import javax.annotation.Nonnull;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
+import static gtexpert.api.util.GTEUtils.gteId;
 
 public class GTEMetaTileEntities {
 
@@ -78,17 +77,15 @@ public class GTEMetaTileEntities {
 
         // VIAL_EXTRACTOR 11010~11022
         registerSimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES,
-                GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEMetaTileEntities::gteId,
-                GTUtility.hvCappedTankSizeFunction);
+                GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEUtils::gteId, GTUtility.hvCappedTankSizeFunction);
 
         // SLICE_N_SPLICE 11023~11035
         registerSimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice", GTERecipeMaps.SLICE_N_SPLICE_RECIPES,
-                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEMetaTileEntities::gteId,
-                GTUtility.defaultTankSizeFunction);
+                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEUtils::gteId, GTUtility.defaultTankSizeFunction);
 
         // SOUL_BINDER 11036~11048
         registerSimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", GTERecipeMaps.SOUL_BINDER_RECIPES,
-                GTETextures.SOUL_BINDER_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.defaultTankSizeFunction);
+                GTETextures.SOUL_BINDER_OVERLAY, true, GTEUtils::gteId, GTUtility.defaultTankSizeFunction);
 
         // ELECTRIC_SPAWNER 11049~11061
         registerMetaTileEntities(ELECTRIC_SPAWNER, 11049, "electric_spawner",
@@ -110,11 +107,6 @@ public class GTEMetaTileEntities {
             AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005,
                     new MetaTileEntityDraconiumFusion.TierAwakened(gteId("awakened_draconium_fusion")));
         }
-    }
-
-    @Nonnull
-    private static ResourceLocation gteId(@Nonnull String name) {
-        return new ResourceLocation(GTEValues.MODID, name);
     }
 
     // TODO: This method will be included in the next update of CEu
