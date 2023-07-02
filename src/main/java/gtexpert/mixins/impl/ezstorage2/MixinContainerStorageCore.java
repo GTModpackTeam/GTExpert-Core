@@ -3,6 +3,7 @@ package gtexpert.mixins.impl.ezstorage2;
 import gtexpert.mixins.interfaces.ezstorage2.IMixinEZInventory;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
@@ -16,6 +17,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -27,6 +29,25 @@ public abstract class MixinContainerStorageCore extends Container {
 
     @Invoker(value = "rowCount", remap = false)
     protected abstract int invokeRowCount();
+
+    @Inject(method = "slotClick",
+            at = @At(value = "INVOKE",
+                     target = "Lnet/minecraft/inventory/Container;slotClick(IILnet/minecraft/inventory/ClickType;Lnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;"),
+            remap = false,
+            locals = LocalCapture.CAPTURE_FAILHARD,
+            cancellable = true)
+    private void injectSlotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player,
+                                 CallbackInfoReturnable<ItemStack> cir, ItemStack val) {
+        if (slotId != -999 && clickTypeIn == ClickType.QUICK_MOVE) {
+            Slot slot = this.getSlot(slotId);
+            if (slot.canTakeStack(player)) {
+                ItemStack itemStack = slot.getStack();
+                ItemStack result = this.tileEntity.inventory.input(itemStack, true);
+                cir.setReturnValue(result.copy());
+            }
+            cir.setReturnValue(val);
+        }
+    }
 
     @Inject(method = "customSlotClick", at = @At(value = "HEAD"), remap = false, cancellable = true)
     private void injectCustomSlotClick(int slotId, int clickedButton, int mode, EntityPlayer playerIn,
