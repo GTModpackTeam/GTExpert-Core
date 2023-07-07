@@ -2,7 +2,9 @@ package gtexpert.common.metatileentities;
 
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.GTUtility;
+import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
@@ -11,9 +13,11 @@ import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.multi.*;
 import gtexpert.common.metatileentities.single.*;
 
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
@@ -78,15 +82,15 @@ public class GTEMetaTileEntities {
                         GTETextures.EXTREME_MIXER_OVERLAY, ZPM, true, GTUtility.hvCappedTankSizeFunction));
 
         // VIAL_EXTRACTOR 11010~11022
-        registerSimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES,
+        registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES,
                 GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEUtility::gteId, GTUtility.hvCappedTankSizeFunction);
 
         // SLICE_N_SPLICE 11023~11035
-        registerSimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice", GTERecipeMaps.SLICE_N_SPLICE_RECIPES,
+        registerGTESimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice", GTERecipeMaps.SLICE_N_SPLICE_RECIPES,
                 GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // SOUL_BINDER 11036~11048
-        registerSimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", GTERecipeMaps.SOUL_BINDER_RECIPES,
+        registerGTESimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", GTERecipeMaps.SOUL_BINDER_RECIPES,
                 GTETextures.SOUL_BINDER_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // ELECTRIC_SPAWNER 11049~11061
@@ -128,6 +132,25 @@ public class GTEMetaTileEntities {
             String voltageName = GTValues.VN[i + 1].toLowerCase();
             machines[i + 1] = registerMetaTileEntity(startId + i,
                     mteCreator.apply(i + 1, voltageName));
+        }
+    }
+
+    public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,
+                                                       String name, RecipeMap<?> map, ICubeRenderer texture,
+                                                       boolean hasFrontFacing,
+                                                       Function<String, ResourceLocation> resourceId,
+                                                       Function<Integer, Integer> tankScalingFunction) {
+        for (int i = 0; i < machines.length - 1; ++i) {
+            if (i <= 4 || getMidTier(name)) {
+                if (i > 7 && !getHighTier(name)) {
+                    break;
+                }
+
+                String voltageName = GTValues.VN[i + 1].toLowerCase();
+                machines[i + 1] = registerMetaTileEntity(startId + i,
+                        new GTESimpleMachineMetaTileEntity(resourceId.apply(String.format("%s.%s", name, voltageName)),
+                                map, texture, i + 1, hasFrontFacing, tankScalingFunction));
+            }
         }
     }
 }
