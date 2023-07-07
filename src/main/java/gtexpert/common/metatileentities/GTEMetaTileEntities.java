@@ -7,7 +7,6 @@ import gregtech.api.util.GTUtility;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.api.util.GTEUtils;
 import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.multi.*;
 import gtexpert.common.metatileentities.single.*;
@@ -17,8 +16,8 @@ import net.minecraftforge.fml.common.Loader;
 import java.util.function.BiFunction;
 
 import static gregtech.api.GTValues.*;
+import static gregtech.api.util.GTUtility.gregtechId;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
-import static gtexpert.api.util.GTEUtils.gteId;
 
 public class GTEMetaTileEntities {
 
@@ -61,51 +60,52 @@ public class GTEMetaTileEntities {
         // blocks :11001~
         // AUTO_CHISEL 11001~11003
         AUTO_CHISEL[0] = registerMetaTileEntity(11001,
-                new MetaTileEntityAutoChisel(gteId("auto_chisel.lv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
+                new MetaTileEntityAutoChisel(gregtechId("auto_chisel.lv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
                         GTETextures.AUTO_CHISEL_OVERLAY, LV, true, GTUtility.defaultTankSizeFunction));
         AUTO_CHISEL[1] = registerMetaTileEntity(11002,
-                new MetaTileEntityAutoChisel(gteId("auto_chisel.mv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
+                new MetaTileEntityAutoChisel(gregtechId("auto_chisel.mv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
                         GTETextures.AUTO_CHISEL_OVERLAY, MV, true, GTUtility.defaultTankSizeFunction));
         AUTO_CHISEL[2] = registerMetaTileEntity(11003,
-                new MetaTileEntityAutoChisel(gteId("auto_chisel.hv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
+                new MetaTileEntityAutoChisel(gregtechId("auto_chisel.hv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
                         GTETextures.AUTO_CHISEL_OVERLAY, HV, true, GTUtility.defaultTankSizeFunction));
 
         // EXTREME_MIXER 11007
         EXTREME_MIXER[0] = registerMetaTileEntity(11007,
-                new MetaTileEntityExtremeMixer(gteId("extreme_mixer"), GTERecipeMaps.EXTREME_MIXER_RECIPES,
+                new MetaTileEntityExtremeMixer(gregtechId("extreme_mixer"), GTERecipeMaps.EXTREME_MIXER_RECIPES,
                         GTETextures.EXTREME_MIXER_OVERLAY, ZPM, true, GTUtility.hvCappedTankSizeFunction));
 
         // VIAL_EXTRACTOR 11010~11022
         registerSimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES,
-                GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEUtils::gteId, GTUtility.hvCappedTankSizeFunction);
+                GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTUtility::gregtechId, GTUtility.hvCappedTankSizeFunction);
 
         // SLICE_N_SPLICE 11023~11035
         registerSimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice", GTERecipeMaps.SLICE_N_SPLICE_RECIPES,
-                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEUtils::gteId, GTUtility.defaultTankSizeFunction);
+                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTUtility::gregtechId, GTUtility.defaultTankSizeFunction);
 
         // SOUL_BINDER 11036~11048
         registerSimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", GTERecipeMaps.SOUL_BINDER_RECIPES,
-                GTETextures.SOUL_BINDER_OVERLAY, true, GTEUtils::gteId, GTUtility.defaultTankSizeFunction);
+                GTETextures.SOUL_BINDER_OVERLAY, true, GTUtility::gregtechId, GTUtility.defaultTankSizeFunction);
 
         // ELECTRIC_SPAWNER 11049~11061
         registerMetaTileEntities(ELECTRIC_SPAWNER, 11049, "electric_spawner",
                 (tier, voltageName) -> new MetaTileEntityElectricSpawner(
-                        gteId(String.format("%s.%s", "electric_spawner", voltageName)), GTETextures.SPAWNER_OVERLAY,
+                        gregtechId(String.format("%s.%s", "electric_spawner", voltageName)),
+                        GTETextures.SPAWNER_OVERLAY,
                         tier));
 
         // multiblocks :12000~
         SAWMILL = registerMetaTileEntity(12001,
-                new MetaTileEntitySawmill(gteId("sawmill")));
+                new MetaTileEntitySawmill(gregtechId("sawmill")));
         LARGE_CRACKER = registerMetaTileEntity(12002,
-                new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
+                new MetaTileEntityLargeCrackingUnit(gregtechId("large_cracking_unit")));
         VOIDOREMINER = registerMetaTileEntity(12003,
-                new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
+                new MetaTileEntityVoidOreMiner(gregtechId("void_ore_miner")));
 
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
             DRACONIUM_FUSION = registerMetaTileEntity(12004,
-                    new MetaTileEntityDraconiumFusion.TierDraconic(gteId("draconium_fusion")));
+                    new MetaTileEntityDraconiumFusion.TierDraconic(gregtechId("draconium_fusion")));
             AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005,
-                    new MetaTileEntityDraconiumFusion.TierAwakened(gteId("awakened_draconium_fusion")));
+                    new MetaTileEntityDraconiumFusion.TierAwakened(gregtechId("awakened_draconium_fusion")));
         }
     }
 
