@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import javax.annotation.Nonnull;
 
-public class GTUtility {
+public class GTEUtility {
 
     public static @Nonnull ItemStack getModItem(String modID, String itemName) {
         return getModItem(modID, itemName, 1);

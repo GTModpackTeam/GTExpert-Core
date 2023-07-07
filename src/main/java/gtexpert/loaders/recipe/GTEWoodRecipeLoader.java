@@ -26,7 +26,7 @@ import java.util.List;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.api.util.GTUtility.getModItem;
+import static gtexpert.api.util.GTEUtility.getModItem;
 
 public class GTEWoodRecipeLoader {
 
