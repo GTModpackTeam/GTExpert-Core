@@ -2,7 +2,6 @@ package gtexpert.common.metatileentities;
 
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.util.GTUtility;
 
 import gtexpert.api.GTEValues;
@@ -26,9 +25,12 @@ public class GTEMetaTileEntities {
     public static final MetaTileEntityAutoChisel[] AUTO_CHISEL = new MetaTileEntityAutoChisel[3];
     public static MetaTileEntitySawmill SAWMILL;
     public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
-    public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
-    public static SimpleMachineMetaTileEntity[] SLICE_N_SPLICE = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
-    public static SimpleMachineMetaTileEntity[] SOUL_BINDER = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
+    public static GTESimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new GTESimpleMachineMetaTileEntity[GTValues.V.length -
+            1];
+    public static GTESimpleMachineMetaTileEntity[] SLICE_N_SPLICE = new GTESimpleMachineMetaTileEntity[GTValues.V.length -
+            1];
+    public static GTESimpleMachineMetaTileEntity[] SOUL_BINDER = new GTESimpleMachineMetaTileEntity[GTValues.V.length -
+            1];
     public static MetaTileEntityElectricSpawner[] ELECTRIC_SPAWNER = new MetaTileEntityElectricSpawner[GTValues.V.length -
             1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;

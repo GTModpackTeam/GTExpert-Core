@@ -12,7 +12,6 @@ import gregtech.api.gui.resources.ItemStackTexture;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.gui.widgets.*;
 import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.LocalizationUtils;
@@ -21,6 +20,7 @@ import gregtech.api.util.Size;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.gui.GTEGuiTextures;
+import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,7 +41,7 @@ import java.util.function.DoubleSupplier;
 
 import javax.annotation.Nullable;
 
-public class MetaTileEntityElectricSpawner extends SimpleMachineMetaTileEntity {
+public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntity {
 
     private static IGuiTexture spawnEggTexture;
     private static IGuiTexture soulVialTexture;
