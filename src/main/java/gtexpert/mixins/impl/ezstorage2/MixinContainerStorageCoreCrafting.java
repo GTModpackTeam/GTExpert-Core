@@ -8,8 +8,7 @@ import net.minecraft.world.World;
 import com.zerofall.ezstorage.gui.server.ContainerStorageCore;
 import com.zerofall.ezstorage.gui.server.ContainerStorageCoreCrafting;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
 
 @Mixin(ContainerStorageCoreCrafting.class)
 public class MixinContainerStorageCoreCrafting extends ContainerStorageCore {
@@ -44,4 +43,25 @@ public class MixinContainerStorageCoreCrafting extends ContainerStorageCore {
         return inv.getStackInSlot(index).copy();
     }
 
+    @ModifyConstant(method = "tryToPopulateCraftingGrid",
+                    constant = @Constant(intValue = 1),
+                    slice = @Slice(from = @At("HEAD"),
+                                   to = @At(value = "CONSTANT",
+                                            args = "intValue=1",
+                                            ordinal = 0)),
+                    remap = false)
+    private int modifyConstantTryToPopulateCraftingGrid(int original) {
+        return Integer.MAX_VALUE;
+    }
+
+    @Redirect(method = "tryToPopulateCraftingGrid",
+              at = @At(
+                       value = "INVOKE",
+                       target = "Lnet/minecraft/item/ItemStack;setCount(I)V"),
+              remap = false)
+    private void redirectTryToPopulateCraftingGridSetCount(ItemStack itemStack, int count) {
+        if (itemStack.getCount() > 1) {
+            itemStack.setCount(itemStack.getCount() - 1);
+        }
+    }
 }
