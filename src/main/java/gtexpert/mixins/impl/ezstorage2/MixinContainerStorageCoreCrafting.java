@@ -38,7 +38,8 @@ public class MixinContainerStorageCoreCrafting extends ContainerStorageCore {
     @Redirect(method = "transferStackInSlot",
               at = @At(value = "INVOKE",
                        target = "Lnet/minecraft/inventory/InventoryCrafting;getStackInSlot(I)Lnet/minecraft/item/ItemStack;",
-                       ordinal = 0))
+                       ordinal = 0),
+              remap = false)
     private ItemStack redirectTransferStackInSlotGetStackInSlot(InventoryCrafting inv, int index) {
         return inv.getStackInSlot(index).copy();
     }
