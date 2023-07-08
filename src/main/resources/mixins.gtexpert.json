@@ -6,7 +6,8 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "ezstorage2.MixinItemDolly",
-    "ezstorage2.MixinContainerStorageCore"
+    "ezstorage2.MixinContainerStorageCore",
+    "ezstorage2.MixinContainerStorageCoreCrafting"
   ],
   "server": [
   ],

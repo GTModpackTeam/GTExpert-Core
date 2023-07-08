@@ -3,10 +3,7 @@ package gtexpert.mixins.impl.ezstorage2;
 import gtexpert.mixins.interfaces.ezstorage2.IMixinEZInventory;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ClickType;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.InventoryBasic;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 
 import com.zerofall.ezstorage.gui.server.ContainerStorageCore;
@@ -38,14 +35,15 @@ public abstract class MixinContainerStorageCore extends Container {
             cancellable = true)
     private void injectSlotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player,
                                  CallbackInfoReturnable<ItemStack> cir, ItemStack val) {
-        if (slotId != -999 && clickTypeIn == ClickType.QUICK_MOVE) {
+        if (slotId != -999) {
             Slot slot = this.getSlot(slotId);
-            if (slot.canTakeStack(player)) {
+            if (!(slot instanceof SlotCrafting) && clickTypeIn == ClickType.QUICK_MOVE && slot.canTakeStack(player)) {
                 ItemStack itemStack = slot.getStack();
                 ItemStack result = this.tileEntity.inventory.input(itemStack, true);
+                slot.onSlotChanged();
+                super.detectAndSendChanges();
                 cir.setReturnValue(result.copy());
             }
-            cir.setReturnValue(val);
         }
     }
 
