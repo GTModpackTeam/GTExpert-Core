@@ -12,7 +12,6 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 
 import gtexpert.api.GTEValues;
-import gtexpert.common.GTEConfigHolder;
 import gtexpert.integration.ae.AEHelper;
 
 import net.minecraft.init.Items;
@@ -34,6 +33,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtils.getModItem;
+import static gtexpert.common.GTEConfigHolder.*;
 import static gtexpert.common.items.GTEMetaItems.MATRIX_CORE;
 
 public class AERecipeLoader {
@@ -157,7 +157,7 @@ public class AERecipeLoader {
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeBlocks.skyStoneBlock().maybeStack(1).get())
                 .outputs(AEHelper.aeMaterials.skyDust().maybeStack(1).get())
-                .duration(500).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(500).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Block
@@ -165,18 +165,18 @@ public class AERecipeLoader {
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .input(Item.getItemFromBlock(ModObject.block_infinity.getBlockNN()), 4, 2)
                 .outputs(AEHelper.aeBlocks.skyStoneBlock().maybeStack(1).get())
-                .duration(500).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(500).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
         RecipeMaps.BLAST_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeBlocks.skyStoneBlock().maybeStack(1).get())
                 .outputs(AEHelper.aeBlocks.smoothSkyStoneBlock().maybeStack(1).get())
-                .duration(100).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(100).EUt(VA[ae2Integration.voltageTier])
                 .blastFurnaceTemp(2700)
                 .buildAndRegister();
         RecipeMaps.ROCK_BREAKER_RECIPES.recipeBuilder()
                 .notConsumable(AEHelper.aeBlocks.skyStoneBlock().maybeStack(1).get())
                 .outputs(AEHelper.aeBlocks.skyStoneBlock().maybeStack(1).get())
-                .duration(100).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(100).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // ########################################
@@ -502,7 +502,7 @@ public class AERecipeLoader {
                 .input(dust, Silicon, 1)
                 .input(dust, Iron, 1)
                 .output(dust, FLUIX_ALLOY, 8)
-                .duration(200).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(200).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
     }
 
@@ -519,7 +519,7 @@ public class AERecipeLoader {
                 .circuitMeta(1)
                 .input("craftStickQuartz", 1)
                 .outputs(AEHelper.aeParts.quartzFiber().maybeStack(2).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(20).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Glass Cable
@@ -1119,76 +1119,76 @@ public class AERecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "materials/formationcore"));
         ModHandler.addShapedRecipe("formation_core", AEHelper.aeMaterials.formationCore().maybeStack(1).get(),
                 "SES", "LQL", "SES",
-                'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1]),
+                'S', OreDictUnifier.get(stick, tierMaterials[ae2Integration.voltageTier - 1]),
                 'Q', OreDictUnifier.get(gem, NetherQuartz),
                 'E', AEHelper.aeMaterials.engProcessor().maybeStack(1).get(),
                 'L', AEHelper.aeMaterials.logicProcessor().maybeStack(1).get());
         ModHandler.addShapedRecipe("formation_core_pure", AEHelper.aeMaterials.formationCore().maybeStack(2).get(),
                 "SES", "LQL", "SES",
-                'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1]),
+                'S', OreDictUnifier.get(stick, tierMaterials[ae2Integration.voltageTier - 1]),
                 'Q', AEHelper.aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get(),
                 'E', AEHelper.aeMaterials.engProcessor().maybeStack(1).get(),
                 'L', AEHelper.aeMaterials.logicProcessor().maybeStack(1).get());
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
-                .input(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1], 2)
+                .input(stick, tierMaterials[ae2Integration.voltageTier - 1], 2)
                 .inputs(AEHelper.aeMaterials.engProcessor().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.logicProcessor().maybeStack(1).get())
                 .input("craftNetherQuartz", 1)
                 .outputs(AEHelper.aeMaterials.formationCore().maybeStack(4).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2 + 1])
+                .duration(20).EUt(VA[ae2Integration.voltageTier + 1])
                 .buildAndRegister();
 
         // Annihilation Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "materials/annihilationcore"));
         ModHandler.addShapedRecipe("annihilation_core", AEHelper.aeMaterials.annihilationCore().maybeStack(1).get(),
                 "SES", "CQC", "SES",
-                'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1]),
+                'S', OreDictUnifier.get(stick, tierMaterials[ae2Integration.voltageTier - 1]),
                 'Q', "craftCertusQuartz",
                 'E', AEHelper.aeMaterials.engProcessor().maybeStack(1).get(),
                 'C', AEHelper.aeMaterials.calcProcessor().maybeStack(1).get());
         ModHandler.addShapedRecipe("annihilation_core_pure",
                 AEHelper.aeMaterials.annihilationCore().maybeStack(2).get(),
                 "SES", "CQC", "SES",
-                'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1]),
+                'S', OreDictUnifier.get(stick, tierMaterials[ae2Integration.voltageTier - 1]),
                 'Q', AEHelper.aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get(),
                 'E', AEHelper.aeMaterials.engProcessor().maybeStack(1).get(),
                 'C', AEHelper.aeMaterials.calcProcessor().maybeStack(1).get());
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
-                .input(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1], 2)
+                .input(stick, tierMaterials[ae2Integration.voltageTier - 1], 2)
                 .inputs(AEHelper.aeMaterials.engProcessor().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.calcProcessor().maybeStack(1).get())
                 .input("craftCertusQuartz", 1)
                 .outputs(AEHelper.aeMaterials.annihilationCore().maybeStack(4).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2 + 1])
+                .duration(20).EUt(VA[ae2Integration.voltageTier + 1])
                 .buildAndRegister();
 
         // Matrix Core
         ModHandler.addShapedRecipe("matrix_core", MATRIX_CORE.getStackForm(),
                 "SAS", "FQF", "SAS",
-                'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1]),
+                'S', OreDictUnifier.get(stick, tierMaterials[ae2Integration.voltageTier - 1]),
                 'Q', AEHelper.aeMaterials.fluixCrystal().maybeStack(1).get(),
                 'A', AEHelper.aeMaterials.annihilationCore().maybeStack(1).get(),
                 'F', AEHelper.aeMaterials.formationCore().maybeStack(1).get());
         ModHandler.addShapedRecipe("matrix_core_pure", MATRIX_CORE.getStackForm(2),
                 "SAS", "FQF", "SAS",
-                'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1]),
+                'S', OreDictUnifier.get(stick, tierMaterials[ae2Integration.voltageTier - 1]),
                 'Q', AEHelper.aeMaterials.purifiedFluixCrystal().maybeStack(1).get(),
                 'A', AEHelper.aeMaterials.annihilationCore().maybeStack(1).get(),
                 'F', AEHelper.aeMaterials.formationCore().maybeStack(1).get());
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(6)
-                .input(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1], 2)
+                .input(stick, tierMaterials[ae2Integration.voltageTier - 1], 2)
                 .inputs(AEHelper.aeMaterials.annihilationCore().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.formationCore().maybeStack(1).get())
                 .input("craftFluix", 1)
                 .output(MATRIX_CORE, 4)
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2 + 1])
+                .duration(20).EUt(VA[ae2Integration.voltageTier + 1])
                 .buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(3)
-                .input(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1], 4)
+                .input(stick, tierMaterials[ae2Integration.voltageTier - 1], 4)
                 .inputs(AEHelper.aeMaterials.engProcessor().maybeStack(2).get())
                 .inputs(AEHelper.aeMaterials.logicProcessor().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.calcProcessor().maybeStack(1).get())
@@ -1196,7 +1196,7 @@ public class AERecipeLoader {
                 .input("craftCertusQuartz", 1)
                 .input("craftFluix", 1)
                 .output(MATRIX_CORE, 4)
-                .duration(100).EUt(VA[GTEConfigHolder.voltageTierAE2 + 1])
+                .duration(100).EUt(VA[ae2Integration.voltageTier + 1])
                 .buildAndRegister();
 
         // Silicon Processor Press
@@ -1204,7 +1204,7 @@ public class AERecipeLoader {
                 .notConsumable(lens, NetherQuartz)
                 .input(block, Iron, 1)
                 .outputs(AEHelper.aeMaterials.siliconPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(2000).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Logic Processor Press
@@ -1212,7 +1212,7 @@ public class AERecipeLoader {
                 .notConsumable(lens, CHARGED_CERTUS_QUARTZ)
                 .input(block, Iron, 1)
                 .outputs(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(2000).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Calc Processor Press
@@ -1220,7 +1220,7 @@ public class AERecipeLoader {
                 .notConsumable(lens, CertusQuartz)
                 .input(block, Iron, 1)
                 .outputs(AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(2000).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Engineer Processor Press
@@ -1228,7 +1228,7 @@ public class AERecipeLoader {
                 .notConsumable(lens, FLUIX)
                 .input(block, Iron, 1)
                 .outputs(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(2000).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Silicon Circuit
@@ -1236,7 +1236,7 @@ public class AERecipeLoader {
                 .notConsumable(AEHelper.aeMaterials.siliconPress().maybeStack(1).get())
                 .input(plate, Silicon, 1)
                 .outputs(AEHelper.aeMaterials.siliconPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(20).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Logic Circuit
@@ -1244,7 +1244,7 @@ public class AERecipeLoader {
                 .notConsumable(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
                 .input(plate, Gold, 1)
                 .outputs(AEHelper.aeMaterials.logicProcessorPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(20).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Calc Circuit
@@ -1252,7 +1252,7 @@ public class AERecipeLoader {
                 .notConsumable(AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get())
                 .input(plate, CertusQuartz, 1)
                 .outputs(AEHelper.aeMaterials.calcProcessorPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(20).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Engineer Circuit
@@ -1260,7 +1260,7 @@ public class AERecipeLoader {
                 .notConsumable(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
                 .input(plate, Diamond, 1)
                 .outputs(AEHelper.aeMaterials.engProcessorPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(20).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Logic Processor
@@ -1269,7 +1269,7 @@ public class AERecipeLoader {
                 .inputs(AEHelper.aeMaterials.logicProcessorPrint().maybeStack(1).get())
                 .fluidInputs(Redstone.getFluid(144))
                 .outputs(AEHelper.aeMaterials.logicProcessor().maybeStack(1).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(20).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Calc Processor
@@ -1278,7 +1278,7 @@ public class AERecipeLoader {
                 .inputs(AEHelper.aeMaterials.calcProcessorPrint().maybeStack(1).get())
                 .fluidInputs(Redstone.getFluid(144))
                 .outputs(AEHelper.aeMaterials.calcProcessor().maybeStack(1).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(20).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Engineer Processor
@@ -1287,7 +1287,7 @@ public class AERecipeLoader {
                 .inputs(AEHelper.aeMaterials.engProcessorPrint().maybeStack(1).get())
                 .fluidInputs(Redstone.getFluid(144))
                 .outputs(AEHelper.aeMaterials.engProcessor().maybeStack(1).get())
-                .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2])
+                .duration(20).EUt(VA[ae2Integration.voltageTier])
                 .buildAndRegister();
     }
 

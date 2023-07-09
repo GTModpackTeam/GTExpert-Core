@@ -22,7 +22,6 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.integration.ae.AEHelper;
@@ -46,6 +45,7 @@ import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtils.getModItem;
+import static gtexpert.common.GTEConfigHolder.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class GTERecipeLoader {
@@ -138,7 +138,7 @@ public class GTERecipeLoader {
 
     private static void items() {
         if (!ConfigHolder.machines.enableHighTierSolars) return;
-        if (GTEConfigHolder.hardSolarPanel) {
+        if (ceuOverride.hardSolarPanel) {
             // Remove solar panels
             ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL.getStackForm());
             ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_ULV.getStackForm());
