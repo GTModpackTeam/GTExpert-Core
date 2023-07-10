@@ -364,23 +364,21 @@ public class CEUOverrideRecipeLoader {
 
         // if the material does not need a vacuum freezer, exit
         if (!OrePrefix.ingotHot.doGenerateItem(material)) return;
-
-        int blastTemp = material.getBlastTemperature();
-        if (blastTemp < 5000) {
+        if (material.getBlastTemperature() < 5000) {
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .fluidInputs(new FluidStack(molten, 1000))
                     .fluidOutputs(material.getFluid(1000))
-                    .duration(20)
+                    .duration((int) material.getMass() * 3)
                     .buildAndRegister();
         }
         else {
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    //.fluidInputs(LiquidHelium.getFluid(500))
                     .circuitMeta(1)
                     .fluidInputs(new FluidStack(molten, 1000))
-                    //.fluidOutputs(Helium.getFluid(250))
+                    .fluidInputs(LiquidHelium.getFluid(750))
+                    .fluidOutputs(Helium.getFluid(500))
                     .fluidOutputs(material.getFluid(1000))
-                    .duration(20)
+                    .duration((int) material.getMass() * 3)
                     .buildAndRegister();
         }
     }
