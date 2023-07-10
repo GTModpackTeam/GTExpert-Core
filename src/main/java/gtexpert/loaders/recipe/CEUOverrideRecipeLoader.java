@@ -376,7 +376,7 @@ public class CEUOverrideRecipeLoader {
                     .circuitMeta(1)
                     .fluidInputs(new FluidStack(molten, 1000))
                     .fluidInputs(LiquidHelium.getFluid(750))
-                    .fluidOutputs(Helium.getFluid(500))
+                    .fluidOutputs(Helium.getFluid(200))
                     .fluidOutputs(material.getFluid(1000))
                     .duration((int) material.getMass() * 3)
                     .buildAndRegister();
