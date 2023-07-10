@@ -64,7 +64,7 @@ dependencies {
     // Debug Chisel
     compileOnly rfg.deobf("curse.maven:chisel-235279:2915375")
     if (project.debug_chisel.toBoolean()) {
-        implementation rfg.deobf("curse.maven:chisel-235279:2915375")
+        runtimeOnly rfg.deobf("curse.maven:chisel-235279:2915375")
     }
 
     // Boot error fix
