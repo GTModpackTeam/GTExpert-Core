@@ -1,20 +1,32 @@
 package gtexpert.loaders.recipe;
 
+import gregtech.api.GregTechAPI;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
+
+import gregicality.multiblocks.api.AlloyBlastUtil;
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -246,6 +258,16 @@ public class CEUOverrideRecipeLoader {
                 .output(plate, CertusQuartz, 4)
                 .duration(300).EUt(VA[LV])
                 .buildAndRegister();
+
+        List<Material> materials = new ArrayList<>();
+        for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
+            if (material.hasProperty(PropertyKey.FLUID) && material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) {
+                materials.add(material);
+            }
+        }
+        for (Material material : materials) {
+            vacuumFreezerMolten(material);
+        }
     }
 
     private static void items() {
@@ -325,5 +347,39 @@ public class CEUOverrideRecipeLoader {
                 'W', new UnificationEntry(cableGtSingle, Europium),
                 'C', WETWARE_MAINFRAME_UHV,
                 'T', OreDictNames.chestWood);
+    }
+
+    private static void vacuumFreezerMolten(Material material) {
+        // do not generate for disabled materials
+        if (material.hasFlag(GCYMMaterialFlags.DISABLE_ALLOY_BLAST)) return;
+
+        // get the amount of components
+        final int componentAmount = material.getMaterialComponents().size();
+
+        // ignore non-alloys
+        if (componentAmount < 2) return;
+
+        // get the output fluid
+        Fluid molten = AlloyBlastUtil.getMoltenFluid(material);
+        if (molten == null) return;
+
+        // if the material does not need a vacuum freezer, exit
+        if (!OrePrefix.ingotHot.doGenerateItem(material)) return;
+        if (material.getBlastTemperature() < 5000) {
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .fluidInputs(new FluidStack(molten, 1000))
+                    .fluidOutputs(material.getFluid(1000))
+                    .duration((int) material.getMass() * 3)
+                    .buildAndRegister();
+        } else {
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .fluidInputs(new FluidStack(molten, 1000))
+                    .fluidInputs(LiquidHelium.getFluid(750))
+                    .fluidOutputs(Helium.getFluid(200))
+                    .fluidOutputs(material.getFluid(1000))
+                    .duration((int) material.getMass() * 3)
+                    .buildAndRegister();
+        }
     }
 }
