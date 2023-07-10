@@ -1,8 +1,5 @@
 package gtexpert.loaders.recipe;
 
-import gregicality.multiblocks.api.AlloyBlastUtil;
-import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 import gregtech.api.GregTechAPI;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
@@ -15,6 +12,10 @@ import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
+
+import gregicality.multiblocks.api.AlloyBlastUtil;
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
 
@@ -370,8 +371,7 @@ public class CEUOverrideRecipeLoader {
                     .fluidOutputs(material.getFluid(1000))
                     .duration((int) material.getMass() * 3)
                     .buildAndRegister();
-        }
-        else {
+        } else {
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
                     .fluidInputs(new FluidStack(molten, 1000))
