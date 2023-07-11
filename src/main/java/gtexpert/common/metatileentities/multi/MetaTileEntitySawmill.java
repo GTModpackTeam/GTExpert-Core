@@ -1,5 +1,6 @@
 package gtexpert.common.metatileentities.multi;
 
+import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -8,6 +9,7 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 
+import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEBlockMetalCasing;
@@ -78,5 +80,20 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     @Override
     public boolean canBeDistinct() {
         return true;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getLogo() {
+        return GTEGuiTextures.GTE_LOGO_WORKING;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getWarningLogo() {
+        return GTEGuiTextures.GTE_LOGO_WARNING;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getErrorLogo() {
+        return GTEGuiTextures.GTE_LOGO_ERROR;
     }
 }

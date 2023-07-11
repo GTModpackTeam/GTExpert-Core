@@ -1,6 +1,7 @@
 package gtexpert.common.metatileentities.multi;
 
 import gregtech.api.block.IHeatingCoilBlockStats;
+import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -18,6 +19,7 @@ import gregtech.common.blocks.MetaBlocks;
 import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 
+import gtexpert.api.gui.GTEGuiTextures;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -90,12 +92,22 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     }
 
     @Override
-    public boolean isTiered() {
-        return true;
+    protected @Nonnull TextureArea getLogo() {
+        return GTEGuiTextures.GTE_LOGO_WORKING;
     }
 
     @Override
-    public boolean canBeDistinct() {
+    protected @Nonnull TextureArea getWarningLogo() {
+        return GTEGuiTextures.GTE_LOGO_WARNING;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getErrorLogo() {
+        return GTEGuiTextures.GTE_LOGO_ERROR;
+    }
+
+    @Override
+    public boolean isTiered() {
         return true;
     }
 

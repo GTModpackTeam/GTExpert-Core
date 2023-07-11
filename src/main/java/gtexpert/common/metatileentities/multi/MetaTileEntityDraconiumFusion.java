@@ -1,5 +1,6 @@
 package gtexpert.common.metatileentities.multi;
 
+import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -10,6 +11,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.capability.MultiblockRecipeLogicNoCache;
+import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEBlockMetalCasing;
@@ -63,6 +65,21 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     @Override
     public boolean canBeDistinct() {
         return true;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getLogo() {
+        return GTEGuiTextures.GTE_LOGO_WORKING;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getWarningLogo() {
+        return GTEGuiTextures.GTE_LOGO_WARNING;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getErrorLogo() {
+        return GTEGuiTextures.GTE_LOGO_ERROR;
     }
 
     public static class TierDraconic extends MetaTileEntityDraconiumFusion {
