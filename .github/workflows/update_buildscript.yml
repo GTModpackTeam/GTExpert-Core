@@ -27,7 +27,7 @@ jobs:
       - name: Ensure build script version is up to date
         id: update-buildscript
         run: |
-          curl https://raw.githubusercontent.com/GregTechCEu/Buildscripts/master/build.gradle --output build.gradle
+          curl https://raw.githubusercontent.com/GTModpackTeam/Buildscripts/master/build.gradle --output build.gradle
           new_version=$(head -1 build.gradle | sed -r 's|//version: (.*)|\1|g')
           echo "NEW_VERSION=$new_version" >> "$GITHUB_OUTPUT"
 

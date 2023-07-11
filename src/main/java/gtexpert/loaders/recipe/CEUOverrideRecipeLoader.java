@@ -9,12 +9,10 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
 
 import gregicality.multiblocks.api.AlloyBlastUtil;
-import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
@@ -27,6 +25,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -349,36 +348,46 @@ public class CEUOverrideRecipeLoader {
                 'T', OreDictNames.chestWood);
     }
 
-    private static void vacuumFreezerMolten(Material material) {
-        // do not generate for disabled materials
-        if (material.hasFlag(GCYMMaterialFlags.DISABLE_ALLOY_BLAST)) return;
-
-        // get the amount of components
-        final int componentAmount = material.getMaterialComponents().size();
-
-        // ignore non-alloys
-        if (componentAmount < 2) return;
-
+    /**
+     * Adds recipes for the Vacuum Freezer.
+     *
+     * @param material the material to add recipes for
+     */
+    private static void vacuumFreezerMolten(@Nonnull Material material) {
         // get the output fluid
         Fluid molten = AlloyBlastUtil.getMoltenFluid(material);
         if (molten == null) return;
 
-        // if the material does not need a vacuum freezer, exit
-        if (!OrePrefix.ingotHot.doGenerateItem(material)) return;
+        // generate the recipe
         if (material.getBlastTemperature() < 5000) {
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .fluidInputs(new FluidStack(molten, 1000))
-                    .fluidOutputs(material.getFluid(1000))
+                    .circuitMeta(1)
+                    .fluidInputs(new FluidStack(molten, 144))
+                    .fluidOutputs(material.getFluid(144))
                     .duration((int) material.getMass() * 3)
+                    .buildAndRegister();
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .circuitMeta(2)
+                    .fluidInputs(new FluidStack(molten, 1152))
+                    .fluidOutputs(material.getFluid(1152))
+                    .duration((int) material.getMass() * 5)
                     .buildAndRegister();
         } else {
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
-                    .fluidInputs(new FluidStack(molten, 1000))
+                    .fluidInputs(new FluidStack(molten, 144))
+                    .fluidInputs(LiquidHelium.getFluid(500))
+                    .fluidOutputs(Helium.getFluid(250))
+                    .fluidOutputs(material.getFluid(144))
+                    .duration((int) material.getMass() * 3)
+                    .buildAndRegister();
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .circuitMeta(2)
+                    .fluidInputs(new FluidStack(molten, 1152))
                     .fluidInputs(LiquidHelium.getFluid(750))
                     .fluidOutputs(Helium.getFluid(200))
-                    .fluidOutputs(material.getFluid(1000))
-                    .duration((int) material.getMass() * 3)
+                    .fluidOutputs(material.getFluid(1152))
+                    .duration((int) material.getMass() * 5)
                     .buildAndRegister();
         }
     }
