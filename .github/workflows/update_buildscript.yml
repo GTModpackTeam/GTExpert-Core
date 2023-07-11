@@ -30,8 +30,6 @@ jobs:
           curl https://raw.githubusercontent.com/GregTechCEu/Buildscripts/master/build.gradle --output build.gradle
           new_version=$(head -1 build.gradle | sed -r 's|//version: (.*)|\1|g')
           echo "NEW_VERSION=$new_version" >> "$GITHUB_OUTPUT"
-        with:
-          ref: dev
 
       - name: Create Pull Request
         id: create-pull-request
