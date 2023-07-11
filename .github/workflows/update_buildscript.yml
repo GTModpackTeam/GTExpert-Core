@@ -1,6 +1,10 @@
 # Checks daily to see if the buildscript is in need of an update
 name: Buildscript Updating
 
+permissions:
+  pull-requests: write
+  contents: write
+
 on:
   workflow_dispatch:
   schedule:
@@ -32,11 +36,8 @@ jobs:
       - name: Create Pull Request
         id: create-pull-request
         uses: peter-evans/create-pull-request@v4
-        env:
-          GITHUB_TOKEN: ${{secrets.BUILDSCRIPT_UPDATER_TOKEN}}
         with:
           ref: dev
-          token: ${{secrets.BUILDSCRIPT_UPDATER_TOKEN}}
           committer: GitHub <noreply@github.com>
           author: ${{github.actor}} <${{github.actor}}@users.noreply.github.com>
           add-paths: build.gradle
