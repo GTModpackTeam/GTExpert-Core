@@ -137,6 +137,9 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
      */
     private void prepareWork(@Nonnull CapturedMob mobToSpawn) {
         ItemStack outputItem = createSoulVial(mobToSpawn);
+        if (outputItem.isEmpty()) {
+            return;
+        }
         if (!setupAndConsumeInputs(outputItem)) {
             return;
         }
@@ -375,8 +378,13 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Nonnull
-    private static ItemStack createSoulVial(@Nonnull CapturedMob mobToSpawn) {
-        return mobToSpawn.toStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
+    private ItemStack createSoulVial(@NotNull CapturedMob mobToSpawn) {
+        Entity entity = createEntity(mobToSpawn);
+        if (entity == null) return ItemStack.EMPTY;
+        CapturedMob newMob = CapturedMob.create(entity);
+        cleanupUnspawnedEntity(entity);
+        if (newMob == null) return ItemStack.EMPTY;
+        return newMob.toStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
     }
 
     /**

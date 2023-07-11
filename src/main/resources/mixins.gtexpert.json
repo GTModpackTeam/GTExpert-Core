@@ -1,11 +1,11 @@
 {
   "required": true,
-  "package": "gtexpert.mixins",
+  "package": "gtexpert.mixin",
   "refmap": "mixins.gtexpert.refmap.json",
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinItemDolly"
+    "MixinRecipeMaps"
   ],
   "server": [
   ],
