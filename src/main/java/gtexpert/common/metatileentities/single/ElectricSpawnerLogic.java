@@ -378,7 +378,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Nonnull
-    private ItemStack createSoulVial(@NotNull CapturedMob mobToSpawn) {
+    private ItemStack createSoulVial(@Nonnull CapturedMob mobToSpawn) {
         Entity entity = createEntity(mobToSpawn);
         if (entity == null) return ItemStack.EMPTY;
         CapturedMob newMob = CapturedMob.create(entity);

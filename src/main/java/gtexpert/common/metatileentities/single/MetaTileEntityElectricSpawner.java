@@ -82,7 +82,7 @@ public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntit
     }
 
     @Override
-    protected boolean hasGhostCircuitInventory() {
+    public boolean hasGhostCircuitInventory() {
         return false;
     }
 

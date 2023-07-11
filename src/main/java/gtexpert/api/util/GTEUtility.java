@@ -15,15 +15,15 @@ import javax.annotation.Nonnull;
 
 public class GTEUtility {
 
-    public static @NotNull ItemStack getModItem(String modID, String itemName) {
+    public static @Nonnull ItemStack getModItem(String modID, String itemName) {
         return GameRegistry.makeItemStack(modID + ":" + itemName, 0, 1, null);
     }
 
-    public static @NotNull ItemStack getModItem(String modID, String itemName, int amount) {
+    public static @Nonnull ItemStack getModItem(String modID, String itemName, int amount) {
         return GameRegistry.makeItemStack(modID + ":" + itemName, 0, amount, null);
     }
 
-    public static @NotNull ItemStack getModItem(String modID, String itemName, int amount, int meta) {
+    public static @Nonnull ItemStack getModItem(String modID, String itemName, int amount, int meta) {
         return GameRegistry.makeItemStack(modID + ":" + itemName, meta, amount, null);
     }
 
@@ -32,16 +32,15 @@ public class GTEUtility {
         return GameRegistry.makeItemStack(modID + ":" + itemName, meta, amount, nbt != null ? nbt.toString() : null);
     }
 
-    public static @NotNull FluidStack getModFluid(String fluidName) {
+    public static @Nonnull FluidStack getModFluid(String fluidName) {
         return Objects.requireNonNull(FluidRegistry.getFluidStack(fluidName, 1000));
     }
 
-    public static @NotNull FluidStack getModFluid(String fluidName, int amount) {
+    public static @Nonnull FluidStack getModFluid(String fluidName, int amount) {
         return Objects.requireNonNull(FluidRegistry.getFluidStack(fluidName, amount));
     }
 
-    @Nonnull
-    public static ResourceLocation gteId(@Nonnull String path) {
+    public static @Nonnull ResourceLocation gteId(String path) {
         return new ResourceLocation(GTEValues.MODID, path);
     }
 }

@@ -25,6 +25,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.Nonnull;
 
 import static gregtech.api.GTValues.*;
@@ -259,7 +260,7 @@ public class CEUOverrideRecipeLoader {
                 .buildAndRegister();
 
         List<Material> materials = new ArrayList<>();
-        for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
+        for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
             if (material.hasProperty(PropertyKey.FLUID) && material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) {
                 materials.add(material);
             }
