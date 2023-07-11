@@ -25,37 +25,35 @@ dependencies {
     // Hard Dependencies
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
-    implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848")
-    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4637703")
+    implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848") // CCL 3.2.3.358
+    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4637703") // CEu 2.7.0
     //implementation (files("libs/gregtech-1.12.2-2.6.2-beta-dev.jar"))
-    //implementation rfg.deobf("curse.maven:gregicality-multiblocks-564858:4529101")
+    //implementation rfg.deobf("curse.maven:gregicality-multiblocks-564858:4529101") // GCYM 1.3.0
     implementation (files("libs/GregicalityMultiblocks-1.2.3-dev.jar"))
-    implementation rfg.deobf("curse.maven:ae2-extended-life-570458:4505114")
-    implementation rfg.deobf("curse.maven:enderio-64578:3328811")
-    implementation rfg.deobf("curse.maven:ender-io-conduits-304346:3328808")
-    implementation rfg.deobf("curse.maven:endercore-231868:2972849")
-    implementation "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2"
-    implementation "info.loenwind.autosave:AutoSave:1.12.2-1.0.11"
-    implementation rfg.deobf("curse.maven:baubles-227083:2518667")
-    implementation rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")
-    implementation rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371")
+    implementation rfg.deobf("curse.maven:ae2-extended-life-570458:4632516") // AE2UEL 0.55.17
+    implementation rfg.deobf("curse.maven:enderio-64578:3328811") // EIO 5.3.70
+    implementation rfg.deobf("curse.maven:ender-io-conduits-304346:3328808") // EIOC 5.3.70
+    implementation rfg.deobf("curse.maven:endercore-231868:2972849") // EnderCore 0.5.76
+    implementation "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
+    implementation "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
 
     // Soft Dependencies
-    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.687"
-    implementation rfg.deobf("curse.maven:ctm-267602:2915363")
-    compileOnly rfg.deobf("curse.maven:gregtech-food-option-477021:4555292")
+    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.687" // CrT 4.1.20
+    implementation rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
 
     // use a local jar for GroovyScript to avoid a bug from Mixin and ForgeGradle,
     // causing crashes at run-time when deobfuscated
-    implementation files("libs/groovyscript-0.4.0.jar")
+    implementation files("libs/groovyscript-0.4.0.jar") // GrS 0.4.0
     //implementation rfg.deobf("curse.maven:groovyscript-687577:4399621")
 
     // Debug Draconic Evolution/Additions
-    compileOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436")
-    compileOnly rfg.deobf("curse.maven:brandons-core-231382:3408276")
-    compileOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
-    compileOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704")
+    compileOnly rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
+    compileOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436") // RedstoneFlux 1.1.1
+    compileOnly rfg.deobf("curse.maven:brandons-core-231382:3408276") // BrandonsCore 2.4.20.162
+    compileOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261") // DraconicEvolution 2.3.28.354
+    compileOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704") // DraconicAdditions 1.17.0.45
     if (project.debug_de.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:baubles-227083:2518667")
         runtimeOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436")
         runtimeOnly rfg.deobf("curse.maven:brandons-core-231382:3408276")
         runtimeOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
@@ -63,7 +61,7 @@ dependencies {
     }
 
     // Debug Chisel
-    compileOnly rfg.deobf("curse.maven:chisel-235279:2915375")
+    compileOnly rfg.deobf("curse.maven:chisel-235279:2915375") // Chisel 1.0.2.45
     if (project.debug_chisel.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:chisel-235279:2915375")
     }
