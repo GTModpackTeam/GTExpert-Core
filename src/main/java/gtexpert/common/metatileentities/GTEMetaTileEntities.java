@@ -2,11 +2,13 @@ package gtexpert.common.metatileentities;
 
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.GTUtility;
+import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.multi.*;
 import gtexpert.common.metatileentities.single.*;
@@ -15,11 +17,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 
 import java.util.function.BiFunction;
-
-import org.jetbrains.annotations.NotNull;
+import java.util.function.Function;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
+import static gtexpert.api.util.GTEUtility.gteId;
 
 public class GTEMetaTileEntities {
 
@@ -27,9 +29,12 @@ public class GTEMetaTileEntities {
     public static final MetaTileEntityAutoChisel[] AUTO_CHISEL = new MetaTileEntityAutoChisel[3];
     public static MetaTileEntitySawmill SAWMILL;
     public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
-    public static SimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
-    public static SimpleMachineMetaTileEntity[] SLICE_N_SPLICE = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
-    public static SimpleMachineMetaTileEntity[] SOUL_BINDER = new SimpleMachineMetaTileEntity[GTValues.V.length - 1];
+    public static GTESimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new GTESimpleMachineMetaTileEntity[GTValues.V.length -
+            1];
+    public static GTESimpleMachineMetaTileEntity[] SLICE_N_SPLICE = new GTESimpleMachineMetaTileEntity[GTValues.V.length -
+            1];
+    public static GTESimpleMachineMetaTileEntity[] SOUL_BINDER = new GTESimpleMachineMetaTileEntity[GTValues.V.length -
+            1];
     public static MetaTileEntityElectricSpawner[] ELECTRIC_SPAWNER = new MetaTileEntityElectricSpawner[GTValues.V.length -
             1];
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
@@ -77,23 +82,22 @@ public class GTEMetaTileEntities {
                         GTETextures.EXTREME_MIXER_OVERLAY, ZPM, true, GTUtility.hvCappedTankSizeFunction));
 
         // VIAL_EXTRACTOR 11010~11022
-        registerSimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES,
-                GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEMetaTileEntities::gteId,
-                GTUtility.hvCappedTankSizeFunction);
+        registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES,
+                GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEUtility::gteId, GTUtility.hvCappedTankSizeFunction);
 
         // SLICE_N_SPLICE 11023~11035
-        registerSimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice", GTERecipeMaps.SLICE_N_SPLICE_RECIPES,
-                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEMetaTileEntities::gteId,
-                GTUtility.defaultTankSizeFunction);
+        registerGTESimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice", GTERecipeMaps.SLICE_N_SPLICE_RECIPES,
+                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // SOUL_BINDER 11036~11048
-        registerSimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", GTERecipeMaps.SOUL_BINDER_RECIPES,
-                GTETextures.SOUL_BINDER_OVERLAY, true, GTEMetaTileEntities::gteId, GTUtility.defaultTankSizeFunction);
+        registerGTESimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", GTERecipeMaps.SOUL_BINDER_RECIPES,
+                GTETextures.SOUL_BINDER_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // ELECTRIC_SPAWNER 11049~11061
         registerMetaTileEntities(ELECTRIC_SPAWNER, 11049, "electric_spawner",
                 (tier, voltageName) -> new MetaTileEntityElectricSpawner(
-                        gteId(String.format("%s.%s", "electric_spawner", voltageName)), GTETextures.SPAWNER_OVERLAY,
+                        gteId(String.format("%s.%s", "electric_spawner", voltageName)),
+                        GTETextures.SPAWNER_OVERLAY,
                         tier));
 
         // multiblocks :12000~
@@ -112,11 +116,6 @@ public class GTEMetaTileEntities {
         }
     }
 
-    @NotNull
-    private static ResourceLocation gteId(@NotNull String name) {
-        return new ResourceLocation(GTEValues.MODID, name);
-    }
-
     // TODO: This method will be included in the next update of CEu
     /**
      * @param mteCreator Takes tier and voltage name for the machine and outputs MTE to register
@@ -133,6 +132,25 @@ public class GTEMetaTileEntities {
             String voltageName = GTValues.VN[i + 1].toLowerCase();
             machines[i + 1] = registerMetaTileEntity(startId + i,
                     mteCreator.apply(i + 1, voltageName));
+        }
+    }
+
+    public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,
+                                                       String name, RecipeMap<?> map, ICubeRenderer texture,
+                                                       boolean hasFrontFacing,
+                                                       Function<String, ResourceLocation> resourceId,
+                                                       Function<Integer, Integer> tankScalingFunction) {
+        for (int i = 0; i < machines.length - 1; ++i) {
+            if (i <= 4 || getMidTier(name)) {
+                if (i > 7 && !getHighTier(name)) {
+                    break;
+                }
+
+                String voltageName = GTValues.VN[i + 1].toLowerCase();
+                machines[i + 1] = registerMetaTileEntity(startId + i,
+                        new GTESimpleMachineMetaTileEntity(resourceId.apply(String.format("%s.%s", name, voltageName)),
+                                map, texture, i + 1, hasFrontFacing, tankScalingFunction));
+            }
         }
     }
 }

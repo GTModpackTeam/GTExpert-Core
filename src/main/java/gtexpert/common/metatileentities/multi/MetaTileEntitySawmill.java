@@ -1,5 +1,6 @@
 package gtexpert.common.metatileentities.multi;
 
+import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -8,6 +9,7 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 
+import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEBlockMetalCasing;
@@ -20,8 +22,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
 
@@ -30,12 +32,12 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
+    public @Nonnull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
         return new MetaTileEntitySawmill(metaTileEntityId);
     }
 
     @Override
-    protected @NotNull BlockPattern createStructurePattern() {
+    protected @Nonnull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("CFC", "C#C", "C C")
                 .aisle(" F ", " # ", "CCC")
@@ -59,7 +61,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    protected @NotNull ICubeRenderer getFrontOverlay() {
+    protected @Nonnull ICubeRenderer getFrontOverlay() {
         return GTETextures.SAWMILL_OVERLAY;
     }
 
@@ -69,7 +71,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
+    public void addInformation(ItemStack stack, @Nullable World player, @Nonnull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.sawmill.tooltip.1"));
@@ -78,5 +80,20 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     @Override
     public boolean canBeDistinct() {
         return true;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getLogo() {
+        return GTEGuiTextures.GTE_LOGO_WORKING;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getWarningLogo() {
+        return GTEGuiTextures.GTE_LOGO_WARNING;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getErrorLogo() {
+        return GTEGuiTextures.GTE_LOGO_ERROR;
     }
 }

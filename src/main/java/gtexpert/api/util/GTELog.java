@@ -10,8 +10,4 @@ public class GTELog {
     public static Logger logger = LogManager.getLogger(GTEValues.MODNAME);
 
     private GTELog() {}
-
-    public static void init(Logger modLogger) {
-        logger = modLogger;
-    }
 }

@@ -1,8 +1,10 @@
 package gtexpert.common;
 
 import gregtech.api.items.armor.ArmorMetaItem;
+import gregtech.api.unification.material.event.MaterialEvent;
 
 import gtexpert.api.GTEValues;
+import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.items.GTEMetaItems;
 
 import net.minecraft.block.SoundType;
@@ -23,17 +25,22 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTEEventHandlers {
 
     public GTEEventHandlers() {}
 
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void registerMaterials(MaterialEvent event) {
+        GTEMaterials.init();
+    }
+
     // override GTCEu fall event to enable piston boots fall damage
     @SubscribeEvent(
                     priority = EventPriority.NORMAL)
-    public static void onEntityLivingFallEvent(@NotNull LivingFallEvent event) {
+    public static void onEntityLivingFallEvent(@Nonnull LivingFallEvent event) {
         if (event.getEntity() instanceof EntityPlayerMP player) {
             ItemStack armor = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
             if (player.fallDistance < 3.2F) {

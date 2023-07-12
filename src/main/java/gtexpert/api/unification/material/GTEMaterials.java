@@ -51,36 +51,36 @@ public class GTEMaterials {
     // Element Materials
 
     // First Degree Materials
-    public static Material Galvalume;
     public static Material NM_HEA_NPs;
-    public static Material NAQUADAH_ROCKET_FUEL;
-    public static Material SOUL_SAND;
-    public static Material CHORUS_FRUIT;
-    public static Material ELECTRICAL_STEEL;
-    public static Material ENERGETIC_ALLOY;
-    public static Material VIBRANT_ALLOY;
-    public static Material REDSTONE_ALLOY;
-    public static Material CONDUCTIVE_IRON;
-    public static Material PULSATING_IRON;
-    public static Material DARK_STEEL;
-    public static Material SOULARIUM;
-    public static Material END_STEEL;
-    public static Material CONSTRUCTION_ALLOY;
-    public static Material CRYSTALLINE_ALLOY;
-    public static Material MELODIC_ALLOY;
-    public static Material STELLAR_ALLOY;
-    public static Material CRYSTALLINE_PINK_SLIME;
-    public static Material ENERGETIC_SILVER;
-    public static Material VIVID_ALLOY;
-    public static Material CHARGED_CERTUS_QUARTZ;
-    public static Material FLUIX;
-    public static Material FLUIX_ALLOY;
-    public static Material CRYOTHEUM;
-    public static Material PYROTHEUM;
-    public static Material DRAGON;
-    public static Material CHAOS;
-    public static Material DRACONIUM;
-    public static Material AWAKENED_DRACONIUM;
+    public static Material NaquadahRocketFuel;
+    public static Material SoulSand;
+    public static Material ChorusFruit;
+    public static Material ElectricalSteel;
+    public static Material EnergeticAlloy;
+    public static Material VibrantAlloy;
+    public static Material RedstoneAlloy;
+    public static Material ConductiveIron;
+    public static Material PulsatingIron;
+    public static Material DarkSteel;
+    public static Material Soularium;
+    public static Material EndSteel;
+    public static Material ConstructionAlloy;
+    public static Material CrystallineAlloy;
+    public static Material MelodicAlloy;
+    public static Material StellarAlloy;
+    public static Material CrystallinePinkSlime;
+    public static Material EnergeticSilver;
+    public static Material VividAlloy;
+    public static Material ChargedCertusQuartz;
+    public static Material Fluix;
+    public static Material FluixAlloy;
+    public static Material Cryotheum;
+    public static Material Pyrotheum;
+    public static Material Dragon;
+    public static Material Chaos;
+    public static Material Draconium;
+    public static Material AwakenedDraconium;
+    public static Material Infinity;
 
     // Second Degree Materials
 

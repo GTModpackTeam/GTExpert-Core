@@ -4,14 +4,15 @@ import gregtech.api.unification.Element;
 
 import java.util.*;
 
-public class Elements {
+public class GTEElements {
 
     private static final Map<String, Element> elements = new HashMap<>();
 
-    private Elements() {}
+    private GTEElements() {}
 
     public static final Element De = add(1, 0, -1, null, "Draconium", "De", false);
     public static final Element De1 = add(1, 0, -1, null, "AwakenedDraconium", "De+", false);
+    public static final Element If = add(1, 0, -1, null, "Infinity", "If", false);
 
     public static Element add(long protons, long neutrons, long halfLifeSeconds, String decayTo, String name,
                               String symbol, boolean isIsotope) {

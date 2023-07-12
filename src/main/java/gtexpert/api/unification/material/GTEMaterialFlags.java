@@ -2,10 +2,6 @@ package gtexpert.api.unification.material;
 
 import gregtech.api.unification.material.properties.*;
 
-import gtexpert.api.GTEValues;
-
-import net.minecraftforge.fml.common.Loader;
-
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 
@@ -36,13 +32,10 @@ public class GTEMaterialFlags {
         // Darmstadtium
         Darmstadtium.addFlags(GENERATE_GEAR, GENERATE_FRAME);
 
-        // Gregification error fix
-        if (!Loader.isModLoaded(GTEValues.MODID_GF)) {
-            // Osmium
-            Osmium.setProperty(PropertyKey.ORE, new OreProperty());
+        // Osmium
+        Osmium.setProperty(PropertyKey.ORE, new OreProperty());
 
-            // Iridium
-            Iridium.setProperty(PropertyKey.ORE, new OreProperty());
-        }
+        // Iridium
+        Iridium.setProperty(PropertyKey.ORE, new OreProperty());
     }
 }
