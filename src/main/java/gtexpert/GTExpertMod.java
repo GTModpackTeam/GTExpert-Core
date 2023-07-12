@@ -3,7 +3,6 @@ package gtexpert;
 import gregtech.GTInternalTags;
 
 import gtexpert.api.GTEValues;
-import gtexpert.api.util.GTELog;
 import gtexpert.common.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
@@ -12,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
@@ -22,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
              "required-after:" + GTEValues.MODID_ECO + ";" + "required-after:" + GTEValues.MODID_EIO + ";" +
              "required-after:" + GTEValues.MODID_AE + ";" + "required-after:" + GTEValues.MODID_AEA + ";" + "after:" +
              GTEValues.MODID_DE + ";" + "after:" + GTEValues.MODID_DA + ";")
+
 public class GTExpertMod {
 
     @Mod.Instance
@@ -33,9 +33,7 @@ public class GTExpertMod {
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public void preInit(@NotNull FMLPreInitializationEvent event) {
-        GTELog.init(event.getModLog());
-
+    public void preInit(@Nonnull FMLPreInitializationEvent event) {
         proxy.preInit(event);
     }
 

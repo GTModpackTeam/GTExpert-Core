@@ -45,7 +45,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.api.util.GTEUtils.getModItem;
+import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class GTERecipeLoader {
@@ -99,7 +99,7 @@ public class GTERecipeLoader {
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
         RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust, NM_HEA_NPs, 1)
+                .input(dust, NM_HEA_NPs, 8)
                 .output(dust, Gold, 1)
                 .output(dust, Silver, 1)
                 .output(dust, Ruthenium, 1)
@@ -111,7 +111,7 @@ public class GTERecipeLoader {
                 .duration(10).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
-                .input(dust, NM_HEA_NPs, 1)
+                .input(dust, NM_HEA_NPs, 8)
                 .output(dust, Gold, 1)
                 .output(dust, Silver, 1)
                 .output(dust, Ruthenium, 1)
@@ -162,7 +162,7 @@ public class GTERecipeLoader {
                     .buildAndRegister();
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .circuitMeta(1)
-                    .input(GLOWSTONE_WAFER, 2)
+                    .input(PHOSPHORUS_WAFER, 2)
                     .input("paneGlass", 4)
                     .input(circuit, MarkerMaterials.Tier.ULV, 8)
                     .input(CARBON_FIBER_PLATE, 4)
@@ -418,7 +418,7 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Sawmill
-        ModHandler.addShapedRecipe("gtexpert.machine.sawmill", SAWMILL.getStackForm(),
+        ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill", SAWMILL.getStackForm(),
                 "SBs", "MHM", "COC",
                 'S', new UnificationEntry(screw, Steel),
                 'B', new UnificationEntry(toolHeadBuzzSaw, Steel),
@@ -426,6 +426,14 @@ public class GTERecipeLoader {
                 'H', MetaTileEntities.HULL[MV].getStackForm(),
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
                 'O', CONVEYOR_MODULE_MV.getStackForm());
+
+        // Large Oil Cracking Unit
+        ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit", LARGE_CRACKER.getStackForm(),
+                "PCP", "FSF", "PCP",
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ZPM),
+                'S', MetaTileEntities.CRACKER.getStackForm(),
+                'P', ELECTRIC_PUMP_IV.getStackForm(),
+                'F', FIELD_GENERATOR_IV.getStackForm());
 
         // Void Ore Miner
         if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
@@ -449,25 +457,11 @@ public class GTERecipeLoader {
         }
 
         // Treated Wood Machine Casing
-        ModHandler.addShapedRecipe("casing_treated_wood",
+        ModHandler.addShapedRecipe(true, "casing_treated_wood",
                 GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, TreatedWood),
                 'F', new UnificationEntry(frameGt, TreatedWood));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .circuitMeta(6)
-                .input(plate, TreatedWood, 6)
-                .input(frameGt, TreatedWood, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
-                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
-                .duration(50).EUt(16)
-                .buildAndRegister();
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,
-                        1))
-                .output(dust, Wood, 4)
-                .duration(225).EUt(8)
-                .buildAndRegister();
 
         // Void Ore Miner Casing
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -494,7 +488,7 @@ public class GTERecipeLoader {
 
         // Void Ore Miner Recipes
         List<Material> materialOres = new ArrayList<>();
-        for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
+        for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
             if (material.hasProperty(PropertyKey.ORE)) {
                 materialOres.add(material);
             }
@@ -527,7 +521,7 @@ public class GTERecipeLoader {
         }
 
         // Vial Extractor
-        MetaTileEntityLoader.registerMachineRecipe(VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
+        MetaTileEntityLoader.registerMachineRecipe(true, VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
                 'V', ModObject.itemSoulVial.getItemNN(),
                 'R', SENSOR,
                 'P', PISTON,
@@ -539,7 +533,7 @@ public class GTERecipeLoader {
         // Slice'N'Splice
         ModHandler.addShapelessRecipe("slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(),
                 new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
-        MetaTileEntityLoader.registerMachineRecipe(SLICE_N_SPLICE, "PSP", "CHC", "MBM",
+        MetaTileEntityLoader.registerMachineRecipe(true, SLICE_N_SPLICE, "PSP", "CHC", "MBM",
                 'P', new UnificationEntry(plate, Soularium),
                 'S', "itemSkull",
                 'C', CIRCUIT,
@@ -550,7 +544,7 @@ public class GTERecipeLoader {
         // Soul Binder
         ModHandler.addShapelessRecipe("soul_binder", SOUL_BINDER[HV].getStackForm(),
                 new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
-        MetaTileEntityLoader.registerMachineRecipe(SOUL_BINDER, "PEP", "CHC", "MZM",
+        MetaTileEntityLoader.registerMachineRecipe(true, SOUL_BINDER, "PEP", "CHC", "MZM",
                 'P', new UnificationEntry(plate, Soularium),
                 'E', "skullEnderResonator",
                 'C', CIRCUIT,
@@ -561,7 +555,7 @@ public class GTERecipeLoader {
         // Electric Spawner
         ModHandler.addShapelessRecipe("electric_spawner", ELECTRIC_SPAWNER[HV].getStackForm(),
                 new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
-        MetaTileEntityLoader.registerMachineRecipe(ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
+        MetaTileEntityLoader.registerMachineRecipe(true, ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
                 'P', new UnificationEntry(plate, ConstructionAlloy),
                 'E', "skullSentientEnder",
                 'S', new UnificationEntry(plate, Soularium),

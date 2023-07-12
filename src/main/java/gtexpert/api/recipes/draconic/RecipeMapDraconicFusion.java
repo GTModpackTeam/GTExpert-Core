@@ -29,16 +29,16 @@ import com.brandon3055.draconicevolution.items.ToolUpgrade;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private final RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap;
     private final RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap;
 
-    public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
-                                   int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder,
+    public RecipeMapDraconicFusion(@Nonnull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
+                                   int maxFluidOutputs, @Nonnull SimpleRecipeBuilder defaultRecipeBuilder,
                                    boolean isHidden, RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap,
                                    RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap) {
         super(unlocalizedName, maxInputs, maxOutputs, maxFluidInputs, maxFluidOutputs, defaultRecipeBuilder, isHidden);
@@ -86,8 +86,7 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private void applyDefaultUpgradeTag(List<ItemStack> inputs) {
         for (ItemStack input : inputs) {
-            if (!(input.getItem() instanceof IUpgradableItem)) continue;
-            IUpgradableItem item = (IUpgradableItem) input.getItem();
+            if (!(input.getItem() instanceof IUpgradableItem item)) continue;
             for (String upgradeName : ToolUpgrade.NAME_TO_ID.keySet()) {
                 if (!item.getValidUpgrades(input).contains(upgradeName)) continue;
                 NBTTagCompound upgradeTag = input.getOrCreateSubCompound(UpgradeHelper.UPGRADE_TAG);
@@ -118,8 +117,7 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
         if (inputElectricItem != null) {
             long euCharge = inputElectricItem.getCharge();
             int feCharge = (int) Math.min(euCharge * FeCompat.ratio(false), Integer.MAX_VALUE);
-            if (outputStack.getItem() instanceof IEnergyContainerItem) {
-                IEnergyContainerItem outputEnergyItem = (IEnergyContainerItem) outputStack.getItem();
+            if (outputStack.getItem() instanceof IEnergyContainerItem outputEnergyItem) {
                 ItemNBTHelper.setInteger(outputStack, "Energy",
                         Math.min(feCharge, outputEnergyItem.getMaxEnergyStored(outputStack)));
             }
@@ -131,7 +129,7 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
         return retRecipe;
     }
 
-    @NotNull
+    @Nonnull
     private ItemStack findCatalyst(List<ItemStack> inputs, IFusionRecipe fusionRecipe) {
         ItemStack expectedCatalyst = getCatalyst(fusionRecipe);
         if (expectedCatalyst == null || expectedCatalyst.isEmpty()) {

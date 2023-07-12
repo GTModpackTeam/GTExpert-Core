@@ -1,5 +1,6 @@
 package gtexpert.common.metatileentities.multi;
 
+import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -10,6 +11,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.capability.MultiblockRecipeLogicNoCache;
+import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEBlockMetalCasing;
@@ -22,8 +24,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
 
@@ -33,7 +35,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     }
 
     @Override
-    protected @NotNull BlockPattern createStructurePattern() {
+    protected @Nonnull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("CCC", "CCC", "CCC")
                 .aisle("CCC", "C#C", "CCC")
@@ -54,7 +56,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
+    public void addInformation(ItemStack stack, @Nullable World player, @Nonnull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.draconium_fusion.tooltip.1"));
@@ -63,6 +65,21 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     @Override
     public boolean canBeDistinct() {
         return true;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getLogo() {
+        return GTEGuiTextures.GTE_LOGO_WORKING;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getWarningLogo() {
+        return GTEGuiTextures.GTE_LOGO_WARNING;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getErrorLogo() {
+        return GTEGuiTextures.GTE_LOGO_ERROR;
     }
 
     public static class TierDraconic extends MetaTileEntityDraconiumFusion {

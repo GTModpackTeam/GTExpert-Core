@@ -4,7 +4,7 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
 import java.util.Map;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 @IFMLLoadingPlugin.MCVersion("1.12.2")
 public class GTEMixinPlugin implements IFMLLoadingPlugin {

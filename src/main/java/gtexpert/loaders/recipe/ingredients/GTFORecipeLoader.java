@@ -14,7 +14,7 @@ import java.util.List;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.api.util.GTEUtils.getModFluid;
+import static gtexpert.api.util.GTEUtility.getModFluid;
 
 public class GTFORecipeLoader {
 

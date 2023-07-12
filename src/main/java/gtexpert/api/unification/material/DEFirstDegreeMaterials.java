@@ -11,6 +11,7 @@ import gregicality.multiblocks.api.fluids.fluidType.GCYMFluidTypes;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
+import static gregtech.api.util.GTUtility.gregtechId;
 import static gtexpert.api.unification.GTEElements.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 
@@ -21,7 +22,7 @@ public class DEFirstDegreeMaterials {
      */
     public static void init() {
         // Cryotheum
-        Cryotheum = new Material.Builder(24176, "cryotheum")
+        Cryotheum = new Material.Builder(24176, gregtechId("cryotheum"))
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(2)
                 .color(0x00B6FF).iconSet(MaterialIconSet.FLUID)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
@@ -29,7 +30,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Pyrotheum
-        Pyrotheum = new Material.Builder(24177, "pyrotheum")
+        Pyrotheum = new Material.Builder(24177, gregtechId("pyrotheum"))
                 .fluid(GCYMFluidTypes.MOLTEN, false).fluidTemp(10273)
                 .color(0xE42C13).iconSet(MaterialIconSet.BRIGHT)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
@@ -37,7 +38,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Dragon Dust
-        Dragon = new Material.Builder(24178, "dragon")
+        Dragon = new Material.Builder(24178, gregtechId("dragon"))
                 .dust()
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
@@ -45,8 +46,8 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Draconium
-        Draconium = new Material.Builder(24180, "draconium")
-                .dust(5).ore(2, 1, true)
+        Draconium = new Material.Builder(24180, gregtechId("draconium"))
+                .ore(true)
                 .ingot(5)
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x7C46B0).iconSet(MaterialIconSet.METALLIC)
@@ -62,8 +63,8 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Awakened Draconium
-        AwakenedDraconium = new Material.Builder(24181, "awakened_draconium")
-                .dust(6).ingot(6)
+        AwakenedDraconium = new Material.Builder(24181, gregtechId("awakened_draconium"))
+                .ingot(6)
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xFF6C00).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(7200, GasTier.HIGHEST, VA[LuV], 600)
@@ -77,7 +78,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Chaos Dust
-        Chaos = new Material.Builder(24179, "chaos")
+        Chaos = new Material.Builder(24179, gregtechId("chaos"))
                 .dust()
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)

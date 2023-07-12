@@ -33,10 +33,9 @@ import crazypants.enderio.util.CapturedMob;
 
 import java.util.Collections;
 import java.util.function.Supplier;
-import javax.annotation.Nonnull;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static gregtech.api.GTValues.ULV;
 
@@ -46,7 +45,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     private CapturedMob mobToSpawn;
     private boolean needsRedstone = false;
 
-    public ElectricSpawnerLogic(@NotNull MetaTileEntity metaTileEntity, Supplier<IEnergyContainer> energyContainer) {
+    public ElectricSpawnerLogic(@Nonnull MetaTileEntity metaTileEntity, Supplier<IEnergyContainer> energyContainer) {
         super(metaTileEntity, null, energyContainer);
     }
 
@@ -111,10 +110,9 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     protected void trySearchNewRecipe() {
         CapturedMob mobToSpawn = findMobToSpawn(getInputInventory());
         this.invalidInputsForRecipes = (mobToSpawn == null);
-
-        if (mobToSpawn == null) return;
-        Entity entityToSpawn = createEntity(mobToSpawn);
-        if (entityToSpawn == null) return;
+        if (isCapturedMobInvalid(mobToSpawn)) {
+            return;
+        }
         prepareWork(mobToSpawn);
     }
 
@@ -137,8 +135,11 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     /**
      * {@link #prepareRecipe} equivalent
      */
-    private void prepareWork(@NotNull CapturedMob mobToSpawn) {
+    private void prepareWork(@Nonnull CapturedMob mobToSpawn) {
         ItemStack outputItem = createSoulVial(mobToSpawn);
+        if (outputItem.isEmpty()) {
+            return;
+        }
         if (!setupAndConsumeInputs(outputItem)) {
             return;
         }
@@ -148,7 +149,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     /**
      * {@link #setupAndConsumeRecipeInputs} equivalent
      */
-    private boolean setupAndConsumeInputs(@NotNull ItemStack outputItem) {
+    private boolean setupAndConsumeInputs(@Nonnull ItemStack outputItem) {
         if (!checkOverclock()) {
             return false;
         }
@@ -172,7 +173,8 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         int eut = 30;
         int duration = 10 * 20;
         this.overclockResults = OverclockingLogic.standardOverclockingLogic(eut, getMaximumOverclockVoltage(), duration,
-                getNumberOfOCs(eut), 1, 1);
+                getNumberOfOCs(eut), getOverclockingDurationDivisor(),
+                getOverclockingVoltageMultiplier());
 
         return hasEnoughPower(overclockResults);
     }
@@ -192,7 +194,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     /**
      * {@link #setupRecipe} equivalent
      */
-    private void setup(@NotNull CapturedMob mobToSpawn, @NotNull ItemStack outputItem) {
+    private void setup(@Nonnull CapturedMob mobToSpawn, @Nonnull ItemStack outputItem) {
         this.progressTime = 1;
         setMaxProgress(overclockResults[1]);
         this.recipeEUt = overclockResults[0];
@@ -287,21 +289,21 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
 
     private boolean canSpawnEntity(EntityLiving entityliving) {
         // this is the logic from ForgeEventFactory.canEntitySpawnSpawner() with some additions
-        switch (SpawnerConfig.poweredSpawnerUseForgeSpawnChecks.get() ? ForgeEventFactory.canEntitySpawn(entityliving,
-                entityliving.world, (float) entityliving.posX, (float) entityliving.posY, (float) entityliving.posZ,
-                null) : Event.Result.DEFAULT) {
-            case ALLOW:
-                return true;
-            case DEFAULT:
+        return switch (SpawnerConfig.poweredSpawnerUseForgeSpawnChecks
+                .get() ? ForgeEventFactory.canEntitySpawn(entityliving,
+                        entityliving.world, (float) entityliving.posX, (float) entityliving.posY,
+                        (float) entityliving.posZ,
+                        null) : Event.Result.DEFAULT) {
+            case ALLOW -> true;
+            case DEFAULT -> {
                 if (SpawnerConfig.poweredSpawnerUseVanillaSpawnChecks.get()) {
-                    return entityliving.getCanSpawnHere() && entityliving.isNotColliding(); // vanilla logic
+                    yield entityliving.getCanSpawnHere() && entityliving.isNotColliding(); // vanilla logic
                 } else {
-                    return entityliving.isNotColliding();
+                    yield entityliving.isNotColliding();
                 }
-            case DENY:
-            default:
-                return false;
-        }
+            }
+            default -> false;
+        };
     }
 
     private void addDependents(final @Nonnull World world, final @Nonnull EntityLiving entity) {
@@ -334,7 +336,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void receiveCustomData(int dataId, @NotNull PacketBuffer buf) {
+    public void receiveCustomData(int dataId, @Nonnull PacketBuffer buf) {
         super.receiveCustomData(dataId, buf);
         if (dataId == GTEDataCodes.NEEDS_REDSTONE) {
             needsRedstone = buf.readBoolean();
@@ -342,18 +344,18 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void writeInitialData(@NotNull PacketBuffer buf) {
+    public void writeInitialData(@Nonnull PacketBuffer buf) {
         super.writeInitialData(buf);
         buf.writeBoolean(needsRedstone);
     }
 
     @Override
-    public void receiveInitialData(@NotNull PacketBuffer buf) {
+    public void receiveInitialData(@Nonnull PacketBuffer buf) {
         super.receiveInitialData(buf);
         needsRedstone = buf.readBoolean();
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public NBTTagCompound serializeNBT() {
         NBTTagCompound compound = super.serializeNBT();
@@ -369,17 +371,27 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void deserializeNBT(@NotNull NBTTagCompound compound) {
+    public void deserializeNBT(@Nonnull NBTTagCompound compound) {
         super.deserializeNBT(compound);
         this.spawnMode = compound.getBoolean("spawnMode");
         this.mobToSpawn = CapturedMob.create(compound.getCompoundTag("mobToSpawn"));
     }
 
-    @NotNull
-    private static ItemStack createSoulVial(@NotNull CapturedMob mobToSpawn) {
-        return mobToSpawn.toStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
+    @Nonnull
+    private ItemStack createSoulVial(@Nonnull CapturedMob mobToSpawn) {
+        Entity entity = createEntity(mobToSpawn);
+        if (entity == null) return ItemStack.EMPTY;
+        CapturedMob newMob = CapturedMob.create(entity);
+        cleanupUnspawnedEntity(entity);
+        if (newMob == null) return ItemStack.EMPTY;
+        return newMob.toStack(ModObject.itemSoulVial.getItemNN(), 1, 1);
     }
 
+    /**
+     * Creates new entity from captured mob.
+     * Note that this might actually spawn mob in the world, see EntityZombie#onInitialSpawn.
+     * Make sure to call {@link #cleanupUnspawnedEntity} if created entity does not get spawned.
+     */
     @Nullable
     private Entity createEntity(CapturedMob capturedMob) {
         World world = metaTileEntity.getWorld();
@@ -394,5 +406,13 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
             ((EntityLiving) ent).enablePersistence();
         }
         return ent;
+    }
+
+    private boolean isCapturedMobInvalid(CapturedMob capturedMob) {
+        if (capturedMob == null) return true;
+        Entity entityToSpawn = createEntity(capturedMob);
+        if (entityToSpawn == null) return true;
+        cleanupUnspawnedEntity(entityToSpawn);
+        return false;
     }
 }

@@ -2,6 +2,7 @@ package gtexpert.api.recipes.draconic.upgrade;
 
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.category.GTRecipeCategory;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
@@ -20,11 +21,12 @@ import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 
+    protected GTRecipeCategory recipeCategory;
     private ItemStack catalyst;
     private String upgradeName;
     private int currentLevel = -1;
@@ -44,7 +46,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
     }
 
     @Override
-    public boolean applyProperty(@NotNull String key, @Nullable Object value) {
+    public boolean applyProperty(@Nonnull String key, @Nullable Object value) {
         if (!key.equals(UpgradeRecipeProperty.KEY)) {
             return super.applyProperty(key, value);
         }
@@ -102,7 +104,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         }
 
         return ValidationResult.newResult(validationResult, new Recipe(inputs, outputs, chancedOutputs,
-                fluidInputs, fluidOutputs, duration, EUt, hidden, isCTRecipe, recipePropertyStorage));
+                fluidInputs, fluidOutputs, duration, EUt, hidden, isCTRecipe, recipePropertyStorage, recipeCategory));
     }
 
     private void setFusionProperties() {
@@ -145,9 +147,8 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         return this;
     }
 
-    public UpgradeRecipeBuilder setFusionRecipe(FusionUpgradeRecipe fusionRecipe) {
+    public void setFusionRecipe(FusionUpgradeRecipe fusionRecipe) {
         applyProperty(UpgradeRecipeProperty.getInstance(), fusionRecipe);
-        return this;
     }
 
     public ItemStack getCatalyst() {

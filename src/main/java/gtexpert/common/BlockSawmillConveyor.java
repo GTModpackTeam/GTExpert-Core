@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class BlockSawmillConveyor extends Block {
 
@@ -32,30 +32,30 @@ public class BlockSawmillConveyor extends Block {
     }
 
     @Override
-    public boolean canCreatureSpawn(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos,
-                                    @NotNull EntityLiving.SpawnPlacementType type) {
+    public boolean canCreatureSpawn(@Nonnull IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos,
+                                    @Nonnull EntityLiving.SpawnPlacementType type) {
         return false;
     }
 
     @Override
-    protected @NotNull BlockStateContainer createBlockState() {
+    protected @Nonnull BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }
 
     @Override
-    public int getMetaFromState(@NotNull IBlockState state) {
+    public int getMetaFromState(@Nonnull IBlockState state) {
         return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
     }
 
-    @NotNull
+    @Nonnull
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));
     }
 
     @Override
-    public @NotNull IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX,
+    public @Nonnull IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX,
                                                      float hitY, float hitZ, int meta,
-                                                     @NotNull EntityLivingBase placer) {
+                                                     @Nonnull EntityLivingBase placer) {
         return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 }

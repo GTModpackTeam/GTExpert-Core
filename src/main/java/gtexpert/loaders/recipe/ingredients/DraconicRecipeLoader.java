@@ -763,7 +763,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Draconum Casing
-        ModHandler.addShapedRecipe("casing_draconum",
+        ModHandler.addShapedRecipe(true, "casing_draconum",
                 GTEMetaBlocks.GTE_BLOCK_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2),
                 "PhP", "PFP", "PwP",
@@ -792,7 +792,7 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Awakened Draconum Casing
-        ModHandler.addShapedRecipe("casing_awakened_draconum",
+        ModHandler.addShapedRecipe(true, "casing_awakened_draconum",
                 GTEMetaBlocks.GTE_BLOCK_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2),
                 "PhP", "PFP", "PwP",
