@@ -94,17 +94,17 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     @Override
     protected @Nonnull TextureArea getLogo() {
-        return GTEGuiTextures.GTE_LOGO_WORKING;
+        return GTEGuiTextures.GTE_LOGO_DARK;
     }
 
     @Override
     protected @Nonnull TextureArea getWarningLogo() {
-        return GTEGuiTextures.GTE_LOGO_WARNING;
+        return GTEGuiTextures.GTE_LOGO_BLINKING_YELLOW;
     }
 
     @Override
     protected @Nonnull TextureArea getErrorLogo() {
-        return GTEGuiTextures.GTE_LOGO_ERROR;
+        return GTEGuiTextures.GTE_LOGO_BLINKING_RED;
     }
 
     @Override
