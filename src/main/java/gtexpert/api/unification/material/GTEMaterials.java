@@ -51,7 +51,6 @@ public class GTEMaterials {
     // Element Materials
 
     // First Degree Materials
-    public static Material Galvalume;
     public static Material NM_HEA_NPs;
     public static Material NAQUADAH_ROCKET_FUEL;
     public static Material SOUL_SAND;

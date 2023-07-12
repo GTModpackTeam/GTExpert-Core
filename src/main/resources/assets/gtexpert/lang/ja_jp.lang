@@ -11,8 +11,6 @@ gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づい�
 gtexpert.machine.void_ore_miner.tooltip.2=§6ネザーかエンド鉱石を消費することでで生産量が倍になります!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です。§r
 gtexpert.machine.void_ore_miner.tooltip.4=§d作者:§f @Quarri6343
-gtexpert.machine.extreme_mixer.name=(非推奨)精鋭型エクストリームミキサー
-gtexpert.machine.extreme_mixer.tooltip=§d作者:§f @Quarri6343
 gtexpert.machine.draconium_fusion.name=ドラコニック融合機
 gtexpert.machine.draconium_fusion.tooltip=なんだか強そうですね?
 gtexpert.machine.draconium_fusion.tooltip.1=§d作者:§f @miozune, @tier940
@@ -110,7 +108,6 @@ tile.gte_metal_casing.awakened_draconium_casing.name=覚醒ドラコニウムマ
 tile.sawmill_conveyor.name=製材機用コンベア
 
 # material
-gregtech.material.galvalume=(非推奨)ガルバリウム
 gregtech.material.nm_hea_nps=貴金属ハイエントロピーナノ合金
 gregtech.material.naquadah_rocket_fuel=ナクアダロケット燃料
 gregtech.material.dragon=ドラゴン
@@ -153,7 +150,6 @@ recipemap.vial_extractor.name=魂抽出器
 recipemap.auto_chisel.name=自動彫刻機
 recipemap.slice'n'splice.name=頭顱調整機
 recipemap.soul_binder.name=魂拘束器
-recipemap.extreme_mixer.name=エクストリームミキサー
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 recipemap.draconium_fusion.name=ドラコニック融合機
 recipemap.awakened_draconium_fusion.name=ドラコニック融合機

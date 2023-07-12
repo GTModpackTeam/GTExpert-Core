@@ -8,7 +8,6 @@ public class GTEValues {
             MODID_CEU = "gregtech",
             MODID_GCYM = "gcym",
             MODID_GCYS = "gcys",
-            MODID_GF = "gregification",
             MODID_GTFO = "gregtechfoodoption",
             MODID_TOP = "theoneprobe",
             MODID_ECO = "endercore",

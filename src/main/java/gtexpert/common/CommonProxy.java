@@ -1,11 +1,8 @@
 package gtexpert.common;
 
-import gregtech.api.GregTechAPI;
 import gregtech.api.block.VariantItemBlock;
-import gregtech.api.unification.material.event.MaterialRegistryEvent;
 
 import gtexpert.api.GTEValues;
-import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
@@ -17,7 +14,10 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -26,6 +26,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 import static gtexpert.common.GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR;
@@ -48,6 +49,13 @@ public class CommonProxy {
     public void postInit(FMLPostInitializationEvent e) {}
 
     @SubscribeEvent
+    public static void syncConfigValues(ConfigChangedEvent.OnConfigChangedEvent event) {
+        if (event.getModID().equals(GTEValues.MODID)) {
+            ConfigManager.sync(GTEValues.MODID, Config.Type.INSTANCE);
+        }
+    }
+
+    @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         GTELog.logger.info("Registering blocks...");
 
@@ -65,14 +73,8 @@ public class CommonProxy {
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
-        itemBlock.setRegistryName(block.getRegistryName());
+        itemBlock.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
         return itemBlock;
-    }
-
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void createMaterialRegistry(MaterialRegistryEvent event) {
-        GregTechAPI.materialManager.createRegistry(GTEValues.MODID);
-        GTEMaterials.init();
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

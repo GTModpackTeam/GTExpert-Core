@@ -17,15 +17,7 @@ public class GTEFirstDegreeMaterials {
      * 24001 - 24100
      */
     public static void init() {
-        // Galvalume
-        Galvalume = new Material.Builder(24001, gregtechId("galvalume"))
-                .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
-                .color(0x072743).iconSet(MaterialIconSet.METALLIC)
-                .flags(EXT_METAL, GENERATE_FRAME)
-                .components(Steel, 4, Zinc, 1, Aluminium, 1)
-                .blastTemp(1700, GasTier.HIGHEST, 120, 120)
-                .build();
+        // FreeSpace 24001
 
         // NM_HEA_NPs
         NM_HEA_NPs = new Material.Builder(24002, gregtechId("nm_hea_nps"))

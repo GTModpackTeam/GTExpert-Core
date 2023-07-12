@@ -9,7 +9,6 @@ gtexpert.machine.void_ore_miner.tooltip=星门建造机
 gtexpert.machine.void_ore_miner.tooltip.1=§6采掘32个矿石基于输入的矿石§r
 gtexpert.machine.void_ore_miner.tooltip.2=§6输入下界或末地矿石以获得双倍生产量!§r
 gtexpert.machine.void_ore_miner.tooltip.3=§6一次的动作需要576mb的Enderpearl与10000mb的钻井液§r
-gtexpert.machine.extreme_mixer.name=精英极限搅拌机
 
 # singleblock
 # Vial Extractor
@@ -66,7 +65,6 @@ tile.gte_metal_casing.void_ore_miner_casing.name=抗虚空NM-HEA NP机械外壳
 tile.sawmill_conveyor.name=锯木机传送带
 
 # material
-gregtech.material.galvalume=热镀锌
 gregtech.material.nm_hea_nps=纳米粒子贵金属高熵合金
 gregtech.material.naquadah_rocket_fuel=硅岩火箭燃料
 gregtech.material.draconium=龙
@@ -102,7 +100,6 @@ recipemap.sawmill.name=锯木机
 recipemap.vial_extractor.name=灵魂提取机
 recipemap.slice'n'splice.name=头颅装配机
 recipemap.soul_binder.name=灵魂绑定器
-recipemap.extreme_mixer.name=极限搅拌机
 recipemap.void_ore_miner.name=虚空矿物采掘机
 
 #misc

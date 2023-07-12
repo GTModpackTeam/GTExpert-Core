@@ -1,8 +1,10 @@
 package gtexpert.common;
 
 import gregtech.api.items.armor.ArmorMetaItem;
+import gregtech.api.unification.material.event.MaterialEvent;
 
 import gtexpert.api.GTEValues;
+import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.items.GTEMetaItems;
 
 import net.minecraft.block.SoundType;
@@ -29,6 +31,11 @@ import javax.annotation.Nonnull;
 public class GTEEventHandlers {
 
     public GTEEventHandlers() {}
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void registerMaterials(MaterialEvent event) {
+        GTEMaterials.init();
+    }
 
     // override GTCEu fall event to enable piston boots fall damage
     @SubscribeEvent(
