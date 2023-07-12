@@ -43,11 +43,7 @@ dependencies {
     // Soft Dependencies
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.687" // CrT 4.1.20
     implementation rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
-
-    // use a local jar for GroovyScript to avoid a bug from Mixin and ForgeGradle,
-    // causing crashes at run-time when deobfuscated
-    implementation files("libs/groovyscript-0.4.0.jar") // GrS 0.4.0
-    //implementation rfg.deobf("curse.maven:groovyscript-687577:4399621")
+    implementation rfg.deobf("curse.maven:groovyscript-687577:4610037") // GRS 0.5.1
 
     // Debug Draconic Evolution/Additions
     compileOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436") // RedstoneFlux 1.1.1
