@@ -83,8 +83,10 @@ public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity 
 
         if (exportItems.getSlots() + exportFluids.getTanks() <= 9) {
             ImageWidget logo = new ImageWidget(152, 63 + yOffset, 17, 17,
-                    GTValues.XMAS.get() ? GTEGuiTextures.GTE_LOGO_XMAS : GTEGuiTextures.GTE_LOGO)
-                            .setIgnoreColor(true);
+//                    GTValues.XMAS.get() ? GTEGuiTextures.GTE_LOGO_XMAS : GTEGuiTextures.GTE_LOGO)
+//                            .setIgnoreColor(true);
+                    GTValues.XMAS.get() ? GuiTextures.GREGTECH_LOGO_XMAS : GuiTextures.GREGTECH_LOGO)
+                        .setIgnoreColor(true);
 
             if (this.circuitInventory != null) {
                 SlotWidget circuitSlot = new GhostCircuitSlotWidget(circuitInventory, 0, 124, 62 + yOffset)
