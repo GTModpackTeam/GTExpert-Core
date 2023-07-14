@@ -23,7 +23,6 @@ import static gtexpert.api.util.GTEUtility.gteId;
 
 public class GTEMetaTileEntities {
 
-    public static final MetaTileEntityExtremeMixer[] EXTREME_MIXER = new MetaTileEntityExtremeMixer[1];
     public static final MetaTileEntityAutoChisel[] AUTO_CHISEL = new MetaTileEntityAutoChisel[3];
     public static MetaTileEntitySawmill SAWMILL;
     public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
@@ -74,10 +73,7 @@ public class GTEMetaTileEntities {
                 new MetaTileEntityAutoChisel(gteId("auto_chisel.hv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
                         GTETextures.AUTO_CHISEL_OVERLAY, HV, true, GTUtility.defaultTankSizeFunction));
 
-        // EXTREME_MIXER 11007
-        EXTREME_MIXER[0] = registerMetaTileEntity(11007,
-                new MetaTileEntityExtremeMixer(gteId("extreme_mixer"), GTERecipeMaps.EXTREME_MIXER_RECIPES,
-                        GTETextures.EXTREME_MIXER_OVERLAY, ZPM, true, GTUtility.hvCappedTankSizeFunction));
+        // FreeSpace 11004~11009
 
         // VIAL_EXTRACTOR 11010~11022
         registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES,

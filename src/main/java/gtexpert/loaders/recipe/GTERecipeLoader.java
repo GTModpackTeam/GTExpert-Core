@@ -86,18 +86,6 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // NM_HEA_NPs Dust
-        GTERecipeMaps.EXTREME_MIXER_RECIPES.recipeBuilder()
-                .input(dust, Gold, 1)
-                .input(dust, Silver, 1)
-                .input(dust, Ruthenium, 1)
-                .input(dust, Rhodium, 1)
-                .input(dust, Palladium, 1)
-                .input(dust, Osmium, 1)
-                .input(dust, Iridium, 1)
-                .input(dust, Platinum, 1)
-                .output(dust, NM_HEA_NPs, 8)
-                .duration(100).EUt(VA[ZPM])
-                .buildAndRegister();
         RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, NM_HEA_NPs, 8)
                 .output(dust, Gold, 1)
@@ -409,14 +397,6 @@ public class GTERecipeLoader {
     }
 
     private static void blocks() {
-        // Extreme Mixer
-        RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .input(EXTREME_MIXER[0])
-                .outputs(MetaTileEntities.MIXER[ZPM].getStackForm())
-                .outputs(FIELD_GENERATOR_ZPM.getStackForm())
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-
         // Sawmill
         ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill", SAWMILL.getStackForm(),
                 "SBs", "MHM", "COC",

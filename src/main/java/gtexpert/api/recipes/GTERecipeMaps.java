@@ -17,14 +17,6 @@ import stanhebben.zenscript.annotations.ZenProperty;
 public class GTERecipeMaps {
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> EXTREME_MIXER_RECIPES = new RecipeMap<>("extreme_mixer", 9, 1, 0,
-            1, new SimpleRecipeBuilder(), false)
-                    .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
-                    .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
-                    .setProgressBar(GuiTextures.PROGRESS_BAR_MIXER, ProgressWidget.MoveType.CIRCULAR)
-                    .setSound(GTSoundEvents.MIXER);
-
-    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> AUTO_CHISEL_RECIPES = new RecipeMap<>("auto_chisel", 2, 9, 0, 0,
             new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, false, GuiTextures.BOXED_BACKGROUND)
