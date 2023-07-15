@@ -47,7 +47,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xED8009).iconSet(MaterialIconSet.SHINY)
                 .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
-                .flags(EXT_METAL, GENERATE_GEAR)
+                .flags(EXT_METAL, GENERATE_GEAR, GENERATE_DOUBLE_PLATE)
                 .components(Redstone, 1, Gold, 1, Glowstone, 1)
                 .build();
         EnergeticAlloy.setFormula("Au2(Si(FeS2)5(CrAl2O3)Hg3)2", true);
@@ -58,7 +58,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0xBAC63F).iconSet(MaterialIconSet.SHINY)
                 .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
-                .flags(EXT_METAL, GENERATE_GEAR)
+                .flags(EXT_METAL, GENERATE_GEAR, GENERATE_DOUBLE_PLATE)
                 .components(EnergeticAlloy, 1, EnderPearl, 1)
                 .build();
         VibrantAlloy.setFormula("BeK4N5(Au2(Si(FeS2)5(CrAl2O3)Hg3)2)", true);
