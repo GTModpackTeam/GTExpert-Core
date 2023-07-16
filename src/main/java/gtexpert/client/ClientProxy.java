@@ -13,9 +13,24 @@ import net.minecraftforge.fml.relauncher.Side;
 public class ClientProxy extends CommonProxy {
 
     @Override
-    public void preInit(FMLPreInitializationEvent e) {
-        super.preInit(e);
+    public void preInit(FMLPreInitializationEvent event) {
+        super.preInit(event);
         GTETextures.preInit();
+    }
+
+    @Override
+    public void onPreLoad() {
+        super.onPreLoad();
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+    }
+
+    @Override
+    public void onPostLoad() {
+        super.onPostLoad();
     }
 
     @SubscribeEvent

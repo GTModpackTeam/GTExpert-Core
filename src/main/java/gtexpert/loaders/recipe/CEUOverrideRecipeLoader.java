@@ -265,9 +265,7 @@ public class CEUOverrideRecipeLoader {
                 materials.add(material);
             }
         }
-        for (Material material : materials) {
-            vacuumFreezerMolten(material);
-        }
+        for (Material material : materials) vacuumFreezerMolten(material);
     }
 
     private static void items() {
