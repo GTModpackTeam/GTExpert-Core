@@ -90,12 +90,17 @@ public class GTEMaterials {
 
     // Unknown Composition Materials
 
-    public static void init() {
+    public static void registerMaterialsHigh() {
         GTEMaterialFlags.init();
+    }
+
+    public static void registerMaterialsLow() {
         GTEFirstDegreeMaterials.init(); // 24001 - 24100
         EIOFirstDegreeMaterials.init(); // 24101 - 24150
         AEFirstDegreeMaterials.init();  // 24151 - 24175
+    }
 
+    public static void registerMaterialsLowest(){
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
             DEFirstDegreeMaterials.init(); // 24176 - 24200
         }

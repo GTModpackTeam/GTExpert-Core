@@ -1,8 +1,6 @@
 package gtexpert.common;
 
 import gregtech.api.block.VariantItemBlock;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.util.GTLog;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
@@ -67,24 +65,16 @@ public class CommonProxy {
         registry.register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
     }
 
-    // this is called with normal priority, so most mods working with
-    // ore dictionary and recipes will get recipes accessible in time
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        GTLog.logger.info("Registering ore dictionary...");
-        GTEMetaItems.registerOreDict();
-
-        GTLog.logger.info("Registering recipes...");
+        GTELog.logger.info("Registering recipes...");
         GTERecipeManager.load();
     }
 
-    // this is called last, so all mods finished registering their stuff, as example, CraftTweaker
-    // if it registered some kind of ore dictionary entry, late processing will hook it and generate recipes
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
-        GTELog.logger.info("Running late material handlers...");
-        OrePrefix.runMaterialHandlers();
-        GTERecipeManager.loadLatest();
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
+        GTELog.logger.info("Registering recipes...");
+        GTERecipeManager.loadLow();
     }
 
     @SubscribeEvent
@@ -92,6 +82,12 @@ public class CommonProxy {
         if (event.getModID().equals(GTEValues.MODID)) {
             ConfigManager.sync(GTEValues.MODID, Config.Type.INSTANCE);
         }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        GTELog.logger.info("Registering recipes...");
+        GTERecipeManager.loadLowest();
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
