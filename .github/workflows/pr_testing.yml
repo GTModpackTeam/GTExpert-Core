@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - dev
+      - preview
   workflow_call:
     inputs:
       timeout:
