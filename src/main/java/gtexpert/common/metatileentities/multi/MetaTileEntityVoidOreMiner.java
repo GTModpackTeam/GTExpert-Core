@@ -1,5 +1,7 @@
 package gtexpert.common.metatileentities.multi;
 
+import gregtech.api.gui.GuiTextures;
+import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -23,8 +25,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
 
@@ -33,12 +35,12 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
     }
 
     @Override
-    public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
+    public @Nonnull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
         return new MetaTileEntityVoidOreMiner(metaTileEntityId);
     }
 
     @Override
-    protected @NotNull BlockPattern createStructurePattern() {
+    protected @Nonnull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
                 .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
@@ -66,12 +68,12 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
     }
 
     @Override
-    protected @NotNull ICubeRenderer getFrontOverlay() {
+    protected @Nonnull ICubeRenderer getFrontOverlay() {
         return Textures.ITEM_VOIDING_ADVANCED;
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
+    public void addInformation(ItemStack stack, @Nullable World player, @Nonnull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.1"));
@@ -81,7 +83,20 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
     }
 
     @Override
-    public boolean canBeDistinct() {
-        return true;
+    protected @Nonnull TextureArea getLogo() {
+        // return GTEGuiTextures.GTE_LOGO_DARK;
+        return GuiTextures.GREGTECH_LOGO_DARK;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getWarningLogo() {
+        // return GTEGuiTextures.GTE_LOGO_BLINKING_YELLOW;
+        return GuiTextures.GREGTECH_LOGO_BLINKING_YELLOW;
+    }
+
+    @Override
+    protected @Nonnull TextureArea getErrorLogo() {
+        // return GTEGuiTextures.GTE_LOGO_BLINKING_RED;
+        return GuiTextures.GREGTECH_LOGO_BLINKING_RED;
     }
 }

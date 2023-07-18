@@ -3,6 +3,19 @@ on:
   push:
     branches:
       - 'dev'
+      - 'preview'
+  workflow_call:
+    inputs:
+      timeout:
+        description: 'Timeout for runServer (seconds)'
+        required: false
+        default: 90
+        type: number
+      client-only:
+        description: 'Do not execute runServer'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   release:
@@ -15,25 +28,47 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up JDK 17
+      - name: Set up JDK 8 and 17
         uses: actions/setup-java@v3
         with:
-          java-version: 17
+          cache: gradle
           distribution: zulu
+          java-version: |
+            8
+            17
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
+      - name: Compile the mod
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: '--build-cache --info --stacktrace assemble'
+          generate-job-summary: false
+
+      - name: Attach compilation artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-libs
+          path: build/libs/
+          retention-days: 31
+
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: 'build --scan --build-cache --daemon' # use the daemon here so the rest of the process is faster
+          arguments: '--scan --build-cache --info --stacktrace build'
           generate-job-summary: true
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
+
+      - name: Run server for ${{ inputs.timeout }} seconds
+        if: ${{ !inputs.client-only }}
+        run: |
+          mkdir -p run
+          echo "eula=true" > run/eula.txt
+          echo "stop" > run/stop.txt
+          timeout ${{ inputs.timeout }} ./gradlew --build-cache --info --stacktrace runServer 2>&1 < run/stop.txt | tee -a server.log || true
 
       - name: Upload Jars
         uses: actions/upload-artifact@v3

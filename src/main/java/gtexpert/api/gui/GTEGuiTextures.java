@@ -4,8 +4,16 @@ import gregtech.api.gui.resources.TextureArea;
 
 public class GTEGuiTextures {
 
-    public static final TextureArea GTEXPERT_CORE_LOGO = TextureArea
-            .fullImage("textures/gui/icon/gtexpert_core_logo.png");
+    public static final TextureArea GTE_LOGO = TextureArea
+            .fullImage("textures/gui/icon/gte_logo.png");
+    public static final TextureArea GTE_LOGO_XMAS = TextureArea
+            .fullImage("textures/gui/icon/gte_logo_xmas.png");
+    public static final TextureArea GTE_LOGO_DARK = TextureArea
+            .fullImage("textures/gui/icon/gte_logo_dark.png");
+    public static final TextureArea GTE_LOGO_BLINKING_YELLOW = TextureArea
+            .fullImage("textures/gui/icon/gte_logo_blinking_yellow.png");
+    public static final TextureArea GTE_LOGO_BLINKING_RED = TextureArea
+            .fullImage("textures/gui/icon/gte_logo_blinking_red.png");
     public static final TextureArea PROGRESS_BAR_VOID = TextureArea
             .fullImage("textures/gui/progress_bar/progress_bar_void.png");
     public static final TextureArea PROGRESS_BAR_CHISEL = TextureArea

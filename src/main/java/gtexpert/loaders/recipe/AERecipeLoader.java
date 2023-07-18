@@ -6,6 +6,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
@@ -23,12 +24,16 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import crazypants.enderio.base.init.ModObject;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.api.util.GTEUtils.getModItem;
+import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.items.GTEMetaItems.MATRIX_CORE;
 
 public class AERecipeLoader {
@@ -66,6 +71,71 @@ public class AERecipeLoader {
         // craftFluix
         OreDictionary.registerOre("craftFluix", AEHelper.aeMaterials.fluixCrystal().maybeStack(1).get());
         OreDictionary.registerOre("craftFluix", AEHelper.aeMaterials.purifiedFluixCrystal().maybeStack(1).get());
+
+        // craftGlassCable
+        List<ItemStack> craftGlassCable = new ArrayList<>();
+        for (int i = 0; i <= 16; i++) {
+            craftGlassCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+        }
+        for (Iterator<ItemStack> iterator = craftGlassCable.iterator(); iterator.hasNext();) {
+            ItemStack stack = iterator.next();
+            OreDictionary.registerOre("craftGlassCable", stack);
+
+            if (iterator.hasNext()) OreDictionary.registerOre("craftGlassCableColors", stack);
+        }
+
+        // craftCoveredCable
+        List<ItemStack> craftCoveredCable = new ArrayList<>();
+        for (int i = 20; i <= 36; i++) {
+            craftCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+        }
+        for (Iterator<ItemStack> iterator = craftCoveredCable.iterator(); iterator.hasNext();) {
+            ItemStack stack = iterator.next();
+            OreDictionary.registerOre("craftCoveredCable", stack);
+
+            if (iterator.hasNext()) OreDictionary.registerOre("craftCoveredCableColors", stack);
+        }
+
+        // craftSmartCable
+        List<ItemStack> craftSmartCable = new ArrayList<>();
+        for (int i = 40; i <= 56; i++) {
+            craftSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+        }
+        for (Iterator<ItemStack> iterator = craftSmartCable.iterator(); iterator.hasNext();) {
+            ItemStack stack = iterator.next();
+            OreDictionary.registerOre("craftSmartCable", stack);
+
+            if (iterator.hasNext()) OreDictionary.registerOre("craftSmartCableColors", stack);
+        }
+
+        // craftDenseCoveredCable
+        List<ItemStack> craftDenseCoveredCable = new ArrayList<>();
+        for (int i = 500; i <= 516; i++) {
+            craftDenseCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+        }
+        for (Iterator<ItemStack> iterator = craftDenseCoveredCable.iterator(); iterator.hasNext();) {
+            ItemStack stack = iterator.next();
+            OreDictionary.registerOre("craftDenseCoveredCable", stack);
+
+            if (iterator.hasNext()) OreDictionary.registerOre("craftDenseCoveredCableColors", stack);
+        }
+
+        // craftDenseSmartCable
+        List<ItemStack> craftDenseSmartCable = new ArrayList<>();
+        for (int i = 60; i <= 76; i++) {
+            craftDenseSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+        }
+        for (Iterator<ItemStack> iterator = craftDenseSmartCable.iterator(); iterator.hasNext();) {
+            ItemStack stack = iterator.next();
+            OreDictionary.registerOre("craftDenseSmartCable", stack);
+
+            if (iterator.hasNext()) OreDictionary.registerOre("craftDenseSmartCableColors", stack);
+        }
 
         materials();
         items();
@@ -233,19 +303,19 @@ public class AERecipeLoader {
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
-                .fluidOutputs(CHARGED_CERTUS_QUARTZ.getFluid(144))
+                .fluidOutputs(ChargedCertusQuartz.getFluid(144))
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
 
         // Dust
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.certusQuartzDust().maybeStack(1).get())
-                .output(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .output(dust, ChargedCertusQuartz, 1)
                 .duration(80).EUt(2)
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
-                .output(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .output(dust, ChargedCertusQuartz, 1)
                 .duration(80).EUt(2)
                 .buildAndRegister();
 
@@ -257,30 +327,30 @@ public class AERecipeLoader {
                 .buildAndRegister();
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
                 .input(dust, CertusQuartz, 1)
-                .output(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .output(dust, ChargedCertusQuartz, 1)
                 .duration(100).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .input(dust, ChargedCertusQuartz, 1)
                 .fluidInputs(DistilledWater.getFluid(50))
                 .outputs(AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
                 .duration(600).EUt(24)
                 .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .input(dust, ChargedCertusQuartz, 1)
                 .fluidInputs(Water.getFluid(250))
                 .chancedOutput(AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get(), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, CHARGED_CERTUS_QUARTZ, 4)
+                .input(dust, ChargedCertusQuartz, 4)
                 .explosivesAmount(2)
                 .outputs(AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(3).get())
                 .output(dustSmall, DarkAsh, 1)
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, CHARGED_CERTUS_QUARTZ, 4)
+                .input(dust, ChargedCertusQuartz, 4)
                 .explosivesType(MetaItems.DYNAMITE.getStackForm())
                 .outputs(AEHelper.aeMaterials.certusQuartzCrystalCharged().maybeStack(3).get())
                 .output(dustSmall, DarkAsh, 1)
@@ -289,9 +359,9 @@ public class AERecipeLoader {
 
         // Lens
         RecipeMaps.LATHE_RECIPES.recipeBuilder()
-                .input(plate, CHARGED_CERTUS_QUARTZ, 1)
-                .output(lens, CHARGED_CERTUS_QUARTZ, 1)
-                .output(dustSmall, CHARGED_CERTUS_QUARTZ, 1)
+                .input(plate, ChargedCertusQuartz, 1)
+                .output(lens, ChargedCertusQuartz, 1)
+                .output(dustSmall, ChargedCertusQuartz, 1)
                 .duration(1200).EUt(VA[MV])
                 .buildAndRegister();
 
@@ -304,67 +374,67 @@ public class AERecipeLoader {
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.purifiedFluixCrystal().maybeStack(1).get())
-                .fluidOutputs(FLUIX.getFluid(72))
+                .fluidOutputs(Fluix.getFluid(72))
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.fluixCrystal().maybeStack(1).get())
-                .fluidOutputs(FLUIX.getFluid(144))
+                .fluidOutputs(Fluix.getFluid(144))
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeBlocks.fluixBlock().maybeStack(1).get())
-                .fluidOutputs(FLUIX.getFluid(576))
+                .fluidOutputs(Fluix.getFluid(576))
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
 
         // Dust
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
-                .input(dust, CHARGED_CERTUS_QUARTZ, 1)
+                .input(dust, ChargedCertusQuartz, 1)
                 .input(dust, Redstone, 1)
                 .input(dust, NetherQuartz, 1)
-                .output(dust, FLUIX, 3)
+                .output(dust, Fluix, 3)
                 .duration(200).EUt(VA[3])
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.purifiedFluixCrystal().maybeStack(1).get())
-                .output(dustSmall, FLUIX, 2)
+                .output(dustSmall, Fluix, 2)
                 .duration(80).EUt(2)
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.fluixCrystal().maybeStack(1).get())
-                .output(dust, FLUIX, 1)
+                .output(dust, Fluix, 1)
                 .duration(80).EUt(2)
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeBlocks.fluixBlock().maybeStack(1).get())
-                .output(dust, FLUIX, 4)
+                .output(dust, Fluix, 4)
                 .duration(80).EUt(2)
                 .buildAndRegister();
 
         // Gem
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(dust, FLUIX, 1)
+                .input(dust, Fluix, 1)
                 .fluidInputs(DistilledWater.getFluid(50))
                 .outputs(AEHelper.aeMaterials.fluixCrystal().maybeStack(1).get())
                 .duration(600).EUt(24)
                 .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(dust, FLUIX, 1)
+                .input(dust, Fluix, 1)
                 .fluidInputs(Water.getFluid(250))
                 .chancedOutput(AEHelper.aeMaterials.fluixCrystal().maybeStack(1).get(), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, FLUIX, 4)
+                .input(dust, Fluix, 4)
                 .explosivesAmount(2)
                 .outputs(AEHelper.aeMaterials.fluixCrystal().maybeStack(3).get())
                 .output(dustSmall, DarkAsh, 1)
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, FLUIX, 4)
+                .input(dust, Fluix, 4)
                 .explosivesType(MetaItems.DYNAMITE.getStackForm())
                 .outputs(AEHelper.aeMaterials.fluixCrystal().maybeStack(3).get())
                 .output(dustSmall, DarkAsh, 1)
@@ -387,7 +457,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
         RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(FLUIX.getFluid(576))
+                .fluidInputs(Fluix.getFluid(576))
                 .outputs(AEHelper.aeBlocks.fluixBlock().maybeStack(1).get())
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister();
@@ -396,27 +466,27 @@ public class AERecipeLoader {
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeBlocks.fluixBlock().maybeStack(1).get())
                 .fluidInputs(Lubricant.getFluid(3))
-                .output(plate, FLUIX, 4)
+                .output(plate, Fluix, 4)
                 .duration(160).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeBlocks.fluixBlock().maybeStack(1).get())
                 .fluidInputs(DistilledWater.getFluid(11))
-                .output(plate, FLUIX, 4)
+                .output(plate, Fluix, 4)
                 .duration(240).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeBlocks.fluixBlock().maybeStack(1).get())
                 .fluidInputs(Water.getFluid(15))
-                .output(plate, FLUIX, 4)
+                .output(plate, Fluix, 4)
                 .duration(300).EUt(VA[LV])
                 .buildAndRegister();
 
         // Lens
         RecipeMaps.LATHE_RECIPES.recipeBuilder()
-                .input(plate, FLUIX, 1)
-                .output(lens, FLUIX, 1)
-                .output(dustSmall, FLUIX, 1)
+                .input(plate, Fluix, 1)
+                .output(lens, Fluix, 1)
+                .output(dustSmall, Fluix, 1)
                 .duration(1200).EUt(VA[MV])
                 .buildAndRegister();
 
@@ -427,11 +497,11 @@ public class AERecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
                 .inputs(AEHelper.aeMaterials.skyDust().maybeStack(2).get())
-                .input(dust, FLUIX, 2)
+                .input(dust, Fluix, 2)
                 .input(dust, Carbon, 2)
                 .input(dust, Silicon, 1)
                 .input(dust, Iron, 1)
-                .output(dust, FLUIX_ALLOY, 8)
+                .output(dust, FluixAlloy, 8)
                 .duration(200).EUt(VA[GTEConfigHolder.voltageTierAE2])
                 .buildAndRegister();
     }
@@ -452,6 +522,237 @@ public class AERecipeLoader {
                 .duration(20).EUt(VA[GTEConfigHolder.voltageTierAE2])
                 .buildAndRegister();
 
+        // Glass Cable
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/glass_fluix_clean"));
+        RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftGlassCableColors", 1)
+                .fluidInputs(Chlorine.getFluid(25))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 16))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister();
+        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .input("craftGlassCable")
+                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, i))
+                    .duration(20).EUt(VA[ULV])
+                    .buildAndRegister();
+        }
+
+        // Covered Cable
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/covered_fluix_clean"));
+        RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftCoveredCableColors", 1)
+                .fluidInputs(Chlorine.getFluid(25))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 36))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister();
+        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .input("craftCoveredCable")
+                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 20 + i))
+                    .duration(20).EUt(VA[ULV])
+                    .buildAndRegister();
+        }
+
+        // Smart Cable
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/smart_fluix_clean"));
+        RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftSmartCableColors", 1)
+                .fluidInputs(Chlorine.getFluid(25))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 56))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister();
+        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .input("craftSmartCable")
+                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 40 + i))
+                    .duration(20).EUt(VA[ULV])
+                    .buildAndRegister();
+        }
+
+        // Dense Covered Cable
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_covered_fluix_clean"));
+        RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftDenseCoveredCableColors", 1)
+                .fluidInputs(Chlorine.getFluid(25))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 516))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister();
+        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .input("craftDenseCoveredCable")
+                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 500 + i))
+                    .duration(20).EUt(VA[ULV])
+                    .buildAndRegister();
+        }
+
+        // Dense Smart Cable
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_smart_fluix_clean"));
+        RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftDenseSmartCableColors", 1)
+                .fluidInputs(Chlorine.getFluid(25))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 76))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister();
+        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .input("craftDenseSmartCable")
+                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 60 + i))
+                    .duration(20).EUt(VA[ULV])
+                    .buildAndRegister();
+        }
+
+        // Crafting Monitor
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_monitor"));
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .inputs(AEHelper.aeParts.storageMonitor().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingMonitor().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingMonitor().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .outputs(AEHelper.aeParts.storageMonitor().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+
+        // 1k Crafting Storage
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_1k"));
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .inputs(AEHelper.aeMaterials.cell1kPart().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingStorage1k().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingStorage1k().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .outputs(AEHelper.aeMaterials.cell1kPart().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+
+        // 4k Crafting Storage
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_4k"));
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .inputs(AEHelper.aeMaterials.cell4kPart().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingStorage4k().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingStorage4k().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .outputs(AEHelper.aeMaterials.cell4kPart().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+
+        // 16k Crafting Storage
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_16k"));
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .inputs(AEHelper.aeMaterials.cell16kPart().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingStorage16k().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingStorage16k().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .outputs(AEHelper.aeMaterials.cell16kPart().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+
+        // 64k Crafting Storage
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_64k"));
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .inputs(AEHelper.aeMaterials.cell64kPart().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingStorage64k().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(AEHelper.aeBlocks.craftingStorage64k().maybeStack(1).get())
+                .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                .outputs(AEHelper.aeMaterials.cell64kPart().maybeStack(1).get())
+                .duration(10).EUt(VA[ULV])
+                .buildAndRegister();
+
+        if (Loader.isModLoaded(GTEValues.MODID_AEA) && Loader.isModLoaded(GTEValues.MODID_EXCPU)) {
+            // 256k Crafting Storage
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_256k"));
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 0))
+                    .outputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_256k", 1, 0))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_256k", 1, 0))
+                    .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 0))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+
+            // 1024k Crafting Storage
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_1024k"));
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 1))
+                    .outputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_1024k", 1, 0))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_1024k", 1, 0))
+                    .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 1))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+
+            // 4096k Crafting Storage
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_4096k"));
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 2))
+                    .outputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_4096k", 1, 0))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_4096k", 1, 0))
+                    .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 2))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+
+            // 16384k Crafting Storage
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_16384k"));
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 3))
+                    .outputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_16384k", 1, 0))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_16384k", 1, 0))
+                    .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 3))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+        }
+    }
+
+    private static void items() {
         // 1k Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1k"));
         ModHandler
@@ -814,70 +1115,6 @@ public class AERecipeLoader {
                 .duration(56).EUt(VA[LV])
                 .buildAndRegister();
 
-        if (Loader.isModLoaded(GTEValues.MODID_AEA) && Loader.isModLoaded(GTEValues.MODID_EXCPU)) {
-            // 256k Crafting Storage
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_256k"));
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 0))
-                    .outputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_256k", 1, 0))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_256k", 1, 0))
-                    .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 0))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-
-            // 1024k Crafting Storage
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_1024k"));
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 1))
-                    .outputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_1024k", 1, 0))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_1024k", 1, 0))
-                    .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 1))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-
-            // 4096k Crafting Storage
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_4096k"));
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 2))
-                    .outputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_4096k", 1, 0))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_4096k", 1, 0))
-                    .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 2))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-
-            // 16384k Crafting Storage
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_16384k"));
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 3))
-                    .outputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_16384k", 1, 0))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(getModItem(GTEValues.MODID_EXCPU, "crafting_storage_16384k", 1, 0))
-                    .outputs(AEHelper.aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(getModItem(GTEValues.MODID_AEA, "storage.component", 1, 3))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-        }
-    }
-
-    private static void items() {
         // Formation Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "materials/formationcore"));
         ModHandler.addShapedRecipe("formation_core", AEHelper.aeMaterials.formationCore().maybeStack(1).get(),
@@ -972,7 +1209,7 @@ public class AERecipeLoader {
 
         // Logic Processor Press
         RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, CHARGED_CERTUS_QUARTZ)
+                .notConsumable(lens, ChargedCertusQuartz)
                 .input(block, Iron, 1)
                 .outputs(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
                 .duration(2000).EUt(VA[GTEConfigHolder.voltageTierAE2])
@@ -988,7 +1225,7 @@ public class AERecipeLoader {
 
         // Engineer Processor Press
         RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, FLUIX)
+                .notConsumable(lens, Fluix)
                 .input(block, Iron, 1)
                 .outputs(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
                 .duration(2000).EUt(VA[GTEConfigHolder.voltageTierAE2])

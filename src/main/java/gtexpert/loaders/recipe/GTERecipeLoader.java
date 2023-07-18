@@ -45,7 +45,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.api.util.GTEUtils.getModItem;
+import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class GTERecipeLoader {
@@ -86,18 +86,6 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // NM_HEA_NPs Dust
-        GTERecipeMaps.EXTREME_MIXER_RECIPES.recipeBuilder()
-                .input(dust, Gold, 1)
-                .input(dust, Silver, 1)
-                .input(dust, Ruthenium, 1)
-                .input(dust, Rhodium, 1)
-                .input(dust, Palladium, 1)
-                .input(dust, Osmium, 1)
-                .input(dust, Iridium, 1)
-                .input(dust, Platinum, 1)
-                .output(dust, NM_HEA_NPs, 8)
-                .duration(100).EUt(VA[ZPM])
-                .buildAndRegister();
         RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, NM_HEA_NPs, 8)
                 .output(dust, Gold, 1)
@@ -127,11 +115,11 @@ public class GTERecipeLoader {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(Naquadah.getFluid(1296))
                 .fluidInputs(RocketFuel.getFluid(5000))
-                .fluidOutputs(NAQUADAH_ROCKET_FUEL.getFluid(6000))
+                .fluidOutputs(NaquadahRocketFuel.getFluid(6000))
                 .duration(20).EUt(VA[EV])
                 .buildAndRegister();
         RecipeMaps.COMBUSTION_GENERATOR_FUELS.recipeBuilder()
-                .fluidInputs(NAQUADAH_ROCKET_FUEL.getFluid(1))
+                .fluidInputs(NaquadahRocketFuel.getFluid(1))
                 .duration(500).EUt(32)
                 .buildAndRegister();
     }
@@ -162,7 +150,7 @@ public class GTERecipeLoader {
                     .buildAndRegister();
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .circuitMeta(1)
-                    .input(GLOWSTONE_WAFER, 2)
+                    .input(PHOSPHORUS_WAFER, 2)
                     .input("paneGlass", 4)
                     .input(circuit, MarkerMaterials.Tier.ULV, 8)
                     .input(CARBON_FIBER_PLATE, 4)
@@ -409,14 +397,6 @@ public class GTERecipeLoader {
     }
 
     private static void blocks() {
-        // Extreme Mixer
-        RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .input(EXTREME_MIXER[0])
-                .outputs(MetaTileEntities.MIXER[ZPM].getStackForm())
-                .outputs(FIELD_GENERATOR_ZPM.getStackForm())
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-
         // Sawmill
         ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill", SAWMILL.getStackForm(),
                 "SBs", "MHM", "COC",
@@ -488,7 +468,7 @@ public class GTERecipeLoader {
 
         // Void Ore Miner Recipes
         List<Material> materialOres = new ArrayList<>();
-        for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
+        for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
             if (material.hasProperty(PropertyKey.ORE)) {
                 materialOres.add(material);
             }
@@ -534,7 +514,7 @@ public class GTERecipeLoader {
         ModHandler.addShapelessRecipe("slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(),
                 new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(true, SLICE_N_SPLICE, "PSP", "CHC", "MBM",
-                'P', new UnificationEntry(plate, SOULARIUM),
+                'P', new UnificationEntry(plate, Soularium),
                 'S', "itemSkull",
                 'C', CIRCUIT,
                 'H', HULL,
@@ -545,7 +525,7 @@ public class GTERecipeLoader {
         ModHandler.addShapelessRecipe("soul_binder", SOUL_BINDER[HV].getStackForm(),
                 new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(true, SOUL_BINDER, "PEP", "CHC", "MZM",
-                'P', new UnificationEntry(plate, SOULARIUM),
+                'P', new UnificationEntry(plate, Soularium),
                 'E', "skullEnderResonator",
                 'C', CIRCUIT,
                 'H', HULL,
@@ -556,9 +536,9 @@ public class GTERecipeLoader {
         ModHandler.addShapelessRecipe("electric_spawner", ELECTRIC_SPAWNER[HV].getStackForm(),
                 new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(true, ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
-                'P', new UnificationEntry(plate, CONSTRUCTION_ALLOY),
+                'P', new UnificationEntry(plate, ConstructionAlloy),
                 'E', "skullSentientEnder",
-                'S', new UnificationEntry(plate, SOULARIUM),
+                'S', new UnificationEntry(plate, Soularium),
                 'H', HULL,
                 'C', "itemEnderCrystal",
                 'Z', "skullZombieFrankenstein");
@@ -584,7 +564,7 @@ public class GTERecipeLoader {
                 .input(CRYSTAL_MAINFRAME_UV, 4)
                 .inputs(AEHelper.aeBlocks.energyCellDense().maybeStack(8).get())
                 .input(COVER_SOLAR_PANEL_UV, 1)
-                .fluidInputs(FLUIX.getFluid(18432))
+                .fluidInputs(Fluix.getFluid(18432))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .fluidInputs(Neutronium.getFluid(9216))
                 .outputs(AEHelper.aeBlocks.energyCellCreative().maybeStack(1).get())
@@ -599,7 +579,7 @@ public class GTERecipeLoader {
                 .input(CRYSTAL_MAINFRAME_UV, 4)
                 .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 3))
                 .input(COVER_SOLAR_PANEL_UV, 1)
-                .fluidInputs(VIBRANT_ALLOY.getFluid(18432))
+                .fluidInputs(VibrantAlloy.getFluid(18432))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .fluidInputs(Neutronium.getFluid(9216))
                 .outputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 1, 0))
