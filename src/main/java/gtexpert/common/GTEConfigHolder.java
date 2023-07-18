@@ -17,6 +17,10 @@ public class GTEConfigHolder {
     @Config.RequiresMcRestart
     public static AE2Integration ae2Integration = new AE2Integration();
 
+    @Config.Name("EnderIO Integration")
+    @Config.RequiresMcRestart
+    public static EIOIntegration eioIntegration = new EIOIntegration();
+
     public static class GregtechOverride {
 
         @Config.Comment({ "Making Planks and Sticks even more difficult.",
@@ -34,6 +38,17 @@ public class GTEConfigHolder {
                 "The material is also adjusted to each voltage.", "Default: 1 (LV)" })
         @Config.RangeInt(min = 1, max = 14)
         public int voltageTier = 1;
+
+        @Config.Comment({ "Change AE swords, axes, etc. to GT recipe standards.",
+                "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
+        public boolean hardToolArmorRecipes = false;
+    }
+
+    public static class EIOIntegration {
+
+        @Config.Comment({ "Change EIO swords, axes, armor, etc. to GT recipe standards.",
+                "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
+        public boolean hardToolArmorRecipes = false;
     }
 
     // Register the config holder

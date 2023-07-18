@@ -8,6 +8,7 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.common.GTEConfigHolder;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -409,7 +410,7 @@ public class EIORecipeLoader {
     }
 
     private static void tools() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes && GTEConfigHolder.eioIntegration.hardToolArmorRecipes) {
             // Dark Helm
             ModHandler.addShapedRecipe("dark_steel_helmet", new ItemStack(ModObject.itemDarkSteelHelmet.getItemNN(), 1),
                     "PPP", "PhP",
