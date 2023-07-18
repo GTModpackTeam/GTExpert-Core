@@ -1,20 +1,32 @@
 package gtexpert.loaders.recipe;
 
+import gregtech.api.GregTechAPI;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
+
+import gregicality.multiblocks.api.AlloyBlastUtil;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -246,6 +258,14 @@ public class CEUOverrideRecipeLoader {
                 .output(plate, CertusQuartz, 4)
                 .duration(300).EUt(VA[LV])
                 .buildAndRegister();
+
+        List<Material> materials = new ArrayList<>();
+        for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
+            if (material.hasProperty(PropertyKey.FLUID) && material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) {
+                materials.add(material);
+            }
+        }
+        for (Material material : materials) vacuumFreezerMolten(material);
     }
 
     private static void items() {
@@ -325,5 +345,35 @@ public class CEUOverrideRecipeLoader {
                 'W', new UnificationEntry(cableGtSingle, Europium),
                 'C', WETWARE_MAINFRAME_UHV,
                 'T', OreDictNames.chestWood);
+    }
+
+    /**
+     * Adds recipes for the Vacuum Freezer.
+     *
+     * @param material the material to add recipes for
+     */
+    private static void vacuumFreezerMolten(@Nonnull Material material) {
+        // get the output fluid
+        Fluid molten = AlloyBlastUtil.getMoltenFluid(material);
+        if (molten == null) return;
+
+        // generate the recipe
+        if (material.getBlastTemperature() < 5000) {
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .fluidInputs(new FluidStack(molten, 144))
+                    .fluidOutputs(material.getFluid(144))
+                    .duration((int) material.getMass() * 3)
+                    .buildAndRegister();
+        } else {
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .fluidInputs(new FluidStack(molten, 144))
+                    .fluidInputs(LiquidHelium.getFluid(500))
+                    .fluidOutputs(Helium.getFluid(250))
+                    .fluidOutputs(material.getFluid(144))
+                    .duration((int) material.getMass() * 3)
+                    .buildAndRegister();
+        }
     }
 }

@@ -20,8 +20,8 @@ import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 
@@ -44,7 +44,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
     }
 
     @Override
-    public boolean applyProperty(@NotNull String key, @Nullable Object value) {
+    public boolean applyProperty(@Nonnull String key, @Nullable Object value) {
         if (!key.equals(UpgradeRecipeProperty.KEY)) {
             return super.applyProperty(key, value);
         }
@@ -102,7 +102,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         }
 
         return ValidationResult.newResult(validationResult, new Recipe(inputs, outputs, chancedOutputs,
-                fluidInputs, fluidOutputs, duration, EUt, hidden, isCTRecipe, recipePropertyStorage));
+                fluidInputs, fluidOutputs, duration, EUt, hidden, isCTRecipe, recipePropertyStorage, category));
     }
 
     private void setFusionProperties() {

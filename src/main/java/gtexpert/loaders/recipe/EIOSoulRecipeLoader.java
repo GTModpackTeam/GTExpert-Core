@@ -69,19 +69,6 @@ public class EIOSoulRecipeLoader {
                     .output(ModObject.itemSoulVial.getItemNN())
                     .output(ModObject.itemSoulFilterBig.getItemNN())
                     .duration(1000).EUt(VA[LV]).buildAndRegister();
-
-            // SoulBinder - Broken Spawner
-            ItemStack output = new ItemStack(ModObject.itemBrokenSpawner.getItemNN());
-            output.setTagCompound(stack.getTagCompound());
-            GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                    .input(GTRecipeItemInput.getOrCreate(stack)
-                            .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                                    NBTCondition.create(NBTTagType.STRING, "entityId", name.toString())))
-                    .inputNBT(ModObject.itemBrokenSpawner.getItemNN(), NBTMatcher.ANY, NBTCondition.ANY)
-                    .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 4320))
-                    .output(ModObject.itemSoulVial.getItemNN())
-                    .outputs(output)
-                    .duration(1000).EUt(VA[LV]).buildAndRegister();
         }
     }
 

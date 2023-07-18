@@ -10,6 +10,7 @@ import gregtech.common.blocks.BlockLamp;
 import gregtech.common.blocks.MetaBlocks;
 
 import gtexpert.api.GTEValues;
+import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.integration.chisel.ChiselHelper;
 
 import net.minecraft.init.Blocks;
@@ -23,6 +24,9 @@ import net.minecraftforge.oredict.OreDictionary;
 import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
 
+import java.util.List;
+
+import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.blocks.BlockWarningSign.SignType.*;
@@ -30,7 +34,7 @@ import static gregtech.common.blocks.BlockWarningSign1.SignType.*;
 import static gregtech.common.blocks.MetaBlocks.*;
 import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
 import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
-import static gtexpert.api.util.GTEUtils.getModItem;
+import static gtexpert.api.util.GTEUtility.getModItem;
 
 public class ChiselRecipeLoader {
 
@@ -179,16 +183,16 @@ public class ChiselRecipeLoader {
         ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(ANTIMATTER_HAZARD));
         ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(HIGH_TEMPERATURE_HAZARD));
         ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(VOID_HAZARD));
-        // List<ItemStack> hazardSigns = OreDictionary.getOres("hazardSign");
-        // for (ItemStack hazardSign : hazardSigns) {
-        // GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-        // .notConsumable(hazardSign)
-        // .input("hazardSign")
-        // .outputs(hazardSign)
-        // .duration(20)
-        // .EUt(VA[ULV])
-        // .buildAndRegister();
-        // }
+        List<ItemStack> hazardSigns = OreDictionary.getOres("hazardSign");
+        for (ItemStack hazardSign : hazardSigns) {
+            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                    .notConsumable(hazardSign)
+                    .input("hazardSign")
+                    .outputs(hazardSign)
+                    .duration(20)
+                    .EUt(VA[ULV])
+                    .buildAndRegister();
+        }
 
         // Hazard Sign 2
         ChiselHelper.addGroup("hazardSign1");
