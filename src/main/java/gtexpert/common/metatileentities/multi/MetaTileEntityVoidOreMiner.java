@@ -1,5 +1,6 @@
 package gtexpert.common.metatileentities.multi;
 
+import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -11,7 +12,6 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.MetaBlocks;
 
-import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.client.GTETextures;
@@ -84,16 +84,19 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
 
     @Override
     protected @Nonnull TextureArea getLogo() {
-        return GTEGuiTextures.GTE_LOGO_WORKING;
+        // return GTEGuiTextures.GTE_LOGO_DARK;
+        return GuiTextures.GREGTECH_LOGO_DARK;
     }
 
     @Override
     protected @Nonnull TextureArea getWarningLogo() {
-        return GTEGuiTextures.GTE_LOGO_WARNING;
+        // return GTEGuiTextures.GTE_LOGO_BLINKING_YELLOW;
+        return GuiTextures.GREGTECH_LOGO_BLINKING_YELLOW;
     }
 
     @Override
     protected @Nonnull TextureArea getErrorLogo() {
-        return GTEGuiTextures.GTE_LOGO_ERROR;
+        // return GTEGuiTextures.GTE_LOGO_BLINKING_RED;
+        return GuiTextures.GREGTECH_LOGO_BLINKING_RED;
     }
 }

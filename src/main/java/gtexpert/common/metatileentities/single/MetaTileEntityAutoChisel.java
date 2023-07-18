@@ -22,7 +22,7 @@ public class MetaTileEntityAutoChisel extends GTESimpleMachineMetaTileEntity {
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityExtremeMixer(this.metaTileEntityId, this.workable.getRecipeMap(), this.renderer,
+        return new MetaTileEntityAutoChisel(this.metaTileEntityId, this.workable.getRecipeMap(), this.renderer,
                 this.getTier(), this.hasFrontFacing(), this.getTankScalingFunction());
     }
 }

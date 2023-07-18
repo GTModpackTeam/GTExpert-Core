@@ -265,9 +265,7 @@ public class CEUOverrideRecipeLoader {
                 materials.add(material);
             }
         }
-        for (Material material : materials) {
-            vacuumFreezerMolten(material);
-        }
+        for (Material material : materials) vacuumFreezerMolten(material);
     }
 
     private static void items() {
@@ -367,12 +365,6 @@ public class CEUOverrideRecipeLoader {
                     .fluidOutputs(material.getFluid(144))
                     .duration((int) material.getMass() * 3)
                     .buildAndRegister();
-            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .fluidInputs(new FluidStack(molten, 1152))
-                    .fluidOutputs(material.getFluid(1152))
-                    .duration((int) material.getMass() * 5)
-                    .buildAndRegister();
         } else {
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
@@ -381,14 +373,6 @@ public class CEUOverrideRecipeLoader {
                     .fluidOutputs(Helium.getFluid(250))
                     .fluidOutputs(material.getFluid(144))
                     .duration((int) material.getMass() * 3)
-                    .buildAndRegister();
-            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .fluidInputs(new FluidStack(molten, 1152))
-                    .fluidInputs(LiquidHelium.getFluid(750))
-                    .fluidOutputs(Helium.getFluid(200))
-                    .fluidOutputs(material.getFluid(1152))
-                    .duration((int) material.getMass() * 5)
                     .buildAndRegister();
         }
     }

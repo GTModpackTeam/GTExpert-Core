@@ -245,7 +245,6 @@ public class DraconicUpgradeRecipeLoader {
             recipeMap = GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES;
         }
         TierUpRecipeBuilder recipeBuilder = recipeMap.recipeBuilder();
-
         recipeBuilder.catalyst(catalyst).result(result);
 
         switch (tier) {
@@ -328,11 +327,10 @@ public class DraconicUpgradeRecipeLoader {
                             recipeMap = GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES;
                         }
                         UpgradeRecipeBuilder recipeBuilder = recipeMap.recipeBuilder();
-
                         recipeBuilder.catalyst(stack).upgradeName(upgradeName).level(currentLevel);
 
-                        if (currentLevel == 0) {
-                            recipeBuilder
+                        switch (currentLevel) {
+                            case 0 -> recipeBuilder
                                     .input(Items.GOLDEN_APPLE, 2)
                                     .input(OrePrefix.gem, Diamond, 2)
                                     .input(OrePrefix.gem, EnderEye, 2)
@@ -340,8 +338,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .fluidInputs(Cryotheum.getFluid(8000))
                                     .fluidOutputs(Pyrotheum.getFluid(2000))
                                     .duration(100).EUt(VA[IV]);
-                        } else if (currentLevel == 1) {
-                            recipeBuilder
+                            case 1 -> recipeBuilder
                                     .input(OrePrefix.gem, NetherStar, 2)
                                     .input(DEFeatures.wyvernCore, 2)
                                     .input(OrePrefix.gem, Emerald, 2)
@@ -349,8 +346,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .fluidInputs(Cryotheum.getFluid(16000))
                                     .fluidOutputs(Pyrotheum.getFluid(4000))
                                     .duration(200).EUt(VA[LuV]);
-                        } else if (currentLevel == 2) {
-                            recipeBuilder
+                            case 2 -> recipeBuilder
                                     .input(OrePrefix.gem, NetherStar, 2)
                                     .input(DEFeatures.draconicCore, 2)
                                     .input(OrePrefix.block, Emerald, 2)
@@ -358,8 +354,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .fluidInputs(Cryotheum.getFluid(32000))
                                     .fluidOutputs(Pyrotheum.getFluid(8000))
                                     .duration(400).EUt(VA[ZPM]);
-                        } else if (currentLevel == 3) {
-                            recipeBuilder
+                            case 3 -> recipeBuilder
                                     .input(DEFeatures.draconicCore, 2)
                                     .input(DEFeatures.awakenedCore, 2)
                                     .input(Blocks.DRAGON_EGG, 2)
@@ -368,7 +363,6 @@ public class DraconicUpgradeRecipeLoader {
                                     .fluidOutputs(Pyrotheum.getFluid(12000))
                                     .duration(600).EUt(VA[UHV]);
                         }
-
                         recipeBuilder.buildAndRegister();
                     }
                 }
