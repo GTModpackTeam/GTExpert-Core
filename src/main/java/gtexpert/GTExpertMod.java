@@ -7,11 +7,7 @@ import gtexpert.common.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
-import javax.annotation.Nonnull;
+import net.minecraftforge.fml.common.event.*;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
@@ -24,26 +20,38 @@ import javax.annotation.Nonnull;
 
 public class GTExpertMod {
 
-    @Mod.Instance
-    public static GTExpertMod instance;
-
     @SidedProxy(modId = GTEValues.MODID,
                 clientSide = "gtexpert.client.ClientProxy",
                 serverSide = "gtexpert.common.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public void preInit(@Nonnull FMLPreInitializationEvent event) {
+    public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
     }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent e) {
-        proxy.init(e);
+    public void init(FMLInitializationEvent event) {
+        proxy.init(event);
     }
 
     @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent e) {
-        proxy.postInit(e);
+    public void postInit(FMLPostInitializationEvent event) {
+        proxy.postInit(event);
     }
+
+    @Mod.EventHandler
+    public void loadComplete(FMLLoadCompleteEvent event) {}
+
+    @Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent event) {}
+
+    @Mod.EventHandler
+    public void serverStarted(FMLServerStartedEvent event) {}
+
+    @Mod.EventHandler
+    public void serverStopped(FMLServerStoppedEvent event) {}
+
+    @Mod.EventHandler
+    public void respondIMC(FMLInterModComms.IMCEvent event) {}
 }

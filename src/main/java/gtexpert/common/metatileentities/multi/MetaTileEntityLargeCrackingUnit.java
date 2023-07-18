@@ -1,6 +1,7 @@
 package gtexpert.common.metatileentities.multi;
 
 import gregtech.api.block.IHeatingCoilBlockStats;
+import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -18,8 +19,6 @@ import gregtech.common.blocks.MetaBlocks;
 
 import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
-
-import gtexpert.api.gui.GTEGuiTextures;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -94,17 +93,20 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     @Override
     protected @Nonnull TextureArea getLogo() {
-        return GTEGuiTextures.GTE_LOGO_WORKING;
+        // return GTEGuiTextures.GTE_LOGO_DARK;
+        return GuiTextures.GREGTECH_LOGO_DARK;
     }
 
     @Override
     protected @Nonnull TextureArea getWarningLogo() {
-        return GTEGuiTextures.GTE_LOGO_WARNING;
+        // return GTEGuiTextures.GTE_LOGO_BLINKING_YELLOW;
+        return GuiTextures.GREGTECH_LOGO_BLINKING_YELLOW;
     }
 
     @Override
     protected @Nonnull TextureArea getErrorLogo() {
-        return GTEGuiTextures.GTE_LOGO_ERROR;
+        // return GTEGuiTextures.GTE_LOGO_BLINKING_RED;
+        return GuiTextures.GREGTECH_LOGO_BLINKING_RED;
     }
 
     @Override
