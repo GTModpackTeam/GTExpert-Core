@@ -100,7 +100,7 @@ public class GTEMaterials {
         AEFirstDegreeMaterials.init();  // 24151 - 24175
     }
 
-    public static void registerMaterialsLowest(){
+    public static void registerMaterialsLowest() {
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
             DEFirstDegreeMaterials.init(); // 24176 - 24200
         }

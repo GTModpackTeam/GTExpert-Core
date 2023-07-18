@@ -34,7 +34,7 @@ public class GTERecipeManager {
     public static void loadLowest() {
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
             DraconicRecipeLoader.init();
-            //DraconicUpgradeRecipeLoader.init();
+            DraconicUpgradeRecipeLoader.init();
         }
         if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
             GTFORecipeLoader.init();
