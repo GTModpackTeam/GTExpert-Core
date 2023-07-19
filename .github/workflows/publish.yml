@@ -59,8 +59,3 @@ jobs:
         with:
           arguments: '--info --stacktrace curseforge'
           generate-job-summary: false
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
