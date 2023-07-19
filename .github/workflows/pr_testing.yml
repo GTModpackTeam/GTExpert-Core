@@ -13,11 +13,6 @@ on:
         required: false
         default: 90
         type: number
-      client-only:
-        description: 'Do not execute runServer'
-        required: false
-        default: false
-        type: boolean
 
 # if a second commit is pushed quickly after the first, cancel the first one's build
 concurrency:
@@ -47,30 +42,22 @@ jobs:
       - name: Compile the mod
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--build-cache --info --stacktrace assemble'
+          arguments: '--scan --build-cache --info --stacktrace assemble'
           generate-job-summary: false
-
-      - name: Attach compilation artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-libs
-          path: build/libs/
-          retention-days: 31
 
       - name: Run Tests
         uses: gradle/gradle-build-action@v2
         with:
           arguments: '--scan --build-cache --info --stacktrace test'
-          generate-job-summary: false
+          generate-job-summary: true
 
       - name: Run Spotless
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--build-cache --info --stacktrace spotlessCheck'
+          arguments: '--scan --build-cache --info --stacktrace spotlessCheck'
           generate-job-summary: false
 
       - name: Run server for ${{ inputs.timeout }} seconds
-        if: ${{ !inputs.client-only }}
         run: |
           mkdir -p run
           echo "eula=true" > run/eula.txt
