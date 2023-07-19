@@ -12,11 +12,12 @@ import net.minecraftforge.fml.common.event.*;
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
      version = Tags.VERSION,
-     dependencies = GTInternalTags.DEP_VERSION_STRING + "required-after:" + GTEValues.MODID_GCYM + ";" + "after:" +
-             GTEValues.MODID_GTFO + ";" + "after:" + GTEValues.MODID_GCYS + ";" +
+     dependencies = "required-after:mixinbooter;" +
+             GTInternalTags.DEP_VERSION_STRING + "required-after:" + GTEValues.MODID_GCYM + ";" +
+             "after:" + GTEValues.MODID_GTFO + ";" + "after:" + GTEValues.MODID_GCYS + ";" +
              "required-after:" + GTEValues.MODID_ECO + ";" + "required-after:" + GTEValues.MODID_EIO + ";" +
              "required-after:" + GTEValues.MODID_AE + ";" + "required-after:" + GTEValues.MODID_AEA + ";" + "after:" +
-             GTEValues.MODID_DE + ";" + "after:" + GTEValues.MODID_DA + ";")
+             GTEValues.MODID_DE + ";" + "after:" + GTEValues.MODID_DA + ";" + "after:" + GTEValues.MODID_CHISEL + ";")
 
 public class GTExpertMod {
 
