@@ -8,6 +8,9 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 public class GTEMaterialFlags {
 
     public static void init() {
+        // Iron
+        Iron.addFlags(GENERATE_DOUBLE_PLATE);
+
         // Ender Peral
         EnderPearl.setProperty(PropertyKey.FLUID, new FluidProperty());
 

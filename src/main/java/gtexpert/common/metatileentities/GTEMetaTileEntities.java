@@ -1,7 +1,6 @@
 package gtexpert.common.metatileentities;
 
 import gregtech.api.GTValues;
-import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.GTUtility;
 import gregtech.client.renderer.ICubeRenderer;
@@ -16,7 +15,6 @@ import gtexpert.common.metatileentities.single.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import static gregtech.api.GTValues.*;
@@ -25,7 +23,6 @@ import static gtexpert.api.util.GTEUtility.gteId;
 
 public class GTEMetaTileEntities {
 
-    public static final MetaTileEntityExtremeMixer[] EXTREME_MIXER = new MetaTileEntityExtremeMixer[1];
     public static final MetaTileEntityAutoChisel[] AUTO_CHISEL = new MetaTileEntityAutoChisel[3];
     public static MetaTileEntitySawmill SAWMILL;
     public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
@@ -76,10 +73,7 @@ public class GTEMetaTileEntities {
                 new MetaTileEntityAutoChisel(gteId("auto_chisel.hv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
                         GTETextures.AUTO_CHISEL_OVERLAY, HV, true, GTUtility.defaultTankSizeFunction));
 
-        // EXTREME_MIXER 11007
-        EXTREME_MIXER[0] = registerMetaTileEntity(11007,
-                new MetaTileEntityExtremeMixer(gteId("extreme_mixer"), GTERecipeMaps.EXTREME_MIXER_RECIPES,
-                        GTETextures.EXTREME_MIXER_OVERLAY, ZPM, true, GTUtility.hvCappedTankSizeFunction));
+        // FreeSpace 11004~11009
 
         // VIAL_EXTRACTOR 11010~11022
         registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES,
@@ -113,25 +107,6 @@ public class GTEMetaTileEntities {
                     new MetaTileEntityDraconiumFusion.TierDraconic(gteId("draconium_fusion")));
             AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005,
                     new MetaTileEntityDraconiumFusion.TierAwakened(gteId("awakened_draconium_fusion")));
-        }
-    }
-
-    // TODO: This method will be included in the next update of CEu
-    /**
-     * @param mteCreator Takes tier and voltage name for the machine and outputs MTE to register
-     */
-    private static <T extends MetaTileEntity> void registerMetaTileEntities(
-                                                                            T[] machines,
-                                                                            int startId,
-                                                                            String name,
-                                                                            BiFunction<Integer, String, T> mteCreator) {
-        for (int i = 0; i < machines.length - 1; i++) {
-            if (i > 4 && !getMidTier(name)) continue;
-            if (i > 7 && !getHighTier(name)) break;
-
-            String voltageName = GTValues.VN[i + 1].toLowerCase();
-            machines[i + 1] = registerMetaTileEntity(startId + i,
-                    mteCreator.apply(i + 1, voltageName));
         }
     }
 

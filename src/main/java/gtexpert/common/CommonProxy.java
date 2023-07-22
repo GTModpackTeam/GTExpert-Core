@@ -5,15 +5,14 @@ import gregtech.api.block.VariantItemBlock;
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import gtexpert.integration.theoneprobe.TOPProviders;
 import gtexpert.loaders.recipe.*;
-import gtexpert.loaders.recipe.ingredients.*;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
@@ -21,32 +20,62 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.Objects;
 import java.util.function.Function;
 
-import static gtexpert.common.GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR;
-import static gtexpert.common.GTEMetaBlocks.GTE_BLOCK_METAL_CASING;
+import static gtexpert.common.GTEMetaBlocks.*;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class CommonProxy {
 
-    public void preInit(FMLPreInitializationEvent e) {
+    public void preInit(FMLPreInitializationEvent event) {
         GTEMetaItems.init();
-        GTEMetaTileEntities.init();
     }
 
-    public void init(FMLInitializationEvent e) {
+    public void init(FMLInitializationEvent event) {
         if (Loader.isModLoaded(GTEValues.MODID_TOP)) {
             TOPProviders.init();
         }
     }
 
-    public void postInit(FMLPostInitializationEvent e) {}
+    public void postInit(FMLPostInitializationEvent event) {}
+
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+        GTELog.logger.info("Registering Blocks...");
+        IForgeRegistry<Block> registry = event.getRegistry();
+
+        registry.register(GTE_BLOCK_METAL_CASING);
+        registry.register(BLOCK_SAWMILL_CONVEYOR);
+    }
+
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event) {
+        GTELog.logger.info("Registering Items...");
+        IForgeRegistry<Item> registry = event.getRegistry();
+
+        GTERecipeManager.preLoad();
+        registry.register(createItemBlock(GTE_BLOCK_METAL_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
+    }
+
+    @SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        GTELog.logger.info("Registering recipes...");
+        GTERecipeManager.load();
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
+        GTELog.logger.info("Registering recipes...");
+        GTERecipeManager.loadLow();
+    }
 
     @SubscribeEvent
     public static void syncConfigValues(ConfigChangedEvent.OnConfigChangedEvent event) {
@@ -55,52 +84,27 @@ public class CommonProxy {
         }
     }
 
-    @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        GTELog.logger.info("Registering blocks...");
-
-        event.getRegistry().register(GTE_BLOCK_METAL_CASING);
-        event.getRegistry().register(BLOCK_SAWMILL_CONVEYOR);
-    }
-
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
-        GTELog.logger.info("Registering items...");
-
-        event.getRegistry().register(createItemBlock(GTE_BLOCK_METAL_CASING, VariantItemBlock::new));
-        event.getRegistry().register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        GTELog.logger.info("Registering recipes...");
+        GTERecipeManager.loadLowest();
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
-        itemBlock.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
+        ResourceLocation registryName = block.getRegistryName();
+        if (registryName == null) {
+            throw new IllegalArgumentException("Block " + block.getTranslationKey() + " has no registry name.");
+        }
+        itemBlock.setRegistryName(registryName);
         return itemBlock;
     }
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        GTELog.logger.info("Registering recipes...");
+    public void onPreLoad() {}
 
-        // Main recipe registration
-        // This is called AFTER GregTech registers recipes, so
-        // anything here is safe to call removals in
-        VanillaOverrideRecipes.init();
-        CEUOverrideRecipeLoader.init();
-        GTERecipeLoader.init();
-        GTEWoodRecipeLoader.init();
-        AERecipeLoader.init();
-        EIORecipeLoader.init();
-        EIOSoulRecipeLoader.init();
+    public void onLoad() {}
 
-        if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
-            DraconicRecipeLoader.init();
-            DraconicUpgradeRecipeLoader.init();
-        }
-        if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
-            GTFORecipeLoader.init();
-        }
-        if (Loader.isModLoaded(GTEValues.MODID_CHISEL)) {
-            ChiselRecipeLoader.init();
-        }
-    }
+    public void onPostLoad() {}
+
+    public void onLoadComplete(FMLLoadCompleteEvent event) {}
 }

@@ -33,19 +33,15 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
+          cache: gradle
           distribution: zulu
           java-version: 17
 
       - name: Build Project
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: 'build --scan --build-cache --daemon' # use the daemon here so the rest of the process is faster
+          arguments: '--scan --build-cache --info --stacktrace build'
           generate-job-summary: false
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
 
       - name: Publish to GitHub
         uses: softprops/action-gh-release@v1
@@ -61,10 +57,5 @@ jobs:
           CHANGELOG_LOCATION: "${{env.CHANGELOG_LOCATION}}"
           RELEASE_TYPE: "${{env.RELEASE_TYPE}}"
         with:
-          arguments: 'curseforge --daemon'
+          arguments: '--info --stacktrace curseforge'
           generate-job-summary: false
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper

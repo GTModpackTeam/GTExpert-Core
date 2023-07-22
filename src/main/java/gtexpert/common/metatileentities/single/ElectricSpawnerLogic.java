@@ -1,6 +1,5 @@
 package gtexpert.common.metatileentities.single;
 
-import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.RecipeLogicEnergy;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -36,8 +35,6 @@ import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import static gregtech.api.GTValues.ULV;
 
 class ElectricSpawnerLogic extends RecipeLogicEnergy {
 
@@ -211,26 +208,6 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         } else {
             this.setActive(true);
         }
-    }
-
-    // TODO: This method will be included in the next update of CEu
-    /**
-     * @param recipeEUt the EUt of the recipe
-     * @return the number of times to overclock the recipe
-     */
-    protected int getNumberOfOCs(int recipeEUt) {
-        if (!isAllowOverclocking()) return 0;
-
-        int recipeTier = GTUtility.getTierByVoltage(recipeEUt);
-        int maximumTier = getOverclockForTier(getMaximumOverclockVoltage());
-        if (maximumTier <= GTValues.LV) return 0;
-
-        // The maximum number of overclocks is determined by the difference between the tier the recipe is running at,
-        // and the maximum tier that the machine can overclock to.
-        int numberOfOCs = maximumTier - recipeTier;
-        if (recipeTier == ULV) numberOfOCs--; // no ULV overclocking
-
-        return numberOfOCs;
     }
 
     private void spawnEntities() {

@@ -16,6 +16,7 @@ import gregicality.multiblocks.api.AlloyBlastUtil;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
+import gtexpert.api.util.GTELog;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -30,6 +31,7 @@ import javax.annotation.Nonnull;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 
@@ -265,9 +267,7 @@ public class CEUOverrideRecipeLoader {
                 materials.add(material);
             }
         }
-        for (Material material : materials) {
-            vacuumFreezerMolten(material);
-        }
+        for (Material material : materials) vacuumFreezerMolten(material);
     }
 
     private static void items() {
@@ -355,25 +355,75 @@ public class CEUOverrideRecipeLoader {
      * @param material the material to add recipes for
      */
     private static void vacuumFreezerMolten(@Nonnull Material material) {
+        GTELog.logger.info("Adding Vacuum Freezer recipes for " + material.getLocalizedName());
+
         // get the output fluid
         Fluid molten = AlloyBlastUtil.getMoltenFluid(material);
         if (molten == null) return;
 
         // generate the recipe
         if (material.getBlastTemperature() < 5000) {
+            if (material.hasFlag(GENERATE_PLATE)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_PLATE)
+                        .fluidInputs(new FluidStack(molten, 144))
+                        .output(plate, material, 1)
+                        .duration((int) material.getMass() * 3)
+                        .buildAndRegister();
+            }
+            if (material.hasFlag(GENERATE_SMALL_GEAR)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_GEAR_SMALL)
+                        .fluidInputs(new FluidStack(molten, 144))
+                        .output(gearSmall, material, 1)
+                        .duration((int) material.getMass() * 3)
+                        .buildAndRegister();
+            }
+            if (material.hasFlag(GENERATE_GEAR)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_GEAR)
+                        .fluidInputs(new FluidStack(molten, 576))
+                        .output(gear, material, 1)
+                        .duration((int) material.getMass() * 12)
+                        .buildAndRegister();
+            }
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
                     .fluidInputs(new FluidStack(molten, 144))
                     .fluidOutputs(material.getFluid(144))
                     .duration((int) material.getMass() * 3)
                     .buildAndRegister();
-            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .fluidInputs(new FluidStack(molten, 1152))
-                    .fluidOutputs(material.getFluid(1152))
-                    .duration((int) material.getMass() * 5)
-                    .buildAndRegister();
         } else {
+            if (material.hasFlag(GENERATE_PLATE)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_PLATE)
+                        .fluidInputs(new FluidStack(molten, 144))
+                        .fluidInputs(LiquidHelium.getFluid(500))
+                        .fluidOutputs(Helium.getFluid(250))
+                        .output(plate, material, 1)
+                        .duration((int) material.getMass() * 3)
+                        .buildAndRegister();
+            }
+            if (material.hasFlag(GENERATE_SMALL_GEAR)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_GEAR_SMALL)
+                        .fluidInputs(new FluidStack(molten, 144))
+                        .fluidInputs(LiquidHelium.getFluid(500))
+                        .fluidOutputs(Helium.getFluid(250))
+                        .output(gearSmall, material, 1)
+                        .duration((int) material.getMass() * 3)
+                        .buildAndRegister();
+            }
+            if (material.hasFlag(GENERATE_GEAR)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_GEAR)
+                        .fluidInputs(new FluidStack(molten, 576))
+                        .fluidInputs(LiquidHelium.getFluid(2000))
+                        .fluidOutputs(Helium.getFluid(1000))
+                        .output(gear, material, 1)
+                        .duration((int) material.getMass() * 12)
+                        .buildAndRegister();
+            }
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
                     .fluidInputs(new FluidStack(molten, 144))
@@ -381,14 +431,6 @@ public class CEUOverrideRecipeLoader {
                     .fluidOutputs(Helium.getFluid(250))
                     .fluidOutputs(material.getFluid(144))
                     .duration((int) material.getMass() * 3)
-                    .buildAndRegister();
-            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .circuitMeta(2)
-                    .fluidInputs(new FluidStack(molten, 1152))
-                    .fluidInputs(LiquidHelium.getFluid(750))
-                    .fluidOutputs(Helium.getFluid(200))
-                    .fluidOutputs(material.getFluid(1152))
-                    .duration((int) material.getMass() * 5)
                     .buildAndRegister();
         }
     }

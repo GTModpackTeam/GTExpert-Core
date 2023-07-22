@@ -33,8 +33,18 @@ public class GTEEventHandlers {
     public GTEEventHandlers() {}
 
     @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void registerMaterials(MaterialEvent event) {
-        GTEMaterials.init();
+    public static void registerMaterialsHigh(MaterialEvent event) {
+        GTEMaterials.registerMaterialsHigh();
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void registerMaterialsLow(MaterialEvent event) {
+        GTEMaterials.registerMaterialsLow();
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void registerMaterialsLowest(MaterialEvent event) {
+        GTEMaterials.registerMaterialsLowest();
     }
 
     // override GTCEu fall event to enable piston boots fall damage
