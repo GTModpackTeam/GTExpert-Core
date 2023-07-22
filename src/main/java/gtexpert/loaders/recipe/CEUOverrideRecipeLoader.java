@@ -363,6 +363,20 @@ public class CEUOverrideRecipeLoader {
 
         // generate the recipe
         if (material.getBlastTemperature() < 5000) {
+            if (material.hasFluid()) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_BLOCK)
+                        .fluidInputs(new FluidStack(molten, 1296))
+                        .output(block, material, 1)
+                        .duration((int) material.getMass() * 27)
+                        .buildAndRegister();
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_NUGGET)
+                        .fluidInputs(new FluidStack(molten, 144))
+                        .output(nugget, material, 9)
+                        .duration((int) material.getMass() * 3)
+                        .buildAndRegister();
+            }
             if (material.hasFlag(GENERATE_PLATE)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_PLATE)
@@ -402,6 +416,24 @@ public class CEUOverrideRecipeLoader {
                     .duration((int) material.getMass() * 3)
                     .buildAndRegister();
         } else {
+            if (material.hasFluid()) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_BLOCK)
+                        .fluidInputs(new FluidStack(molten, 1296))
+                        .fluidInputs(LiquidHelium.getFluid(4500))
+                        .fluidOutputs(Helium.getFluid(2250))
+                        .output(block, material, 1)
+                        .duration((int) material.getMass() * 27)
+                        .buildAndRegister();
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_NUGGET)
+                        .fluidInputs(new FluidStack(molten, 144))
+                        .fluidInputs(LiquidHelium.getFluid(500))
+                        .fluidOutputs(Helium.getFluid(250))
+                        .output(nugget, material, 9)
+                        .duration((int) material.getMass() * 3)
+                        .buildAndRegister();
+            }
             if (material.hasFlag(GENERATE_PLATE)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_PLATE)
