@@ -1,6 +1,9 @@
 # Publishes built jars to distribution platforms
 name: Publish
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
@@ -13,12 +16,8 @@ env:
   RELEASE_TYPE: "beta"
 
 jobs:
-  Publish:
+  publish:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write # needed to create GitHub releases
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3

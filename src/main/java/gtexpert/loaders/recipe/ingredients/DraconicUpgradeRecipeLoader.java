@@ -96,7 +96,7 @@ public class DraconicUpgradeRecipeLoader {
         // Wyvern Chest
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_chest"));
         addTierUpRecipe(
-                QUANTUM_CHESTPLATE.getStackForm(),
+                QUANTUM_CHESTPLATE_ADVANCED.getStackForm(),
                 new ItemStack(DEFeatures.wyvernChest),
                 Tier.WYVERN,
                 6);
