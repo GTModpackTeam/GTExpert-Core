@@ -387,6 +387,14 @@ public class CEUOverrideRecipeLoader {
                         .duration((int) material.getMass() * 12)
                         .buildAndRegister();
             }
+            if (material.hasFlag(GENERATE_ROTOR)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_ROTOR)
+                        .fluidInputs(new FluidStack(molten, 576))
+                        .output(rotor, material, 1)
+                        .duration((int) material.getMass() * 12)
+                        .buildAndRegister();
+            }
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
                     .fluidInputs(new FluidStack(molten, 144))
@@ -421,6 +429,16 @@ public class CEUOverrideRecipeLoader {
                         .fluidInputs(LiquidHelium.getFluid(2000))
                         .fluidOutputs(Helium.getFluid(1000))
                         .output(gear, material, 1)
+                        .duration((int) material.getMass() * 12)
+                        .buildAndRegister();
+            }
+            if (material.hasFlag(GENERATE_ROTOR)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_ROTOR)
+                        .fluidInputs(new FluidStack(molten, 576))
+                        .fluidInputs(LiquidHelium.getFluid(2000))
+                        .fluidOutputs(Helium.getFluid(1000))
+                        .output(rotor, material, 1)
                         .duration((int) material.getMass() * 12)
                         .buildAndRegister();
             }
