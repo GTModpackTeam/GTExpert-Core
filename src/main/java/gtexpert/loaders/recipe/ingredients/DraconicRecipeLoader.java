@@ -675,6 +675,9 @@ public class DraconicRecipeLoader {
                 .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                 .duration(2000).EUt(VA[UHV])
+                .research(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
+                        .CWUt(64)
+                        .duration(200).EUt(VA[UV]))
                 .buildAndRegister();
 
         // ########################################
