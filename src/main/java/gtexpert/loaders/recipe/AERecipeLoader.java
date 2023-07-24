@@ -1200,6 +1200,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Silicon Processor Press
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.siliconPress().maybeStack(1).get());
         RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .notConsumable(lens, NetherQuartz)
                 .input(block, Iron, 1)
@@ -1208,6 +1209,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Logic Processor Press
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get());
         RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .notConsumable(lens, ChargedCertusQuartz)
                 .input(block, Iron, 1)
@@ -1216,6 +1218,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Calc Processor Press
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get());
         RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .notConsumable(lens, CertusQuartz)
                 .input(block, Iron, 1)
@@ -1224,6 +1227,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Engineer Processor Press
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get());
         RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .notConsumable(lens, Fluix)
                 .input(block, Iron, 1)
@@ -1232,6 +1236,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Silicon Circuit
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.siliconPrint().maybeStack(1).get());
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
                 .notConsumable(AEHelper.aeMaterials.siliconPress().maybeStack(1).get())
                 .input(plate, Silicon, 1)
@@ -1240,6 +1245,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Logic Circuit
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.logicProcessorPrint().maybeStack(1).get());
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
                 .notConsumable(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
                 .input(plate, Gold, 1)
@@ -1248,6 +1254,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Calc Circuit
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.calcProcessorPrint().maybeStack(1).get());
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
                 .notConsumable(AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get())
                 .input(plate, CertusQuartz, 1)
@@ -1256,6 +1263,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Engineer Circuit
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.engProcessorPrint().maybeStack(1).get());
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
                 .notConsumable(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
                 .input(plate, Diamond, 1)
@@ -1264,6 +1272,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Logic Processor
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.logicProcessor().maybeStack(1).get());
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.siliconPrint().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.logicProcessorPrint().maybeStack(1).get())
@@ -1273,6 +1282,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Calc Processor
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.calcProcessor().maybeStack(1).get());
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.siliconPrint().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.calcProcessorPrint().maybeStack(1).get())
@@ -1282,6 +1292,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Engineer Processor
+        AEHelper.removeInscriberRecipe(AEHelper.aeMaterials.engProcessor().maybeStack(1).get());
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.siliconPrint().maybeStack(1).get())
                 .inputs(AEHelper.aeMaterials.engProcessorPrint().maybeStack(1).get())
