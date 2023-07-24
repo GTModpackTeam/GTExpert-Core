@@ -661,9 +661,6 @@ public class DraconicRecipeLoader {
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .output(VOIDOREMINER)
                 .duration(600).EUt(VA[UV])
-                .research(b -> b.researchStack(FIELD_GENERATOR_UV.getStackForm())
-                        .CWUt(16)
-                        .duration(200).EUt(VA[UV]))
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter

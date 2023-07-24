@@ -460,9 +460,6 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(18432))
                     .output(VOIDOREMINER)
                     .duration(600).EUt(VA[ZPM])
-                    .research(b -> b.researchStack(FIELD_GENERATOR_ZPM.getStackForm())
-                            .CWUt(16)
-                            .duration(200).EUt(VA[ZPM]))
                     .buildAndRegister();
         }
 
