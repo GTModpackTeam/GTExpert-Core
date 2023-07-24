@@ -1,4 +1,8 @@
 name: Auto Build CoreMod
+
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -6,21 +10,10 @@ on:
       - 'preview'
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+-pr-+[0-9]' # any semver tag, e.g. v1.2.3-pr-4
-  workflow_call:
-    inputs:
-      timeout:
-        description: 'Timeout for runServer (seconds)'
-        required: false
-        default: 90
-        type: number
 
 jobs:
-  release:
+  auto-build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write # needed to create GitHub releases
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -52,12 +45,17 @@ jobs:
           arguments: '--scan --build-cache --info --stacktrace build'
           generate-job-summary: true
 
-      - name: Run server for ${{ inputs.timeout }} seconds
+      - name: Run server for 90 seconds
         run: |
           mkdir -p run
           echo "eula=true" > run/eula.txt
           echo "stop" > run/stop.txt
-          timeout ${{ inputs.timeout }} ./gradlew --build-cache --info --stacktrace runServer 2>&1 < run/stop.txt | tee -a server.log || true
+          timeout 90 ./gradlew --build-cache --info --stacktrace runServer 2>&1 < run/stop.txt | tee -a server.log || true
+
+      - name: Test no errors reported during server run
+        run: |
+          chmod +x ./scripts/test_no_error_reports
+          ./scripts/test_no_error_reports
 
       - name: Upload Jars
         uses: actions/upload-artifact@v3
