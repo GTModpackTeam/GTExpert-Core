@@ -16,7 +16,7 @@ public class MixinPacketConfigSync {
             at = @At(value = "HEAD"),
             cancellable = true,
             remap = false)
-    public void gte2$validateFromBytes(ByteBuf buf, CallbackInfo ci) {
+    public void gtexpert$validateFromBytes(ByteBuf buf, CallbackInfo ci) {
         if (FMLCommonHandler.instance().getSide().isServer()) {
             ci.cancel();
         }
