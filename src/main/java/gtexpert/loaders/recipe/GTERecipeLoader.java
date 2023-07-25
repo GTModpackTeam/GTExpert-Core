@@ -228,7 +228,7 @@ public class GTERecipeLoader {
                     .duration(100).EUt(VA[LuV])
                     .research(b -> b.researchStack(COVER_SOLAR_PANEL.getStackForm())
                             .CWUt(32)
-                            .duration(200).EUt(VA[LuV]))
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (LV)
@@ -245,7 +245,7 @@ public class GTERecipeLoader {
                     .duration(100).EUt(VA[LuV])
                     .research(b -> b.researchStack(COVER_SOLAR_PANEL_ULV.getStackForm())
                             .CWUt(32)
-                            .duration(200).EUt(VA[LuV]))
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (MV)
@@ -262,7 +262,7 @@ public class GTERecipeLoader {
                     .duration(100).EUt(VA[LuV])
                     .research(b -> b.researchStack(COVER_SOLAR_PANEL_LV.getStackForm())
                             .CWUt(32)
-                            .duration(200).EUt(VA[LuV]))
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (HV)
@@ -279,7 +279,7 @@ public class GTERecipeLoader {
                     .duration(100).EUt(VA[LuV])
                     .research(b -> b.researchStack(COVER_SOLAR_PANEL_MV.getStackForm())
                             .CWUt(48)
-                            .duration(200).EUt(VA[LuV]))
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (EV)
@@ -296,7 +296,7 @@ public class GTERecipeLoader {
                     .duration(100).EUt(VA[LuV])
                     .research(b -> b.researchStack(COVER_SOLAR_PANEL_HV.getStackForm())
                             .CWUt(48)
-                            .duration(200).EUt(VA[LuV]))
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (IV)
@@ -313,7 +313,7 @@ public class GTERecipeLoader {
                     .duration(100).EUt(VA[LuV])
                     .research(b -> b.researchStack(COVER_SOLAR_PANEL_EV.getStackForm())
                             .CWUt(48)
-                            .duration(200).EUt(VA[LuV]))
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (LuV)
@@ -330,7 +330,7 @@ public class GTERecipeLoader {
                     .duration(100).EUt(VA[LuV])
                     .research(b -> b.researchStack(COVER_SOLAR_PANEL_IV.getStackForm())
                             .CWUt(64)
-                            .duration(200).EUt(VA[LuV]))
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (ZPM)
@@ -347,7 +347,7 @@ public class GTERecipeLoader {
                     .duration(100).EUt(VA[ZPM])
                     .research(b -> b.researchStack(COVER_SOLAR_PANEL_LUV.getStackForm())
                             .CWUt(64)
-                            .duration(200).EUt(VA[LuV]))
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (UV)
@@ -364,7 +364,7 @@ public class GTERecipeLoader {
                     .duration(100).EUt(VA[UV])
                     .research(b -> b.researchStack(COVER_SOLAR_PANEL_ZPM.getStackForm())
                             .CWUt(64)
-                            .duration(200).EUt(VA[LuV]))
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
         } else {
             // Solar Panel (8V)
@@ -461,7 +461,7 @@ public class GTERecipeLoader {
                     .duration(600).EUt(VA[ZPM])
                     .research(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
                             .CWUt(64)
-                            .duration(600).EUt(VA[ZPM]))
+                            .duration(4000).EUt(VA[ZPM]))
                     .buildAndRegister();
         }
 
@@ -640,7 +640,7 @@ public class GTERecipeLoader {
                     .duration(2000).EUt(VA[UHV])
                     .research(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
                             .CWUt(128)
-                            .duration(2000).EUt(VA[UHV]))
+                            .duration(4000).EUt(VA[UHV]))
                     .buildAndRegister();
         }
 
@@ -658,7 +658,7 @@ public class GTERecipeLoader {
                 .duration(2000).EUt(VA[UHV])
                 .research(b -> b.researchStack(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                         .CWUt(160)
-                        .duration(2000).EUt(VA[UHV]))
+                        .duration(4000).EUt(VA[UHV]))
                 .buildAndRegister();
 
         // Creative Quantum Chest
@@ -675,7 +675,7 @@ public class GTERecipeLoader {
                 .outputs(MetaTileEntities.CREATIVE_CHEST.getStackForm())
                 .research(b -> b.researchStack(MetaTileEntities.CREATIVE_TANK.getStackForm())
                         .CWUt(160)
-                        .duration(2000).EUt(VA[UHV]))
+                        .duration(4000).EUt(VA[UHV]))
                 .duration(2000).EUt(VA[UHV])
                 .buildAndRegister();
 
@@ -691,7 +691,7 @@ public class GTERecipeLoader {
                 .duration(2000).EUt(VA[UHV])
                 .research(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
                         .CWUt(160)
-                        .duration(2000).EUt(VA[UHV]))
+                        .duration(4000).EUt(VA[UHV]))
                 .buildAndRegister();
     }
 }
