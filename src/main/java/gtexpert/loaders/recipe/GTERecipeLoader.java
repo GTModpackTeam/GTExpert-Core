@@ -670,5 +670,20 @@ public class GTERecipeLoader {
                 .outputs(MetaTileEntities.CREATIVE_CHEST.getStackForm())
                 .duration(2000).EUt(VA[UHV])
                 .buildAndRegister();
+
+        // Creative Data Access Hatch
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH)
+                .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                .input(TOOL_DATA_MODULE, 4)
+                .input(WETWARE_MAINFRAME_UHV, 4)
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
+                .outputs(MetaTileEntities.CREATIVE_DATA_HATCH.getStackForm())
+                .duration(2000).EUt(VA[UHV])
+                .research(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
+                        .CWUt(160)
+                        .duration(2000).EUt(VA[UHV]))
+                .buildAndRegister();
     }
 }
