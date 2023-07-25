@@ -20,7 +20,7 @@ import java.io.ObjectInputStream;
 public class MixinPacketConfigSync {
 
     @Inject(method = "fromBytes",
-            at = @At(value = "HEAD"),
+            at = @At("HEAD"),
             cancellable = true,
             remap = false)
     public void gtexpert$preventServerReadingPacket(ByteBuf buf, CallbackInfo ci) {
