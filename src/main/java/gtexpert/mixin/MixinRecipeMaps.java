@@ -14,7 +14,7 @@ public abstract class MixinRecipeMaps {
                 at = @At(value = "INVOKE",
                          target = "Lgregtech/api/recipes/RecipeMap;<init>(Ljava/lang/String;IIIILgregtech/api/recipes/RecipeBuilder;Z)V",
                          remap = false))
-    private static void modifyArgsStaticBlockRecipeMap(Args args) {
+    private static void gte2$modifyArgsStaticBlockRecipeMap(Args args) {
         String unlocalizedName = args.get(0);
         if (unlocalizedName.equals("vacuum_freezer")) {
             args.set(4, 2);
