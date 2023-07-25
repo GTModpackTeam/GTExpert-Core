@@ -445,8 +445,7 @@ public class GTERecipeLoader {
         // Void Ore Miner
         if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                    .input(MetaTileEntities.HULL[ZPM])
-                    .input(frameGt, NaquadahAlloy, 4)
+                    .input(MetaTileEntities.ADVANCED_LARGE_MINER)
                     .input(circuit, MarkerMaterials.Tier.ZPM, 4)
                     .input(ELECTRIC_MOTOR_ZPM, 4)
                     .input(ELECTRIC_PUMP_ZPM, 4)
@@ -460,6 +459,9 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(18432))
                     .output(VOIDOREMINER)
                     .duration(600).EUt(VA[ZPM])
+                    .research(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
+                            .CWUt(64)
+                            .duration(600).EUt(VA[ZPM]))
                     .buildAndRegister();
         }
 
@@ -637,8 +639,8 @@ public class GTERecipeLoader {
                     .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                     .duration(2000).EUt(VA[UHV])
                     .research(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
-                            .CWUt(64)
-                            .duration(200).EUt(VA[UV]))
+                            .CWUt(128)
+                            .duration(2000).EUt(VA[UHV]))
                     .buildAndRegister();
         }
 
@@ -654,6 +656,9 @@ public class GTERecipeLoader {
                 .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_TANK.getStackForm())
                 .duration(2000).EUt(VA[UHV])
+                .research(b -> b.researchStack(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
+                        .CWUt(160)
+                        .duration(2000).EUt(VA[UHV]))
                 .buildAndRegister();
 
         // Creative Quantum Chest
@@ -668,6 +673,9 @@ public class GTERecipeLoader {
                 .fluidInputs(SolderingAlloy.getFluid(36864))
                 .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_CHEST.getStackForm())
+                .research(b -> b.researchStack(MetaTileEntities.CREATIVE_TANK.getStackForm())
+                        .CWUt(160)
+                        .duration(2000).EUt(VA[UHV]))
                 .duration(2000).EUt(VA[UHV])
                 .buildAndRegister();
 
