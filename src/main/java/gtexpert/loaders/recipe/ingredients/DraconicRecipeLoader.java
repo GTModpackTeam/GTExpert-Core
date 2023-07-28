@@ -646,8 +646,7 @@ public class DraconicRecipeLoader {
     private static void blocks() {
         // Void Ore Miner
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(MetaTileEntities.HULL[UV])
-                .input(frameGt, Darmstadtium, 4)
+                .input(MetaTileEntities.ADVANCED_LARGE_MINER)
                 .input(DEFeatures.awakenedCore, 4)
                 .input(ELECTRIC_MOTOR_UV, 4)
                 .input(ELECTRIC_PUMP_UV, 4)
@@ -661,6 +660,9 @@ public class DraconicRecipeLoader {
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .output(VOIDOREMINER)
                 .duration(600).EUt(VA[UV])
+                .research(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
+                        .CWUt(96)
+                        .duration(4000).EUt(VA[UV]))
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
@@ -676,8 +678,8 @@ public class DraconicRecipeLoader {
                 .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                 .duration(2000).EUt(VA[UHV])
                 .research(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
-                        .CWUt(64)
-                        .duration(200).EUt(VA[UV]))
+                        .CWUt(128)
+                        .duration(4000).EUt(VA[UHV]))
                 .buildAndRegister();
 
         // ########################################
