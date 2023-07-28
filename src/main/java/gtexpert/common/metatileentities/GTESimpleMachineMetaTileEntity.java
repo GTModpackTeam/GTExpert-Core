@@ -11,6 +11,8 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.client.renderer.ICubeRenderer;
 
+import gtexpert.api.gui.GTEGuiTextures;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -81,27 +83,12 @@ public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity 
 
         if (exportItems.getSlots() + exportFluids.getTanks() <= 9) {
             ImageWidget logo = new ImageWidget(152, 63 + yOffset, 17, 17,
-                    // GTValues.XMAS.get() ? GTEGuiTextures.GTE_LOGO_XMAS : GTEGuiTextures.GTE_LOGO)
-                    // .setIgnoreColor(true);
-                    GTValues.XMAS.get() ? GuiTextures.GREGTECH_LOGO_XMAS : GuiTextures.GREGTECH_LOGO)
-                            .setIgnoreColor(true);
+                    GTValues.XMAS.get() ? GTEGuiTextures.GTE_LOGO_XMAS : GTEGuiTextures.GTE_LOGO).setIgnoreColor(true);
 
             if (this.circuitInventory != null) {
-                SlotWidget circuitSlot = new GhostCircuitSlotWidget(circuitInventory, 0, 124, 62 + yOffset)
-                        .setBackgroundTexture(GuiTextures.SLOT, getCircuitSlotOverlay());
-                builder.widget(getCircuitSlotTooltip(circuitSlot)).widget(logo)
-                        .widget(new ClickButtonWidget(115, 62 + yOffset, 9, 9, "",
-                                click -> circuitInventory.addCircuitValue(click.isShiftClick ? 5 : 1))
-                                        .setShouldClientCallback(true)
-                                        .setButtonTexture(GuiTextures.BUTTON_INT_CIRCUIT_PLUS)
-                                        .setDisplayFunction(() -> circuitInventory.hasCircuitValue() &&
-                                                circuitInventory.getCircuitValue() < IntCircuitIngredient.CIRCUIT_MAX))
-                        .widget(new ClickButtonWidget(115, 71 + yOffset, 9, 9, "",
-                                click -> circuitInventory.addCircuitValue(click.isShiftClick ? -5 : -1))
-                                        .setShouldClientCallback(true)
-                                        .setButtonTexture(GuiTextures.BUTTON_INT_CIRCUIT_MINUS)
-                                        .setDisplayFunction(() -> circuitInventory.hasCircuitValue() &&
-                                                circuitInventory.getCircuitValue() > IntCircuitIngredient.CIRCUIT_MIN));
+                SlotWidget circuitSlot = new GhostCircuitSlotWidget(this.circuitInventory, 0, 124, 62 + yOffset)
+                        .setBackgroundTexture(GuiTextures.SLOT, this.getCircuitSlotOverlay());
+                builder.widget(circuitSlot.setConsumer(this::getCircuitSlotTooltip)).widget(logo);
             }
         }
         return builder;
