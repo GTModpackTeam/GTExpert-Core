@@ -37,20 +37,35 @@ jobs:
       - name: Compile the mod
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--scan --build-cache --info --stacktrace assemble'
+          arguments: '--scan --build-cache --info --no-daemon --stacktrace assemble'
           generate-job-summary: false
+          gradle-home-cache-includes: |
+            caches
+            jdks
+            notifications
+            wrapper
 
       - name: Run Tests
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--scan --build-cache --info --stacktrace test'
+          arguments: '--scan --build-cache --info --no-daemon --stacktrace test'
           generate-job-summary: true
+          gradle-home-cache-includes: |
+            caches
+            jdks
+            notifications
+            wrapper
 
       - name: Run Spotless
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--scan --build-cache --info --stacktrace spotlessCheck'
+          arguments: '--scan --build-cache --info --no-daemon --stacktrace spotlessCheck'
           generate-job-summary: false
+          gradle-home-cache-includes: |
+            caches
+            jdks
+            notifications
+            wrapper
 
       - name: Run server for 90 seconds
         run: |

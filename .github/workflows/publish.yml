@@ -24,7 +24,7 @@ jobs:
 
       - name: Check for Duplicate Tags
         run: |
-          if git rev-parse -q --verify "refs/tags/${{github.ref}}" >/dev/null; then
+          if git rev-parse -q --verify "refs/tags/${{ github.ref }}" >/dev/null; then
             echo "Tag already exists. A version bump is required."
             exit 1
           fi
@@ -39,8 +39,13 @@ jobs:
       - name: Build Project
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--scan --build-cache --info --stacktrace build'
+          arguments: '--scan --build-cache --info --no-daemon --stacktrace build'
           generate-job-summary: false
+          gradle-home-cache-includes: |
+            caches
+            jdks
+            notifications
+            wrapper
 
       - name: Publish to GitHub
         uses: softprops/action-gh-release@v1
@@ -52,9 +57,14 @@ jobs:
       - name: Publish to Curseforge
         uses: gradle/gradle-build-action@v2
         env:
-          CURSEFORGE_API_KEY: "${{secrets.CURSEFORGE_API_KEY}}"
-          CHANGELOG_LOCATION: "${{env.CHANGELOG_LOCATION}}"
-          RELEASE_TYPE: "${{env.RELEASE_TYPE}}"
+          CURSEFORGE_API_KEY: "${{ secrets.CURSEFORGE_API_KEY }}"
+          CHANGELOG_LOCATION: "${{ env.CHANGELOG_LOCATION }}"
+          RELEASE_TYPE: "${{ env.RELEASE_TYPE }}"
         with:
-          arguments: '--info --stacktrace curseforge'
+          arguments: '--info --daemon --stacktrace curseforge'
           generate-job-summary: false
+          gradle-home-cache-includes: |
+            caches
+            jdks
+            notifications
+            wrapper
