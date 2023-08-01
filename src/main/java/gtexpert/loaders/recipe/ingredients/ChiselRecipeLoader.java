@@ -26,6 +26,7 @@ import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -383,43 +384,57 @@ public class ChiselRecipeLoader {
 
         // Lamp
         if (Loader.isModLoaded("projectred-illumination")) {
-            for (int i = 0; i < 31; i++) {
-                ModHandler.removeRecipeByOutput(getModItem("projectred-illumination", "lamp", 1, i));
-            }
+            IntStream.range(0, 31).mapToObj(i -> getModItem("projectred-illumination", "lamp", 1, i)).forEach(ModHandler::removeRecipeByOutput);
 
-            for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            int i = 0;
+            while (i < Materials.CHEMICAL_DYES.length) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
                 ChiselHelper.addGroup("lamp_" + color);
-                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
-                    ChiselHelper.addVariation("lamp_" + color, getModItem("projectred-illumination", "lamp", 1, i));
-                    ChiselHelper.addVariation("lamp_" + color,
-                            getModItem("projectred-illumination", "lamp", 1, i + 16));
-                    ChiselHelper.addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                {
+                    int lampMeta = 0;
+                    while (lampMeta < lamp.getItemMetadataStates()) {
+                        ChiselHelper.addVariation("lamp_" + color, getModItem("projectred-illumination", "lamp", 1, i));
+                        ChiselHelper.addVariation("lamp_" + color,
+                                getModItem("projectred-illumination", "lamp", 1, i + 16));
+                        ChiselHelper.addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                        lampMeta++;
+                    }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
                 ChiselHelper.addGroup("lamp_borderless_" + color);
-                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
+                int lampMeta = 0;
+                while (lampMeta < lamp.getItemMetadataStates()) {
                     ChiselHelper.addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                    lampMeta++;
                 }
+                i++;
             }
         } else {
-            for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            int i = 0;
+            while (i < Materials.CHEMICAL_DYES.length) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
                 ChiselHelper.addGroup("lamp_" + color);
-                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
-                    ChiselHelper.addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                {
+                    int lampMeta = 0;
+                    while (lampMeta < lamp.getItemMetadataStates()) {
+                        ChiselHelper.addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                        lampMeta++;
+                    }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
                 ChiselHelper.addGroup("lamp_borderless_" + color);
-                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
+                int lampMeta = 0;
+                while (lampMeta < lamp.getItemMetadataStates()) {
                     ChiselHelper.addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                    lampMeta++;
                 }
+                i++;
             }
         }
     }

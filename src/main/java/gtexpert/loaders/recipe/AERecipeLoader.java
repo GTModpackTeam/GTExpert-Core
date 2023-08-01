@@ -24,9 +24,10 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import crazypants.enderio.base.init.ModObject;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -73,64 +74,77 @@ public class AERecipeLoader {
         OreDictionary.registerOre("craftFluix", AEHelper.aeMaterials.purifiedFluixCrystal().maybeStack(1).get());
 
         // craftGlassCable
-        List<ItemStack> craftGlassCable = new ArrayList<>();
-        for (int i = 0; i <= 16; i++) {
+        List<ItemStack> craftGlassCable = new LinkedList<>();
+        IntStream.rangeClosed(0, 16).forEach(i -> {
             craftGlassCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        }
-        for (Iterator<ItemStack> iterator = craftGlassCable.iterator(); iterator.hasNext();) {
-            ItemStack stack = iterator.next();
-            OreDictionary.registerOre("craftGlassCable", stack);
+        });
+        {
+            Iterator<ItemStack> iterator = craftGlassCable.iterator();
+            while (iterator.hasNext()) {
+                ItemStack stack = iterator.next();
+                OreDictionary.registerOre("craftGlassCable", stack);
 
-            if (iterator.hasNext()) OreDictionary.registerOre("craftGlassCableColors", stack);
+                if (iterator.hasNext()) OreDictionary.registerOre("craftGlassCableColors", stack);
+            }
         }
 
         // craftCoveredCable
-        List<ItemStack> craftCoveredCable = new ArrayList<>();
-        for (int i = 20; i <= 36; i++) {
+        List<ItemStack> craftCoveredCable = new LinkedList<>();
+        IntStream.rangeClosed(20, 36).forEach(i -> {
             craftCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        }
-        for (Iterator<ItemStack> iterator = craftCoveredCable.iterator(); iterator.hasNext();) {
-            ItemStack stack = iterator.next();
-            OreDictionary.registerOre("craftCoveredCable", stack);
+        });
+        {
+            Iterator<ItemStack> iterator = craftCoveredCable.iterator();
+            while (iterator.hasNext()) {
+                ItemStack stack = iterator.next();
+                OreDictionary.registerOre("craftCoveredCable", stack);
 
-            if (iterator.hasNext()) OreDictionary.registerOre("craftCoveredCableColors", stack);
+                if (iterator.hasNext()) OreDictionary.registerOre("craftCoveredCableColors", stack);
+            }
         }
 
         // craftSmartCable
-        List<ItemStack> craftSmartCable = new ArrayList<>();
-        for (int i = 40; i <= 56; i++) {
+        List<ItemStack> craftSmartCable = new LinkedList<>();
+        IntStream.rangeClosed(40, 56).forEach(i -> {
             craftSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        }
-        for (Iterator<ItemStack> iterator = craftSmartCable.iterator(); iterator.hasNext();) {
-            ItemStack stack = iterator.next();
-            OreDictionary.registerOre("craftSmartCable", stack);
+        });
+        {
+            Iterator<ItemStack> iterator = craftSmartCable.iterator();
+            while (iterator.hasNext()) {
+                ItemStack stack = iterator.next();
+                OreDictionary.registerOre("craftSmartCable", stack);
 
-            if (iterator.hasNext()) OreDictionary.registerOre("craftSmartCableColors", stack);
+                if (iterator.hasNext()) OreDictionary.registerOre("craftSmartCableColors", stack);
+            }
         }
 
         // craftDenseCoveredCable
-        List<ItemStack> craftDenseCoveredCable = new ArrayList<>();
-        for (int i = 500; i <= 516; i++) {
+        List<ItemStack> craftDenseCoveredCable = new LinkedList<>();
+        IntStream.rangeClosed(500, 516).forEach(i -> {
             craftDenseCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        }
-        for (Iterator<ItemStack> iterator = craftDenseCoveredCable.iterator(); iterator.hasNext();) {
-            ItemStack stack = iterator.next();
-            OreDictionary.registerOre("craftDenseCoveredCable", stack);
+        });
+        {
+            Iterator<ItemStack> iterator = craftDenseCoveredCable.iterator();
+            while (iterator.hasNext()) {
+                ItemStack stack = iterator.next();
+                OreDictionary.registerOre("craftDenseCoveredCable", stack);
 
-            if (iterator.hasNext()) OreDictionary.registerOre("craftDenseCoveredCableColors", stack);
+                if (iterator.hasNext()) OreDictionary.registerOre("craftDenseCoveredCableColors", stack);
+            }
         }
 
         // craftDenseSmartCable
-        List<ItemStack> craftDenseSmartCable = new ArrayList<>();
-        for (int i = 60; i <= 76; i++) {
+        List<ItemStack> craftDenseSmartCable = new LinkedList<>();
+        IntStream.rangeClosed(60, 76).forEach(i -> {
             craftDenseSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        }
-        for (Iterator<ItemStack> iterator = craftDenseSmartCable.iterator(); iterator.hasNext();) {
+        });
+        Iterator<ItemStack> iterator = craftDenseSmartCable.iterator();
+        while (iterator.hasNext()) {
             ItemStack stack = iterator.next();
             OreDictionary.registerOre("craftDenseSmartCable", stack);
 
@@ -530,14 +544,12 @@ public class AERecipeLoader {
                 .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 16))
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister();
-        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
-            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
-                    .input("craftGlassCable")
-                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
-                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, i))
-                    .duration(20).EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        IntStream.range(0, CHEMICAL_DYES.length).forEach(i -> RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftGlassCable")
+                .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, i))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister());
 
         // Covered Cable
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/covered_fluix_clean"));
@@ -547,14 +559,12 @@ public class AERecipeLoader {
                 .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 36))
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister();
-        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
-            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
-                    .input("craftCoveredCable")
-                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
-                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 20 + i))
-                    .duration(20).EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        IntStream.range(0, CHEMICAL_DYES.length).forEach(i -> RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftCoveredCable")
+                .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 20 + i))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister());
 
         // Smart Cable
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/smart_fluix_clean"));
@@ -564,14 +574,12 @@ public class AERecipeLoader {
                 .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 56))
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister();
-        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
-            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
-                    .input("craftSmartCable")
-                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
-                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 40 + i))
-                    .duration(20).EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        IntStream.range(0, CHEMICAL_DYES.length).forEach(i -> RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftSmartCable")
+                .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 40 + i))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister());
 
         // Dense Covered Cable
         ModHandler.removeRecipeByName(
@@ -582,14 +590,12 @@ public class AERecipeLoader {
                 .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 516))
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister();
-        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
-            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
-                    .input("craftDenseCoveredCable")
-                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
-                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 500 + i))
-                    .duration(20).EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        IntStream.range(0, CHEMICAL_DYES.length).forEach(i -> RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftDenseCoveredCable")
+                .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 500 + i))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister());
 
         // Dense Smart Cable
         ModHandler
@@ -600,14 +606,12 @@ public class AERecipeLoader {
                 .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 76))
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister();
-        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
-            RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
-                    .input("craftDenseSmartCable")
-                    .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
-                    .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 60 + i))
-                    .duration(20).EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        IntStream.range(0, CHEMICAL_DYES.length).forEach(i -> RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input("craftDenseSmartCable")
+                .fluidInputs(CHEMICAL_DYES[i].getFluid(18))
+                .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 60 + i))
+                .duration(20).EUt(VA[ULV])
+                .buildAndRegister());
 
         // Crafting Monitor
         ModHandler
@@ -1120,7 +1124,7 @@ public class AERecipeLoader {
         ModHandler.addShapedRecipe("formation_core", AEHelper.aeMaterials.formationCore().maybeStack(1).get(),
                 "SES", "LQL", "SES",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1]),
-                'Q', OreDictUnifier.get(gem, NetherQuartz),
+                'Q', "gemNetherQuartz",
                 'E', AEHelper.aeMaterials.engProcessor().maybeStack(1).get(),
                 'L', AEHelper.aeMaterials.logicProcessor().maybeStack(1).get());
         ModHandler.addShapedRecipe("formation_core_pure", AEHelper.aeMaterials.formationCore().maybeStack(2).get(),
@@ -1144,7 +1148,7 @@ public class AERecipeLoader {
         ModHandler.addShapedRecipe("annihilation_core", AEHelper.aeMaterials.annihilationCore().maybeStack(1).get(),
                 "SES", "CQC", "SES",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.voltageTierAE2 - 1]),
-                'Q', "craftCertusQuartz",
+                'Q', "gemCertusQuartz",
                 'E', AEHelper.aeMaterials.engProcessor().maybeStack(1).get(),
                 'C', AEHelper.aeMaterials.calcProcessor().maybeStack(1).get());
         ModHandler.addShapedRecipe("annihilation_core_pure",

@@ -19,12 +19,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.oredict.OreDictionary;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -61,16 +63,15 @@ public class GTEWoodRecipeLoader {
     }
 
     private static void planks() {
-        List<ItemStack> allWoodLogs = new ArrayList<>();
-        for (ItemStack stack : OreDictUnifier.getAllWithOreDictionaryName("logWood")) {
+        List<ItemStack> allWoodLogs = new LinkedList<>();
+        for (ItemStack stack : OreDictionary.getOres("logWood")) {
             allWoodLogs.addAll(stack.getItemDamage() != 32767 ? Collections.singleton(stack) :
                     GTUtility.getAllSubItems(stack.getItem()));
         }
-        for (int i = 0; i < allWoodLogs.size(); i++) {
+        IntStream.range(0, allWoodLogs.size()).forEach(i -> {
             Pair<IRecipe, ItemStack> outputPair = ModHandler.getRecipeOutput(null, allWoodLogs.get(i));
             ItemStack plankStack = outputPair.getValue();
-            if (plankStack.isEmpty()) continue;
-
+            if (plankStack.isEmpty()) return;
             ModHandler.removeRecipeByOutput(GTUtility.copy(ConfigHolder.recipes.nerfWoodCrafting ? 2 : 4, plankStack));
             ModHandler.removeRecipeByOutput(GTUtility.copy(ConfigHolder.recipes.nerfWoodCrafting ? 4 : 6, plankStack));
             ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copy(
@@ -79,10 +80,9 @@ public class GTEWoodRecipeLoader {
             ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copy(
                     ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.moreNerfWoodCrafting ? 2 : 4 : 6,
                     plankStack), "s", "P", 'P', allWoodLogs.get(i));
-
             recipeSawmill(allWoodLogs.get(i), plankStack);
             recipeCutter(allWoodLogs.get(i), plankStack);
-        }
+        });
     }
 
     public static void recipeSawmill(ItemStack input, ItemStack output) {

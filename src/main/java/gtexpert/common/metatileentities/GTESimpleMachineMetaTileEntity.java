@@ -8,7 +8,6 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.gui.GTEGuiTextures;

@@ -50,7 +50,7 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:brandons-core-231382:3408276") // BrandonsCore 2.4.20.162
     compileOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261") // DraconicEvolution 2.3.28.354
     compileOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704") // DraconicAdditions 1.17.0.45
-    if (project.debug_de.toBoolean()) {
+    if (project.debug_all.toBoolean() || project.debug_de.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436")
         runtimeOnly rfg.deobf("curse.maven:brandons-core-231382:3408276")
         runtimeOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
@@ -59,8 +59,18 @@ dependencies {
 
     // Debug Chisel
     compileOnly rfg.deobf("curse.maven:chisel-235279:2915375") // Chisel 1.0.2.45
-    if (project.debug_chisel.toBoolean()) {
+    if (project.debug_all.toBoolean() || project.debug_chisel.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:chisel-235279:2915375")
+    }
+
+    // Debug Avaritia
+    compileOnly rfg.deobf("curse.maven:wanionlib-253043:4623135") // WanionLib 2.91
+    compileOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349") // Avaritia 3.3.0.37
+    compileOnly rfg.deobf("curse.maven:avaritiaddons-248873:4623403") // Avaritiaddons 1.8b
+    if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:wanionlib-253043:4623135")
+        runtimeOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349")
+        runtimeOnly rfg.deobf("curse.maven:avaritiaddons-248873:4623403")
     }
 
     // Boot error fix
