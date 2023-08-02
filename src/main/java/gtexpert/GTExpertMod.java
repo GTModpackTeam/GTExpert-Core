@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.event.*;
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
      version = Tags.VERSION,
-     dependencies = "required-after:mixinbooter;" +
+     dependencies = "required-after:mixinbooter;required-after:configanytime;" +
              GTInternalTags.DEP_VERSION_STRING + "required-after:" + GTEValues.MODID_GCYM + ";" +
              "after:" + GTEValues.MODID_GTFO + ";" + "after:" + GTEValues.MODID_GCYS + ";" +
              "required-after:" + GTEValues.MODID_ECO + ";" + "required-after:" + GTEValues.MODID_EIO + ";" +

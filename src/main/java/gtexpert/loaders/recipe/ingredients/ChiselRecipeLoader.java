@@ -11,6 +11,7 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.common.GTEConfigHolder;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -293,7 +294,7 @@ public class ChiselRecipeLoader {
                 .buildAndRegister());
 
         // Lamp
-        if (Loader.isModLoaded("projectred-illumination")) {
+        if (GTEConfigHolder.chiselIntegration.hardLedRecipes && Loader.isModLoaded("projectred-illumination")) {
             IntStream.range(0, 31).mapToObj(i -> getModItem("projectred-illumination", "lamp", 1, i))
                     .forEach(ModHandler::removeRecipeByOutput);
 
@@ -351,28 +352,30 @@ public class ChiselRecipeLoader {
     }
 
     private static void tools() {
-        // Iron Chisel
-        removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
-        ModHandler.addShapedRecipe("chisel_iron", new ItemStack(ChiselItems.chisel_iron),
-                "fPP", " CP", "S h",
-                'P', new UnificationEntry(plate, Iron),
-                'C', new UnificationEntry(screw, Iron),
-                'S', new UnificationEntry(stick, Bronze));
+        if (ConfigHolder.recipes.hardToolArmorRecipes && GTEConfigHolder.chiselIntegration.hardToolRecipes) {
+            // Iron Chisel
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
+            ModHandler.addShapedRecipe("chisel_iron", new ItemStack(ChiselItems.chisel_iron),
+                    "fPP", " CP", "S h",
+                    'P', new UnificationEntry(plate, Iron),
+                    'C', new UnificationEntry(screw, Iron),
+                    'S', new UnificationEntry(stick, Bronze));
 
-        // Diamond Chisel
-        removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_diamond"));
-        ModHandler.addShapedRecipe("chisel_diamond", new ItemStack(ChiselItems.chisel_diamond),
-                "fPP", " CP", "S h",
-                'P', new UnificationEntry(plate, Diamond),
-                'C', new ItemStack(ChiselItems.chisel_iron),
-                'S', new UnificationEntry(stick, RoseGold));
+            // Diamond Chisel
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_diamond"));
+            ModHandler.addShapedRecipe("chisel_diamond", new ItemStack(ChiselItems.chisel_diamond),
+                    "fPP", " CP", "S h",
+                    'P', new UnificationEntry(plate, Diamond),
+                    'C', new ItemStack(ChiselItems.chisel_iron),
+                    'S', new UnificationEntry(stick, RoseGold));
 
-        // iChisel
-        removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_hitech"));
-        ModHandler.addShapedRecipe("chisel_hitech", new ItemStack(ChiselItems.chisel_hitech),
-                "fPP", " CP", "S h",
-                'P', new UnificationEntry(plate, Diamond),
-                'C', new ItemStack(ChiselItems.chisel_diamond),
-                'S', new UnificationEntry(stick, StainlessSteel));
+            // iChisel
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_hitech"));
+            ModHandler.addShapedRecipe("chisel_hitech", new ItemStack(ChiselItems.chisel_hitech),
+                    "fPP", " CP", "S h",
+                    'P', new UnificationEntry(plate, Diamond),
+                    'C', new ItemStack(ChiselItems.chisel_diamond),
+                    'S', new UnificationEntry(stick, StainlessSteel));
+        }
     }
 }

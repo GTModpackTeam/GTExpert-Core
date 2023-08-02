@@ -126,7 +126,7 @@ public class GTERecipeLoader {
 
     private static void items() {
         if (!ConfigHolder.machines.enableHighTierSolars) return;
-        if (GTEConfigHolder.hardSolarPanel) {
+        if (GTEConfigHolder.ceuOverride.hardSolarPanel) {
             // Remove solar panels
             ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL.getStackForm());
             ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_ULV.getStackForm());
