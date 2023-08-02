@@ -21,7 +21,11 @@
       "appliedenergistics2",
       "aeadditions",
       "endercore",
-      "enderio"
+      "enderio",
+      "enderioendergy",
+      "enderiomachines",
+      "enderioconduits",
+      "enderioconduitsappliedenergistics"
     ]
   }
 ]

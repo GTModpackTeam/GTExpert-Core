@@ -17,6 +17,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.conduit.me.init.ConduitAppliedEnergisticsObject;
+import crazypants.enderio.conduits.init.ConduitObject;
 import crazypants.enderio.endergy.init.EndergyObject;
 
 import static gregtech.api.GTValues.*;
@@ -53,6 +55,7 @@ public class EIORecipeLoader {
         fluid();
         materials();
         items();
+        blocks();
         tools();
         slice_n_splice();
     }
@@ -405,6 +408,206 @@ public class EIORecipeLoader {
                 .fluidInputs(StellarAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorStellar.getItemNN(), 1)
                 .duration(56).EUt(VA[LuV])
+                .buildAndRegister();
+    }
+
+    private static void blocks() {
+        // Item Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(pipeSmallItem, Electrum, 1)
+                .input(plate, PulsatingIron, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(ConduitObject.item_item_conduit.getItemNN(), 1, 0)
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Fluid Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(pipeNormalFluid, Copper, 1)
+                .input(plate, ElectricalSteel, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 0)
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Pressurized Fluid Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(pipeNormalFluid, Steel, 1)
+                .input(plate, DarkSteel, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 1)
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Ender Fluid Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(pipeTinyFluid, Polytetrafluoroethylene, 1)
+                .input(plate, VibrantAlloy, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 2)
+                .duration(100).EUt(VA[EV])
+                .buildAndRegister();
+
+        // Energy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, Gold, 1)
+                .input(plate, ConductiveIron, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(ConduitObject.item_power_conduit.getItemNN(), 1, 0)
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Enhaned Energy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, Aluminium, 1)
+                .input(plate, EnergeticAlloy, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(ConduitObject.item_power_conduit.getItemNN(), 1, 1)
+                .duration(100).EUt(VA[EV])
+                .buildAndRegister();
+
+        // Ender Energy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, Osmium, 1)
+                .input(plate, VibrantAlloy, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(ConduitObject.item_power_conduit.getItemNN(), 1, 2)
+                .duration(100).EUt(VA[IV])
+                .buildAndRegister();
+
+        // Redstone Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, RedAlloy, 1)
+                .input(plate, RedstoneAlloy, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(ConduitObject.item_redstone_conduit.getItemNN(), 1, 0)
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Crude Endergy Conduitr
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, Lead, 1)
+                .input(plate, TinAlloy, 1)
+                .fluidInputs(Tin.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 0)
+                .duration(100).EUt(VA[ULV])
+                .buildAndRegister();
+
+        // Iron Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, Tin, 1)
+                .input(plate, ConductiveIron, 1)
+                .fluidInputs(Tin.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 1)
+                .duration(100).EUt(VA[LV])
+                .buildAndRegister();
+
+        // Aluminium Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, Nickel, 1)
+                .input(plate, Aluminium, 1)
+                .fluidInputs(Tin.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 2)
+                .duration(100).EUt(VA[LV])
+                .buildAndRegister();
+
+        // Gold Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, Copper, 1)
+                .input(plate, Gold, 1)
+                .fluidInputs(SolderingAlloy.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 3)
+                .duration(100).EUt(VA[MV])
+                .buildAndRegister();
+
+        // Copper Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, AnnealedCopper, 1)
+                .input(plate, Copper, 1)
+                .fluidInputs(SolderingAlloy.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 4)
+                .duration(100).EUt(VA[MV])
+                .buildAndRegister();
+
+        // Silver Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, Electrum, 1)
+                .input(plate, Silver, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 5)
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Electrum Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, BlackSteel, 1)
+                .input(plate, Electrum, 1)
+                .fluidInputs(Polyethylene.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 6)
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Electrum Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, TungstenSteel, 1)
+                .input(plate, EnergeticSilver, 1)
+                .fluidInputs(Epoxy.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 7)
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Crystalline Alloy Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, HSSG, 1)
+                .input(plate, CrystallineAlloy, 1)
+                .fluidInputs(Epoxy.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 8)
+                .duration(100).EUt(VA[EV])
+                .buildAndRegister();
+
+        // Crystalline Pink Slime Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, NiobiumTitanium, 1)
+                .input(plate, CrystallinePinkSlime, 1)
+                .fluidInputs(Polytetrafluoroethylene.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 9)
+                .duration(100).EUt(VA[EV])
+                .buildAndRegister();
+
+        // Melodic Alloy Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, Naquadah, 1)
+                .input(plate, MelodicAlloy, 1)
+                .fluidInputs(Polytetrafluoroethylene.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 10)
+                .duration(100).EUt(VA[IV])
+                .buildAndRegister();
+
+        // Stellar Alloy Endergy Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 1)
+                .input(plate, StellarAlloy, 1)
+                .fluidInputs(Polybenzimidazole.getFluid(144))
+                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 11)
+                .duration(100).EUt(VA[UV])
+                .buildAndRegister();
+
+        // ME Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input("craftGlassCable", 4)
+                .input(plate, StainlessSteel, 1)
+                .fluidInputs(ConductiveIron.getFluid(144))
+                .output(ConduitAppliedEnergisticsObject.item_me_conduit.getItemNN(), 4, 0)
+                .duration(100).EUt(VA[HV])
+                .buildAndRegister();
+
+        // ME Dense Conduit
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(ConduitAppliedEnergisticsObject.item_me_conduit.getItemNN(), 16)
+                .input(plate, Titanium, 1)
+                .fluidInputs(EnergeticAlloy.getFluid(144))
+                .output(ConduitAppliedEnergisticsObject.item_me_conduit.getItemNN(), 4, 1)
+                .duration(100).EUt(VA[EV])
                 .buildAndRegister();
     }
 
