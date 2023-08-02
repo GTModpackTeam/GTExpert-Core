@@ -384,7 +384,8 @@ public class ChiselRecipeLoader {
 
         // Lamp
         if (Loader.isModLoaded("projectred-illumination")) {
-            IntStream.range(0, 31).mapToObj(i -> getModItem("projectred-illumination", "lamp", 1, i)).forEach(ModHandler::removeRecipeByOutput);
+            IntStream.range(0, 31).mapToObj(i -> getModItem("projectred-illumination", "lamp", 1, i))
+                    .forEach(ModHandler::removeRecipeByOutput);
 
             int i = 0;
             while (i < Materials.CHEMICAL_DYES.length) {

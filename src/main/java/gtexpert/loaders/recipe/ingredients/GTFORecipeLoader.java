@@ -46,11 +46,11 @@ public class GTFORecipeLoader {
         craftSludge.add(new ItemStack(Items.FISH, 1, 2));
         craftSludge.forEach(itemStack -> {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MIXER_RECIPES,
-                    new ItemStack[]{itemStack},
-                    new FluidStack[]{SulfuricAcid.getFluid(200)});
+                    new ItemStack[] { itemStack },
+                    new FluidStack[] { SulfuricAcid.getFluid(200) });
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MIXER_RECIPES,
-                    new ItemStack[]{itemStack},
-                    new FluidStack[]{Water.getFluid(400)});
+                    new ItemStack[] { itemStack },
+                    new FluidStack[] { Water.getFluid(400) });
         });
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
