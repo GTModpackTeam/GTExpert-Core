@@ -8,8 +8,6 @@ on:
     branches:
       - 'dev'
       - 'preview'
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+-pr-+[0-9]' # any semver tag, e.g. v1.2.3-pr-4
 
 jobs:
   auto-build:
