@@ -39,7 +39,7 @@ jobs:
       - name: Build Project
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--scan --build-cache --info --no-daemon --stacktrace build'
+          arguments: '--build-cache --info --no-daemon --stacktrace build'
           generate-job-summary: false
           gradle-home-cache-includes: |
             caches
