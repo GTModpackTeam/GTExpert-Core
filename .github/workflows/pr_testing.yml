@@ -1,18 +1,14 @@
 # Runs tests and other checks on Pull Requests
 name: PR Testing
 
+permissions:
+  contents: write
+
 on:
   pull_request:
     branches:
       - dev
       - preview
-  workflow_call:
-    inputs:
-      timeout:
-        description: 'Timeout for runServer (seconds)'
-        required: false
-        default: 90
-        type: number
 
 # if a second commit is pushed quickly after the first, cancel the first one's build
 concurrency:
@@ -20,9 +16,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  Test:
+  build-and-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -42,24 +37,50 @@ jobs:
       - name: Compile the mod
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--scan --build-cache --info --stacktrace assemble'
+          arguments: '--scan --build-cache --info --no-daemon --stacktrace assemble'
           generate-job-summary: false
+          gradle-home-cache-includes: |
+            caches
+            jdks
+            notifications
+            wrapper
 
       - name: Run Tests
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--scan --build-cache --info --stacktrace test'
+          arguments: '--scan --build-cache --info --no-daemon --stacktrace test'
           generate-job-summary: true
+          gradle-home-cache-includes: |
+            caches
+            jdks
+            notifications
+            wrapper
 
       - name: Run Spotless
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--scan --build-cache --info --stacktrace spotlessCheck'
+          arguments: '--scan --build-cache --info --no-daemon --stacktrace spotlessCheck'
           generate-job-summary: false
+          gradle-home-cache-includes: |
+            caches
+            jdks
+            notifications
+            wrapper
 
-      - name: Run server for ${{ inputs.timeout }} seconds
+      - name: Run server for 90 seconds
         run: |
           mkdir -p run
           echo "eula=true" > run/eula.txt
           echo "stop" > run/stop.txt
-          timeout ${{ inputs.timeout }} ./gradlew --build-cache --info --stacktrace runServer 2>&1 < run/stop.txt | tee -a server.log || true
+          timeout 90 ./gradlew --build-cache --info --stacktrace runServer 2>&1 < run/stop.txt | tee -a server.log || true
+
+      - name: Test no errors reported during server run
+        run: |
+          chmod +x ./scripts/test_no_error_reports
+          ./scripts/test_no_error_reports
+
+      - name: Upload Jars
+        uses: actions/upload-artifact@v3
+        with:
+          name: GTExpert-Core
+          path: build/libs/*.jar

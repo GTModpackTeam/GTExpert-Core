@@ -22,6 +22,7 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
+import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.integration.ae.AEHelper;
@@ -35,7 +36,7 @@ import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.machines.init.MachineObject;
 import crazypants.enderio.powertools.init.PowerToolObject;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static gregtech.api.GTValues.*;
@@ -45,7 +46,6 @@ import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.GTEConfigHolder.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class GTERecipeLoader {
@@ -126,7 +126,7 @@ public class GTERecipeLoader {
 
     private static void items() {
         if (!ConfigHolder.machines.enableHighTierSolars) return;
-        if (ceuOverride.hardSolarPanel) {
+        if (GTEConfigHolder.ceuOverride.hardSolarPanel) {
             // Remove solar panels
             ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL.getStackForm());
             ModHandler.removeRecipeByOutput(COVER_SOLAR_PANEL_ULV.getStackForm());
@@ -226,6 +226,9 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L))
                     .output(COVER_SOLAR_PANEL_ULV)
                     .duration(100).EUt(VA[LuV])
+                    .research(b -> b.researchStack(COVER_SOLAR_PANEL.getStackForm())
+                            .CWUt(32)
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (LV)
@@ -236,10 +239,13 @@ public class GTERecipeLoader {
                     .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
                     .inputs(AEHelper.aeBlocks.quartzGlass().maybeStack(1).get())
                     .input(MetaTileEntities.TRANSFORMER[1])
-                    .fluidInputs(Silicon.getFluid(L * 2))
-                    .fluidInputs(SolderingAlloy.getFluid(L * 2))
+                    .fluidInputs(Silicon.getFluid(L << 2))
+                    .fluidInputs(SolderingAlloy.getFluid(L << 2))
                     .output(COVER_SOLAR_PANEL_LV)
                     .duration(100).EUt(VA[LuV])
+                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_ULV.getStackForm())
+                            .CWUt(32)
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (MV)
@@ -250,10 +256,13 @@ public class GTERecipeLoader {
                     .input(LOW_POWER_INTEGRATED_CIRCUIT, 4)
                     .input(ModObject.blockFusedQuartz.getBlockNN())
                     .input(MetaTileEntities.TRANSFORMER[2])
-                    .fluidInputs(Silicon.getFluid(L * 3))
-                    .fluidInputs(SolderingAlloy.getFluid(L * 3))
+                    .fluidInputs(Silicon.getFluid(L << 3))
+                    .fluidInputs(SolderingAlloy.getFluid(L << 3))
                     .output(COVER_SOLAR_PANEL_MV)
                     .duration(100).EUt(VA[LuV])
+                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_LV.getStackForm())
+                            .CWUt(32)
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (HV)
@@ -264,10 +273,13 @@ public class GTERecipeLoader {
                     .input(LOW_POWER_INTEGRATED_CIRCUIT, 8)
                     .input(ModObject.blockFusedGlass.getBlockNN())
                     .input(MetaTileEntities.TRANSFORMER[3])
-                    .fluidInputs(Silicon.getFluid(L * 4))
-                    .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                    .fluidInputs(Silicon.getFluid(L << 4))
+                    .fluidInputs(SolderingAlloy.getFluid(L << 4))
                     .output(COVER_SOLAR_PANEL_HV)
                     .duration(100).EUt(VA[LuV])
+                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_MV.getStackForm())
+                            .CWUt(48)
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (EV)
@@ -278,10 +290,13 @@ public class GTERecipeLoader {
                     .input(POWER_INTEGRATED_CIRCUIT, 4)
                     .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
                     .input(MetaTileEntities.TRANSFORMER[4])
-                    .fluidInputs(Silicon.getFluid(L * 5))
-                    .fluidInputs(SolderingAlloy.getFluid(L * 5))
+                    .fluidInputs(Silicon.getFluid(L << 5))
+                    .fluidInputs(SolderingAlloy.getFluid(L << 5))
                     .output(COVER_SOLAR_PANEL_EV)
                     .duration(100).EUt(VA[LuV])
+                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_HV.getStackForm())
+                            .CWUt(48)
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (IV)
@@ -292,10 +307,13 @@ public class GTERecipeLoader {
                     .input(POWER_INTEGRATED_CIRCUIT, 8)
                     .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
                     .input(MetaTileEntities.TRANSFORMER[5])
-                    .fluidInputs(Silicon.getFluid(L * 6))
-                    .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                    .fluidInputs(Silicon.getFluid(L << 6))
+                    .fluidInputs(SolderingAlloy.getFluid(L << 6))
                     .output(COVER_SOLAR_PANEL_IV)
                     .duration(100).EUt(VA[LuV])
+                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_EV.getStackForm())
+                            .CWUt(48)
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (LuV)
@@ -306,10 +324,13 @@ public class GTERecipeLoader {
                     .input(HIGH_POWER_INTEGRATED_CIRCUIT, 8)
                     .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
                     .input(MetaTileEntities.TRANSFORMER[6])
-                    .fluidInputs(Silicon.getFluid(L * 7))
-                    .fluidInputs(SolderingAlloy.getFluid(L * 7))
+                    .fluidInputs(Silicon.getFluid(L << 7))
+                    .fluidInputs(SolderingAlloy.getFluid(L << 7))
                     .output(COVER_SOLAR_PANEL_LUV)
                     .duration(100).EUt(VA[LuV])
+                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_IV.getStackForm())
+                            .CWUt(64)
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (ZPM)
@@ -320,10 +341,13 @@ public class GTERecipeLoader {
                     .input(HIGH_POWER_INTEGRATED_CIRCUIT, 16)
                     .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
                     .input(MetaTileEntities.TRANSFORMER[7])
-                    .fluidInputs(Silicon.getFluid(L * 8))
-                    .fluidInputs(SolderingAlloy.getFluid(L * 8))
+                    .fluidInputs(Silicon.getFluid(L << 8))
+                    .fluidInputs(SolderingAlloy.getFluid(L << 8))
                     .output(COVER_SOLAR_PANEL_ZPM)
                     .duration(100).EUt(VA[ZPM])
+                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_LUV.getStackForm())
+                            .CWUt(64)
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (UV)
@@ -334,10 +358,13 @@ public class GTERecipeLoader {
                     .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 32)
                     .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 1)
                     .input(MetaTileEntities.TRANSFORMER[8])
-                    .fluidInputs(Silicon.getFluid(L * 9))
-                    .fluidInputs(SolderingAlloy.getFluid(L * 9))
+                    .fluidInputs(Silicon.getFluid(L << 9))
+                    .fluidInputs(SolderingAlloy.getFluid(L << 9))
                     .output(COVER_SOLAR_PANEL_UV)
                     .duration(100).EUt(VA[UV])
+                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_ZPM.getStackForm())
+                            .CWUt(64)
+                            .duration(4000).EUt(VA[LuV]))
                     .buildAndRegister();
         } else {
             // Solar Panel (8V)
@@ -418,8 +445,7 @@ public class GTERecipeLoader {
         // Void Ore Miner
         if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                    .input(MetaTileEntities.HULL[ZPM])
-                    .input(frameGt, NaquadahAlloy, 4)
+                    .input(MetaTileEntities.ADVANCED_LARGE_MINER)
                     .input(circuit, MarkerMaterials.Tier.ZPM, 4)
                     .input(ELECTRIC_MOTOR_ZPM, 4)
                     .input(ELECTRIC_PUMP_ZPM, 4)
@@ -433,6 +459,9 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(18432))
                     .output(VOIDOREMINER)
                     .duration(600).EUt(VA[ZPM])
+                    .research(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
+                            .CWUt(64)
+                            .duration(4000).EUt(VA[ZPM]))
                     .buildAndRegister();
         }
 
@@ -450,7 +479,7 @@ public class GTERecipeLoader {
                 .inputs(VOLTAGE_COIL_ZPM.getStackForm(2))
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm())
                 .input(plate, NM_HEA_NPs, 6)
-                .fluidInputs(EnderPearl.getFluid(GTValues.L * 2))
+                .fluidInputs(EnderPearl.getFluid(GTValues.L << 2))
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER, 2))
                 .duration(100).EUt(VA[ZPM])
@@ -467,13 +496,10 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Void Ore Miner Recipes
-        List<Material> materialOres = new ArrayList<>();
-        for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
-            if (material.hasProperty(PropertyKey.ORE)) {
-                materialOres.add(material);
-            }
-        }
+        List<Material> materialOres = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
         for (Material materialOre : materialOres) {
+            if (!materialOre.hasProperty(PropertyKey.ORE)) return;
+
             List<ItemStack> ores = OreDictUnifier.getAll(new UnificationEntry(ore, materialOre));
             ItemStack oreStack = ores.get(ores.size() - 1);
             oreStack.setCount(32);
@@ -609,6 +635,9 @@ public class GTERecipeLoader {
                     .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
                     .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                     .duration(2000).EUt(VA[UHV])
+                    .research(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
+                            .CWUt(128)
+                            .duration(4000).EUt(VA[UHV]))
                     .buildAndRegister();
         }
 
@@ -624,6 +653,9 @@ public class GTERecipeLoader {
                 .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_TANK.getStackForm())
                 .duration(2000).EUt(VA[UHV])
+                .research(b -> b.researchStack(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
+                        .CWUt(160)
+                        .duration(4000).EUt(VA[UHV]))
                 .buildAndRegister();
 
         // Creative Quantum Chest
@@ -638,7 +670,25 @@ public class GTERecipeLoader {
                 .fluidInputs(SolderingAlloy.getFluid(36864))
                 .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_CHEST.getStackForm())
+                .research(b -> b.researchStack(MetaTileEntities.CREATIVE_TANK.getStackForm())
+                        .CWUt(160)
+                        .duration(4000).EUt(VA[UHV]))
                 .duration(2000).EUt(VA[UHV])
+                .buildAndRegister();
+
+        // Creative Data Access Hatch
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH)
+                .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                .input(TOOL_DATA_MODULE, 4)
+                .input(WETWARE_MAINFRAME_UHV, 4)
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
+                .outputs(MetaTileEntities.CREATIVE_DATA_HATCH.getStackForm())
+                .duration(2000).EUt(VA[UHV])
+                .research(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
+                        .CWUt(160)
+                        .duration(4000).EUt(VA[UHV]))
                 .buildAndRegister();
     }
 }

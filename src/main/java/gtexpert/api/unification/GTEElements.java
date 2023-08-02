@@ -6,10 +6,9 @@ import java.util.*;
 
 public class GTEElements {
 
-    private static final Map<String, Element> elements = new HashMap<>();
-
     private GTEElements() {}
 
+    private static final Map<String, Element> elements = new HashMap<>();
     public static final Element De = add(1, 0, -1, null, "Draconium", "De", false);
     public static final Element De1 = add(1, 0, -1, null, "AwakenedDraconium", "De+", false);
     public static final Element If = add(1, 0, -1, null, "Infinity", "If", false);
