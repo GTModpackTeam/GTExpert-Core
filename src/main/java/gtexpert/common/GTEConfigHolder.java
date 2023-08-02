@@ -21,6 +21,10 @@ public class GTEConfigHolder {
     @Config.RequiresMcRestart
     public static EIOIntegration eioIntegration = new EIOIntegration();
 
+    @Config.Name("Chisel Integration")
+    @Config.RequiresMcRestart
+    public static ChiselIntegration chiselIntegration = new ChiselIntegration();
+
     public static class GregtechOverride {
 
         @Config.Comment({ "Making Planks and Sticks even more difficult.",
@@ -41,7 +45,7 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Change AE swords, axes, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
-        public boolean hardToolArmorRecipes = false;
+        public boolean hardToolRecipes = false;
     }
 
     public static class EIOIntegration {
@@ -49,6 +53,16 @@ public class GTEConfigHolder {
         @Config.Comment({ "Change EIO swords, axes, armor, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
         public boolean hardToolArmorRecipes = false;
+    }
+
+    public static class ChiselIntegration {
+
+        @Config.Comment({ "Change Chisel recipes to GT recipe standards.",
+                "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
+        public boolean hardToolRecipes = false;
+
+        @Config.Comment({ "Change LED for Project:RED recipes to GT recipe standards.", "Default: false" })
+        public boolean hardLedRecipes = false;
     }
 
     // Register the config holder

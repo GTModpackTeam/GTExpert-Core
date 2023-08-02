@@ -1295,7 +1295,7 @@ public class AERecipeLoader {
     }
 
     private static void tools() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && GTEConfigHolder.ae2Integration.hardToolArmorRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes && GTEConfigHolder.ae2Integration.hardToolRecipes) {
             // Nether Quartz Axe
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_axe"));
             ModHandler.addShapedRecipe("nether_quartz_axe", AEHelper.aeItems.netherQuartzAxe().maybeStack(1).get(),

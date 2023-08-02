@@ -56,8 +56,9 @@ public class GTEWoodRecipeLoader {
                     OreDictUnifier.get(stick, TreatedWood, 1) : OreDictUnifier.get(stick, TreatedWood, 2),
                     "P", "P", 'P', MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK));
             ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "treated_wood_stick_saw"));
-            ModHandler.addMirroredShapedRecipe("treated_wood_stick_saw", GTEConfigHolder.ceuOverride.moreNerfWoodCrafting ?
-                    OreDictUnifier.get(stick, TreatedWood, 2) : OreDictUnifier.get(stick, TreatedWood, 4),
+            ModHandler.addMirroredShapedRecipe("treated_wood_stick_saw",
+                    GTEConfigHolder.ceuOverride.moreNerfWoodCrafting ?
+                            OreDictUnifier.get(stick, TreatedWood, 2) : OreDictUnifier.get(stick, TreatedWood, 4),
                     "s", "P", "P", 'P', MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK));
         }
     }
@@ -75,10 +76,12 @@ public class GTEWoodRecipeLoader {
             ModHandler.removeRecipeByOutput(GTUtility.copy(ConfigHolder.recipes.nerfWoodCrafting ? 2 : 4, plankStack));
             ModHandler.removeRecipeByOutput(GTUtility.copy(ConfigHolder.recipes.nerfWoodCrafting ? 4 : 6, plankStack));
             ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copy(
-                    ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.ceuOverride.moreNerfWoodCrafting ? 1 : 2 : 4,
+                    ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.ceuOverride.moreNerfWoodCrafting ? 1 : 2 :
+                            4,
                     plankStack), allWoodLogs.get(i));
             ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copy(
-                    ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.ceuOverride.moreNerfWoodCrafting ? 2 : 4 : 6,
+                    ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.ceuOverride.moreNerfWoodCrafting ? 2 : 4 :
+                            6,
                     plankStack), "s", "P", 'P', allWoodLogs.get(i));
             recipeSawmill(allWoodLogs.get(i), plankStack);
             recipeCutter(allWoodLogs.get(i), plankStack);
