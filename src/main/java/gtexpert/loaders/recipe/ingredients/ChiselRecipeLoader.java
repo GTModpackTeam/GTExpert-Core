@@ -6,13 +6,12 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.BlockLamp;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.integration.chisel.ChiselHelper;
+import gtexpert.common.GTEConfigHolder;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -25,9 +24,12 @@ import net.minecraftforge.oredict.OreDictionary;
 import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static gregtech.api.GTValues.*;
+import static gregtech.api.recipes.ModHandler.removeRecipeByName;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.blocks.BlockWarningSign.SignType.*;
@@ -38,6 +40,8 @@ import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.AUTO_CHISEL;
+import static gtexpert.integration.chisel.ChiselHelper.addGroup;
+import static gtexpert.integration.chisel.ChiselHelper.addVariation;
 
 public class ChiselRecipeLoader {
 
@@ -104,31 +108,31 @@ public class ChiselRecipeLoader {
 
         // Material Blocks
         if (ConfigHolder.recipes.disableManualCompression) {
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "charcoal_uncraft"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "diamond"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "emerald"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "redstone"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "coal"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "charcoal_uncraft"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "diamond"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "emerald"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "redstone"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "coal"));
 
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocksilver"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocklead"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocktin"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocksteel"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockplatinum"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockiron"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockaluminium"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockcobalt"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocknickel"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockelectrum"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockuranium"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockcopper"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockbronze"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockinvar"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockgold"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocksilver"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocklead"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocktin"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocksteel"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockplatinum"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockiron"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockaluminium"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockcobalt"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocknickel"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockelectrum"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockuranium"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockcopper"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockbronze"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockinvar"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockgold"));
         }
 
         // Auto Chisel
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "autochisel"));
+        removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "autochisel"));
         ModHandler.addShapedRecipe("autochisel", new ItemStack(ChiselBlocks.auto_chisel),
                 "PPP", "PTP", "SSS",
                 'P', "paneGlass",
@@ -144,309 +148,234 @@ public class ChiselRecipeLoader {
 
         // Glass Pane
         if (ConfigHolder.recipes.hardGlassRecipes) {
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassbubble"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassnoborder"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassshale"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-thingrid"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chinese"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/japanese"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassdungeon"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glasslight"));
-            ModHandler.removeRecipeByName(
-                    new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-ornatesteel"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-screen"));
-            ModHandler
-                    .removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-steelframe"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassstone"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassstreak"));
-            ModHandler
-                    .removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-thickgrid"));
-            ModHandler.removeRecipeByName(
-                    new ResourceLocation(GTEValues.MODID_CHISEL, "glass/a1-glasswindow-ironfencemodern"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chrono"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chinese2"));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/japanese2"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassbubble"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassnoborder"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassshale"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-thingrid"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chinese"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/japanese"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassdungeon"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glasslight"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-ornatesteel"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-screen"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-steelframe"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassstone"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassstreak"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-thickgrid"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/a1-glasswindow-ironfencemodern"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chrono"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chinese2"));
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/japanese2"));
         }
 
         // Hazard Sign 1
-        ChiselHelper.addGroup("hazardSign");
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(YELLOW_STRIPES));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(SMALL_YELLOW_STRIPES));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(RADIOACTIVE_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(BIO_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(EXPLOSION_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(FIRE_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(ACID_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(MAGIC_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(FROST_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(NOISE_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(GENERIC_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(HIGH_VOLTAGE_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(MAGNETIC_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(ANTIMATTER_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(HIGH_TEMPERATURE_HAZARD));
-        ChiselHelper.addVariation("hazardSign", WARNING_SIGN.getItemVariant(VOID_HAZARD));
+        addGroup("hazardSign");
+        Arrays.asList(YELLOW_STRIPES, SMALL_YELLOW_STRIPES,
+                RADIOACTIVE_HAZARD, BIO_HAZARD, EXPLOSION_HAZARD, FIRE_HAZARD, ACID_HAZARD, MAGIC_HAZARD, FROST_HAZARD,
+                NOISE_HAZARD, GENERIC_HAZARD, HIGH_VOLTAGE_HAZARD, MAGNETIC_HAZARD, ANTIMATTER_HAZARD,
+                HIGH_TEMPERATURE_HAZARD, VOID_HAZARD)
+                .forEach(hazardSign -> addVariation("hazardSign", WARNING_SIGN.getItemVariant(hazardSign)));
         List<ItemStack> hazardSigns = OreDictionary.getOres("hazardSign");
-        for (ItemStack hazardSign : hazardSigns) {
-            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                    .notConsumable(hazardSign)
-                    .input("hazardSign")
-                    .outputs(hazardSign)
-                    .duration(20)
-                    .EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        hazardSigns.forEach(hazardSign -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(hazardSign.getItem(), 1, hazardSign.getMetadata()))
+                .input("hazardSign")
+                .outputs(hazardSign)
+                .duration(20)
+                .EUt(VA[ULV])
+                .buildAndRegister());
 
         // Hazard Sign 2
-        ChiselHelper.addGroup("hazardSign1");
-        ChiselHelper.addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(MOB_SPAWNER_HAZARD));
-        ChiselHelper.addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(SPATIAL_STORAGE_HAZARD));
-        ChiselHelper.addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(LASER_HAZARD));
-        ChiselHelper.addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(MOB_HAZARD));
-        ChiselHelper.addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(BOSS_HAZARD));
-        ChiselHelper.addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(GREGIFICATION_HAZARD));
-        ChiselHelper.addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(CAUSALITY_HAZARD));
-        ChiselHelper.addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(AUTOMATED_DEFENSES_HAZARD));
-        ChiselHelper.addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(HIGH_PRESSURE_HAZARD));
+        addGroup("hazardSign1");
+        Arrays.asList(MOB_SPAWNER_HAZARD, SPATIAL_STORAGE_HAZARD,
+                LASER_HAZARD, MOB_HAZARD, BOSS_HAZARD, GREGIFICATION_HAZARD, CAUSALITY_HAZARD,
+                AUTOMATED_DEFENSES_HAZARD, HIGH_PRESSURE_HAZARD)
+                .forEach(hazardSign1 -> addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(hazardSign1)));
         List<ItemStack> hazardSigns1 = OreDictionary.getOres("hazardSign1");
-        for (ItemStack hazardSign1 : hazardSigns1) {
-            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                    .notConsumable(hazardSign1)
-                    .input("hazardSign1")
-                    .outputs(hazardSign1)
-                    .duration(20)
-                    .EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        hazardSigns1.forEach(hazardSign1 -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(hazardSign1.getItem(), 1, hazardSign1.getMetadata()))
+                .input("hazardSign1")
+                .outputs(hazardSign1)
+                .duration(20)
+                .EUt(VA[ULV])
+                .buildAndRegister());
 
         // Black Granite
-        ChiselHelper.addGroup("blackGranite");
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(SMOOTH).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(COBBLE).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(COBBLE_MOSSY).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(POLISHED).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(BRICKS).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(BRICKS_CRACKED).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(BRICKS_MOSSY).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(CHISELED).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(TILED).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(TILED_SMALL).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(BRICKS_SMALL).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(WINDMILL_A).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(WINDMILL_B).getItemVariant(BLACK_GRANITE));
-        ChiselHelper.addVariation("blackGranite", STONE_BLOCKS.get(BRICKS_SQUARE).getItemVariant(BLACK_GRANITE));
+        addGroup("blackGranite");
+        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
+                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
+                BRICKS_SQUARE)
+                .forEach(blackGranite -> addVariation("blackGranite",
+                        STONE_BLOCKS.get(blackGranite).getItemVariant(BLACK_GRANITE)));
         List<ItemStack> blackGranites = OreDictionary.getOres("blackGranite");
-        for (ItemStack blackGranite : blackGranites) {
-            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                    .notConsumable(blackGranite)
-                    .input("blackGranite")
-                    .outputs(blackGranite)
-                    .duration(20)
-                    .EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        blackGranites.forEach(blackGranite -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(blackGranite.getItem(), 1, blackGranite.getMetadata()))
+                .input("blackGranite")
+                .outputs(blackGranite)
+                .duration(20)
+                .EUt(VA[ULV])
+                .buildAndRegister());
 
         // Red Granite
-        ChiselHelper.addGroup("redGranite");
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(SMOOTH).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(COBBLE).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(COBBLE_MOSSY).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(POLISHED).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(BRICKS).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(BRICKS_CRACKED).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(BRICKS_MOSSY).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(CHISELED).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(TILED).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(TILED_SMALL).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(BRICKS_SMALL).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(WINDMILL_A).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(WINDMILL_B).getItemVariant(RED_GRANITE));
-        ChiselHelper.addVariation("redGranite", STONE_BLOCKS.get(BRICKS_SQUARE).getItemVariant(RED_GRANITE));
+        addGroup("redGranite");
+        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
+                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
+                BRICKS_SQUARE)
+                .forEach(redGranite -> addVariation("redGranite",
+                        STONE_BLOCKS.get(redGranite).getItemVariant(RED_GRANITE)));
         List<ItemStack> redGranites = OreDictionary.getOres("redGranite");
-        for (ItemStack redGranite : redGranites) {
-            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                    .notConsumable(redGranite)
-                    .input("redGranite")
-                    .outputs(redGranite)
-                    .duration(20)
-                    .EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        redGranites.forEach(redGranite -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(redGranite.getItem(), 1, redGranite.getMetadata()))
+                .input("redGranite")
+                .outputs(redGranite)
+                .duration(20)
+                .EUt(VA[ULV])
+                .buildAndRegister());
 
         // Marble
-        ChiselHelper.addGroup("marbleGt");
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(SMOOTH).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(COBBLE).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(COBBLE_MOSSY).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(POLISHED).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(BRICKS).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(BRICKS_CRACKED).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(BRICKS_MOSSY).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(CHISELED).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(TILED).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(TILED_SMALL).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(BRICKS_SMALL).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(WINDMILL_A).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(WINDMILL_B).getItemVariant(MARBLE));
-        ChiselHelper.addVariation("marbleGt", STONE_BLOCKS.get(BRICKS_SQUARE).getItemVariant(MARBLE));
+        addGroup("marbleGt");
+        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
+                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
+                BRICKS_SQUARE)
+                .forEach(marbleGt -> addVariation("marbleGt", STONE_BLOCKS.get(marbleGt).getItemVariant(MARBLE)));
         List<ItemStack> marbleGts = OreDictionary.getOres("marbleGt");
-        for (ItemStack marbleGt : marbleGts) {
-            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                    .notConsumable(marbleGt)
-                    .input("marbleGt")
-                    .outputs(marbleGt)
-                    .duration(20)
-                    .EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        marbleGts.forEach(marbleGt -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(marbleGt.getItem(), 1, marbleGt.getMetadata()))
+                .input("marbleGt")
+                .outputs(marbleGt)
+                .duration(20)
+                .EUt(VA[ULV])
+                .buildAndRegister());
 
         // Basalt
-        ChiselHelper.addGroup("basaltGt");
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(SMOOTH).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(COBBLE).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(COBBLE_MOSSY).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(POLISHED).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(BRICKS).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(BRICKS_CRACKED).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(BRICKS_MOSSY).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(CHISELED).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(TILED).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(TILED_SMALL).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(BRICKS_SMALL).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(WINDMILL_A).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(WINDMILL_B).getItemVariant(BASALT));
-        ChiselHelper.addVariation("basaltGt", STONE_BLOCKS.get(BRICKS_SQUARE).getItemVariant(BASALT));
+        addGroup("basaltGt");
+        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
+                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
+                BRICKS_SQUARE)
+                .forEach(basaltGt -> addVariation("basaltGt", STONE_BLOCKS.get(basaltGt).getItemVariant(BASALT)));
         List<ItemStack> basaltGts = OreDictionary.getOres("basaltGt");
-        for (ItemStack basaltGt : basaltGts) {
-            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                    .notConsumable(basaltGt)
-                    .input("basaltGt")
-                    .outputs(basaltGt)
-                    .duration(20)
-                    .EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        basaltGts.forEach(basaltGt -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(basaltGt.getItem(), 1, basaltGt.getMetadata()))
+                .input("basaltGt")
+                .outputs(basaltGt)
+                .duration(20)
+                .EUt(VA[ULV])
+                .buildAndRegister());
 
         // Light Concrete
-        ChiselHelper.addGroup("lightConcrete");
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(SMOOTH).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(COBBLE).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(COBBLE_MOSSY).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(POLISHED).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(BRICKS).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(BRICKS_CRACKED).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(BRICKS_MOSSY).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(CHISELED).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(TILED).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(TILED_SMALL).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(BRICKS_SMALL).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(WINDMILL_A).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(WINDMILL_B).getItemVariant(CONCRETE_LIGHT));
-        ChiselHelper.addVariation("lightConcrete", STONE_BLOCKS.get(BRICKS_SQUARE).getItemVariant(CONCRETE_LIGHT));
+        addGroup("lightConcrete");
+        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED,
+                BRICKS, BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A,
+                WINDMILL_B, BRICKS_SQUARE)
+                .forEach(lightConcrete -> addVariation("lightConcrete",
+                        STONE_BLOCKS.get(lightConcrete).getItemVariant(CONCRETE_LIGHT)));
         List<ItemStack> lightConcretes = OreDictionary.getOres("lightConcrete");
-        for (ItemStack lightConcrete : lightConcretes) {
-            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                    .notConsumable(lightConcrete)
-                    .input("lightConcrete")
-                    .outputs(lightConcrete)
-                    .duration(20)
-                    .EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        lightConcretes.forEach(lightConcrete -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(lightConcrete.getItem(), 1, lightConcrete.getMetadata()))
+                .input("lightConcrete")
+                .outputs(lightConcrete)
+                .duration(20)
+                .EUt(VA[ULV])
+                .buildAndRegister());
 
         // Dark Concrete
-        ChiselHelper.addGroup("darkConcrete");
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(SMOOTH).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(COBBLE).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(COBBLE_MOSSY).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(POLISHED).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(BRICKS).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(BRICKS_CRACKED).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(BRICKS_MOSSY).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(CHISELED).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(TILED).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(TILED_SMALL).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(BRICKS_SMALL).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(WINDMILL_A).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(WINDMILL_B).getItemVariant(CONCRETE_DARK));
-        ChiselHelper.addVariation("darkConcrete", STONE_BLOCKS.get(BRICKS_SQUARE).getItemVariant(CONCRETE_DARK));
+        addGroup("darkConcrete");
+        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
+                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
+                BRICKS_SQUARE)
+                .forEach(darkConcrete -> addVariation("darkConcrete",
+                        STONE_BLOCKS.get(darkConcrete).getItemVariant(CONCRETE_DARK)));
         List<ItemStack> darkConcretes = OreDictionary.getOres("darkConcrete");
-        for (ItemStack darkConcrete : darkConcretes) {
-            GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                    .notConsumable(darkConcrete)
-                    .input("darkConcrete")
-                    .outputs(darkConcrete)
-                    .duration(20)
-                    .EUt(VA[ULV])
-                    .buildAndRegister();
-        }
+        darkConcretes.forEach(darkConcrete -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(darkConcrete.getItem(), 1, darkConcrete.getMetadata()))
+                .input("darkConcrete")
+                .outputs(darkConcrete)
+                .duration(20)
+                .EUt(VA[ULV])
+                .buildAndRegister());
 
         // Lamp
-        if (Loader.isModLoaded("projectred-illumination")) {
-            for (int i = 0; i < 31; i++) {
-                ModHandler.removeRecipeByOutput(getModItem("projectred-illumination", "lamp", 1, i));
-            }
+        if (GTEConfigHolder.chiselIntegration.hardLedRecipes && Loader.isModLoaded("projectred-illumination")) {
+            IntStream.range(0, 31).mapToObj(i -> getModItem("projectred-illumination", "lamp", 1, i))
+                    .forEach(ModHandler::removeRecipeByOutput);
 
-            for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            int i = 0;
+            while (i < Materials.CHEMICAL_DYES.length) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
-                ChiselHelper.addGroup("lamp_" + color);
-                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
-                    ChiselHelper.addVariation("lamp_" + color, getModItem("projectred-illumination", "lamp", 1, i));
-                    ChiselHelper.addVariation("lamp_" + color,
-                            getModItem("projectred-illumination", "lamp", 1, i + 16));
-                    ChiselHelper.addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                addGroup("lamp_" + color);
+                {
+                    int lampMeta = 0;
+                    while (lampMeta < lamp.getItemMetadataStates()) {
+                        addVariation("lamp_" + color, getModItem("projectred-illumination", "lamp", 1, i));
+                        addVariation("lamp_" + color,
+                                getModItem("projectred-illumination", "lamp", 1, i + 16));
+                        addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                        lampMeta++;
+                    }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
-                ChiselHelper.addGroup("lamp_borderless_" + color);
-                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
-                    ChiselHelper.addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                addGroup("lamp_borderless_" + color);
+                int lampMeta = 0;
+                while (lampMeta < lamp.getItemMetadataStates()) {
+                    addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                    lampMeta++;
                 }
+                i++;
             }
         } else {
-            for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            int i = 0;
+            while (i < Materials.CHEMICAL_DYES.length) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
-                ChiselHelper.addGroup("lamp_" + color);
-                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
-                    ChiselHelper.addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                addGroup("lamp_" + color);
+                {
+                    int lampMeta = 0;
+                    while (lampMeta < lamp.getItemMetadataStates()) {
+                        addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                        lampMeta++;
+                    }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
-                ChiselHelper.addGroup("lamp_borderless_" + color);
-                for (int lampMeta = 0; lampMeta < lamp.getItemMetadataStates(); lampMeta++) {
-                    ChiselHelper.addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                addGroup("lamp_borderless_" + color);
+                int lampMeta = 0;
+                while (lampMeta < lamp.getItemMetadataStates()) {
+                    addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                    lampMeta++;
                 }
+                i++;
             }
         }
     }
 
     private static void tools() {
-        // Iron Chisel
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
-        ModHandler.addShapedRecipe("chisel_iron", new ItemStack(ChiselItems.chisel_iron),
-                "fPP", " CP", "S h",
-                'P', new UnificationEntry(plate, Iron),
-                'C', new UnificationEntry(screw, Iron),
-                'S', new UnificationEntry(stick, Bronze));
+        if (ConfigHolder.recipes.hardToolArmorRecipes && GTEConfigHolder.chiselIntegration.hardToolRecipes) {
+            // Iron Chisel
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
+            ModHandler.addShapedRecipe("chisel_iron", new ItemStack(ChiselItems.chisel_iron),
+                    "fPP", " CP", "S h",
+                    'P', new UnificationEntry(plate, Iron),
+                    'C', new UnificationEntry(screw, Iron),
+                    'S', new UnificationEntry(stick, Bronze));
 
-        // Diamond Chisel
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_diamond"));
-        ModHandler.addShapedRecipe("chisel_diamond", new ItemStack(ChiselItems.chisel_diamond),
-                "fPP", " CP", "S h",
-                'P', new UnificationEntry(plate, Diamond),
-                'C', new ItemStack(ChiselItems.chisel_iron),
-                'S', new UnificationEntry(stick, RoseGold));
+            // Diamond Chisel
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_diamond"));
+            ModHandler.addShapedRecipe("chisel_diamond", new ItemStack(ChiselItems.chisel_diamond),
+                    "fPP", " CP", "S h",
+                    'P', new UnificationEntry(plate, Diamond),
+                    'C', new ItemStack(ChiselItems.chisel_iron),
+                    'S', new UnificationEntry(stick, RoseGold));
 
-        // iChisel
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_hitech"));
-        ModHandler.addShapedRecipe("chisel_hitech", new ItemStack(ChiselItems.chisel_hitech),
-                "fPP", " CP", "S h",
-                'P', new UnificationEntry(plate, Diamond),
-                'C', new ItemStack(ChiselItems.chisel_diamond),
-                'S', new UnificationEntry(stick, StainlessSteel));
+            // iChisel
+            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_hitech"));
+            ModHandler.addShapedRecipe("chisel_hitech", new ItemStack(ChiselItems.chisel_hitech),
+                    "fPP", " CP", "S h",
+                    'P', new UnificationEntry(plate, Diamond),
+                    'C', new ItemStack(ChiselItems.chisel_diamond),
+                    'S', new UnificationEntry(stick, StainlessSteel));
+        }
     }
 }

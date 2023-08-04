@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class GTELog {
 
-    public static Logger logger = LogManager.getLogger(GTEValues.MODNAME);
-
     private GTELog() {}
+
+    public static Logger logger = LogManager.getLogger(GTEValues.MODNAME);
 }

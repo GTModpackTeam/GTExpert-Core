@@ -12,12 +12,15 @@ import net.minecraftforge.fml.common.event.*;
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
      version = Tags.VERSION,
-     dependencies = "required-after:mixinbooter;" +
+     dependencies = "required-after:mixinbooter;required-after:configanytime;" +
              GTInternalTags.DEP_VERSION_STRING + "required-after:" + GTEValues.MODID_GCYM + ";" +
              "after:" + GTEValues.MODID_GTFO + ";" + "after:" + GTEValues.MODID_GCYS + ";" +
              "required-after:" + GTEValues.MODID_ECO + ";" + "required-after:" + GTEValues.MODID_EIO + ";" +
+             "required-after:" + GTEValues.MODID_EIOE + ";" + "required-after:" + GTEValues.MODID_EIOM + ";" +
+             "required-after:" + GTEValues.MODID_EIOC + ";" + "required-after:" + GTEValues.MODID_EIOCA + ";" +
              "required-after:" + GTEValues.MODID_AE + ";" + "required-after:" + GTEValues.MODID_AEA + ";" + "after:" +
-             GTEValues.MODID_DE + ";" + "after:" + GTEValues.MODID_DA + ";" + "after:" + GTEValues.MODID_CHISEL + ";")
+             GTEValues.MODID_DE + ";" + "after:" + GTEValues.MODID_DA + ";" + "after:" + GTEValues.MODID_CHISEL + ";" +
+             "after:" + GTEValues.MODID_AVARITIA + ";" + "after:" + GTEValues.MODID_AVAADDON + ";")
 
 public class GTExpertMod {
 

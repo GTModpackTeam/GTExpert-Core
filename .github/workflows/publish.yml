@@ -8,6 +8,7 @@ on:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+' # any semver tag, e.g. v1.2.3
+      - 'v[0-9]+.[0-9]+.[0-9]+-pr-+[0-9]' # any semver tag, e.g. v1.2.3-pr-4
 
 env:
   # link to the changelog with a format code for the version
@@ -39,7 +40,7 @@ jobs:
       - name: Build Project
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--scan --build-cache --info --no-daemon --stacktrace build'
+          arguments: '--build-cache --info --no-daemon --stacktrace build'
           generate-job-summary: false
           gradle-home-cache-includes: |
             caches
@@ -56,6 +57,7 @@ jobs:
 
       - name: Publish to Curseforge
         uses: gradle/gradle-build-action@v2
+        if: github.ref == 'refs/heads/master'
         env:
           CURSEFORGE_API_KEY: "${{ secrets.CURSEFORGE_API_KEY }}"
           CHANGELOG_LOCATION: "${{ env.CHANGELOG_LOCATION }}"

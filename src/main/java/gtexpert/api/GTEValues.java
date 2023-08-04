@@ -12,10 +12,16 @@ public class GTEValues {
             MODID_TOP = "theoneprobe",
             MODID_ECO = "endercore",
             MODID_EIO = "enderio",
+            MODID_EIOE = "enderioendergy",
+            MODID_EIOM = "enderiomachines",
+            MODID_EIOC = "enderioconduits",
+            MODID_EIOCA = "enderioconduitsappliedenergistics",
             MODID_AE = "appliedenergistics2",
             MODID_AEA = "aeadditions",
             MODID_EXCPU = "extracpus",
             MODID_DE = "draconicevolution",
             MODID_DA = "draconicadditions",
-            MODID_CHISEL = "chisel";
+            MODID_CHISEL = "chisel",
+            MODID_AVARITIA = "avaritia",
+            MODID_AVAADDON = "avaritiaddons";
 }

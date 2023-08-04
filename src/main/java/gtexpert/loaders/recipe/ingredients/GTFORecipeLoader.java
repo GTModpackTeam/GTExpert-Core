@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static gregtech.api.GTValues.*;
@@ -35,7 +35,7 @@ public class GTFORecipeLoader {
 
     private static void fluid() {
         // Sludge
-        List<ItemStack> craftSludge = new ArrayList<>();
+        List<ItemStack> craftSludge = new LinkedList<>();
         craftSludge.add(new ItemStack(Items.PORKCHOP));
         craftSludge.add(new ItemStack(Items.BEEF));
         craftSludge.add(new ItemStack(Items.CHICKEN));
@@ -44,14 +44,14 @@ public class GTFORecipeLoader {
         craftSludge.add(new ItemStack(Items.FISH, 1, 0));
         craftSludge.add(new ItemStack(Items.FISH, 1, 1));
         craftSludge.add(new ItemStack(Items.FISH, 1, 2));
-        for (ItemStack itemStack : craftSludge) {
+        craftSludge.forEach(itemStack -> {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MIXER_RECIPES,
                     new ItemStack[] { itemStack },
                     new FluidStack[] { SulfuricAcid.getFluid(200) });
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MIXER_RECIPES,
                     new ItemStack[] { itemStack },
                     new FluidStack[] { Water.getFluid(400) });
-        }
+        });
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input("craftSludge", 1)
