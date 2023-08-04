@@ -25,32 +25,37 @@ dependencies {
     // Hard Dependencies
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
+    implementation rfg.deobf("curse.maven:configanytime-870276:4576653") // CAT 1.0
     implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848") // CCL 3.2.3.358
-    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4644635") // CEu 2.7.2
-    //implementation (files("libs/gregtech-1.12.2-2.7.2-beta-dev.jar"))
+    //implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4644635") // CEu 2.7.2
+    implementation (files("libs/gregtech-1.12.2-2.7.2-beta-dev-b8c7c30.jar"))
     implementation rfg.deobf("curse.maven:gregicality-multiblocks-564858:4638270") // GCYM 1.2.4
     //implementation (files("libs/GregicalityMultiblocks-1.2.4-dev.jar"))
-    implementation rfg.deobf("curse.maven:ae2-extended-life-570458:4632516") // AE2UEL 0.55.17
-    implementation rfg.deobf("curse.maven:enderio-64578:3328811") // EIO 5.3.70
-    implementation rfg.deobf("curse.maven:ender-io-conduits-304346:3328808") // EIOC 5.3.70
-    implementation rfg.deobf("curse.maven:endercore-231868:2972849") // EnderCore 0.5.76
-    implementation "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
-    implementation "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
-    implementation rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
+    implementation rfg.deobf("curse.maven:ae2-extended-life-570458:4673868") // AE2UEL 0.55.20
     implementation rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465") // Forgelin 1.8.4
     implementation rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371") // AEAdditions 1.3.8
+    implementation "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
+    implementation "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
+    implementation rfg.deobf("curse.maven:endercore-231868:4671384") // EnderCore 0.5.78
+    implementation rfg.deobf("curse.maven:ender-io-base-297193:4674231") // EIO 5.3.72
+    implementation rfg.deobf("curse.maven:ender-io-endergy-304346:4674241") // EIOE 5.3.72
+    implementation rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
+    implementation rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
+    implementation rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
 
     // Soft Dependencies
-    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.687" // CrT 4.1.20
-    implementation rfg.deobf("curse.maven:groovyscript-687577:4610037") // GrS 0.5.1
+    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.690" // CrT 4.1.20
+    implementation rfg.deobf("curse.maven:groovyscript-687577:4635839") // GrS 0.5.2
     implementation rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
 
     // Debug Draconic Evolution/Additions
+    compileOnly rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
     compileOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436") // RedstoneFlux 1.1.1
     compileOnly rfg.deobf("curse.maven:brandons-core-231382:3408276") // BrandonsCore 2.4.20.162
     compileOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261") // DraconicEvolution 2.3.28.354
     compileOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704") // DraconicAdditions 1.17.0.45
-    if (project.debug_de.toBoolean()) {
+    if (project.debug_all.toBoolean() || project.debug_de.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:baubles-227083:2518667")
         runtimeOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436")
         runtimeOnly rfg.deobf("curse.maven:brandons-core-231382:3408276")
         runtimeOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
@@ -59,10 +64,20 @@ dependencies {
 
     // Debug Chisel
     compileOnly rfg.deobf("curse.maven:chisel-235279:2915375") // Chisel 1.0.2.45
-    if (project.debug_chisel.toBoolean()) {
+    if (project.debug_all.toBoolean() || project.debug_chisel.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:chisel-235279:2915375")
     }
 
+    // Debug Avaritia
+    compileOnly rfg.deobf("curse.maven:wanionlib-253043:4623135") // WanionLib 2.91
+    compileOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349") // Avaritia 3.3.0.37
+    compileOnly rfg.deobf("curse.maven:avaritiaddons-248873:4623403") // Avaritiaddons 1.8b
+    if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:wanionlib-253043:4623135")
+        runtimeOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349")
+        runtimeOnly rfg.deobf("curse.maven:avaritiaddons-248873:4623403")
+    }
+
     // Boot error fix
-    runtimeOnly (files("libs/EnderCore-1.12.2-0.5.76-core.jar"))
+    runtimeOnly (files("libs/EnderCore-1.12.2-0.5.78-core.jar"))
 }

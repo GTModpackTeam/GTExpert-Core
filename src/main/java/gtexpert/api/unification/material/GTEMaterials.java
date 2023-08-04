@@ -3,6 +3,7 @@ package gtexpert.api.unification.material;
 import gregtech.api.unification.material.Material;
 
 import gtexpert.api.GTEValues;
+import gtexpert.api.unification.material.ingredients.*;
 
 import net.minecraftforge.fml.common.Loader;
 
@@ -102,7 +103,10 @@ public class GTEMaterials {
 
     public static void registerMaterialsLowest() {
         if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
-            DEFirstDegreeMaterials.init(); // 24176 - 24200
+            DEFirstDegreeMaterials.init(); // 24176 - 24185
+        }
+        if (Loader.isModLoaded(GTEValues.MODID_AVARITIA)) {
+            AvaritiaFirstDegreeMaterials.init(); // 24186 - 24190
         }
     }
 }

@@ -161,8 +161,7 @@ public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntit
         leftButtonStartX += 18;
 
         ImageWidget logo = new ImageWidget(152, 63 + yOffset, 17, 17,
-                GTValues.XMAS.get() ? GuiTextures.GREGTECH_LOGO_XMAS : GuiTextures.GREGTECH_LOGO)
-                        .setIgnoreColor(true);
+                GTValues.XMAS.get() ? GTEGuiTextures.GTE_LOGO_XMAS : GTEGuiTextures.GTE_LOGO).setIgnoreColor(true);
         builder.widget(logo);
 
         builder.widget(new ToggleButtonWidget(leftButtonStartX, 62 + yOffset, 18, 18,

@@ -317,7 +317,8 @@ public class DraconicUpgradeRecipeLoader {
                 continue;
             }
             for (String upgradeName : ToolUpgrade.NAME_TO_ID.keySet()) {
-                for (int currentLevel = 0; currentLevel < ToolUpgrade.NAME_MAX_LEVEL.get(upgradeName); currentLevel++) {
+                int currentLevel = 0;
+                while (currentLevel < ToolUpgrade.NAME_MAX_LEVEL.get(upgradeName)) {
                     if (item.getValidUpgrades(stack).contains(upgradeName) &&
                             item.getMaxUpgradeLevel(stack, upgradeName) >= currentLevel + 1) {
                         RecipeMap<UpgradeRecipeBuilder> recipeMap;
@@ -365,6 +366,7 @@ public class DraconicUpgradeRecipeLoader {
                         }
                         recipeBuilder.buildAndRegister();
                     }
+                    currentLevel++;
                 }
             }
         }
