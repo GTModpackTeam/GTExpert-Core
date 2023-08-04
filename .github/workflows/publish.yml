@@ -54,6 +54,7 @@ jobs:
           files: "build/libs/*.jar"
           generate_release_notes: true
           fail_on_unmatched_files: true
+          prerelease: if (github.ref == 'refs/heads/master') { return false; } else { return true; }
 
       - name: Publish to Curseforge
         uses: gradle/gradle-build-action@v2
