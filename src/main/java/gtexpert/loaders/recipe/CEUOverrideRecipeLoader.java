@@ -354,7 +354,7 @@ public class CEUOverrideRecipeLoader {
 
         // Check if the material has a molten fluid
         Fluid molten = AlloyBlastUtil.getMoltenFluid(material);
-        if (molten == null) return;
+        if (material.getFluid() == molten) return;
 
         // Check if the material has a blast temperature below 5000K
         if (material.getBlastTemperature() < 5000) {
