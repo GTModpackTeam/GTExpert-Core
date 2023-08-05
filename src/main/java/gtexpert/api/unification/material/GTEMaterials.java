@@ -102,7 +102,7 @@ public class GTEMaterials {
     }
 
     public static void registerMaterialsLowest() {
-        if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
+        if (GTEValues.isModLoadedDEDA()) {
             DEFirstDegreeMaterials.init(); // 24176 - 24185
         }
         if (Loader.isModLoaded(GTEValues.MODID_AVARITIA)) {

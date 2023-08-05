@@ -88,7 +88,7 @@ public class GTEWoodRecipeLoader {
         });
     }
 
-    public static void recipeSawmill(ItemStack input, ItemStack output) {
+    private static void recipeSawmill(ItemStack input, ItemStack output) {
         GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .inputs(GTUtility.copy(6, input))
@@ -106,7 +106,7 @@ public class GTEWoodRecipeLoader {
                 .buildAndRegister();
     }
 
-    public static void recipeCutter(ItemStack input, ItemStack output) {
+    private static void recipeCutter(ItemStack input, ItemStack output) {
         if (input.equals(new ItemStack(Blocks.LOG, 1, 0)) ||
                 input.equals(new ItemStack(Blocks.LOG, 1, 1)) ||
                 input.equals(new ItemStack(Blocks.LOG, 1, 2)) ||
