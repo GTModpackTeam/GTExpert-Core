@@ -32,7 +32,7 @@ public class GTERecipeManager {
     }
 
     public static void loadLowest() {
-        if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
+        if (GTEValues.isModLoadedDEDA()) {
             DraconicRecipeLoader.init();
             DraconicUpgradeRecipeLoader.init();
         }

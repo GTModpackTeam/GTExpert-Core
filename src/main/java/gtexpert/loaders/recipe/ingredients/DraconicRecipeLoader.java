@@ -58,7 +58,7 @@ public class DraconicRecipeLoader {
                 .input(dust, Electrotine, 1)
                 .fluidInputs(Ice.getFluid(4000))
                 .fluidInputs(EnderPearl.getFluid(144))
-                .fluidOutputs(Cryotheum.getFluid(100))
+                .fluidOutputs(Cryotheum.getFluid(200))
                 .duration(150).EUt(VA[LuV])
                 .buildAndRegister();
 

@@ -1,5 +1,7 @@
 package gtexpert.api;
 
+import net.minecraftforge.fml.common.Loader;
+
 public class GTEValues {
 
     public static final String MODNAME = "GTExpert-Core";
@@ -24,4 +26,8 @@ public class GTEValues {
             MODID_CHISEL = "chisel",
             MODID_AVARITIA = "avaritia",
             MODID_AVAADDON = "avaritiaddons";
+
+    public static boolean isModLoadedDEDA() {
+        return Loader.isModLoaded(MODID_DE) && Loader.isModLoaded(MODID_DA);
+    }
 }

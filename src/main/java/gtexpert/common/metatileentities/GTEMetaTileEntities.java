@@ -13,7 +13,6 @@ import gtexpert.common.metatileentities.multi.*;
 import gtexpert.common.metatileentities.single.*;
 
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
 
 import java.util.function.Function;
 
@@ -102,7 +101,7 @@ public class GTEMetaTileEntities {
         VOIDOREMINER = registerMetaTileEntity(12003,
                 new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
 
-        if (Loader.isModLoaded(GTEValues.MODID_DE) && Loader.isModLoaded(GTEValues.MODID_DA)) {
+        if (GTEValues.isModLoadedDEDA()) {
             DRACONIUM_FUSION = registerMetaTileEntity(12004,
                     new MetaTileEntityDraconiumFusion.TierDraconic(gteId("draconium_fusion")));
             AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005,

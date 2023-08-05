@@ -30,7 +30,6 @@ import gtexpert.integration.ae.AEHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.machines.init.MachineObject;
@@ -443,7 +442,7 @@ public class GTERecipeLoader {
                 'F', FIELD_GENERATOR_IV.getStackForm());
 
         // Void Ore Miner
-        if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
+        if (!GTEValues.isModLoadedDEDA()) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(MetaTileEntities.ADVANCED_LARGE_MINER)
                     .input(circuit, MarkerMaterials.Tier.ZPM, 4)
@@ -625,7 +624,7 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
-        if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
+        if (!GTEValues.isModLoadedDEDA()) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(MetaTileEntities.HULL[UHV])
                     .inputs(AEHelper.aeBlocks.energyCellCreative().maybeStack(4).get())
