@@ -25,7 +25,6 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          ref: dev
           distribution: 'zulu'
           java-version: '17'
 
@@ -50,7 +49,6 @@ jobs:
         id: create-pull-request
         uses: peter-evans/create-pull-request@v4
         with:
-          ref: dev
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           commit-message: 'update build script version to ${{ steps.version-check.outputs.NEW_VERSION }}'
