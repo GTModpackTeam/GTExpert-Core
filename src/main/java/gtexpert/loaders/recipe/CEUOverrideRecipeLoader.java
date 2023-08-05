@@ -493,7 +493,7 @@ public class CEUOverrideRecipeLoader {
 
             if (GTEValues.isModLoadedDEDA()) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .circuitMeta(2)
+                        .circuitMeta(1)
                         .fluidInputs(new FluidStack(molten, 144))
                         .fluidInputs(Cryotheum.getFluid(500))
                         .fluidOutputs(Pyrotheum.getFluid(100))
