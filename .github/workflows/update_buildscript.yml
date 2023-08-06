@@ -53,7 +53,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           commit-message: 'update build script version to ${{ steps.version-check.outputs.NEW_VERSION }}'
           branch: gha-update-buildscript
-          title: Update build script version to ${{ steps.version-check.outputs.NEW_VERSION }}
+          title: "[ci skip] Update build script version to ${{ steps.version-check.outputs.NEW_VERSION }}"
           body: This pull request is created by the buildscript-update workflow
           labels: ignore changelog
 

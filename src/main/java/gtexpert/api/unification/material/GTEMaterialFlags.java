@@ -43,10 +43,13 @@ public class GTEMaterialFlags {
         // Iridium
         Materials.Iridium.setProperty(PropertyKey.ORE, new OreProperty());
 
-        // Molybdenum
+        // Molybdenum TODO: Remove latest version of GCYM v1.2.5
         GCYMMaterials.MolybdenumDisilicide.addFlags(GENERATE_DOUBLE_PLATE);
 
-        // HSLA
+        // HSLA TODO: Remove latest version of GCYM v1.2.5
         GCYMMaterials.HSLASteel.addFlags(GENERATE_DOUBLE_PLATE);
+
+        // Trinaquadalloy TODO: Remove latest version of GCYM v1.2.5
+        GCYMMaterials.Trinaquadalloy.addFlags(GENERATE_DOUBLE_PLATE);
     }
 }

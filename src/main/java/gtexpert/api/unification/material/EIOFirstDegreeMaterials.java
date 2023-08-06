@@ -180,6 +180,7 @@ public class EIOFirstDegreeMaterials {
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x598DB3).iconSet(MaterialIconSet.SHINY)
                 .blastTemp(5400, GasTier.HIGHER, VA[EV], 1072)
+                .flags(GENERATE_PLATE)
                 .components(Silver, 1, Redstone, 1, Glowstone, 1)
                 .build();
 
