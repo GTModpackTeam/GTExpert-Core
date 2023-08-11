@@ -10,7 +10,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Objects;
-
 import javax.annotation.Nonnull;
 
 public class GTEUtility {

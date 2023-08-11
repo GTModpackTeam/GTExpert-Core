@@ -1,5 +1,6 @@
 package gtexpert.loaders.recipe.ingredients;
 
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -8,8 +9,6 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
-
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;

@@ -1,12 +1,11 @@
 package gtexpert.api.unification.material.ingredients;
 
+import gregicality.multiblocks.api.fluids.fluidType.GCYMFluidTypes;
 import gregtech.api.fluids.fluidType.FluidTypes;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.material.properties.ToolProperty;
-
-import gregicality.multiblocks.api.fluids.fluidType.GCYMFluidTypes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
