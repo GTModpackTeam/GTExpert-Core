@@ -37,7 +37,7 @@ public class GTEWoodRecipeLoader {
 
     public static void init() {
         sticks();
-        // planks();
+        planks();
     }
 
     private static void sticks() {
