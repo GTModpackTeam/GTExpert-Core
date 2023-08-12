@@ -43,7 +43,7 @@ public class CEUOverrideRecipeLoader {
     private static void materials() {
         // Vacuum Freezer
         List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        materials.forEach(material -> vacuumFreezerMolten(material));
+        materials.forEach(CEUOverrideRecipeLoader::vacuumFreezerMolten);
 
         // Iron Nugget
         ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Iron, 9),

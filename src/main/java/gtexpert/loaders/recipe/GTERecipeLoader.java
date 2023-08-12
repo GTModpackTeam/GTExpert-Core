@@ -37,6 +37,7 @@ import crazypants.enderio.powertools.init.PowerToolObject;
 
 import java.util.LinkedList;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -464,6 +465,10 @@ public class GTERecipeLoader {
                     .buildAndRegister();
         }
 
+        // Void Ore Miner Recipes
+        List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
+        materials.forEach(GTERecipeLoader::voidOreMiner);
+
         // Treated Wood Machine Casing
         ModHandler.addShapedRecipe(true, "casing_treated_wood",
                 GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
@@ -493,37 +498,6 @@ public class GTERecipeLoader {
                 .output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR, 1)
                 .duration(100).EUt(VA[MV])
                 .buildAndRegister();
-
-        // Void Ore Miner Recipes
-        List<Material> materialOres = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        for (Material materialOre : materialOres) {
-            if (!materialOre.hasProperty(PropertyKey.ORE)) return;
-
-            List<ItemStack> ores = OreDictUnifier.getAll(new UnificationEntry(ore, materialOre));
-            ItemStack oreStack = ores.get(ores.size() - 1);
-            oreStack.setCount(32);
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
-                    .input(ore, materialOre)
-                    .fluidInputs(EnderPearl.getFluid(576))
-                    .fluidInputs(DrillingFluid.getFluid(10000))
-                    .outputs(oreStack)
-                    .duration(20).EUt(VA[ZPM])
-                    .buildAndRegister();
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
-                    .input(oreNetherrack, materialOre)
-                    .fluidInputs(EnderPearl.getFluid(576))
-                    .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(oreNetherrack, materialOre, 64)
-                    .duration(20).EUt(VA[ZPM])
-                    .buildAndRegister();
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
-                    .input(oreEndstone, materialOre)
-                    .fluidInputs(EnderPearl.getFluid(576))
-                    .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(oreEndstone, materialOre, 64)
-                    .duration(20).EUt(VA[ZPM])
-                    .buildAndRegister();
-        }
 
         // Vial Extractor
         MetaTileEntityLoader.registerMachineRecipe(true, VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
@@ -688,6 +662,42 @@ public class GTERecipeLoader {
                 .research(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
                         .CWUt(160)
                         .duration(4000).EUt(VA[UHV]))
+                .buildAndRegister();
+    }
+
+    /**
+     * Add recipes for the Void Ore Miner
+     *
+     * @param material The material to add recipes for
+     */
+    private static void voidOreMiner(@Nonnull Material material) {
+        // Skip if the material doesn't have an ore
+        if (!material.hasProperty(PropertyKey.ORE)) return;
+
+        // Get the ore
+        List<ItemStack> ores = OreDictUnifier.getAll(new UnificationEntry(ore, material));
+        ItemStack oreStack = ores.get(ores.size() - 1);
+        oreStack.setCount(32);
+        GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
+                .input(ore, material)
+                .fluidInputs(EnderPearl.getFluid(576))
+                .fluidInputs(DrillingFluid.getFluid(10000))
+                .outputs(oreStack)
+                .duration(20).EUt(VA[ZPM])
+                .buildAndRegister();
+        GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
+                .input(oreNetherrack, material)
+                .fluidInputs(EnderPearl.getFluid(576))
+                .fluidInputs(DrillingFluid.getFluid(10000))
+                .output(oreNetherrack, material, 64)
+                .duration(20).EUt(VA[ZPM])
+                .buildAndRegister();
+        GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
+                .input(oreEndstone, material)
+                .fluidInputs(EnderPearl.getFluid(576))
+                .fluidInputs(DrillingFluid.getFluid(10000))
+                .output(oreEndstone, material, 64)
+                .duration(20).EUt(VA[ZPM])
                 .buildAndRegister();
     }
 }
