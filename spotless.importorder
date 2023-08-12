@@ -1,9 +1,7 @@
 #Organize Import Order
-0=gregtech
-1=gregicality
-2=gtexpert
-3=net
-4=
-5=java
-6=javax
-7=\#
+0=greg
+1=gtexpert
+2=net
+3=
+4=java
+5=\#
