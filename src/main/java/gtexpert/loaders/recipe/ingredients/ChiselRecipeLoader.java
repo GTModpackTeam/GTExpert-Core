@@ -177,7 +177,7 @@ public class ChiselRecipeLoader {
                 .forEach(hazardSign -> addVariation("hazardSign", WARNING_SIGN.getItemVariant(hazardSign)));
         List<ItemStack> hazardSigns = OreDictionary.getOres("hazardSign");
         hazardSigns.forEach(hazardSign -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .notConsumable(new ItemStack(hazardSign.getItem(), 1, hazardSign.getMetadata()))
+                .circuitMeta(hazardSign.getMetadata())
                 .input("hazardSign")
                 .outputs(hazardSign)
                 .duration(20)
@@ -192,7 +192,7 @@ public class ChiselRecipeLoader {
                 .forEach(hazardSign1 -> addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(hazardSign1)));
         List<ItemStack> hazardSigns1 = OreDictionary.getOres("hazardSign1");
         hazardSigns1.forEach(hazardSign1 -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .notConsumable(new ItemStack(hazardSign1.getItem(), 1, hazardSign1.getMetadata()))
+                .circuitMeta(hazardSign1.getMetadata())
                 .input("hazardSign1")
                 .outputs(hazardSign1)
                 .duration(20)
@@ -208,7 +208,7 @@ public class ChiselRecipeLoader {
                         STONE_BLOCKS.get(blackGranite).getItemVariant(BLACK_GRANITE)));
         List<ItemStack> blackGranites = OreDictionary.getOres("blackGranite");
         blackGranites.forEach(blackGranite -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .notConsumable(new ItemStack(blackGranite.getItem(), 1, blackGranite.getMetadata()))
+                .circuitMeta(blackGranite.getMetadata())
                 .input("blackGranite")
                 .outputs(blackGranite)
                 .duration(20)
@@ -224,7 +224,7 @@ public class ChiselRecipeLoader {
                         STONE_BLOCKS.get(redGranite).getItemVariant(RED_GRANITE)));
         List<ItemStack> redGranites = OreDictionary.getOres("redGranite");
         redGranites.forEach(redGranite -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .notConsumable(new ItemStack(redGranite.getItem(), 1, redGranite.getMetadata()))
+                .circuitMeta(redGranite.getMetadata())
                 .input("redGranite")
                 .outputs(redGranite)
                 .duration(20)
@@ -239,7 +239,7 @@ public class ChiselRecipeLoader {
                 .forEach(marbleGt -> addVariation("marbleGt", STONE_BLOCKS.get(marbleGt).getItemVariant(MARBLE)));
         List<ItemStack> marbleGts = OreDictionary.getOres("marbleGt");
         marbleGts.forEach(marbleGt -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .notConsumable(new ItemStack(marbleGt.getItem(), 1, marbleGt.getMetadata()))
+                .circuitMeta(marbleGt.getMetadata())
                 .input("marbleGt")
                 .outputs(marbleGt)
                 .duration(20)
@@ -254,7 +254,7 @@ public class ChiselRecipeLoader {
                 .forEach(basaltGt -> addVariation("basaltGt", STONE_BLOCKS.get(basaltGt).getItemVariant(BASALT)));
         List<ItemStack> basaltGts = OreDictionary.getOres("basaltGt");
         basaltGts.forEach(basaltGt -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .notConsumable(new ItemStack(basaltGt.getItem(), 1, basaltGt.getMetadata()))
+                .circuitMeta(basaltGt.getMetadata())
                 .input("basaltGt")
                 .outputs(basaltGt)
                 .duration(20)
@@ -270,7 +270,7 @@ public class ChiselRecipeLoader {
                         STONE_BLOCKS.get(lightConcrete).getItemVariant(CONCRETE_LIGHT)));
         List<ItemStack> lightConcretes = OreDictionary.getOres("lightConcrete");
         lightConcretes.forEach(lightConcrete -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .notConsumable(new ItemStack(lightConcrete.getItem(), 1, lightConcrete.getMetadata()))
+                .circuitMeta(lightConcrete.getMetadata())
                 .input("lightConcrete")
                 .outputs(lightConcrete)
                 .duration(20)
@@ -286,7 +286,7 @@ public class ChiselRecipeLoader {
                         STONE_BLOCKS.get(darkConcrete).getItemVariant(CONCRETE_DARK)));
         List<ItemStack> darkConcretes = OreDictionary.getOres("darkConcrete");
         darkConcretes.forEach(darkConcrete -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .notConsumable(new ItemStack(darkConcrete.getItem(), 1, darkConcrete.getMetadata()))
+                .circuitMeta(darkConcrete.getMetadata())
                 .input("darkConcrete")
                 .outputs(darkConcrete)
                 .duration(20)

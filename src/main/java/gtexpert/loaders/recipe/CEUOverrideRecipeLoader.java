@@ -1,5 +1,7 @@
 package gtexpert.loaders.recipe;
 
+import gregicality.multiblocks.api.AlloyBlastUtil;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 import gregtech.api.GregTechAPI;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
@@ -11,9 +13,6 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
 
-import gregicality.multiblocks.api.AlloyBlastUtil;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
-
 import gtexpert.api.GTEValues;
 
 import net.minecraft.init.Blocks;
@@ -24,7 +23,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import javax.annotation.Nonnull;
 
 import static gregtech.api.GTValues.*;
@@ -45,7 +43,7 @@ public class CEUOverrideRecipeLoader {
     private static void materials() {
         // Vacuum Freezer
         List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        materials.forEach(material -> vacuumFreezerMolten(material));
+        materials.forEach(CEUOverrideRecipeLoader::vacuumFreezerMolten);
 
         // Iron Nugget
         ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Iron, 9),

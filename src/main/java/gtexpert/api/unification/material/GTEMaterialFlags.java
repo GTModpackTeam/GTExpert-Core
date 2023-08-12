@@ -1,9 +1,8 @@
 package gtexpert.api.unification.material;
 
+import gregicality.multiblocks.api.unification.GCYMMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.*;
-
-import gregicality.multiblocks.api.unification.GCYMMaterials;
 
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 

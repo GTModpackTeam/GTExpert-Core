@@ -32,7 +32,6 @@ import crazypants.enderio.util.CapturedMob;
 
 import java.util.Collections;
 import java.util.function.Supplier;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
