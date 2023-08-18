@@ -7,14 +7,15 @@ permissions:
 on:
   push:
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+' # any semver tag, e.g. v1.2.3
-      - 'v[0-9]+.[0-9]+.[0-9]+-pr-+[0-9]' # any semver tag, e.g. v1.2.3-pr-4
+      - 'v*-release'
+      - 'v*-beta'
+      - 'v*-alpha'
 
 env:
   # link to the changelog with a format code for the version
   CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{github.repository}}/releases/tag/${{github.ref_name}})"
   # type of release
-  RELEASE_TYPE: "beta"
+  NAME: "GTExpertCore"
 
 jobs:
   publish:
@@ -22,6 +23,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      - name: Get the version
+        run: |
+          echo VERSION=$(echo ${GITHUB_REF} | sed -e 's#refs/tags/##g' | awk -F'-' '{print $1}') >> $GITHUB_ENV
+          echo LEVEL=$(echo ${GITHUB_REF} | sed -e 's#refs/tags/##g' | awk -F'-' '{print $2}') >> $GITHUB_ENV
 
       - name: Check for Duplicate Tags
         run: |
@@ -48,26 +54,19 @@ jobs:
             notifications
             wrapper
 
-      - name: Publish to GitHub
-        uses: softprops/action-gh-release@v1
-        with:
-          files: "build/libs/*.jar"
-          generate_release_notes: true
-          fail_on_unmatched_files: true
-          prerelease: if (github.ref == 'refs/heads/master') { return false; } else { return true; }
-
       - name: Publish to Curseforge
-        uses: gradle/gradle-build-action@v2
-        if: github.ref == 'refs/heads/master'
-        env:
-          CURSEFORGE_API_KEY: "${{ secrets.CURSEFORGE_API_KEY }}"
-          CHANGELOG_LOCATION: "${{ env.CHANGELOG_LOCATION }}"
-          RELEASE_TYPE: "${{ env.RELEASE_TYPE }}"
+        uses: Kir-Antipov/mc-publish@v3.3
         with:
-          arguments: '--info --daemon --stacktrace curseforge'
-          generate-job-summary: false
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
+          curseforge-id: 851103
+          curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
+          files: |
+            build/libs/!(*-@(dev|sources|javadoc)).jar
+            build/libs/*-@(sources).jar
+            build/libs/*-@(dev).jar
+          name: 
+          version: "${{ env.VERSION }}"
+          version-type: "${{ env.LEVEL }}"
+          loaders: forge
+          game-versions: 1.12.2
+          java: 8
+          retry-attempts: 2
