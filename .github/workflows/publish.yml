@@ -54,6 +54,13 @@ jobs:
             notifications
             wrapper
 
+      - name: Publish to GitHub
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "build/libs/*.jar"
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+
       - name: Publish to Curseforge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
@@ -63,7 +70,7 @@ jobs:
             build/libs/!(*-@(dev|sources|javadoc)).jar
             build/libs/*-@(sources).jar
             build/libs/*-@(dev).jar
-          name: 
+          name:
           version: "${{ env.VERSION }}"
           version-type: "${{ env.LEVEL }}"
           loaders: forge
