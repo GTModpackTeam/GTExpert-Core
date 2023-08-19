@@ -227,8 +227,6 @@ public class AERecipeLoader {
         // ########################################
         // Certus Quartz
         // ########################################
-        OreDictionary.registerOre("gemCertusQuartz", AEHelper.aeMaterials.certusQuartzCrystal().maybeStack(1).get());
-
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get())
@@ -381,9 +379,6 @@ public class AERecipeLoader {
         // ########################################
         // Fluix
         // ########################################
-        OreDictionary.registerOre("blockFluix", AEHelper.aeBlocks.fluixBlock().maybeStack(1).get());
-        OreDictionary.registerOre("gemFluix", AEHelper.aeMaterials.fluixCrystal().maybeStack(1).get());
-
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(AEHelper.aeMaterials.purifiedFluixCrystal().maybeStack(1).get())

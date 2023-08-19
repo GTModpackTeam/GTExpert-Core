@@ -14,12 +14,14 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
 
 import gtexpert.api.GTEValues;
+import gtexpert.integration.ae.AEHelper;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -188,6 +190,7 @@ public class CEUOverrideRecipeLoader {
         // ########################################
         // Certus Quartz (Bug Fix)
         // ########################################
+        OreDictionary.registerOre("gemCertusQuartz", AEHelper.aeMaterials.certusQuartzCrystal().maybeStack(1).get());
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, CertusQuartz, 1));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, CertusQuartz, 9));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES,
@@ -261,6 +264,31 @@ public class CEUOverrideRecipeLoader {
                 .output(plate, CertusQuartz, 4)
                 .duration(300).EUt(VA[LV])
                 .buildAndRegister();
+
+        // ########################################
+        // Fluix (Bug Fix)
+        // ########################################
+        OreDictionary.registerOre("blockFluix", AEHelper.aeBlocks.fluixBlock().maybeStack(1).get());
+        OreDictionary.registerOre("gemFluix", AEHelper.aeMaterials.fluixCrystal().maybeStack(1).get());
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, Fluix, 1));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, Fluix, 9));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES,
+                OreDictUnifier.get(block, Fluix, 1));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
+                new ItemStack[] { OreDictUnifier.get(block, Fluix, 1) },
+                new FluidStack[] { Fluix.getFluid(1296) });
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
+                new ItemStack[] { SHAPE_MOLD_BLOCK.getStackForm() },
+                new FluidStack[] { Fluix.getFluid(1296) });
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                new ItemStack[] { OreDictUnifier.get(block, Fluix, 1) },
+                new FluidStack[] { Lubricant.getFluid(5) });
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                new ItemStack[] { OreDictUnifier.get(block, Fluix, 1) },
+                new FluidStack[] { DistilledWater.getFluid(16) });
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                new ItemStack[] { OreDictUnifier.get(block, Fluix, 1) },
+                new FluidStack[] { Water.getFluid(21) });
     }
 
     private static void items() {
@@ -272,7 +300,7 @@ public class CEUOverrideRecipeLoader {
                 .input("bookshelf")
                 .fluidInputs(Oxygen.getFluid(21))
                 .output(dustTiny, Ash, 16)
-                .duration(1).EUt(VA[LV])
+                .duration(21).EUt(VA[LV])
                 .buildAndRegister();
 
         // Chad & Wood Pulp (Bookshelf Override)
@@ -281,13 +309,16 @@ public class CEUOverrideRecipeLoader {
                 .input("bookshelf")
                 .output(dust, Paper, 9)
                 .output(dust, Wood, 6)
-                .duration(196).EUt(2)
+                .duration(1470).EUt(2)
                 .buildAndRegister();
     }
 
     private static void blocks() {
         // Redstone Lamp
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "redstone_lamp"));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES,
+                OreDictUnifier.get(dust, Redstone, 4),
+                OreDictUnifier.get(dust, Glowstone, 4));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(plate, Redstone, 4)
