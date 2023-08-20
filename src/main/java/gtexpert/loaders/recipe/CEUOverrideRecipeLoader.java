@@ -127,140 +127,6 @@ public class CEUOverrideRecipeLoader {
                 .output(block, Ice, 1)
                 .duration(6).EUt(VA[ULV])
                 .buildAndRegister();
-
-        // ########################################
-        // Quartzite (Bug Fix)
-        // ########################################
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, Quartzite, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, Quartzite, 9));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES, OreDictUnifier.get(block, Quartzite, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, Quartzite, 1) },
-                new FluidStack[] { Lubricant.getFluid(3) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, Quartzite, 1) },
-                new FluidStack[] { DistilledWater.getFluid(11) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, Quartzite, 1) },
-                new FluidStack[] { Water.getFluid(15) });
-
-        // Dust
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .output(dust, Quartzite, 4)
-                .duration(80).EUt(2)
-                .buildAndRegister();
-
-        // Gem
-        RecipeMaps.FORGE_HAMMER_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .output(gem, Quartzite, 4)
-                .duration(20).EUt(2)
-                .buildAndRegister();
-
-        // Block
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .input(gem, Quartzite, 4)
-                .output(block, Quartzite, 1)
-                .duration(300).EUt(2)
-                .buildAndRegister();
-
-        // Plate
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .fluidInputs(Lubricant.getFluid(3))
-                .output(plate, Quartzite, 4)
-                .duration(160).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .fluidInputs(DistilledWater.getFluid(11))
-                .output(plate, Quartzite, 4)
-                .duration(240).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .fluidInputs(Water.getFluid(15))
-                .output(plate, Quartzite, 4)
-                .duration(300).EUt(VA[LV])
-                .buildAndRegister();
-
-        // ########################################
-        // Certus Quartz (Bug Fix)
-        // ########################################
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, CertusQuartz, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, CertusQuartz, 9));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES,
-                OreDictUnifier.get(block, CertusQuartz, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
-                new FluidStack[] { CertusQuartz.getFluid(1296) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
-                new ItemStack[] { SHAPE_MOLD_BLOCK.getStackForm() },
-                new FluidStack[] { CertusQuartz.getFluid(1296) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
-                new FluidStack[] { Lubricant.getFluid(3) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
-                new FluidStack[] { DistilledWater.getFluid(11) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
-                new FluidStack[] { Water.getFluid(15) });
-
-        // Fluid
-        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .fluidOutputs(CertusQuartz.getFluid(576))
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-
-        // Dust
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .output(dust, CertusQuartz, 4)
-                .duration(80).EUt(2)
-                .buildAndRegister();
-
-        // Gem
-        RecipeMaps.FORGE_HAMMER_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .output(gem, CertusQuartz, 4)
-                .duration(20).EUt(2)
-                .buildAndRegister();
-
-        // Block
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .input(gem, CertusQuartz, 4)
-                .output(block, CertusQuartz, 1)
-                .duration(300).EUt(2)
-                .buildAndRegister();
-        RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
-                .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(CertusQuartz.getFluid(576))
-                .output(block, CertusQuartz, 1)
-                .duration(20).EUt(VA[ULV])
-                .buildAndRegister();
-
-        // Plate
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .fluidInputs(Lubricant.getFluid(3))
-                .output(plate, CertusQuartz, 4)
-                .duration(160).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .fluidInputs(DistilledWater.getFluid(11))
-                .output(plate, CertusQuartz, 4)
-                .duration(240).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .fluidInputs(Water.getFluid(15))
-                .output(plate, CertusQuartz, 4)
-                .duration(300).EUt(VA[LV])
-                .buildAndRegister();
     }
 
     private static void items() {
@@ -272,7 +138,7 @@ public class CEUOverrideRecipeLoader {
                 .input("bookshelf")
                 .fluidInputs(Oxygen.getFluid(21))
                 .output(dustTiny, Ash, 16)
-                .duration(1).EUt(VA[LV])
+                .duration(21).EUt(VA[LV])
                 .buildAndRegister();
 
         // Chad & Wood Pulp (Bookshelf Override)
@@ -281,13 +147,16 @@ public class CEUOverrideRecipeLoader {
                 .input("bookshelf")
                 .output(dust, Paper, 9)
                 .output(dust, Wood, 6)
-                .duration(196).EUt(2)
+                .duration(1470).EUt(2)
                 .buildAndRegister();
     }
 
     private static void blocks() {
         // Redstone Lamp
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "redstone_lamp"));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES,
+                OreDictUnifier.get(dust, Redstone, 4),
+                OreDictUnifier.get(dust, Glowstone, 4));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(plate, Redstone, 4)

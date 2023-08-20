@@ -46,7 +46,7 @@ public class DEFirstDegreeMaterials {
 
         // Draconium
         Draconium = new Material.Builder(24180, gregtechId("draconium"))
-                .ore(true)
+                .ore(2, 1, true)
                 .ingot(5)
                 .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
                 .color(0x7C46B0).iconSet(MaterialIconSet.METALLIC)
