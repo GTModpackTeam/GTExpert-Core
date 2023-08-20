@@ -19,7 +19,7 @@ public class GTEMaterialFlags {
         Materials.EnderEye.setProperty(PropertyKey.FLUID, new FluidProperty());
         Materials.EnderEye.setFormula("(BeK4N5)(CS)", true);
 
-        // NetherQuartz
+        // Nether Quartz
         Materials.NetherQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
         Materials.NetherQuartz.addFlags(GENERATE_LENS, GENERATE_ROD);
 
@@ -29,6 +29,9 @@ public class GTEMaterialFlags {
 
         // Quartzite
         Materials.Quartzite.addFlags(GENERATE_ROD);
+
+        // Red Alloy
+        Materials.RedAlloy.addFlags(MORTAR_GRINDABLE);
 
         // Glowstone
         Materials.Glowstone.setFormula("Au(Si(FeS2)5(CrAl2O3)Hg3)", true);
@@ -41,14 +44,5 @@ public class GTEMaterialFlags {
 
         // Iridium
         Materials.Iridium.setProperty(PropertyKey.ORE, new OreProperty());
-
-        // Molybdenum TODO: Remove latest version of GCYM v1.2.5
-        GCYMMaterials.MolybdenumDisilicide.addFlags(GENERATE_DOUBLE_PLATE);
-
-        // HSLA TODO: Remove latest version of GCYM v1.2.5
-        GCYMMaterials.HSLASteel.addFlags(GENERATE_DOUBLE_PLATE);
-
-        // Trinaquadalloy TODO: Remove latest version of GCYM v1.2.5
-        GCYMMaterials.Trinaquadalloy.addFlags(GENERATE_DOUBLE_PLATE);
     }
 }
