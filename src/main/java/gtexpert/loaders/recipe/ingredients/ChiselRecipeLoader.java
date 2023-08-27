@@ -11,6 +11,7 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.common.GTEConfigHolder;
 
 import net.minecraft.init.Blocks;
@@ -21,7 +22,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
-import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
 
 import java.util.Arrays;
@@ -133,12 +133,13 @@ public class ChiselRecipeLoader {
 
         // Auto Chisel
         removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "autochisel"));
-        ModHandler.addShapedRecipe("autochisel", new ItemStack(ChiselBlocks.auto_chisel),
-                "PPP", "PTP", "SSS",
-                'P', "paneGlass",
-                'T', "craftChisel",
-                'S', new UnificationEntry(slab, Stone));
-        MetaTileEntityLoader.registerMachineRecipe(true, AUTO_CHISEL, "BSB", "THT", "MCM",
+        ModHandler.addShapelessRecipe("normal_auto_chisel",
+                GTEUtility.getModItem(GTEValues.MODID_CHISEL, "auto_chisel", 1),
+                AUTO_CHISEL[2].getStackForm());
+        ModHandler.addShapelessRecipe("ceu_auto_chisel", AUTO_CHISEL[2].getStackForm(),
+                GTEUtility.getModItem(GTEValues.MODID_CHISEL, "auto_chisel", 1));
+        MetaTileEntityLoader.registerMachineRecipe(true, AUTO_CHISEL,
+                "BSB", "THT", "MCM",
                 'B', new UnificationEntry(toolHeadBuzzSaw, Invar),
                 'S', SENSOR,
                 'T', "craftChisel",
