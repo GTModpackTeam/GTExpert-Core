@@ -53,6 +53,10 @@ public class GTEConfigHolder {
         @Config.Comment({ "Change EIO swords, axes, armor, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
         public boolean hardToolArmorRecipes = false;
+
+        @Config.Comment({ "Add Shapeless Recipe in CoreMod Machines and EIO Machines.",
+                "This change adds a recipe for equivalent exchange of HV machines and EIO machines", "Default: false" })
+        public boolean addShapelessRecipeMachines = false;
     }
 
     public static class ChiselIntegration {

@@ -10,16 +10,20 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
 
 import gtexpert.api.GTEValues;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -35,6 +39,9 @@ import static gtexpert.api.unification.material.GTEMaterials.*;
 public class CEUOverrideRecipeLoader {
 
     public static void init() {
+        // bookshelf
+        OreDictionary.registerOre("bookshelf", new ItemStack(Blocks.BOOKSHELF));
+
         materials();
         items();
         blocks();
@@ -130,6 +137,14 @@ public class CEUOverrideRecipeLoader {
     }
 
     private static void items() {
+        // Book
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES, new ItemStack(Blocks.BOOKSHELF));
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .input("bookshelf", 1)
+                .outputs(new ItemStack(Items.BOOK, 3))
+                .duration(300).EUt(2)
+                .buildAndRegister();
+
         // Tiny Pile of Ashes (Bookshelf Override)
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ARC_FURNACE_RECIPES,
                 new ItemStack[] { new ItemStack(Blocks.BOOKSHELF) },
@@ -152,6 +167,51 @@ public class CEUOverrideRecipeLoader {
     }
 
     private static void blocks() {
+        // Diorite
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "diorite"));
+
+        // Granite
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "granite"));
+
+        // Andesite
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "andesite"));
+
+        // Comparator
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/vanilla_comparator"));
+
+        // Daylight Sensor
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/vanilla_daylight_detector"));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(gem, NetherQuartz, 3)
+                .input(slab, Wood, 2)
+                .fluidInputs(Glass.getFluid(144))
+                .output(Blocks.DAYLIGHT_DETECTOR)
+                .duration(200).EUt(10)
+                .buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(gem, CertusQuartz, 3)
+                .input(slab, Wood, 2)
+                .fluidInputs(Glass.getFluid(144))
+                .output(Blocks.DAYLIGHT_DETECTOR)
+                .duration(200).EUt(10)
+                .buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(gem, Quartzite, 3)
+                .input(slab, Wood, 2)
+                .fluidInputs(Glass.getFluid(144))
+                .output(Blocks.DAYLIGHT_DETECTOR)
+                .duration(200).EUt(10)
+                .buildAndRegister();
+
+        // Ennchanting Table
+        ModHandler.removeRecipeByOutput(new ItemStack(Blocks.ENCHANTING_TABLE));
+        ModHandler.addShapedRecipe("enchantment_table", new ItemStack(Blocks.ENCHANTING_TABLE),
+                "DCD", "PBP", "DPD",
+                'D', OreDictUnifier.get(gem, Diamond),
+                'C', new ItemStack(Blocks.CARPET, 1, 14),
+                'P', OreDictUnifier.get(plate, Obsidian),
+                'B', "bookshelf");
+
         // Redstone Lamp
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "redstone_lamp"));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES,
@@ -164,6 +224,51 @@ public class CEUOverrideRecipeLoader {
                 .output(Blocks.REDSTONE_LAMP)
                 .duration(100).EUt(1)
                 .buildAndRegister();
+
+        // Carpet
+        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            EnumDyeColor color = EnumDyeColor.byMetadata(i);
+
+            // Remove vanilla recipes
+            ModHandler.removeRecipeByOutput(new ItemStack(Blocks.CARPET, 3, i));
+            GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                    new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
+                    new FluidStack[] { Lubricant.getFluid(2) });
+            GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                    new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
+                    new FluidStack[] { DistilledWater.getFluid(3) });
+            GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                    new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
+                    new FluidStack[] { Water.getFluid(4) });
+
+            // Add GT recipes
+            ModHandler.addMirroredShapedRecipe(color + "_wool", new ItemStack(Blocks.CARPET, 1, i),
+                    "WW ",
+                    'W', new ItemStack(Blocks.WOOL, 1, i));
+            ModHandler.addShapedRecipe(color + "_wool_saw", new ItemStack(Blocks.CARPET, 2, i),
+                    "WWs",
+                    'W', new ItemStack(Blocks.WOOL, 1, i));
+
+            // Add GT cutter recipes
+            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                    .inputs(new ItemStack(Blocks.WOOL, 1, i))
+                    .fluidInputs(Lubricant.getFluid(1))
+                    .outputs(new ItemStack(Blocks.CARPET, 3, i))
+                    .duration(50).EUt(7)
+                    .buildAndRegister();
+            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                    .inputs(new ItemStack(Blocks.WOOL, 1, i))
+                    .fluidInputs(DistilledWater.getFluid(3))
+                    .outputs(new ItemStack(Blocks.CARPET, 3, i))
+                    .duration(100).EUt(7)
+                    .buildAndRegister();
+            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                    .inputs(new ItemStack(Blocks.WOOL, 1, i))
+                    .fluidInputs(Water.getFluid(4))
+                    .outputs(new ItemStack(Blocks.CARPET, 3, i))
+                    .duration(150).EUt(7)
+                    .buildAndRegister();
+        }
 
         // Crafting Station
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
