@@ -54,26 +54,23 @@ jobs:
             notifications
             wrapper
 
-      - name: Publish to GitHub
-        uses: softprops/action-gh-release@v1
-        with:
-          files: "build/libs/*.jar"
-          generate_release_notes: true
-          fail_on_unmatched_files: true
-
       - name: Publish to Curseforge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
+          github-tag: "${{ github.ref }}"
+          github-generate-changelog: true
+          github-draft: false
+          github-prerelease: false
+          github-commitish: main
           curseforge-id: 851103
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar
             build/libs/*-@(sources).jar
             build/libs/*-@(dev).jar
-          name:
+          changelog: "${{ env.CHANGELOG_LOCATION }}"
           version: "${{ env.VERSION }}"
           version-type: "${{ env.LEVEL }}"
           loaders: forge
           game-versions: 1.12.2
           java: 8
-          retry-attempts: 2
