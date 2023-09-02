@@ -34,6 +34,9 @@ public class GTEConfigHolder {
         @Config.Comment({ "Change to a recipe using Assembly Line.",
                 "CEu's enableHighTierSolars to true to reflect.", "Default: false" })
         public boolean hardSolarPanel = false;
+
+        @Config.Comment({ "Raising Terracotta Grinding from ULV to MV.", "Default: false" })
+        public boolean nerfTerracottaCrafting = false;
     }
 
     public static class AE2Integration {
