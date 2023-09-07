@@ -1,5 +1,6 @@
 package gtexpert.loaders.recipe.ingredients;
 
+import gregtech.api.GTValues;
 import gregtech.api.items.toolitem.ToolHelper;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMap;
@@ -48,7 +49,7 @@ public class DraconicUpgradeRecipeLoader {
                 GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
-                                        NBTTagType.STRING, "Material", "draconium"))),
+                                        NBTTagType.STRING, "Material", GTValues.MODID + ":draconium"))),
                 new ItemStack(DEFeatures.wyvernAxe),
                 Tier.WYVERN, 2);
 
@@ -58,7 +59,7 @@ public class DraconicUpgradeRecipeLoader {
                 GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
-                                        NBTTagType.STRING, "Material", "draconium"))),
+                                        NBTTagType.STRING, "Material", GTValues.MODID + ":draconium"))),
                 new ItemStack(DEFeatures.wyvernPick),
                 Tier.WYVERN, 2);
 
@@ -68,7 +69,7 @@ public class DraconicUpgradeRecipeLoader {
                 GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
-                                        NBTTagType.STRING, "Material", "draconium"))),
+                                        NBTTagType.STRING, "Material", GTValues.MODID + ":draconium"))),
                 new ItemStack(DEFeatures.wyvernShovel),
                 Tier.WYVERN, 2);
 
