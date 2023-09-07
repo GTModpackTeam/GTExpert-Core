@@ -2,6 +2,7 @@ package gtexpert.loaders.recipe;
 
 import gregicality.multiblocks.api.AlloyBlastUtil;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
@@ -213,7 +214,7 @@ public class CEUOverrideRecipeLoader {
                 'B', "bookshelf");
 
         // Redstone Lamp
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "redstone_lamp"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "redstone_lamp"));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES,
                 OreDictUnifier.get(dust, Redstone, 4),
                 OreDictUnifier.get(dust, Glowstone, 4));

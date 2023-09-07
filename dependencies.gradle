@@ -69,10 +69,9 @@ dependencies {
     }
 
     // Debug Avaritia
-//    compileOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349") // Avaritia 3.3.0.37
-//    if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
-//        runtimeOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349")
-//    }
+    if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349")
+    }
 
     // Boot error fix
     runtimeOnly (files("libs/EnderCore-1.12.2-0.5.78-core.jar"))

@@ -32,6 +32,8 @@ public class GTERecipeManager {
     }
 
     public static void loadLowest() {
+        LowestOverrideRecipeLoader.init();
+
         if (GTEValues.isModLoadedDEDA()) {
             DraconicRecipeLoader.init();
             DraconicUpgradeRecipeLoader.init();
