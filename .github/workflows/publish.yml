@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get the version
         run: |
@@ -54,23 +54,23 @@ jobs:
             notifications
             wrapper
 
-      - name: Publish to Curseforge
-        uses: Kir-Antipov/mc-publish@v3.3
-        with:
-          github-tag: "${{ github.ref }}"
-          github-generate-changelog: true
-          github-draft: false
-          github-prerelease: false
-          github-commitish: main
-          curseforge-id: 851103
-          curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
-          files: |
-            build/libs/!(*-@(dev|sources|javadoc)).jar
-            build/libs/*-@(sources).jar
-            build/libs/*-@(dev).jar
-          changelog: "${{ env.CHANGELOG_LOCATION }}"
-          version: "${{ env.VERSION }}"
-          version-type: "${{ env.LEVEL }}"
-          loaders: forge
-          game-versions: 1.12.2
-          java: 8
+      # - name: Publish to Curseforge
+      #   uses: Kir-Antipov/mc-publish@v3.3
+      #   with:
+      #     github-tag: "${{ github.ref }}"
+      #     github-generate-changelog: true
+      #     github-draft: false
+      #     github-prerelease: false
+      #     github-commitish: main
+      #     curseforge-id: 851103
+      #     curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
+      #     files: |
+      #       build/libs/!(*-@(dev|sources|javadoc)).jar
+      #       build/libs/*-@(sources).jar
+      #       build/libs/*-@(dev).jar
+      #     changelog: "${{ env.CHANGELOG_LOCATION }}"
+      #     version: "${{ env.VERSION }}"
+      #     version-type: "${{ env.LEVEL }}"
+      #     loaders: forge
+      #     game-versions: 1.12.2
+      #     java: 8
