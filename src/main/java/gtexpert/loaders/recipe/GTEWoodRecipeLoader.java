@@ -42,11 +42,11 @@ public class GTEWoodRecipeLoader {
 
     private static void sticks() {
         if (ConfigHolder.recipes.nerfWoodCrafting) {
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "stick_normal"));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "stick_normal"));
             ModHandler.addMirroredShapedRecipe("stick_normal", GTEConfigHolder.ceuOverride.moreNerfWoodCrafting ?
                     new ItemStack(Items.STICK, 1) : new ItemStack(Items.STICK, 2),
                     "P", "P", 'P', new UnificationEntry(plank, Wood));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "stick_saw"));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "stick_saw"));
             ModHandler.addMirroredShapedRecipe("stick_saw", GTEConfigHolder.ceuOverride.moreNerfWoodCrafting ?
                     new ItemStack(Items.STICK, 2) : new ItemStack(Items.STICK, 4),
                     "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
