@@ -5,11 +5,19 @@ permissions:
   contents: write
 
 on:
-  push:
-    tags:
-      - 'v*-release'
-      - 'v*-beta'
-      - 'v*-alpha'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Mod version'
+        required: true
+      release_type:
+        description: 'Release type'
+        type: choice
+        default: 'beta'
+        options:
+          - 'release'
+          - 'beta'
+          - 'alpha'
 
 env:
   # link to the changelog with a format code for the version
@@ -23,29 +31,24 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Check for Duplicate Tags
+      
+      - name: Check if tag already exists
         run: |
-          if git rev-parse -q --verify "refs/tags/${{ github.ref }}" >/dev/null; then
-            echo "Tag already exists. A version bump is required."
+          if git rev-parse --verify --quiet "v${{ github.event.inputs.version }}"; then
+            echo "Version ${{ github.event.inputs.version }} already exists, aborting workflow."
             exit 1
           fi
 
-      - name: Get the version
-        run: |
-          echo VERSION=$(echo ${GITHUB_REF} | sed -e 's#refs/tags/##g' | awk -F'-' '{print $1}') >> $GITHUB_ENV
-          echo LEVEL=$(echo ${GITHUB_REF} | sed -e 's#refs/tags/##g' | awk -F'-' '{print $2}') >> $GITHUB_ENV
-
       - name: Set version
-        run: sed -i "s/modVersion.*=.*/modVersion = ${{ env.VERSION }}-${{ env.LEVEL }}/g" gradle.properties
+        run: sed -i "s/modVersion.*=.*/modVersion = ${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}/g" gradle.properties
 
       - name: Commit and push gradle.properties
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Bump version to ${{ env.VERSION }}-${{ env.LEVEL }}"
+          commit_message: "Bump version to ${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
           commit_options: "--no-verify"
           file_pattern: gradle.properties
-          tagging_message: "${{ env.VERSION }}-${{ env.LEVEL }}"
+          tagging_message: "${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
 
       - name: Setup Java
         uses: actions/setup-java@v3
@@ -65,25 +68,23 @@ jobs:
             notifications
             wrapper
 
-      - name: Upload Jars
-        uses: actions/upload-artifact@v3
-        with:
-          name: GTExpert-Core
-          path: build/libs/*.jar
-
       - name: Publish to Curseforge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
+          github-tag: "v${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
+          github-generate-changelog: true
+          github-draft: false
+          github-prerelease: false
           curseforge-id: 851103
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar
             build/libs/*-@(sources).jar
             build/libs/*-@(dev).jar
-          name: "GTExpertCore-${{ github.event.inputs.version }}.jar"
+          name: "${{ env.NAME }}-${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}.jar"
           changelog: "${{ env.CHANGELOG_LOCATION }}"
-          version: "${{ env.VERSION }}"
-          version-type: "${{ env.LEVEL }}"
+          version: "${{ github.event.inputs.version }}"
+          version-type: "${{ github.event.inputs.release_type }}"
           loaders: |
             forge
           game-versions: |
