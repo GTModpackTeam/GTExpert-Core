@@ -41,26 +41,31 @@ public class GTEWoodRecipeLoader {
     }
 
     private static void sticks() {
-        if (ConfigHolder.recipes.moreNerfStickCrafting) {
-            ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "stick_normal"));
-            ModHandler.addMirroredShapedRecipe("stick_normal", GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
-                    new ItemStack(Items.STICK, 1) : new ItemStack(Items.STICK, 2),
-                    "P", "P", 'P', new UnificationEntry(plank, Wood));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "stick_saw"));
-            ModHandler.addMirroredShapedRecipe("stick_saw", GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
-                    new ItemStack(Items.STICK, 2) : new ItemStack(Items.STICK, 4),
-                    "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "stick_normal"));
+        ModHandler.addMirroredShapedRecipe("stick_normal", ConfigHolder.recipes.harderRods ?
+                GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
+                        new ItemStack(Items.STICK, 1) : new ItemStack(Items.STICK, 2) :
+                new ItemStack(Items.STICK, 4),
+                "P", "P", 'P', new UnificationEntry(plank, Wood));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "stick_saw"));
+        ModHandler.addMirroredShapedRecipe("stick_saw", ConfigHolder.recipes.harderRods ?
+                GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
+                        new ItemStack(Items.STICK, 2) : new ItemStack(Items.STICK, 4) :
+                new ItemStack(Items.STICK, 6),
+                "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
 
-            ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "treated_wood_stick"));
-            ModHandler.addMirroredShapedRecipe("treated_wood_stick", GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
-                    OreDictUnifier.get(stick, TreatedWood, 1) : OreDictUnifier.get(stick, TreatedWood, 2),
-                    "P", "P", 'P', MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK));
-            ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "treated_wood_stick_saw"));
-            ModHandler.addMirroredShapedRecipe("treated_wood_stick_saw",
-                    GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
-                            OreDictUnifier.get(stick, TreatedWood, 2) : OreDictUnifier.get(stick, TreatedWood, 4),
-                    "s", "P", "P", 'P', MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK));
-        }
+        ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "treated_wood_stick"));
+        ModHandler.addMirroredShapedRecipe("treated_wood_stick", ConfigHolder.recipes.harderRods ?
+                GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
+                        OreDictUnifier.get(stick, TreatedWood, 1) : OreDictUnifier.get(stick, TreatedWood, 2) :
+                OreDictUnifier.get(stick, TreatedWood, 4),
+                "P", "P", 'P', MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "treated_wood_stick_saw"));
+        ModHandler.addMirroredShapedRecipe("treated_wood_stick_saw", ConfigHolder.recipes.harderRods ?
+                GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
+                        OreDictUnifier.get(stick, TreatedWood, 2) : OreDictUnifier.get(stick, TreatedWood, 4) :
+                OreDictUnifier.get(stick, TreatedWood, 6),
+                "s", "P", "P", 'P', MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK));
     }
 
     private static void planks() {
@@ -75,13 +80,11 @@ public class GTEWoodRecipeLoader {
             if (plankStack.isEmpty()) return;
             ModHandler.removeRecipeByOutput(GTUtility.copy(ConfigHolder.recipes.nerfWoodCrafting ? 2 : 4, plankStack));
             ModHandler.removeRecipeByOutput(GTUtility.copy(ConfigHolder.recipes.nerfWoodCrafting ? 4 : 6, plankStack));
-            ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copy(
-                    ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.ceuOverride.moreNerfPlankCrafting ? 1 : 2 :
-                            4,
+            ModHandler.addShapelessRecipe("plank_" + i, GTUtility.copy(ConfigHolder.recipes.nerfWoodCrafting ?
+                    GTEConfigHolder.ceuOverride.moreNerfPlankCrafting ? 1 : 2 : 4,
                     plankStack), allWoodLogs.get(i));
-            ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copy(
-                    ConfigHolder.recipes.nerfWoodCrafting ? GTEConfigHolder.ceuOverride.moreNerfPlankCrafting ? 2 : 4 :
-                            6,
+            ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copy(ConfigHolder.recipes.nerfWoodCrafting ?
+                    GTEConfigHolder.ceuOverride.moreNerfPlankCrafting ? 2 : 4 : 6,
                     plankStack), "s", "P", 'P', allWoodLogs.get(i));
             recipeSawmill(allWoodLogs.get(i), plankStack);
             recipeCutter(allWoodLogs.get(i), plankStack);
@@ -107,6 +110,7 @@ public class GTEWoodRecipeLoader {
     }
 
     private static void recipeCutter(ItemStack input, ItemStack output) {
+        // TODO: Refactor this
         if (input.equals(new ItemStack(Blocks.LOG, 1, 0)) ||
                 input.equals(new ItemStack(Blocks.LOG, 1, 1)) ||
                 input.equals(new ItemStack(Blocks.LOG, 1, 2)) ||
