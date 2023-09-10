@@ -21,7 +21,7 @@ on:
 
 env:
   # link to the changelog with a format code for the version
-  CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{github.repository}}/releases/tag/${{github.ref_name}})"
+  CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{github.repository}}/releases/tag/v${{github.ref_name}})"
   # type of release
   NAME: "GTExpertCore"
 
@@ -45,10 +45,10 @@ jobs:
       - name: Commit and push gradle.properties
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Bump version to ${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
+          commit_message: "Bump version to v${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
           commit_options: "--no-verify"
           file_pattern: gradle.properties
-          tagging_message: "${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
+          tagging_message: "v${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
 
       - name: Setup Java
         uses: actions/setup-java@v3
