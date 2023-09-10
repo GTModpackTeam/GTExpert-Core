@@ -302,25 +302,26 @@ public class ChiselRecipeLoader {
             int i = 0;
             while (i < Materials.CHEMICAL_DYES.length) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
+                String colorName = color.getName().equals("silver") ? "light_gray" : color.getName();
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
-                addGroup("lamp_" + color);
+                addGroup("lamp_" + colorName);
                 {
                     int lampMeta = 0;
                     while (lampMeta < lamp.getItemMetadataStates()) {
-                        addVariation("lamp_" + color, getModItem("projectred-illumination", "lamp", 1, i));
-                        addVariation("lamp_" + color,
+                        addVariation("lamp_" + colorName, getModItem("projectred-illumination", "lamp", 1, i));
+                        addVariation("lamp_" + colorName,
                                 getModItem("projectred-illumination", "lamp", 1, i + 16));
-                        addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                        addVariation("lamp_" + colorName, new ItemStack(lamp, 1, lampMeta));
                         lampMeta++;
                     }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
-                addGroup("lamp_borderless_" + color);
+                addGroup("lamp_borderless_" + colorName);
                 int lampMeta = 0;
                 while (lampMeta < lamp.getItemMetadataStates()) {
-                    addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                    addVariation("lamp_borderless_" + colorName, new ItemStack(lamp, 1, lampMeta));
                     lampMeta++;
                 }
                 i++;
@@ -329,22 +330,23 @@ public class ChiselRecipeLoader {
             int i = 0;
             while (i < Materials.CHEMICAL_DYES.length) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
+                String colorName = color.getName().equals("silver") ? "light_gray" : color.getName();
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
-                addGroup("lamp_" + color);
+                addGroup("lamp_" + colorName);
                 {
                     int lampMeta = 0;
                     while (lampMeta < lamp.getItemMetadataStates()) {
-                        addVariation("lamp_" + color, new ItemStack(lamp, 1, lampMeta));
+                        addVariation("lamp_" + colorName, new ItemStack(lamp, 1, lampMeta));
                         lampMeta++;
                     }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
-                addGroup("lamp_borderless_" + color);
+                addGroup("lamp_borderless_" + colorName);
                 int lampMeta = 0;
                 while (lampMeta < lamp.getItemMetadataStates()) {
-                    addVariation("lamp_borderless_" + color, new ItemStack(lamp, 1, lampMeta));
+                    addVariation("lamp_borderless_" + colorName, new ItemStack(lamp, 1, lampMeta));
                     lampMeta++;
                 }
                 i++;

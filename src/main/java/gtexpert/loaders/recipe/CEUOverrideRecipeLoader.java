@@ -13,6 +13,7 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.ConfigHolder;
 import gregtech.common.metatileentities.MetaTileEntities;
 
 import gtexpert.api.GTEValues;
@@ -227,48 +228,51 @@ public class CEUOverrideRecipeLoader {
                 .buildAndRegister();
 
         // Carpet
-        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
-            EnumDyeColor color = EnumDyeColor.byMetadata(i);
+        if (ConfigHolder.recipes.hardMiscRecipes) {
+            for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+                EnumDyeColor color = EnumDyeColor.byMetadata(i);
+                String colorName = color.getName().equals("silver") ? "light_gray" : color.getName();
 
-            // Remove vanilla recipes
-            ModHandler.removeRecipeByOutput(new ItemStack(Blocks.CARPET, 3, i));
-            GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                    new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
-                    new FluidStack[] { Lubricant.getFluid(2) });
-            GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                    new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
-                    new FluidStack[] { DistilledWater.getFluid(3) });
-            GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                    new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
-                    new FluidStack[] { Water.getFluid(4) });
+                // Remove vanilla recipes
+                ModHandler.removeRecipeByOutput(new ItemStack(Blocks.CARPET, 3, i));
+                GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                        new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
+                        new FluidStack[] { Lubricant.getFluid(2) });
+                GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                        new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
+                        new FluidStack[] { DistilledWater.getFluid(3) });
+                GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                        new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
+                        new FluidStack[] { Water.getFluid(4) });
 
-            // Add GT recipes
-            ModHandler.addMirroredShapedRecipe(color + "_wool", new ItemStack(Blocks.CARPET, 1, i),
-                    "WW ",
-                    'W', new ItemStack(Blocks.WOOL, 1, i));
-            ModHandler.addShapedRecipe(color + "_wool_saw", new ItemStack(Blocks.CARPET, 2, i),
-                    "WWs",
-                    'W', new ItemStack(Blocks.WOOL, 1, i));
+                // Add GT recipes
+                ModHandler.addMirroredShapedRecipe(colorName + "_wool", new ItemStack(Blocks.CARPET, 1, i),
+                        "WW ",
+                        'W', new ItemStack(Blocks.WOOL, 1, i));
+                ModHandler.addMirroredShapedRecipe(colorName + "_wool_saw", new ItemStack(Blocks.CARPET, 2, i),
+                        "WWs",
+                        'W', new ItemStack(Blocks.WOOL, 1, i));
 
-            // Add GT cutter recipes
-            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                    .inputs(new ItemStack(Blocks.WOOL, 1, i))
-                    .fluidInputs(Lubricant.getFluid(1))
-                    .outputs(new ItemStack(Blocks.CARPET, 3, i))
-                    .duration(50).EUt(7)
-                    .buildAndRegister();
-            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                    .inputs(new ItemStack(Blocks.WOOL, 1, i))
-                    .fluidInputs(DistilledWater.getFluid(3))
-                    .outputs(new ItemStack(Blocks.CARPET, 3, i))
-                    .duration(100).EUt(7)
-                    .buildAndRegister();
-            RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                    .inputs(new ItemStack(Blocks.WOOL, 1, i))
-                    .fluidInputs(Water.getFluid(4))
-                    .outputs(new ItemStack(Blocks.CARPET, 3, i))
-                    .duration(150).EUt(7)
-                    .buildAndRegister();
+                // Add GT cutter recipes
+                RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                        .inputs(new ItemStack(Blocks.WOOL, 1, i))
+                        .fluidInputs(Lubricant.getFluid(1))
+                        .outputs(new ItemStack(Blocks.CARPET, 3, i))
+                        .duration(50).EUt(7)
+                        .buildAndRegister();
+                RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                        .inputs(new ItemStack(Blocks.WOOL, 1, i))
+                        .fluidInputs(DistilledWater.getFluid(3))
+                        .outputs(new ItemStack(Blocks.CARPET, 3, i))
+                        .duration(100).EUt(7)
+                        .buildAndRegister();
+                RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                        .inputs(new ItemStack(Blocks.WOOL, 1, i))
+                        .fluidInputs(Water.getFluid(4))
+                        .outputs(new ItemStack(Blocks.CARPET, 3, i))
+                        .duration(150).EUt(7)
+                        .buildAndRegister();
+            }
         }
 
         // Crafting Station

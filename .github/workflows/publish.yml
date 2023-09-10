@@ -54,6 +54,12 @@ jobs:
             notifications
             wrapper
 
+      - name: Upload Jars
+        uses: actions/upload-artifact@v3
+        with:
+          name: GTExpert-Core
+          path: build/libs/*.jar
+
       # - name: Publish to Curseforge
       #   uses: Kir-Antipov/mc-publish@v3.3
       #   with:
