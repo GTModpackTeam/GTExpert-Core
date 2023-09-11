@@ -297,6 +297,75 @@ public class ChiselRecipeLoader {
                 i++;
             }
         }
+
+        /* Default chiseling */
+        // Andesite
+        registerAutoChiselRecipe("stoneAndesite");
+        // Antiblock
+        OreDictionary.registerOre("blockAntiblock", new ItemStack(ChiselBlocks.antiblock, 1, W));
+        registerAutoChiselRecipe("blockAntiblock");
+        // Basalt
+        registerAutoChiselRecipe("stoneBasalt");
+        // Aluminium
+        List<ItemStack> aluminums = OreDictionary.getOres("blockAluminum");
+        aluminums.forEach(alumimun ->
+                OreDictionary.registerOre("blockAluminium", alumimun));
+        registerAutoChiselRecipe("blockAluminium");
+        // Bronze
+        registerAutoChiselRecipe("blockBronze");
+        // Charcoal
+        registerAutoChiselRecipe("blockCharcoal");
+        // Coal
+        registerAutoChiselRecipe("blockCoal");
+        // Coal Coke
+        registerAutoChiselRecipe("blockFuelCoke");
+        // Cobalt
+        registerAutoChiselRecipe("blockCobalt");
+        // Copper
+        registerAutoChiselRecipe("blockCopper");
+        // Diamond
+        registerAutoChiselRecipe("blockDiamond");
+        // Electrum
+        registerAutoChiselRecipe("blockElectrum");
+        // Emerald
+        registerAutoChiselRecipe("blockEmerald");
+        // Gold
+        registerAutoChiselRecipe("blockGold");
+        // Invar
+        registerAutoChiselRecipe("blockInvar");
+        // Iron
+        registerAutoChiselRecipe("blockIron");
+        // Lapis
+        registerAutoChiselRecipe("blockLapis");
+        // Lead
+        registerAutoChiselRecipe("blockLead");
+        // Nickel
+        registerAutoChiselRecipe("blockNickel");
+        // Platinum
+        registerAutoChiselRecipe("blockPlatinum");
+        // Silver
+        registerAutoChiselRecipe("blockSilver");
+        // Steel
+        registerAutoChiselRecipe("blockSteel");
+        // Tin
+        registerAutoChiselRecipe("blockTin");
+        // Uranium
+        registerAutoChiselRecipe("blockUranium");
+        // Bookshelves
+        registerAutoChiselRecipe("bookshelfOak");
+        registerAutoChiselRecipe("bookshelfBirch");
+        registerAutoChiselRecipe("bookshelfJungle");
+        registerAutoChiselRecipe("bookshelfJungle");
+        registerAutoChiselRecipe("bookshelfAcacia");
+        registerAutoChiselRecipe("bookshelfDarkOak");
+        // Brick
+        OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks", 1, W));
+        OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks1", 1, W));
+        OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks2", 1, W));
+        registerAutoChiselRecipe("blockBrick");
+        // Brownstone
+        OreDictionary.registerOre("blockBrownstone", new ItemStack(ChiselBlocks.brownstone, 1, W));
+        registerAutoChiselRecipe("blockBrownstone");
     }
 
     private static void tools() {
