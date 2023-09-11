@@ -22,6 +22,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
+import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
 
 import java.util.Arrays;
@@ -176,14 +177,7 @@ public class ChiselRecipeLoader {
                 NOISE_HAZARD, GENERIC_HAZARD, HIGH_VOLTAGE_HAZARD, MAGNETIC_HAZARD, ANTIMATTER_HAZARD,
                 HIGH_TEMPERATURE_HAZARD, VOID_HAZARD)
                 .forEach(hazardSign -> addVariation("hazardSign", WARNING_SIGN.getItemVariant(hazardSign)));
-        List<ItemStack> hazardSigns = OreDictionary.getOres("hazardSign");
-        hazardSigns.forEach(hazardSign -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .circuitMeta(hazardSign.getMetadata())
-                .input("hazardSign")
-                .outputs(hazardSign)
-                .duration(20)
-                .EUt(VA[ULV])
-                .buildAndRegister());
+        registerAutoChiselRecipe("hazardSign");
 
         // Hazard Sign 2
         addGroup("hazardSign1");
@@ -191,14 +185,7 @@ public class ChiselRecipeLoader {
                 LASER_HAZARD, MOB_HAZARD, BOSS_HAZARD, GREGIFICATION_HAZARD, CAUSALITY_HAZARD,
                 AUTOMATED_DEFENSES_HAZARD, HIGH_PRESSURE_HAZARD)
                 .forEach(hazardSign1 -> addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(hazardSign1)));
-        List<ItemStack> hazardSigns1 = OreDictionary.getOres("hazardSign1");
-        hazardSigns1.forEach(hazardSign1 -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .circuitMeta(hazardSign1.getMetadata())
-                .input("hazardSign1")
-                .outputs(hazardSign1)
-                .duration(20)
-                .EUt(VA[ULV])
-                .buildAndRegister());
+        registerAutoChiselRecipe("hazardSign1");
 
         // Black Granite
         addGroup("blackGranite");
@@ -207,14 +194,7 @@ public class ChiselRecipeLoader {
                 BRICKS_SQUARE)
                 .forEach(blackGranite -> addVariation("blackGranite",
                         STONE_BLOCKS.get(blackGranite).getItemVariant(BLACK_GRANITE)));
-        List<ItemStack> blackGranites = OreDictionary.getOres("blackGranite");
-        blackGranites.forEach(blackGranite -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .circuitMeta(blackGranite.getMetadata())
-                .input("blackGranite")
-                .outputs(blackGranite)
-                .duration(20)
-                .EUt(VA[ULV])
-                .buildAndRegister());
+        registerAutoChiselRecipe("blackGranite");
 
         // Red Granite
         addGroup("redGranite");
@@ -223,14 +203,7 @@ public class ChiselRecipeLoader {
                 BRICKS_SQUARE)
                 .forEach(redGranite -> addVariation("redGranite",
                         STONE_BLOCKS.get(redGranite).getItemVariant(RED_GRANITE)));
-        List<ItemStack> redGranites = OreDictionary.getOres("redGranite");
-        redGranites.forEach(redGranite -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .circuitMeta(redGranite.getMetadata())
-                .input("redGranite")
-                .outputs(redGranite)
-                .duration(20)
-                .EUt(VA[ULV])
-                .buildAndRegister());
+        registerAutoChiselRecipe("redGranite");
 
         // Marble
         addGroup("marbleGt");
@@ -238,14 +211,7 @@ public class ChiselRecipeLoader {
                 BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
                 BRICKS_SQUARE)
                 .forEach(marbleGt -> addVariation("marbleGt", STONE_BLOCKS.get(marbleGt).getItemVariant(MARBLE)));
-        List<ItemStack> marbleGts = OreDictionary.getOres("marbleGt");
-        marbleGts.forEach(marbleGt -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .circuitMeta(marbleGt.getMetadata())
-                .input("marbleGt")
-                .outputs(marbleGt)
-                .duration(20)
-                .EUt(VA[ULV])
-                .buildAndRegister());
+        registerAutoChiselRecipe("marbleGt");
 
         // Basalt
         addGroup("basaltGt");
@@ -253,14 +219,7 @@ public class ChiselRecipeLoader {
                 BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
                 BRICKS_SQUARE)
                 .forEach(basaltGt -> addVariation("basaltGt", STONE_BLOCKS.get(basaltGt).getItemVariant(BASALT)));
-        List<ItemStack> basaltGts = OreDictionary.getOres("basaltGt");
-        basaltGts.forEach(basaltGt -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .circuitMeta(basaltGt.getMetadata())
-                .input("basaltGt")
-                .outputs(basaltGt)
-                .duration(20)
-                .EUt(VA[ULV])
-                .buildAndRegister());
+        registerAutoChiselRecipe("basaltGt");
 
         // Light Concrete
         addGroup("lightConcrete");
@@ -269,14 +228,7 @@ public class ChiselRecipeLoader {
                 WINDMILL_B, BRICKS_SQUARE)
                 .forEach(lightConcrete -> addVariation("lightConcrete",
                         STONE_BLOCKS.get(lightConcrete).getItemVariant(CONCRETE_LIGHT)));
-        List<ItemStack> lightConcretes = OreDictionary.getOres("lightConcrete");
-        lightConcretes.forEach(lightConcrete -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .circuitMeta(lightConcrete.getMetadata())
-                .input("lightConcrete")
-                .outputs(lightConcrete)
-                .duration(20)
-                .EUt(VA[ULV])
-                .buildAndRegister());
+        registerAutoChiselRecipe("lightConcrete");
 
         // Dark Concrete
         addGroup("darkConcrete");
@@ -285,14 +237,7 @@ public class ChiselRecipeLoader {
                 BRICKS_SQUARE)
                 .forEach(darkConcrete -> addVariation("darkConcrete",
                         STONE_BLOCKS.get(darkConcrete).getItemVariant(CONCRETE_DARK)));
-        List<ItemStack> darkConcretes = OreDictionary.getOres("darkConcrete");
-        darkConcretes.forEach(darkConcrete -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .circuitMeta(darkConcrete.getMetadata())
-                .input("darkConcrete")
-                .outputs(darkConcrete)
-                .duration(20)
-                .EUt(VA[ULV])
-                .buildAndRegister());
+        registerAutoChiselRecipe("darkConcrete");
 
         // Lamp
         if (GTEConfigHolder.chiselIntegration.hardLedRecipes && Loader.isModLoaded("projectred-illumination")) {
@@ -380,5 +325,17 @@ public class ChiselRecipeLoader {
                     'C', new ItemStack(ChiselItems.chisel_diamond),
                     'S', new UnificationEntry(stick, StainlessSteel));
         }
+    }
+
+    private static void registerAutoChiselRecipe(String oreDictName) {
+        List<ItemStack> targets = OreDictionary.getOres(oreDictName);
+        targets.forEach(target -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+                .input(oreDictName)
+                .inputs(target)
+                .outputs(target, target)
+                .duration(20)
+                .EUt(VA[ULV])
+                //.hidden()
+                .buildAndRegister());
     }
 }
