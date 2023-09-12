@@ -731,7 +731,7 @@ public class ChiselRecipeLoader {
                 .outputs(target, target)
                 .duration(20)
                 .EUt(VA[ULV])
-                //.hidden()
+                .hidden()
                 .buildAndRegister());
     }
 }
