@@ -311,7 +311,9 @@ public class ChiselRecipeLoader {
         // Andesite
         registerAutoChiselRecipe("stoneAndesite");
         // Antiblock
-        OreDictionary.registerOre("blockAntiblock", new ItemStack(ChiselBlocks.antiblock, 1, W));
+        for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+            OreDictionary.registerOre("blockAntiblock", new ItemStack(ChiselBlocks.antiblock, 1, i));
+        }
         registerAutoChiselRecipe("blockAntiblock");
         // Basalt
         registerAutoChiselRecipe("stoneBasalt");
@@ -368,9 +370,15 @@ public class ChiselRecipeLoader {
         registerAutoChiselRecipe("bookshelfAcacia");
         registerAutoChiselRecipe("bookshelfDarkOak");
         // Brick
-        OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks", 1, W));
-        OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks1", 1, W));
-        OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks2", 1, W));
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks", 1, W));
+        }
+        for (int i =0; i < 10; i++) {
+            OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks1", 1, W));
+        }
+        for (int i = 0; i < 6; i++) {
+            OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks2", 1, W));
+        }
         registerAutoChiselRecipe("blockBrick");
         // Brownstone
         OreDictionary.registerOre("blockBrownstone", new ItemStack(ChiselBlocks.brownstone, 1, W));
@@ -382,36 +390,48 @@ public class ChiselRecipeLoader {
             String colorname = dyeColor.toString().equals("silver") ? "lightgray" : dyeColor.toString().toLowerCase(); // lightblue
             // Carpet
             OreDictionary.registerOre("carpet" + colorName, new ItemStack(Blocks.CARPET, 1, i));
-            OreDictionary.registerOre("carpet" + colorName, getModItem(GTEValues.MODID_CHISEL, "carpet_" + colorname, 1, W));
+            OreDictionary.registerOre("carpet" + colorName, getModItem(GTEValues.MODID_CHISEL, "carpet_" + colorname, 1, 0));
+            OreDictionary.registerOre("carpet" + colorName, getModItem(GTEValues.MODID_CHISEL, "carpet_" + colorname, 1, 1));
             registerAutoChiselRecipe("carpet" + colorName);
             // Concrete
             OreDictionary.registerOre("blockConcrete" + colorName, new ItemStack(Blocks.CONCRETE, 1, i));
             registerAutoChiselRecipe("blockConcrete" + colorName);
             // Glass
             OreDictionary.registerOre("blockChisellableGlass" + colorName, new ItemStack(Blocks.STAINED_GLASS, 1, i));
-            OreDictionary.registerOre("blockChisellableGlass" + colorName, getModItem(GTEValues.MODID_CHISEL, "glassdyed" + colorname, 1, W));
+            for (int j = 0; j < 6; j++) {
+                OreDictionary.registerOre("blockChisellableGlass" + colorName, getModItem(GTEValues.MODID_CHISEL, "glassdyed" + colorname, 1, j));
+            }
             registerAutoChiselRecipe("blockChisellableGlass" + colorName);
             OreDictionary.registerOre("blockChisellableGlassColorless", new ItemStack(Blocks.GLASS));
-            OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass", 1, W));
-            OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass1", 1, W));
+            for (int j = 0; j < 15; j++) {
+                OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass", 1, j));
+            }
+            OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass1", 1, 0));
+            OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass1", 1, 1));
             registerAutoChiselRecipe("blockChisellableGlassColorless");
             // Glass Pane
             registerAutoChiselRecipe("paneGlass" + colorName);
             registerAutoChiselRecipe("paneGlassColorless");
             // Wool
-            OreDictionary.registerOre("blockWool" + colorName, getModItem(GTEValues.MODID_CHISEL, "wool_" + colorname, 1, W));
+            OreDictionary.registerOre("blockWool" + colorName, getModItem(GTEValues.MODID_CHISEL, "wool_" + colorname, 1, 0));
+            OreDictionary.registerOre("blockWool" + colorName, getModItem(GTEValues.MODID_CHISEL, "wool_" + colorname, 1, 1));
             registerAutoChiselRecipe("blockWool" + colorName);
         }
         // Certus Quartz
         OreDictionary.registerOre("blockCertus", AEHelper.aeBlocks.quartzBlock().maybeStack(1).get());
         OreDictionary.registerOre("blockCertus", AEHelper.aeBlocks.quartzPillar().maybeStack(1).get());
         OreDictionary.registerOre("blockCertus", AEHelper.aeBlocks.chiseledQuartzBlock().maybeStack(1).get());
-        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus", 1, W));
-        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus1", 1, W));
-        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus2", 1, W));
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus", 1, i));
+            OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus1", 1, i));
+        }
+        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus2", 1, 0));
+        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus2", 1, 1));
         registerAutoChiselRecipe("blockCertus");
         // Cloud
-        OreDictionary.registerOre("blockCloud", new ItemStack(ChiselBlocks.cloud, 1, W));
+        for (int i = 0; i < 5; i++) {
+            OreDictionary.registerOre("blockCloud", new ItemStack(ChiselBlocks.cloud, 1, i));
+        }
         registerAutoChiselRecipe("blockCloud");
         // Cobblestone
         registerAutoChiselRecipe("cobblestone");
@@ -439,7 +459,9 @@ public class ChiselRecipeLoader {
         }
         registerAutoChiselRecipe("blockFactory");
         // Futura Block
-        OreDictionary.registerOre("blockFutura", new ItemStack(ChiselBlocks.futura, 1,W));
+        for (int i = 0; i < 6; i++) {
+            OreDictionary.registerOre("blockFutura", new ItemStack(ChiselBlocks.futura, 1, i));
+        }
         registerAutoChiselRecipe("blockFutura");
         // Glowstone
         registerAutoChiselRecipe("glowstone");
@@ -451,15 +473,21 @@ public class ChiselRecipeLoader {
         // Ice
         registerAutoChiselRecipe("blockIce");
         // Iron Bars
-        OreDictionary.registerOre("barsIron", getModItem(GTEValues.MODID_CHISEL, "ironpane", 1, W));
+        for (int i = 0; i < 13; i++) {
+            OreDictionary.registerOre("barsIron", getModItem(GTEValues.MODID_CHISEL, "ironpane", 1, i));
+        }
         registerAutoChiselRecipe("barsIron");
         // Laboratory Block
-        OreDictionary.registerOre("blockLaboratory", new ItemStack(ChiselBlocks.laboratory, 1, W));
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("blockLaboratory", new ItemStack(ChiselBlocks.laboratory, 1, i));
+        }
         registerAutoChiselRecipe("blockLaboratory");
         // Lavastone
-        OreDictionary.registerOre("blockLavastone", new ItemStack(ChiselBlocks.lavastone, 1, W));
-        OreDictionary.registerOre("blockLavastone", new ItemStack(ChiselBlocks.lavastone1, 1, W));
-        OreDictionary.registerOre("blockLavastone", new ItemStack(ChiselBlocks.lavastone2, 1, W));
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("blockLavastone", new ItemStack(ChiselBlocks.lavastone, 1, i));
+            OreDictionary.registerOre("blockLavastone", new ItemStack(ChiselBlocks.lavastone1, 1, i));
+        }
+        OreDictionary.registerOre("blockLavastone", new ItemStack(ChiselBlocks.lavastone2, 1));
         registerAutoChiselRecipe("blockLavastone");
         // Limestone
         registerAutoChiselRecipe("stoneLimestone");
@@ -467,33 +495,39 @@ public class ChiselRecipeLoader {
         registerAutoChiselRecipe("stoneMarble");
         // Nether Brick
         OreDictionary.registerOre("brickNether", new ItemStack(Blocks.NETHER_BRICK));
-        OreDictionary.registerOre("brickNether", getModItem(GTEValues.MODID_CHISEL, "netherbrick", 1, W));
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("brickNether", getModItem(GTEValues.MODID_CHISEL, "netherbrick", 1, i));
+        }
         registerAutoChiselRecipe("brickNether");
         // Netherrack
         registerAutoChiselRecipe("netherrack");
         // Obsidian
         registerAutoChiselRecipe("obsidian");
         // Paper Wall
-        OreDictionary.registerOre("blockPaperWall", new ItemStack(ChiselBlocks.paper, 1, W));
+        for (int i = 0; i < 9; i++) {
+            OreDictionary.registerOre("blockPaperWall", new ItemStack(ChiselBlocks.paper, 1, i));
+        }
         registerAutoChiselRecipe("blockPaperWall");
         // Planks
+        for (int i = 0; i < 15; i++) {
+            OreDictionary.registerOre("plankWoodOak", getModItem(GTEValues.MODID_CHISEL, "planks-oak", 1, i));
+            OreDictionary.registerOre("plankWoodSpruce", getModItem(GTEValues.MODID_CHISEL, "planks-spruce", 1, i));
+            OreDictionary.registerOre("plankWoodBirch", getModItem(GTEValues.MODID_CHISEL, "planks-birch", 1, i));
+            OreDictionary.registerOre("plankWoodJungle", getModItem(GTEValues.MODID_CHISEL, "planks-jungle", 1, i));
+            OreDictionary.registerOre("plankWoodAcacia", getModItem(GTEValues.MODID_CHISEL, "planks-acacia", 1, i));
+            OreDictionary.registerOre("plankWoodDarkOak", getModItem(GTEValues.MODID_CHISEL, "planks-dark-oak", 1, i));
+        }
         OreDictionary.registerOre("plankWoodOak", new ItemStack(Blocks.PLANKS, 1));
-        OreDictionary.registerOre("plankWoodOak", getModItem(GTEValues.MODID_CHISEL, "planks-oak", 1, W));
         registerAutoChiselRecipe("plankWoodOak");
         OreDictionary.registerOre("plankWoodSpruce", new ItemStack(Blocks.PLANKS, 1, 1));
-        OreDictionary.registerOre("plankWoodSpruce", getModItem(GTEValues.MODID_CHISEL, "planks-spruce", 1, W));
         registerAutoChiselRecipe("plankWoodSpruce");
         OreDictionary.registerOre("plankWoodBirch", new ItemStack(Blocks.PLANKS, 1, 2));
-        OreDictionary.registerOre("plankWoodBirch", getModItem(GTEValues.MODID_CHISEL, "planks-birch", 1, W));
         registerAutoChiselRecipe("plankWoodBirch");
         OreDictionary.registerOre("plankWoodJungle", new ItemStack(Blocks.PLANKS, 1, 3));
-        OreDictionary.registerOre("plankWoodJungle", getModItem(GTEValues.MODID_CHISEL, "planks-jungle", 1, W));
         registerAutoChiselRecipe("plankWoodJungle");
         OreDictionary.registerOre("plankWoodAcacia", new ItemStack(Blocks.PLANKS, 1, 4));
-        OreDictionary.registerOre("plankWoodAcacia", getModItem(GTEValues.MODID_CHISEL, "planks-acacia", 1, W));
         registerAutoChiselRecipe("plankWoodAcacia");
         OreDictionary.registerOre("plankWoodDarkOak", new ItemStack(Blocks.PLANKS, 1, 5));
-        OreDictionary.registerOre("plankWoodDarkOak", getModItem(GTEValues.MODID_CHISEL, "planks-dark-oak", 1, W));
         registerAutoChiselRecipe("plankWoodDarkOak");
         // Prismarine
         OreDictionary.registerOre("prismarineBrick", new ItemStack(Blocks.PRISMARINE, 1, 1));
@@ -501,9 +535,15 @@ public class ChiselRecipeLoader {
         // Purpur
         OreDictionary.registerOre("blockPurpur", new ItemStack(Blocks.PURPUR_BLOCK));
         OreDictionary.registerOre("blockPurpur", new ItemStack(Blocks.PURPUR_PILLAR));
-        OreDictionary.registerOre("blockPurpur", getModItem(GTEValues.MODID_CHISEL, "purpur", 1, W));
-        OreDictionary.registerOre("blockPurpur", getModItem(GTEValues.MODID_CHISEL, "purpur1", 1, W));
-        OreDictionary.registerOre("blockPurpur", getModItem(GTEValues.MODID_CHISEL, "purpur2", 1, W));
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("blockPurpur", getModItem(GTEValues.MODID_CHISEL, "purpur", 1, i));
+        }
+        for (int i = 0; i < 10; i++) {
+            OreDictionary.registerOre("blockPurpur", getModItem(GTEValues.MODID_CHISEL, "purpur1", 1, i));
+        }
+        for (int i = 0; i < 5; i++) {
+            OreDictionary.registerOre("blockPurpur", getModItem(GTEValues.MODID_CHISEL, "purpur2", 1, i));
+        }
         registerAutoChiselRecipe("blockPurpur");
         // Quartz Block
         OreDictionary.registerOre("blockQuartz", new ItemStack(Blocks.QUARTZ_BLOCK, 1, 1));
@@ -512,41 +552,72 @@ public class ChiselRecipeLoader {
         // Redstone Block
         registerAutoChiselRecipe("blockRedstone");
         // Red Sandstone
-        OreDictionary.registerOre("sandstoneRed", new ItemStack(Blocks.RED_SANDSTONE, 1, W));
-        OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered", 1, W));
-        OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered1", 1, W));
-        OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered2", 1, W));
-        OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered-scribbles", 1, W));
+        for (int i = 0; i < 2; i++) {
+            OreDictionary.registerOre("sandstoneRed", new ItemStack(Blocks.RED_SANDSTONE, 1, i));
+        }
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered", 1, i));
+            OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered-scribbles", 1, i));
+        }
+        for (int i = 0; i < 10; i++) {
+            OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered1", 1, i));
+        }
+        for (int i = 0; i < 8; i++) {
+            OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered2", 1, i));
+        }
         registerAutoChiselRecipe("sandstoneRed");
         // Sandstone
-        OreDictionary.registerOre("sandstoneYellow", new ItemStack(Blocks.SANDSTONE, 1, W));
-        OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstoneyellow1", 1, W));
-        OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstoneyellow", 1, W));
-        OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstoneyellow2", 1, W));
-        OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstone-scribbles", 1, W));
+        for (int i = 0; i < 2; i++) {
+            OreDictionary.registerOre("sandstoneYellow", new ItemStack(Blocks.SANDSTONE, 1, i));
+        }
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstoneyellow", 1, i));
+            OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstone-scribbles", 1, i));
+        }
+        for (int i = 0; i < 10; i++) {
+            OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstoneyellow1", 1, i));
+        }
+        for (int i = 0; i < 8; i++) {
+            OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstoneyellow2", 1, i));
+        }
+
         registerAutoChiselRecipe("sandstoneYellow");
         // Stone
-        OreDictionary.registerOre("stone", new ItemStack(Blocks.STONEBRICK, 1, W));
+        for (int i = 0; i < 4; i++) {
+            OreDictionary.registerOre("stone", new ItemStack(Blocks.STONEBRICK, 1, i));
+        }
         registerAutoChiselRecipe("stone");
         // Temple Block
-        OreDictionary.registerOre("blockTemple", new ItemStack(ChiselBlocks.temple, 1, W));
-        OreDictionary.registerOre("blockTemple", getModItem(GTEValues.MODID_CHISEL, "templemossy", 1, W));
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("blockTemple", new ItemStack(ChiselBlocks.temple, 1, i));
+            OreDictionary.registerOre("blockTemple", getModItem(GTEValues.MODID_CHISEL, "templemossy", 1, i));
+        }
         registerAutoChiselRecipe("blockTemple");
         // Tyrian
-        OreDictionary.registerOre("blockTyrian", new ItemStack(ChiselBlocks.tyrian, 1, W));
+        for (int i = 0; i < 15; i++) {
+            OreDictionary.registerOre("blockTyrian", new ItemStack(ChiselBlocks.tyrian, 1, i));
+        }
         registerAutoChiselRecipe("blockTyrian");
         // Valentines' Block
-        OreDictionary.registerOre("blockValentine", new ItemStack(ChiselBlocks.valentines, 1, W));
+        for (int i = 0; i < 10; i++) {
+            OreDictionary.registerOre("blockValentine", new ItemStack(ChiselBlocks.valentines, 1, i));
+        }
         registerAutoChiselRecipe("blockValentine");
         // Voidstone
-        OreDictionary.registerOre("blockVoidstone", new ItemStack(ChiselBlocks.voidstone, 1, W));
-        OreDictionary.registerOre("blockVoidstone", getModItem(GTEValues.MODID_CHISEL, "energizedvoidstone", 1, W));
-        OreDictionary.registerOre("blockVoidstone", getModItem(GTEValues.MODID_CHISEL, "voidstonerunic", 1, W));
+        for (int i = 0; i < 8; i++) {
+            OreDictionary.registerOre("blockVoidstone", new ItemStack(ChiselBlocks.voidstone, 1, i));
+            OreDictionary.registerOre("blockVoidstone", getModItem(GTEValues.MODID_CHISEL, "energizedvoidstone", 1, i));
+        }
+        for (int i = 0; i < 15; i++) {
+            OreDictionary.registerOre("blockVoidstone", getModItem(GTEValues.MODID_CHISEL, "voidstonerunic", 1, i));
+        }
         registerAutoChiselRecipe("blockVoidstone");
         // Waterstone
-        OreDictionary.registerOre("blockWaterstone", new ItemStack(ChiselBlocks.waterstone, 1, W));
-        OreDictionary.registerOre("blockWaterstone", new ItemStack(ChiselBlocks.waterstone1, 1, W));
-        OreDictionary.registerOre("blockWaterstone", new ItemStack(ChiselBlocks.waterstone2, 1, W));
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("blockWaterstone", new ItemStack(ChiselBlocks.waterstone, 1, i));
+            OreDictionary.registerOre("blockWaterstone", new ItemStack(ChiselBlocks.waterstone1, 1, i));
+        }
+        OreDictionary.registerOre("blockWaterstone", new ItemStack(ChiselBlocks.waterstone2, 1));
         registerAutoChiselRecipe("blockWaterstone");
     }
 
