@@ -249,53 +249,59 @@ public class ChiselRecipeLoader {
             int i = 0;
             while (i < Materials.CHEMICAL_DYES.length) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
-                String colorName = color.getName().equals("silver") ? "light_gray" : color.getName();
+                EnumDyeColor dyeColor = EnumDyeColor.values()[i];
+                String colorName = dyeColor.toString().equals("silver") ? "LightGray" : dyeColor.toString().substring(0,1).toUpperCase() + dyeColor.toString().substring(1); // LightBlue
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
-                addGroup("lamp_" + colorName);
+                addGroup("lamp" + colorName);
                 {
                     int lampMeta = 0;
                     while (lampMeta < lamp.getItemMetadataStates()) {
-                        addVariation("lamp_" + colorName, getModItem("projectred-illumination", "lamp", 1, i));
-                        addVariation("lamp_" + colorName,
+                        addVariation("lamp" + colorName, getModItem("projectred-illumination", "lamp", 1, i));
+                        addVariation("lamp" + colorName,
                                 getModItem("projectred-illumination", "lamp", 1, i + 16));
-                        addVariation("lamp_" + colorName, new ItemStack(lamp, 1, lampMeta));
+                        addVariation("lamp" + colorName, new ItemStack(lamp, 1, lampMeta));
                         lampMeta++;
                     }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
-                addGroup("lamp_borderless_" + colorName);
+                addGroup("lampBorderless" + colorName);
                 int lampMeta = 0;
                 while (lampMeta < lamp.getItemMetadataStates()) {
-                    addVariation("lamp_borderless_" + colorName, new ItemStack(lamp, 1, lampMeta));
+                    addVariation("lampBorderless" + colorName, new ItemStack(lamp, 1, lampMeta));
                     lampMeta++;
                 }
+                registerAutoChiselRecipe("lamp" + colorName);
+                registerAutoChiselRecipe("lampBorderless" + colorName);
                 i++;
             }
         } else {
             int i = 0;
             while (i < Materials.CHEMICAL_DYES.length) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
-                String colorName = color.getName().equals("silver") ? "light_gray" : color.getName();
+                EnumDyeColor dyeColor = EnumDyeColor.values()[i];
+                String colorName = dyeColor.toString().equals("silver") ? "LightGray" : dyeColor.toString().substring(0,1).toUpperCase() + dyeColor.toString().substring(1); // LightBlue
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
-                addGroup("lamp_" + colorName);
+                addGroup("lamp" + colorName);
                 {
                     int lampMeta = 0;
                     while (lampMeta < lamp.getItemMetadataStates()) {
-                        addVariation("lamp_" + colorName, new ItemStack(lamp, 1, lampMeta));
+                        addVariation("lamp" + colorName, new ItemStack(lamp, 1, lampMeta));
                         lampMeta++;
                     }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
-                addGroup("lamp_borderless_" + colorName);
+                addGroup("lampBorderless" + colorName);
                 int lampMeta = 0;
                 while (lampMeta < lamp.getItemMetadataStates()) {
-                    addVariation("lamp_borderless_" + colorName, new ItemStack(lamp, 1, lampMeta));
+                    addVariation("lampBorderless" + colorName, new ItemStack(lamp, 1, lampMeta));
                     lampMeta++;
                 }
+                registerAutoChiselRecipe("lamp" + colorName);
+                registerAutoChiselRecipe("lampBorderless" + colorName);
                 i++;
             }
         }
@@ -421,11 +427,17 @@ public class ChiselRecipeLoader {
         OreDictionary.registerOre("endstone", new ItemStack(Blocks.END_BRICKS));
         registerAutoChiselRecipe("endstone");
         // Factory Block
-        OreDictionary.registerOre("blockFactory", new ItemStack(ChiselBlocks.factory, 1, W));
-        OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "factory1", 1, W));
-        OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "technical", 1, W));
-        OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "technical1", 1, W));
-        OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "technicalnew", 1, W));
+        for (int i = 0; i < 16; i++) {
+            OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "factory", 1, i));
+            OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "technical", 1, i));
+        }
+        for (int i = 0; i < 5; i++){
+            OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "factory1", 1, i));
+            OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "technical1", 1, i));
+        }
+        for (int i = 0; i < 9; i++){
+            OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "technicalnew", 1, i));
+        }
         registerAutoChiselRecipe("blockFactory");
         // Futura Block
         OreDictionary.registerOre("blockFutura", new ItemStack(ChiselBlocks.futura, 1,W));
