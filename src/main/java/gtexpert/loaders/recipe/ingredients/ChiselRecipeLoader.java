@@ -15,7 +15,6 @@ import gtexpert.api.util.GTEUtility;
 import gtexpert.common.GTEConfigHolder;
 
 import gtexpert.integration.ae.AEHelper;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -382,26 +381,26 @@ public class ChiselRecipeLoader {
             String colorName = dyeColor.toString().equals("silver") ? "LightGray" : dyeColor.toString().substring(0,1).toUpperCase() + dyeColor.toString().substring(1); // LightBlue
             String colorname = dyeColor.toString().equals("silver") ? "lightgray" : dyeColor.toString().toLowerCase(); // lightblue
             // Carpet
-            OreDictionary.registerOre(String.format("carpet" + colorName), new ItemStack(Blocks.CARPET, 1, i));
-            OreDictionary.registerOre(String.format("carpet" + colorName), getModItem(GTEValues.MODID_CHISEL, String.format("carpet_" + colorname), 1, W));
-            registerAutoChiselRecipe(String.format("carpet" + colorName));
+            OreDictionary.registerOre("carpet" + colorName, new ItemStack(Blocks.CARPET, 1, i));
+            OreDictionary.registerOre("carpet" + colorName, getModItem(GTEValues.MODID_CHISEL, "carpet_" + colorname, 1, W));
+            registerAutoChiselRecipe("carpet" + colorName);
             // Concrete
-            OreDictionary.registerOre(String.format("blockConcrete" + colorName), new ItemStack(Blocks.CONCRETE, 1, i));
-            registerAutoChiselRecipe(String.format("blockConcrete" + colorName));
+            OreDictionary.registerOre("blockConcrete" + colorName, new ItemStack(Blocks.CONCRETE, 1, i));
+            registerAutoChiselRecipe("blockConcrete" + colorName);
             // Glass
-            OreDictionary.registerOre(String.format("blockChisellableGlass" + colorName), new ItemStack(Blocks.STAINED_GLASS, 1, i));
-            OreDictionary.registerOre(String.format("blockChisellableGlass" + colorName), getModItem(GTEValues.MODID_CHISEL, String.format("glassdyed" + colorname), 1, W));
-            registerAutoChiselRecipe(String.format("blockChisellableGlass" + colorName));
+            OreDictionary.registerOre("blockChisellableGlass" + colorName, new ItemStack(Blocks.STAINED_GLASS, 1, i));
+            OreDictionary.registerOre("blockChisellableGlass" + colorName, getModItem(GTEValues.MODID_CHISEL, "glassdyed" + colorname, 1, W));
+            registerAutoChiselRecipe("blockChisellableGlass" + colorName);
             OreDictionary.registerOre("blockChisellableGlassColorless", new ItemStack(Blocks.GLASS));
             OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass", 1, W));
             OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass1", 1, W));
             registerAutoChiselRecipe("blockChisellableGlassColorless");
             // Glass Pane
-            registerAutoChiselRecipe(String.format("paneGlass" + colorName));
+            registerAutoChiselRecipe("paneGlass" + colorName);
             registerAutoChiselRecipe("paneGlassColorless");
             // Wool
-            OreDictionary.registerOre(String.format("blockWool" + colorName), getModItem(GTEValues.MODID_CHISEL, String.format("wool_" + colorname), 1, W));
-            registerAutoChiselRecipe(String.format("blockWool" + colorName));
+            OreDictionary.registerOre("blockWool" + colorName, getModItem(GTEValues.MODID_CHISEL, "wool_" + colorname, 1, W));
+            registerAutoChiselRecipe("blockWool" + colorName);
         }
         // Certus Quartz
         OreDictionary.registerOre("blockCertus", AEHelper.aeBlocks.quartzBlock().maybeStack(1).get());
