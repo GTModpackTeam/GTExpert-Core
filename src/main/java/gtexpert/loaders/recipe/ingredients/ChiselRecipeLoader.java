@@ -185,6 +185,13 @@ public class ChiselRecipeLoader {
         // ######################
         // Default chiseling
         // ######################
+        // Material Blocks
+        List<ItemStack> aluminums = OreDictionary.getOres("blockAluminum");
+        aluminums.forEach(alumimun -> OreDictionary.registerOre("blockAluminium", alumimun));
+        Arrays.asList("blockAluminium", "blockBronze", "blockCharcoal", "blockCoal", "blockFuelCoke", "blockCobalt",
+                "blockCopper", "blockDiamond", "blockElectrum", "blockEmerald", "blockGold", "blockInvar", "blockIron",
+                "blockLapis", "blockLead", "blockNickel", "blockPlatinum", "blockSilver", "blockSteel", "blockTin",
+                "blockUranium").forEach(ChiselRecipeLoader::registerAutoChiselRecipe);
 
         // Andesite
         registerAutoChiselRecipe("stoneAndesite");
@@ -197,71 +204,6 @@ public class ChiselRecipeLoader {
 
         // Basalt
         registerAutoChiselRecipe("stoneBasalt");
-
-        // Aluminium
-        List<ItemStack> aluminums = OreDictionary.getOres("blockAluminum");
-        aluminums.forEach(alumimun -> OreDictionary.registerOre("blockAluminium", alumimun));
-        registerAutoChiselRecipe("blockAluminium");
-
-        // Bronze
-        registerAutoChiselRecipe("blockBronze");
-
-        // Charcoal
-        registerAutoChiselRecipe("blockCharcoal");
-
-        // Coal
-        registerAutoChiselRecipe("blockCoal");
-
-        // Coal Coke
-        registerAutoChiselRecipe("blockFuelCoke");
-
-        // Cobalt
-        registerAutoChiselRecipe("blockCobalt");
-
-        // Copper
-        registerAutoChiselRecipe("blockCopper");
-
-        // Diamond
-        registerAutoChiselRecipe("blockDiamond");
-
-        // Electrum
-        registerAutoChiselRecipe("blockElectrum");
-
-        // Emerald
-        registerAutoChiselRecipe("blockEmerald");
-
-        // Gold
-        registerAutoChiselRecipe("blockGold");
-
-        // Invar
-        registerAutoChiselRecipe("blockInvar");
-
-        // Iron
-        registerAutoChiselRecipe("blockIron");
-
-        // Lapis
-        registerAutoChiselRecipe("blockLapis");
-
-        // Lead
-        registerAutoChiselRecipe("blockLead");
-
-        // Nickel
-        registerAutoChiselRecipe("blockNickel");
-
-        // Platinum
-        registerAutoChiselRecipe("blockPlatinum");
-
-        // Silver
-        registerAutoChiselRecipe("blockSilver");
-
-        // Steel
-        registerAutoChiselRecipe("blockSteel");
-
-        // Tin
-        registerAutoChiselRecipe("blockTin");
-
-        // Uranium
-        registerAutoChiselRecipe("blockUranium");
 
         // Brick
         for (int i = 0; i < 16; i++) {
@@ -407,6 +349,7 @@ public class ChiselRecipeLoader {
             OreDictionary.registerOre("barsIron", getModItem(GTEValues.MODID_CHISEL, "ironpane", 1, i));
         }
         registerAutoChiselRecipe("barsIron");
+
         // Laboratory Block
         for (int i = 0; i < 16; i++) {
             OreDictionary.registerOre("blockLaboratory", new ItemStack(ChiselBlocks.laboratory, 1, i));
@@ -606,9 +549,7 @@ public class ChiselRecipeLoader {
                 .input(oreDictName)
                 .inputs(target)
                 .outputs(target, target)
-                .duration(20)
-                .EUt(VA[ULV])
-                .hidden()
-                .buildAndRegister());
+                .duration(20).EUt(VA[ULV])
+                .hidden().buildAndRegister());
     }
 }
