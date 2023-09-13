@@ -22,11 +22,11 @@ gtexpert.machine.large_cracking_unit.tooltip=§d作者:§f @Quarri6343
 # singleblock
 # Auto Chisel
 gtexpert.machine.auto_chisel.lv.name=基本型自動彫刻機
-gtexpert.machine.auto_chisel.lv.tooltip=あなたの理想、彫刻します/n§d作者:§f @tier940
+gtexpert.machine.auto_chisel.lv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
 gtexpert.machine.auto_chisel.mv.name=発展型自動彫刻機
-gtexpert.machine.auto_chisel.mv.tooltip=あなたの理想、彫刻します/n§d作者:§f @tier940
+gtexpert.machine.auto_chisel.mv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
 gtexpert.machine.auto_chisel.hv.name=発展型自動彫刻機 II
-gtexpert.machine.auto_chisel.hv.tooltip=あなたの理想、彫刻します/n§d作者:§f @tier940
+gtexpert.machine.auto_chisel.hv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
 
 # Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=基本型魂抽出器
