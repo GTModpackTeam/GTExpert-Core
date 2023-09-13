@@ -13,8 +13,8 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.GTEConfigHolder;
-
 import gtexpert.integration.ae.AEHelper;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -58,79 +58,40 @@ public class ChiselRecipeLoader {
     }
 
     private static void blocks() {
-        // Oak Bookshelf
+        // Bookshelf
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack(Blocks.PLANKS, 6, 0),
                 new ItemStack(Items.BOOK, 3));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(Blocks.PLANKS, 6, 0))
-                .inputs(new ItemStack(Items.BOOK, 3))
-                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_oak", 1, 0))
-                .duration(100).EUt(4)
-                .buildAndRegister();
-
-        // Spruce Bookshelf
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(Blocks.PLANKS, 6, 1))
-                .inputs(new ItemStack(Items.BOOK, 3))
-                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_spruce", 1, 0))
-                .duration(100).EUt(4)
-                .buildAndRegister();
-
-        // Birch Bookshelf
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(Blocks.PLANKS, 6, 2))
-                .inputs(new ItemStack(Items.BOOK, 3))
-                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_birch", 1, 0))
-                .duration(100).EUt(4)
-                .buildAndRegister();
-
-        // Jungle Bookshelf
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(Blocks.PLANKS, 6, 3))
-                .inputs(new ItemStack(Items.BOOK, 3))
-                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_jungle", 1, 0))
-                .duration(100).EUt(4)
-                .buildAndRegister();
-
-        // Acacia Bookshelf
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(Blocks.PLANKS, 6, 4))
-                .inputs(new ItemStack(Items.BOOK, 3))
-                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_acacia", 1, 0))
-                .duration(100).EUt(4)
-                .buildAndRegister();
-
-        // Dark Oak Bookshelf
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(Blocks.PLANKS, 6, 5))
-                .inputs(new ItemStack(Items.BOOK, 3))
-                .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_darkoak", 1, 0))
-                .duration(100).EUt(4)
-                .buildAndRegister();
+        String[] bookshelf = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "darkoak" };
+        for (int i = 0; i < bookshelf.length; i++) {
+            addGroup("bookshelf" + bookshelf[i].toUpperCase());
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(new ItemStack(Blocks.PLANKS, 6, i))
+                    .inputs(new ItemStack(Items.BOOK, 3))
+                    .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_" + bookshelf[i], 1, 0))
+                    .duration(100).EUt(4)
+                    .buildAndRegister();
+            registerAutoChiselRecipe("bookshelf" + bookshelf[i].toUpperCase());
+        }
 
         // Material Blocks
         if (ConfigHolder.recipes.disableManualCompression) {
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "charcoal_uncraft"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "diamond"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "emerald"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "redstone"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "coal"));
+            Arrays.asList("charcoal_uncraft", "diamond", "emerald", "redstone", "coal", "uncraft_blocksilver",
+                    "uncraft_blocklead", "uncraft_blocktin", "uncraft_blocksteel", "uncraft_blockplatinum",
+                    "uncraft_blockiron", "uncraft_blockaluminium", "uncraft_blockcobalt", "uncraft_blocknickel",
+                    "uncraft_blockelectrum", "uncraft_blockuranium", "uncraft_blockcopper", "uncraft_blockbronze",
+                    "uncraft_blockinvar", "uncraft_blockgold").forEach(
+                            block -> removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, block)));
+        }
 
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocksilver"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocklead"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocktin"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocksteel"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockplatinum"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockiron"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockaluminium"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockcobalt"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blocknickel"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockelectrum"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockuranium"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockcopper"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockbronze"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockinvar"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "uncraft_blockgold"));
+        // Glass Panes
+        if (ConfigHolder.recipes.hardGlassRecipes) {
+            Arrays.asList("glass/terrain-glassbubble", "glass/terrain-glassnoborder", "glass/terrain-glassshale",
+                    "glass/terrain-glass-thingrid", "glass/chinese", "glass/japanese", "glass/terrain-glassdungeon",
+                    "glass/terrain-glasslight", "glass/terrain-glass-ornatesteel", "glass/terrain-glass-screen",
+                    "glass/terrain-glass-steelframe", "glass/terrain-glassstone", "glass/terrain-glassstreak",
+                    "glass/terrain-glass-thickgrid", "glass/a1-glasswindow-ironfencemodern", "glass/chrono",
+                    "glass/chinese2", "glass/japanese2").forEach(
+                            block -> removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, block)));
         }
 
         // Auto Chisel
@@ -149,28 +110,6 @@ public class ChiselRecipeLoader {
                 'M', MOTOR,
                 'C', CIRCUIT);
 
-        // Glass Pane
-        if (ConfigHolder.recipes.hardGlassRecipes) {
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassbubble"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassnoborder"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassshale"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-thingrid"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chinese"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/japanese"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassdungeon"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glasslight"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-ornatesteel"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-screen"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-steelframe"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassstone"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glassstreak"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/terrain-glass-thickgrid"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/a1-glasswindow-ironfencemodern"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chrono"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/chinese2"));
-            removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "glass/japanese2"));
-        }
-
         // Hazard Sign 1
         addGroup("hazardSign");
         Arrays.asList(YELLOW_STRIPES, SMALL_YELLOW_STRIPES,
@@ -188,107 +127,42 @@ public class ChiselRecipeLoader {
                 .forEach(hazardSign1 -> addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(hazardSign1)));
         registerAutoChiselRecipe("hazardSign1");
 
-        // Black Granite
-        addGroup("blackGranite");
-        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
-                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
-                BRICKS_SQUARE)
-                .forEach(blackGranite -> addVariation("blackGranite",
-                        STONE_BLOCKS.get(blackGranite).getItemVariant(BLACK_GRANITE)));
-        registerAutoChiselRecipe("blackGranite");
-
-        // Red Granite
-        addGroup("redGranite");
-        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
-                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
-                BRICKS_SQUARE)
-                .forEach(redGranite -> addVariation("redGranite",
-                        STONE_BLOCKS.get(redGranite).getItemVariant(RED_GRANITE)));
-        registerAutoChiselRecipe("redGranite");
-
-        // Marble
-        addGroup("marbleGt");
-        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
-                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
-                BRICKS_SQUARE)
-                .forEach(marbleGt -> addVariation("marbleGt", STONE_BLOCKS.get(marbleGt).getItemVariant(MARBLE)));
-        registerAutoChiselRecipe("marbleGt");
-
-        // Basalt
-        addGroup("basaltGt");
-        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
-                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
-                BRICKS_SQUARE)
-                .forEach(basaltGt -> addVariation("basaltGt", STONE_BLOCKS.get(basaltGt).getItemVariant(BASALT)));
-        registerAutoChiselRecipe("basaltGt");
-
-        // Light Concrete
-        addGroup("lightConcrete");
-        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED,
-                BRICKS, BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A,
-                WINDMILL_B, BRICKS_SQUARE)
-                .forEach(lightConcrete -> addVariation("lightConcrete",
-                        STONE_BLOCKS.get(lightConcrete).getItemVariant(CONCRETE_LIGHT)));
-        registerAutoChiselRecipe("lightConcrete");
-
-        // Dark Concrete
-        addGroup("darkConcrete");
-        Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS,
-                BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B,
-                BRICKS_SQUARE)
-                .forEach(darkConcrete -> addVariation("darkConcrete",
-                        STONE_BLOCKS.get(darkConcrete).getItemVariant(CONCRETE_DARK)));
-        registerAutoChiselRecipe("darkConcrete");
+        // GT Stones
+        Arrays.asList(BLACK_GRANITE, RED_GRANITE, MARBLE, BASALT, CONCRETE_LIGHT, CONCRETE_DARK).forEach(stoneType -> {
+            addGroup(stoneType.toString());
+            Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED,
+                    BRICKS, BRICKS_CRACKED, BRICKS_MOSSY, CHISELED, TILED, TILED_SMALL, BRICKS_SMALL,
+                    WINDMILL_A, WINDMILL_B, BRICKS_SQUARE).forEach(
+                            stoneVariant -> addVariation(stoneType.toString(),
+                                    STONE_BLOCKS.get(stoneVariant).getItemVariant(stoneType)));
+            registerAutoChiselRecipe(stoneType.toString());
+        });
 
         // Lamp
-        if (GTEConfigHolder.chiselIntegration.hardLedRecipes && Loader.isModLoaded("projectred-illumination")) {
-            IntStream.range(0, 31).mapToObj(i -> getModItem("projectred-illumination", "lamp", 1, i))
-                    .forEach(ModHandler::removeRecipeByOutput);
+        if (GTEConfigHolder.chiselIntegration.hardLedRecipes) {
+            if (Loader.isModLoaded("projectred-illumination")) {
+                IntStream.range(0, 31).mapToObj(i -> getModItem("projectred-illumination", "lamp", 1, i))
+                        .forEach(ModHandler::removeRecipeByOutput);
+            }
 
             int i = 0;
             while (i < Materials.CHEMICAL_DYES.length) {
                 EnumDyeColor color = EnumDyeColor.byMetadata(i);
                 EnumDyeColor dyeColor = EnumDyeColor.values()[i];
                 String colorName = dyeColor.toString().equals("silver") ?
-                        "LightGray" : dyeColor.toString().substring(0,1).toUpperCase() + dyeColor.toString().substring(1); // LightBlue
+                        "LightGray" :
+                        dyeColor.toString().substring(0, 1).toUpperCase() + dyeColor.toString().substring(1); // LightBlue
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
                 addGroup("lamp" + colorName);
                 {
                     int lampMeta = 0;
                     while (lampMeta < lamp.getItemMetadataStates()) {
-                        addVariation("lamp" + colorName, getModItem("projectred-illumination", "lamp", 1, i));
+                        if (Loader.isModLoaded("projectred-illumination")) {
+                            addVariation("lamp" + colorName, getModItem("projectred-illumination", "lamp", 1, i));
+                        }
                         addVariation("lamp" + colorName,
                                 getModItem("projectred-illumination", "lamp", 1, i + 16));
-                        addVariation("lamp" + colorName, new ItemStack(lamp, 1, lampMeta));
-                        lampMeta++;
-                    }
-                }
-
-                lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
-                addGroup("lampBorderless" + colorName);
-                int lampMeta = 0;
-                while (lampMeta < lamp.getItemMetadataStates()) {
-                    addVariation("lampBorderless" + colorName, new ItemStack(lamp, 1, lampMeta));
-                    lampMeta++;
-                }
-                registerAutoChiselRecipe("lamp" + colorName);
-                registerAutoChiselRecipe("lampBorderless" + colorName);
-                i++;
-            }
-        } else {
-            int i = 0;
-            while (i < Materials.CHEMICAL_DYES.length) {
-                EnumDyeColor color = EnumDyeColor.byMetadata(i);
-                EnumDyeColor dyeColor = EnumDyeColor.values()[i];
-                String colorName = dyeColor.toString().equals("silver") ?
-                        "LightGray" : dyeColor.toString().substring(0,1).toUpperCase() + dyeColor.toString().substring(1); // LightBlue
-                BlockLamp lamp = MetaBlocks.LAMPS.get(color);
-
-                addGroup("lamp" + colorName);
-                {
-                    int lampMeta = 0;
-                    while (lampMeta < lamp.getItemMetadataStates()) {
                         addVariation("lamp" + colorName, new ItemStack(lamp, 1, lampMeta));
                         lampMeta++;
                     }
@@ -325,8 +199,7 @@ public class ChiselRecipeLoader {
 
         // Aluminium
         List<ItemStack> aluminums = OreDictionary.getOres("blockAluminum");
-        aluminums.forEach(alumimun ->
-                OreDictionary.registerOre("blockAluminium", alumimun));
+        aluminums.forEach(alumimun -> OreDictionary.registerOre("blockAluminium", alumimun));
         registerAutoChiselRecipe("blockAluminium");
 
         // Bronze
@@ -401,7 +274,7 @@ public class ChiselRecipeLoader {
         for (int i = 0; i < 16; i++) {
             OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks", 1, i));
         }
-        for (int i =0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             OreDictionary.registerOre("blockBrick", getModItem(GTEValues.MODID_CHISEL, "bricks1", 1, i));
         }
         for (int i = 0; i < 6; i++) {
@@ -418,45 +291,54 @@ public class ChiselRecipeLoader {
         // Colored Blocks
         for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
             EnumDyeColor dyeColor = EnumDyeColor.values()[i];
-            String colorName = dyeColor.toString().equals("silver") ?
-                    "LightGray" : dyeColor.toString().substring(0,1).toUpperCase() + dyeColor.toString().substring(1); // LightBlue
-            String colorname = dyeColor.toString().equals("silver") ?
+            String UpperColorName = dyeColor.toString().equals("silver") ?
+                    "LightGray" : dyeColor.toString().substring(0, 1).toUpperCase() + dyeColor.toString().substring(1); // LightBlue
+            String LowerColorname = dyeColor.toString().equals("silver") ?
                     "lightgray" : dyeColor.toString().toLowerCase(); // lightblue
 
             // Carpet
-            OreDictionary.registerOre("carpet" + colorName, new ItemStack(Blocks.CARPET, 1, i));
-            OreDictionary.registerOre("carpet" + colorName, getModItem(GTEValues.MODID_CHISEL, "carpet_" + colorname, 1, 0));
-            OreDictionary.registerOre("carpet" + colorName, getModItem(GTEValues.MODID_CHISEL, "carpet_" + colorname, 1, 1));
-            registerAutoChiselRecipe("carpet" + colorName);
+            OreDictionary.registerOre("carpet" + UpperColorName, new ItemStack(Blocks.CARPET, 1, i));
+            OreDictionary.registerOre("carpet" + UpperColorName,
+                    getModItem(GTEValues.MODID_CHISEL, "carpet_" + LowerColorname, 1, 0));
+            OreDictionary.registerOre("carpet" + UpperColorName,
+                    getModItem(GTEValues.MODID_CHISEL, "carpet_" + LowerColorname, 1, 1));
+            registerAutoChiselRecipe("carpet" + UpperColorName);
 
             // Concrete
-            OreDictionary.registerOre("blockConcrete" + colorName, new ItemStack(Blocks.CONCRETE, 1, i));
-            registerAutoChiselRecipe("blockConcrete" + colorName);
+            OreDictionary.registerOre("blockConcrete" + UpperColorName, new ItemStack(Blocks.CONCRETE, 1, i));
+            registerAutoChiselRecipe("blockConcrete" + LowerColorname);
 
             // Stained Glass
-            OreDictionary.registerOre("blockChisellableGlass" + colorName, new ItemStack(Blocks.STAINED_GLASS, 1, i));
+            OreDictionary.registerOre("blockChisellableGlass" + UpperColorName,
+                    new ItemStack(Blocks.STAINED_GLASS, 1, i));
             for (int j = 0; j < 6; j++) {
-                OreDictionary.registerOre("blockChisellableGlass" + colorName, getModItem(GTEValues.MODID_CHISEL, "glassdyed" + colorname, 1, j));
+                OreDictionary.registerOre("blockChisellableGlass" + UpperColorName,
+                        getModItem(GTEValues.MODID_CHISEL, "glassdyed" + LowerColorname, 1, j));
             }
 
             // Colorless Glass
-            registerAutoChiselRecipe("blockChisellableGlass" + colorName);
+            registerAutoChiselRecipe("blockChisellableGlass" + UpperColorName);
             OreDictionary.registerOre("blockChisellableGlassColorless", new ItemStack(Blocks.GLASS));
             for (int j = 0; j < 15; j++) {
-                OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass", 1, j));
+                OreDictionary.registerOre("blockChisellableGlassColorless",
+                        getModItem(GTEValues.MODID_CHISEL, "glass", 1, j));
             }
-            OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass1", 1, 0));
-            OreDictionary.registerOre("blockChisellableGlassColorless", getModItem(GTEValues.MODID_CHISEL, "glass1", 1, 1));
+            OreDictionary.registerOre("blockChisellableGlassColorless",
+                    getModItem(GTEValues.MODID_CHISEL, "glass1", 1, 0));
+            OreDictionary.registerOre("blockChisellableGlassColorless",
+                    getModItem(GTEValues.MODID_CHISEL, "glass1", 1, 1));
             registerAutoChiselRecipe("blockChisellableGlassColorless");
 
             // Glass Pane
-            registerAutoChiselRecipe("paneGlass" + colorName);
+            registerAutoChiselRecipe("paneGlass" + UpperColorName);
             registerAutoChiselRecipe("paneGlassColorless");
 
             // Wool
-            OreDictionary.registerOre("blockWool" + colorName, getModItem(GTEValues.MODID_CHISEL, "wool_" + colorname, 1, 0));
-            OreDictionary.registerOre("blockWool" + colorName, getModItem(GTEValues.MODID_CHISEL, "wool_" + colorname, 1, 1));
-            registerAutoChiselRecipe("blockWool" + colorName);
+            OreDictionary.registerOre("blockWool" + UpperColorName,
+                    getModItem(GTEValues.MODID_CHISEL, "wool_" + LowerColorname, 1, 0));
+            OreDictionary.registerOre("blockWool" + UpperColorName,
+                    getModItem(GTEValues.MODID_CHISEL, "wool_" + LowerColorname, 1, 1));
+            registerAutoChiselRecipe("blockWool" + UpperColorName);
         }
 
         // Certus Quartz
@@ -499,11 +381,11 @@ public class ChiselRecipeLoader {
             OreDictionary.registerOre("blockFactory", new ItemStack(ChiselBlocks.factory, 1, i));
             OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "technical", 1, i));
         }
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "factory1", 1, i));
             OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "technical1", 1, i));
         }
-        for (int i = 0; i < 9; i++){
+        for (int i = 0; i < 9; i++) {
             OreDictionary.registerOre("blockFactory", getModItem(GTEValues.MODID_CHISEL, "technicalnew", 1, i));
         }
         registerAutoChiselRecipe("blockFactory");
@@ -625,7 +507,8 @@ public class ChiselRecipeLoader {
         }
         for (int i = 0; i < 16; i++) {
             OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered", 1, i));
-            OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered-scribbles", 1, i));
+            OreDictionary.registerOre("sandstoneRed",
+                    getModItem(GTEValues.MODID_CHISEL, "sandstonered-scribbles", 1, i));
         }
         for (int i = 0; i < 10; i++) {
             OreDictionary.registerOre("sandstoneRed", getModItem(GTEValues.MODID_CHISEL, "sandstonered1", 1, i));
@@ -641,7 +524,8 @@ public class ChiselRecipeLoader {
         }
         for (int i = 0; i < 16; i++) {
             OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstoneyellow", 1, i));
-            OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstone-scribbles", 1, i));
+            OreDictionary.registerOre("sandstoneYellow",
+                    getModItem(GTEValues.MODID_CHISEL, "sandstone-scribbles", 1, i));
         }
         for (int i = 0; i < 10; i++) {
             OreDictionary.registerOre("sandstoneYellow", getModItem(GTEValues.MODID_CHISEL, "sandstoneyellow1", 1, i));
