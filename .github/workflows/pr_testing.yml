@@ -10,7 +10,6 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+-pr-+[0-9]' # any semver tag, e.g. v1.2.3-pr-4
   pull_request:
     branches:
-      - dev
       - preview
 
 # if a second commit is pushed quickly after the first, cancel the first one's build

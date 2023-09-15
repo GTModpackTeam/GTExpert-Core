@@ -113,14 +113,14 @@ public class GTERecipeLoader {
 
         // Naquadah Rocket Fuel
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .fluidInputs(Naquadah.getFluid(1296))
+                .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .fluidInputs(RocketFuel.getFluid(5000))
                 .fluidOutputs(NaquadahRocketFuel.getFluid(6000))
-                .duration(20).EUt(VA[EV])
+                .duration(20).EUt(VA[IV])
                 .buildAndRegister();
         RecipeMaps.COMBUSTION_GENERATOR_FUELS.recipeBuilder()
                 .fluidInputs(NaquadahRocketFuel.getFluid(1))
-                .duration(500).EUt(32)
+                .duration(750).EUt(32)
                 .buildAndRegister();
     }
 

@@ -3,6 +3,7 @@ name: Publish
 
 permissions:
   contents: write
+  deployments: write
 
 on:
   workflow_dispatch:
@@ -20,8 +21,8 @@ on:
           - 'alpha'
 
 env:
-  # link to the changelog with a format code for the version
-  CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{github.repository}}/releases/tag/v${{github.ref_name}})"
+  # Version of the mod
+  FULL_VERSION: "${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
   # type of release
   NAME: "GTExpertCore"
 
@@ -40,15 +41,15 @@ jobs:
           fi
 
       - name: Set version
-        run: sed -i "s/modVersion.*=.*/modVersion = ${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}/g" gradle.properties
+        run: sed -i "s/modVersion.*=.*/modVersion = ${{ env.FULL_VERSION }}/g" gradle.properties
 
       - name: Commit and push gradle.properties
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Bump version to v${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
+          commit_message: "Bump version to v${{ env.FULL_VERSION }}"
           commit_options: "--no-verify"
           file_pattern: gradle.properties
-          tagging_message: "v${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
+          tagging_message: "v${{ env.FULL_VERSION }}"
 
       - name: Setup Java
         uses: actions/setup-java@v3
@@ -71,18 +72,19 @@ jobs:
       - name: Publish to Curseforge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          github-tag: "v${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
+          github-tag: "v${{ env.FULL_VERSION }}"
           github-generate-changelog: true
           github-draft: false
           github-prerelease: false
+          github-commitish: main
           curseforge-id: 851103
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar
             build/libs/*-@(sources).jar
             build/libs/*-@(dev).jar
-          name: "${{ env.NAME }}-${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}.jar"
-          changelog: "${{ env.CHANGELOG_LOCATION }}"
+          name: "${{ env.NAME }}-${{ env.FULL_VERSION }}.jar"
+          changelog: "Changelog is available [here](https://github.com/${{github.repository}}/releases/tag/v${{ env.FULL_VERSION }})"
           version: "${{ github.event.inputs.version }}"
           version-type: "${{ github.event.inputs.release_type }}"
           loaders: |
