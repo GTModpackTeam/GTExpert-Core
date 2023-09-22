@@ -32,7 +32,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      
+
       - name: Check if tag already exists
         run: |
           if git rev-parse --verify --quiet "v${{ github.event.inputs.version }}"; then
@@ -72,12 +72,12 @@ jobs:
       - name: Publish to Curseforge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          github-tag: "v${{ env.FULL_VERSION }}"
+          github-tag: "${{ env.FULL_VERSION }}"
           github-generate-changelog: true
           github-draft: false
           github-prerelease: false
-          github-commitish: main
-          curseforge-id: 851103
+          github-token: ${{ secrets.PAT }}
+          curseforge-id: '851103'
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar
