@@ -606,8 +606,14 @@ public class GTERecipeLoader {
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(screw, Neutronium, 8)
                 .input(CRYSTAL_MAINFRAME_UV, 4)
-                .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3))
-                .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6))
+                .inputs(GTEConfigHolder.ae2Integration.enableAE2UELExtended ?
+                        AEHelper.aeMaterials.cell256mbPart().maybeStack(16).get() :
+                        getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3)
+                )
+                .inputs(GTEConfigHolder.ae2Integration.enableAE2UELExtended ?
+                        AEHelper.aeMaterials.fluidCell16mbPart().maybeStack(16).get() :
+                        getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6)
+                )
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .fluidInputs(Neutronium.getFluid(9216))
                 .output(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 1)

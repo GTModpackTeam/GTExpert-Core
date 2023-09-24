@@ -29,4 +29,8 @@ public class GTEValues {
     public static boolean isModLoadedDEDA() {
         return Loader.isModLoaded(MODID_DE) && Loader.isModLoaded(MODID_DA);
     }
+
+    public static boolean isModLoadedAEACPU() {
+        return Loader.isModLoaded(GTEValues.MODID_AEA) && Loader.isModLoaded(GTEValues.MODID_EXCPU);
+    }
 }
