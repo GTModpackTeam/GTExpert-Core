@@ -28,7 +28,7 @@ dependencies {
     implementation rfg.deobf("curse.maven:configanytime-870276:4576653") // CAT 1.0
     implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848") // CCL 3.2.3.358
     //implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4701483") // CEu 2.7.3
-    implementation (files("libs/gregtech-1.12.2-2.7.3-beta-dev-materialAmount.jar")) // CEu pr #2050
+    implementation (files("libs/gregtech-1.12.2-2.7.3-beta.jar")) // CEu pr 2.8.0
     implementation rfg.deobf("curse.maven:gregicality-multiblocks-564858:4701685") // GCYM 1.2.5
     implementation rfg.deobf("curse.maven:ae2-extended-life-570458:4773115") // AE2UEL 0.55.23
     implementation rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465") // Forgelin 1.8.4

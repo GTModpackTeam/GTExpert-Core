@@ -11,6 +11,7 @@ import gregtech.api.gui.resources.IGuiTexture;
 import gregtech.api.gui.resources.ItemStackTexture;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.gui.widgets.*;
+import gregtech.api.items.itemhandlers.GTItemStackHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
@@ -62,12 +63,14 @@ public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntit
 
     @Override
     protected IItemHandlerModifiable createImportItemHandler() {
-        return new NotifiableItemStackHandler(2, this, false);
+        if (workable == null) return new GTItemStackHandler(this, 0);
+        return new NotifiableItemStackHandler(this, workable.getRecipeMap().getMaxInputs(), this, false);
     }
 
     @Override
     protected IItemHandlerModifiable createExportItemHandler() {
-        return new NotifiableItemStackHandler(1, this, true);
+        if (workable == null) return new GTItemStackHandler(this, 0);
+        return new NotifiableItemStackHandler(this, workable.getRecipeMap().getMaxOutputs(), this, true);
     }
 
     @Override
