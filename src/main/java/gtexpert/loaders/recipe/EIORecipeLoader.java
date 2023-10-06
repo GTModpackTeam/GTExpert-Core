@@ -7,13 +7,16 @@ import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 
+import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.common.GTEConfigHolder;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
 import crazypants.enderio.base.fluid.Fluids;
@@ -41,7 +44,6 @@ public class EIORecipeLoader {
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.FISH, 1, 2));
 
         // craftHootch
-        OreDictionary.registerOre("craftHootch", new ItemStack(Items.SUGAR));
         OreDictionary.registerOre("craftHootch", new ItemStack(Items.WHEAT_SEEDS));
         OreDictionary.registerOre("craftHootch", new ItemStack(Items.DYE, 1, 3));
         OreDictionary.registerOre("craftHootch", new ItemStack(Items.BEETROOT_SEEDS));
@@ -85,26 +87,39 @@ public class EIORecipeLoader {
                 .buildAndRegister();
 
         // Nutrient Distillation
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(3)
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input("craftNutrientDistillation", 8)
                 .input(Items.SPIDER_EYE, 2)
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
                 .duration(100).EUt(VA[LV])
                 .buildAndRegister();
+        if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 117))
+                    .input(Items.SPIDER_EYE, 2)
+                    .fluidInputs(Water.getFluid(1000))
+                    .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                    .duration(100).EUt(VA[LV])
+                    .buildAndRegister();
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 118))
+                    .input(Items.SPIDER_EYE, 2)
+                    .fluidInputs(Water.getFluid(1000))
+                    .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                    .duration(100).EUt(VA[LV])
+                    .buildAndRegister();
+        }
 
         // Dew of Void
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(ModObject.itemMaterial.getItemNN(), 2, 35)
                 .input(dust, EndSteel, 2)
                 .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
                 .fluidOutputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
                 .duration(100).EUt(VA[HV])
                 .buildAndRegister();
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(ModObject.itemMaterial.getItemNN(), 2, 35)
                 .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
                 .fluidInputs(EndSteel.getFluid(288))
@@ -113,8 +128,7 @@ public class EIORecipeLoader {
                 .buildAndRegister();
 
         // Vapor of levity
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(ModObject.itemMaterial.getItemNN(), 2, 36)
                 .input(ModObject.itemMaterial.getItemNN(), 2, 34)
                 .fluidInputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
@@ -123,18 +137,32 @@ public class EIORecipeLoader {
                 .buildAndRegister();
 
         // Hootch
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(2)
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input("craftHootch", 4)
                 .input(Items.SUGAR, 1)
                 .fluidInputs(Water.getFluid(2000))
                 .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
                 .duration(200).EUt(VA[HV])
                 .buildAndRegister();
+        if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 117))
+                    .input(Items.SUGAR, 1)
+                    .fluidInputs(Water.getFluid(2000))
+                    .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
+                    .duration(200).EUt(VA[HV])
+                    .buildAndRegister();
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 118))
+                    .input(Items.SUGAR, 1)
+                    .fluidInputs(Water.getFluid(2000))
+                    .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
+                    .duration(200).EUt(VA[HV])
+                    .buildAndRegister();
+        }
 
         // Fire Water
-        RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(1)
+        RecipeMaps.FERMENTING_RECIPES.recipeBuilder()
                 .input(dust, Redstone, 2)
                 .fluidInputs(Blaze.getFluid(1152))
                 .fluidOutputs(new FluidStack(Fluids.FIRE_WATER.getFluid(), 1000))

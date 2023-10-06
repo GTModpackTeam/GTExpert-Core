@@ -30,7 +30,6 @@ import gtexpert.integration.ae.AEHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.machines.init.MachineObject;
@@ -38,6 +37,7 @@ import crazypants.enderio.powertools.init.PowerToolObject;
 
 import java.util.LinkedList;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -113,14 +113,14 @@ public class GTERecipeLoader {
 
         // Naquadah Rocket Fuel
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
-                .fluidInputs(Naquadah.getFluid(1296))
+                .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .fluidInputs(RocketFuel.getFluid(5000))
                 .fluidOutputs(NaquadahRocketFuel.getFluid(6000))
-                .duration(20).EUt(VA[EV])
+                .duration(20).EUt(VA[IV])
                 .buildAndRegister();
         RecipeMaps.COMBUSTION_GENERATOR_FUELS.recipeBuilder()
                 .fluidInputs(NaquadahRocketFuel.getFluid(1))
-                .duration(500).EUt(32)
+                .duration(750).EUt(32)
                 .buildAndRegister();
     }
 
@@ -443,7 +443,7 @@ public class GTERecipeLoader {
                 'F', FIELD_GENERATOR_IV.getStackForm());
 
         // Void Ore Miner
-        if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
+        if (!GTEValues.isModLoadedDEDA()) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(MetaTileEntities.ADVANCED_LARGE_MINER)
                     .input(circuit, MarkerMaterials.Tier.ZPM, 4)
@@ -464,6 +464,10 @@ public class GTERecipeLoader {
                             .duration(4000).EUt(VA[ZPM]))
                     .buildAndRegister();
         }
+
+        // Void Ore Miner Recipes
+        List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
+        materials.forEach(GTERecipeLoader::voidOreMiner);
 
         // Treated Wood Machine Casing
         ModHandler.addShapedRecipe(true, "casing_treated_wood",
@@ -495,37 +499,6 @@ public class GTERecipeLoader {
                 .duration(100).EUt(VA[MV])
                 .buildAndRegister();
 
-        // Void Ore Miner Recipes
-        List<Material> materialOres = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        for (Material materialOre : materialOres) {
-            if (!materialOre.hasProperty(PropertyKey.ORE)) return;
-
-            List<ItemStack> ores = OreDictUnifier.getAll(new UnificationEntry(ore, materialOre));
-            ItemStack oreStack = ores.get(ores.size() - 1);
-            oreStack.setCount(32);
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
-                    .input(ore, materialOre)
-                    .fluidInputs(EnderPearl.getFluid(576))
-                    .fluidInputs(DrillingFluid.getFluid(10000))
-                    .outputs(oreStack)
-                    .duration(20).EUt(VA[ZPM])
-                    .buildAndRegister();
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
-                    .input(oreNetherrack, materialOre)
-                    .fluidInputs(EnderPearl.getFluid(576))
-                    .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(oreNetherrack, materialOre, 64)
-                    .duration(20).EUt(VA[ZPM])
-                    .buildAndRegister();
-            GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
-                    .input(oreEndstone, materialOre)
-                    .fluidInputs(EnderPearl.getFluid(576))
-                    .fluidInputs(DrillingFluid.getFluid(10000))
-                    .output(oreEndstone, materialOre, 64)
-                    .duration(20).EUt(VA[ZPM])
-                    .buildAndRegister();
-        }
-
         // Vial Extractor
         MetaTileEntityLoader.registerMachineRecipe(true, VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
                 'V', ModObject.itemSoulVial.getItemNN(),
@@ -537,8 +510,6 @@ public class GTERecipeLoader {
                 'C', CIRCUIT);
 
         // Slice'N'Splice
-        ModHandler.addShapelessRecipe("slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(),
-                new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(true, SLICE_N_SPLICE, "PSP", "CHC", "MBM",
                 'P', new UnificationEntry(plate, Soularium),
                 'S', "itemSkull",
@@ -548,8 +519,6 @@ public class GTERecipeLoader {
                 'B', ModObject.blockDarkIronBars.getItemNN());
 
         // Soul Binder
-        ModHandler.addShapelessRecipe("soul_binder", SOUL_BINDER[HV].getStackForm(),
-                new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(true, SOUL_BINDER, "PEP", "CHC", "MZM",
                 'P', new UnificationEntry(plate, Soularium),
                 'E', "skullEnderResonator",
@@ -559,8 +528,6 @@ public class GTERecipeLoader {
                 'Z', "skullZombieController");
 
         // Electric Spawner
-        ModHandler.addShapelessRecipe("electric_spawner", ELECTRIC_SPAWNER[HV].getStackForm(),
-                new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
         MetaTileEntityLoader.registerMachineRecipe(true, ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
                 'P', new UnificationEntry(plate, ConstructionAlloy),
                 'E', "skullSentientEnder",
@@ -568,6 +535,29 @@ public class GTERecipeLoader {
                 'H', HULL,
                 'C', "itemEnderCrystal",
                 'Z', "skullZombieFrankenstein");
+
+        if (GTEConfigHolder.eioIntegration.addShapelessRecipeMachines) {
+            // Slice'N'Splice
+            ModHandler.addShapelessRecipe("eio_slice_n_splice",
+                    new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()),
+                    SLICE_N_SPLICE[HV].getStackForm());
+            ModHandler.addShapelessRecipe("ceu_slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(),
+                    new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
+
+            // Soul Binder
+            ModHandler.addShapelessRecipe("eio_soul_binder",
+                    new ItemStack(MachineObject.block_soul_binder.getBlockNN()),
+                    SOUL_BINDER[HV].getStackForm());
+            ModHandler.addShapelessRecipe("ceu_soul_binder", SOUL_BINDER[HV].getStackForm(),
+                    new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
+
+            // Electric Spawner
+            ModHandler.addShapelessRecipe("eio_electric_spawner",
+                    new ItemStack(MachineObject.block_powered_spawner.getBlockNN()),
+                    ELECTRIC_SPAWNER[HV].getStackForm());
+            ModHandler.addShapelessRecipe("ceu_electric_spawner", ELECTRIC_SPAWNER[HV].getStackForm(),
+                    new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
+        }
     }
 
     private static void tools() {
@@ -625,7 +615,7 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
-        if (!Loader.isModLoaded(GTEValues.MODID_DE) && !Loader.isModLoaded(GTEValues.MODID_DA)) {
+        if (!GTEValues.isModLoadedDEDA()) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(MetaTileEntities.HULL[UHV])
                     .inputs(AEHelper.aeBlocks.energyCellCreative().maybeStack(4).get())
@@ -689,6 +679,42 @@ public class GTERecipeLoader {
                 .research(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
                         .CWUt(160)
                         .duration(4000).EUt(VA[UHV]))
+                .buildAndRegister();
+    }
+
+    /**
+     * Add recipes for the Void Ore Miner
+     *
+     * @param material The material to add recipes for
+     */
+    private static void voidOreMiner(@Nonnull Material material) {
+        // Skip if the material doesn't have an ore
+        if (!material.hasProperty(PropertyKey.ORE)) return;
+
+        // Get the ore
+        List<ItemStack> ores = OreDictUnifier.getAll(new UnificationEntry(ore, material));
+        ItemStack oreStack = ores.get(ores.size() - 1);
+        oreStack.setCount(32);
+        GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
+                .input(ore, material)
+                .fluidInputs(EnderPearl.getFluid(576))
+                .fluidInputs(DrillingFluid.getFluid(10000))
+                .outputs(oreStack)
+                .duration(20).EUt(VA[ZPM])
+                .buildAndRegister();
+        GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
+                .input(oreNetherrack, material)
+                .fluidInputs(EnderPearl.getFluid(576))
+                .fluidInputs(DrillingFluid.getFluid(10000))
+                .output(oreNetherrack, material, 64)
+                .duration(20).EUt(VA[ZPM])
+                .buildAndRegister();
+        GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
+                .input(oreEndstone, material)
+                .fluidInputs(EnderPearl.getFluid(576))
+                .fluidInputs(DrillingFluid.getFluid(10000))
+                .output(oreEndstone, material, 64)
+                .duration(20).EUt(VA[ZPM])
                 .buildAndRegister();
     }
 }

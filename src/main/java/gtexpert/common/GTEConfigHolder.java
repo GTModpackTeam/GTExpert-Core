@@ -27,13 +27,20 @@ public class GTEConfigHolder {
 
     public static class GregtechOverride {
 
-        @Config.Comment({ "Making Planks and Sticks even more difficult.",
+        @Config.Comment({ "Making Planks even more difficult.",
                 "CEu's nerfWoodCrafting to true to reflect.", "Default: false" })
-        public boolean moreNerfWoodCrafting = false;
+        public boolean moreNerfPlankCrafting = false;
+
+        @Config.Comment({ "Making Sticks even more difficult.",
+                "CEu's harderRods to true to reflect.", "Default: false" })
+        public boolean moreNerfStickCrafting = false;
 
         @Config.Comment({ "Change to a recipe using Assembly Line.",
                 "CEu's enableHighTierSolars to true to reflect.", "Default: false" })
         public boolean hardSolarPanel = false;
+
+        @Config.Comment({ "Raising Terracotta Grinding from ULV to MV.", "Default: false" })
+        public boolean nerfTerracottaCrafting = false;
     }
 
     public static class AE2Integration {
@@ -53,6 +60,10 @@ public class GTEConfigHolder {
         @Config.Comment({ "Change EIO swords, axes, armor, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
         public boolean hardToolArmorRecipes = false;
+
+        @Config.Comment({ "Add Shapeless Recipe in CoreMod Machines and EIO Machines.",
+                "This change adds a recipe for equivalent exchange of HV machines and EIO machines", "Default: false" })
+        public boolean addShapelessRecipeMachines = false;
     }
 
     public static class ChiselIntegration {

@@ -15,17 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     # Avoid running this workflow on forks
     if: github.repository == 'GTModpackTeam/GTExpert-Core'
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          ref: dev
           distribution: 'zulu'
           java-version: '17'
 
@@ -50,12 +46,11 @@ jobs:
         id: create-pull-request
         uses: peter-evans/create-pull-request@v4
         with:
-          ref: dev
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           commit-message: 'update build script version to ${{ steps.version-check.outputs.NEW_VERSION }}'
           branch: gha-update-buildscript
-          title: Update build script version to ${{ steps.version-check.outputs.NEW_VERSION }}
+          title: "[ci skip] Update build script version to ${{ steps.version-check.outputs.NEW_VERSION }}"
           body: This pull request is created by the buildscript-update workflow
           labels: ignore changelog
 

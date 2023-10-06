@@ -1,11 +1,12 @@
 package gtexpert.api;
 
+import net.minecraftforge.fml.common.Loader;
+
 public class GTEValues {
 
     public static final String MODNAME = "GTExpert-Core";
     public static final String MODID = "gtexpert",
             MODID_VANILLA = "minecraft",
-            MODID_CEU = "gregtech",
             MODID_GCYM = "gcym",
             MODID_GCYS = "gcys",
             MODID_GTFO = "gregtechfoodoption",
@@ -24,4 +25,8 @@ public class GTEValues {
             MODID_CHISEL = "chisel",
             MODID_AVARITIA = "avaritia",
             MODID_AVAADDON = "avaritiaddons";
+
+    public static boolean isModLoadedDEDA() {
+        return Loader.isModLoaded(MODID_DE) && Loader.isModLoaded(MODID_DA);
+    }
 }

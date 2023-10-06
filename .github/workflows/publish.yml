@@ -3,32 +3,53 @@ name: Publish
 
 permissions:
   contents: write
+  deployments: write
 
 on:
-  push:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+' # any semver tag, e.g. v1.2.3
-      - 'v[0-9]+.[0-9]+.[0-9]+-pr-+[0-9]' # any semver tag, e.g. v1.2.3-pr-4
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Mod version'
+        required: true
+      release_type:
+        description: 'Release type'
+        type: choice
+        default: 'beta'
+        options:
+          - 'release'
+          - 'beta'
+          - 'alpha'
 
 env:
-  # link to the changelog with a format code for the version
-  CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{github.repository}}/releases/tag/${{github.ref_name}})"
+  # Version of the mod
+  FULL_VERSION: "${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
   # type of release
-  RELEASE_TYPE: "beta"
+  NAME: "GTExpertCore"
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Check for Duplicate Tags
+      - name: Check if tag already exists
         run: |
-          if git rev-parse -q --verify "refs/tags/${{ github.ref }}" >/dev/null; then
-            echo "Tag already exists. A version bump is required."
+          if git rev-parse --verify --quiet "v${{ github.event.inputs.version }}"; then
+            echo "Version ${{ github.event.inputs.version }} already exists, aborting workflow."
             exit 1
           fi
+
+      - name: Set version
+        run: sed -i "s/modVersion.*=.*/modVersion = ${{ env.FULL_VERSION }}/g" gradle.properties
+
+      - name: Commit and push gradle.properties
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Bump version to v${{ env.FULL_VERSION }}"
+          commit_options: "--no-verify"
+          file_pattern: gradle.properties
+          tagging_message: "v${{ env.FULL_VERSION }}"
 
       - name: Setup Java
         uses: actions/setup-java@v3
@@ -48,25 +69,46 @@ jobs:
             notifications
             wrapper
 
-      - name: Publish to GitHub
-        uses: softprops/action-gh-release@v1
-        with:
-          files: "build/libs/*.jar"
-          generate_release_notes: true
-          fail_on_unmatched_files: true
-
       - name: Publish to Curseforge
-        uses: gradle/gradle-build-action@v2
-        if: github.ref == 'refs/heads/master'
-        env:
-          CURSEFORGE_API_KEY: "${{ secrets.CURSEFORGE_API_KEY }}"
-          CHANGELOG_LOCATION: "${{ env.CHANGELOG_LOCATION }}"
-          RELEASE_TYPE: "${{ env.RELEASE_TYPE }}"
+        uses: Kir-Antipov/mc-publish@v3.3
         with:
-          arguments: '--info --daemon --stacktrace curseforge'
-          generate-job-summary: false
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
+          github-tag: "${{ env.FULL_VERSION }}"
+          github-generate-changelog: true
+          github-draft: false
+          github-prerelease: false
+          github-token: ${{ secrets.PAT }}
+          curseforge-id: '851103'
+          curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
+          files: |
+            build/libs/!(*-@(dev|sources|javadoc)).jar
+            build/libs/*-@(sources).jar
+            build/libs/*-@(dev).jar
+          name: "${{ env.NAME }}-${{ env.FULL_VERSION }}.jar"
+          changelog: "Changelog is available [here](https://github.com/${{github.repository}}/releases/tag/v${{ env.FULL_VERSION }})"
+          version: "${{ github.event.inputs.version }}"
+          version-type: "${{ github.event.inputs.release_type }}"
+          loaders: |
+            forge
+          game-versions: |
+            1.12.2
+          dependencies: |
+            mixin-booter | depends | *
+            configanytime | depends | *
+            gregtech-ce-unofficial | depends | *
+            gregicality-multiblocks | depends | *
+            ae2-extended-life | depends | *
+            ae-additions-extra-cells-2-fork | depends | *
+            ender-io-base | depends | *
+            ender-io-machines | depends | *
+            ender-io-endergy | depends | *
+            ender-io-conduits | depends | *
+            ender-io-ae2-conduits | depends | *
+            gregtech-food-option | recommends | *
+            chisel | recommends | *
+            extracpus | recommends | *
+            draconic-evolution | recommends | *
+            draconicadditions | recommends | *
+            project-red-illumination | recommends | *
+          java: |
+            8
+          retry-attempts: 2

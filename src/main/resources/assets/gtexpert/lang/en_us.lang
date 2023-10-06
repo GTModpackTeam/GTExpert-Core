@@ -22,11 +22,11 @@ gtexpert.machine.large_cracking_unit.tooltip=§dAuthor:§f @Quarri6343
 # singleblock
 # Auto Chisel
 gtexpert.machine.auto_chisel.lv.name=Basic Auto Chisel
-gtexpert.machine.auto_chisel.lv.tooltip=Your ideal, we will sculpt it/n§dAuthor:§f @tier940
+gtexpert.machine.auto_chisel.lv.tooltip=Your ideal, we will sculpt it./nMaterial in the left, chiseling to the right. See JEI's Chiseling page for details./n§dAuthor:§f @tier940
 gtexpert.machine.auto_chisel.mv.name=Advanced Auto Chisel
-gtexpert.machine.auto_chisel.mv.tooltip=Your ideal, we will sculpt it/n§dAuthor:§f @tier940
+gtexpert.machine.auto_chisel.mv.tooltip=Your ideal, we will sculpt it/nMaterial in the left, chiseling to the right. See JEI's Chiseling page for details./n§dAuthor:§f @tier940
 gtexpert.machine.auto_chisel.hv.name=Advanced Auto Chisel II
-gtexpert.machine.auto_chisel.hv.tooltip=Your ideal, we will sculpt it/n§dAuthor:§f @tier940
+gtexpert.machine.auto_chisel.hv.tooltip=Your ideal, we will sculpt it/nMaterial in the left, chiseling to the right. See JEI's Chiseling page for details./n§dAuthor:§f @tier940
 
 # Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor

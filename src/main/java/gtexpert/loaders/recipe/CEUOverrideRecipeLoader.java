@@ -1,5 +1,8 @@
 package gtexpert.loaders.recipe;
 
+import gregicality.multiblocks.api.AlloyBlastUtil;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
@@ -8,23 +11,24 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.ConfigHolder;
 import gregtech.common.metatileentities.MetaTileEntities;
-
-import gregicality.multiblocks.api.AlloyBlastUtil;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import javax.annotation.Nonnull;
 
 import static gregtech.api.GTValues.*;
@@ -32,10 +36,14 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
 
 public class CEUOverrideRecipeLoader {
 
     public static void init() {
+        // bookshelf
+        OreDictionary.registerOre("bookshelf", new ItemStack(Blocks.BOOKSHELF));
+
         materials();
         items();
         blocks();
@@ -44,7 +52,7 @@ public class CEUOverrideRecipeLoader {
     private static void materials() {
         // Vacuum Freezer
         List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        materials.forEach(material -> vacuumFreezerMolten(material));
+        materials.forEach(CEUOverrideRecipeLoader::vacuumFreezerMolten);
 
         // Iron Nugget
         ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Iron, 9),
@@ -128,143 +136,17 @@ public class CEUOverrideRecipeLoader {
                 .output(block, Ice, 1)
                 .duration(6).EUt(VA[ULV])
                 .buildAndRegister();
-
-        // ########################################
-        // Quartzite (Bug Fix)
-        // ########################################
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, Quartzite, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, Quartzite, 9));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES, OreDictUnifier.get(block, Quartzite, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, Quartzite, 1) },
-                new FluidStack[] { Lubricant.getFluid(3) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, Quartzite, 1) },
-                new FluidStack[] { DistilledWater.getFluid(11) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, Quartzite, 1) },
-                new FluidStack[] { Water.getFluid(15) });
-
-        // Dust
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .output(dust, Quartzite, 4)
-                .duration(80).EUt(2)
-                .buildAndRegister();
-
-        // Gem
-        RecipeMaps.FORGE_HAMMER_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .output(gem, Quartzite, 4)
-                .duration(20).EUt(2)
-                .buildAndRegister();
-
-        // Block
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .input(gem, Quartzite, 4)
-                .output(block, Quartzite, 1)
-                .duration(300).EUt(2)
-                .buildAndRegister();
-
-        // Plate
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .fluidInputs(Lubricant.getFluid(3))
-                .output(plate, Quartzite, 4)
-                .duration(160).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .fluidInputs(DistilledWater.getFluid(11))
-                .output(plate, Quartzite, 4)
-                .duration(240).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, Quartzite, 1)
-                .fluidInputs(Water.getFluid(15))
-                .output(plate, Quartzite, 4)
-                .duration(300).EUt(VA[LV])
-                .buildAndRegister();
-
-        // ########################################
-        // Certus Quartz (Bug Fix)
-        // ########################################
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, CertusQuartz, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, CertusQuartz, 9));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES,
-                OreDictUnifier.get(block, CertusQuartz, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
-                new FluidStack[] { CertusQuartz.getFluid(1296) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
-                new ItemStack[] { SHAPE_MOLD_BLOCK.getStackForm() },
-                new FluidStack[] { CertusQuartz.getFluid(1296) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
-                new FluidStack[] { Lubricant.getFluid(3) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
-                new FluidStack[] { DistilledWater.getFluid(11) });
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
-                new ItemStack[] { OreDictUnifier.get(block, CertusQuartz, 1) },
-                new FluidStack[] { Water.getFluid(15) });
-
-        // Fluid
-        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .fluidOutputs(CertusQuartz.getFluid(576))
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-
-        // Dust
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .output(dust, CertusQuartz, 4)
-                .duration(80).EUt(2)
-                .buildAndRegister();
-
-        // Gem
-        RecipeMaps.FORGE_HAMMER_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .output(gem, CertusQuartz, 4)
-                .duration(20).EUt(2)
-                .buildAndRegister();
-
-        // Block
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .input(gem, CertusQuartz, 4)
-                .output(block, CertusQuartz, 1)
-                .duration(300).EUt(2)
-                .buildAndRegister();
-        RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
-                .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(CertusQuartz.getFluid(576))
-                .output(block, CertusQuartz, 1)
-                .duration(20).EUt(VA[ULV])
-                .buildAndRegister();
-
-        // Plate
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .fluidInputs(Lubricant.getFluid(3))
-                .output(plate, CertusQuartz, 4)
-                .duration(160).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .fluidInputs(DistilledWater.getFluid(11))
-                .output(plate, CertusQuartz, 4)
-                .duration(240).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .input(block, CertusQuartz, 1)
-                .fluidInputs(Water.getFluid(15))
-                .output(plate, CertusQuartz, 4)
-                .duration(300).EUt(VA[LV])
-                .buildAndRegister();
     }
 
     private static void items() {
+        // Book
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES, new ItemStack(Blocks.BOOKSHELF));
+        RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
+                .input("bookshelf", 1)
+                .outputs(new ItemStack(Items.BOOK, 3))
+                .duration(300).EUt(2)
+                .buildAndRegister();
+
         // Tiny Pile of Ashes (Bookshelf Override)
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ARC_FURNACE_RECIPES,
                 new ItemStack[] { new ItemStack(Blocks.BOOKSHELF) },
@@ -273,7 +155,7 @@ public class CEUOverrideRecipeLoader {
                 .input("bookshelf")
                 .fluidInputs(Oxygen.getFluid(21))
                 .output(dustTiny, Ash, 16)
-                .duration(1).EUt(VA[LV])
+                .duration(21).EUt(VA[LV])
                 .buildAndRegister();
 
         // Chad & Wood Pulp (Bookshelf Override)
@@ -282,13 +164,61 @@ public class CEUOverrideRecipeLoader {
                 .input("bookshelf")
                 .output(dust, Paper, 9)
                 .output(dust, Wood, 6)
-                .duration(196).EUt(2)
+                .duration(1470).EUt(2)
                 .buildAndRegister();
     }
 
     private static void blocks() {
+        // Diorite
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "diorite"));
+
+        // Granite
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "granite"));
+
+        // Andesite
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "andesite"));
+
+        // Comparator
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/vanilla_comparator"));
+
+        // Daylight Sensor
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/vanilla_daylight_detector"));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(gem, NetherQuartz, 3)
+                .input(slab, Wood, 2)
+                .fluidInputs(Glass.getFluid(144))
+                .output(Blocks.DAYLIGHT_DETECTOR)
+                .duration(200).EUt(10)
+                .buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(gem, CertusQuartz, 3)
+                .input(slab, Wood, 2)
+                .fluidInputs(Glass.getFluid(144))
+                .output(Blocks.DAYLIGHT_DETECTOR)
+                .duration(200).EUt(10)
+                .buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(gem, Quartzite, 3)
+                .input(slab, Wood, 2)
+                .fluidInputs(Glass.getFluid(144))
+                .output(Blocks.DAYLIGHT_DETECTOR)
+                .duration(200).EUt(10)
+                .buildAndRegister();
+
+        // Ennchanting Table
+        ModHandler.removeRecipeByOutput(new ItemStack(Blocks.ENCHANTING_TABLE));
+        ModHandler.addShapedRecipe("enchantment_table", new ItemStack(Blocks.ENCHANTING_TABLE),
+                "DCD", "PBP", "DPD",
+                'D', OreDictUnifier.get(gem, Diamond),
+                'C', new ItemStack(Blocks.CARPET, 1, 14),
+                'P', OreDictUnifier.get(plate, Obsidian),
+                'B', "bookshelf");
+
         // Redstone Lamp
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CEU, "redstone_lamp"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "redstone_lamp"));
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES,
+                OreDictUnifier.get(dust, Redstone, 4),
+                OreDictUnifier.get(dust, Glowstone, 4));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(plate, Redstone, 4)
@@ -296,6 +226,54 @@ public class CEUOverrideRecipeLoader {
                 .output(Blocks.REDSTONE_LAMP)
                 .duration(100).EUt(1)
                 .buildAndRegister();
+
+        // Carpet
+        if (ConfigHolder.recipes.hardMiscRecipes) {
+            for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
+                EnumDyeColor color = EnumDyeColor.byMetadata(i);
+                String colorName = color.getName().equals("silver") ? "light_gray" : color.getName();
+
+                // Remove vanilla recipes
+                ModHandler.removeRecipeByOutput(new ItemStack(Blocks.CARPET, 3, i));
+                GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                        new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
+                        new FluidStack[] { Lubricant.getFluid(2) });
+                GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                        new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
+                        new FluidStack[] { DistilledWater.getFluid(3) });
+                GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CUTTER_RECIPES,
+                        new ItemStack[] { new ItemStack(Blocks.WOOL, 2, i) },
+                        new FluidStack[] { Water.getFluid(4) });
+
+                // Add GT recipes
+                ModHandler.addMirroredShapedRecipe(colorName + "_wool", new ItemStack(Blocks.CARPET, 1, i),
+                        "WW ",
+                        'W', new ItemStack(Blocks.WOOL, 1, i));
+                ModHandler.addMirroredShapedRecipe(colorName + "_wool_saw", new ItemStack(Blocks.CARPET, 2, i),
+                        "WWs",
+                        'W', new ItemStack(Blocks.WOOL, 1, i));
+
+                // Add GT cutter recipes
+                RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                        .inputs(new ItemStack(Blocks.WOOL, 1, i))
+                        .fluidInputs(Lubricant.getFluid(1))
+                        .outputs(new ItemStack(Blocks.CARPET, 3, i))
+                        .duration(50).EUt(7)
+                        .buildAndRegister();
+                RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                        .inputs(new ItemStack(Blocks.WOOL, 1, i))
+                        .fluidInputs(DistilledWater.getFluid(3))
+                        .outputs(new ItemStack(Blocks.CARPET, 3, i))
+                        .duration(100).EUt(7)
+                        .buildAndRegister();
+                RecipeMaps.CUTTER_RECIPES.recipeBuilder()
+                        .inputs(new ItemStack(Blocks.WOOL, 1, i))
+                        .fluidInputs(Water.getFluid(4))
+                        .outputs(new ItemStack(Blocks.CARPET, 3, i))
+                        .duration(150).EUt(7)
+                        .buildAndRegister();
+            }
+        }
 
         // Crafting Station
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -406,6 +384,17 @@ public class CEUOverrideRecipeLoader {
                         .output(plate, material, 1)
                         .duration((int) material.getMass() << 3)
                         .buildAndRegister();
+
+                if (GTEValues.isModLoadedDEDA()) {
+                    RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                            .notConsumable(SHAPE_MOLD_PLATE)
+                            .fluidInputs(new FluidStack(molten, 144))
+                            .fluidInputs(Cryotheum.getFluid(500))
+                            .fluidOutputs(Pyrotheum.getFluid(100))
+                            .output(plate, material, 1)
+                            .duration((int) material.getMass() << 1)
+                            .buildAndRegister();
+                }
             }
             if (material.hasFlag(GENERATE_SMALL_GEAR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
@@ -416,6 +405,17 @@ public class CEUOverrideRecipeLoader {
                         .output(gearSmall, material, 1)
                         .duration((int) material.getMass() << 3)
                         .buildAndRegister();
+
+                if (GTEValues.isModLoadedDEDA()) {
+                    RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                            .notConsumable(SHAPE_MOLD_GEAR_SMALL)
+                            .fluidInputs(new FluidStack(molten, 144))
+                            .fluidInputs(Cryotheum.getFluid(500))
+                            .fluidOutputs(Pyrotheum.getFluid(100))
+                            .output(gearSmall, material, 1)
+                            .duration((int) material.getMass() << 1)
+                            .buildAndRegister();
+                }
             }
             if (material.hasFlag(GENERATE_GEAR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
@@ -426,6 +426,17 @@ public class CEUOverrideRecipeLoader {
                         .output(gear, material, 1)
                         .duration((int) material.getMass() << 12)
                         .buildAndRegister();
+
+                if (GTEValues.isModLoadedDEDA()) {
+                    RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                            .notConsumable(SHAPE_MOLD_GEAR)
+                            .fluidInputs(new FluidStack(molten, 576))
+                            .fluidInputs(Cryotheum.getFluid(2000))
+                            .fluidOutputs(Pyrotheum.getFluid(400))
+                            .output(gear, material, 1)
+                            .duration((int) material.getMass() * 4)
+                            .buildAndRegister();
+                }
             }
             if (material.hasFlag(GENERATE_ROTOR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
@@ -436,6 +447,17 @@ public class CEUOverrideRecipeLoader {
                         .output(rotor, material, 1)
                         .duration((int) material.getMass() << 12)
                         .buildAndRegister();
+
+                if (GTEValues.isModLoadedDEDA()) {
+                    RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                            .notConsumable(SHAPE_MOLD_ROTOR)
+                            .fluidInputs(new FluidStack(molten, 576))
+                            .fluidInputs(Cryotheum.getFluid(2000))
+                            .fluidOutputs(Pyrotheum.getFluid(400))
+                            .output(rotor, material, 1)
+                            .duration((int) material.getMass() << 4)
+                            .buildAndRegister();
+                }
             }
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
@@ -445,6 +467,17 @@ public class CEUOverrideRecipeLoader {
                     .fluidOutputs(material.getFluid(144))
                     .duration((int) material.getMass() << 3)
                     .buildAndRegister();
+
+            if (GTEValues.isModLoadedDEDA()) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .circuitMeta(1)
+                        .fluidInputs(new FluidStack(molten, 144))
+                        .fluidInputs(Cryotheum.getFluid(500))
+                        .fluidOutputs(Pyrotheum.getFluid(100))
+                        .fluidOutputs(material.getFluid(144))
+                        .duration((int) material.getMass() << 1)
+                        .buildAndRegister();
+            }
         }
     }
 }
