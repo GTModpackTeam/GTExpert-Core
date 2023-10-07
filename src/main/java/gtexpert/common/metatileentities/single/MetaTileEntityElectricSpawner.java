@@ -63,14 +63,12 @@ public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntit
 
     @Override
     protected IItemHandlerModifiable createImportItemHandler() {
-        if (workable == null) return new GTItemStackHandler(this, 0);
-        return new NotifiableItemStackHandler(this, workable.getRecipeMap().getMaxInputs(), this, false);
+        return new NotifiableItemStackHandler(this, 2, this, false);
     }
 
     @Override
     protected IItemHandlerModifiable createExportItemHandler() {
-        if (workable == null) return new GTItemStackHandler(this, 0);
-        return new NotifiableItemStackHandler(this, workable.getRecipeMap().getMaxOutputs(), this, true);
+        return new NotifiableItemStackHandler(this, 1, this, true);
     }
 
     @Override
