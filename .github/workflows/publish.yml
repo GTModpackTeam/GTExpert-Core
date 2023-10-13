@@ -72,7 +72,7 @@ jobs:
       - name: Publish to Curseforge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          github-tag: "${{ env.FULL_VERSION }}"
+          github-tag: "v${{ env.FULL_VERSION }}"
           github-generate-changelog: true
           github-draft: false
           github-prerelease: false
