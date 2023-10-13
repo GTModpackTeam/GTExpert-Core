@@ -226,9 +226,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L))
                     .output(COVER_SOLAR_PANEL_ULV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL.getStackForm())
-                            .CWUt(32)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL.getStackForm())
+                            .CWUt(32).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (LV)
@@ -243,9 +242,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 2))
                     .output(COVER_SOLAR_PANEL_LV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_ULV.getStackForm())
-                            .CWUt(32)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_ULV.getStackForm())
+                            .CWUt(32).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (MV)
@@ -260,9 +258,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 3))
                     .output(COVER_SOLAR_PANEL_MV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_LV.getStackForm())
-                            .CWUt(32)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_LV.getStackForm())
+                            .CWUt(32).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (HV)
@@ -277,9 +274,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 4))
                     .output(COVER_SOLAR_PANEL_HV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_MV.getStackForm())
-                            .CWUt(48)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_MV.getStackForm())
+                            .CWUt(48).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (EV)
@@ -294,9 +290,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 5))
                     .output(COVER_SOLAR_PANEL_EV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_HV.getStackForm())
-                            .CWUt(48)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_HV.getStackForm())
+                            .CWUt(48).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (IV)
@@ -311,9 +306,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 6))
                     .output(COVER_SOLAR_PANEL_IV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_EV.getStackForm())
-                            .CWUt(48)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_EV.getStackForm())
+                            .CWUt(48).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (LuV)
@@ -328,9 +322,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 7))
                     .output(COVER_SOLAR_PANEL_LUV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_IV.getStackForm())
-                            .CWUt(64)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_IV.getStackForm())
+                            .CWUt(64).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (ZPM)
@@ -345,9 +338,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 8))
                     .output(COVER_SOLAR_PANEL_ZPM)
                     .duration(100).EUt(VA[ZPM])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_LUV.getStackForm())
-                            .CWUt(64)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_LUV.getStackForm())
+                            .CWUt(64).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (UV)
@@ -362,9 +354,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 9))
                     .output(COVER_SOLAR_PANEL_UV)
                     .duration(100).EUt(VA[UV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_ZPM.getStackForm())
-                            .CWUt(64)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_ZPM.getStackForm())
+                            .CWUt(64).EUt(VA[LuV]))
                     .buildAndRegister();
         } else {
             // Solar Panel (8V)
@@ -459,9 +450,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(18432))
                     .output(VOIDOREMINER)
                     .duration(600).EUt(VA[ZPM])
-                    .research(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
-                            .CWUt(64)
-                            .duration(4000).EUt(VA[ZPM]))
+                    .stationResearch(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
+                            .CWUt(64).EUt(VA[ZPM]))
                     .buildAndRegister();
         }
 
@@ -625,9 +615,8 @@ public class GTERecipeLoader {
                     .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
                     .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                     .duration(2000).EUt(VA[UHV])
-                    .research(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
-                            .CWUt(128)
-                            .duration(4000).EUt(VA[UHV]))
+                    .stationResearch(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
+                            .CWUt(128).EUt(VA[UHV]))
                     .buildAndRegister();
         }
 
@@ -643,9 +632,8 @@ public class GTERecipeLoader {
                 .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_TANK.getStackForm())
                 .duration(2000).EUt(VA[UHV])
-                .research(b -> b.researchStack(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
-                        .CWUt(160)
-                        .duration(4000).EUt(VA[UHV]))
+                .stationResearch(b -> b.researchStack(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
+                        .CWUt(160).EUt(VA[UHV]))
                 .buildAndRegister();
 
         // Creative Quantum Chest
@@ -660,9 +648,8 @@ public class GTERecipeLoader {
                 .fluidInputs(SolderingAlloy.getFluid(36864))
                 .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_CHEST.getStackForm())
-                .research(b -> b.researchStack(MetaTileEntities.CREATIVE_TANK.getStackForm())
-                        .CWUt(160)
-                        .duration(4000).EUt(VA[UHV]))
+                .stationResearch(b -> b.researchStack(MetaTileEntities.CREATIVE_TANK.getStackForm())
+                        .CWUt(160).EUt(VA[UHV]))
                 .duration(2000).EUt(VA[UHV])
                 .buildAndRegister();
 
@@ -676,9 +663,8 @@ public class GTERecipeLoader {
                 .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_DATA_HATCH.getStackForm())
                 .duration(2000).EUt(VA[UHV])
-                .research(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
-                        .CWUt(160)
-                        .duration(4000).EUt(VA[UHV]))
+                .stationResearch(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
+                        .CWUt(160).EUt(VA[UHV]))
                 .buildAndRegister();
     }
 

@@ -69,7 +69,7 @@ public class ChiselRecipeLoader {
                     .inputs(new ItemStack(Blocks.PLANKS, 6, i))
                     .inputs(new ItemStack(Items.BOOK, 3))
                     .outputs(getModItem(GTEValues.MODID_CHISEL, "bookshelf_" + bookshelf[i], 1, 0))
-                    .duration(100).EUt(4)
+                    .duration(100).EUt(VH[ULV])
                     .buildAndRegister();
             registerAutoChiselRecipe("bookshelf" + bookshelf[i].toUpperCase());
         }
@@ -547,9 +547,9 @@ public class ChiselRecipeLoader {
         List<ItemStack> targets = OreDictionary.getOres(oreDictName);
         targets.forEach(target -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
                 .input(oreDictName)
-                .inputs(target)
-                .outputs(target, target)
-                .duration(20).EUt(VA[ULV])
+                .notConsumable(target)
+                .outputs(target)
+                .duration(10).EUt(VH[ULV])
                 .hidden().buildAndRegister());
     }
 }
