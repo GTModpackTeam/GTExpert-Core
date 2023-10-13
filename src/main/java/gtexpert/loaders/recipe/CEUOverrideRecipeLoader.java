@@ -95,7 +95,6 @@ public class CEUOverrideRecipeLoader {
                 .duration(160).EUt(20)
                 .buildAndRegister();
 
-
         // ########################################
         // Ice (Bug Fix)
         // ########################################

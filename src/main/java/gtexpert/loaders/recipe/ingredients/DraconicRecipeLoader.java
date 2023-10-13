@@ -610,7 +610,6 @@ public class DraconicRecipeLoader {
                 'S', Items.GOLDEN_BOOTS,
                 'B', Blocks.SLIME_BLOCK);
 
-
         // ########################################
         // Draconic Additions
         // ########################################
@@ -679,7 +678,6 @@ public class DraconicRecipeLoader {
                 .stationResearch(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
                         .CWUt(128).EUt(VA[UHV]))
                 .buildAndRegister();
-
 
         // ########################################
         // Draconic Evolution
@@ -900,7 +898,6 @@ public class DraconicRecipeLoader {
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
 
-
         // ########################################
         // Draconic Additions
         // ########################################
@@ -971,7 +968,6 @@ public class DraconicRecipeLoader {
                 .outputs(new ItemStack(DEFeatures.draconiumCapacitor, 1, 1))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
-
 
         // ########################################
         // Draconic Additions

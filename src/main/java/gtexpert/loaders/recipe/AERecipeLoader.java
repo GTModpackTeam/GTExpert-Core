@@ -163,7 +163,6 @@ public class AERecipeLoader {
         // Gold Ingot
         ModHandler.removeFurnaceSmelting(AEHelper.aeMaterials.goldDust().maybeStack(1).get());
 
-
         // ########################################
         // Sky Stone
         // ########################################
@@ -192,7 +191,6 @@ public class AERecipeLoader {
                 .outputs(AEHelper.aeBlocks.skyStoneBlock().maybeStack(1).get())
                 .duration(100).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
                 .buildAndRegister();
-
 
         // ########################################
         // Nether Quartz
@@ -225,7 +223,6 @@ public class AERecipeLoader {
                 .output(stick, NetherQuartz, 1)
                 .duration(40).EUt(VH[LV])
                 .buildAndRegister();
-
 
         // ########################################
         // Certus Quartz
@@ -269,7 +266,6 @@ public class AERecipeLoader {
                 .output(stick, CertusQuartz, 1)
                 .duration(40).EUt(VH[LV])
                 .buildAndRegister();
-
 
         // ########################################
         // Charged Certus Quartz
@@ -324,7 +320,6 @@ public class AERecipeLoader {
                 .output(dustSmall, ChargedCertusQuartz, 1)
                 .duration(1200).EUt(VA[MV])
                 .buildAndRegister();
-
 
         // ########################################
         // Fluix
@@ -404,7 +399,6 @@ public class AERecipeLoader {
                 .output(dustSmall, Fluix, 1)
                 .duration(1200).EUt(VA[MV])
                 .buildAndRegister();
-
 
         // ########################################
         // Fluix Alloy
