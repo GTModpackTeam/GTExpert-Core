@@ -95,6 +95,7 @@ public class CEUOverrideRecipeLoader {
                 .duration(160).EUt(20)
                 .buildAndRegister();
 
+
         // ########################################
         // Ice (Bug Fix)
         // ########################################
@@ -126,7 +127,7 @@ public class CEUOverrideRecipeLoader {
                 .circuitMeta(1)
                 .fluidInputs(Ice.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
-                .duration(32).EUt(4)
+                .duration(32).EUt(VH[ULV])
                 .buildAndRegister();
 
         // Block
@@ -283,7 +284,7 @@ public class CEUOverrideRecipeLoader {
                 .input(slab, Wood, 1)
                 .input(Blocks.CRAFTING_TABLE)
                 .output(MetaTileEntities.WORKBENCH)
-                .duration(100).EUt(16)
+                .duration(100).EUt(VH[LV])
                 .buildAndRegister();
 
         // Ultra High Voltage 4x Battery Buffer
