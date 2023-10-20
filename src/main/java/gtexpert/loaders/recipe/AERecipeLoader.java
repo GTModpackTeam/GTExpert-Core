@@ -34,7 +34,9 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.items.GTEMetaItems.MATRIX_CORE;
+import static gtexpert.common.GTEConfigHolder.ae2Integration;
+import static gtexpert.common.items.GTEMetaItems.*;
+import static gtexpert.common.items.GTEMetaItems.SHAPE_MOLD_LOGIC_PROCESSOR;
 
 public class AERecipeLoader {
 
@@ -1099,57 +1101,80 @@ public class AERecipeLoader {
                 .duration(100).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier + 1])
                 .buildAndRegister();
 
-        // Silicon Processor Press
-        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, NetherQuartz)
-                .input(block, Iron, 1)
-                .outputs(AEHelper.aeMaterials.siliconPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
-                .buildAndRegister();
+        if (ae2Integration.moveSteelShape) {
+            // Silicon Processor Mold
+            ModHandler.addShapelessRecipe("silicon_processor_mold_to_gt", SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
+                    AEHelper.aeMaterials.siliconPress().maybeStack(1).get());
 
-        // Logic Processor Press
-        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, ChargedCertusQuartz)
-                .input(block, Iron, 1)
-                .outputs(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
-                .buildAndRegister();
+            // Logic Processor Mold
+            ModHandler.addShapelessRecipe("logic_processor_mold_to_gt", SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm(),
+                    AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get());
 
-        // Calc Processor Press
-        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, CertusQuartz)
-                .input(block, Iron, 1)
-                .outputs(AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
-                .buildAndRegister();
+            // Calc Processor Mold
+            ModHandler.addShapelessRecipe("calc_processor_mold_to_gt",
+                    SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm(),
+                    AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get());
 
-        // Engineer Processor Press
-        RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(lens, Fluix)
-                .input(block, Iron, 1)
-                .outputs(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
-                .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
-                .buildAndRegister();
+            // Engineer Processor Mold
+            ModHandler.addShapelessRecipe("engineer_processor_mold_to_gt",
+                    SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm(),
+                    AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get());
+        } else {
+            // Silicon Processor Mold
+            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                    .notConsumable(lens, NetherQuartz)
+                    .input(block, Iron, 1)
+                    .outputs(AEHelper.aeMaterials.siliconPress().maybeStack(1).get())
+                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
 
-        // Silicon Circuit
+            // Logic Processor Mold
+            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                    .notConsumable(lens, ChargedCertusQuartz)
+                    .input(block, Iron, 1)
+                    .outputs(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
+                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+
+            // Calc Processor Mold
+            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                    .notConsumable(lens, CertusQuartz)
+                    .input(block, Iron, 1)
+                    .outputs(AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get())
+                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+
+            // Engineer Processor Mold
+            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                    .notConsumable(lens, Fluix)
+                    .input(block, Iron, 1)
+                    .outputs(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
+                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+        }
+
+        // Printed Silicon
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(AEHelper.aeMaterials.siliconPress().maybeStack(1).get())
+                .notConsumable(ae2Integration.moveSteelShape ? SHAPE_MOLD_PRINTED_SILICON.getStackForm() :
+                        AEHelper.aeMaterials.siliconPress().maybeStack(1).get())
                 .input(plate, Silicon, 1)
                 .outputs(AEHelper.aeMaterials.siliconPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .duration(100).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Logic Circuit
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
+                .notConsumable(ae2Integration.moveSteelShape ? SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm() :
+                        AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
                 .input(plate, Gold, 1)
                 .outputs(AEHelper.aeMaterials.logicProcessorPrint().maybeStack(1).get())
-                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .duration(100).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Calc Circuit
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get())
+                .notConsumable(ae2Integration.moveSteelShape ? SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm() :
+                        AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get())
                 .input(plate, CertusQuartz, 1)
                 .outputs(AEHelper.aeMaterials.calcProcessorPrint().maybeStack(1).get())
                 .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
@@ -1157,7 +1182,8 @@ public class AERecipeLoader {
 
         // Engineer Circuit
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
+                .notConsumable(ae2Integration.moveSteelShape ? SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm() :
+                        AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
                 .input(plate, Diamond, 1)
                 .outputs(AEHelper.aeMaterials.engProcessorPrint().maybeStack(1).get())
                 .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])

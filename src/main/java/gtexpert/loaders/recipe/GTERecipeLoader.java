@@ -46,6 +46,8 @@ import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.GTEConfigHolder.ae2Integration;
+import static gtexpert.common.items.GTEMetaItems.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class GTERecipeLoader {
@@ -59,6 +61,54 @@ public class GTERecipeLoader {
     }
 
     private static void materials() {
+        if (ae2Integration.moveSteelShape) {
+            // Mold (Calculation Processor)
+            ModHandler.addShapedRecipe("shape_mold_calculation_processor",
+                    SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm(),
+                    "h  ", "   ", "S  ",
+                    'S', SHAPE_EMPTY.getStackForm());
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                    .notConsumable(SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm())
+                    .input(SHAPE_EMPTY)
+                    .output(SHAPE_MOLD_CALCULATION_PROCESSOR)
+                    .duration(120).EUt(22)
+                    .buildAndRegister();
+
+            // Mold (Engineering Processor)
+            ModHandler.addShapedRecipe("shape_mold_engineering_processor",
+                    SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm(),
+                    " h ", "   ", "S  ",
+                    'S', SHAPE_EMPTY.getStackForm());
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                    .notConsumable(SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm())
+                    .input(SHAPE_EMPTY)
+                    .output(SHAPE_MOLD_ENGINEERING_PROCESSOR)
+                    .duration(120).EUt(22)
+                    .buildAndRegister();
+
+            // Mold (Logic Processor)
+            ModHandler.addShapedRecipe("shape_mold_logic_processor", SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm(),
+                    "   ", "  h", "S  ",
+                    'S', SHAPE_EMPTY.getStackForm());
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                    .notConsumable(SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm())
+                    .input(SHAPE_EMPTY)
+                    .output(SHAPE_MOLD_LOGIC_PROCESSOR)
+                    .duration(120).EUt(22)
+                    .buildAndRegister();
+
+            // Mold (Printed Silicon)
+            ModHandler.addShapedRecipe("shape_mold_printed_silicon", SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
+                    "   ", "   ", "S h",
+                    'S', SHAPE_EMPTY.getStackForm());
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                    .notConsumable(SHAPE_MOLD_PRINTED_SILICON.getStackForm())
+                    .input(SHAPE_EMPTY)
+                    .output(SHAPE_MOLD_PRINTED_SILICON)
+                    .duration(120).EUt(22)
+                    .buildAndRegister();
+        }
+
         // Osmium
         Osmium.getProperty(PropertyKey.ORE).setOreByProducts(Iridium);
 

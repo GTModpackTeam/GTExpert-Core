@@ -53,6 +53,9 @@ public class GTEConfigHolder {
         @Config.Comment({ "Change AE swords, axes, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
         public boolean hardToolRecipes = false;
+
+        @Config.Comment({ "Integrate Printed Silicon and various Circuit creation molds.", "Default: false" })
+        public boolean moveSteelShape = false;
     }
 
     public static class EIOIntegration {

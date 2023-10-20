@@ -9,6 +9,10 @@ public final class GTEMetaItems {
 
     public static MetaItem<?>.MetaValueItem GTE_ME_FAKE_COMPONENT;
     public static MetaItem<?>.MetaValueItem MATRIX_CORE;
+    public static MetaItem<?>.MetaValueItem SHAPE_MOLD_PRINTED_SILICON;
+    public static MetaItem<?>.MetaValueItem SHAPE_MOLD_LOGIC_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem SHAPE_MOLD_CALCULATION_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem SHAPE_MOLD_ENGINEERING_PROCESSOR;
 
     public static ArmorMetaItem<?>.ArmorMetaValueItem PISTON_BOOTS;
 

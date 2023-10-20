@@ -143,6 +143,10 @@ metaitem.gte_me_fake_component.name=GTExpert ME fake component
 metaitem.matrix_core.name=Matrix Core
 metaitem.piston_boots.name=Piston Boots
 metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Higher!
+metaitem.shape.mold.printed_silicon.name=Mold (Printed Silicon)
+metaitem.shape.mold.logic_processor.name=Mold (Logic Processor)
+metaitem.shape.mold.calculation_processor.name=Mold (Calculation Processor)
+metaitem.shape.mold.engineering_processor.name=Mold (Engineering Processor)
 
 # recipemaps
 recipemap.sawmill.name=Saw Mill
