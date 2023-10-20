@@ -24,6 +24,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import crazypants.enderio.base.init.ModObject;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +33,7 @@ import java.util.stream.IntStream;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.SHAPE_EMPTY;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.ae2Integration;
@@ -1101,58 +1103,6 @@ public class AERecipeLoader {
                 .duration(100).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier + 1])
                 .buildAndRegister();
 
-        if (ae2Integration.moveSteelShape) {
-            // Silicon Processor Mold
-            ModHandler.addShapelessRecipe("silicon_processor_mold_to_gt", SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
-                    AEHelper.aeMaterials.siliconPress().maybeStack(1).get());
-
-            // Logic Processor Mold
-            ModHandler.addShapelessRecipe("logic_processor_mold_to_gt", SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm(),
-                    AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get());
-
-            // Calc Processor Mold
-            ModHandler.addShapelessRecipe("calc_processor_mold_to_gt",
-                    SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm(),
-                    AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get());
-
-            // Engineer Processor Mold
-            ModHandler.addShapelessRecipe("engineer_processor_mold_to_gt",
-                    SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm(),
-                    AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get());
-        } else {
-            // Silicon Processor Mold
-            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                    .notConsumable(lens, NetherQuartz)
-                    .input(block, Iron, 1)
-                    .outputs(AEHelper.aeMaterials.siliconPress().maybeStack(1).get())
-                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
-                    .buildAndRegister();
-
-            // Logic Processor Mold
-            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                    .notConsumable(lens, ChargedCertusQuartz)
-                    .input(block, Iron, 1)
-                    .outputs(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
-                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
-                    .buildAndRegister();
-
-            // Calc Processor Mold
-            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                    .notConsumable(lens, CertusQuartz)
-                    .input(block, Iron, 1)
-                    .outputs(AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get())
-                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
-                    .buildAndRegister();
-
-            // Engineer Processor Mold
-            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
-                    .notConsumable(lens, Fluix)
-                    .input(block, Iron, 1)
-                    .outputs(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
-                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
-                    .buildAndRegister();
-        }
-
         // Printed Silicon
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
                 .notConsumable(ae2Integration.moveSteelShape ? SHAPE_MOLD_PRINTED_SILICON.getStackForm() :
@@ -1215,6 +1165,80 @@ public class AERecipeLoader {
                 .outputs(AEHelper.aeMaterials.engProcessor().maybeStack(1).get())
                 .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
                 .buildAndRegister();
+
+        if (ae2Integration.moveSteelShape) {
+            // All shapes
+            Arrays.stream(GTE_SHAPE_MOLDS).forEach(shapeMold -> RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                    .notConsumable(shapeMold.getStackForm())
+                    .inputs(SHAPE_EMPTY.getStackForm())
+                    .outputs(shapeMold.getStackForm())
+                    .duration(120).EUt(22)
+                    .buildAndRegister());
+
+            // Mold (Logic Processor)
+            ModHandler.addShapedRecipe("shape_mold_logic_processor", SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm(),
+                    "   ", "  h", "S  ",
+                    'S', SHAPE_EMPTY.getStackForm());
+            ModHandler.addShapelessRecipe("logic_processor_mold_to_gt", SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm(),
+                    AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get());
+
+            // Mold (Calculation Processor)
+            ModHandler.addShapedRecipe("shape_mold_calculation_processor",
+                    SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm(),
+                    "h  ", "   ", "S  ",
+                    'S', SHAPE_EMPTY.getStackForm());
+            ModHandler.addShapelessRecipe("calc_processor_mold_to_gt",
+                    SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm(),
+                    AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get());
+
+            // Mold (Engineering Processor)
+            ModHandler.addShapedRecipe("shape_mold_engineering_processor",
+                    SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm(),
+                    " h ", "   ", "S  ",
+                    'S', SHAPE_EMPTY.getStackForm());
+            ModHandler.addShapelessRecipe("engineer_processor_mold_to_gt",
+                    SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm(),
+                    AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get());
+
+            // Mold (Printed Silicon)
+            ModHandler.addShapedRecipe("shape_mold_printed_silicon", SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
+                    "   ", "   ", "S h",
+                    'S', SHAPE_EMPTY.getStackForm());
+            ModHandler.addShapelessRecipe("silicon_processor_mold_to_gt", SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
+                    AEHelper.aeMaterials.siliconPress().maybeStack(1).get());
+        } else {
+            // Silicon Processor Mold
+            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                    .notConsumable(lens, NetherQuartz)
+                    .input(block, Iron, 1)
+                    .outputs(AEHelper.aeMaterials.siliconPress().maybeStack(1).get())
+                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+
+            // Logic Processor Mold
+            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                    .notConsumable(lens, ChargedCertusQuartz)
+                    .input(block, Iron, 1)
+                    .outputs(AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get())
+                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+
+            // Calc Processor Mold
+            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                    .notConsumable(lens, CertusQuartz)
+                    .input(block, Iron, 1)
+                    .outputs(AEHelper.aeMaterials.calcProcessorPress().maybeStack(1).get())
+                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+
+            // Engineer Processor Mold
+            RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
+                    .notConsumable(lens, Fluix)
+                    .input(block, Iron, 1)
+                    .outputs(AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get())
+                    .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+        }
     }
 
     private static void tools() {

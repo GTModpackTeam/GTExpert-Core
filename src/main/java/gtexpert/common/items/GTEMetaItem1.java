@@ -20,14 +20,16 @@ public class GTEMetaItem1 extends StandardMetaItem {
     public void registerSubItems() {
         GTE_ME_FAKE_COMPONENT = addItem(0, "gte_me_fake_component");
         MATRIX_CORE = addItem(1, "matrix_core");
+
+        // Shapes: ID 101-110
         if (GTEConfigHolder.ae2Integration.moveSteelShape) {
-            SHAPE_MOLD_PRINTED_SILICON = addItem(2, "shape.mold.printed_silicon")
+            GTE_SHAPE_MOLDS[0] = SHAPE_MOLD_PRINTED_SILICON = addItem(101, "shape.mold.printed_silicon")
                     .setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 4)));
-            SHAPE_MOLD_LOGIC_PROCESSOR = addItem(3, "shape.mold.logic_processor")
+            GTE_SHAPE_MOLDS[1] = SHAPE_MOLD_LOGIC_PROCESSOR = addItem(102, "shape.mold.logic_processor")
                     .setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 4)));
-            SHAPE_MOLD_CALCULATION_PROCESSOR = addItem(4, "shape.mold.calculation_processor")
+            GTE_SHAPE_MOLDS[2] = SHAPE_MOLD_CALCULATION_PROCESSOR = addItem(103, "shape.mold.calculation_processor")
                     .setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 4)));
-            SHAPE_MOLD_ENGINEERING_PROCESSOR = addItem(5, "shape.mold.engineering_processor")
+            GTE_SHAPE_MOLDS[3] = SHAPE_MOLD_ENGINEERING_PROCESSOR = addItem(104, "shape.mold.engineering_processor")
                     .setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 4)));
         }
     }
