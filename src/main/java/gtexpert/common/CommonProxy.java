@@ -2,8 +2,8 @@ package gtexpert.common;
 
 import gregtech.api.GregTechAPI;
 import gregtech.api.block.VariantItemBlock;
-
 import gregtech.api.cover.CoverDefinition;
+
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.items.*;

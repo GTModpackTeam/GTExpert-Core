@@ -1,14 +1,7 @@
 package gtexpert.common.items;
 
-import gregtech.api.GTValues;
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
-import gregtech.common.covers.CoverConveyor;
-import gregtech.common.covers.CoverPump;
-import gregtech.common.covers.CoverRoboticArm;
-
-import static gregtech.common.covers.CoverBehaviors.registerBehavior;
-import static gtexpert.api.util.GTEUtility.gteId;
 
 public final class GTEMetaItems {
 

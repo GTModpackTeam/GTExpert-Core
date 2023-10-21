@@ -2,7 +2,9 @@ package gtexpert.common.items;
 
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.common.items.behaviors.TooltipBehavior;
+
 import gtexpert.common.GTEConfigHolder;
+
 import net.minecraft.client.resources.I18n;
 
 import static gtexpert.common.items.GTEMetaItems.*;
