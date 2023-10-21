@@ -24,10 +24,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import crazypants.enderio.base.init.ModObject;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.IntStream;
 
 import static gregtech.api.GTValues.*;
@@ -38,7 +35,7 @@ import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.ae2Integration;
 import static gtexpert.common.items.GTEMetaItems.*;
-import static gtexpert.common.items.GTEMetaItems.SHAPE_MOLD_LOGIC_PROCESSOR;
+import static gtexpert.common.items.GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON;
 
 public class AERecipeLoader {
 
@@ -1174,10 +1171,26 @@ public class AERecipeLoader {
                     .outputs(shapeMold.getStackForm())
                     .duration(120).EUt(22)
                     .buildAndRegister());
+            Arrays.stream(GTE_SHAPE_EXTRUDERS).filter(Objects::nonNull)
+                    .forEach(shapeExtruder -> RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
+                            .notConsumable(shapeExtruder.getStackForm())
+                            .inputs(SHAPE_EMPTY.getStackForm())
+                            .outputs(shapeExtruder.getStackForm())
+                            .duration(120).EUt(22)
+                            .buildAndRegister());
+
+            // Mold (Printed Silicon)
+            ModHandler.addShapedRecipe("shape_mold_printed_silicon",
+                    SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
+                    "h  ", "   ", "S  ",
+                    'S', SHAPE_EMPTY.getStackForm());
+            ModHandler.addShapelessRecipe("silicon_processor_mold_to_gt",
+                    SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
+                    AEHelper.aeMaterials.siliconPress().maybeStack(1).get());
 
             // Mold (Logic Processor)
             ModHandler.addShapedRecipe("shape_mold_logic_processor", SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm(),
-                    "   ", "  h", "S  ",
+                    " h ", "   ", "S  ",
                     'S', SHAPE_EMPTY.getStackForm());
             ModHandler.addShapelessRecipe("logic_processor_mold_to_gt", SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm(),
                     AEHelper.aeMaterials.logicProcessorPress().maybeStack(1).get());
@@ -1185,7 +1198,7 @@ public class AERecipeLoader {
             // Mold (Calculation Processor)
             ModHandler.addShapedRecipe("shape_mold_calculation_processor",
                     SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm(),
-                    "h  ", "   ", "S  ",
+                    "   ", "  h", "S  ",
                     'S', SHAPE_EMPTY.getStackForm());
             ModHandler.addShapelessRecipe("calc_processor_mold_to_gt",
                     SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm(),
@@ -1194,18 +1207,35 @@ public class AERecipeLoader {
             // Mold (Engineering Processor)
             ModHandler.addShapedRecipe("shape_mold_engineering_processor",
                     SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm(),
-                    " h ", "   ", "S  ",
+                    "   ", "   ", "S h",
                     'S', SHAPE_EMPTY.getStackForm());
             ModHandler.addShapelessRecipe("engineer_processor_mold_to_gt",
                     SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm(),
                     AEHelper.aeMaterials.engProcessorPress().maybeStack(1).get());
 
-            // Mold (Printed Silicon)
-            ModHandler.addShapedRecipe("shape_mold_printed_silicon", SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
-                    "   ", "   ", "S h",
+            // Extruder Shape (Printed Silicon)
+            ModHandler.addShapedRecipe("shape_extruder_printed_silicon",
+                    SHAPE_EXTRUDER_PRINTED_SILICON.getStackForm(),
+                    " x ", " S ", "   ",
                     'S', SHAPE_EMPTY.getStackForm());
-            ModHandler.addShapelessRecipe("silicon_processor_mold_to_gt", SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
-                    AEHelper.aeMaterials.siliconPress().maybeStack(1).get());
+
+            // Extruder Shape (Logic Processor)
+            ModHandler.addShapedRecipe("shape_extruder_logic_processor",
+                    SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm(),
+                    " x ", "S  ", "   ",
+                    'S', SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());
+
+            // Extruder Shape (Calculation Processor)
+            ModHandler.addShapedRecipe("shape_extruder_calculation_processor",
+                    SHAPE_EXTRUDER_CALCULATION_PROCESSOR.getStackForm(),
+                    " x ", " S ", "   ",
+                    'S', SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());
+
+            // Extruder Shape (Engineering Processor)
+            ModHandler.addShapedRecipe("shape_extruder_engineering_processor",
+                    SHAPE_EXTRUDER_ENGINEERING_PROCESSOR.getStackForm(),
+                    " x ", "  S", "   ",
+                    'S', SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());
         } else {
             // Silicon Processor Mold
             RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()

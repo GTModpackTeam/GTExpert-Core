@@ -16,6 +16,12 @@ public final class GTEMetaItems {
     public static MetaItem<?>.MetaValueItem SHAPE_MOLD_CALCULATION_PROCESSOR;
     public static MetaItem<?>.MetaValueItem SHAPE_MOLD_ENGINEERING_PROCESSOR;
 
+    public static final MetaItem<?>.MetaValueItem[] GTE_SHAPE_EXTRUDERS = new MetaItem.MetaValueItem[4];
+    public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_PRINTED_SILICON;
+    public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_LOGIC_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_CALCULATION_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_ENGINEERING_PROCESSOR;
+
     public static ArmorMetaItem<?>.ArmorMetaValueItem PISTON_BOOTS;
 
     public static void init() {
