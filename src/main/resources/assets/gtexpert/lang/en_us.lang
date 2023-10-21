@@ -143,6 +143,11 @@ metaitem.gte_me_fake_component.name=GTExpert ME fake component
 metaitem.matrix_core.name=Matrix Core
 metaitem.piston_boots.name=Piston Boots
 metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Higher!
+metaitem.primitive.motor.name=Primitive Motor
+metaitem.primitive.pump.name=Primitive Pump
+metaitem.primitive.conveyor.name=Primitive Conveyor Module
+metaitem.primitive.piston.name=Primitive Piston
+metaitem.primitive.robot.arm.name=Primitive Robot Arm
 
 # recipemaps
 recipemap.sawmill.name=Saw Mill
