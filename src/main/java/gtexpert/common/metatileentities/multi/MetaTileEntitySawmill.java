@@ -65,11 +65,6 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
-    public boolean hasMaintenanceMechanics() {
-        return false;
-    }
-
-    @Override
     public void addInformation(ItemStack stack, @Nullable World player, @Nonnull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
