@@ -1,10 +1,12 @@
 package gtexpert.common;
 
+import gregtech.api.GregTechAPI;
 import gregtech.api.block.VariantItemBlock;
+import gregtech.api.cover.CoverDefinition;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
-import gtexpert.common.items.GTEMetaItems;
+import gtexpert.common.items.*;
 import gtexpert.integration.theoneprobe.TOPProviders;
 import gtexpert.loaders.recipe.*;
 
@@ -75,6 +77,12 @@ public class CommonProxy {
     public static void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
         GTELog.logger.info("Registering recipes...");
         GTERecipeManager.loadLow();
+    }
+
+    @SubscribeEvent
+    public static void coverRegistry(GregTechAPI.RegisterEvent<CoverDefinition> event) {
+        GTELog.logger.info("Registering Primitive Covers...");
+        GTECoverBehaviors.init();
     }
 
     @SubscribeEvent

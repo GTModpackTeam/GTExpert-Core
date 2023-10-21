@@ -125,6 +125,71 @@ public class GTERecipeLoader {
     }
 
     private static void items() {
+        if (GTEConfigHolder.ceuOverride.enablePrimitiveCovers && GTEConfigHolder.ceuOverride.hardPrimitiveCovers) {
+            ModHandler.addShapedRecipe("primitive_motor", GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1),
+                    "CWR", "WMW", "RWC",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'M', new UnificationEntry(stick, IronMagnetic),
+                    'W', new UnificationEntry(wireGtSingle, Tin),
+                    'C', new UnificationEntry(cableGtSingle, Lead));
+            ModHandler.addShapedRecipe("primitive_piston", GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
+                    "PPP", "CRR", "CMG",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'G', new UnificationEntry(gearSmall, Bronze),
+                    'P', new UnificationEntry(plate, Bronze),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+            ModHandler.addShapedRecipe("primitive_pump", GTEMetaItems.PRIMITIVE_PUMP.getStackForm(1),
+                    "SRO", "dPw", "OMC",
+                    'R', new UnificationEntry(rotor, Bronze),
+                    'S', new UnificationEntry(screw, Bronze),
+                    'O', new UnificationEntry(ring, Rubber),
+                    'P', new UnificationEntry(pipeNormalFluid, Copper),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+            ModHandler.addShapedRecipe("primitive_conveyor", GTEMetaItems.PRIMITIVE_CONVEYOR.getStackForm(1),
+                    "PPP", "MCM", "PPP",
+                    'P', new UnificationEntry(plate, Rubber),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+            ModHandler.addShapedRecipe("primitive_robot_arm", GTEMetaItems.PRIMITIVE_ROBOT_ARM.getStackForm(1),
+                    "CCC", "MRM", "PUR",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'P', GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
+                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+        } else if (GTEConfigHolder.ceuOverride.enablePrimitiveCovers) {
+            ModHandler.addMirroredShapedRecipe("primitive_motor", GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1),
+                    "WR", "MW",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'M', new UnificationEntry(stick, IronMagnetic),
+                    'W', new UnificationEntry(wireGtSingle, Tin));
+            ModHandler.addMirroredShapedRecipe("primitive_piston", GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
+                    "PR", "MG",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'G', new UnificationEntry(gearSmall, Bronze),
+                    'P', new UnificationEntry(plate, Bronze),
+                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+            ModHandler.addMirroredShapedRecipe("primitive_pump", GTEMetaItems.PRIMITIVE_PUMP.getStackForm(1),
+                    "PR", "MO",
+                    'R', new UnificationEntry(rotor, Bronze),
+                    'O', new UnificationEntry(ring, Rubber),
+                    'P', new UnificationEntry(pipeNormalFluid, Copper),
+                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+            ModHandler.addMirroredShapedRecipe("primitive_conveyor", GTEMetaItems.PRIMITIVE_CONVEYOR.getStackForm(1),
+                    "PC", "MP",
+                    'P', new UnificationEntry(plate, Rubber),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+            ModHandler.addMirroredShapedRecipe("primitive_robot_arm", GTEMetaItems.PRIMITIVE_ROBOT_ARM.getStackForm(1),
+                    "MR", "PC",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'P', GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
+                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+        }
+
         if (!ConfigHolder.machines.enableHighTierSolars) return;
         if (GTEConfigHolder.ceuOverride.hardSolarPanel) {
             // Remove solar panels

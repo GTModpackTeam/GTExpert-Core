@@ -9,6 +9,11 @@ public final class GTEMetaItems {
 
     public static MetaItem<?>.MetaValueItem GTE_ME_FAKE_COMPONENT;
     public static MetaItem<?>.MetaValueItem MATRIX_CORE;
+    public static MetaItem<?>.MetaValueItem PRIMITIVE_MOTOR;
+    public static MetaItem<?>.MetaValueItem PRIMITIVE_PUMP;
+    public static MetaItem<?>.MetaValueItem PRIMITIVE_CONVEYOR;
+    public static MetaItem<?>.MetaValueItem PRIMITIVE_PISTON;
+    public static MetaItem<?>.MetaValueItem PRIMITIVE_ROBOT_ARM;
 
     public static final MetaItem<?>.MetaValueItem[] GTE_SHAPE_MOLDS = new MetaItem.MetaValueItem[4];
     public static MetaItem<?>.MetaValueItem SHAPE_MOLD_PRINTED_SILICON;

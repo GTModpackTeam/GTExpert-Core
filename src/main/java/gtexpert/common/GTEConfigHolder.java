@@ -41,6 +41,12 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Raising Terracotta Grinding from ULV to MV.", "Default: false" })
         public boolean nerfTerracottaCrafting = false;
+
+        @Config.Comment({ "Add a cover available in the ULV age.", "Default: false" })
+        public boolean enablePrimitiveCovers = false;
+
+        @Config.Comment({ "Recipe type Options: false (2x2 crafting), true (3x3 crafting).", "Default: false" })
+        public boolean hardPrimitiveCovers = false;
     }
 
     public static class AE2Integration {
