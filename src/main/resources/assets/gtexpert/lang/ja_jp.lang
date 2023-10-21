@@ -148,6 +148,22 @@ metaitem.primitive.pump.name=初歩的なポンプ
 metaitem.primitive.conveyor.name=初歩的なコンベアーモジュール
 metaitem.primitive.piston.name=初歩的なピストン
 metaitem.primitive.robot.arm.name=初歩的なロボットアーム
+metaitem.shape.mold.printed_silicon.name=シリコン基板の金型
+metaitem.shape.mold.printed_silicon.tooltip=シリコン基板を作る為の金型
+metaitem.shape.mold.logic_processor.name=基本プロセッサの金型
+metaitem.shape.mold.logic_processor.tooltip=基本プロセッサを作る為の金型
+metaitem.shape.mold.calculation_processor.name=発展プロセッサの金型
+metaitem.shape.mold.calculation_processor.tooltip=発展プロセッサを作る為の金型
+metaitem.shape.mold.engineering_processor.name=上級プロセッサの金型
+metaitem.shape.mold.engineering_processor.tooltip=上級プロセッサを作る為の金型
+metaitem.shape.extruder.printed_silicon.name=シリコン基板の押出形成用金型
+metaitem.shape.extruder.printed_silicon.tooltip=シリコン基板を作る為の押出形成用金型
+metaitem.shape.extruder.logic_processor.name=基本プロセッサの押出形成用金型
+metaitem.shape.extruder.logic_processor.tooltip=基本プロセッサを作る為の押出形成用金型
+metaitem.shape.extruder.calculation_processor.name=発展プロセッサの押出形成用金型
+metaitem.shape.extruder.calculation_processor.tooltip=発展プロセッサを作る為の押出形成用金型
+metaitem.shape.extruder.engineering_processor.name=上級プロセッサの押出形成用金型
+metaitem.shape.extruder.engineering_processor.tooltip=上級プロセッサを作る為の押出形成用金型
 
 # recipemaps
 recipemap.sawmill.name=製材機

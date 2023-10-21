@@ -25,7 +25,6 @@ import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.integration.ae.AEHelper;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -47,6 +46,7 @@ import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
+import static gtexpert.integration.ae.AEHelper.aeBlocks;
 
 public class GTERecipeLoader {
 
@@ -301,7 +301,7 @@ public class GTERecipeLoader {
                     .input(SENSOR_LV, 8)
                     .input(INTEGRATED_CIRCUIT_LV, 4)
                     .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
-                    .inputs(AEHelper.aeBlocks.quartzGlass().maybeStack(1).get())
+                    .inputs(aeBlocks.quartzGlass().maybeStack(1).get())
                     .input(MetaTileEntities.TRANSFORMER[1])
                     .fluidInputs(Silicon.getFluid(L << 2))
                     .fluidInputs(SolderingAlloy.getFluid(L << 2))
@@ -633,12 +633,12 @@ public class GTERecipeLoader {
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
                 .input(MetaTileEntities.HULL[UV])
                 .input(CRYSTAL_MAINFRAME_UV, 4)
-                .inputs(AEHelper.aeBlocks.energyCellDense().maybeStack(8).get())
+                .inputs(aeBlocks.energyCellDense().maybeStack(8).get())
                 .input(COVER_SOLAR_PANEL_UV, 1)
                 .fluidInputs(Fluix.getFluid(18432))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .fluidInputs(Neutronium.getFluid(9216))
-                .outputs(AEHelper.aeBlocks.energyCellCreative().maybeStack(1).get())
+                .outputs(aeBlocks.energyCellCreative().maybeStack(1).get())
                 .duration(1200).EUt(VA[UV])
                 .buildAndRegister();
 
@@ -673,7 +673,7 @@ public class GTERecipeLoader {
         if (!GTEValues.isModLoadedDEDA()) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(MetaTileEntities.HULL[UHV])
-                    .inputs(AEHelper.aeBlocks.energyCellCreative().maybeStack(4).get())
+                    .inputs(aeBlocks.energyCellCreative().maybeStack(4).get())
                     .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.ANY, NBTCondition.ANY)
                     .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
                     .fluidInputs(SolderingAlloy.getFluid(18432))

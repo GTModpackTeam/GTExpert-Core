@@ -13,7 +13,6 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.GTEConfigHolder;
-import gtexpert.integration.ae.AEHelper;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -43,8 +42,8 @@ import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.AUTO_CHISEL;
-import static gtexpert.integration.chisel.ChiselHelper.addGroup;
-import static gtexpert.integration.chisel.ChiselHelper.addVariation;
+import static gtexpert.integration.ae.AEHelper.aeBlocks;
+import static gtexpert.integration.chisel.ChiselHelper.*;
 
 public class ChiselRecipeLoader {
 
@@ -277,9 +276,9 @@ public class ChiselRecipeLoader {
         }
 
         // Certus Quartz
-        OreDictionary.registerOre("blockCertus", AEHelper.aeBlocks.quartzBlock().maybeStack(1).get());
-        OreDictionary.registerOre("blockCertus", AEHelper.aeBlocks.quartzPillar().maybeStack(1).get());
-        OreDictionary.registerOre("blockCertus", AEHelper.aeBlocks.chiseledQuartzBlock().maybeStack(1).get());
+        OreDictionary.registerOre("blockCertus", aeBlocks.quartzBlock().maybeStack(1).get());
+        OreDictionary.registerOre("blockCertus", aeBlocks.quartzPillar().maybeStack(1).get());
+        OreDictionary.registerOre("blockCertus", aeBlocks.chiseledQuartzBlock().maybeStack(1).get());
         for (int i = 0; i < 16; i++) {
             OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus", 1, i));
             OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus1", 1, i));

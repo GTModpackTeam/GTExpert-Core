@@ -148,6 +148,22 @@ metaitem.primitive.pump.name=Primitive Pump
 metaitem.primitive.conveyor.name=Primitive Conveyor Module
 metaitem.primitive.piston.name=Primitive Piston
 metaitem.primitive.robot.arm.name=Primitive Robot Arm
+metaitem.shape.mold.printed_silicon.name=Mold (Printed Silicon)
+metaitem.shape.mold.printed_silicon.tooltip=Used to craft Printed Silicon
+metaitem.shape.mold.logic_processor.name=Mold (Logic Processor)
+metaitem.shape.mold.logic_processor.tooltip=Used to craft Logic Processor
+metaitem.shape.mold.calculation_processor.name=Mold (Calculation Processor)
+metaitem.shape.mold.calculation_processor.tooltip=Used to craft Calculation Processor
+metaitem.shape.mold.engineering_processor.name=Mold (Engineering Processor)
+metaitem.shape.mold.engineering_processor.tooltip=Used to craft Engineering Processor
+metaitem.shape.extruder.printed_silicon.name=Extruder Shape (Printed Silicon)
+metaitem.shape.extruder.printed_silicon.tooltip=Used to craft Printed Silicon
+metaitem.shape.extruder.logic_processor.name=Extruder Shape (Logic Processor)
+metaitem.shape.extruder.logic_processor.tooltip=Used to craft Logic Processor
+metaitem.shape.extruder.calculation_processor.name=Extruder Shape (Calculation Processor)
+metaitem.shape.extruder.calculation_processor.tooltip=Used to craft Calculation Processor
+metaitem.shape.extruder.engineering_processor.name=Extruder Shape (Engineering Processor)
+metaitem.shape.extruder.engineering_processor.tooltip=Used to craft Engineering Processor
 
 # recipemaps
 recipemap.sawmill.name=Saw Mill
