@@ -159,7 +159,8 @@ public class GTERecipeLoader {
                     'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'P', GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
                     'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addShapedRecipe("primitive_fluid_regulator", GTEMetaItems.PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
+            ModHandler.addShapedRecipe("primitive_fluid_regulator",
+                    GTEMetaItems.PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
                     " U ", "dPw", " U ",
                     'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'P', GTEMetaItems.PRIMITIVE_PUMP.getStackForm(1));
