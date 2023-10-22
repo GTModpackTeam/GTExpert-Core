@@ -26,21 +26,29 @@ public class GTEMetaItem1 extends StandardMetaItem {
 
         // Free range: ID 2-10
 
-        // Primitive covers: ID 11-15
+        // Primitive covers: ID 11-20
         PRIMITIVE_MOTOR = addItem(11, "primitive.motor");
-        PRIMITIVE_PUMP = addItem(12, "primitive.pump").addComponents(new TooltipBehavior(lines -> {
-            lines.add(I18n.format("metaitem.electric.pump.tooltip"));
-            lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 1280 / 4));
-        }));
-        PRIMITIVE_CONVEYOR = addItem(13, "primitive.conveyor").addComponents(new TooltipBehavior(lines -> {
-            lines.add(I18n.format("metaitem.conveyor.module.tooltip"));
-            lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
-        }));
+        PRIMITIVE_PUMP = addItem(12, "primitive.pump")
+                .addComponents(new TooltipBehavior(lines -> {
+                    lines.add(I18n.format("metaitem.electric.pump.tooltip"));
+                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 1280 / 4));
+                }));
+        PRIMITIVE_CONVEYOR = addItem(13, "primitive.conveyor")
+                .addComponents(new TooltipBehavior(lines -> {
+                    lines.add(I18n.format("metaitem.conveyor.module.tooltip"));
+                    lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
+                }));
         PRIMITIVE_PISTON = addItem(14, "primitive.piston");
-        PRIMITIVE_ROBOT_ARM = addItem(15, "primitive.robot.arm").addComponents(new TooltipBehavior(lines -> {
-            lines.add(I18n.format("metaitem.robot.arm.tooltip"));
-            lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
-        }));
+        PRIMITIVE_ROBOT_ARM = addItem(15, "primitive.robot.arm")
+                .addComponents(new TooltipBehavior(lines -> {
+                    lines.add(I18n.format("metaitem.robot.arm.tooltip"));
+                    lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
+                }));
+        PRIMITIVE_FLUID_REGULATOR = addItem(16, "primitive.fluid.regulator")
+                .addComponents(new TooltipBehavior(lines -> {
+                    lines.add(I18n.format("metaitem.fluid.regulator.tooltip"));
+                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 320 / 4));
+                }));
 
         // Shapes: ID 101-110
         if (GTEConfigHolder.ae2Integration.moveSteelShape) {

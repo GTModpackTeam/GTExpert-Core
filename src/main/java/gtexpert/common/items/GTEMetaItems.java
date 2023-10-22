@@ -14,6 +14,7 @@ public final class GTEMetaItems {
     public static MetaItem<?>.MetaValueItem PRIMITIVE_CONVEYOR;
     public static MetaItem<?>.MetaValueItem PRIMITIVE_PISTON;
     public static MetaItem<?>.MetaValueItem PRIMITIVE_ROBOT_ARM;
+    public static MetaItem<?>.MetaValueItem PRIMITIVE_FLUID_REGULATOR;
 
     public static final MetaItem<?>.MetaValueItem[] GTE_SHAPE_MOLDS = new MetaItem.MetaValueItem[4];
     public static MetaItem<?>.MetaValueItem SHAPE_MOLD_PRINTED_SILICON;
