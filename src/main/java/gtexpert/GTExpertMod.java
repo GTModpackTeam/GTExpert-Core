@@ -1,17 +1,13 @@
 package gtexpert;
 
 import gregtech.GTInternalTags;
-import gregtech.api.GregTechAPI;
-import gregtech.api.cover.CoverDefinition;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.CommonProxy;
-import gtexpert.common.items.GTECoverBehaviors;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
@@ -62,13 +58,4 @@ public class GTExpertMod {
 
     @Mod.EventHandler
     public void respondIMC(FMLInterModComms.IMCEvent event) {}
-
-    @Mod.EventBusSubscriber
-    public static class RegistrationHandler {
-
-        @SubscribeEvent
-        public static void registerCovers(GregTechAPI.RegisterEvent<CoverDefinition> event) {
-            GTECoverBehaviors.init();
-        }
-    }
 }

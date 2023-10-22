@@ -125,7 +125,7 @@ public class GTERecipeLoader {
     }
 
     private static void items() {
-        if (GTEConfigHolder.ceuOverride.enablePrimitiveCovers && GTEConfigHolder.ceuOverride.hardPrimitiveCovers) {
+        if (GTEConfigHolder.ceuOverride.hardPrimitiveCovers) {
             ModHandler.addShapedRecipe("primitive_motor", GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1),
                     "CWR", "WMW", "RWC",
                     'R', new UnificationEntry(stick, Bronze),
@@ -159,7 +159,7 @@ public class GTERecipeLoader {
                     'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'P', GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
                     'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-        } else if (GTEConfigHolder.ceuOverride.enablePrimitiveCovers) {
+        } else {
             ModHandler.addMirroredShapedRecipe("primitive_motor", GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1),
                     "WR", "MW",
                     'R', new UnificationEntry(stick, Bronze),
@@ -177,12 +177,14 @@ public class GTERecipeLoader {
                     'O', new UnificationEntry(ring, Rubber),
                     'P', new UnificationEntry(pipeNormalFluid, Copper),
                     'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addMirroredShapedRecipe("primitive_conveyor", GTEMetaItems.PRIMITIVE_CONVEYOR.getStackForm(1),
+            ModHandler.addMirroredShapedRecipe("primitive_conveyor",
+                    GTEMetaItems.PRIMITIVE_CONVEYOR.getStackForm(1),
                     "PC", "MP",
                     'P', new UnificationEntry(plate, Rubber),
                     'C', new UnificationEntry(cableGtSingle, Lead),
                     'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addMirroredShapedRecipe("primitive_robot_arm", GTEMetaItems.PRIMITIVE_ROBOT_ARM.getStackForm(1),
+            ModHandler.addMirroredShapedRecipe("primitive_robot_arm",
+                    GTEMetaItems.PRIMITIVE_ROBOT_ARM.getStackForm(1),
                     "MR", "PC",
                     'R', new UnificationEntry(stick, Bronze),
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
