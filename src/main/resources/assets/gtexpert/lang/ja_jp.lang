@@ -148,6 +148,7 @@ metaitem.primitive.pump.name=初歩的なポンプ
 metaitem.primitive.conveyor.name=初歩的なコンベアーモジュール
 metaitem.primitive.piston.name=初歩的なピストン
 metaitem.primitive.robot.arm.name=初歩的なロボットアーム
+metaitem.primitive.fluid.regulator.name=初歩的な流量制御器
 metaitem.shape.mold.printed_silicon.name=シリコン基板の金型
 metaitem.shape.mold.printed_silicon.tooltip=シリコン基板を作る為の金型
 metaitem.shape.mold.logic_processor.name=基本プロセッサの金型

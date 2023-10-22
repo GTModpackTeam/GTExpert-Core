@@ -1105,7 +1105,7 @@ public class AERecipeLoader {
                         aeMaterials.siliconPress().maybeStack(1).get())
                 .input(plate, Silicon, 1)
                 .outputs(aeMaterials.siliconPrint().maybeStack(1).get())
-                .duration(100).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Logic Circuit
@@ -1114,7 +1114,7 @@ public class AERecipeLoader {
                         aeMaterials.logicProcessorPress().maybeStack(1).get())
                 .input(plate, Gold, 1)
                 .outputs(aeMaterials.logicProcessorPrint().maybeStack(1).get())
-                .duration(100).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
                 .buildAndRegister();
 
         // Calc Circuit

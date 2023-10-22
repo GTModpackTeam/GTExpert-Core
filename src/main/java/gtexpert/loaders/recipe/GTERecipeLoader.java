@@ -159,6 +159,10 @@ public class GTERecipeLoader {
                     'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'P', GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
                     'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+            ModHandler.addShapedRecipe("primitive_fluid_regulator", GTEMetaItems.PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
+                    " U ", "dPw", " U ",
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'P', GTEMetaItems.PRIMITIVE_PUMP.getStackForm(1));
         } else {
             ModHandler.addMirroredShapedRecipe("primitive_motor", GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1),
                     "WR", "MW",
@@ -185,11 +189,16 @@ public class GTERecipeLoader {
                     'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
             ModHandler.addMirroredShapedRecipe("primitive_robot_arm",
                     GTEMetaItems.PRIMITIVE_ROBOT_ARM.getStackForm(1),
-                    "MR", "PC",
+                    "PR", "MC",
                     'R', new UnificationEntry(stick, Bronze),
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'P', GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
                     'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
+            ModHandler.addMirroredShapedRecipe("primitive_fluid_regulator",
+                    GTEMetaItems.PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
+                    "PC", "Cd",
+                    'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'P', GTEMetaItems.PRIMITIVE_PUMP.getStackForm(1));
         }
 
         if (!ConfigHolder.machines.enableHighTierSolars) return;

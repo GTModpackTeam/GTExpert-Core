@@ -2,6 +2,7 @@ package gtexpert.common.items;
 
 import gregtech.api.GTValues;
 import gregtech.common.covers.CoverConveyor;
+import gregtech.common.covers.CoverFluidRegulator;
 import gregtech.common.covers.CoverPump;
 import gregtech.common.covers.CoverRoboticArm;
 
@@ -17,5 +18,7 @@ public class GTECoverBehaviors {
                 (tile, side) -> new CoverPump(tile, side, GTValues.ULV, 320));
         registerBehavior(gteId("primitive.robot.arm"), GTEMetaItems.PRIMITIVE_ROBOT_ARM,
                 (tile, side) -> new CoverRoboticArm(tile, side, GTValues.ULV, 2));
+        registerBehavior(gteId("primitive.fluid.regulator"), GTEMetaItems.PRIMITIVE_FLUID_REGULATOR,
+                (tile, side) -> new CoverFluidRegulator(tile, side, GTValues.ULV, 16));
     }
 }
