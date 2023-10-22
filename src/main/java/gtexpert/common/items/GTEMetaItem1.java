@@ -24,23 +24,23 @@ public class GTEMetaItem1 extends StandardMetaItem {
         GTE_ME_FAKE_COMPONENT = addItem(0, "gte_me_fake_component");
         MATRIX_CORE = addItem(1, "matrix_core");
 
-        // Primitive modules: ID 2-6
-        if (GTEConfigHolder.ceuOverride.enablePrimitiveCovers) {
-            PRIMITIVE_MOTOR = addItem(2, "primitive.motor");
-            PRIMITIVE_PUMP = addItem(3, "primitive.pump").addComponents(new TooltipBehavior(lines -> {
-                lines.add(I18n.format("metaitem.electric.pump.tooltip"));
-                lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 1280 / 4));
-            }));
-            PRIMITIVE_CONVEYOR = addItem(4, "primitive.conveyor").addComponents(new TooltipBehavior(lines -> {
-                lines.add(I18n.format("metaitem.conveyor.module.tooltip"));
-                lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
-            }));
-            PRIMITIVE_PISTON = addItem(5, "primitive.piston");
-            PRIMITIVE_ROBOT_ARM = addItem(6, "primitive.robot.arm").addComponents(new TooltipBehavior(lines -> {
-                lines.add(I18n.format("metaitem.robot.arm.tooltip"));
-                lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
-            }));
-        }
+        // Free range: ID 2-10
+
+        // Primitive covers: ID 11-15
+        PRIMITIVE_MOTOR = addItem(11, "primitive.motor");
+        PRIMITIVE_PUMP = addItem(12, "primitive.pump").addComponents(new TooltipBehavior(lines -> {
+            lines.add(I18n.format("metaitem.electric.pump.tooltip"));
+            lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 1280 / 4));
+        }));
+        PRIMITIVE_CONVEYOR = addItem(13, "primitive.conveyor").addComponents(new TooltipBehavior(lines -> {
+            lines.add(I18n.format("metaitem.conveyor.module.tooltip"));
+            lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
+        }));
+        PRIMITIVE_PISTON = addItem(14, "primitive.piston");
+        PRIMITIVE_ROBOT_ARM = addItem(15, "primitive.robot.arm").addComponents(new TooltipBehavior(lines -> {
+            lines.add(I18n.format("metaitem.robot.arm.tooltip"));
+            lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
+        }));
 
         // Shapes: ID 101-110
         if (GTEConfigHolder.ae2Integration.moveSteelShape) {
