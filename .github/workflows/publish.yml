@@ -64,7 +64,7 @@ jobs:
       - name: Build Project
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: '--build-cache --info --no-daemon --stacktrace build'
+          arguments: '--build-cache --info --stacktrace build'
           generate-job-summary: false
 
       - name: Publish to Curseforge

@@ -29,17 +29,12 @@ jobs:
             8
             17
 
-      - name: Compile the mod
+      - name: Run post-build checks
         uses: gradle/gradle-build-action@v2
+        id: build_mod
         with:
-          arguments: '--scan --build-cache --info --no-daemon --stacktrace assemble'
+          arguments: '--scan --build-cache --info --stacktrace build'
           generate-job-summary: false
-
-      - name: Run Tests
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: '--scan --build-cache --info --no-daemon --stacktrace test'
-          generate-job-summary: true
 
       - name: Attempt to make a PR fixing spotless errors
         if: ${{ failure() && steps.build_mod.conclusion == 'failure' && github.event_name == 'pull_request' && !github.event.pull_request.draft }}
@@ -83,3 +78,4 @@ jobs:
         with:
           name: GTExpert-Core
           path: build/libs/*.jar
+          retention-days: 31
