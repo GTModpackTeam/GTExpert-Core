@@ -109,7 +109,7 @@ jobs:
             draconic-evolution | recommends | *
             draconicadditions | recommends | *
             project-red-illumination | recommends | *
-            ulv-covers | embedded | *
+            incompatible | embedded | *
           java: |
             8
           retry-attempts: 2

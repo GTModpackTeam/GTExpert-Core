@@ -14,6 +14,7 @@ import gregtech.common.items.MetaItems;
 import gtexpert.api.GTEValues;
 import gtexpert.common.GTEConfigHolder;
 
+import gtexpert.integration.ae.AEHelper;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,6 +26,7 @@ import crazypants.enderio.base.init.ModObject;
 
 import java.util.*;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -653,6 +655,13 @@ public class AERecipeLoader {
     }
 
     private static void items() {
+        // Remove Inscriber Recipes
+        Stream.of(aeMaterials.logicProcessorPrint(), aeMaterials.calcProcessorPrint(), aeMaterials.engProcessorPrint(),
+                aeMaterials.logicProcessor(), aeMaterials.calcProcessor(), aeMaterials.engProcessor(),
+                aeMaterials.siliconPrint(), aeMaterials.siliconPress(), aeMaterials.logicProcessorPress(),
+                aeMaterials.calcProcessorPress(), aeMaterials.engProcessorPress())
+                .map(inscriberItems -> inscriberItems.maybeStack(1).get()).forEach(AEHelper::removeInscriberRecipe);
+
         // 1k Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1k"));
         ModHandler
@@ -1236,7 +1245,7 @@ public class AERecipeLoader {
                     " x ", "  S", "   ",
                     'S', SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());
         } else {
-            // Silicon Processor Mold
+            // Silicon Processor Press
             RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
                     .notConsumable(lens, NetherQuartz)
                     .input(block, Iron, 1)
@@ -1244,7 +1253,7 @@ public class AERecipeLoader {
                     .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
                     .buildAndRegister();
 
-            // Logic Processor Mold
+            // Logic Processor Press
             RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
                     .notConsumable(lens, ChargedCertusQuartz)
                     .input(block, Iron, 1)
@@ -1252,7 +1261,7 @@ public class AERecipeLoader {
                     .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
                     .buildAndRegister();
 
-            // Calc Processor Mold
+            // Calc Processor Press
             RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
                     .notConsumable(lens, CertusQuartz)
                     .input(block, Iron, 1)
@@ -1260,7 +1269,7 @@ public class AERecipeLoader {
                     .duration(2000).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
                     .buildAndRegister();
 
-            // Engineer Processor Mold
+            // Engineer Processor Press
             RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()
                     .notConsumable(lens, Fluix)
                     .input(block, Iron, 1)
