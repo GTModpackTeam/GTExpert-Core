@@ -8,7 +8,7 @@ on:
   push:
     branches: ['update/v[0-9]+.[0-9]+.[0-9]+-pr-+[0-9]'] # any semver branche, e.g. update/v1.2.3-pr-4
   pull_request:
-    branches: [preview]
+    branches: [master, preview]
 
 jobs:
   build-and-test:
