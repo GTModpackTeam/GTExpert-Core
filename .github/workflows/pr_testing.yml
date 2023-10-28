@@ -3,6 +3,8 @@ name: PR Testing
 
 permissions:
   contents: write
+  deployments: write
+  pull-requests: write
 
 on:
   push:
