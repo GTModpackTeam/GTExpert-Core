@@ -13,8 +13,8 @@ import gregtech.common.items.MetaItems;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.GTEConfigHolder;
-
 import gtexpert.integration.ae.AEHelper;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
