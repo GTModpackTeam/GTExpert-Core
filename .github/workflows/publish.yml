@@ -44,12 +44,15 @@ jobs:
         run: sed -i "s/modVersion.*=.*/modVersion = ${{ env.FULL_VERSION }}/g" gradle.properties
 
       - name: Commit and push gradle.properties
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Bump version to v${{ env.FULL_VERSION }}"
-          commit_options: "--no-verify"
+          commit_options: '--no-verify'
           file_pattern: gradle.properties
           tagging_message: "v${{ env.FULL_VERSION }}"
+
+      - name: Validate gradle wrapper checksum
+        uses: gradle/wrapper-validation-action@v1
 
       - name: Setup Java
         uses: actions/setup-java@v3
@@ -58,38 +61,11 @@ jobs:
           distribution: zulu
           java-version: 17
 
-      - name: Check spotless
-        uses: gradle/gradle-build-action@v2
-        id: spotless
-        continue-on-error: true
-        with:
-          arguments: '--build-cache --info --no-daemon --stacktrace spotlessCheck'
-
-      - name: If spotlessCheck is error, trigger spotlessApply
-        if: steps.spotless.outcome == 'failure'
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: '--build-cache --info --no-daemon --stacktrace spotlessApply'
-
-      - name: Commit and push spotlessApply
-        if: steps.spotless.outcome == 'failure'
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Apply spotless"
-          commit_options: "--no-verify"
-          file_pattern: .
-          tagging_message: "v${{ env.FULL_VERSION }}"
-
       - name: Build Project
         uses: gradle/gradle-build-action@v2
         with:
           arguments: '--build-cache --info --no-daemon --stacktrace build'
           generate-job-summary: false
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
 
       - name: Publish to Curseforge
         uses: Kir-Antipov/mc-publish@v3.3
@@ -131,7 +107,7 @@ jobs:
             draconic-evolution | recommends | *
             draconicadditions | recommends | *
             project-red-illumination | recommends | *
-            incompatible | embedded | *
+            ulv-covers | incompatible | *
           java: |
             8
           retry-attempts: 2
