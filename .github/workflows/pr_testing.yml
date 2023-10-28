@@ -1,11 +1,5 @@
 # Runs tests and other checks on Pull Requests
 name: PR Testing
-
-permissions:
-  contents: write
-  deployments: write
-  pull-requests: write
-
 on:
   push:
     branches: ['update/v[0-9]+.[0-9]+.[0-9]+-pr-+[0-9]'] # any semver branche, e.g. update/v1.2.3-pr-4
@@ -25,18 +19,31 @@ jobs:
       - name: Set up JDK 8 and 17
         uses: actions/setup-java@v3
         with:
-          cache: gradle
-          distribution: zulu
           java-version: |
             8
             17
+          distribution: 'zulu'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Setup the workspace
+        run: ./gradlew --build-cache --info --stacktrace setupCIWorkspace
+
+      - name: Compile the mod
+        run: ./gradlew --build-cache --info --stacktrace assemble
+
+      - name: Attach compilation artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-libs
+          path: build/libs/
+          retention-days: 31
 
       - name: Run post-build checks
-        uses: gradle/gradle-build-action@v2
         id: build_mod
-        with:
-          arguments: '--scan --build-cache --info --stacktrace build'
-          generate-job-summary: false
+        run: ./gradlew --build-cache --info --stacktrace build
 
       - name: Attempt to make a PR fixing spotless errors
         if: ${{ failure() && steps.build_mod.conclusion == 'failure' && github.event_name == 'pull_request' && !github.event.pull_request.draft }}
@@ -59,7 +66,7 @@ jobs:
           gh pr comment "${PR_BRANCH}" -F pr-message.log || true
         shell: bash # ensures set -eo pipefail
         env:
-          GH_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_BRANCH: ${{ github.head_ref }}
           FIXED_BRANCH: ${{ github.head_ref }}-spotless-fixes
 

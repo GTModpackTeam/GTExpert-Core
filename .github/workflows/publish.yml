@@ -1,10 +1,5 @@
 # Publishes built jars to distribution platforms
 name: Publish
-
-permissions:
-  contents: write
-  deployments: write
-
 on:
   workflow_dispatch:
     inputs:
@@ -57,15 +52,17 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
+          java-version: |
+            8
+            17
+          distribution: 'zulu'
           cache: gradle
-          distribution: zulu
-          java-version: 17
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Build Project
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: '--build-cache --info --stacktrace build'
-          generate-job-summary: false
+        run: ./gradlew --build-cache --info --stacktrace build
 
       - name: Publish to Curseforge
         uses: Kir-Antipov/mc-publish@v3.3
@@ -74,7 +71,7 @@ jobs:
           github-generate-changelog: true
           github-draft: false
           github-prerelease: false
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           curseforge-id: '851103'
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           files: |
