@@ -55,16 +55,27 @@ jobs:
             notifications
             wrapper
 
-      - name: Run Spotless
+      - name: Check spotless
         uses: gradle/gradle-build-action@v2
+        id: spotless
+        continue-on-error: true
         with:
           arguments: '--build-cache --info --no-daemon --stacktrace spotlessCheck'
-          generate-job-summary: false
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
+
+      - name: If spotlessCheck is error, trigger spotlessApply
+        if: steps.spotless.outcome == 'failure'
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: '--build-cache --info --no-daemon --stacktrace spotlessApply'
+
+      - name: Commit and push spotlessApply
+        if: steps.spotless.outcome == 'failure'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Apply spotless"
+          commit_options: "--no-verify"
+          file_pattern: .
+          tagging_message: "v${{ env.FULL_VERSION }}"
 
       - name: Run server for 90 seconds
         run: |
