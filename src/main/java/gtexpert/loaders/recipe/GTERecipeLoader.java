@@ -126,7 +126,7 @@ public class GTERecipeLoader {
 
     private static void items() {
         if (GTEConfigHolder.ceuOverride.hardPrimitiveCovers) {
-            ModHandler.addShapedRecipe("primitive_motor", PRIMITIVE_MOTOR.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_motor", PRIMITIVE_MOTOR.getStackForm(1),
                     "CWR", "WMW", "RWC",
                     'R', new UnificationEntry(stick, Bronze),
                     'M', new UnificationEntry(stick, IronMagnetic),
@@ -140,7 +140,7 @@ public class GTERecipeLoader {
                     .outputs(PRIMITIVE_MOTOR.getStackForm())
                     .duration(100).EUt(VA[ULV]).buildAndRegister();
 
-            ModHandler.addShapedRecipe("primitive_piston", PRIMITIVE_PISTON.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_piston", PRIMITIVE_PISTON.getStackForm(1),
                     "PPP", "CRR", "CMG",
                     'R', new UnificationEntry(stick, Bronze),
                     'G', new UnificationEntry(gearSmall, Bronze),
@@ -156,7 +156,7 @@ public class GTERecipeLoader {
                     .outputs(PRIMITIVE_PISTON.getStackForm())
                     .duration(100).EUt(VA[ULV]).buildAndRegister();
 
-            ModHandler.addShapedRecipe("primitive_pump", PRIMITIVE_PUMP.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_pump", PRIMITIVE_PUMP.getStackForm(1),
                     "SRO", "dPw", "OMC",
                     'R', new UnificationEntry(rotor, Bronze),
                     'S', new UnificationEntry(screw, Bronze),
@@ -174,7 +174,7 @@ public class GTERecipeLoader {
                     .outputs(PRIMITIVE_PUMP.getStackForm())
                     .duration(100).EUt(VA[ULV]).buildAndRegister();
 
-            ModHandler.addShapedRecipe("primitive_conveyor", PRIMITIVE_CONVEYOR.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_conveyor", PRIMITIVE_CONVEYOR.getStackForm(1),
                     "PPP", "MCM", "PPP",
                     'P', new UnificationEntry(plate, Rubber),
                     'C', new UnificationEntry(cableGtSingle, Lead),
@@ -187,7 +187,7 @@ public class GTERecipeLoader {
                     .outputs(PRIMITIVE_CONVEYOR.getStackForm())
                     .duration(100).EUt(VA[ULV]).buildAndRegister();
 
-            ModHandler.addShapedRecipe("primitive_robot_arm", PRIMITIVE_ROBOT_ARM.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_robot_arm", PRIMITIVE_ROBOT_ARM.getStackForm(1),
                     "CCC", "MRM", "PUR",
                     'R', new UnificationEntry(stick, Bronze),
                     'C', new UnificationEntry(cableGtSingle, Lead),
@@ -203,8 +203,7 @@ public class GTERecipeLoader {
                     .outputs(PRIMITIVE_ROBOT_ARM.getStackForm())
                     .duration(100).EUt(VA[ULV]).buildAndRegister();
 
-            ModHandler.addShapedRecipe("primitive_fluid_regulator",
-                    PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_fluid_regulator", PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
                     " U ", "dPw", " U ",
                     'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'P', PRIMITIVE_PUMP.getStackForm(1));
@@ -218,43 +217,40 @@ public class GTERecipeLoader {
                     .withRecycling()
                     .buildAndRegister();
         } else {
-            ModHandler.addMirroredShapedRecipe("primitive_motor", PRIMITIVE_MOTOR.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_motor", PRIMITIVE_MOTOR.getStackForm(1),
                     "WR", "MW",
                     'R', new UnificationEntry(stick, Bronze),
                     'M', new UnificationEntry(stick, IronMagnetic),
                     'W', new UnificationEntry(wireGtSingle, Tin));
 
-            ModHandler.addMirroredShapedRecipe("primitive_piston", PRIMITIVE_PISTON.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_piston", PRIMITIVE_PISTON.getStackForm(1),
                     "PR", "MG",
                     'R', new UnificationEntry(stick, Bronze),
                     'G', new UnificationEntry(gearSmall, Bronze),
                     'P', new UnificationEntry(plate, Bronze),
                     'M', PRIMITIVE_MOTOR.getStackForm(1));
 
-            ModHandler.addMirroredShapedRecipe("primitive_pump", PRIMITIVE_PUMP.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_pump", PRIMITIVE_PUMP.getStackForm(1),
                     "PR", "MO",
                     'R', new UnificationEntry(rotor, Bronze),
                     'O', new UnificationEntry(ring, Rubber),
                     'P', new UnificationEntry(pipeNormalFluid, Copper),
                     'M', PRIMITIVE_MOTOR.getStackForm(1));
 
-            ModHandler.addMirroredShapedRecipe("primitive_conveyor",
-                    PRIMITIVE_CONVEYOR.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_conveyor", PRIMITIVE_CONVEYOR.getStackForm(1),
                     "PC", "MP",
                     'P', new UnificationEntry(plate, Rubber),
                     'C', new UnificationEntry(cableGtSingle, Lead),
                     'M', PRIMITIVE_MOTOR.getStackForm(1));
 
-            ModHandler.addMirroredShapedRecipe("primitive_robot_arm",
-                    PRIMITIVE_ROBOT_ARM.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_robot_arm", PRIMITIVE_ROBOT_ARM.getStackForm(1),
                     "PR", "MC",
                     'R', new UnificationEntry(stick, Bronze),
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'P', PRIMITIVE_PISTON.getStackForm(1),
                     'M', PRIMITIVE_MOTOR.getStackForm(1));
 
-            ModHandler.addMirroredShapedRecipe("primitive_fluid_regulator",
-                    PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_fluid_regulator", PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
                     "PC", "Cd",
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'P', PRIMITIVE_PUMP.getStackForm(1));

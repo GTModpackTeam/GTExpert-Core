@@ -54,84 +54,6 @@ public class AERecipeLoader {
     };
 
     public static void init() {
-        // craftGlassCable
-        List<ItemStack> craftGlassCable = new LinkedList<>();
-        IntStream.rangeClosed(0, 16).forEach(i -> {
-            craftGlassCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        {
-            Iterator<ItemStack> iterator = craftGlassCable.iterator();
-            while (iterator.hasNext()) {
-                ItemStack stack = iterator.next();
-                OreDictionary.registerOre("craftGlassCable", stack);
-
-                if (iterator.hasNext()) OreDictionary.registerOre("craftGlassCableColors", stack);
-            }
-        }
-
-        // craftCoveredCable
-        List<ItemStack> craftCoveredCable = new LinkedList<>();
-        IntStream.rangeClosed(20, 36).forEach(i -> {
-            craftCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        {
-            Iterator<ItemStack> iterator = craftCoveredCable.iterator();
-            while (iterator.hasNext()) {
-                ItemStack stack = iterator.next();
-                OreDictionary.registerOre("craftCoveredCable", stack);
-
-                if (iterator.hasNext()) OreDictionary.registerOre("craftCoveredCableColors", stack);
-            }
-        }
-
-        // craftSmartCable
-        List<ItemStack> craftSmartCable = new LinkedList<>();
-        IntStream.rangeClosed(40, 56).forEach(i -> {
-            craftSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        {
-            Iterator<ItemStack> iterator = craftSmartCable.iterator();
-            while (iterator.hasNext()) {
-                ItemStack stack = iterator.next();
-                OreDictionary.registerOre("craftSmartCable", stack);
-
-                if (iterator.hasNext()) OreDictionary.registerOre("craftSmartCableColors", stack);
-            }
-        }
-
-        // craftDenseCoveredCable
-        List<ItemStack> craftDenseCoveredCable = new LinkedList<>();
-        IntStream.rangeClosed(500, 516).forEach(i -> {
-            craftDenseCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        {
-            Iterator<ItemStack> iterator = craftDenseCoveredCable.iterator();
-            while (iterator.hasNext()) {
-                ItemStack stack = iterator.next();
-                OreDictionary.registerOre("craftDenseCoveredCable", stack);
-
-                if (iterator.hasNext()) OreDictionary.registerOre("craftDenseCoveredCableColors", stack);
-            }
-        }
-
-        // craftDenseSmartCable
-        List<ItemStack> craftDenseSmartCable = new LinkedList<>();
-        IntStream.rangeClosed(60, 76).forEach(i -> {
-            craftDenseSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        Iterator<ItemStack> iterator = craftDenseSmartCable.iterator();
-        while (iterator.hasNext()) {
-            ItemStack stack = iterator.next();
-            OreDictionary.registerOre("craftDenseSmartCable", stack);
-
-            if (iterator.hasNext()) OreDictionary.registerOre("craftDenseSmartCableColors", stack);
-        }
-
         materials();
         items();
         blocks();
@@ -457,14 +379,36 @@ public class AERecipeLoader {
 
     private static void blocks() {
         // ME Interface
-        ModHandler.addShapelessNBTClearingRecipe("me_interface",
+        ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "interface", 1, 0));
+        ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 440));
+        ModHandler.addShapelessNBTClearingRecipe("interface_to_part_interface",
+                getModItem(GTEValues.MODID_AE, "part", 1, 440),
+                getModItem(GTEValues.MODID_AE, "interface", 1, 0));
+        ModHandler.addShapelessNBTClearingRecipe("part_interface_to_interface",
                 getModItem(GTEValues.MODID_AE, "interface", 1, 0),
-                "craftInterfaceItem");
+                getModItem(GTEValues.MODID_AE, "part", 1, 440));
 
         // ME Fluid Interface
-        ModHandler.addShapelessNBTClearingRecipe("me_fluid_interface",
+        ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0));
+        ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 441));
+        ModHandler.addShapelessNBTClearingRecipe("fluid_interface_to_part_fluid_interface",
+                getModItem(GTEValues.MODID_AE, "part", 1, 441),
+                getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0));
+        ModHandler.addShapelessNBTClearingRecipe("part_fluid_interface_to_fluid_interface",
                 getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0),
-                "craftInterfaceFluid");
+                getModItem(GTEValues.MODID_AE, "part", 1, 441));
+
+        // ME Dual Interface
+        if (Loader.isModLoaded(GTEValues.MODID_AEFC)) {
+            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0));
+            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0));
+            ModHandler.addShapelessNBTClearingRecipe("fluid_interface_to_part_fluid_interface",
+                    getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0),
+                    getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0));
+            ModHandler.addShapelessNBTClearingRecipe("part_fluid_interface_to_fluid_interface",
+                    getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0),
+                    getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0));
+        }
 
         // Rubber List
         final Map<Material, Integer> rubberMaterials = new Object2ObjectOpenHashMap<>();
