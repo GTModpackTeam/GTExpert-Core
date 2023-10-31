@@ -13,7 +13,6 @@ import gregtech.common.items.MetaItems;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.GTEConfigHolder;
-import gtexpert.integration.ae.AEHelper;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -26,7 +25,6 @@ import crazypants.enderio.base.init.ModObject;
 
 import java.util.*;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -656,11 +654,12 @@ public class AERecipeLoader {
 
     private static void items() {
         // Remove Inscriber Recipes
-        Stream.of(aeMaterials.logicProcessorPrint(), aeMaterials.calcProcessorPrint(), aeMaterials.engProcessorPrint(),
-                aeMaterials.logicProcessor(), aeMaterials.calcProcessor(), aeMaterials.engProcessor(),
-                aeMaterials.siliconPrint(), aeMaterials.siliconPress(), aeMaterials.logicProcessorPress(),
-                aeMaterials.calcProcessorPress(), aeMaterials.engProcessorPress())
-                .map(inscriberItems -> inscriberItems.maybeStack(1).get()).forEach(AEHelper::removeInscriberRecipe);
+        // Stream.of(aeMaterials.logicProcessorPrint(), aeMaterials.calcProcessorPrint(),
+        // aeMaterials.engProcessorPrint(),
+        // aeMaterials.logicProcessor(), aeMaterials.calcProcessor(), aeMaterials.engProcessor(),
+        // aeMaterials.siliconPrint(), aeMaterials.siliconPress(), aeMaterials.logicProcessorPress(),
+        // aeMaterials.calcProcessorPress(), aeMaterials.engProcessorPress())
+        // .map(inscriberItems -> inscriberItems.maybeStack(1).get()).forEach(AEHelper::removeInscriberRecipe);
 
         // 1k Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1k"));
