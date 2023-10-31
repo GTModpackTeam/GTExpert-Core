@@ -43,8 +43,8 @@ dependencies {
     implementation rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
 
     // Soft Dependencies
-    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.690" // CrT 4.1.20
-    implementation rfg.deobf("curse.maven:groovyscript-687577:4749823") // GrS 0.6.4
+    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.684" // CrT 4.1.20.684
+    implementation rfg.deobf("curse.maven:groovyscript-687577:4687204") // GrS 0.6.0
     implementation rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
 
     // Debug Draconic Evolution/Additions
