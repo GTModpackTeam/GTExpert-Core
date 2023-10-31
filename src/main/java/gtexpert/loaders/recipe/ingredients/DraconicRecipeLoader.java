@@ -659,9 +659,8 @@ public class DraconicRecipeLoader {
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .output(VOIDOREMINER)
                 .duration(600).EUt(VA[UV])
-                .research(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
-                        .CWUt(96)
-                        .duration(4000).EUt(VA[UV]))
+                .stationResearch(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
+                        .CWUt(96).EUt(VA[UV]))
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
@@ -676,9 +675,8 @@ public class DraconicRecipeLoader {
                 .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                 .duration(2000).EUt(VA[UHV])
-                .research(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
-                        .CWUt(128)
-                        .duration(4000).EUt(VA[UHV]))
+                .stationResearch(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
+                        .CWUt(128).EUt(VA[UHV]))
                 .buildAndRegister();
 
         // ########################################

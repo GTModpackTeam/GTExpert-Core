@@ -52,7 +52,7 @@ public class CEUOverrideRecipeLoader {
     private static void materials() {
         // Vacuum Freezer
         List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        materials.forEach(CEUOverrideRecipeLoader::vacuumFreezerMolten);
+        materials.forEach(CEUOverrideRecipeLoader::vacuumFreezerExtended);
 
         // Iron Nugget
         ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Iron, 9),
@@ -126,7 +126,7 @@ public class CEUOverrideRecipeLoader {
                 .circuitMeta(1)
                 .fluidInputs(Ice.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
-                .duration(32).EUt(4)
+                .duration(32).EUt(VH[ULV])
                 .buildAndRegister();
 
         // Block
@@ -283,7 +283,7 @@ public class CEUOverrideRecipeLoader {
                 .input(slab, Wood, 1)
                 .input(Blocks.CRAFTING_TABLE)
                 .output(MetaTileEntities.WORKBENCH)
-                .duration(100).EUt(16)
+                .duration(100).EUt(VH[LV])
                 .buildAndRegister();
 
         // Ultra High Voltage 4x Battery Buffer
@@ -322,11 +322,11 @@ public class CEUOverrideRecipeLoader {
     }
 
     /**
-     * Adds Vacuum Freezer recipes for molten materials
+     * Vacuum Freezer to extended recipes
      *
      * @param material The material to add recipes for
      */
-    private static void vacuumFreezerMolten(@Nonnull Material material) {
+    private static void vacuumFreezerExtended(@Nonnull Material material) {
         // Check if the material has a blast recipe
         if (!material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) return;
 
@@ -334,47 +334,8 @@ public class CEUOverrideRecipeLoader {
         Fluid molten = AlloyBlastUtil.getMoltenFluid(material);
         if (material.getFluid() == molten) return;
 
-        // Check if the material has a blast temperature below 5000K
-        if (material.getBlastTemperature() < 5000) {
-            if (material.hasFlag(GENERATE_PLATE)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(SHAPE_MOLD_PLATE)
-                        .fluidInputs(new FluidStack(molten, 144))
-                        .output(plate, material, 1)
-                        .duration((int) material.getMass() << 3)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_SMALL_GEAR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(SHAPE_MOLD_GEAR_SMALL)
-                        .fluidInputs(new FluidStack(molten, 144))
-                        .output(gearSmall, material, 1)
-                        .duration((int) material.getMass() << 3)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_GEAR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(SHAPE_MOLD_GEAR)
-                        .fluidInputs(new FluidStack(molten, 576))
-                        .output(gear, material, 1)
-                        .duration((int) material.getMass() << 12)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_ROTOR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(SHAPE_MOLD_ROTOR)
-                        .fluidInputs(new FluidStack(molten, 576))
-                        .output(rotor, material, 1)
-                        .duration((int) material.getMass() << 12)
-                        .buildAndRegister();
-            }
-            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .circuitMeta(1)
-                    .fluidInputs(new FluidStack(molten, 144))
-                    .fluidOutputs(material.getFluid(144))
-                    .duration((int) material.getMass() << 3)
-                    .buildAndRegister();
-        } else {
+        // Check if the material has a blast temperature above 5000K
+        if (material.getBlastTemperature() >= 5000) {
             if (material.hasFlag(GENERATE_PLATE)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_PLATE)
@@ -434,7 +395,7 @@ public class CEUOverrideRecipeLoader {
                             .fluidInputs(Cryotheum.getFluid(2000))
                             .fluidOutputs(Pyrotheum.getFluid(400))
                             .output(gear, material, 1)
-                            .duration((int) material.getMass() * 4)
+                            .duration((int) material.getMass() << 4)
                             .buildAndRegister();
                 }
             }
@@ -470,6 +431,13 @@ public class CEUOverrideRecipeLoader {
 
             if (GTEValues.isModLoadedDEDA()) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .input(ingotHot, material, 1)
+                        .fluidInputs(Cryotheum.getFluid(500))
+                        .fluidOutputs(Pyrotheum.getFluid(100))
+                        .output(ingot, material, 1)
+                        .duration((int) material.getMass() << 1)
+                        .buildAndRegister();
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .circuitMeta(1)
                         .fluidInputs(new FluidStack(molten, 144))
                         .fluidInputs(Cryotheum.getFluid(500))
@@ -478,6 +446,45 @@ public class CEUOverrideRecipeLoader {
                         .duration((int) material.getMass() << 1)
                         .buildAndRegister();
             }
+        } else {
+            if (material.hasFlag(GENERATE_PLATE)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_PLATE)
+                        .fluidInputs(new FluidStack(molten, 144))
+                        .output(plate, material, 1)
+                        .duration((int) material.getMass() << 3)
+                        .buildAndRegister();
+            }
+            if (material.hasFlag(GENERATE_SMALL_GEAR)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_GEAR_SMALL)
+                        .fluidInputs(new FluidStack(molten, 144))
+                        .output(gearSmall, material, 1)
+                        .duration((int) material.getMass() << 3)
+                        .buildAndRegister();
+            }
+            if (material.hasFlag(GENERATE_GEAR)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_GEAR)
+                        .fluidInputs(new FluidStack(molten, 576))
+                        .output(gear, material, 1)
+                        .duration((int) material.getMass() << 12)
+                        .buildAndRegister();
+            }
+            if (material.hasFlag(GENERATE_ROTOR)) {
+                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                        .notConsumable(SHAPE_MOLD_ROTOR)
+                        .fluidInputs(new FluidStack(molten, 576))
+                        .output(rotor, material, 1)
+                        .duration((int) material.getMass() << 12)
+                        .buildAndRegister();
+            }
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .fluidInputs(new FluidStack(molten, 144))
+                    .fluidOutputs(material.getFluid(144))
+                    .duration((int) material.getMass() << 3)
+                    .buildAndRegister();
         }
     }
 }
