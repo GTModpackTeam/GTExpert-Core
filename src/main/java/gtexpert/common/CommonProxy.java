@@ -8,6 +8,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.items.*;
 import gtexpert.integration.theoneprobe.TOPProviders;
+import gtexpert.loaders.*;
 import gtexpert.loaders.recipe.*;
 
 import net.minecraft.block.Block;
@@ -75,6 +76,10 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        GTELog.logger.info("Registering ore dictionary...");
+        GTEOreDictionaryLoader.init();
+        GTEMaterialInfoLoader.init();
+
         GTELog.logger.info("Registering Recipes...");
         GTERecipeManager.load();
     }

@@ -21,7 +21,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
+import appeng.api.util.AEColor;
 import crazypants.enderio.base.init.ModObject;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -52,26 +54,6 @@ public class AERecipeLoader {
     };
 
     public static void init() {
-        // craftStickQuartz
-        OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(stick, NetherQuartz));
-        OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(stick, CertusQuartz));
-        OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(stick, Quartzite));
-
-        // craftNetherQuartz
-        OreDictionary.registerOre("craftNetherQuartz", OreDictUnifier.get(gem, NetherQuartz));
-        OreDictionary.registerOre("craftNetherQuartz",
-                aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get());
-
-        // craftCertusQuartz
-        OreDictionary.registerOre("craftCertusQuartz", OreDictUnifier.get(gem, CertusQuartz));
-        OreDictionary.registerOre("craftCertusQuartz", aeMaterials.certusQuartzCrystal().maybeStack(1).get());
-        OreDictionary.registerOre("craftCertusQuartz",
-                aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get());
-
-        // craftFluix
-        OreDictionary.registerOre("craftFluix", aeMaterials.fluixCrystal().maybeStack(1).get());
-        OreDictionary.registerOre("craftFluix", aeMaterials.purifiedFluixCrystal().maybeStack(1).get());
-
         // craftGlassCable
         List<ItemStack> craftGlassCable = new LinkedList<>();
         IntStream.rangeClosed(0, 16).forEach(i -> {
@@ -163,6 +145,69 @@ public class AERecipeLoader {
         // Gold Ingot
         ModHandler.removeFurnaceSmelting(aeMaterials.goldDust().maybeStack(1).get());
 
+        // Pure Certus Quartz Crystal
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/seeds_certus"));
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .input(dust, CertusQuartz, 1)
+                .input("sand", 1)
+                .outputs(getModItem(GTEValues.MODID_AE, "crystal_seed", 2, 0))
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .inputs(getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 0))
+                .fluidInputs(DistilledWater.getFluid(50))
+                .outputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get())
+                .duration(600).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .inputs(getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 0))
+                .fluidInputs(Water.getFluid(250))
+                .chancedOutput(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get(), 7000, 1000)
+                .duration(1200).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+
+        // Pure Nether Quartz Crystal
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/seeds_nether"));
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .input(dust, NetherQuartz, 1)
+                .input("sand", 1)
+                .outputs(getModItem(GTEValues.MODID_AE, "crystal_seed", 2, 600))
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .inputs(getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 600))
+                .fluidInputs(DistilledWater.getFluid(50))
+                .outputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get())
+                .duration(600).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .inputs(getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 600))
+                .fluidInputs(Water.getFluid(250))
+                .chancedOutput(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get(), 7000, 1000)
+                .duration(1200).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+
+        // Pure Fluix Crystal
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/seeds_fluix"));
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .input(dust, Fluix, 1)
+                .input("sand", 1)
+                .outputs(getModItem(GTEValues.MODID_AE, "crystal_seed", 2, 1200))
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .inputs(getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 1200))
+                .fluidInputs(DistilledWater.getFluid(50))
+                .outputs(aeMaterials.purifiedFluixCrystal().maybeStack(1).get())
+                .duration(600).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .inputs(getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 1200))
+                .fluidInputs(Water.getFluid(250))
+                .chancedOutput(aeMaterials.purifiedFluixCrystal().maybeStack(1).get(), 7000, 1000)
+                .duration(1200).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+
         // ########################################
         // Sky Stone
         // ########################################
@@ -227,7 +272,6 @@ public class AERecipeLoader {
         // ########################################
         // Certus Quartz
         // ########################################
-        OreDictionary.registerOre("gemCertusQuartz", aeMaterials.certusQuartzCrystal().maybeStack(1).get());
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, OreDictUnifier.get(block, CertusQuartz, 1));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(gem, CertusQuartz, 9));
 
@@ -270,11 +314,6 @@ public class AERecipeLoader {
         // ########################################
         // Charged Certus Quartz
         // ########################################
-        OreDictionary.registerOre("gemChargedCertusQuartz",
-                aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
-        OreDictionary.registerOre("crystalChargedCertusQuartz",
-                aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
-
         // Gem
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
                 .input(gem, CertusQuartz, 1)
@@ -417,6 +456,22 @@ public class AERecipeLoader {
     }
 
     private static void blocks() {
+        // ME Interface
+        ModHandler.addShapelessNBTClearingRecipe("me_interface",
+                getModItem(GTEValues.MODID_AE, "interface", 1, 0),
+                "craftInterfaceItem");
+
+        // ME Fluid Interface
+        ModHandler.addShapelessNBTClearingRecipe("me_fluid_interface",
+                getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0),
+                "craftInterfaceFluid");
+
+        // Rubber List
+        final Map<Material, Integer> rubberMaterials = new Object2ObjectOpenHashMap<>();
+        rubberMaterials.put(Rubber, 432);
+        rubberMaterials.put(SiliconeRubber, 216);
+        rubberMaterials.put(StyreneButadieneRubber, 108);
+
         // Quartz Fiber
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/parts/quartz_fiber_part"));
         ModHandler.addMirroredShapedRecipe("nether_quartz_cutter_wire",
@@ -433,7 +488,29 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Glass Cable
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/glass_fluix"));
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/glass_fluix_clean"));
+        ModHandler.addShapedRecipe("fluix_glass_cable", aeParts.cableGlass().stack(AEColor.TRANSPARENT, 6),
+                "SFS", "CCC", "SFS",
+                'S', OreDictUnifier.get(stick, tierMaterials[GTEConfigHolder.ae2Integration.voltageTier - 1]),
+                'F', OreDictUnifier.get(dust, Fluix),
+                'C', aeParts.quartzFiber().maybeStack(1).get());
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(stick, tierMaterials[GTEConfigHolder.ae2Integration.voltageTier - 1], 2)
+                .inputs(aeParts.quartzFiber().maybeStack(3).get())
+                .fluidInputs(Fluix.getFluid(144))
+                .outputs(aeParts.cableGlass().stack(AEColor.TRANSPARENT, 6))
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(stick, tierMaterials[GTEConfigHolder.ae2Integration.voltageTier - 1], 2)
+                .inputs(aeParts.quartzFiber().maybeStack(3).get())
+                .input(dust, Fluix, 1)
+                .outputs(aeParts.cableGlass().stack(AEColor.TRANSPARENT, 6))
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
         RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input("craftGlassCableColors", 1)
                 .fluidInputs(Chlorine.getFluid(25))
@@ -448,7 +525,13 @@ public class AERecipeLoader {
                 .buildAndRegister());
 
         // Covered Cable
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/covered_fluix"));
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/covered_fluix_clean"));
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(aeParts.cableDenseCovered().stack(AEColor.TRANSPARENT, 1))
+                .outputs(aeParts.cableCovered().stack(AEColor.TRANSPARENT, 4))
+                .duration(100).EUt(VA[ULV])
+                .buildAndRegister();
         RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input("craftCoveredCableColors", 1)
                 .fluidInputs(Chlorine.getFluid(25))
@@ -461,9 +544,41 @@ public class AERecipeLoader {
                 .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 20 + i))
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister());
+        for (Map.Entry<Material, Integer> materialEntry : rubberMaterials.entrySet()) {
+            Material material = materialEntry.getKey();
+            Integer materialAmount = materialEntry.getValue();
+            ModHandler.addShapedRecipe(material.equals(Rubber), "fluix_covered_cable_" + material.getName(),
+                    aeParts.cableCovered().stack(AEColor.TRANSPARENT, 1),
+                    "RRR", "CCC", "RRR",
+                    'R', new UnificationEntry(plate, material),
+                    'C', "craftGlassCable");
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .input("craftGlassCable", 3)
+                    .fluidInputs(material.getFluid(materialAmount))
+                    .outputs(aeParts.cableCovered().stack(AEColor.TRANSPARENT, 1))
+                    .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+        }
 
         // Smart Cable
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/smart_fluix"));
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/smart_fluix_clean"));
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(aeParts.cableDenseSmart().stack(AEColor.TRANSPARENT, 1))
+                .outputs(aeParts.cableSmart().stack(AEColor.TRANSPARENT, 4))
+                .duration(100).EUt(VA[ULV])
+                .buildAndRegister();
+        ModHandler.addShapedRecipe("fluix_smart_cable_1", aeParts.cableSmart().stack(AEColor.TRANSPARENT, 1),
+                " G ", "RCR", " G ",
+                'G', OreDictUnifier.get(dust, Glowstone),
+                'R', OreDictUnifier.get(dust, Redstone),
+                'C', aeParts.cableCovered().stack(AEColor.TRANSPARENT, 1));
+        ModHandler.addShapedRecipe("fluix_smart_cable_2", aeParts.cableSmart().stack(AEColor.TRANSPARENT, 1),
+                " R ", "GCG", " R ",
+                'G', OreDictUnifier.get(dust, Glowstone),
+                'R', OreDictUnifier.get(dust, Redstone),
+                'C', aeParts.cableCovered().stack(AEColor.TRANSPARENT, 1));
         RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input("craftSmartCableColors", 1)
                 .fluidInputs(Chlorine.getFluid(25))
@@ -476,10 +591,38 @@ public class AERecipeLoader {
                 .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 40 + i))
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister());
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(2)
+                .input("craftCoveredCable", 1)
+                .input(dust, Glowstone, 1)
+                .input(dust, Redstone, 1)
+                .outputs(aeParts.cableSmart().stack(AEColor.TRANSPARENT, 1))
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        for (Map.Entry<Material, Integer> materialEntry : rubberMaterials.entrySet()) {
+            Material material = materialEntry.getKey();
+            Integer materialAmount = materialEntry.getValue();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(2)
+                    .input("craftGlassCable", 3)
+                    .input(dust, Glowstone, 3)
+                    .input(dust, Redstone, 3)
+                    .fluidInputs(material.getFluid(materialAmount))
+                    .outputs(aeParts.cableSmart().stack(AEColor.TRANSPARENT, 1))
+                    .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+        }
 
         // Dense Covered Cable
         ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_covered_fluix"));
+        ModHandler.removeRecipeByName(
                 new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_covered_fluix_clean"));
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(aeParts.cableCovered().stack(AEColor.TRANSPARENT, 4))
+                .outputs(aeParts.cableDenseCovered().stack(AEColor.TRANSPARENT, 1))
+                .duration(100).EUt(VA[ULV])
+                .buildAndRegister();
         RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input("craftDenseCoveredCableColors", 1)
                 .fluidInputs(Chlorine.getFluid(25))
@@ -492,10 +635,38 @@ public class AERecipeLoader {
                 .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 500 + i))
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister());
+        for (Map.Entry<Material, Integer> materialEntry : rubberMaterials.entrySet()) {
+            Material material = materialEntry.getKey();
+            Integer materialAmount = materialEntry.getValue();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(3)
+                    .input("craftGlassCable", 12)
+                    .fluidInputs(material.getFluid(materialAmount * 4))
+                    .outputs(aeParts.cableDenseCovered().stack(AEColor.TRANSPARENT, 1))
+                    .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+        }
 
         // Dense Smart Cable
         ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_smart_fluix"));
+        ModHandler
                 .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_smart_fluix_clean"));
+        ModHandler.addShapedRecipe("fluix_dense_smart_cable_1", aeParts.cableDenseSmart().stack(AEColor.TRANSPARENT, 1),
+                " G ", "RCR", " G ",
+                'G', OreDictUnifier.get(dust, Glowstone),
+                'R', OreDictUnifier.get(dust, Redstone),
+                'C', aeParts.cableDenseCovered().stack(AEColor.TRANSPARENT, 1));
+        ModHandler.addShapedRecipe("fluix_dense_smart_cable_2", aeParts.cableDenseSmart().stack(AEColor.TRANSPARENT, 1),
+                " R ", "GCG", " R ",
+                'G', OreDictUnifier.get(dust, Glowstone),
+                'R', OreDictUnifier.get(dust, Redstone),
+                'C', aeParts.cableDenseCovered().stack(AEColor.TRANSPARENT, 1));
+        RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                .inputs(aeParts.cableSmart().stack(AEColor.TRANSPARENT, 4))
+                .outputs(aeParts.cableDenseSmart().stack(AEColor.TRANSPARENT, 1))
+                .duration(100).EUt(VA[ULV])
+                .buildAndRegister();
         RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input("craftDenseSmartCableColors", 1)
                 .fluidInputs(Chlorine.getFluid(25))
@@ -508,6 +679,35 @@ public class AERecipeLoader {
                 .outputs(getModItem(GTEValues.MODID_AE, "part", 1, 60 + i))
                 .duration(20).EUt(VA[ULV])
                 .buildAndRegister());
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(4)
+                .input("craftDenseCoveredCable", 1)
+                .input(dust, Glowstone, 1)
+                .input(dust, Redstone, 1)
+                .outputs(aeParts.cableDenseSmart().stack(AEColor.TRANSPARENT, 1))
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(4)
+                .input("craftCoveredCable", 4)
+                .input(dust, Glowstone, 4)
+                .input(dust, Redstone, 4)
+                .outputs(aeParts.cableDenseSmart().stack(AEColor.TRANSPARENT, 1))
+                .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                .buildAndRegister();
+        for (Map.Entry<Material, Integer> materialEntry : rubberMaterials.entrySet()) {
+            Material material = materialEntry.getKey();
+            Integer materialAmount = materialEntry.getValue();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(4)
+                    .input("craftGlassCable", 12)
+                    .input(dust, Glowstone, 12)
+                    .input(dust, Redstone, 12)
+                    .fluidInputs(material.getFluid(materialAmount * 4))
+                    .outputs(aeParts.cableDenseSmart().stack(AEColor.TRANSPARENT, 1))
+                    .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+        }
 
         // Crafting Monitor
         ModHandler
