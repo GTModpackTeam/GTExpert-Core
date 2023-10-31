@@ -50,14 +50,14 @@ gtexpert.machine.soul_binder.zpm.name=精英灵魂绑定器 III
 gtexpert.machine.soul_binder.uv.name=终极灵魂绑定器
 
 # Powered Spawner
-gtexpert.machine.powered_spawner.lv.name=基础电动刷怪笼
-gtexpert.machine.powered_spawner.mv.name=进阶电动刷怪笼
-gtexpert.machine.powered_spawner.hv.name=进阶电动刷怪笼 II
-gtexpert.machine.powered_spawner.ev.name=进阶电动刷怪笼 III
-gtexpert.machine.powered_spawner.iv.name=精英电动刷怪笼
-gtexpert.machine.powered_spawner.luv.name=精英电动刷怪笼 II
-gtexpert.machine.powered_spawner.zpm.name=精英电动刷怪笼 III
-gtexpert.machine.powered_spawner.uv.name=终极电动刷怪笼
+gtexpert.machine.electric_spawner.lv.name=基础电动刷怪笼
+gtexpert.machine.electric_spawner.mv.name=进阶电动刷怪笼
+gtexpert.machine.electric_spawner.hv.name=进阶电动刷怪笼 II
+gtexpert.machine.electric_spawner.ev.name=进阶电动刷怪笼 III
+gtexpert.machine.electric_spawner.iv.name=精英电动刷怪笼
+gtexpert.machine.electric_spawner.luv.name=精英电动刷怪笼 II
+gtexpert.machine.electric_spawner.zpm.name=精英电动刷怪笼 III
+gtexpert.machine.electric_spawner.uv.name=终极电动刷怪笼
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木机械外壳

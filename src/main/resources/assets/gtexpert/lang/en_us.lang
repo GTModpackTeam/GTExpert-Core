@@ -12,12 +12,12 @@ gtexpert.machine.void_ore_miner.tooltip.2=§6The outputs will be doubled with a 
 gtexpert.machine.void_ore_miner.tooltip.3=§6Requires 576mb Enderpearl and 10000mb Drilling Fluid per operation§r
 gtexpert.machine.void_ore_miner.tooltip.4=§dAuthor:§f @Quarri6343
 gtexpert.machine.draconium_fusion.name=Draconic Fusion Crafter
-gtexpert.machine.draconium_fusion.tooltip=It feels strong and powerful?
-gtexpert.machine.draconium_fusion.tooltip.1=§dAuthor:§f @miozune, @tier940
+gtexpert.machine.draconium_fusion.tooltip.1=It feels strong and powerful?
+gtexpert.machine.draconium_fusion.tooltip.2=§dAuthor:§f @miozune, @tier940
 gtexpert.machine.awakened_draconium_fusion.name=Draconic Fusion Crafter II
-gtexpert.machine.awakened_draconium_fusion.tooltip=It feels strong and powerful?
 gtexpert.machine.large_cracking_unit.name=Large Oil Cracking Unit
-gtexpert.machine.large_cracking_unit.tooltip=§dAuthor:§f @Quarri6343
+gtexpert.machine.large_cracking_unit.tooltip=Largest oil cracking company
+gtexpert.machine.large_cracking_unit.tooltip.1=§dAuthor:§f @Quarri6343
 
 # singleblock
 # Auto Chisel
