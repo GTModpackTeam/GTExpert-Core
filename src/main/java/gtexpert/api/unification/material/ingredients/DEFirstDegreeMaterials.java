@@ -1,7 +1,6 @@
 package gtexpert.api.unification.material.ingredients;
 
-import gregicality.multiblocks.api.fluids.fluidType.GCYMFluidTypes;
-import gregtech.api.fluids.fluidType.FluidTypes;
+import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
@@ -22,7 +21,7 @@ public class DEFirstDegreeMaterials {
     public static void init() {
         // Cryotheum
         Cryotheum = new Material.Builder(24176, gregtechId("cryotheum"))
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(2)
+                .liquid(new FluidBuilder().temperature(2))
                 .color(0x00B6FF).iconSet(MaterialIconSet.FLUID)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(Electrotine, 1, EnderPearl, 1, Ice, 4)
@@ -30,7 +29,7 @@ public class DEFirstDegreeMaterials {
 
         // Pyrotheum
         Pyrotheum = new Material.Builder(24177, gregtechId("pyrotheum"))
-                .fluid(GCYMFluidTypes.MOLTEN, false).fluidTemp(10273)
+                // .fluid(GCYMFluidTypes.MOLTEN, false).fluidTemp(10273)
                 .color(0xE42C13).iconSet(MaterialIconSet.BRIGHT)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(Redstone, 1, Sulfur, 1, Blaze, 16)
@@ -42,13 +41,14 @@ public class DEFirstDegreeMaterials {
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(EndSteel, 1, Iridium, 1, EnderEye, 1, SaltWater, 1)
+                .element(Dr)
                 .build();
 
         // Draconium
         Draconium = new Material.Builder(24180, gregtechId("draconium"))
                 .ore(2, 1, true)
                 .ingot(5)
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x7C46B0).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(7200, GasTier.HIGHER, VA[LuV], 600)
                 .flags(EXT2_METAL, GENERATE_DOUBLE_PLATE, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_RING,
@@ -64,7 +64,7 @@ public class DEFirstDegreeMaterials {
         // Awakened Draconium
         AwakenedDraconium = new Material.Builder(24181, gregtechId("awakened_draconium"))
                 .ingot(6)
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0xFF6C00).iconSet(MaterialIconSet.METALLIC)
                 .blastTemp(7200, GasTier.HIGHEST, VA[LuV], 600)
                 .flags(EXT2_METAL, GENERATE_DOUBLE_PLATE, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_RING,
@@ -82,6 +82,7 @@ public class DEFirstDegreeMaterials {
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(Dragon, 8, AwakenedDraconium, 8, Pyrotheum, 8)
+                .element(Dr1)
                 .build();
     }
 }

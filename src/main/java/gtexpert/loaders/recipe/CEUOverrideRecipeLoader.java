@@ -4,6 +4,7 @@ import gregicality.multiblocks.api.AlloyBlastUtil;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
@@ -336,7 +337,7 @@ public class CEUOverrideRecipeLoader {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_PLATE)
                         .fluidInputs(new FluidStack(molten, 144))
-                        .fluidInputs(LiquidHelium.getFluid(500))
+                        .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                         .fluidOutputs(Helium.getFluid(250))
                         .output(plate, material, 1)
                         .duration((int) material.getMass() << 3)
@@ -357,7 +358,7 @@ public class CEUOverrideRecipeLoader {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_GEAR_SMALL)
                         .fluidInputs(new FluidStack(molten, 144))
-                        .fluidInputs(LiquidHelium.getFluid(500))
+                        .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                         .fluidOutputs(Helium.getFluid(250))
                         .output(gearSmall, material, 1)
                         .duration((int) material.getMass() << 3)
@@ -378,7 +379,7 @@ public class CEUOverrideRecipeLoader {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_GEAR)
                         .fluidInputs(new FluidStack(molten, 576))
-                        .fluidInputs(LiquidHelium.getFluid(2000))
+                        .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 2000))
                         .fluidOutputs(Helium.getFluid(1000))
                         .output(gear, material, 1)
                         .duration((int) material.getMass() << 12)
@@ -399,7 +400,7 @@ public class CEUOverrideRecipeLoader {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_ROTOR)
                         .fluidInputs(new FluidStack(molten, 576))
-                        .fluidInputs(LiquidHelium.getFluid(2000))
+                        .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 2000))
                         .fluidOutputs(Helium.getFluid(1000))
                         .output(rotor, material, 1)
                         .duration((int) material.getMass() << 12)
@@ -419,7 +420,7 @@ public class CEUOverrideRecipeLoader {
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
                     .fluidInputs(new FluidStack(molten, 144))
-                    .fluidInputs(LiquidHelium.getFluid(500))
+                    .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                     .fluidOutputs(Helium.getFluid(250))
                     .fluidOutputs(material.getFluid(144))
                     .duration((int) material.getMass() << 3)

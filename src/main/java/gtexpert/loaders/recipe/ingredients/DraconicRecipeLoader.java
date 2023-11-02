@@ -172,16 +172,27 @@ public class DraconicRecipeLoader {
     }
 
     private static void items() {
+        // Dragon Egg
+        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .input(Items.SUGAR, 64)
+                .input(STEM_CELLS, 32)
+                .input(Items.EGG, 16)
+                .fluidInputs(EnderAir.getFluid(64000))
+                .fluidInputs(Draconium.getFluid(1152))
+                .output(Blocks.DRAGON_EGG, 1)
+                .duration(2000).EUt(VH[LuV])
+                .buildAndRegister();
+
         // ########################################
         // Draconic Evolution
         // ########################################
         // Dragon Heart
-        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
+        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(STEM_CELLS, 8)
                 .input(Items.EGG, 16)
                 .fluidInputs(Draconium.getFluid(1152))
                 .output(DEFeatures.dragonHeart, 1)
-                .duration(200).EUt(VA[LuV])
+                .duration(500).EUt(VA[ZPM])
                 .buildAndRegister();
 
         // Advanced Dislocators
