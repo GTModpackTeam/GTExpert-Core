@@ -54,6 +54,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.draconium_fusion.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.draconium_fusion.tooltip.2"));
     }
 
     @Override

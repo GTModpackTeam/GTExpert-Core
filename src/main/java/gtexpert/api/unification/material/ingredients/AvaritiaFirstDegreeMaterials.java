@@ -29,8 +29,8 @@ public class AvaritiaFirstDegreeMaterials {
                         GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_RING, GENERATE_ROTOR, // GENERATE_ROUND,
                         GENERATE_BOLT_SCREW, GENERATE_SPRING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES,
                         EXCLUDE_BLOCK_CRAFTING_RECIPES, EXCLUDE_PLATE_COMPRESSOR_RECIPE, NO_SMASHING, NO_SMELTING)
-                .fluidPipeProperties(150_000, 7500, true, true, true, true)
-                .cableProperties(V[UEV], 32, 0, true, 1) // TODO: Texture is not applied[gregtech.client.renderer.pipe]
+                .fluidPipeProperties(10_000_000, 200_000, true, true, true, true)
+                .cableProperties(V[MAX], 8192, 0, true)
                 .element(If)
                 .build();
     }

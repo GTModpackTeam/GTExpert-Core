@@ -19,6 +19,7 @@ public class GTEValues {
             MODID_EIOCA = "enderioconduitsappliedenergistics",
             MODID_AE = "appliedenergistics2",
             MODID_AEA = "aeadditions",
+            MODID_AEFC = "ae2fc",
             MODID_EXCPU = "extracpus",
             MODID_DE = "draconicevolution",
             MODID_DA = "draconicadditions",
