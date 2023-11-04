@@ -173,12 +173,10 @@ public class DraconicRecipeLoader {
 
     private static void items() {
         // Dragon Egg
-        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .input(Items.SUGAR, 64)
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(STEM_CELLS, 32)
                 .input(Items.EGG, 16)
-                .fluidInputs(EnderAir.getFluid(64000))
-                .fluidInputs(Draconium.getFluid(1152))
+                .fluidInputs(LiquidEnderAir.getFluid(8000))
                 .output(Blocks.DRAGON_EGG, 1)
                 .duration(2000).EUt(VH[LuV])
                 .buildAndRegister();
@@ -189,7 +187,7 @@ public class DraconicRecipeLoader {
         // Dragon Heart
         GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(STEM_CELLS, 8)
-                .input(Items.EGG, 16)
+                .input(Items.EGG, 4)
                 .fluidInputs(Draconium.getFluid(1152))
                 .output(DEFeatures.dragonHeart, 1)
                 .duration(500).EUt(VA[ZPM])

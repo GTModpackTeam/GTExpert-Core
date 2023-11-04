@@ -69,7 +69,7 @@ dependencies {
 
     // Debug Avaritia
     if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:avaritia-1-1x-kedition-913129:4777278")
+        runtimeOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349")
     }
 
     // Boot error fix

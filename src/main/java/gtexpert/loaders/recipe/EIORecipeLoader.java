@@ -643,90 +643,95 @@ public class EIORecipeLoader {
     private static void tools() {
         if (ConfigHolder.recipes.hardToolArmorRecipes && GTEConfigHolder.eioIntegration.hardToolArmorRecipes) {
             // Dark Helm
-            ModHandler.addShapedRecipe("dark_steel_helmet", new ItemStack(ModObject.itemDarkSteelHelmet.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "dark_steel_helmet",
+                    new ItemStack(ModObject.itemDarkSteelHelmet.getItemNN(), 1),
                     "PPP", "PhP",
                     'P', OreDictUnifier.get(plate, DarkSteel));
 
             // Dark Chest
-            ModHandler.addShapedRecipe("dark_steel_chestplate",
+            ModHandler.addShapedRecipe(true, "dark_steel_chestplate",
                     new ItemStack(ModObject.itemDarkSteelChestplate.getItemNN(), 1),
                     "PhP", "PPP", "PPP",
                     'P', OreDictUnifier.get(plate, DarkSteel));
 
             // Dark Leggings
-            ModHandler.addShapedRecipe("dark_steel_leggings",
+            ModHandler.addShapedRecipe(true, "dark_steel_leggings",
                     new ItemStack(ModObject.itemDarkSteelLeggings.getItemNN(), 1),
                     "PPP", "PhP", "P P",
                     'P', OreDictUnifier.get(plate, DarkSteel));
 
             // Dark Boots
-            ModHandler.addShapedRecipe("dark_steel_boots", new ItemStack(ModObject.itemDarkSteelBoots.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "dark_steel_boots",
+                    new ItemStack(ModObject.itemDarkSteelBoots.getItemNN(), 1),
                     "PhP", "P P",
                     'P', OreDictUnifier.get(plate, DarkSteel));
 
             // Ender Helm
-            ModHandler.addShapedRecipe("end_steel_helmet", new ItemStack(ModObject.itemEndSteelHelmet.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "end_steel_helmet",
+                    new ItemStack(ModObject.itemEndSteelHelmet.getItemNN(), 1),
                     "PPP", "PhP", " G ",
                     'P', OreDictUnifier.get(plate, EndSteel),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 56));
 
             // Ender Chest
-            ModHandler.addShapedRecipe("end_steel_chestplate",
+            ModHandler.addShapedRecipe(true, "end_steel_chestplate",
                     new ItemStack(ModObject.itemEndSteelChestplate.getItemNN(), 1),
                     "PhP", "PGP", "PPP",
                     'P', OreDictUnifier.get(plate, EndSteel),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 56));
 
             // Ender Leggings
-            ModHandler.addShapedRecipe("end_steel_leggings",
+            ModHandler.addShapedRecipe(true, "end_steel_leggings",
                     new ItemStack(ModObject.itemEndSteelLeggings.getItemNN(), 1),
                     "PPP", "PhP", "PGP",
                     'P', OreDictUnifier.get(plate, EndSteel),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 56));
 
             // Ender Boots
-            ModHandler.addShapedRecipe("end_steel_boots", new ItemStack(ModObject.itemEndSteelBoots.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "end_steel_boots",
+                    new ItemStack(ModObject.itemEndSteelBoots.getItemNN(), 1),
                     "PhP", "PGP",
                     'P', OreDictUnifier.get(plate, EndSteel),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 56));
 
             // Stellar Helm
-            ModHandler.addShapedRecipe("stellar_alloy_helmet",
+            ModHandler.addShapedRecipe(true, "stellar_alloy_helmet",
                     new ItemStack(EndergyObject.itemStellarAlloyHelmet.getItemNN(), 1),
                     "PPP", "PhP", " G ",
                     'P', OreDictUnifier.get(plate, StellarAlloy),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 44));
 
             // Stellar Chest
-            ModHandler.addShapedRecipe("stellar_alloy_chestplate",
+            ModHandler.addShapedRecipe(true, "stellar_alloy_chestplate",
                     new ItemStack(EndergyObject.itemStellarAlloyChestplate.getItemNN(), 1),
                     "PhP", "PGP", "PPP",
                     'P', OreDictUnifier.get(plate, StellarAlloy),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 44));
 
             // Stellar Leggings
-            ModHandler.addShapedRecipe("stellar_alloy_leggings",
+            ModHandler.addShapedRecipe(true, "stellar_alloy_leggings",
                     new ItemStack(EndergyObject.itemStellarAlloyLeggings.getItemNN(), 1),
                     "PPP", "PhP", "PGP",
                     'P', OreDictUnifier.get(plate, StellarAlloy),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 44));
 
             // Stellar Boots
-            ModHandler.addShapedRecipe("stellar_alloy_boots",
+            ModHandler.addShapedRecipe(true, "stellar_alloy_boots",
                     new ItemStack(EndergyObject.itemStellarAlloyBoots.getItemNN(), 1),
                     "PhP", "PGP",
                     'P', OreDictUnifier.get(plate, StellarAlloy),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 44));
 
             // Dark Axe
-            ModHandler.addShapedRecipe("dark_steel_axe", new ItemStack(ModObject.itemDarkSteelAxe.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "dark_steel_axe",
+                    new ItemStack(ModObject.itemDarkSteelAxe.getItemNN(), 1),
                     "PIf", "PS ", "hS ",
                     'P', OreDictUnifier.get(plate, DarkSteel),
                     'I', OreDictUnifier.get(ingot, DarkSteel),
                     'S', OreDictUnifier.get(stick, DarkSteel));
 
             // Dark Pickaxe
-            ModHandler.addShapedRecipe("dark_steel_pickaxe",
+            ModHandler.addShapedRecipe(true, "dark_steel_pickaxe",
                     new ItemStack(ModObject.itemDarkSteelPickaxe.getItemNN(), 1),
                     "PII", "hSf", " S ",
                     'P', OreDictUnifier.get(plate, DarkSteel),
@@ -734,25 +739,29 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stick, DarkSteel));
 
             // Dark Sword
-            ModHandler.addShapedRecipe("dark_steel_sword", new ItemStack(ModObject.itemDarkSteelSword.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "dark_steel_sword",
+                    new ItemStack(ModObject.itemDarkSteelSword.getItemNN(), 1),
                     " P ", "hPf", " S ",
                     'P', OreDictUnifier.get(plate, DarkSteel),
                     'S', OreDictUnifier.get(stick, DarkSteel));
 
             // Dark Crook
-            ModHandler.addShapedRecipe("dark_steel_crook", new ItemStack(ModObject.itemDarkSteelCrook.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "dark_steel_crook",
+                    new ItemStack(ModObject.itemDarkSteelCrook.getItemNN(), 1),
                     "PPS", "shS", " fS",
                     'P', OreDictUnifier.get(plate, DarkSteel),
                     'S', OreDictUnifier.get(stick, DarkSteel));
 
             // Dark Backhoe
-            ModHandler.addShapedRecipe("dark_steel_backhoe", new ItemStack(ModObject.itemDarkSteelHand.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "dark_steel_backhoe",
+                    new ItemStack(ModObject.itemDarkSteelHand.getItemNN(), 1),
                     "PPP", "PHP", "hsf",
                     'P', OreDictUnifier.get(plate, DarkSteel),
                     'H', new ItemStack(Items.DIAMOND_HOE, 1));
 
             // Dark Shears
-            ModHandler.addShapedRecipe("dark_steel_shears", new ItemStack(ModObject.itemDarkSteelShears.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "dark_steel_shears",
+                    new ItemStack(ModObject.itemDarkSteelShears.getItemNN(), 1),
                     "PTP", "hRf", "SsS",
                     'P', OreDictUnifier.get(plate, DarkSteel),
                     'T', OreDictUnifier.get(screw, DarkSteel),
@@ -760,7 +769,8 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stick, DarkSteel));
 
             // Dark Bow
-            ModHandler.addShapedRecipe("dark_steel_bow", new ItemStack(ModObject.itemDarkSteelBow.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "dark_steel_bow",
+                    new ItemStack(ModObject.itemDarkSteelBow.getItemNN(), 1),
                     "hSW", "PRW", "fSW",
                     'S', OreDictUnifier.get(stick, DarkSteel),
                     'W', new ItemStack(Items.STRING, 1),
@@ -768,7 +778,8 @@ public class EIORecipeLoader {
                     'R', OreDictUnifier.get(ring, DarkSteel));
 
             // Dark Shield
-            ModHandler.addShapedRecipe("dark_steel_shield", new ItemStack(ModObject.itemDarkSteelShield.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "dark_steel_shield",
+                    new ItemStack(ModObject.itemDarkSteelShield.getItemNN(), 1),
                     "BSB", "LPL", "BSB",
                     'B', OreDictUnifier.get(bolt, DarkSteel),
                     'S', OreDictUnifier.get(stick, DarkSteel),
@@ -776,7 +787,8 @@ public class EIORecipeLoader {
                     'P', OreDictUnifier.get(plate, DarkSteel));
 
             // Ender Axe
-            ModHandler.addShapedRecipe("ender_steel_axe", new ItemStack(ModObject.itemEndSteelAxe.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "ender_steel_axe",
+                    new ItemStack(ModObject.itemEndSteelAxe.getItemNN(), 1),
                     "PIf", "PG ", "hS ",
                     'P', OreDictUnifier.get(plate, EndSteel),
                     'I', OreDictUnifier.get(ingot, EndSteel),
@@ -784,7 +796,7 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stickLong, EndSteel));
 
             // Ender Pickaxe
-            ModHandler.addShapedRecipe("ender_steel_pickaxe",
+            ModHandler.addShapedRecipe(true, "ender_steel_pickaxe",
                     new ItemStack(ModObject.itemEndSteelPickaxe.getItemNN(), 1),
                     "PII", "hGf", " S ",
                     'P', OreDictUnifier.get(plate, EndSteel),
@@ -793,14 +805,16 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stickLong, EndSteel));
 
             // Ender Sword
-            ModHandler.addShapedRecipe("ender_steel_sword", new ItemStack(ModObject.itemEndSteelSword.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "ender_steel_sword",
+                    new ItemStack(ModObject.itemEndSteelSword.getItemNN(), 1),
                     " P ", "hGf", " S ",
                     'P', OreDictUnifier.get(plate, EndSteel),
                     'G', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 56),
                     'S', OreDictUnifier.get(stickLong, EndSteel));
 
             // Ender Bow
-            ModHandler.addShapedRecipe("ender_steel_bow", new ItemStack(ModObject.itemEndSteelBow.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "ender_steel_bow",
+                    new ItemStack(ModObject.itemEndSteelBow.getItemNN(), 1),
                     "hSW", "PRW", "fSW",
                     'S', OreDictUnifier.get(stick, EndSteel),
                     'W', new ItemStack(Items.STRING, 1),
@@ -808,7 +822,8 @@ public class EIORecipeLoader {
                     'R', OreDictUnifier.get(ring, EndSteel));
 
             // Ender Shield
-            ModHandler.addShapedRecipe("ender_steel_shield", new ItemStack(ModObject.itemEndSteelShield.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "ender_steel_shield",
+                    new ItemStack(ModObject.itemEndSteelShield.getItemNN(), 1),
                     "BSB", "LPL", "BSB",
                     'B', OreDictUnifier.get(bolt, EndSteel),
                     'S', OreDictUnifier.get(stick, EndSteel),
@@ -816,7 +831,7 @@ public class EIORecipeLoader {
                     'P', OreDictUnifier.get(plate, EndSteel));
 
             // Stellar Axe
-            ModHandler.addShapedRecipe("stellar_alloy_axe",
+            ModHandler.addShapedRecipe(true, "stellar_alloy_axe",
                     new ItemStack(EndergyObject.itemStellarAlloyAxe.getItemNN(), 1),
                     "PIf", "PO ", "hS ",
                     'P', OreDictUnifier.get(plate, StellarAlloy),

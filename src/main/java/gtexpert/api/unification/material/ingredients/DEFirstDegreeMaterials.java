@@ -58,6 +58,7 @@ public class DEFirstDegreeMaterials {
                 .toolStats(ToolProperty.Builder.of(80.0F, 2.0F, 4096, 5)
                         .enchantability(14).build())
                 .rotorStats(18.0f, 4.0f, 4096)
+                .cableProperties(V[UEV], 8, 4, false)
                 .element(De)
                 .build();
 
@@ -73,6 +74,8 @@ public class DEFirstDegreeMaterials {
                 .toolStats(ToolProperty.Builder.of(120.0F, 2.0F, 7168, 6)
                         .enchantability(20).build())
                 .rotorStats(21.5f, 7.5f, 7168)
+                .fluidPipeProperties(10_000_000, 150_000, true, true, true, true)
+                .cableProperties(V[MAX], 1, 8, false)
                 .element(De1)
                 .build();
 

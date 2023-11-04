@@ -518,7 +518,7 @@ public class ChiselRecipeLoader {
         if (ConfigHolder.recipes.hardToolArmorRecipes && GTEConfigHolder.chiselIntegration.hardToolRecipes) {
             // Iron Chisel
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
-            ModHandler.addShapedRecipe("chisel_iron", new ItemStack(ChiselItems.chisel_iron),
+            ModHandler.addShapedRecipe(true, "chisel_iron", new ItemStack(ChiselItems.chisel_iron),
                     "fPP", " CP", "S h",
                     'P', new UnificationEntry(plate, Iron),
                     'C', new UnificationEntry(screw, Iron),
@@ -526,7 +526,7 @@ public class ChiselRecipeLoader {
 
             // Diamond Chisel
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_diamond"));
-            ModHandler.addShapedRecipe("chisel_diamond", new ItemStack(ChiselItems.chisel_diamond),
+            ModHandler.addShapedRecipe(true, "chisel_diamond", new ItemStack(ChiselItems.chisel_diamond),
                     "fPP", " CP", "S h",
                     'P', new UnificationEntry(plate, Diamond),
                     'C', new ItemStack(ChiselItems.chisel_iron),
@@ -534,7 +534,7 @@ public class ChiselRecipeLoader {
 
             // iChisel
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_hitech"));
-            ModHandler.addShapedRecipe("chisel_hitech", new ItemStack(ChiselItems.chisel_hitech),
+            ModHandler.addShapedRecipe(true, "chisel_hitech", new ItemStack(ChiselItems.chisel_hitech),
                     "fPP", " CP", "S h",
                     'P', new UnificationEntry(plate, Diamond),
                     'C', new ItemStack(ChiselItems.chisel_diamond),
