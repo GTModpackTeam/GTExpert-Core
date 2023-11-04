@@ -408,6 +408,18 @@ public class AERecipeLoader {
             ModHandler.addShapelessNBTClearingRecipe("part_fluid_interface_to_fluid_interface",
                     getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0),
                     getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0));
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .input("craftInterfaceItem")
+                    .input("craftInterfaceFluid")
+                    .outputs(getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0))
+                    .duration(20).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier + 1])
+                    .buildAndRegister();
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .input("craftInterfaceDual")
+                    .outputs(getModItem(GTEValues.MODID_AE, "interface", 1, 0))
+                    .outputs(getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0))
+                    .duration(20).EUt(VA[ULV])
+                    .buildAndRegister();
         }
 
         // Rubber List
