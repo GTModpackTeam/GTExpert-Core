@@ -24,7 +24,6 @@ import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
-import gtexpert.common.items.GTEMetaItems;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -45,6 +44,7 @@ import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.items.GTEMetaItems.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 import static gtexpert.integration.ae.AEHelper.aeBlocks;
 
@@ -126,80 +126,134 @@ public class GTERecipeLoader {
 
     private static void items() {
         if (GTEConfigHolder.ceuOverride.hardPrimitiveCovers) {
-            ModHandler.addShapedRecipe("primitive_motor", GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_motor", PRIMITIVE_MOTOR.getStackForm(1),
                     "CWR", "WMW", "RWC",
                     'R', new UnificationEntry(stick, Bronze),
                     'M', new UnificationEntry(stick, IronMagnetic),
                     'W', new UnificationEntry(wireGtSingle, Tin),
                     'C', new UnificationEntry(cableGtSingle, Lead));
-            ModHandler.addShapedRecipe("primitive_piston", GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(cableGtSingle, Lead, 2)
+                    .input(stick, Bronze, 2)
+                    .input(stick, IronMagnetic)
+                    .input(wireGtSingle, Tin, 4)
+                    .outputs(PRIMITIVE_MOTOR.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_piston", PRIMITIVE_PISTON.getStackForm(1),
                     "PPP", "CRR", "CMG",
                     'R', new UnificationEntry(stick, Bronze),
                     'G', new UnificationEntry(gearSmall, Bronze),
                     'P', new UnificationEntry(plate, Bronze),
                     'C', new UnificationEntry(cableGtSingle, Lead),
-                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addShapedRecipe("primitive_pump", GTEMetaItems.PRIMITIVE_PUMP.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(stick, Bronze, 2)
+                    .input(cableGtSingle, Lead, 2)
+                    .input(plate, Bronze, 3)
+                    .input(gearSmall, Bronze)
+                    .inputs(PRIMITIVE_MOTOR.getStackForm())
+                    .outputs(PRIMITIVE_PISTON.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_pump", PRIMITIVE_PUMP.getStackForm(1),
                     "SRO", "dPw", "OMC",
                     'R', new UnificationEntry(rotor, Bronze),
                     'S', new UnificationEntry(screw, Bronze),
                     'O', new UnificationEntry(ring, Rubber),
                     'P', new UnificationEntry(pipeNormalFluid, Copper),
                     'C', new UnificationEntry(cableGtSingle, Lead),
-                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addShapedRecipe("primitive_conveyor", GTEMetaItems.PRIMITIVE_CONVEYOR.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(cableGtSingle, Lead)
+                    .input(pipeNormalFluid, Copper)
+                    .input(screw, Bronze)
+                    .input(rotor, Bronze)
+                    .input(ring, Rubber, 2)
+                    .inputs(PRIMITIVE_MOTOR.getStackForm())
+                    .outputs(PRIMITIVE_PUMP.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_conveyor", PRIMITIVE_CONVEYOR.getStackForm(1),
                     "PPP", "MCM", "PPP",
                     'P', new UnificationEntry(plate, Rubber),
                     'C', new UnificationEntry(cableGtSingle, Lead),
-                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addShapedRecipe("primitive_robot_arm", GTEMetaItems.PRIMITIVE_ROBOT_ARM.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(cableGtSingle, Lead)
+                    .inputs(PRIMITIVE_MOTOR.getStackForm(2))
+                    .fluidInputs(Rubber.getFluid(L * 6))
+                    .circuitMeta(1)
+                    .outputs(PRIMITIVE_CONVEYOR.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_robot_arm", PRIMITIVE_ROBOT_ARM.getStackForm(1),
                     "CCC", "MRM", "PUR",
                     'R', new UnificationEntry(stick, Bronze),
                     'C', new UnificationEntry(cableGtSingle, Lead),
                     'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                    'P', GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
-                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addShapedRecipe("primitive_fluid_regulator",
-                    GTEMetaItems.PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
+                    'P', PRIMITIVE_PISTON.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(cableGtSingle, Lead, 3)
+                    .input(stick, Bronze, 2)
+                    .inputs(PRIMITIVE_MOTOR.getStackForm(2))
+                    .inputs(PRIMITIVE_PISTON.getStackForm())
+                    .input(circuit, MarkerMaterials.Tier.ULV)
+                    .outputs(PRIMITIVE_ROBOT_ARM.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_fluid_regulator", PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
                     " U ", "dPw", " U ",
                     'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                    'P', GTEMetaItems.PRIMITIVE_PUMP.getStackForm(1));
+                    'P', PRIMITIVE_PUMP.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(PRIMITIVE_PUMP.getStackForm())
+                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
+                    .circuitMeta(1)
+                    .outputs(PRIMITIVE_FLUID_REGULATOR.getStackForm())
+                    .EUt(VA[ULV])
+                    .duration(400)
+                    .withRecycling()
+                    .buildAndRegister();
         } else {
-            ModHandler.addMirroredShapedRecipe("primitive_motor", GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1),
+            ModHandler.addShapedRecipe(true, "primitive_motor", PRIMITIVE_MOTOR.getStackForm(1),
                     "WR", "MW",
                     'R', new UnificationEntry(stick, Bronze),
                     'M', new UnificationEntry(stick, IronMagnetic),
                     'W', new UnificationEntry(wireGtSingle, Tin));
-            ModHandler.addMirroredShapedRecipe("primitive_piston", GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
+
+            ModHandler.addShapedRecipe(true, "primitive_piston", PRIMITIVE_PISTON.getStackForm(1),
                     "PR", "MG",
                     'R', new UnificationEntry(stick, Bronze),
                     'G', new UnificationEntry(gearSmall, Bronze),
                     'P', new UnificationEntry(plate, Bronze),
-                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addMirroredShapedRecipe("primitive_pump", GTEMetaItems.PRIMITIVE_PUMP.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+
+            ModHandler.addShapedRecipe(true, "primitive_pump", PRIMITIVE_PUMP.getStackForm(1),
                     "PR", "MO",
                     'R', new UnificationEntry(rotor, Bronze),
                     'O', new UnificationEntry(ring, Rubber),
                     'P', new UnificationEntry(pipeNormalFluid, Copper),
-                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addMirroredShapedRecipe("primitive_conveyor",
-                    GTEMetaItems.PRIMITIVE_CONVEYOR.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+
+            ModHandler.addShapedRecipe(true, "primitive_conveyor", PRIMITIVE_CONVEYOR.getStackForm(1),
                     "PC", "MP",
                     'P', new UnificationEntry(plate, Rubber),
                     'C', new UnificationEntry(cableGtSingle, Lead),
-                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addMirroredShapedRecipe("primitive_robot_arm",
-                    GTEMetaItems.PRIMITIVE_ROBOT_ARM.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+
+            ModHandler.addShapedRecipe(true, "primitive_robot_arm", PRIMITIVE_ROBOT_ARM.getStackForm(1),
                     "PR", "MC",
                     'R', new UnificationEntry(stick, Bronze),
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                    'P', GTEMetaItems.PRIMITIVE_PISTON.getStackForm(1),
-                    'M', GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(1));
-            ModHandler.addMirroredShapedRecipe("primitive_fluid_regulator",
-                    GTEMetaItems.PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
+                    'P', PRIMITIVE_PISTON.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+
+            ModHandler.addShapedRecipe(true, "primitive_fluid_regulator", PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
                     "PC", "Cd",
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                    'P', GTEMetaItems.PRIMITIVE_PUMP.getStackForm(1));
+                    'P', PRIMITIVE_PUMP.getStackForm(1));
         }
 
         if (!ConfigHolder.machines.enableHighTierSolars) return;
@@ -542,6 +596,14 @@ public class GTERecipeLoader {
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, TreatedWood),
                 'F', new UnificationEntry(frameGt, TreatedWood));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(6)
+                .input(plate, TreatedWood, 6)
+                .input(frameGt, TreatedWood, 1)
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
+                .duration(50).EUt(VH[LV])
+                .buildAndRegister();
 
         // Void Ore Miner Casing
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -629,7 +691,7 @@ public class GTERecipeLoader {
 
     private static void tools() {
         // Piston Boots
-        ModHandler.addShapedRecipe("piston_boots", GTEMetaItems.PISTON_BOOTS.getStackForm(),
+        ModHandler.addShapedRecipe("piston_boots", PISTON_BOOTS.getStackForm(),
                 "EhE", "RLR", "PBP",
                 'E', Items.LEATHER,
                 'R', new UnificationEntry(plate, Rubber),
@@ -677,7 +739,7 @@ public class GTERecipeLoader {
                 .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .fluidInputs(Neutronium.getFluid(9216))
-                .output(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 1)
+                .output(GTE_ME_FAKE_COMPONENT, 1)
                 .duration(1200).EUt(VA[UV])
                 .buildAndRegister();
 
@@ -687,12 +749,12 @@ public class GTERecipeLoader {
                     .input(MetaTileEntities.HULL[UHV])
                     .inputs(aeBlocks.energyCellCreative().maybeStack(4).get())
                     .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.ANY, NBTCondition.ANY)
-                    .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                    .input(GTE_ME_FAKE_COMPONENT, 4)
                     .fluidInputs(SolderingAlloy.getFluid(18432))
                     .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
                     .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                     .duration(2000).EUt(VA[UHV])
-                    .stationResearch(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
+                    .stationResearch(b -> b.researchStack(GTE_ME_FAKE_COMPONENT.getStackForm())
                             .CWUt(128).EUt(VA[UHV]))
                     .buildAndRegister();
         }
@@ -733,7 +795,7 @@ public class GTERecipeLoader {
         // Creative Data Access Hatch
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH)
-                .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                .input(GTE_ME_FAKE_COMPONENT, 4)
                 .input(TOOL_DATA_MODULE, 4)
                 .input(WETWARE_MAINFRAME_UHV, 4)
                 .fluidInputs(SolderingAlloy.getFluid(18432))

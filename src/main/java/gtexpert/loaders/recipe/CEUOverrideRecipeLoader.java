@@ -25,7 +25,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -41,9 +40,6 @@ import static gtexpert.api.unification.material.GTEMaterials.*;
 public class CEUOverrideRecipeLoader {
 
     public static void init() {
-        // bookshelf
-        OreDictionary.registerOre("bookshelf", new ItemStack(Blocks.BOOKSHELF));
-
         materials();
         items();
         blocks();

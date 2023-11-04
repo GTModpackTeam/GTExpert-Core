@@ -50,14 +50,14 @@ gtexpert.machine.soul_binder.zpm.name=精英灵魂绑定器 III
 gtexpert.machine.soul_binder.uv.name=终极灵魂绑定器
 
 # Powered Spawner
-gtexpert.machine.powered_spawner.lv.name=基础电动刷怪笼
-gtexpert.machine.powered_spawner.mv.name=进阶电动刷怪笼
-gtexpert.machine.powered_spawner.hv.name=进阶电动刷怪笼 II
-gtexpert.machine.powered_spawner.ev.name=进阶电动刷怪笼 III
-gtexpert.machine.powered_spawner.iv.name=精英电动刷怪笼
-gtexpert.machine.powered_spawner.luv.name=精英电动刷怪笼 II
-gtexpert.machine.powered_spawner.zpm.name=精英电动刷怪笼 III
-gtexpert.machine.powered_spawner.uv.name=终极电动刷怪笼
+gtexpert.machine.electric_spawner.lv.name=基础电动刷怪笼
+gtexpert.machine.electric_spawner.mv.name=进阶电动刷怪笼
+gtexpert.machine.electric_spawner.hv.name=进阶电动刷怪笼 II
+gtexpert.machine.electric_spawner.ev.name=进阶电动刷怪笼 III
+gtexpert.machine.electric_spawner.iv.name=精英电动刷怪笼
+gtexpert.machine.electric_spawner.luv.name=精英电动刷怪笼 II
+gtexpert.machine.electric_spawner.zpm.name=精英电动刷怪笼 III
+gtexpert.machine.electric_spawner.uv.name=终极电动刷怪笼
 
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木机械外壳
@@ -67,6 +67,7 @@ tile.sawmill_conveyor.name=锯木机传送带
 # material
 gregtech.material.nm_hea_nps=纳米粒子贵金属高熵合金
 gregtech.material.naquadah_rocket_fuel=硅岩火箭燃料
+gregtech.material.infinity=无尽之
 gregtech.material.draconium=龙
 gregtech.material.awakened_draconium=觉醒龙
 gregtech.material.electrical_steel=磁钢
@@ -103,4 +104,3 @@ recipemap.soul_binder.name=灵魂绑定器
 recipemap.void_ore_miner.name=虚空矿物采掘机
 
 #misc
-gtexpert.multiblock.needsun=The Controller must be able to See the Sun!
