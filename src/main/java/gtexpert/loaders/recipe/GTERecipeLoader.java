@@ -691,7 +691,7 @@ public class GTERecipeLoader {
 
     private static void tools() {
         // Piston Boots
-        ModHandler.addShapedRecipe("piston_boots", PISTON_BOOTS.getStackForm(),
+        ModHandler.addShapedRecipe(true, "piston_boots", PISTON_BOOTS.getStackForm(),
                 "EhE", "RLR", "PBP",
                 'E', Items.LEATHER,
                 'R', new UnificationEntry(plate, Rubber),
