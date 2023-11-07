@@ -185,7 +185,7 @@ public class DraconicRecipeLoader {
         // Draconic Evolution
         // ########################################
         // Dragon Heart
-        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
                 .input(STEM_CELLS, 8)
                 .input(Items.EGG, 4)
                 .fluidInputs(Draconium.getFluid(1152))
