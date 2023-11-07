@@ -16,11 +16,13 @@ public class GTEMetaBlocks {
 
     public static final GTEBlockMetalCasing GTE_BLOCK_METAL_CASING = new GTEBlockMetalCasing();
     public static final BlockSawmillConveyor BLOCK_SAWMILL_CONVEYOR = new BlockSawmillConveyor();
+    public static final GTEBlockWireCoil BLOCK_GTE_WIRE_COIL = new GTEBlockWireCoil();
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
         registerItemModel(GTE_BLOCK_METAL_CASING);
         registerItemModel(BLOCK_SAWMILL_CONVEYOR);
+        BLOCK_GTE_WIRE_COIL.onModelRegister();
     }
 
     @SideOnly(Side.CLIENT)

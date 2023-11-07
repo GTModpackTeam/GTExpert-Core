@@ -1,6 +1,7 @@
 package gtexpert.client;
 
 import gtexpert.common.CommonProxy;
+import gtexpert.common.GTEBlockWireCoil;
 import gtexpert.common.GTEMetaBlocks;
 
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -10,6 +11,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
+import static gregtech.api.GregTechAPI.HEATING_COILS;
+
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
@@ -17,6 +20,12 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
         GTETextures.preInit();
+
+        /* Start API Block Registration */
+        for (GTEBlockWireCoil.CoilType type : GTEBlockWireCoil.CoilType.values()) {
+            HEATING_COILS.put(GTEMetaBlocks.BLOCK_GTE_WIRE_COIL.getState(type), type);
+        }
+        /* End API Block Registration */
     }
 
     @Override
