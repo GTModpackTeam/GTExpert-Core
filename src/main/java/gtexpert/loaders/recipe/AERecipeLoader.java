@@ -366,33 +366,63 @@ public class AERecipeLoader {
         // ME Interface
         ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "interface", 1, 0));
         ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 440));
-        ModHandler.addShapelessNBTClearingRecipe("interface_to_part_interface",
-                getModItem(GTEValues.MODID_AE, "part", 1, 440),
-                getModItem(GTEValues.MODID_AE, "interface", 1, 0));
-        ModHandler.addShapelessNBTClearingRecipe("part_interface_to_interface",
+        ModHandler.addShapedNBTClearingRecipe("interface_to_interface",
                 getModItem(GTEValues.MODID_AE, "interface", 1, 0),
-                getModItem(GTEValues.MODID_AE, "part", 1, 440));
+                "I", " ",
+                'I', getModItem(GTEValues.MODID_AE, "interface", 1, 0));
+        ModHandler.addShapedNBTClearingRecipe("interface_to_part_interface",
+                getModItem(GTEValues.MODID_AE, "interface", 1, 0),
+                " ", "I",
+                'I', getModItem(GTEValues.MODID_AE, "part", 1, 440));
+        ModHandler.addShapedNBTClearingRecipe("part_interface_to_part_interface",
+                getModItem(GTEValues.MODID_AE, "part", 1, 440),
+                "I", " ",
+                'I', getModItem(GTEValues.MODID_AE, "part", 1, 440));
+        ModHandler.addShapedNBTClearingRecipe("part_interface_to_interface",
+                getModItem(GTEValues.MODID_AE, "part", 1, 440),
+                " ", "I",
+                'I', getModItem(GTEValues.MODID_AE, "interface", 1, 0));
 
         // ME Fluid Interface
         ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0));
         ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 441));
-        ModHandler.addShapelessNBTClearingRecipe("fluid_interface_to_part_fluid_interface",
-                getModItem(GTEValues.MODID_AE, "part", 1, 441),
-                getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0));
-        ModHandler.addShapelessNBTClearingRecipe("part_fluid_interface_to_fluid_interface",
+        ModHandler.addShapedNBTClearingRecipe("fluid_interface_to_fluid_interface",
                 getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0),
-                getModItem(GTEValues.MODID_AE, "part", 1, 441));
+                "I", " ",
+                'I', getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0));
+        ModHandler.addShapedNBTClearingRecipe("fluid_interface_to_part_fluid_interface",
+                getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0),
+                " ", "I",
+                'I', getModItem(GTEValues.MODID_AE, "part", 1, 441));
+        ModHandler.addShapedNBTClearingRecipe("part_fluid_interface_to_part_fluid_interface",
+                getModItem(GTEValues.MODID_AE, "part", 1, 441),
+                "I", " ",
+                'I', getModItem(GTEValues.MODID_AE, "part", 1, 441));
+        ModHandler.addShapedNBTClearingRecipe("part_fluid_interface_to_fluid_interface",
+                getModItem(GTEValues.MODID_AE, "part", 1, 441),
+                " ", "I",
+                'I', getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0));
 
         // ME Dual Interface
         if (Loader.isModLoaded(GTEValues.MODID_AEFC)) {
             ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0));
             ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0));
-            ModHandler.addShapelessNBTClearingRecipe("fluid_interface_to_part_fluid_interface",
-                    getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0),
-                    getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0));
-            ModHandler.addShapelessNBTClearingRecipe("part_fluid_interface_to_fluid_interface",
+            ModHandler.addShapedNBTClearingRecipe("dual_interface_to_dual_interface",
                     getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0),
-                    getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0));
+                    "I", " ",
+                    'I', getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0));
+            ModHandler.addShapedNBTClearingRecipe("dual_interface_to_part_dual_interface",
+                    getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0),
+                    " ", "I",
+                    'I', getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0));
+            ModHandler.addShapedNBTClearingRecipe("part_dual_interface_to_part_dual_interface",
+                    getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0),
+                    "I", " ",
+                    'I', getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0));
+            ModHandler.addShapedNBTClearingRecipe("part_dual_interface_to_dual_interface",
+                    getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0),
+                    " ", "I",
+                    'I', getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .input("craftInterfaceItem")
                     .input("craftInterfaceFluid")
