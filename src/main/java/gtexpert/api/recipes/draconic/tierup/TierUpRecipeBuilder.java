@@ -2,6 +2,7 @@ package gtexpert.api.recipes.draconic.tierup;
 
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.chance.output.ChancedOutputList;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
@@ -76,8 +77,11 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
             setFusionProperties();
         }
 
-        return ValidationResult.newResult(validationResult, new Recipe(inputs, outputs, chancedOutputs,
-                fluidInputs, fluidOutputs, duration, EUt, hidden, isCTRecipe, recipePropertyStorage, category));
+        return ValidationResult.newResult(validationResult,
+                new Recipe(inputs, outputs, new ChancedOutputList<>(this.chancedOutputLogic, chancedOutputs),
+                        fluidInputs, fluidOutputs,
+                        new ChancedOutputList<>(this.chancedFluidOutputLogic, chancedFluidOutputs), duration, EUt,
+                        hidden, isCTRecipe, recipePropertyStorage, category));
     }
 
     private void setFusionProperties() {
