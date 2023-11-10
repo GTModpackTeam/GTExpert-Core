@@ -6,6 +6,7 @@ import gregtech.api.cover.CoverDefinition;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
+import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.items.*;
 import gtexpert.integration.theoneprobe.TOPProviders;
 import gtexpert.loaders.*;
@@ -32,13 +33,20 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.function.Function;
 
-import static gtexpert.common.GTEMetaBlocks.*;
+import static gregtech.api.GregTechAPI.HEATING_COILS;
+import static gtexpert.common.blocks.GTEMetaBlocks.*;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
         GTEMetaItems.init();
+
+        /* Start API Block Registration */
+        for (GTEBlockWireCoil.CoilType type : GTEBlockWireCoil.CoilType.values()) {
+            HEATING_COILS.put(GTE_BLOCK_WIRE_COIL.getState(type), type);
+        }
+        /* End API Block Registration */
     }
 
     public void init(FMLInitializationEvent event) {
@@ -54,6 +62,7 @@ public class CommonProxy {
         GTELog.logger.info("Registering Blocks...");
         IForgeRegistry<Block> registry = event.getRegistry();
 
+        registry.register(GTE_BLOCK_WIRE_COIL);
         registry.register(GTE_BLOCK_METAL_CASING);
         registry.register(BLOCK_SAWMILL_CONVEYOR);
     }

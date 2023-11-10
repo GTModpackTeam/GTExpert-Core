@@ -9,14 +9,14 @@ import gregtech.api.unification.stack.MaterialStack;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEMetaBlocks;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.GTEBlockMetalCasing.MetalCasingType.*;
+import static gtexpert.common.blocks.GTEBlockMetalCasing.MetalCasingType.*;
 
 public class GTEMaterialInfoLoader {
 

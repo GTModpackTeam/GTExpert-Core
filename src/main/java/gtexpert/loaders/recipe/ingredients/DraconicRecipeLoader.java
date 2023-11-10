@@ -12,8 +12,8 @@ import gregtech.common.metatileentities.MetaTileEntities;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 
 import net.foxmcloud.draconicadditions.DAFeatures;

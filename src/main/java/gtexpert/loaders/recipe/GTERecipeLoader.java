@@ -21,9 +21,9 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEConfigHolder;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEMetaBlocks;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

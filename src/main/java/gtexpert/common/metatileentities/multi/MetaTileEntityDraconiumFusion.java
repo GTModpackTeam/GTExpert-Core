@@ -14,8 +14,8 @@ import gtexpert.api.capability.MultiblockRecipeLogicNoCache;
 import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.client.GTETextures;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEMetaBlocks;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;

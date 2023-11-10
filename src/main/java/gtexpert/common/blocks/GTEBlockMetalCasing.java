@@ -1,4 +1,4 @@
-package gtexpert.common;
+package gtexpert.common.blocks;
 
 import gregtech.api.block.VariantBlock;
 

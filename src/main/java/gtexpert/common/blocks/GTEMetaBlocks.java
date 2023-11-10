@@ -1,4 +1,4 @@
-package gtexpert.common;
+package gtexpert.common.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -14,15 +14,19 @@ import static gregtech.common.blocks.MetaBlocks.statePropertiesToString;
 
 public class GTEMetaBlocks {
 
+    public static final GTEBlockWireCoil GTE_BLOCK_WIRE_COIL = new GTEBlockWireCoil();
     public static final GTEBlockMetalCasing GTE_BLOCK_METAL_CASING = new GTEBlockMetalCasing();
     public static final BlockSawmillConveyor BLOCK_SAWMILL_CONVEYOR = new BlockSawmillConveyor();
-    public static final GTEBlockWireCoil BLOCK_GTE_WIRE_COIL = new GTEBlockWireCoil();
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
+        GTE_BLOCK_WIRE_COIL.onModelRegister();
         registerItemModel(GTE_BLOCK_METAL_CASING);
         registerItemModel(BLOCK_SAWMILL_CONVEYOR);
-        BLOCK_GTE_WIRE_COIL.onModelRegister();
+    }
+
+    public static GTEBlockMetalCasing.MetalCasingType getType(IBlockState state) {
+        return GTE_BLOCK_METAL_CASING.getState(state);
     }
 
     @SideOnly(Side.CLIENT)
