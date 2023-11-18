@@ -1,21 +1,10 @@
 # Runs tests and other checks on Pull Requests
 name: PR Testing
-
-permissions:
-  contents: write
-
 on:
   push:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+-pr-+[0-9]' # any semver tag, e.g. v1.2.3-pr-4
+    branches: ['update/v[0-9]+.[0-9]+.[0-9]'] # any semver branche, e.g. update/v1.2.3
   pull_request:
-    branches:
-      - preview
-
-# if a second commit is pushed quickly after the first, cancel the first one's build
-concurrency:
-  group: pr-testing-${{github.head_ref}}
-  cancel-in-progress: true
+    branches: [master, preview]
 
 jobs:
   build-and-test:
@@ -24,47 +13,62 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Validate gradle wrapper checksum
+        uses: gradle/wrapper-validation-action@v1
+
       - name: Set up JDK 8 and 17
         uses: actions/setup-java@v3
         with:
-          cache: gradle
-          distribution: zulu
           java-version: |
             8
             17
+          distribution: 'zulu'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Setup the workspace
+        run: ./gradlew --build-cache --info --stacktrace setupCIWorkspace
 
       - name: Compile the mod
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: '--scan --build-cache --info --no-daemon --stacktrace assemble'
-          generate-job-summary: false
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
+        run: ./gradlew --build-cache --info --stacktrace assemble
 
-      - name: Run Tests
-        uses: gradle/gradle-build-action@v2
+      - name: Attach compilation artifacts
+        uses: actions/upload-artifact@v3
         with:
-          arguments: '--scan --build-cache --info --no-daemon --stacktrace test'
-          generate-job-summary: true
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
+          name: build-libs
+          path: build/libs/
+          retention-days: 31
 
-      - name: Run Spotless
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: '--build-cache --info --no-daemon --stacktrace spotlessCheck'
-          generate-job-summary: false
-          gradle-home-cache-includes: |
-            caches
-            jdks
-            notifications
-            wrapper
+      - name: Run post-build checks
+        id: build_mod
+        run: ./gradlew --build-cache --info --stacktrace build
+
+      - name: Attempt to make a PR fixing spotless errors
+        if: ${{ failure() && steps.build_mod.conclusion == 'failure' && github.event_name == 'pull_request' && !github.event.pull_request.draft }}
+        run: |
+          git reset --hard
+          git checkout "${PR_BRANCH}"
+          ./gradlew --build-cache --info --stacktrace spotlessApply || exit 1
+          git diff --exit-code && exit 1
+          git config user.name "GitHub Actions"
+          git config user.email "<>"
+          git switch -c "${FIXED_BRANCH}"
+          git commit -am "spotlessApply"
+          git push --force-with-lease origin "${FIXED_BRANCH}"
+          gh pr create \
+            --head "${FIXED_BRANCH}" \
+            --base "${PR_BRANCH}" \
+            --title "Spotless apply for branch ${PR_BRANCH} for #${{ github.event.pull_request.number }}" \
+            --body "Automatic spotless apply to fix formatting errors, applies to PR #${{ github.event.pull_request.number }}" \
+            2>&1 | tee pr-message.log || true
+          gh pr comment "${PR_BRANCH}" -F pr-message.log || true
+        shell: bash # ensures set -eo pipefail
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_BRANCH: ${{ github.head_ref }}
+          FIXED_BRANCH: ${{ github.head_ref }}-spotless-fixes
 
       - name: Run server for 90 seconds
         run: |
@@ -83,3 +87,4 @@ jobs:
         with:
           name: GTExpert-Core
           path: build/libs/*.jar
+          retention-days: 31

@@ -41,6 +41,9 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Raising Terracotta Grinding from ULV to MV.", "Default: false" })
         public boolean nerfTerracottaCrafting = false;
+
+        @Config.Comment({ "Recipe type Options: false (2x2 crafting), true (3x3 crafting).", "Default: false" })
+        public boolean hardPrimitiveCovers = false;
     }
 
     public static class AE2Integration {
@@ -56,6 +59,9 @@ public class GTEConfigHolder {
         @Config.Comment({ "Change AE swords, axes, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
         public boolean hardToolRecipes = false;
+
+        @Config.Comment({ "Integrate Printed Silicon and various Circuit creation molds.", "Default: false" })
+        public boolean moveSteelShape = false;
     }
 
     public static class EIOIntegration {

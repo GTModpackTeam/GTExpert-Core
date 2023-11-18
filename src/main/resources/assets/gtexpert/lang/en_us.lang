@@ -12,12 +12,12 @@ gtexpert.machine.void_ore_miner.tooltip.2=§6The outputs will be doubled with a 
 gtexpert.machine.void_ore_miner.tooltip.3=§6Requires 576mb Enderpearl and 10000mb Drilling Fluid per operation§r
 gtexpert.machine.void_ore_miner.tooltip.4=§dAuthor:§f @Quarri6343
 gtexpert.machine.draconium_fusion.name=Draconic Fusion Crafter
-gtexpert.machine.draconium_fusion.tooltip=It feels strong and powerful?
-gtexpert.machine.draconium_fusion.tooltip.1=§dAuthor:§f @miozune, @tier940
+gtexpert.machine.draconium_fusion.tooltip.1=It feels strong and powerful?
+gtexpert.machine.draconium_fusion.tooltip.2=§dAuthor:§f @miozune, @tier940
 gtexpert.machine.awakened_draconium_fusion.name=Draconic Fusion Crafter II
-gtexpert.machine.awakened_draconium_fusion.tooltip=It feels strong and powerful?
 gtexpert.machine.large_cracking_unit.name=Large Oil Cracking Unit
-gtexpert.machine.large_cracking_unit.tooltip=§dAuthor:§f @Quarri6343
+gtexpert.machine.large_cracking_unit.tooltip=Largest oil cracking company
+gtexpert.machine.large_cracking_unit.tooltip.1=§dAuthor:§f @Quarri6343
 
 # singleblock
 # Auto Chisel
@@ -110,6 +110,7 @@ tile.sawmill_conveyor.name=Sawmill Conveyor
 # material
 gregtech.material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
 gregtech.material.naquadah_rocket_fuel=Naquadah Rocket Fuel
+gregtech.material.infinity=Infinity
 gregtech.material.dragon=Dragon
 gregtech.material.chaos=Chaos
 gregtech.material.cryotheum=Cryotheum
@@ -143,6 +144,28 @@ metaitem.gte_me_fake_component.name=GTExpert ME fake component
 metaitem.matrix_core.name=Matrix Core
 metaitem.piston_boots.name=Piston Boots
 metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Higher!
+metaitem.primitive.motor.name=Primitive Motor
+metaitem.primitive.pump.name=Primitive Pump
+metaitem.primitive.conveyor.name=Primitive Conveyor Module
+metaitem.primitive.piston.name=Primitive Piston
+metaitem.primitive.robot.arm.name=Primitive Robot Arm
+metaitem.primitive.fluid.regulator.name=Primitive Fluid Regulator
+metaitem.shape.mold.printed_silicon.name=Mold (Printed Silicon)
+metaitem.shape.mold.printed_silicon.tooltip=Used to craft Printed Silicon
+metaitem.shape.mold.logic_processor.name=Mold (Logic Processor)
+metaitem.shape.mold.logic_processor.tooltip=Used to craft Logic Processor
+metaitem.shape.mold.calculation_processor.name=Mold (Calculation Processor)
+metaitem.shape.mold.calculation_processor.tooltip=Used to craft Calculation Processor
+metaitem.shape.mold.engineering_processor.name=Mold (Engineering Processor)
+metaitem.shape.mold.engineering_processor.tooltip=Used to craft Engineering Processor
+metaitem.shape.extruder.printed_silicon.name=Extruder Shape (Printed Silicon)
+metaitem.shape.extruder.printed_silicon.tooltip=Used to craft Printed Silicon
+metaitem.shape.extruder.logic_processor.name=Extruder Shape (Logic Processor)
+metaitem.shape.extruder.logic_processor.tooltip=Used to craft Logic Processor
+metaitem.shape.extruder.calculation_processor.name=Extruder Shape (Calculation Processor)
+metaitem.shape.extruder.calculation_processor.tooltip=Used to craft Calculation Processor
+metaitem.shape.extruder.engineering_processor.name=Extruder Shape (Engineering Processor)
+metaitem.shape.extruder.engineering_processor.tooltip=Used to craft Engineering Processor
 
 # recipemaps
 recipemap.sawmill.name=Saw Mill

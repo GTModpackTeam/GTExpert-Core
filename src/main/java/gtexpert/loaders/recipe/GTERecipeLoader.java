@@ -24,8 +24,6 @@ import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
-import gtexpert.common.items.GTEMetaItems;
-import gtexpert.integration.ae.AEHelper;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -46,7 +44,9 @@ import static gregtech.common.items.MetaItems.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.items.GTEMetaItems.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
+import static gtexpert.integration.ae.AEHelper.aeBlocks;
 
 public class GTERecipeLoader {
 
@@ -125,6 +125,137 @@ public class GTERecipeLoader {
     }
 
     private static void items() {
+        if (GTEConfigHolder.ceuOverride.hardPrimitiveCovers) {
+            ModHandler.addShapedRecipe(true, "primitive_motor", PRIMITIVE_MOTOR.getStackForm(1),
+                    "CWR", "WMW", "RWC",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'M', new UnificationEntry(stick, IronMagnetic),
+                    'W', new UnificationEntry(wireGtSingle, Tin),
+                    'C', new UnificationEntry(cableGtSingle, Lead));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(cableGtSingle, Lead, 2)
+                    .input(stick, Bronze, 2)
+                    .input(stick, IronMagnetic)
+                    .input(wireGtSingle, Tin, 4)
+                    .outputs(PRIMITIVE_MOTOR.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_piston", PRIMITIVE_PISTON.getStackForm(1),
+                    "PPP", "CRR", "CMG",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'G', new UnificationEntry(gearSmall, Bronze),
+                    'P', new UnificationEntry(plate, Bronze),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(stick, Bronze, 2)
+                    .input(cableGtSingle, Lead, 2)
+                    .input(plate, Bronze, 3)
+                    .input(gearSmall, Bronze)
+                    .inputs(PRIMITIVE_MOTOR.getStackForm())
+                    .outputs(PRIMITIVE_PISTON.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_pump", PRIMITIVE_PUMP.getStackForm(1),
+                    "SRO", "dPw", "OMC",
+                    'R', new UnificationEntry(rotor, Bronze),
+                    'S', new UnificationEntry(screw, Bronze),
+                    'O', new UnificationEntry(ring, Rubber),
+                    'P', new UnificationEntry(pipeNormalFluid, Copper),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(cableGtSingle, Lead)
+                    .input(pipeNormalFluid, Copper)
+                    .input(screw, Bronze)
+                    .input(rotor, Bronze)
+                    .input(ring, Rubber, 2)
+                    .inputs(PRIMITIVE_MOTOR.getStackForm())
+                    .outputs(PRIMITIVE_PUMP.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_conveyor", PRIMITIVE_CONVEYOR.getStackForm(1),
+                    "PPP", "MCM", "PPP",
+                    'P', new UnificationEntry(plate, Rubber),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(cableGtSingle, Lead)
+                    .inputs(PRIMITIVE_MOTOR.getStackForm(2))
+                    .fluidInputs(Rubber.getFluid(L * 6))
+                    .circuitMeta(1)
+                    .outputs(PRIMITIVE_CONVEYOR.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_robot_arm", PRIMITIVE_ROBOT_ARM.getStackForm(1),
+                    "CCC", "MRM", "PUR",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'P', PRIMITIVE_PISTON.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(cableGtSingle, Lead, 3)
+                    .input(stick, Bronze, 2)
+                    .inputs(PRIMITIVE_MOTOR.getStackForm(2))
+                    .inputs(PRIMITIVE_PISTON.getStackForm())
+                    .input(circuit, MarkerMaterials.Tier.ULV)
+                    .outputs(PRIMITIVE_ROBOT_ARM.getStackForm())
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_fluid_regulator", PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
+                    " U ", "dPw", " U ",
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'P', PRIMITIVE_PUMP.getStackForm(1));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(PRIMITIVE_PUMP.getStackForm())
+                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
+                    .circuitMeta(1)
+                    .outputs(PRIMITIVE_FLUID_REGULATOR.getStackForm())
+                    .EUt(VA[ULV])
+                    .duration(400)
+                    .withRecycling()
+                    .buildAndRegister();
+        } else {
+            ModHandler.addShapedRecipe(true, "primitive_motor", PRIMITIVE_MOTOR.getStackForm(1),
+                    "WR", "MW",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'M', new UnificationEntry(stick, IronMagnetic),
+                    'W', new UnificationEntry(wireGtSingle, Tin));
+
+            ModHandler.addShapedRecipe(true, "primitive_piston", PRIMITIVE_PISTON.getStackForm(1),
+                    "PR", "MG",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'G', new UnificationEntry(gearSmall, Bronze),
+                    'P', new UnificationEntry(plate, Bronze),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+
+            ModHandler.addShapedRecipe(true, "primitive_pump", PRIMITIVE_PUMP.getStackForm(1),
+                    "PR", "MO",
+                    'R', new UnificationEntry(rotor, Bronze),
+                    'O', new UnificationEntry(ring, Rubber),
+                    'P', new UnificationEntry(pipeNormalFluid, Copper),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+
+            ModHandler.addShapedRecipe(true, "primitive_conveyor", PRIMITIVE_CONVEYOR.getStackForm(1),
+                    "PC", "MP",
+                    'P', new UnificationEntry(plate, Rubber),
+                    'C', new UnificationEntry(cableGtSingle, Lead),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+
+            ModHandler.addShapedRecipe(true, "primitive_robot_arm", PRIMITIVE_ROBOT_ARM.getStackForm(1),
+                    "PR", "MC",
+                    'R', new UnificationEntry(stick, Bronze),
+                    'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'P', PRIMITIVE_PISTON.getStackForm(1),
+                    'M', PRIMITIVE_MOTOR.getStackForm(1));
+
+            ModHandler.addShapedRecipe(true, "primitive_fluid_regulator", PRIMITIVE_FLUID_REGULATOR.getStackForm(1),
+                    "PC", "Cd",
+                    'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'P', PRIMITIVE_PUMP.getStackForm(1));
+        }
+
         if (!ConfigHolder.machines.enableHighTierSolars) return;
         if (GTEConfigHolder.ceuOverride.hardSolarPanel) {
             // Remove solar panels
@@ -226,9 +357,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L))
                     .output(COVER_SOLAR_PANEL_ULV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL.getStackForm())
-                            .CWUt(32)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL.getStackForm())
+                            .CWUt(32).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (LV)
@@ -237,15 +367,14 @@ public class GTERecipeLoader {
                     .input(SENSOR_LV, 8)
                     .input(INTEGRATED_CIRCUIT_LV, 4)
                     .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
-                    .inputs(AEHelper.aeBlocks.quartzGlass().maybeStack(1).get())
+                    .inputs(aeBlocks.quartzGlass().maybeStack(1).get())
                     .input(MetaTileEntities.TRANSFORMER[1])
                     .fluidInputs(Silicon.getFluid(L << 2))
                     .fluidInputs(SolderingAlloy.getFluid(L << 2))
                     .output(COVER_SOLAR_PANEL_LV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_ULV.getStackForm())
-                            .CWUt(32)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_ULV.getStackForm())
+                            .CWUt(32).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (MV)
@@ -260,9 +389,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 3))
                     .output(COVER_SOLAR_PANEL_MV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_LV.getStackForm())
-                            .CWUt(32)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_LV.getStackForm())
+                            .CWUt(32).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (HV)
@@ -277,9 +405,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 4))
                     .output(COVER_SOLAR_PANEL_HV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_MV.getStackForm())
-                            .CWUt(48)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_MV.getStackForm())
+                            .CWUt(48).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (EV)
@@ -294,9 +421,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 5))
                     .output(COVER_SOLAR_PANEL_EV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_HV.getStackForm())
-                            .CWUt(48)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_HV.getStackForm())
+                            .CWUt(48).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (IV)
@@ -311,9 +437,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 6))
                     .output(COVER_SOLAR_PANEL_IV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_EV.getStackForm())
-                            .CWUt(48)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_EV.getStackForm())
+                            .CWUt(48).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (LuV)
@@ -328,9 +453,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 7))
                     .output(COVER_SOLAR_PANEL_LUV)
                     .duration(100).EUt(VA[LuV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_IV.getStackForm())
-                            .CWUt(64)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_IV.getStackForm())
+                            .CWUt(64).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (ZPM)
@@ -345,9 +469,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 8))
                     .output(COVER_SOLAR_PANEL_ZPM)
                     .duration(100).EUt(VA[ZPM])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_LUV.getStackForm())
-                            .CWUt(64)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_LUV.getStackForm())
+                            .CWUt(64).EUt(VA[LuV]))
                     .buildAndRegister();
 
             // Solar Panel (UV)
@@ -362,9 +485,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(L << 9))
                     .output(COVER_SOLAR_PANEL_UV)
                     .duration(100).EUt(VA[UV])
-                    .research(b -> b.researchStack(COVER_SOLAR_PANEL_ZPM.getStackForm())
-                            .CWUt(64)
-                            .duration(4000).EUt(VA[LuV]))
+                    .stationResearch(b -> b.researchStack(COVER_SOLAR_PANEL_ZPM.getStackForm())
+                            .CWUt(64).EUt(VA[LuV]))
                     .buildAndRegister();
         } else {
             // Solar Panel (8V)
@@ -459,9 +581,8 @@ public class GTERecipeLoader {
                     .fluidInputs(SolderingAlloy.getFluid(18432))
                     .output(VOIDOREMINER)
                     .duration(600).EUt(VA[ZPM])
-                    .research(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
-                            .CWUt(64)
-                            .duration(4000).EUt(VA[ZPM]))
+                    .stationResearch(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
+                            .CWUt(64).EUt(VA[ZPM]))
                     .buildAndRegister();
         }
 
@@ -475,6 +596,14 @@ public class GTERecipeLoader {
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, TreatedWood),
                 'F', new UnificationEntry(frameGt, TreatedWood));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(6)
+                .input(plate, TreatedWood, 6)
+                .input(frameGt, TreatedWood, 1)
+                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
+                .duration(50).EUt(VH[LV])
+                .buildAndRegister();
 
         // Void Ore Miner Casing
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -562,7 +691,7 @@ public class GTERecipeLoader {
 
     private static void tools() {
         // Piston Boots
-        ModHandler.addShapedRecipe("piston_boots", GTEMetaItems.PISTON_BOOTS.getStackForm(),
+        ModHandler.addShapedRecipe(true, "piston_boots", PISTON_BOOTS.getStackForm(),
                 "EhE", "RLR", "PBP",
                 'E', Items.LEATHER,
                 'R', new UnificationEntry(plate, Rubber),
@@ -578,12 +707,12 @@ public class GTERecipeLoader {
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
                 .input(MetaTileEntities.HULL[UV])
                 .input(CRYSTAL_MAINFRAME_UV, 4)
-                .inputs(AEHelper.aeBlocks.energyCellDense().maybeStack(8).get())
+                .inputs(aeBlocks.energyCellDense().maybeStack(8).get())
                 .input(COVER_SOLAR_PANEL_UV, 1)
                 .fluidInputs(Fluix.getFluid(18432))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .fluidInputs(Neutronium.getFluid(9216))
-                .outputs(AEHelper.aeBlocks.energyCellCreative().maybeStack(1).get())
+                .outputs(aeBlocks.energyCellCreative().maybeStack(1).get())
                 .duration(1200).EUt(VA[UV])
                 .buildAndRegister();
 
@@ -616,7 +745,7 @@ public class GTERecipeLoader {
                 )
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .fluidInputs(Neutronium.getFluid(9216))
-                .output(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 1)
+                .output(GTE_ME_FAKE_COMPONENT, 1)
                 .duration(1200).EUt(VA[UV])
                 .buildAndRegister();
 
@@ -624,16 +753,15 @@ public class GTERecipeLoader {
         if (!GTEValues.isModLoadedDEDA()) {
             RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                     .input(MetaTileEntities.HULL[UHV])
-                    .inputs(AEHelper.aeBlocks.energyCellCreative().maybeStack(4).get())
+                    .inputs(aeBlocks.energyCellCreative().maybeStack(4).get())
                     .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.ANY, NBTCondition.ANY)
-                    .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                    .input(GTE_ME_FAKE_COMPONENT, 4)
                     .fluidInputs(SolderingAlloy.getFluid(18432))
                     .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
                     .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                     .duration(2000).EUt(VA[UHV])
-                    .research(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
-                            .CWUt(128)
-                            .duration(4000).EUt(VA[UHV]))
+                    .stationResearch(b -> b.researchStack(GTE_ME_FAKE_COMPONENT.getStackForm())
+                            .CWUt(128).EUt(VA[UHV]))
                     .buildAndRegister();
         }
 
@@ -649,9 +777,8 @@ public class GTERecipeLoader {
                 .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_TANK.getStackForm())
                 .duration(2000).EUt(VA[UHV])
-                .research(b -> b.researchStack(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
-                        .CWUt(160)
-                        .duration(4000).EUt(VA[UHV]))
+                .stationResearch(b -> b.researchStack(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
+                        .CWUt(160).EUt(VA[UHV]))
                 .buildAndRegister();
 
         // Creative Quantum Chest
@@ -666,25 +793,23 @@ public class GTERecipeLoader {
                 .fluidInputs(SolderingAlloy.getFluid(36864))
                 .fluidInputs(RutheniumTriniumAmericiumNeutronate.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_CHEST.getStackForm())
-                .research(b -> b.researchStack(MetaTileEntities.CREATIVE_TANK.getStackForm())
-                        .CWUt(160)
-                        .duration(4000).EUt(VA[UHV]))
+                .stationResearch(b -> b.researchStack(MetaTileEntities.CREATIVE_TANK.getStackForm())
+                        .CWUt(160).EUt(VA[UHV]))
                 .duration(2000).EUt(VA[UHV])
                 .buildAndRegister();
 
         // Creative Data Access Hatch
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH)
-                .input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4)
+                .input(GTE_ME_FAKE_COMPONENT, 4)
                 .input(TOOL_DATA_MODULE, 4)
                 .input(WETWARE_MAINFRAME_UHV, 4)
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_DATA_HATCH.getStackForm())
                 .duration(2000).EUt(VA[UHV])
-                .research(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
-                        .CWUt(160)
-                        .duration(4000).EUt(VA[UHV]))
+                .stationResearch(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
+                        .CWUt(160).EUt(VA[UHV]))
                 .buildAndRegister();
     }
 

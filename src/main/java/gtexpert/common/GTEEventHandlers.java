@@ -48,8 +48,7 @@ public class GTEEventHandlers {
     }
 
     // override GTCEu fall event to enable piston boots fall damage
-    @SubscribeEvent(
-                    priority = EventPriority.NORMAL)
+    @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void onEntityLivingFallEvent(@Nonnull LivingFallEvent event) {
         if (event.getEntity() instanceof EntityPlayerMP player) {
             ItemStack armor = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);

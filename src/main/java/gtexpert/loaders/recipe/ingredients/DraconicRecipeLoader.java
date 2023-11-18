@@ -21,7 +21,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.oredict.OreDictionary;
 
 import appeng.api.AEApi;
 import com.brandon3055.draconicevolution.DEFeatures;
@@ -148,7 +147,6 @@ public class DraconicRecipeLoader {
                 new ItemStack(DEFeatures.draconiumBlock));
 
         // Awakened Draconium Block
-        OreDictionary.registerOre("blockAwakenedDraconium", DEFeatures.draconicBlock);
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_block"));
         ModHandler.addMirroredShapedRecipe("de_draconic_block", new ItemStack(DEFeatures.draconicBlock), "B", 'B',
                 OreDictUnifier.get(block, AwakenedDraconium));
@@ -173,16 +171,25 @@ public class DraconicRecipeLoader {
     }
 
     private static void items() {
+        // Dragon Egg
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                .input(STEM_CELLS, 32)
+                .input(Items.EGG, 16)
+                .fluidInputs(LiquidEnderAir.getFluid(8000))
+                .output(Blocks.DRAGON_EGG, 1)
+                .duration(2000).EUt(VH[LuV])
+                .buildAndRegister();
+
         // ########################################
         // Draconic Evolution
         // ########################################
         // Dragon Heart
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
                 .input(STEM_CELLS, 8)
-                .input(Items.EGG, 16)
+                .input(Items.EGG, 4)
                 .fluidInputs(Draconium.getFluid(1152))
                 .output(DEFeatures.dragonHeart, 1)
-                .duration(200).EUt(VA[LuV])
+                .duration(500).EUt(VA[ZPM])
                 .buildAndRegister();
 
         // Advanced Dislocators
@@ -659,9 +666,8 @@ public class DraconicRecipeLoader {
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .output(VOIDOREMINER)
                 .duration(600).EUt(VA[UV])
-                .research(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
-                        .CWUt(96)
-                        .duration(4000).EUt(VA[UV]))
+                .stationResearch(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
+                        .CWUt(96).EUt(VA[UV]))
                 .buildAndRegister();
 
         // Infinite GT Energy Unit Emitter
@@ -676,9 +682,8 @@ public class DraconicRecipeLoader {
                 .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
                 .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
                 .duration(2000).EUt(VA[UHV])
-                .research(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
-                        .CWUt(128)
-                        .duration(4000).EUt(VA[UHV]))
+                .stationResearch(b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm())
+                        .CWUt(128).EUt(VA[UHV]))
                 .buildAndRegister();
 
         // ########################################
@@ -781,19 +786,6 @@ public class DraconicRecipeLoader {
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
-        RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
-                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
-                .fluidInputs(Oxygen.getFluid(224))
-                .output(ingot, Draconium, 4)
-                .duration(225).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
-                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 1))
-                .output(dust, Draconium, 4)
-                .duration(225).EUt(8)
-                .buildAndRegister();
 
         // Awakened Draconum Casing
         ModHandler.addShapedRecipe(true, "casing_awakened_draconum",
@@ -809,19 +801,6 @@ public class DraconicRecipeLoader {
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[ZPM])
-                .buildAndRegister();
-        RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
-                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))
-                .fluidInputs(Oxygen.getFluid(224))
-                .output(ingot, AwakenedDraconium, 4)
-                .duration(225).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
-                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 1))
-                .output(dust, AwakenedDraconium, 4)
-                .duration(225).EUt(8)
                 .buildAndRegister();
 
         // Infused Obsidian

@@ -4,6 +4,7 @@ import gregtech.api.fluids.fluidType.FluidTypes;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
+import gregtech.api.unification.ore.OrePrefix;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -25,6 +26,7 @@ public class AEFirstDegreeMaterials {
                 .flags(GENERATE_PLATE, GENERATE_LENS, DISABLE_DECOMPOSITION)
                 .components(Silicon, 1, Oxygen, 2)
                 .build();
+        OrePrefix.block.modifyMaterialAmount(ChargedCertusQuartz, 4);
 
         // Fluix
         Fluix = new Material.Builder(24152, gregtechId("fluix"))
@@ -34,6 +36,7 @@ public class AEFirstDegreeMaterials {
                 .flags(GENERATE_PLATE, GENERATE_LENS, DISABLE_DECOMPOSITION)
                 .components(Silicon, 2, Oxygen, 4, Redstone, 1)
                 .build();
+        OrePrefix.block.modifyMaterialAmount(Fluix, 4);
 
         // Fluix Alloy
         FluixAlloy = new Material.Builder(24153, gregtechId("fluix_alloy"))
@@ -44,6 +47,5 @@ public class AEFirstDegreeMaterials {
                 .blastTemp(2700, GasTier.LOW, VA[HV], 1072)
                 .components(Fluix, 2, Carbon, 2, Silicon, 1, Iron, 1)
                 .build();
-        FluixAlloy.setFormula("(Si2O4(Si(FeS2)5)(CrAl2O3)Hg3))2C2SiFe?", true);
     }
 }

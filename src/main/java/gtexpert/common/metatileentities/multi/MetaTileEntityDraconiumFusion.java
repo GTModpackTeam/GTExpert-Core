@@ -42,7 +42,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
                 .where('S', selfPredicate())
                 .where('C',
                         states(GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(getCasingType())).setMinGlobalLimited(15)
-                                .or(autoAbilities()))
+                                .or(autoAbilities(true, true, true, true, true, true, true)))
                 .where('#', air())
                 .build();
     }
@@ -50,15 +50,11 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     protected abstract GTEBlockMetalCasing.MetalCasingType getCasingType();
 
     @Override
-    public boolean hasMufflerMechanics() {
-        return true;
-    }
-
-    @Override
     public void addInformation(ItemStack stack, @Nullable World player, @Nonnull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.draconium_fusion.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.draconium_fusion.tooltip.2"));
     }
 
     @Override

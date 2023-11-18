@@ -53,11 +53,26 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
                 .aisle("XCCXCCX", "X##T##X", "XCCXCCX")
                 .aisle("XCCXCCX", "XCCSCCX", "XCCXCCX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(10).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(10)
+                        .or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('T', tieredCasing().or(states(getCasingState())))
                 .where('#', air())
                 .where('C', heatingCoils())
                 .build();
+        // return FactoryBlockPattern.start()
+        // .aisle(" XXX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+        // .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
+        // .aisle("XXTXX", "XXXXX", "XC#CX", "XC#CX", "XC#CX", "XXXXX", " XHX ")
+        // .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
+        // .aisle(" XSX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+        // .where('S', selfPredicate())
+        // .where('X', states(getCasingState()).setMinGlobalLimited(10)
+        // .or(autoAbilities(true, true, true, true, true, true, false)))
+        // .where('T', tieredCasing().or(states(getCasingState())))
+        // .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
+        // .where('C', heatingCoils())
+        // .where('#', air())
+        // .build();
     }
 
     protected IBlockState getCasingState() {
@@ -81,6 +96,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtexpert.machine.large_cracking_unit.tooltip.1"));
         tooltip.add(I18n.format("gregtech.machine.cracker.tooltip.1"));
     }
 

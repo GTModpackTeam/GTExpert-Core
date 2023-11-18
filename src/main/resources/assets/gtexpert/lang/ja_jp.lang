@@ -12,12 +12,12 @@ gtexpert.machine.void_ore_miner.tooltip.2=§6ネザーかエンド鉱石を消�
 gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です。§r
 gtexpert.machine.void_ore_miner.tooltip.4=§d作者:§f @Quarri6343
 gtexpert.machine.draconium_fusion.name=ドラコニック融合機
-gtexpert.machine.draconium_fusion.tooltip=なんだか強そうですね?
-gtexpert.machine.draconium_fusion.tooltip.1=§d作者:§f @miozune, @tier940
+gtexpert.machine.draconium_fusion.tooltip.1=なんだか強そうですね?
+gtexpert.machine.draconium_fusion.tooltip.2=§d作者:§f @miozune, @tier940
 gtexpert.machine.awakened_draconium_fusion.name=ドラコニック融合機 II
-gtexpert.machine.awakened_draconium_fusion.tooltip=なんだか強そうですね?
 gtexpert.machine.large_cracking_unit.name=大型接触分解装置
-gtexpert.machine.large_cracking_unit.tooltip=§d作者:§f @Quarri6343
+gtexpert.machine.large_cracking_unit.tooltip=オイルクラッキングの最大手
+gtexpert.machine.large_cracking_unit.tooltip.1=§d作者:§f @Quarri6343
 
 # singleblock
 # Auto Chisel
@@ -110,6 +110,7 @@ tile.sawmill_conveyor.name=製材機用コンベア
 # material
 gregtech.material.nm_hea_nps=貴金属ハイエントロピーナノ合金
 gregtech.material.naquadah_rocket_fuel=ナクアダロケット燃料
+gregtech.material.infinity=インフィニティ
 gregtech.material.dragon=ドラゴン
 gregtech.material.chaos=カオス
 gregtech.material.cryotheum=クリオジウム
@@ -143,6 +144,28 @@ metaitem.gte_me_fake_component.name=GTExpert 虚構MEストレージセル素材
 metaitem.matrix_core.name=マトリックスコア
 metaitem.piston_boots.name=ピストンブーツ
 metaitem.piston_boots.tooltip=トロッコのように走り、ピストンのように跳ねる!
+metaitem.primitive.motor.name=初歩的なモーター
+metaitem.primitive.pump.name=初歩的なポンプ
+metaitem.primitive.conveyor.name=初歩的なコンベアーモジュール
+metaitem.primitive.piston.name=初歩的なピストン
+metaitem.primitive.robot.arm.name=初歩的なロボットアーム
+metaitem.primitive.fluid.regulator.name=初歩的な流量制御器
+metaitem.shape.mold.printed_silicon.name=シリコン基板の金型
+metaitem.shape.mold.printed_silicon.tooltip=シリコン基板を作る為の金型
+metaitem.shape.mold.logic_processor.name=基本プロセッサの金型
+metaitem.shape.mold.logic_processor.tooltip=基本プロセッサを作る為の金型
+metaitem.shape.mold.calculation_processor.name=発展プロセッサの金型
+metaitem.shape.mold.calculation_processor.tooltip=発展プロセッサを作る為の金型
+metaitem.shape.mold.engineering_processor.name=上級プロセッサの金型
+metaitem.shape.mold.engineering_processor.tooltip=上級プロセッサを作る為の金型
+metaitem.shape.extruder.printed_silicon.name=シリコン基板の押出形成用金型
+metaitem.shape.extruder.printed_silicon.tooltip=シリコン基板を作る為の押出形成用金型
+metaitem.shape.extruder.logic_processor.name=基本プロセッサの押出形成用金型
+metaitem.shape.extruder.logic_processor.tooltip=基本プロセッサを作る為の押出形成用金型
+metaitem.shape.extruder.calculation_processor.name=発展プロセッサの押出形成用金型
+metaitem.shape.extruder.calculation_processor.tooltip=発展プロセッサを作る為の押出形成用金型
+metaitem.shape.extruder.engineering_processor.name=上級プロセッサの押出形成用金型
+metaitem.shape.extruder.engineering_processor.tooltip=上級プロセッサを作る為の押出形成用金型
 
 # recipemaps
 recipemap.sawmill.name=製材機
