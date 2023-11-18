@@ -18,13 +18,17 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.integration.ae.AEHelper.aeBlocks;
-import static gtexpert.integration.ae.AEHelper.aeMaterials;
+import static gtexpert.integration.ae.AEHelper.*;
 
 public class GTEOreDictionaryLoader {
 
     public static void init() {
         OreDictionary.registerOre("bookshelf", new ItemStack(Blocks.BOOKSHELF));
+
+        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "quartz_block", 1, 0));
+        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "quartz_pillar", 1, 0));
+        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "chiseled_quartz_block", 1, 0));
+        OreDictionary.registerOre("blockFluix", getModItem(GTEValues.MODID_AE, "fluix_block", 1, 0));
 
         OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(OrePrefix.stick, Materials.NetherQuartz));
         OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(OrePrefix.stick, Materials.CertusQuartz));
@@ -43,12 +47,10 @@ public class GTEOreDictionaryLoader {
         OreDictionary.registerOre("gemCertusQuartz", aeMaterials.certusQuartzCrystal().maybeStack(1).get());
         OreDictionary.registerOre("gemChargedCertusQuartz",
                 aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
+        OreDictionary.registerOre("gemFluix", aeMaterials.fluixCrystal().maybeStack(1).get());
 
         OreDictionary.registerOre("crystalChargedCertusQuartz",
                 aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get());
-
-        OreDictionary.registerOre("blockFluix", aeBlocks.fluixBlock().maybeStack(1).get());
-        OreDictionary.registerOre("gemFluix", aeMaterials.fluixCrystal().maybeStack(1).get());
 
         List<ItemStack> craftGlassCable = new LinkedList<>();
         IntStream.rangeClosed(0, 16).forEach(i -> {

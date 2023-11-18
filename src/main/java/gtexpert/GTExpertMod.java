@@ -18,10 +18,10 @@ import net.minecraftforge.fml.common.event.*;
              "required-after:" + GTEValues.MODID_EIO + ";" + "required-after:" + GTEValues.MODID_EIOE + ";" +
              "required-after:" + GTEValues.MODID_EIOM + ";" + "required-after:" + GTEValues.MODID_EIOC + ";" +
              "required-after:" + GTEValues.MODID_EIOCA + ";" + "required-after:" + GTEValues.MODID_AE + ";" +
-             "required-after:" + GTEValues.MODID_AEA + ";" + "after:" + GTEValues.MODID_AEFC + ";" +
-             "after:" + GTEValues.MODID_DE + ";" + "after:" + GTEValues.MODID_DA + ";" +
-             "after:" + GTEValues.MODID_CHISEL + ";" + "after:" + GTEValues.MODID_AVARITIA + ";" +
-             "after:" + GTEValues.MODID_AVAADDON + ";")
+             "after:" + GTEValues.MODID_AEA + ";" + "after:" + GTEValues.MODID_AEFC + ";" +
+             "after:" + GTEValues.MODID_EXCPU + ";" + "after:" + GTEValues.MODID_DE + ";" +
+             "after:" + GTEValues.MODID_DA + ";" + "after:" + GTEValues.MODID_CHISEL + ";" +
+             "after:" + GTEValues.MODID_AVARITIA + ";" + "after:" + GTEValues.MODID_AVAADDON + ";")
 
 public class GTExpertMod {
 

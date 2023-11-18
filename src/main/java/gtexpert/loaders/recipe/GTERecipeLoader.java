@@ -46,7 +46,7 @@ import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.items.GTEMetaItems.*;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
-import static gtexpert.integration.ae.AEHelper.aeBlocks;
+import static gtexpert.integration.ae.AEHelper.*;
 
 public class GTERecipeLoader {
 
@@ -736,13 +736,11 @@ public class GTERecipeLoader {
                 .input(screw, Neutronium, 8)
                 .input(CRYSTAL_MAINFRAME_UV, 4)
                 .inputs(GTEConfigHolder.ae2Integration.enableAE2UELExtended ?
-                        AEHelper.aeMaterials.cell256mbPart().maybeStack(16).get() :
-                        getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3)
-                )
+                        aeMaterials.cell256mbPart().maybeStack(16).get() :
+                        getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3))
                 .inputs(GTEConfigHolder.ae2Integration.enableAE2UELExtended ?
-                        AEHelper.aeMaterials.fluidCell16mbPart().maybeStack(16).get() :
-                        getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6)
-                )
+                        aeMaterials.fluidCell16mbPart().maybeStack(16).get() :
+                        getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6))
                 .fluidInputs(SolderingAlloy.getFluid(18432))
                 .fluidInputs(Neutronium.getFluid(9216))
                 .output(GTE_ME_FAKE_COMPONENT, 1)
