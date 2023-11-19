@@ -2,7 +2,7 @@ package gtexpert.loaders.recipe;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.metatileentities.GTEMetaTileEntities;
+import gtexpert.common.metatileentities.MetaTileEntitiesManager;
 import gtexpert.loaders.recipe.ingredients.ChiselRecipeLoader;
 import gtexpert.loaders.recipe.ingredients.DraconicRecipeLoader;
 import gtexpert.loaders.recipe.ingredients.DraconicUpgradeRecipeLoader;
@@ -18,7 +18,7 @@ public class GTERecipeManager {
 
     public static void load() {
         GTEMetaItems.init();
-        GTEMetaTileEntities.init();
+        MetaTileEntitiesManager.init();
     }
 
     public static void loadLow() {
@@ -29,8 +29,10 @@ public class GTERecipeManager {
         if (Loader.isModLoaded(GTEValues.MODID_AE)) {
             AERecipeLoader.init();
         }
-        EIORecipeLoader.init();
-        EIOSoulRecipeLoader.init();
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            EIORecipeLoader.init();
+            EIOSoulRecipeLoader.init();
+        }
     }
 
     public static void loadLowest() {
