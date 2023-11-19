@@ -29,18 +29,4 @@ public class AEHelper {
             Darmstadtium,
             Neutronium
     };
-
-    // public static void addInscriberRecipe(ItemStack stack, ItemStack input, boolean inscribe,
-    // @Optional ItemStack topInput, @Optional ItemStack bottomInput) {
-    // InscriberRecipes.addRecipe(
-    // CraftTweakerMC.getIItemStack(stack),
-    // CraftTweakerMC.getIItemStack(input),
-    // inscribe,
-    // CraftTweakerMC.getIItemStack(topInput),
-    // CraftTweakerMC.getIItemStack(bottomInput));
-    // }
-    //
-    // public static void removeInscriberRecipe(ItemStack stack) {
-    // InscriberRecipes.removeRecipe(CraftTweakerMC.getIItemStack(stack));
-    // }
 }

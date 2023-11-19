@@ -26,7 +26,9 @@ public class GTERecipeManager {
         CEUOverrideRecipeLoader.init();
         GTERecipeLoader.init();
         GTEWoodRecipeLoader.init();
-        AERecipeLoader.init();
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            AERecipeLoader.init();
+        }
         EIORecipeLoader.init();
         EIOSoulRecipeLoader.init();
     }

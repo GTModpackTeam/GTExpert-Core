@@ -4,12 +4,16 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.BlockFusionCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
+import gregtech.common.metatileentities.MetaTileEntities;
+import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
-import gtexpert.api.util.GTEUtility;
 import gtexpert.common.GTEConfigHolder;
 
 import net.minecraft.init.Blocks;
@@ -21,14 +25,19 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.conduit.me.init.ConduitAppliedEnergisticsObject;
 import crazypants.enderio.conduits.init.ConduitObject;
 import crazypants.enderio.endergy.init.EndergyObject;
+import crazypants.enderio.machines.init.MachineObject;
+import crazypants.enderio.powertools.init.PowerToolObject;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
+import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
 
 public class EIORecipeLoader {
 
@@ -96,14 +105,14 @@ public class EIORecipeLoader {
                 .buildAndRegister();
         if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 117))
+                    .inputs(getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 117))
                     .input(Items.SPIDER_EYE, 2)
                     .fluidInputs(Water.getFluid(1000))
                     .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
                     .duration(100).EUt(VA[LV])
                     .buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 118))
+                    .inputs(getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 118))
                     .input(Items.SPIDER_EYE, 2)
                     .fluidInputs(Water.getFluid(1000))
                     .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
@@ -146,14 +155,14 @@ public class EIORecipeLoader {
                 .buildAndRegister();
         if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 117))
+                    .inputs(getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 117))
                     .input(Items.SUGAR, 1)
                     .fluidInputs(Water.getFluid(2000))
                     .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
                     .duration(200).EUt(VA[HV])
                     .buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 118))
+                    .inputs(getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 118))
                     .input(Items.SUGAR, 1)
                     .fluidInputs(Water.getFluid(2000))
                     .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
@@ -441,6 +450,90 @@ public class EIORecipeLoader {
     }
 
     private static void blocks() {
+        // Creative Capacitor Bank
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(ENERGY_CLUSTER, 4)
+                .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
+                .input(MetaTileEntities.HULL[UV])
+                .input(CRYSTAL_MAINFRAME_UV, 4)
+                .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 3))
+                .input(COVER_SOLAR_PANEL_UV, 1)
+                .fluidInputs(VibrantAlloy.getFluid(18432))
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .fluidInputs(Neutronium.getFluid(9216))
+                .outputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 1, 0))
+                .duration(1200).EUt(VA[UV])
+                .buildAndRegister();
+
+        // Vial Extractor
+        MetaTileEntityLoader.registerMachineRecipe(true, VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
+                'V', ModObject.itemSoulVial.getItemNN(),
+                'R', SENSOR,
+                'P', PISTON,
+                'H', HULL,
+                'F', PUMP,
+                'W', CABLE,
+                'C', CIRCUIT);
+
+        // Slice'N'Splice
+        MetaTileEntityLoader.registerMachineRecipe(true, SLICE_N_SPLICE, "PSP", "CHC", "MBM",
+                'P', new UnificationEntry(plate, Soularium),
+                'S', "itemSkull",
+                'C', CIRCUIT,
+                'H', HULL,
+                'M', MOTOR,
+                'B', ModObject.blockDarkIronBars.getItemNN());
+
+        // Soul Binder
+        MetaTileEntityLoader.registerMachineRecipe(true, SOUL_BINDER, "PEP", "CHC", "MZM",
+                'P', new UnificationEntry(plate, Soularium),
+                'E', "skullEnderResonator",
+                'C', CIRCUIT,
+                'H', HULL,
+                'M', MOTOR,
+                'Z', "skullZombieController");
+
+        // Electric Spawner
+        MetaTileEntityLoader.registerMachineRecipe(true, ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
+                'P', new UnificationEntry(plate, ConstructionAlloy),
+                'E', "skullSentientEnder",
+                'S', new UnificationEntry(plate, Soularium),
+                'H', HULL,
+                'C', "itemEnderCrystal",
+                'Z', "skullZombieFrankenstein");
+
+        if (GTEConfigHolder.eioIntegration.addShapelessRecipeMachines) {
+            // Slice'N'Splice
+            ModHandler.addShapelessRecipe("eio_slice_n_splice",
+                    new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()),
+                    SLICE_N_SPLICE[HV].getStackForm());
+            ModHandler.addShapelessRecipe("ceu_slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(),
+                    new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
+
+            // Soul Binder
+            ModHandler.addShapelessRecipe("eio_soul_binder",
+                    new ItemStack(MachineObject.block_soul_binder.getBlockNN()),
+                    SOUL_BINDER[HV].getStackForm());
+            ModHandler.addShapelessRecipe("ceu_soul_binder", SOUL_BINDER[HV].getStackForm(),
+                    new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
+
+            // Electric Spawner
+            ModHandler.addShapelessRecipe("eio_electric_spawner",
+                    new ItemStack(MachineObject.block_powered_spawner.getBlockNN()),
+                    ELECTRIC_SPAWNER[HV].getStackForm());
+            ModHandler.addShapelessRecipe("ceu_electric_spawner", ELECTRIC_SPAWNER[HV].getStackForm(),
+                    new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
+        }
+
+        // Sky Stone Block
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
+                    .inputs(new ItemStack(ModObject.block_infinity.getBlockNN(), 4, 2))
+                    .outputs(getModItem(GTEValues.MODID_AE, "sky_stone_block", 1, 0))
+                    .duration(500).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .buildAndRegister();
+        }
+
         // Item Conduit
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(pipeSmallItem, Electrum, 1)
@@ -621,23 +714,25 @@ public class EIORecipeLoader {
                 .duration(100).EUt(VA[UV])
                 .buildAndRegister();
 
-        // ME Conduit
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input("craftGlassCable", 4)
-                .input(plate, StainlessSteel, 1)
-                .fluidInputs(ConductiveIron.getFluid(144))
-                .output(ConduitAppliedEnergisticsObject.item_me_conduit.getItemNN(), 4, 0)
-                .duration(100).EUt(VA[HV])
-                .buildAndRegister();
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            // ME Conduit
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input("craftGlassCable", 4)
+                    .input(plate, StainlessSteel, 1)
+                    .fluidInputs(ConductiveIron.getFluid(144))
+                    .outputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 0))
+                    .duration(100).EUt(VA[HV])
+                    .buildAndRegister();
 
-        // ME Dense Conduit
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(ConduitAppliedEnergisticsObject.item_me_conduit.getItemNN(), 16)
-                .input(plate, Titanium, 1)
-                .fluidInputs(EnergeticAlloy.getFluid(144))
-                .output(ConduitAppliedEnergisticsObject.item_me_conduit.getItemNN(), 4, 1)
-                .duration(100).EUt(VA[EV])
-                .buildAndRegister();
+            // ME Dense Conduit
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 16, 0))
+                    .input(plate, Titanium, 1)
+                    .fluidInputs(EnergeticAlloy.getFluid(144))
+                    .outputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 1))
+                    .duration(100).EUt(VA[EV])
+                    .buildAndRegister();
+        }
     }
 
     private static void tools() {
