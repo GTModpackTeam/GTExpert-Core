@@ -33,7 +33,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
+import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.*;
 
 public class DraconicRecipeLoader {
 

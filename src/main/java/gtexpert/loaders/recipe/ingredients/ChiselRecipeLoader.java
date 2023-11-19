@@ -41,7 +41,7 @@ import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
 import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.AUTO_CHISEL;
+import static gtexpert.common.metatileentities.GTESingleMetaTileEntities.AUTO_CHISEL;
 import static gtexpert.integration.chisel.ChiselHelper.*;
 
 public class ChiselRecipeLoader {
