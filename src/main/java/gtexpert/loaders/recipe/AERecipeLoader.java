@@ -9,17 +9,18 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.BlockFusionCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
+import gregtech.common.metatileentities.MetaTileEntities;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.GTEConfigHolder;
 
-import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 
 import appeng.api.util.AEColor;
-import crazypants.enderio.base.init.ModObject;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
 import java.util.*;
@@ -28,7 +29,7 @@ import java.util.stream.IntStream;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.SHAPE_EMPTY;
+import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.ae2Integration;
@@ -131,11 +132,6 @@ public class AERecipeLoader {
 
         // Block
         ModHandler.removeFurnaceSmelting(aeBlocks.skyStoneBlock().maybeStack(1).get());
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .input(Item.getItemFromBlock(ModObject.block_infinity.getBlockNN()), 4, 2)
-                .outputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
-                .duration(500).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
-                .buildAndRegister();
         RecipeMaps.BLAST_RECIPES.recipeBuilder()
                 .inputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
                 .outputs(aeBlocks.smoothSkyStoneBlock().maybeStack(1).get())
@@ -364,6 +360,21 @@ public class AERecipeLoader {
     }
 
     private static void blocks() {
+        // Creative Energy Cell
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(ENERGY_CLUSTER, 4)
+                .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
+                .input(MetaTileEntities.HULL[UV])
+                .input(CRYSTAL_MAINFRAME_UV, 4)
+                .inputs(aeBlocks.energyCellDense().maybeStack(8).get())
+                .input(COVER_SOLAR_PANEL_UV, 1)
+                .fluidInputs(Fluix.getFluid(18432))
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .fluidInputs(Neutronium.getFluid(9216))
+                .outputs(aeBlocks.energyCellCreative().maybeStack(1).get())
+                .duration(1200).EUt(VA[UV])
+                .buildAndRegister();
+
         // ME Interface
         ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "interface", 1, 0));
         ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 440));
@@ -849,14 +860,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_1mb"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(aeMaterials.cell1mbPart().maybeStack(1).get())
-                    .outputs(aeBlocks.craftingStorage1mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 61))
+                    .outputs(getModItem(GTEValues.MODID_AE, "crafting_storage_1mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(aeBlocks.craftingStorage1mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "crafting_storage_1mb", 1, 0))
                     .outputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(aeMaterials.cell1mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 61))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -865,14 +876,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_4mb"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(aeMaterials.cell4mbPart().maybeStack(1).get())
-                    .outputs(aeBlocks.craftingStorage4mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 62))
+                    .outputs(getModItem(GTEValues.MODID_AE, "crafting_storage_4mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(aeBlocks.craftingStorage4mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "crafting_storage_4mb", 1, 0))
                     .outputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(aeMaterials.cell4mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 62))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -881,14 +892,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_16mb"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(aeMaterials.cell16mbPart().maybeStack(1).get())
-                    .outputs(aeBlocks.craftingStorage16mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 63))
+                    .outputs(getModItem(GTEValues.MODID_AE, "crafting_storage_16mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(aeBlocks.craftingStorage16mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "crafting_storage_16mb", 1, 0))
                     .outputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(aeMaterials.cell16mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 63))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -897,14 +908,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_64mb"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(aeMaterials.cell64mbPart().maybeStack(1).get())
-                    .outputs(aeBlocks.craftingStorage64mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 64))
+                    .outputs(getModItem(GTEValues.MODID_AE, "crafting_storage_64mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(aeBlocks.craftingStorage64mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "crafting_storage_64mb", 1, 0))
                     .outputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(aeMaterials.cell64mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 64))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -913,14 +924,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_256mb"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(aeMaterials.cell256mbPart().maybeStack(1).get())
-                    .outputs(aeBlocks.craftingStorage256mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 65))
+                    .outputs(getModItem(GTEValues.MODID_AE, "crafting_storage_256mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(aeBlocks.craftingStorage256mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "crafting_storage_256mb", 1, 0))
                     .outputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(aeMaterials.cell256mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 65))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -929,14 +940,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_1gb"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(aeMaterials.cell1gbPart().maybeStack(1).get())
-                    .outputs(aeBlocks.craftingStorage1gb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 66))
+                    .outputs(getModItem(GTEValues.MODID_AE, "crafting_storage_1gb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(aeBlocks.craftingStorage1gb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "crafting_storage_1gb", 1, 0))
                     .outputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(aeMaterials.cell1gbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 66))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -945,14 +956,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_15gb"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .inputs(aeMaterials.cell2gbPart().maybeStack(1).get())
-                    .outputs(aeBlocks.craftingStorage15gb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 67))
+                    .outputs(getModItem(GTEValues.MODID_AE, "crafting_storage_15gb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(aeBlocks.craftingStorage15gb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "crafting_storage_15gb", 1, 0))
                     .outputs(aeBlocks.craftingUnit().maybeStack(1).get())
-                    .outputs(aeMaterials.cell2gbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 67))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
         }
@@ -1021,6 +1032,22 @@ public class AERecipeLoader {
     }
 
     private static void items() {
+        // GTE ME Storage Fake Component
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(screw, Neutronium, 8)
+                .input(CRYSTAL_MAINFRAME_UV, 4)
+                .inputs(GTEConfigHolder.ae2Integration.enableAE2UELExtended ?
+                        getModItem(GTEValues.MODID_AE, "material", 16, 65) :
+                        getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3))
+                .inputs(GTEConfigHolder.ae2Integration.enableAE2UELExtended ?
+                        getModItem(GTEValues.MODID_AE, "material", 16, 70) :
+                        getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6))
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .fluidInputs(Neutronium.getFluid(9216))
+                .output(GTE_ME_FAKE_COMPONENT, 1)
+                .duration(1200).EUt(VA[UV])
+                .buildAndRegister();
+
         // 1k Storage Cell
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1k"));
         ModHandler
@@ -1253,14 +1280,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1mb_storage"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .inputs(aeMaterials.cell1mbPart().maybeStack(1).get())
-                    .outputs(aeItems.cell1mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 61))
+                    .outputs(getModItem(GTEValues.MODID_AE, "storage_cell_1mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputNBT(aeItems.cell1mb().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                    .inputNBT(getModItem(GTEValues.MODID_AE, "storage_cell_1mb", 1, 0).getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                     .outputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .outputs(aeMaterials.cell1mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 61))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -1270,14 +1297,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_4mb_storage"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .inputs(aeMaterials.cell4mbPart().maybeStack(1).get())
-                    .outputs(aeItems.cell4mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 62))
+                    .outputs(getModItem(GTEValues.MODID_AE, "storage_cell_4mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputNBT(aeItems.cell4mb().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                    .inputNBT(getModItem(GTEValues.MODID_AE, "storage_cell_4mb", 1, 0).getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                     .outputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .outputs(aeMaterials.cell4mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 62))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -1287,14 +1314,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_16mb_storage"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .inputs(aeMaterials.cell16mbPart().maybeStack(1).get())
-                    .outputs(aeItems.cell16mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 63))
+                    .outputs(getModItem(GTEValues.MODID_AE, "storage_cell_16mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputNBT(aeItems.cell16mb().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                    .inputNBT(getModItem(GTEValues.MODID_AE, "storage_cell_16mb", 1, 0).getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                     .outputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .outputs(aeMaterials.cell16mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 63))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -1304,14 +1331,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_64mb_storage"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .inputs(aeMaterials.cell64mbPart().maybeStack(1).get())
-                    .outputs(aeItems.cell64mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 64))
+                    .outputs(getModItem(GTEValues.MODID_AE, "storage_cell_64mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputNBT(aeItems.cell64mb().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                    .inputNBT(getModItem(GTEValues.MODID_AE, "storage_cell_64mb", 1, 0).getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                     .outputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .outputs(aeMaterials.cell64mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 64))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -1321,14 +1348,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_256mb_storage"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .inputs(aeMaterials.cell256mbPart().maybeStack(1).get())
-                    .outputs(aeItems.cell256mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 65))
+                    .outputs(getModItem(GTEValues.MODID_AE, "storage_cell_256mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputNBT(aeItems.cell256mb().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                    .inputNBT(getModItem(GTEValues.MODID_AE, "storage_cell_256mb", 1, 0).getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                     .outputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .outputs(aeMaterials.cell256mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 65))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -1339,14 +1366,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_1mb_storage"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .inputs(aeMaterials.fluidCell1mbPart().maybeStack(1).get())
-                    .outputs(aeItems.fluidCell1mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 68))
+                    .outputs(getModItem(GTEValues.MODID_AE, "fluid_storage_cell_1mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputNBT(aeItems.fluidCell1mb().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                    .inputNBT(getModItem(GTEValues.MODID_AE, "fluid_storage_cell_1mb", 1, 0).getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                     .outputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .outputs(aeMaterials.fluidCell1mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 68))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -1357,14 +1384,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_4mb_storage"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .inputs(aeMaterials.fluidCell4mbPart().maybeStack(1).get())
-                    .outputs(aeItems.fluidCell4mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 69))
+                    .outputs(getModItem(GTEValues.MODID_AE, "fluid_storage_cell_4mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputNBT(aeItems.fluidCell4mb().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                    .inputNBT(getModItem(GTEValues.MODID_AE, "fluid_storage_cell_4mb", 1, 0).getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                     .outputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .outputs(aeMaterials.fluidCell4mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 69))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
 
@@ -1375,14 +1402,14 @@ public class AERecipeLoader {
                     new ResourceLocation(GTEValues.MODID_AE, "network/cells/fluid_storage_cell_16mb_storage"));
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
                     .inputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .inputs(aeMaterials.fluidCell16mbPart().maybeStack(1).get())
-                    .outputs(aeItems.fluidCell16mb().maybeStack(1).get())
+                    .inputs(getModItem(GTEValues.MODID_AE, "material", 1, 70))
+                    .outputs(getModItem(GTEValues.MODID_AE, "fluid_storage_cell_16mb", 1, 0))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
             RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputNBT(aeItems.fluidCell16mb().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
+                    .inputNBT(getModItem(GTEValues.MODID_AE, "fluid_storage_cell_16mb", 1, 0).getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                     .outputs(aeMaterials.emptyStorageCell().maybeStack(1).get())
-                    .outputs(aeMaterials.fluidCell16mbPart().maybeStack(1).get())
+                    .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 70))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
         } else {
