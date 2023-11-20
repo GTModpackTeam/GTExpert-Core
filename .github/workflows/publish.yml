@@ -91,20 +91,19 @@ jobs:
             configanytime | depends | *
             gregtech-ce-unofficial | depends | *
             gregicality-multiblocks | depends | *
-            ae2-extended-life | depends | *
-            ae-additions-extra-cells-2-fork | depends | *
-            ender-io-base | depends | *
-            ender-io-machines | depends | *
-            ender-io-endergy | depends | *
-            ender-io-conduits | depends | *
-            ender-io-ae2-conduits | depends | *
+            ae2-extended-life | recommends | *
+            ae-additions-extra-cells-2-fork | recommends | *
+            ender-io-base | recommends | *
+            ender-io-machines | recommends | *
+            ender-io-endergy | recommends | *
+            ender-io-conduits | recommends | *
+            ender-io-ae2-conduits | recommends | *
             gregtech-food-option | recommends | *
             chisel | recommends | *
             extracpus | recommends | *
             draconic-evolution | recommends | *
             draconicadditions | recommends | *
             project-red-illumination | recommends | *
-            ulv-covers | incompatible | *
           java: |
             8
           retry-attempts: 2

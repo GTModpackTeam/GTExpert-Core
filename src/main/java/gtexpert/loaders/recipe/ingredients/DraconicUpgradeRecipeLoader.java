@@ -23,17 +23,18 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
-import crazypants.enderio.base.init.ModObject;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
 
 public class DraconicUpgradeRecipeLoader {
 
@@ -82,7 +83,9 @@ public class DraconicUpgradeRecipeLoader {
         // Bow of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_bow"));
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(new ItemStack(ModObject.itemEndSteelBow.getItemNN()))
+                GTRecipeItemInput.getOrCreate(Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                        getModItem(GTEValues.MODID_EIO, "item_dark_steel_bow", 1, 0) :
+                        getModItem(GTEValues.MODID_VANILLA, "bow", 1, 0))
                         .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 new ItemStack(DEFeatures.wyvernBow),
                 Tier.WYVERN, 2);
