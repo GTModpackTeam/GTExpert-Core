@@ -1045,13 +1045,11 @@ public class AERecipeLoader {
             if (GTEConfigHolder.ae2Integration.enableAE2UELExtended) {
                 builderGTECore.inputs(getModItem(GTEValues.MODID_AE, "material", 16, 65));
                 builderGTECore.inputs(getModItem(GTEValues.MODID_AE, "material", 16, 70));
-            }
-            else {
+            } else {
                 builderGTECore.inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3));
                 builderGTECore.inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6));
             }
-        }
-        else {
+        } else {
             builderGTECore.inputs(getModItem(GTEValues.MODID_AE, "material", 16, 38));
             builderGTECore.inputs(getModItem(GTEValues.MODID_AE, "material", 16, 57));
         }
@@ -1185,7 +1183,7 @@ public class AERecipeLoader {
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputNBT(aeItems.fluidCell16k().maybeStack(1).get().getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                 .outputs(Loader.isModLoaded(GTEValues.MODID_AEA) ?
-                        getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1)  :
+                        getModItem(GTEValues.MODID_AEA, "storage.casing", 1, 1) :
                         aeMaterials.emptyStorageCell().maybeStack(1).get())
                 .outputs(aeMaterials.fluidCell16kPart().maybeStack(1).get())
                 .duration(10).EUt(VA[ULV])
@@ -1446,8 +1444,7 @@ public class AERecipeLoader {
                     .outputs(getModItem(GTEValues.MODID_AE, "material", 1, 70))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
-        }
-        else if (Loader.isModLoaded(GTEValues.MODID_AEA)) {
+        } else if (Loader.isModLoaded(GTEValues.MODID_AEA)) {
             // 256k Storage Cell
             ModHandler
                     .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEA, "storagecells/item/owncasing/256k"));
