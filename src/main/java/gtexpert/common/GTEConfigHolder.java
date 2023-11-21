@@ -11,19 +11,19 @@ public class GTEConfigHolder {
 
     @Config.Name("Gregtech Override")
     @Config.RequiresMcRestart
-    public static GregtechOverride ceuOverride = new GregtechOverride();
+    public static final GregtechOverride ceuOverride = new GregtechOverride();
 
     @Config.Name("AE2 Integration")
     @Config.RequiresMcRestart
-    public static AE2Integration ae2Integration = new AE2Integration();
+    public static final AE2Integration ae2Integration = new AE2Integration();
 
     @Config.Name("EnderIO Integration")
     @Config.RequiresMcRestart
-    public static EIOIntegration eioIntegration = new EIOIntegration();
+    public static final EIOIntegration eioIntegration = new EIOIntegration();
 
     @Config.Name("Chisel Integration")
     @Config.RequiresMcRestart
-    public static ChiselIntegration chiselIntegration = new ChiselIntegration();
+    public static final ChiselIntegration chiselIntegration = new ChiselIntegration();
 
     public static class GregtechOverride {
 

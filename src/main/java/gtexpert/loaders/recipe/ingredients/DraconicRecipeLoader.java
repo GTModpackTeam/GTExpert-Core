@@ -5,6 +5,7 @@ import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.nbtmatch.*;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -86,15 +87,20 @@ public class DraconicRecipeLoader {
         // Draconic Evolution
         // ########################################
         // Dragon Dust
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, EndSteel, 1)
+        RecipeBuilder<?> builderDD = RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Iridium, 1)
                 .fluidInputs(SaltWater.getFluid(1000))
                 .fluidInputs(EnderEye.getFluid(144))
                 .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, Dragon, 2)
-                .duration(600).EUt(VA[LuV])
-                .buildAndRegister();
+                .duration(600).EUt(VA[LuV]);
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            builderDD.input(dust, EndSteel, 1);
+        } else {
+            builderDD.input(dust, Endstone, 1);
+        }
+        builderDD.buildAndRegister();
+
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .input(Blocks.DRAGON_EGG)
                 .output(dust, Dragon, 8)
@@ -428,13 +434,17 @@ public class DraconicRecipeLoader {
 
         // Reactor Stabilizer Frame
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "reactor_part"));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+        RecipeBuilder<?> builderRSF = RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.wyvernCore, 1)
-                .input(stick, DarkSteel, 6)
                 .input(plate, AwakenedDraconium, 1)
                 .outputs(new ItemStack(DEFeatures.reactorPart, 1, 0))
-                .duration(200).EUt(VA[LuV])
-                .buildAndRegister();
+                .duration(200).EUt(VA[LuV]);
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            builderRSF.input(stick, DarkSteel, 6);
+        } else {
+            builderRSF.input(stick, BlackSteel, 6);
+        }
+        builderRSF.buildAndRegister();
 
         // Reactor Stabilizer Inner Rotor
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "reactor_part_1"));
@@ -504,30 +514,39 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Reactor Energy Injector
-        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        SimpleRecipeBuilder builderREI1 = GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.reactorPart, 4, 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 4)
-                .input(plate, DarkSteel, 4)
                 .fluidInputs(Draconium.getFluid(576))
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 1))
                 .fluidOutputs(Pyrotheum.getFluid(4000))
-                .duration(400).EUt(38400)
-                .buildAndRegister();
-        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                .duration(400).EUt(38400);
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            builderREI1.input(plate, DarkSteel, 4);
+        } else {
+            builderREI1.input(plate, BlackSteel, 4);
+        }
+        builderREI1.buildAndRegister();
+
+        SimpleRecipeBuilder builderREI2 = GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.reactorPart, 4, 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 4)
-                .input(plate, DarkSteel, 4)
                 .fluidInputs(Draconium.getFluid(576))
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 1))
                 .fluidOutputs(Pyrotheum.getFluid(4000))
-                .duration(400).EUt(38400)
-                .buildAndRegister();
+                .duration(400).EUt(38400);
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            builderREI2.input(plate, DarkSteel, 4);
+        } else {
+            builderREI2.input(plate, BlackSteel, 4);
+        }
+        builderREI2.buildAndRegister();
 
         // Draconic Reactor Core
         GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -715,16 +734,21 @@ public class DraconicRecipeLoader {
 
         // Celestial Manipulator
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "celestial_manipulator"));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+        RecipeBuilder<?> builderCM = RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(Items.CLOCK, 1)
                 .input(plate, Draconium, 4)
-                .input(stickLong, DarkSteel, 4)
-                .input(screw, DarkSteel, 4)
                 .input(stick, Iron, 4)
                 .input(DEFeatures.wyvernCore, 1)
                 .outputs(new ItemStack(DEFeatures.celestialManipulator, 1, 0))
-                .duration(600).EUt(VA[LuV])
-                .buildAndRegister();
+                .duration(600).EUt(VA[LuV]);
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            builderCM.input(stickLong, DarkSteel, 4);
+            builderCM.input(stick, DarkSteel, 4);
+        } else {
+            builderCM.input(stickLong, BlackSteel, 4);
+            builderCM.input(stick, BlackSteel, 4);
+        }
+        builderCM.buildAndRegister();
 
         // Dislocation Normalization Field Projector
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "item_dislocation_inhibitor"));
@@ -910,16 +934,21 @@ public class DraconicRecipeLoader {
                 .buildAndRegister();
 
         // Capacitor Supplier
-        GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
+        SimpleRecipeBuilder builderCS = GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .input(Blocks.END_ROD, 1)
-                .input(plate, StellarAlloy, 4)
-                .input(stick, StellarAlloy, 4)
                 .input(ring, Titanium, 4)
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .output(DAFeatures.capacitorSupplier, 1)
                 .fluidOutputs(Pyrotheum.getFluid(4000))
-                .duration(100).EUt(VA[LuV])
-                .buildAndRegister();
+                .duration(100).EUt(VA[LuV]);
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            builderCS.input(plate, StellarAlloy, 4);
+            builderCS.input(stick, StellarAlloy, 4);
+        } else {
+            builderCS.input(plate, VanadiumSteel, 4);
+            builderCS.input(stick, VanadiumSteel, 4);
+        }
+        builderCS.buildAndRegister();
     }
 
     private static void tools() {
@@ -931,7 +960,9 @@ public class DraconicRecipeLoader {
         ModHandler.addShapedRecipe("crystal_binder", new ItemStack(DEFeatures.crystalBinder, 1, 0),
                 "PhP", " R ", " C ",
                 'P', OreDictUnifier.get(plate, Draconium),
-                'R', OreDictUnifier.get(stick, EnergeticAlloy),
+                'R', Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                        OreDictUnifier.get(stick, EnergeticAlloy) :
+                        OreDictUnifier.get(stick, BlueAlloy),
                 'C', DEFeatures.wyvernCore);
 
         // Wyvern Flux Capacitor
@@ -974,14 +1005,18 @@ public class DraconicRecipeLoader {
         // Portable Wired Wyvern Charger
         ModHandler.addShapedRecipe("portable_wired_charger_1", new ItemStack(DAFeatures.pwc, 1, 1),
                 "DDD", "ICI", "DDD",
-                'D', OreDictUnifier.get(plate, DarkSteel),
+                'D', Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                        OreDictUnifier.get(plate, DarkSteel) :
+                        OreDictUnifier.get(plate, Steel),
                 'I', OreDictUnifier.get(plate, Iron),
                 'C', new ItemStack(DEFeatures.wyvernCore));
 
         // Portable Wired Wyvern Discharger
         ModHandler.addShapedRecipe("portable_wired_discharger_1", new ItemStack(DAFeatures.pwd, 1, 1),
                 "DDD", "GCG", "DDD",
-                'D', OreDictUnifier.get(plate, DarkSteel),
+                'D', Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                        OreDictUnifier.get(plate, DarkSteel) :
+                        OreDictUnifier.get(plate, Steel),
                 'G', OreDictUnifier.get(plate, Gold),
                 'C', new ItemStack(DEFeatures.wyvernCore));
 
