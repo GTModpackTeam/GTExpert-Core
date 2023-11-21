@@ -1041,13 +1041,13 @@ public class AERecipeLoader {
                 .fluidInputs(Neutronium.getFluid(9216))
                 .output(GTE_ME_FAKE_COMPONENT, 1)
                 .duration(1200).EUt(VA[UV]);
-        if (Loader.isModLoaded(GTEValues.MODID_AEA)) {
-            if (GTEConfigHolder.ae2Integration.enableAE2UELExtended) {
-                builderGTECore.inputs(getModItem(GTEValues.MODID_AE, "material", 16, 65));
-                builderGTECore.inputs(getModItem(GTEValues.MODID_AE, "material", 16, 70));
-            } else {
+        if (GTEConfigHolder.ae2Integration.enableAE2UELExtended) {
+            if (Loader.isModLoaded(GTEValues.MODID_AEA)) {
                 builderGTECore.inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3));
                 builderGTECore.inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6));
+            } else {
+                builderGTECore.inputs(getModItem(GTEValues.MODID_AE, "material", 16, 65));
+                builderGTECore.inputs(getModItem(GTEValues.MODID_AE, "material", 16, 70));
             }
         } else {
             builderGTECore.inputs(getModItem(GTEValues.MODID_AE, "material", 16, 38));
