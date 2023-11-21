@@ -26,18 +26,18 @@ public class GTERecipeManager {
         CEUOverrideRecipeLoader.init();
         GTERecipeLoader.init();
         GTEWoodRecipeLoader.init();
-        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
-            AERecipeLoader.init();
-        }
-        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
-            EIORecipeLoader.init();
-            EIOSoulRecipeLoader.init();
-        }
     }
 
     public static void loadLowest() {
         LowestOverrideRecipeLoader.init();
 
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            EIORecipeLoader.init();
+            EIOSoulRecipeLoader.init();
+        }
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            AERecipeLoader.init();
+        }
         if (GTEValues.isModLoadedDEDA()) {
             DraconicRecipeLoader.init();
             DraconicUpgradeRecipeLoader.init();
