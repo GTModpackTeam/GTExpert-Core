@@ -44,8 +44,10 @@ public class AEFirstDegreeMaterials {
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x4A3954).iconSet(MaterialIconSet.SHINY)
                 .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
-                .blastTemp(2700, GasTier.LOW, VA[HV], 1072)
                 .components(Fluix, 2, Carbon, 2, Silicon, 1, Iron, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.LOW)
+                        .blastStats(VA[HV], 1072))
                 .build();
     }
 }

@@ -36,9 +36,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x949494).iconSet(MaterialIconSet.METALLIC)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT_METAL, GENERATE_GEAR)
                 .components(Steel, 1, Coal, 1, Silicon, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Energetic Alloy
@@ -46,9 +48,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xED8009).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT_METAL, GENERATE_GEAR, GENERATE_DOUBLE_PLATE)
                 .components(Redstone, 1, Gold, 1, Glowstone, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
         EnergeticAlloy.setFormula("Au2(Si(FeS2)5(CrAl2O3)Hg3)2", true);
 
@@ -57,9 +61,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xBAC63F).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT_METAL, GENERATE_GEAR, GENERATE_DOUBLE_PLATE)
                 .components(EnergeticAlloy, 1, EnderPearl, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
         VibrantAlloy.setFormula("BeK4N5(Au2(Si(FeS2)5(CrAl2O3)Hg3)2)", true);
 
@@ -68,9 +74,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x942323).iconSet(MaterialIconSet.DULL)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(GENERATE_PLATE)
                 .components(RedAlloy, 1, Silicon, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Conductive Iron
@@ -78,9 +86,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xD1A79B).iconSet(MaterialIconSet.ROUGH)
-                .blastTemp(1700, GasTier.HIGH, VA[HV], 120)
                 .flags(GENERATE_PLATE)
                 .components(Iron, 1, RedstoneAlloy, 1)
+                .blast(b -> b
+                        .temp(1700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Pulsating Iron
@@ -88,9 +98,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x6EAC7D).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT_METAL)
                 .components(Iron, 1, EnderPearl, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Dark Steel
@@ -98,9 +110,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x5F5F5F).iconSet(MaterialIconSet.METALLIC)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT2_METAL, GENERATE_RING, GENERATE_FRAME)
                 .components(Iron, 1, Coal, 1, Obsidian, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Soularium
@@ -108,9 +122,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x5A4226).iconSet(MaterialIconSet.DULL)
-                .blastTemp(3600, GasTier.HIGH, VA[HV], 600)
                 .flags(GENERATE_PLATE)
                 .components(Gold, 1, Ash, 1, SoulSand, 1)
+                .blast(b -> b
+                        .temp(3600, GasTier.HIGH)
+                        .blastStats(VA[HV], 600))
                 .build();
 
         // End Steel
@@ -118,9 +134,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xBCB682).iconSet(MaterialIconSet.METALLIC)
-                .blastTemp(4500, GasTier.HIGHER, VA[EV], 1072)
                 .flags(EXT2_METAL, GENERATE_RING)
                 .components(Endstone, 1, DarkSteel, 1, Obsidian, 1)
+                .blast(b -> b
+                        .temp(4500, GasTier.HIGHER)
+                        .blastStats(VA[EV], 1072))
                 .build();
         EndSteel.setFormula("FeC(MgFeSi2O4)2?", true);
 
@@ -129,9 +147,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x524C53).iconSet(MaterialIconSet.ROUGH)
-                .blastTemp(1700, GasTier.HIGHER, VA[EV], 1072)
                 .flags(GENERATE_PLATE)
                 .components(Platinum, 1, Iron, 1, Aluminium, 1)
+                .blast(b -> b
+                        .temp(1700, GasTier.HIGHER)
+                        .blastStats(VA[EV], 1072))
                 .build();
 
         // Crystalline Alloy
@@ -139,9 +159,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x9FE4E4).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(4500, GasTier.HIGHER, VA[EV], 600)
                 .flags(GENERATE_PLATE)
                 .components(Gold, 1, Platinum, 1, Emerald, 1, VibrantAlloy, 1)
+                .blast(b -> b
+                        .temp(4500, GasTier.HIGHER)
+                        .blastStats(VA[EV], 600))
                 .build();
 
         // Melodic Alloy
@@ -149,9 +171,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xA877A8).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, VA[EV], 600)
                 .flags(GENERATE_PLATE)
                 .components(EndSteel, 1, ChorusFruit, 1)
+                .blast(b -> b
+                        .temp(5400, GasTier.HIGHER)
+                        .blastStats(VA[EV], 600))
                 .build();
 
         // Stellar Alloy
@@ -159,9 +183,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xDBDECC).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(7200, GasTier.HIGHER, VA[LuV], 600)
                 .flags(EXT_METAL, GENERATE_LONG_ROD)
                 .components(NetherStar, 1, MelodicAlloy, 1, Clay, 1)
+                .blast(b -> b
+                        .temp(7200, GasTier.HIGHER)
+                        .blastStats(VA[EV], 600))
                 .build();
 
         // Crystalline Pink Slime
@@ -169,9 +195,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xE79EDB).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, VA[EV], 600)
                 .flags(GENERATE_PLATE)
                 .components(MelodicAlloy, 1, RawRubber, 2)
+                .blast(b -> b
+                        .temp(5400, GasTier.HIGHER)
+                        .blastStats(VA[EV], 600))
                 .build();
 
         // Energetic Silver
@@ -179,9 +207,11 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x598DB3).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, VA[EV], 1072)
                 .flags(GENERATE_PLATE)
                 .components(Silver, 1, Redstone, 1, Glowstone, 1)
+                .blast(b -> b
+                        .temp(5400, GasTier.HIGHER)
+                        .blastStats(VA[EV], 1072))
                 .build();
 
         // Vivid Alloy
@@ -189,8 +219,10 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x469BB1).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, 1920, 1072)
                 .components(EnergeticSilver, 1, EnderPearl, 1)
+                .blast(b -> b
+                        .temp(5400, GasTier.HIGHER)
+                        .blastStats(VA[EV], 1072))
                 .build();
     }
 }

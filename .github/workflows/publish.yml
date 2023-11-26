@@ -105,7 +105,7 @@ jobs:
             build/libs/*-@(sources).jar
             build/libs/*-@(dev).jar
           name: "${{ env.NAME }}-${{ env.FULL_VERSION }}.jar"
-          changelog: "Changelog is available [here](https://github.com/${{github.repository}}/blob/main/CHANGELOG.md"
+          changelog: "Changelog is available [here](https://github.com/${{github.repository}}/blob/master/CHANGELOG.md)"
           version: "${{ github.event.inputs.version }}"
           version-type: "${{ github.event.inputs.release_type }}"
           loaders: |
