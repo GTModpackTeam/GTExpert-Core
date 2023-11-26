@@ -1,3 +1,10 @@
+# v1.5.1
+## Fix recipes
+### Applied Energistics2
+- Interface
+
+* * *
+
 # v1.5.0
 ## Information
 - Until now, GTExpertCore had various installation assumptions with AE2, EIO, DE, and DA, but this version has freed us from that dependency.
