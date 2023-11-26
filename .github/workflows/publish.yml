@@ -77,8 +77,8 @@ jobs:
           modrinth-dependencies: |
             Bnsrfd1o(required)
             G1ckZuWK(required)
-            tULldUx4@GJvzHTTh(required)
-            tZiutdLG@EBaj6aJx(required)
+            tULldUx4(required)
+            tZiutdLG(required)
           curseforge-id: '851103'
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           curseforge-dependencies: |
@@ -105,7 +105,7 @@ jobs:
             build/libs/*-@(sources).jar
             build/libs/*-@(dev).jar
           name: "${{ env.NAME }}-${{ env.FULL_VERSION }}.jar"
-          changelog: "Changelog is available [here](https://github.com/${{github.repository}}/blob/main/CHANGELOG.md"
+          changelog: "Changelog is available [here](https://github.com/${{github.repository}}/blob/master/CHANGELOG.md)"
           version: "${{ github.event.inputs.version }}"
           version-type: "${{ github.event.inputs.release_type }}"
           loaders: |

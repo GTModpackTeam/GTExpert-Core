@@ -377,8 +377,8 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // ME Interface
-        ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "interface", 1, 0));
-        ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 440));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interface_alt"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interface_part"));
         ModHandler.addShapedNBTClearingRecipe("interface_to_interface",
                 getModItem(GTEValues.MODID_AE, "interface", 1, 0),
                 "I", " ",
@@ -397,8 +397,8 @@ public class AERecipeLoader {
                 'I', getModItem(GTEValues.MODID_AE, "interface", 1, 0));
 
         // ME Fluid Interface
-        ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0));
-        ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 441));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/fluid_interfaces_interface_alt"));
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/fluid_interfaces_interface_part"));
         ModHandler.addShapedNBTClearingRecipe("fluid_interface_to_fluid_interface",
                 getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0),
                 "I", " ",
@@ -418,8 +418,8 @@ public class AERecipeLoader {
 
         if (GTEConfigHolder.ae2Integration.enableAE2UELExtended) {
             // ME Delivery Interface
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "interfaceimp", 1, 0));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 620));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interfaceimp_alt"));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interfaceimp_part"));
             ModHandler.addShapedNBTClearingRecipe("interfaceimp_to_interfaceimp",
                     getModItem(GTEValues.MODID_AE, "interfaceimp", 1, 0),
                     "I", " ",
@@ -438,8 +438,8 @@ public class AERecipeLoader {
                     'I', getModItem(GTEValues.MODID_AE, "interfaceimp", 1, 0));
 
             // Advanced ME Delivery Interface
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "interfaceadv", 1, 0));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 621));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interfaceadv_alt"));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interfaceadv_part"));
             ModHandler.addShapedNBTClearingRecipe("interfaceadv_to_interfaceadv",
                     getModItem(GTEValues.MODID_AE, "interfaceadv", 1, 0),
                     "I", " ",
@@ -458,8 +458,8 @@ public class AERecipeLoader {
                     'I', getModItem(GTEValues.MODID_AE, "interfaceadv", 1, 0));
 
             // Perfect ME Delivery Interface
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "interfaceper", 1, 0));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 622));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interfaceper_alt"));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interfaceper_part"));
             ModHandler.addShapedNBTClearingRecipe("interfaceper_to_interfaceper",
                     getModItem(GTEValues.MODID_AE, "interfaceper", 1, 0),
                     "I", " ",
@@ -478,21 +478,21 @@ public class AERecipeLoader {
                     'I', getModItem(GTEValues.MODID_AE, "interfaceper", 1, 0));
 
             // ME Patterns Interface
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "interface_patterns", 1, 0));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 1, 623));
-            ModHandler.addShapedNBTClearingRecipe("interfacepat_to_interfacepat",
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interfacepatt_alt"));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interfacepatt_part"));
+            ModHandler.addShapedNBTClearingRecipe("interfacepatt_to_interfacepatt",
                     getModItem(GTEValues.MODID_AE, "interface_patterns", 1, 0),
                     "I", " ",
                     'I', getModItem(GTEValues.MODID_AE, "interface_patterns", 1, 0));
-            ModHandler.addShapedNBTClearingRecipe("interfacepat_to_part_interfacepat",
+            ModHandler.addShapedNBTClearingRecipe("interfacepatt_to_part_interfacepatt",
                     getModItem(GTEValues.MODID_AE, "interface_patterns", 1, 0),
                     " ", "I",
                     'I', getModItem(GTEValues.MODID_AE, "part", 1, 623));
-            ModHandler.addShapedNBTClearingRecipe("part_interfacepat_to_part_interfacepat",
+            ModHandler.addShapedNBTClearingRecipe("part_interfacepatt_to_part_interfacepatt",
                     getModItem(GTEValues.MODID_AE, "part", 1, 623),
                     "I", " ",
                     'I', getModItem(GTEValues.MODID_AE, "part", 1, 623));
-            ModHandler.addShapedNBTClearingRecipe("part_interfacepat_to_interfacepat",
+            ModHandler.addShapedNBTClearingRecipe("part_interfacepatt_to_interfacepatt",
                     getModItem(GTEValues.MODID_AE, "part", 1, 623),
                     " ", "I",
                     'I', getModItem(GTEValues.MODID_AE, "interface_patterns", 1, 0));
@@ -500,8 +500,9 @@ public class AERecipeLoader {
 
         // ME Dual Interface
         if (Loader.isModLoaded(GTEValues.MODID_AEFC)) {
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AEFC, "part_dual_interface", 1, 0));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEFC, "dual_interface"));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEFC, "dual_interface_alter"));
+            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AEFC, "part_dual_interface"));
             ModHandler.addShapedNBTClearingRecipe("dual_interface_to_dual_interface",
                     getModItem(GTEValues.MODID_AEFC, "dual_interface", 1, 0),
                     "I", " ",
