@@ -5,6 +5,7 @@ import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.builders.AssemblyLineRecipeBuilder;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.unification.OreDictUnifier;
@@ -13,25 +14,21 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.BlockFusionCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
-import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.items.GTEMetaItems;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.machines.init.MachineObject;
-import crazypants.enderio.powertools.init.PowerToolObject;
+import net.minecraftforge.fml.common.Loader;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -41,12 +38,10 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.items.GTEMetaItems.*;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
-import static gtexpert.integration.ae.AEHelper.aeBlocks;
+import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.*;
 
 public class GTERecipeLoader {
 
@@ -367,7 +362,9 @@ public class GTERecipeLoader {
                     .input(SENSOR_LV, 8)
                     .input(INTEGRATED_CIRCUIT_LV, 4)
                     .input(ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
-                    .inputs(aeBlocks.quartzGlass().maybeStack(1).get())
+                    .inputs(Loader.isModLoaded(GTEValues.MODID_AE) ?
+                            getModItem(GTEValues.MODID_AE, "quartz_glass", 1, 0) :
+                            new ItemStack(Blocks.GLASS))
                     .input(MetaTileEntities.TRANSFORMER[1])
                     .fluidInputs(Silicon.getFluid(L << 2))
                     .fluidInputs(SolderingAlloy.getFluid(L << 2))
@@ -383,7 +380,9 @@ public class GTERecipeLoader {
                     .input(SENSOR_MV, 8)
                     .input(INTEGRATED_CIRCUIT_MV, 4)
                     .input(LOW_POWER_INTEGRATED_CIRCUIT, 4)
-                    .input(ModObject.blockFusedQuartz.getBlockNN())
+                    .inputs(Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                            getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0) :
+                            new ItemStack(Blocks.GLASS))
                     .input(MetaTileEntities.TRANSFORMER[2])
                     .fluidInputs(Silicon.getFluid(L << 3))
                     .fluidInputs(SolderingAlloy.getFluid(L << 3))
@@ -399,7 +398,9 @@ public class GTERecipeLoader {
                     .input(SENSOR_HV, 8)
                     .input(INTEGRATED_CIRCUIT_HV, 4)
                     .input(LOW_POWER_INTEGRATED_CIRCUIT, 8)
-                    .input(ModObject.blockFusedGlass.getBlockNN())
+                    .inputs(Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                            getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0) :
+                            new ItemStack(Blocks.GLASS))
                     .input(MetaTileEntities.TRANSFORMER[3])
                     .fluidInputs(Silicon.getFluid(L << 4))
                     .fluidInputs(SolderingAlloy.getFluid(L << 4))
@@ -565,26 +566,38 @@ public class GTERecipeLoader {
                 'F', FIELD_GENERATOR_IV.getStackForm());
 
         // Void Ore Miner
-        if (!GTEValues.isModLoadedDEDA()) {
-            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                    .input(MetaTileEntities.ADVANCED_LARGE_MINER)
-                    .input(circuit, MarkerMaterials.Tier.ZPM, 4)
-                    .input(ELECTRIC_MOTOR_ZPM, 4)
-                    .input(ELECTRIC_PUMP_ZPM, 4)
-                    .input(CONVEYOR_MODULE_ZPM, 4)
-                    .input(ELECTRIC_PISTON_ZPM, 4)
-                    .input(ROBOT_ARM_ZPM, 4)
-                    .input(EMITTER_ZPM, 4)
-                    .input(SENSOR_ZPM, 4)
-                    .input(ORE_DICTIONARY_FILTER)
-                    .input(gear, NaquadahAlloy, 4)
-                    .fluidInputs(SolderingAlloy.getFluid(18432))
-                    .output(VOIDOREMINER)
-                    .duration(600).EUt(VA[ZPM])
-                    .stationResearch(b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm())
-                            .CWUt(64).EUt(VA[ZPM]))
-                    .buildAndRegister();
+        AssemblyLineRecipeBuilder builderVOM = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.ADVANCED_LARGE_MINER)
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .output(VOIDOREMINER);
+        if (GTEValues.isModLoadedDEDA()) {
+            builderVOM.inputs(getModItem(GTEValues.MODID_DE, "awakened_core", 4, 0));
+            builderVOM.input(ELECTRIC_MOTOR_UV, 4);
+            builderVOM.input(ELECTRIC_PUMP_UV, 4);
+            builderVOM.input(CONVEYOR_MODULE_UV, 4);
+            builderVOM.input(ELECTRIC_PISTON_UV, 4);
+            builderVOM.input(ROBOT_ARM_UV, 4);
+            builderVOM.input(EMITTER_UV, 4);
+            builderVOM.input(SENSOR_UV, 4);
+            builderVOM.duration(600).EUt(VA[UV]);
+            builderVOM.stationResearch(
+                    b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm()).CWUt(96).EUt(VA[UV]));
+        } else {
+            builderVOM.input(circuit, MarkerMaterials.Tier.ZPM, 4);
+            builderVOM.input(ELECTRIC_MOTOR_ZPM, 4);
+            builderVOM.input(ELECTRIC_PUMP_ZPM, 4);
+            builderVOM.input(CONVEYOR_MODULE_ZPM, 4);
+            builderVOM.input(ELECTRIC_PISTON_ZPM, 4);
+            builderVOM.input(ROBOT_ARM_ZPM, 4);
+            builderVOM.input(EMITTER_ZPM, 4);
+            builderVOM.input(SENSOR_ZPM, 4);
+            builderVOM.duration(600).EUt(VA[ZPM]);
+            builderVOM.stationResearch(
+                    b -> b.researchStack(MetaTileEntities.ADVANCED_LARGE_MINER.getStackForm()).CWUt(64).EUt(VA[ZPM]));
         }
+        builderVOM.input(ORE_DICTIONARY_FILTER);
+        builderVOM.input(gear, NaquadahAlloy, 4);
+        builderVOM.buildAndRegister();
 
         // Void Ore Miner Recipes
         List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
@@ -629,66 +642,6 @@ public class GTERecipeLoader {
                 .output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR, 1)
                 .duration(100).EUt(VA[MV])
                 .buildAndRegister();
-
-        // Vial Extractor
-        MetaTileEntityLoader.registerMachineRecipe(true, VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
-                'V', ModObject.itemSoulVial.getItemNN(),
-                'R', SENSOR,
-                'P', PISTON,
-                'H', HULL,
-                'F', PUMP,
-                'W', CABLE,
-                'C', CIRCUIT);
-
-        // Slice'N'Splice
-        MetaTileEntityLoader.registerMachineRecipe(true, SLICE_N_SPLICE, "PSP", "CHC", "MBM",
-                'P', new UnificationEntry(plate, Soularium),
-                'S', "itemSkull",
-                'C', CIRCUIT,
-                'H', HULL,
-                'M', MOTOR,
-                'B', ModObject.blockDarkIronBars.getItemNN());
-
-        // Soul Binder
-        MetaTileEntityLoader.registerMachineRecipe(true, SOUL_BINDER, "PEP", "CHC", "MZM",
-                'P', new UnificationEntry(plate, Soularium),
-                'E', "skullEnderResonator",
-                'C', CIRCUIT,
-                'H', HULL,
-                'M', MOTOR,
-                'Z', "skullZombieController");
-
-        // Electric Spawner
-        MetaTileEntityLoader.registerMachineRecipe(true, ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
-                'P', new UnificationEntry(plate, ConstructionAlloy),
-                'E', "skullSentientEnder",
-                'S', new UnificationEntry(plate, Soularium),
-                'H', HULL,
-                'C', "itemEnderCrystal",
-                'Z', "skullZombieFrankenstein");
-
-        if (GTEConfigHolder.eioIntegration.addShapelessRecipeMachines) {
-            // Slice'N'Splice
-            ModHandler.addShapelessRecipe("eio_slice_n_splice",
-                    new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()),
-                    SLICE_N_SPLICE[HV].getStackForm());
-            ModHandler.addShapelessRecipe("ceu_slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(),
-                    new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
-
-            // Soul Binder
-            ModHandler.addShapelessRecipe("eio_soul_binder",
-                    new ItemStack(MachineObject.block_soul_binder.getBlockNN()),
-                    SOUL_BINDER[HV].getStackForm());
-            ModHandler.addShapelessRecipe("ceu_soul_binder", SOUL_BINDER[HV].getStackForm(),
-                    new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
-
-            // Electric Spawner
-            ModHandler.addShapelessRecipe("eio_electric_spawner",
-                    new ItemStack(MachineObject.block_powered_spawner.getBlockNN()),
-                    ELECTRIC_SPAWNER[HV].getStackForm());
-            ModHandler.addShapelessRecipe("ceu_electric_spawner", ELECTRIC_SPAWNER[HV].getStackForm(),
-                    new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
-        }
     }
 
     private static void tools() {
@@ -703,63 +656,41 @@ public class GTERecipeLoader {
     }
 
     private static void end_contents() {
-        // Creative Energy Cell
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ENERGY_CLUSTER, 4)
-                .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
-                .input(MetaTileEntities.HULL[UV])
-                .input(CRYSTAL_MAINFRAME_UV, 4)
-                .inputs(aeBlocks.energyCellDense().maybeStack(8).get())
-                .input(COVER_SOLAR_PANEL_UV, 1)
-                .fluidInputs(Fluix.getFluid(18432))
-                .fluidInputs(SolderingAlloy.getFluid(18432))
-                .fluidInputs(Neutronium.getFluid(9216))
-                .outputs(aeBlocks.energyCellCreative().maybeStack(1).get())
-                .duration(1200).EUt(VA[UV])
-                .buildAndRegister();
-
-        // Creative Capacitor Bank
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ENERGY_CLUSTER, 4)
-                .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
-                .input(MetaTileEntities.HULL[UV])
-                .input(CRYSTAL_MAINFRAME_UV, 4)
-                .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 3))
-                .input(COVER_SOLAR_PANEL_UV, 1)
-                .fluidInputs(VibrantAlloy.getFluid(18432))
-                .fluidInputs(SolderingAlloy.getFluid(18432))
-                .fluidInputs(Neutronium.getFluid(9216))
-                .outputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 1, 0))
-                .duration(1200).EUt(VA[UV])
-                .buildAndRegister();
-
-        // GTE ME Storage Fake Component
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(screw, Neutronium, 8)
-                .input(CRYSTAL_MAINFRAME_UV, 4)
-                .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3))
-                .inputs(getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6))
-                .fluidInputs(SolderingAlloy.getFluid(18432))
-                .fluidInputs(Neutronium.getFluid(9216))
-                .output(GTE_ME_FAKE_COMPONENT, 1)
-                .duration(1200).EUt(VA[UV])
-                .buildAndRegister();
-
         // Infinite GT Energy Unit Emitter
-        if (!GTEValues.isModLoadedDEDA()) {
-            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                    .input(MetaTileEntities.HULL[UHV])
-                    .inputs(aeBlocks.energyCellCreative().maybeStack(4).get())
-                    .inputNBT(PowerToolObject.block_cap_bank.getBlockNN(), 4, NBTMatcher.ANY, NBTCondition.ANY)
-                    .input(GTE_ME_FAKE_COMPONENT, 4)
-                    .fluidInputs(SolderingAlloy.getFluid(18432))
-                    .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
-                    .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
-                    .duration(2000).EUt(VA[UHV])
-                    .stationResearch(b -> b.researchStack(GTE_ME_FAKE_COMPONENT.getStackForm())
-                            .CWUt(128).EUt(VA[UHV]))
-                    .buildAndRegister();
+        AssemblyLineRecipeBuilder builderIGTEUE = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.HULL[UHV])
+                .fluidInputs(SolderingAlloy.getFluid(18432))
+                .fluidInputs(UraniumRhodiumDinaquadide.getFluid(9216))
+                .outputs(MetaTileEntities.CREATIVE_ENERGY.getStackForm())
+                .duration(2000).EUt(VA[UHV]);
+        if (!(GTEValues.isModLoadedDEDA() && Loader.isModLoaded(GTEValues.MODID_AE) &&
+                Loader.isModLoaded(GTEValues.MODID_EIO))) {
+            builderIGTEUE.input(ENERGY_CLUSTER, 4);
+            builderIGTEUE.input(FIELD_GENERATOR_UV, 4);
+            builderIGTEUE.input(circuit, MarkerMaterials.Tier.UV, 16);
+        } else {
+            if (GTEValues.isModLoadedDEDA()) {
+                builderIGTEUE.inputs(getModItem(GTEValues.MODID_DE, "chaotic_energy_core", 8, 0));
+                builderIGTEUE.inputs(getModItem(GTEValues.MODID_DA, "chaos_stabilizer_core", 8, 0));
+            }
+            if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+                builderIGTEUE.inputs(getModItem(GTEValues.MODID_AE, "creative_energy_cell", 4, 0));
+                builderIGTEUE.stationResearch(
+                        b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm()).CWUt(128).EUt(VA[UHV]));
+            }
+            if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+                builderIGTEUE.inputNBT(getModItem(GTEValues.MODID_EIO, "block_cap_bank", 4, 3).getItem(),
+                        NBTMatcher.ANY, NBTCondition.ANY);
+            }
         }
+        if (GTEValues.isModLoadedDEDA() && Loader.isModLoaded(GTEValues.MODID_AE) &&
+                Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            builderIGTEUE.input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4);
+        } else if (Loader.isModLoaded(GTEValues.MODID_AE) &&
+                !(GTEValues.isModLoadedDEDA() && Loader.isModLoaded(GTEValues.MODID_EIO))) {
+                    builderIGTEUE.input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4);
+                }
+        builderIGTEUE.buildAndRegister();
 
         // Creative Quantum Tank
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -795,9 +726,8 @@ public class GTERecipeLoader {
                 .buildAndRegister();
 
         // Creative Data Access Hatch
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        AssemblyLineRecipeBuilder builderCDAH = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH)
-                .input(GTE_ME_FAKE_COMPONENT, 4)
                 .input(TOOL_DATA_MODULE, 4)
                 .input(WETWARE_MAINFRAME_UHV, 4)
                 .fluidInputs(SolderingAlloy.getFluid(18432))
@@ -805,8 +735,11 @@ public class GTERecipeLoader {
                 .outputs(MetaTileEntities.CREATIVE_DATA_HATCH.getStackForm())
                 .duration(2000).EUt(VA[UHV])
                 .stationResearch(b -> b.researchStack(MetaTileEntities.ADVANCED_DATA_ACCESS_HATCH.getStackForm())
-                        .CWUt(160).EUt(VA[UHV]))
-                .buildAndRegister();
+                        .CWUt(160).EUt(VA[UHV]));
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            builderCDAH.input(GTE_ME_FAKE_COMPONENT, 4);
+        }
+        builderCDAH.buildAndRegister();
     }
 
     /**

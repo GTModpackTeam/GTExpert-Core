@@ -11,19 +11,19 @@ public class GTEConfigHolder {
 
     @Config.Name("Gregtech Override")
     @Config.RequiresMcRestart
-    public static GregtechOverride ceuOverride = new GregtechOverride();
+    public static final GregtechOverride ceuOverride = new GregtechOverride();
 
     @Config.Name("AE2 Integration")
     @Config.RequiresMcRestart
-    public static AE2Integration ae2Integration = new AE2Integration();
+    public static final AE2Integration ae2Integration = new AE2Integration();
 
     @Config.Name("EnderIO Integration")
     @Config.RequiresMcRestart
-    public static EIOIntegration eioIntegration = new EIOIntegration();
+    public static final EIOIntegration eioIntegration = new EIOIntegration();
 
     @Config.Name("Chisel Integration")
     @Config.RequiresMcRestart
-    public static ChiselIntegration chiselIntegration = new ChiselIntegration();
+    public static final ChiselIntegration chiselIntegration = new ChiselIntegration();
 
     public static class GregtechOverride {
 
@@ -47,6 +47,10 @@ public class GTEConfigHolder {
     }
 
     public static class AE2Integration {
+
+        @Config.Comment({ "Change the recipe to use AE2 UEL: Extended by setting it to true.",
+                "Changes are not recommended if you don't know what kind of mod it is.", "Default: false" })
+        public boolean enableAE2UELExtended = false;
 
         @Config.Comment({ "The voltage at which AE can be started.",
                 "The material is also adjusted to each voltage.", "Default: 1 (LV)" })

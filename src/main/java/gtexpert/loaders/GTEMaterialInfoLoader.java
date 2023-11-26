@@ -15,6 +15,7 @@ import gtexpert.common.GTEMetaBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
 
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEBlockMetalCasing.MetalCasingType.*;
@@ -26,8 +27,10 @@ public class GTEMaterialInfoLoader {
                 new ItemMaterialInfo(new MaterialStack(Materials.TreatedWood,
                         (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft)));
 
-        OreDictUnifier.registerOre(new ItemStack(Blocks.SOUL_SAND), OrePrefix.dust, GTEMaterials.SoulSand);
-        OreDictUnifier.registerOre(new ItemStack(Items.CHORUS_FRUIT), OrePrefix.dust, GTEMaterials.ChorusFruit);
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            OreDictUnifier.registerOre(new ItemStack(Blocks.SOUL_SAND), OrePrefix.dust, GTEMaterials.SoulSand);
+            OreDictUnifier.registerOre(new ItemStack(Items.CHORUS_FRUIT), OrePrefix.dust, GTEMaterials.ChorusFruit);
+        }
 
         if (GTEValues.isModLoadedDEDA()) {
             OreDictUnifier.registerOre(new ItemStack(Blocks.DRAGON_EGG),

@@ -22,7 +22,7 @@ env:
   NAME: "GTExpertCore"
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -72,39 +72,46 @@ jobs:
           github-draft: false
           github-prerelease: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          modrinth-id: 'ipueNiWG'
+          modrinth-token: "${{ secrets.MODRINTH_API_KEY }}"
+          modrinth-dependencies: |
+            Bnsrfd1o(required)
+            G1ckZuWK(required)
+            tULldUx4@GJvzHTTh(required)
+            tZiutdLG@EBaj6aJx(required)
           curseforge-id: '851103'
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
+          curseforge-dependencies: |
+            mixin-booter(required)
+            configanytime(required)
+            gregtech-ce-unofficial(required)
+            gregicality-multiblocks(required)
+            ae2-extended-life(recommended)
+            ae-additions-extra-cells-2-fork(recommended)
+            ender-io-base(recommended)
+            ender-io-machines(recommended)
+            ender-io-endergy(recommended)
+            ender-io-conduits(recommended)
+            ender-io-ae2-conduits(recommended)
+            gregtech-food-option(recommended)
+            chisel(recommended)
+            extracpus(recommended)
+            draconic-evolution(recommended)
+            draconicadditions(recommended)
+            project-red-illumination(recommended)
+            ulv-covers(incompatible)
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar
             build/libs/*-@(sources).jar
             build/libs/*-@(dev).jar
           name: "${{ env.NAME }}-${{ env.FULL_VERSION }}.jar"
-          changelog: "Changelog is available [here](https://github.com/${{github.repository}}/releases/tag/v${{ env.FULL_VERSION }})"
+          changelog: "Changelog is available [here](https://github.com/${{github.repository}}/blob/main/CHANGELOG.md"
           version: "${{ github.event.inputs.version }}"
           version-type: "${{ github.event.inputs.release_type }}"
           loaders: |
             forge
           game-versions: |
             1.12.2
-          dependencies: |
-            mixin-booter | depends | *
-            configanytime | depends | *
-            gregtech-ce-unofficial | depends | *
-            gregicality-multiblocks | depends | *
-            ae2-extended-life | depends | *
-            ae-additions-extra-cells-2-fork | depends | *
-            ender-io-base | depends | *
-            ender-io-machines | depends | *
-            ender-io-endergy | depends | *
-            ender-io-conduits | depends | *
-            ender-io-ae2-conduits | depends | *
-            gregtech-food-option | recommends | *
-            chisel | recommends | *
-            extracpus | recommends | *
-            draconic-evolution | recommends | *
-            draconicadditions | recommends | *
-            project-red-illumination | recommends | *
-            ulv-covers | incompatible | *
           java: |
             8
           retry-attempts: 2
