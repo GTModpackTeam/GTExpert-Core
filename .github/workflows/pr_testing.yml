@@ -7,7 +7,7 @@ on:
     branches: [master, preview]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -63,10 +63,6 @@ jobs:
           PR_BRANCH: ${{ github.head_ref }}
           FIXED_BRANCH: ${{ github.head_ref }}-spotless-fixes
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Run server for 90 seconds
         run: |
           mkdir -p run
@@ -79,10 +75,6 @@ jobs:
           chmod +x ./scripts/test_no_error_reports
           ./scripts/test_no_error_reports
 
-  upload:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
       - name: Upload Jars
         uses: actions/upload-artifact@v3
         with:
