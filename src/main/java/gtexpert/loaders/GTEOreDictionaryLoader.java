@@ -24,108 +24,110 @@ public class GTEOreDictionaryLoader {
     public static void init() {
         OreDictionary.registerOre("bookshelf", new ItemStack(Blocks.BOOKSHELF));
 
-        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "quartz_block", 1, 0));
-        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "quartz_pillar", 1, 0));
-        OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "chiseled_quartz_block", 1, 0));
-        OreDictionary.registerOre("blockFluix", getModItem(GTEValues.MODID_AE, "fluix_block", 1, 0));
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "quartz_block", 1, 0));
+            OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "quartz_pillar", 1, 0));
+            OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "chiseled_quartz_block", 1, 0));
+            OreDictionary.registerOre("blockFluix", getModItem(GTEValues.MODID_AE, "fluix_block", 1, 0));
 
-        OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(OrePrefix.stick, Materials.NetherQuartz));
-        OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(OrePrefix.stick, Materials.CertusQuartz));
-        OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(OrePrefix.stick, Materials.Quartzite));
+            OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(OrePrefix.stick, Materials.NetherQuartz));
+            OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(OrePrefix.stick, Materials.CertusQuartz));
+            OreDictionary.registerOre("craftStickQuartz", OreDictUnifier.get(OrePrefix.stick, Materials.Quartzite));
 
-        OreDictionary.registerOre("craftNetherQuartz", OreDictUnifier.get(OrePrefix.gem, Materials.NetherQuartz));
-        OreDictionary.registerOre("craftNetherQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 11));
+            OreDictionary.registerOre("craftNetherQuartz", OreDictUnifier.get(OrePrefix.gem, Materials.NetherQuartz));
+            OreDictionary.registerOre("craftNetherQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 11));
 
-        OreDictionary.registerOre("craftCertusQuartz", OreDictUnifier.get(OrePrefix.gem, Materials.CertusQuartz));
-        OreDictionary.registerOre("craftCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 0));
-        OreDictionary.registerOre("craftCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 10));
+            OreDictionary.registerOre("craftCertusQuartz", OreDictUnifier.get(OrePrefix.gem, Materials.CertusQuartz));
+            OreDictionary.registerOre("craftCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 0));
+            OreDictionary.registerOre("craftCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 10));
 
-        OreDictionary.registerOre("craftFluix", getModItem(GTEValues.MODID_AE, "material", 1, 7));
-        OreDictionary.registerOre("craftFluix", getModItem(GTEValues.MODID_AE, "material", 1, 12));
+            OreDictionary.registerOre("craftFluix", getModItem(GTEValues.MODID_AE, "material", 1, 7));
+            OreDictionary.registerOre("craftFluix", getModItem(GTEValues.MODID_AE, "material", 1, 12));
 
-        OreDictionary.registerOre("gemCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 0));
-        OreDictionary.registerOre("gemChargedCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 1));
-        OreDictionary.registerOre("gemFluix", getModItem(GTEValues.MODID_AE, "material", 1, 7));
+            OreDictionary.registerOre("gemCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 0));
+            OreDictionary.registerOre("gemChargedCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 1));
+            OreDictionary.registerOre("gemFluix", getModItem(GTEValues.MODID_AE, "material", 1, 7));
 
-        OreDictionary.registerOre("crystalChargedCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 1));
+            OreDictionary.registerOre("crystalChargedCertusQuartz", getModItem(GTEValues.MODID_AE, "material", 1, 1));
 
-        List<ItemStack> craftGlassCable = new LinkedList<>();
-        IntStream.rangeClosed(0, 16).forEach(i -> {
-            craftGlassCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        {
-            Iterator<ItemStack> iterator = craftGlassCable.iterator();
+            List<ItemStack> craftGlassCable = new LinkedList<>();
+            IntStream.rangeClosed(0, 16).forEach(i -> {
+                craftGlassCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+                ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+            });
+            {
+                Iterator<ItemStack> iterator = craftGlassCable.iterator();
+                while (iterator.hasNext()) {
+                    ItemStack stack = iterator.next();
+                    OreDictionary.registerOre("craftGlassCable", stack);
+
+                    if (iterator.hasNext()) OreDictionary.registerOre("craftGlassCableColors", stack);
+                }
+            }
+
+            List<ItemStack> craftCoveredCable = new LinkedList<>();
+            IntStream.rangeClosed(20, 36).forEach(i -> {
+                craftCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+                ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+            });
+            {
+                Iterator<ItemStack> iterator = craftCoveredCable.iterator();
+                while (iterator.hasNext()) {
+                    ItemStack stack = iterator.next();
+                    OreDictionary.registerOre("craftCoveredCable", stack);
+
+                    if (iterator.hasNext()) OreDictionary.registerOre("craftCoveredCableColors", stack);
+                }
+            }
+
+            List<ItemStack> craftSmartCable = new LinkedList<>();
+            IntStream.rangeClosed(40, 56).forEach(i -> {
+                craftSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+                ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+            });
+            {
+                Iterator<ItemStack> iterator = craftSmartCable.iterator();
+                while (iterator.hasNext()) {
+                    ItemStack stack = iterator.next();
+                    OreDictionary.registerOre("craftSmartCable", stack);
+
+                    if (iterator.hasNext()) OreDictionary.registerOre("craftSmartCableColors", stack);
+                }
+            }
+
+            List<ItemStack> craftDenseCoveredCable = new LinkedList<>();
+            IntStream.rangeClosed(500, 516).forEach(i -> {
+                craftDenseCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+                ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+            });
+            {
+                Iterator<ItemStack> iterator = craftDenseCoveredCable.iterator();
+                while (iterator.hasNext()) {
+                    ItemStack stack = iterator.next();
+                    OreDictionary.registerOre("craftDenseCoveredCable", stack);
+
+                    if (iterator.hasNext()) OreDictionary.registerOre("craftDenseCoveredCableColors", stack);
+                }
+            }
+
+            List<ItemStack> craftDenseSmartCable = new LinkedList<>();
+            IntStream.rangeClosed(60, 76).forEach(i -> {
+                craftDenseSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
+                ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
+            });
+            Iterator<ItemStack> iterator = craftDenseSmartCable.iterator();
             while (iterator.hasNext()) {
                 ItemStack stack = iterator.next();
-                OreDictionary.registerOre("craftGlassCable", stack);
+                OreDictionary.registerOre("craftDenseSmartCable", stack);
 
-                if (iterator.hasNext()) OreDictionary.registerOre("craftGlassCableColors", stack);
+                if (iterator.hasNext()) OreDictionary.registerOre("craftDenseSmartCableColors", stack);
             }
+
+            OreDictionary.registerOre("craftInterfaceItem", getModItem(GTEValues.MODID_AE, "interface", 1, 0));
+            OreDictionary.registerOre("craftInterfaceFluid", getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0));
+            OreDictionary.registerOre("craftInterfaceItem", getModItem(GTEValues.MODID_AE, "part", 1, 440));
+            OreDictionary.registerOre("craftInterfaceFluid", getModItem(GTEValues.MODID_AE, "part", 1, 441));
         }
-
-        List<ItemStack> craftCoveredCable = new LinkedList<>();
-        IntStream.rangeClosed(20, 36).forEach(i -> {
-            craftCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        {
-            Iterator<ItemStack> iterator = craftCoveredCable.iterator();
-            while (iterator.hasNext()) {
-                ItemStack stack = iterator.next();
-                OreDictionary.registerOre("craftCoveredCable", stack);
-
-                if (iterator.hasNext()) OreDictionary.registerOre("craftCoveredCableColors", stack);
-            }
-        }
-
-        List<ItemStack> craftSmartCable = new LinkedList<>();
-        IntStream.rangeClosed(40, 56).forEach(i -> {
-            craftSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        {
-            Iterator<ItemStack> iterator = craftSmartCable.iterator();
-            while (iterator.hasNext()) {
-                ItemStack stack = iterator.next();
-                OreDictionary.registerOre("craftSmartCable", stack);
-
-                if (iterator.hasNext()) OreDictionary.registerOre("craftSmartCableColors", stack);
-            }
-        }
-
-        List<ItemStack> craftDenseCoveredCable = new LinkedList<>();
-        IntStream.rangeClosed(500, 516).forEach(i -> {
-            craftDenseCoveredCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        {
-            Iterator<ItemStack> iterator = craftDenseCoveredCable.iterator();
-            while (iterator.hasNext()) {
-                ItemStack stack = iterator.next();
-                OreDictionary.registerOre("craftDenseCoveredCable", stack);
-
-                if (iterator.hasNext()) OreDictionary.registerOre("craftDenseCoveredCableColors", stack);
-            }
-        }
-
-        List<ItemStack> craftDenseSmartCable = new LinkedList<>();
-        IntStream.rangeClosed(60, 76).forEach(i -> {
-            craftDenseSmartCable.add(getModItem(GTEValues.MODID_AE, "part", 1, i));
-            ModHandler.removeRecipeByOutput(getModItem(GTEValues.MODID_AE, "part", 8, i));
-        });
-        Iterator<ItemStack> iterator = craftDenseSmartCable.iterator();
-        while (iterator.hasNext()) {
-            ItemStack stack = iterator.next();
-            OreDictionary.registerOre("craftDenseSmartCable", stack);
-
-            if (iterator.hasNext()) OreDictionary.registerOre("craftDenseSmartCableColors", stack);
-        }
-
-        OreDictionary.registerOre("craftInterfaceItem", getModItem(GTEValues.MODID_AE, "interface", 1, 0));
-        OreDictionary.registerOre("craftInterfaceFluid", getModItem(GTEValues.MODID_AE, "fluid_interface", 1, 0));
-        OreDictionary.registerOre("craftInterfaceItem", getModItem(GTEValues.MODID_AE, "part", 1, 440));
-        OreDictionary.registerOre("craftInterfaceFluid", getModItem(GTEValues.MODID_AE, "part", 1, 441));
 
         if (Loader.isModLoaded(GTEValues.MODID_AEFC)) {
             OreDictionary.registerOre("craftInterfaceDual",

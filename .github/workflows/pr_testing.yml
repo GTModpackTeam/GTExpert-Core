@@ -7,7 +7,7 @@ on:
     branches: [master, preview]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -33,13 +33,6 @@ jobs:
 
       - name: Compile the mod
         run: ./gradlew --build-cache --info --stacktrace assemble
-
-      - name: Attach compilation artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-libs
-          path: build/libs/
-          retention-days: 31
 
       - name: Run post-build checks
         id: build_mod
@@ -70,6 +63,10 @@ jobs:
           PR_BRANCH: ${{ github.head_ref }}
           FIXED_BRANCH: ${{ github.head_ref }}-spotless-fixes
 
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Run server for 90 seconds
         run: |
           mkdir -p run
@@ -82,6 +79,10 @@ jobs:
           chmod +x ./scripts/test_no_error_reports
           ./scripts/test_no_error_reports
 
+  upload:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
       - name: Upload Jars
         uses: actions/upload-artifact@v3
         with:

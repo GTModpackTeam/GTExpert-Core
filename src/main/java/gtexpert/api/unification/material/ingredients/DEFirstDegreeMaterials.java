@@ -7,6 +7,10 @@ import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.material.properties.ToolProperty;
 
+import gtexpert.api.GTEValues;
+
+import net.minecraftforge.fml.common.Loader;
+
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
@@ -41,7 +45,8 @@ public class DEFirstDegreeMaterials {
                 .dust()
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
-                .components(EndSteel, 1, Iridium, 1, EnderEye, 1, SaltWater, 1)
+                .components(Iridium, 1, EnderEye, 1, SaltWater, 1,
+                        Loader.isModLoaded(GTEValues.MODID_EIO) ? EndSteel : Endstone, 1)
                 .build();
 
         // Draconium
@@ -84,7 +89,7 @@ public class DEFirstDegreeMaterials {
                 .dust()
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
-                .components(Dragon, 8, AwakenedDraconium, 8, Pyrotheum, 8)
+                .components(AwakenedDraconium, 8, Pyrotheum, 8, Dragon, 8)
                 .build();
     }
 }
