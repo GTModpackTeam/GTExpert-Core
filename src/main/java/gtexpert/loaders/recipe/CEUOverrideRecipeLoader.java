@@ -1,6 +1,6 @@
 package gtexpert.loaders.recipe;
 
-import gregicality.multiblocks.api.AlloyBlastUtil;
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
@@ -328,7 +328,7 @@ public class CEUOverrideRecipeLoader {
         if (!material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) return;
 
         // Check if the material has a molten fluid
-        Fluid molten = AlloyBlastUtil.getMoltenFluid(material);
+        Fluid molten = material.getFluid(GCYMFluidStorageKeys.MOLTEN);
         if (material.getFluid() == molten) return;
 
         // Check if the material has a blast temperature above 5000K
@@ -348,7 +348,7 @@ public class CEUOverrideRecipeLoader {
                             .notConsumable(SHAPE_MOLD_PLATE)
                             .fluidInputs(new FluidStack(molten, 144))
                             .fluidInputs(Cryotheum.getFluid(500))
-                            .fluidOutputs(Pyrotheum.getFluid(100))
+                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 500))
                             .output(plate, material, 1)
                             .duration((int) material.getMass() << 1)
                             .buildAndRegister();
@@ -369,7 +369,7 @@ public class CEUOverrideRecipeLoader {
                             .notConsumable(SHAPE_MOLD_GEAR_SMALL)
                             .fluidInputs(new FluidStack(molten, 144))
                             .fluidInputs(Cryotheum.getFluid(500))
-                            .fluidOutputs(Pyrotheum.getFluid(100))
+                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 100))
                             .output(gearSmall, material, 1)
                             .duration((int) material.getMass() << 1)
                             .buildAndRegister();
@@ -390,7 +390,7 @@ public class CEUOverrideRecipeLoader {
                             .notConsumable(SHAPE_MOLD_GEAR)
                             .fluidInputs(new FluidStack(molten, 576))
                             .fluidInputs(Cryotheum.getFluid(2000))
-                            .fluidOutputs(Pyrotheum.getFluid(400))
+                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 400))
                             .output(gear, material, 1)
                             .duration((int) material.getMass() << 4)
                             .buildAndRegister();
@@ -411,7 +411,7 @@ public class CEUOverrideRecipeLoader {
                             .notConsumable(SHAPE_MOLD_ROTOR)
                             .fluidInputs(new FluidStack(molten, 576))
                             .fluidInputs(Cryotheum.getFluid(2000))
-                            .fluidOutputs(Pyrotheum.getFluid(400))
+                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 400))
                             .output(rotor, material, 1)
                             .duration((int) material.getMass() << 4)
                             .buildAndRegister();
@@ -430,7 +430,7 @@ public class CEUOverrideRecipeLoader {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .input(ingotHot, material, 1)
                         .fluidInputs(Cryotheum.getFluid(500))
-                        .fluidOutputs(Pyrotheum.getFluid(100))
+                        .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 100))
                         .output(ingot, material, 1)
                         .duration((int) material.getMass() << 1)
                         .buildAndRegister();
@@ -438,7 +438,7 @@ public class CEUOverrideRecipeLoader {
                         .circuitMeta(1)
                         .fluidInputs(new FluidStack(molten, 144))
                         .fluidInputs(Cryotheum.getFluid(500))
-                        .fluidOutputs(Pyrotheum.getFluid(100))
+                        .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 100))
                         .fluidOutputs(material.getFluid(144))
                         .duration((int) material.getMass() << 1)
                         .buildAndRegister();
