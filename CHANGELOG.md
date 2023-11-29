@@ -1,3 +1,10 @@
+# v1.5.2
+## Fix recipes
+### Applied Energistics2
+- Interface
+
+* * *
+
 # v1.5.1
 ## Fix recipes
 ### Applied Energistics2
