@@ -4,8 +4,6 @@ import gtexpert.api.GTEValues;
 
 import net.minecraftforge.common.config.Config;
 
-import com.cleanroommc.configanytime.ConfigAnytime;
-
 @Config(modid = GTEValues.MODID)
 public class GTEConfigHolder {
 
@@ -84,10 +82,5 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Change LED for Project:RED recipes to GT recipe standards.", "Default: false" })
         public boolean hardLedRecipes = false;
-    }
-
-    // Register the config holder
-    static {
-        ConfigAnytime.register(GTEConfigHolder.class);
     }
 }
