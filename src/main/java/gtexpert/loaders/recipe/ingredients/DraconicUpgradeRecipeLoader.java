@@ -1,5 +1,6 @@
 package gtexpert.loaders.recipe.ingredients;
 
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregtech.api.GTValues;
 import gregtech.api.items.toolitem.ToolHelper;
 import gregtech.api.recipes.ModHandler;
@@ -162,7 +163,7 @@ public class DraconicUpgradeRecipeLoader {
                 .inputNBT(DEFeatures.draconicSword, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(DEFeatures.draconicCore, 4)
                 .fluidInputs(Cryotheum.getFluid(32000))
-                .fluidOutputs(Pyrotheum.getFluid(8000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
                 .duration(400).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -257,14 +258,14 @@ public class DraconicUpgradeRecipeLoader {
                     .input(DEFeatures.wyvernCore, 1)
                     .input(DEFeatures.wyvernEnergyCore, 1)
                     .fluidInputs(Cryotheum.getFluid(16000))
-                    .fluidOutputs(Pyrotheum.getFluid(4000))
+                    .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                     .duration(200).EUt(VA[LuV]);
             case DRACONIC -> recipeBuilder
                     .input(plate, AwakenedDraconium, 2)
                     .input(DEFeatures.draconicCore, 4)
                     .input(DEFeatures.draconicEnergyCore, 1)
                     .fluidInputs(Cryotheum.getFluid(32000))
-                    .fluidOutputs(Pyrotheum.getFluid(8000))
+                    .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
                     .duration(400).EUt(VA[ZPM]);
             case CHAOTIC -> recipeBuilder
                     .input(DEFeatures.chaosShard, 4, 0)
@@ -272,7 +273,7 @@ public class DraconicUpgradeRecipeLoader {
                     .input(DEFeatures.chaoticCore, 1)
                     .input(DAFeatures.chaoticEnergyCore, 1)
                     .fluidInputs(Cryotheum.getFluid(48000))
-                    .fluidOutputs(Pyrotheum.getFluid(12000))
+                    .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 12000))
                     .duration(600).EUt(VA[UHV]);
         }
         recipeBuilder.buildAndRegister();
@@ -341,7 +342,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(OrePrefix.gem, EnderEye, 2)
                                     .input(DEFeatures.wyvernCore)
                                     .fluidInputs(Cryotheum.getFluid(8000))
-                                    .fluidOutputs(Pyrotheum.getFluid(2000))
+                                    .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 2000))
                                     .duration(100).EUt(VA[IV]);
                             case 1 -> recipeBuilder
                                     .input(OrePrefix.gem, NetherStar, 2)
@@ -349,7 +350,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(OrePrefix.gem, Emerald, 2)
                                     .input(DEFeatures.draconicCore)
                                     .fluidInputs(Cryotheum.getFluid(16000))
-                                    .fluidOutputs(Pyrotheum.getFluid(4000))
+                                    .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                                     .duration(200).EUt(VA[LuV]);
                             case 2 -> recipeBuilder
                                     .input(OrePrefix.gem, NetherStar, 2)
@@ -357,7 +358,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(OrePrefix.block, Emerald, 2)
                                     .input(DEFeatures.awakenedCore)
                                     .fluidInputs(Cryotheum.getFluid(32000))
-                                    .fluidOutputs(Pyrotheum.getFluid(8000))
+                                    .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
                                     .duration(400).EUt(VA[ZPM]);
                             case 3 -> recipeBuilder
                                     .input(DEFeatures.draconicCore, 2)
@@ -365,7 +366,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(Blocks.DRAGON_EGG, 2)
                                     .input(DEFeatures.chaoticCore)
                                     .fluidInputs(Cryotheum.getFluid(48000))
-                                    .fluidOutputs(Pyrotheum.getFluid(12000))
+                                    .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 12000))
                                     .duration(600).EUt(VA[UHV]);
                         }
                         recipeBuilder.buildAndRegister();

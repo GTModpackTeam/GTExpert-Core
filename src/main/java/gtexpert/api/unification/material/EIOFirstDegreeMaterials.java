@@ -1,6 +1,6 @@
 package gtexpert.api.unification.material;
 
-import gregtech.api.fluids.fluidType.FluidTypes;
+import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
@@ -34,163 +34,195 @@ public class EIOFirstDegreeMaterials {
         // Electrical Steel
         ElectricalSteel = new Material.Builder(24103, gregtechId("electrical_steel"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x949494).iconSet(MaterialIconSet.METALLIC)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT_METAL, GENERATE_GEAR)
                 .components(Steel, 1, Coal, 1, Silicon, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Energetic Alloy
         EnergeticAlloy = new Material.Builder(24104, gregtechId("energetic_alloy"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0xED8009).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT_METAL, GENERATE_GEAR, GENERATE_DOUBLE_PLATE)
                 .components(Redstone, 1, Gold, 1, Glowstone, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
         EnergeticAlloy.setFormula("Au2(Si(FeS2)5(CrAl2O3)Hg3)2", true);
 
         // Vibrant Alloy
         VibrantAlloy = new Material.Builder(24105, gregtechId("vibrant_alloy"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0xBAC63F).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT_METAL, GENERATE_GEAR, GENERATE_DOUBLE_PLATE)
                 .components(EnergeticAlloy, 1, EnderPearl, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
         VibrantAlloy.setFormula("BeK4N5(Au2(Si(FeS2)5(CrAl2O3)Hg3)2)", true);
 
         // Redstone Alloy
         RedstoneAlloy = new Material.Builder(24106, gregtechId("redstone_alloy"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x942323).iconSet(MaterialIconSet.DULL)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(GENERATE_PLATE)
                 .components(RedAlloy, 1, Silicon, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Conductive Iron
         ConductiveIron = new Material.Builder(24107, gregtechId("conductive_iron"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0xD1A79B).iconSet(MaterialIconSet.ROUGH)
-                .blastTemp(1700, GasTier.HIGH, VA[HV], 120)
                 .flags(GENERATE_PLATE)
                 .components(Iron, 1, RedstoneAlloy, 1)
+                .blast(b -> b
+                        .temp(1700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Pulsating Iron
         PulsatingIron = new Material.Builder(24108, gregtechId("pulsating_iron"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x6EAC7D).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT_METAL)
                 .components(Iron, 1, EnderPearl, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Dark Steel
         DarkSteel = new Material.Builder(24109, gregtechId("dark_steel"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x5F5F5F).iconSet(MaterialIconSet.METALLIC)
-                .blastTemp(2700, GasTier.HIGH, VA[HV], 120)
                 .flags(EXT2_METAL, GENERATE_RING, GENERATE_FRAME)
                 .components(Iron, 1, Coal, 1, Obsidian, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.HIGH)
+                        .blastStats(VA[HV], 120))
                 .build();
 
         // Soularium
         Soularium = new Material.Builder(24110, gregtechId("soularium"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x5A4226).iconSet(MaterialIconSet.DULL)
-                .blastTemp(3600, GasTier.HIGH, VA[HV], 600)
                 .flags(GENERATE_PLATE)
                 .components(Gold, 1, Ash, 1, SoulSand, 1)
+                .blast(b -> b
+                        .temp(3600, GasTier.HIGH)
+                        .blastStats(VA[HV], 600))
                 .build();
 
         // End Steel
         EndSteel = new Material.Builder(24111, gregtechId("end_steel"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0xBCB682).iconSet(MaterialIconSet.METALLIC)
-                .blastTemp(4500, GasTier.HIGHER, VA[EV], 1072)
                 .flags(EXT2_METAL, GENERATE_RING)
                 .components(Endstone, 1, DarkSteel, 1, Obsidian, 1)
+                .blast(b -> b
+                        .temp(4500, GasTier.HIGHER)
+                        .blastStats(VA[EV], 1072))
                 .build();
         EndSteel.setFormula("FeC(MgFeSi2O4)2?", true);
 
         // Iron Alloy
         ConstructionAlloy = new Material.Builder(24112, gregtechId("construction_alloy"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x524C53).iconSet(MaterialIconSet.ROUGH)
-                .blastTemp(1700, GasTier.HIGHER, VA[EV], 1072)
                 .flags(GENERATE_PLATE)
                 .components(Platinum, 1, Iron, 1, Aluminium, 1)
+                .blast(b -> b
+                        .temp(1700, GasTier.HIGHER)
+                        .blastStats(VA[EV], 1072))
                 .build();
 
         // Crystalline Alloy
         CrystallineAlloy = new Material.Builder(24113, gregtechId("crystalline_alloy"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x9FE4E4).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(4500, GasTier.HIGHER, VA[EV], 600)
                 .flags(GENERATE_PLATE)
                 .components(Gold, 1, Platinum, 1, Emerald, 1, VibrantAlloy, 1)
+                .blast(b -> b
+                        .temp(4500, GasTier.HIGHER)
+                        .blastStats(VA[EV], 600))
                 .build();
 
         // Melodic Alloy
         MelodicAlloy = new Material.Builder(24114, gregtechId("melodic_alloy"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0xA877A8).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, VA[EV], 600)
                 .flags(GENERATE_PLATE)
                 .components(EndSteel, 1, ChorusFruit, 1)
+                .blast(b -> b
+                        .temp(5400, GasTier.HIGHER)
+                        .blastStats(VA[EV], 600))
                 .build();
 
         // Stellar Alloy
         StellarAlloy = new Material.Builder(24115, gregtechId("stellar_alloy"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0xDBDECC).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(7200, GasTier.HIGHER, VA[LuV], 600)
                 .flags(EXT_METAL, GENERATE_LONG_ROD)
                 .components(NetherStar, 1, MelodicAlloy, 1, Clay, 1)
+                .blast(b -> b
+                        .temp(7200, GasTier.HIGHER)
+                        .blastStats(VA[EV], 600))
                 .build();
 
         // Crystalline Pink Slime
         CrystallinePinkSlime = new Material.Builder(24116, gregtechId("crystalline_pink_slime"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0xE79EDB).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, VA[EV], 600)
                 .flags(GENERATE_PLATE)
                 .components(MelodicAlloy, 1, RawRubber, 2)
+                .blast(b -> b
+                        .temp(5400, GasTier.HIGHER)
+                        .blastStats(VA[EV], 600))
                 .build();
 
         // Energetic Silver
         EnergeticSilver = new Material.Builder(24117, gregtechId("energetic_silver"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x598DB3).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, VA[EV], 1072)
                 .flags(GENERATE_PLATE)
                 .components(Silver, 1, Redstone, 1, Glowstone, 1)
+                .blast(b -> b
+                        .temp(5400, GasTier.HIGHER)
+                        .blastStats(VA[EV], 1072))
                 .build();
 
         // Vivid Alloy
         VividAlloy = new Material.Builder(24118, gregtechId("vivid_alloy"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x469BB1).iconSet(MaterialIconSet.SHINY)
-                .blastTemp(5400, GasTier.HIGHER, 1920, 1072)
                 .components(EnergeticSilver, 1, EnderPearl, 1)
+                .blast(b -> b
+                        .temp(5400, GasTier.HIGHER)
+                        .blastStats(VA[EV], 1072))
                 .build();
     }
 }

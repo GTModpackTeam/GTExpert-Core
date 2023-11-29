@@ -1,5 +1,6 @@
 package gtexpert.loaders.recipe.ingredients;
 
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
@@ -10,6 +11,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.*;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 
@@ -48,7 +50,7 @@ public class DraconicRecipeLoader {
     private static void fluid() {
         // Cryotheum
         RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                .fluidInputs(Pyrotheum.getFluid(1000))
+                .fluidInputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 1000))
                 .fluidOutputs(Cryotheum.getFluid(1000))
                 .duration(400).EUt(VA[LuV])
                 .buildAndRegister();
@@ -67,7 +69,7 @@ public class DraconicRecipeLoader {
                 .input(dust, Sulfur, 1)
                 .fluidInputs(Argon.getFluid(200))
                 .fluidInputs(Blaze.getFluid(2304))
-                .fluidOutputs(Pyrotheum.getFluid(1000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 1000))
                 .blastFurnaceTemp(7200)
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
@@ -76,7 +78,7 @@ public class DraconicRecipeLoader {
                 .input(dust, Redstone, 1)
                 .input(dust, Sulfur, 1)
                 .fluidInputs(Blaze.getFluid(2304))
-                .fluidOutputs(Pyrotheum.getFluid(1000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 1000))
                 .blastFurnaceTemp(7200)
                 .duration(1200).EUt(VA[LuV])
                 .buildAndRegister();
@@ -110,7 +112,7 @@ public class DraconicRecipeLoader {
         // Chaos Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Dragon, 8)
-                .fluidInputs(Pyrotheum.getFluid(8000))
+                .fluidInputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
                 .fluidInputs(AwakenedDraconium.getFluid(1152))
                 .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, Chaos, 2)
@@ -249,7 +251,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.draconicCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(200).EUt(38400);
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderDraconicCore1.inputs(getModItem(GTEValues.MODID_EIO, "item_capacitor_crystalline", 4, 0));
@@ -267,7 +269,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.draconicCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(200).EUt(38400);
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderDraconicCore2.inputs(getModItem(GTEValues.MODID_EIO, "item_capacitor_crystalline", 4, 0));
@@ -286,7 +288,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.awakenedCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(400).EUt(153600);
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderAwakenedCore1.inputs(getModItem(GTEValues.MODID_EIO, "item_capacitor_melodic", 4, 0));
@@ -304,7 +306,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.awakenedCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(400).EUt(153600);
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderAwakenedCore2.inputs(getModItem(GTEValues.MODID_EIO, "item_capacitor_melodic", 4, 0));
@@ -324,7 +326,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.chaoticCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(600).EUt(614400);
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderChaoticCore1.inputs(getModItem(GTEValues.MODID_EIO, "item_capacitor_stellar", 4, 0));
@@ -343,7 +345,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.chaoticCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(600).EUt(614400);
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderChaoticCore2.inputs(getModItem(GTEValues.MODID_EIO, "item_capacitor_stellar", 4, 0));
@@ -363,7 +365,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.wyvernEnergyCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(100).EUt(9600)
                 .buildAndRegister();
         GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -375,7 +377,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.wyvernEnergyCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(100).EUt(9600)
                 .buildAndRegister();
 
@@ -390,7 +392,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DEFeatures.draconicEnergyCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(200).EUt(38400)
                 .buildAndRegister();
         GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -402,7 +404,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DEFeatures.draconicEnergyCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(200).EUt(38400)
                 .buildAndRegister();
 
@@ -497,7 +499,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 0))
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(400).EUt(38400)
                 .buildAndRegister();
         GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -509,7 +511,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 0))
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(400).EUt(38400)
                 .buildAndRegister();
 
@@ -522,7 +524,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 1))
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(400).EUt(38400);
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderREI1.input(plate, DarkSteel, 4);
@@ -539,7 +541,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .outputs(new ItemStack(DEFeatures.reactorComponent, 1, 1))
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(400).EUt(38400);
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderREI2.input(plate, DarkSteel, 4);
@@ -553,7 +555,7 @@ public class DraconicRecipeLoader {
                 .input(DEFeatures.chaosShard, 1, 0)
                 .fluidInputs(Draconium.getFluid(1152))
                 .fluidInputs(AwakenedDraconium.getFluid(1152))
-                .fluidInputs(Pyrotheum.getFluid(64000))
+                .fluidInputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 64000))
                 .outputs(new ItemStack(DEFeatures.reactorCore, 1, 0))
                 .duration(1200).EUt(VA[LuV])
                 .buildAndRegister();
@@ -693,7 +695,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polyethylene.getFluid(288))
                 .output(DAFeatures.chaoticEnergyCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(400).EUt(614400)
                 .buildAndRegister();
         GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
@@ -706,7 +708,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .output(DAFeatures.chaoticEnergyCore, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(400).EUt(614400)
                 .buildAndRegister();
     }
@@ -802,7 +804,8 @@ public class DraconicRecipeLoader {
         // Draconum Casing
         ModHandler.addShapedRecipe(true, "casing_draconum",
                 GTEMetaBlocks.GTE_BLOCK_METAL_CASING
-                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2),
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING,
+                                ConfigHolder.recipes.casingsPerCraft),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, Draconium),
                 'F', new UnificationEntry(frameGt, Draconium));
@@ -818,7 +821,8 @@ public class DraconicRecipeLoader {
         // Awakened Draconum Casing
         ModHandler.addShapedRecipe(true, "casing_awakened_draconum",
                 GTEMetaBlocks.GTE_BLOCK_METAL_CASING
-                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2),
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING,
+                                ConfigHolder.recipes.casingsPerCraft),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, AwakenedDraconium),
                 'F', new UnificationEntry(frameGt, AwakenedDraconium));
@@ -905,7 +909,7 @@ public class DraconicRecipeLoader {
                 .fluidInputs(Cryotheum.getFluid(8000))
                 .fluidInputs(Draconium.getFluid(1152))
                 .output(DEFeatures.draconiumChest)
-                .fluidOutputs(Pyrotheum.getFluid(2000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 2000))
                 .duration(100).EUt(VA[LuV])
                 .buildAndRegister();
 
@@ -919,7 +923,7 @@ public class DraconicRecipeLoader {
                 .input(DEFeatures.draconicCore, 4)
                 .fluidInputs(Cryotheum.getFluid(32000))
                 .output(DAFeatures.chaosLiquefier, 1)
-                .fluidOutputs(Pyrotheum.getFluid(8000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
                 .duration(200).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -928,7 +932,7 @@ public class DraconicRecipeLoader {
                 .input(DEFeatures.reactorCore, 4)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(DEFeatures.infusedObsidian, 4)
-                .fluidInputs(Pyrotheum.getFluid(48000))
+                .fluidInputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 48000))
                 .output(DAFeatures.chaosStabilizerCore, 1)
                 .duration(1200).EUt(VA[UHV])
                 .buildAndRegister();
@@ -939,7 +943,7 @@ public class DraconicRecipeLoader {
                 .input(ring, Titanium, 4)
                 .fluidInputs(Cryotheum.getFluid(16000))
                 .output(DAFeatures.capacitorSupplier, 1)
-                .fluidOutputs(Pyrotheum.getFluid(4000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(100).EUt(VA[LuV]);
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderCS.input(plate, StellarAlloy, 4);
@@ -998,7 +1002,7 @@ public class DraconicRecipeLoader {
                 .input(DAFeatures.chaoticEnergyCore, 1)
                 .fluidInputs(Cryotheum.getFluid(48000))
                 .outputs(new ItemStack(DAFeatures.chaosContainer, 1))
-                .fluidOutputs(Pyrotheum.getFluid(12000))
+                .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 12000))
                 .duration(100).EUt(VA[UHV])
                 .buildAndRegister();
 

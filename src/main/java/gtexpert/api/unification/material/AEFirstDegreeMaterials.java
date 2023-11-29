@@ -1,6 +1,6 @@
 package gtexpert.api.unification.material;
 
-import gregtech.api.fluids.fluidType.FluidTypes;
+import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
@@ -21,7 +21,7 @@ public class AEFirstDegreeMaterials {
         // Charged Certus Quartz
         ChargedCertusQuartz = new Material.Builder(24151, gregtechId("charged_certus_quartz"))
                 .dust()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0xCFDAFF).iconSet(MaterialIconSet.CERTUS)
                 .flags(GENERATE_PLATE, GENERATE_LENS, DISABLE_DECOMPOSITION)
                 .components(Silicon, 1, Oxygen, 2)
@@ -31,7 +31,7 @@ public class AEFirstDegreeMaterials {
         // Fluix
         Fluix = new Material.Builder(24152, gregtechId("fluix"))
                 .dust()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x846994).iconSet(MaterialIconSet.CERTUS)
                 .flags(GENERATE_PLATE, GENERATE_LENS, DISABLE_DECOMPOSITION)
                 .components(Silicon, 2, Oxygen, 4, Redstone, 1)
@@ -41,11 +41,13 @@ public class AEFirstDegreeMaterials {
         // Fluix Alloy
         FluixAlloy = new Material.Builder(24153, gregtechId("fluix_alloy"))
                 .ingot()
-                .fluid(FluidTypes.LIQUID, false).fluidTemp(1200)
+                .liquid(new FluidBuilder().temperature(1200))
                 .color(0x4A3954).iconSet(MaterialIconSet.SHINY)
                 .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
-                .blastTemp(2700, GasTier.LOW, VA[HV], 1072)
                 .components(Fluix, 2, Carbon, 2, Silicon, 1, Iron, 1)
+                .blast(b -> b
+                        .temp(2700, GasTier.LOW)
+                        .blastStats(VA[HV], 1072))
                 .build();
     }
 }

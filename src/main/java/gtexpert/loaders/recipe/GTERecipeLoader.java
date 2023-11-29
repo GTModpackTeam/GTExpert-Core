@@ -605,7 +605,8 @@ public class GTERecipeLoader {
 
         // Treated Wood Machine Casing
         ModHandler.addShapedRecipe(true, "casing_treated_wood",
-                GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2),
+                GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,
+                        ConfigHolder.recipes.casingsPerCraft),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, TreatedWood),
                 'F', new UnificationEntry(frameGt, TreatedWood));
@@ -627,7 +628,8 @@ public class GTERecipeLoader {
                 .input(plate, NM_HEA_NPs, 6)
                 .fluidInputs(EnderPearl.getFluid(GTValues.L << 2))
                 .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
-                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER, 2))
+                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER,
+                                ConfigHolder.recipes.casingsPerCraft))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
 
