@@ -75,7 +75,6 @@ jobs:
           modrinth-id: 'ipueNiWG'
           modrinth-token: "${{ secrets.MODRINTH_API_KEY }}"
           modrinth-dependencies: |
-            Bnsrfd1o(required)
             G1ckZuWK(required)
             tULldUx4@GJvzHTTh(required)
             tZiutdLG@EBaj6aJx(required)
@@ -83,7 +82,6 @@ jobs:
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           curseforge-dependencies: |
             mixin-booter(required)
-            configanytime(required)
             gregtech-ce-unofficial(required)
             gregicality-multiblocks(required)
             ae2-extended-life(recommended)
