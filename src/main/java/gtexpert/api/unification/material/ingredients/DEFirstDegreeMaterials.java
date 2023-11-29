@@ -1,5 +1,6 @@
 package gtexpert.api.unification.material.ingredients;
 
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
@@ -33,7 +34,7 @@ public class DEFirstDegreeMaterials {
 
         // Pyrotheum
         Pyrotheum = new Material.Builder(24177, gregtechId("pyrotheum"))
-                .liquid(new FluidBuilder().temperature(10273))
+                .fluid(GCYMFluidStorageKeys.MOLTEN, new FluidBuilder().temperature(10273))
                 .color(0xE42C13).iconSet(MaterialIconSet.BRIGHT)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(Redstone, 1, Sulfur, 1, Blaze, 16)

@@ -340,15 +340,15 @@ public class CEUOverrideRecipeLoader {
                         .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                         .fluidOutputs(Helium.getFluid(250))
                         .output(plate, material, 1)
-                        .duration((int) material.getMass() << 3)
+                        .duration((int) material.getMass() << 1)
                         .buildAndRegister();
 
                 if (GTEValues.isModLoadedDEDA()) {
                     RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                             .notConsumable(SHAPE_MOLD_PLATE)
                             .fluidInputs(new FluidStack(molten, 144))
-                            .fluidInputs(Cryotheum.getFluid(500))
-                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 500))
+                            .fluidInputs(Cryotheum.getFluid(250))
+                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
                             .output(plate, material, 1)
                             .duration((int) material.getMass() << 1)
                             .buildAndRegister();
@@ -361,15 +361,15 @@ public class CEUOverrideRecipeLoader {
                         .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                         .fluidOutputs(Helium.getFluid(250))
                         .output(gearSmall, material, 1)
-                        .duration((int) material.getMass() << 3)
+                        .duration((int) material.getMass() << 1)
                         .buildAndRegister();
 
                 if (GTEValues.isModLoadedDEDA()) {
                     RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                             .notConsumable(SHAPE_MOLD_GEAR_SMALL)
                             .fluidInputs(new FluidStack(molten, 144))
-                            .fluidInputs(Cryotheum.getFluid(500))
-                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 100))
+                            .fluidInputs(Cryotheum.getFluid(250))
+                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
                             .output(gearSmall, material, 1)
                             .duration((int) material.getMass() << 1)
                             .buildAndRegister();
@@ -382,15 +382,15 @@ public class CEUOverrideRecipeLoader {
                         .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 2000))
                         .fluidOutputs(Helium.getFluid(1000))
                         .output(gear, material, 1)
-                        .duration((int) material.getMass() << 12)
+                        .duration((int) material.getMass() << 4)
                         .buildAndRegister();
 
                 if (GTEValues.isModLoadedDEDA()) {
                     RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                             .notConsumable(SHAPE_MOLD_GEAR)
                             .fluidInputs(new FluidStack(molten, 576))
-                            .fluidInputs(Cryotheum.getFluid(2000))
-                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 400))
+                            .fluidInputs(Cryotheum.getFluid(1000))
+                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
                             .output(gear, material, 1)
                             .duration((int) material.getMass() << 4)
                             .buildAndRegister();
@@ -403,15 +403,15 @@ public class CEUOverrideRecipeLoader {
                         .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 2000))
                         .fluidOutputs(Helium.getFluid(1000))
                         .output(rotor, material, 1)
-                        .duration((int) material.getMass() << 12)
+                        .duration((int) material.getMass() << 4)
                         .buildAndRegister();
 
                 if (GTEValues.isModLoadedDEDA()) {
                     RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                             .notConsumable(SHAPE_MOLD_ROTOR)
                             .fluidInputs(new FluidStack(molten, 576))
-                            .fluidInputs(Cryotheum.getFluid(2000))
-                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 400))
+                            .fluidInputs(Cryotheum.getFluid(1000))
+                            .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
                             .output(rotor, material, 1)
                             .duration((int) material.getMass() << 4)
                             .buildAndRegister();
@@ -423,22 +423,22 @@ public class CEUOverrideRecipeLoader {
                     .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                     .fluidOutputs(Helium.getFluid(250))
                     .fluidOutputs(material.getFluid(144))
-                    .duration((int) material.getMass() << 3)
+                    .duration((int) material.getMass() << 1)
                     .buildAndRegister();
 
             if (GTEValues.isModLoadedDEDA()) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .input(ingotHot, material, 1)
-                        .fluidInputs(Cryotheum.getFluid(500))
-                        .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 100))
+                        .fluidInputs(Cryotheum.getFluid(250))
+                        .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
                         .output(ingot, material, 1)
                         .duration((int) material.getMass() << 1)
                         .buildAndRegister();
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .circuitMeta(1)
                         .fluidInputs(new FluidStack(molten, 144))
-                        .fluidInputs(Cryotheum.getFluid(500))
-                        .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 100))
+                        .fluidInputs(Cryotheum.getFluid(250))
+                        .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
                         .fluidOutputs(material.getFluid(144))
                         .duration((int) material.getMass() << 1)
                         .buildAndRegister();
@@ -449,7 +449,7 @@ public class CEUOverrideRecipeLoader {
                         .notConsumable(SHAPE_MOLD_PLATE)
                         .fluidInputs(new FluidStack(molten, 144))
                         .output(plate, material, 1)
-                        .duration((int) material.getMass() << 3)
+                        .duration((int) material.getMass() << 1)
                         .buildAndRegister();
             }
             if (material.hasFlag(GENERATE_SMALL_GEAR)) {
@@ -457,7 +457,7 @@ public class CEUOverrideRecipeLoader {
                         .notConsumable(SHAPE_MOLD_GEAR_SMALL)
                         .fluidInputs(new FluidStack(molten, 144))
                         .output(gearSmall, material, 1)
-                        .duration((int) material.getMass() << 3)
+                        .duration((int) material.getMass() << 1)
                         .buildAndRegister();
             }
             if (material.hasFlag(GENERATE_GEAR)) {
@@ -465,7 +465,7 @@ public class CEUOverrideRecipeLoader {
                         .notConsumable(SHAPE_MOLD_GEAR)
                         .fluidInputs(new FluidStack(molten, 576))
                         .output(gear, material, 1)
-                        .duration((int) material.getMass() << 12)
+                        .duration((int) material.getMass() << 4)
                         .buildAndRegister();
             }
             if (material.hasFlag(GENERATE_ROTOR)) {
@@ -473,14 +473,14 @@ public class CEUOverrideRecipeLoader {
                         .notConsumable(SHAPE_MOLD_ROTOR)
                         .fluidInputs(new FluidStack(molten, 576))
                         .output(rotor, material, 1)
-                        .duration((int) material.getMass() << 12)
+                        .duration((int) material.getMass() << 4)
                         .buildAndRegister();
             }
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
                     .fluidInputs(new FluidStack(molten, 144))
                     .fluidOutputs(material.getFluid(144))
-                    .duration((int) material.getMass() << 3)
+                    .duration((int) material.getMass() << 1)
                     .buildAndRegister();
         }
     }
