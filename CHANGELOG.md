@@ -1,7 +1,14 @@
+# v1.5.2
+## Fix recipes
+### Applied Energistics2
+- Interface
+
+* * *
+
 # v1.5.1
-## Information
-- CEu2.8 is now supported.
-- Removed dependence on ConfigAnyTime.
+## Fix recipes
+### Applied Energistics2
+- Interface
 
 * * *
 

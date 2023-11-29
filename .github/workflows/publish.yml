@@ -76,8 +76,8 @@ jobs:
           modrinth-token: "${{ secrets.MODRINTH_API_KEY }}"
           modrinth-dependencies: |
             G1ckZuWK(required)
-            tULldUx4@GJvzHTTh(required)
-            tZiutdLG@EBaj6aJx(required)
+            tULldUx4(required)
+            tZiutdLG(required)
           curseforge-id: '851103'
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           curseforge-dependencies: |
