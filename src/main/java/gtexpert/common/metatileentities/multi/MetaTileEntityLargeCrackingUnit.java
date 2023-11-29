@@ -7,7 +7,6 @@ import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
@@ -50,19 +49,30 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle(" XXX ", " XXX ", "  X  ", "  X  ", "  X  ", " XXX ", "     ")
-                .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
-                .aisle("XXTXX", "XXXXX", "XC#CX", "XC#CX", "XC#CX", "XXXXX", " XHX ")
-                .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
-                .aisle(" XSX ", " XXX ", "  X  ", "  X  ", "  X  ", " XXX ", "     ")
+                .aisle("XCCXCCX", "XCCXCCX", "XCCXCCX")
+                .aisle("XCCXCCX", "X##T##X", "XCCXCCX")
+                .aisle("XCCXCCX", "XCCSCCX", "XCCXCCX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(10)
                         .or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('T', tieredCasing().or(states(getCasingState())))
-                .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
-                .where('C', heatingCoils())
                 .where('#', air())
+                .where('C', heatingCoils())
                 .build();
+        // return FactoryBlockPattern.start()
+        // .aisle(" XXX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+        // .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
+        // .aisle("XXTXX", "XXXXX", "XC#CX", "XC#CX", "XC#CX", "XXXXX", " XHX ")
+        // .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
+        // .aisle(" XSX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+        // .where('S', selfPredicate())
+        // .where('X', states(getCasingState()).setMinGlobalLimited(10)
+        // .or(autoAbilities(true, true, true, true, true, true, false)))
+        // .where('T', tieredCasing().or(states(getCasingState())))
+        // .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
+        // .where('C', heatingCoils())
+        // .where('#', air())
+        // .build();
     }
 
     protected IBlockState getCasingState() {
