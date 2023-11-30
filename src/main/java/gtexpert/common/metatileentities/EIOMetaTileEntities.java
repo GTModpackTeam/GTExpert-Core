@@ -1,16 +1,16 @@
 package gtexpert.common.metatileentities;
 
+import static gregtech.api.GTValues.V;
+import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntities;
+import static gtexpert.api.util.GTEUtility.gteId;
+import static gtexpert.common.metatileentities.MetaTileEntitiesManager.registerGTESimpleMetaTileEntity;
+
 import gregtech.api.util.GTUtility;
 
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.single.MetaTileEntityElectricSpawner;
-
-import static gregtech.api.GTValues.V;
-import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntities;
-import static gtexpert.api.util.GTEUtility.gteId;
-import static gtexpert.common.metatileentities.MetaTileEntitiesManager.registerGTESimpleMetaTileEntity;
 
 public class EIOMetaTileEntities {
 

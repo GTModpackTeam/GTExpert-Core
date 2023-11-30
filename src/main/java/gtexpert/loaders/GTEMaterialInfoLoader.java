@@ -1,5 +1,13 @@
 package gtexpert.loaders;
 
+import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.GTEBlockMetalCasing.MetalCasingType.*;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
+
 import gregtech.api.GTValues;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
@@ -11,14 +19,6 @@ import gregtech.common.ConfigHolder;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.GTEMetaBlocks;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
-
-import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.GTEBlockMetalCasing.MetalCasingType.*;
 
 public class GTEMaterialInfoLoader {
 

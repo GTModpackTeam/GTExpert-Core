@@ -1,5 +1,7 @@
 package gtexpert.integration.ae;
 
+import static gregtech.api.unification.material.Materials.*;
+
 import gregtech.api.unification.material.Material;
 
 import appeng.api.AEApi;
@@ -7,8 +9,6 @@ import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
 import appeng.api.definitions.IParts;
-
-import static gregtech.api.unification.material.Materials.*;
 
 public class AEHelper {
 

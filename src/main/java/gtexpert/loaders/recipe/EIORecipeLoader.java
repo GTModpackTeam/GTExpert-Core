@@ -1,5 +1,21 @@
 package gtexpert.loaders.recipe;
 
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
+import static gregtech.loaders.recipe.CraftingComponent.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.metatileentities.EIOMetaTileEntities.*;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.oredict.OreDictionary;
+
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
@@ -16,28 +32,12 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.GTEConfigHolder;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.OreDictionary;
-
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.conduits.init.ConduitObject;
 import crazypants.enderio.endergy.init.EndergyObject;
 import crazypants.enderio.machines.init.MachineObject;
 import crazypants.enderio.powertools.init.PowerToolObject;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.metatileentities.EIOMetaTileEntities.*;
 
 public class EIORecipeLoader {
 

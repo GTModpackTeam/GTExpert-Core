@@ -3,9 +3,9 @@ package crazypants.enderio.api.tool;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public interface IHideFacades {
 
-    boolean shouldHideFacades(@Nonnull ItemStack stack, @Nonnull EntityPlayer player);
+    boolean shouldHideFacades(@NotNull ItemStack stack, @NotNull EntityPlayer player);
 }

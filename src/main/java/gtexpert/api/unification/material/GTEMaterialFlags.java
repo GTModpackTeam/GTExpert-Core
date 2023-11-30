@@ -1,10 +1,10 @@
 package gtexpert.api.unification.material;
 
+import static gregtech.api.unification.material.info.MaterialFlags.*;
+
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.*;
 import gregtech.api.unification.ore.OrePrefix;
-
-import static gregtech.api.unification.material.info.MaterialFlags.*;
 
 public class GTEMaterialFlags {
 

@@ -1,5 +1,21 @@
 package gtexpert.loaders.recipe;
 
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.GTEConfigHolder.ae2Integration;
+import static gtexpert.common.items.GTEMetaItems.*;
+import static gtexpert.integration.ae.AEHelper.*;
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
+
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -18,24 +34,8 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.GTEValues;
 import gtexpert.common.GTEConfigHolder;
 
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
-
 import appeng.api.util.AEColor;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-
-import java.util.*;
-import java.util.stream.IntStream;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.GTEConfigHolder.ae2Integration;
-import static gtexpert.common.items.GTEMetaItems.*;
-import static gtexpert.integration.ae.AEHelper.*;
 
 public class AERecipeLoader {
 

@@ -1,13 +1,7 @@
 package gtexpert.common.metatileentities.single;
 
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.RecipeLogicEnergy;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.recipes.logic.OverclockingLogic;
-import gregtech.api.util.GTTransferUtils;
-import gregtech.api.util.GTUtility;
-
-import gtexpert.api.capability.GTEDataCodes;
+import java.util.Collections;
+import java.util.function.Supplier;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -23,17 +17,25 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import com.enderio.core.client.render.BoundingBox;
+
+import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.RecipeLogicEnergy;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.recipes.logic.OverclockingLogic;
+import gregtech.api.util.GTTransferUtils;
+import gregtech.api.util.GTUtility;
+
+import gtexpert.api.capability.GTEDataCodes;
+
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.base.item.soulvial.ItemSoulVial;
 import crazypants.enderio.machines.config.config.SpawnerConfig;
 import crazypants.enderio.machines.machine.spawner.BlockPoweredSpawner;
 import crazypants.enderio.util.CapturedMob;
-
-import java.util.Collections;
-import java.util.function.Supplier;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 class ElectricSpawnerLogic extends RecipeLogicEnergy {
 
@@ -41,7 +43,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     private CapturedMob mobToSpawn;
     private boolean needsRedstone = false;
 
-    public ElectricSpawnerLogic(@Nonnull MetaTileEntity metaTileEntity, Supplier<IEnergyContainer> energyContainer) {
+    public ElectricSpawnerLogic(@NotNull MetaTileEntity metaTileEntity, Supplier<IEnergyContainer> energyContainer) {
         super(metaTileEntity, null, energyContainer);
     }
 
@@ -131,7 +133,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     /**
      * {@link #prepareRecipe} equivalent
      */
-    private void prepareWork(@Nonnull CapturedMob mobToSpawn) {
+    private void prepareWork(@NotNull CapturedMob mobToSpawn) {
         ItemStack outputItem = createSoulVial(mobToSpawn);
         if (outputItem.isEmpty()) {
             return;
@@ -145,7 +147,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     /**
      * {@link #setupAndConsumeRecipeInputs} equivalent
      */
-    private boolean setupAndConsumeInputs(@Nonnull ItemStack outputItem) {
+    private boolean setupAndConsumeInputs(@NotNull ItemStack outputItem) {
         if (!checkOverclock()) {
             return false;
         }
@@ -190,7 +192,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     /**
      * {@link #setupRecipe} equivalent
      */
-    private void setup(@Nonnull CapturedMob mobToSpawn, @Nonnull ItemStack outputItem) {
+    private void setup(@NotNull CapturedMob mobToSpawn, @NotNull ItemStack outputItem) {
         this.progressTime = 1;
         setMaxProgress(overclockResults[1]);
         this.recipeEUt = overclockResults[0];
@@ -282,7 +284,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
         };
     }
 
-    private void addDependents(final @Nonnull World world, final @Nonnull EntityLiving entity) {
+    private void addDependents(final @NotNull World world, final @NotNull EntityLiving entity) {
         final Entity ridingEntity = entity.getRidingEntity();
         if (ridingEntity != null) {
             ridingEntity.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, 0.0F);
@@ -312,7 +314,7 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void receiveCustomData(int dataId, @Nonnull PacketBuffer buf) {
+    public void receiveCustomData(int dataId, @NotNull PacketBuffer buf) {
         super.receiveCustomData(dataId, buf);
         if (dataId == GTEDataCodes.NEEDS_REDSTONE) {
             needsRedstone = buf.readBoolean();
@@ -320,18 +322,18 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void writeInitialData(@Nonnull PacketBuffer buf) {
+    public void writeInitialData(@NotNull PacketBuffer buf) {
         super.writeInitialData(buf);
         buf.writeBoolean(needsRedstone);
     }
 
     @Override
-    public void receiveInitialData(@Nonnull PacketBuffer buf) {
+    public void receiveInitialData(@NotNull PacketBuffer buf) {
         super.receiveInitialData(buf);
         needsRedstone = buf.readBoolean();
     }
 
-    @Nonnull
+    @NotNull
     @Override
     public NBTTagCompound serializeNBT() {
         NBTTagCompound compound = super.serializeNBT();
@@ -347,14 +349,14 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void deserializeNBT(@Nonnull NBTTagCompound compound) {
+    public void deserializeNBT(@NotNull NBTTagCompound compound) {
         super.deserializeNBT(compound);
         this.spawnMode = compound.getBoolean("spawnMode");
         this.mobToSpawn = CapturedMob.create(compound.getCompoundTag("mobToSpawn"));
     }
 
-    @Nonnull
-    private ItemStack createSoulVial(@Nonnull CapturedMob mobToSpawn) {
+    @NotNull
+    private ItemStack createSoulVial(@NotNull CapturedMob mobToSpawn) {
         Entity entity = createEntity(mobToSpawn);
         if (entity == null) return ItemStack.EMPTY;
         CapturedMob newMob = CapturedMob.create(entity);

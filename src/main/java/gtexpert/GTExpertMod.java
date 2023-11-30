@@ -1,13 +1,13 @@
 package gtexpert;
 
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.*;
+
 import gregtech.GTInternalTags;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.CommonProxy;
-
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.*;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,

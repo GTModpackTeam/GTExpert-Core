@@ -1,5 +1,10 @@
 package gtexpert.common.items;
 
+import static gregtech.api.GTValues.M;
+import static gtexpert.common.items.GTEMetaItems.*;
+
+import net.minecraft.client.resources.I18n;
+
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.ItemMaterialInfo;
@@ -7,11 +12,6 @@ import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.behaviors.TooltipBehavior;
 
 import gtexpert.common.GTEConfigHolder;
-
-import net.minecraft.client.resources.I18n;
-
-import static gregtech.api.GTValues.M;
-import static gtexpert.common.items.GTEMetaItems.*;
 
 public class GTEMetaItem1 extends StandardMetaItem {
 

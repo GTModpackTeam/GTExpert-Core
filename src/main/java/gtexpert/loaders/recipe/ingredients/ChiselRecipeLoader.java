@@ -1,5 +1,33 @@
 package gtexpert.loaders.recipe.ingredients;
 
+import static gregtech.api.GTValues.*;
+import static gregtech.api.recipes.ModHandler.removeRecipeByName;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.blocks.BlockWarningSign.SignType.*;
+import static gregtech.common.blocks.BlockWarningSign1.SignType.*;
+import static gregtech.common.blocks.MetaBlocks.*;
+import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
+import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
+import static gregtech.loaders.recipe.CraftingComponent.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.metatileentities.GTESingleMetaTileEntities.AUTO_CHISEL;
+import static gtexpert.integration.chisel.ChiselHelper.*;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.oredict.OreDictionary;
+
+import com.google.common.base.CaseFormat;
+
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -14,35 +42,8 @@ import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.GTEConfigHolder;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.OreDictionary;
-
-import com.google.common.base.CaseFormat;
 import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.IntStream;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.ModHandler.removeRecipeByName;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.blocks.BlockWarningSign.SignType.*;
-import static gregtech.common.blocks.BlockWarningSign1.SignType.*;
-import static gregtech.common.blocks.MetaBlocks.*;
-import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
-import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
-import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.metatileentities.GTESingleMetaTileEntities.AUTO_CHISEL;
-import static gtexpert.integration.chisel.ChiselHelper.*;
 
 public class ChiselRecipeLoader {
 

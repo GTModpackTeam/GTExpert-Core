@@ -1,13 +1,13 @@
 package gtexpert.common.items;
 
+import static gregtech.common.covers.CoverBehaviors.registerBehavior;
+import static gtexpert.api.util.GTEUtility.gteId;
+
 import gregtech.api.GTValues;
 import gregtech.common.covers.CoverConveyor;
 import gregtech.common.covers.CoverFluidRegulator;
 import gregtech.common.covers.CoverPump;
 import gregtech.common.covers.CoverRoboticArm;
-
-import static gregtech.common.covers.CoverBehaviors.registerBehavior;
-import static gtexpert.api.util.GTEUtility.gteId;
 
 public class GTECoverBehaviors {
 

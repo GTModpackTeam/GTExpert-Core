@@ -1,9 +1,9 @@
 package gtexpert;
 
-import zone.rong.mixinbooter.ILateMixinLoader;
-
 import java.util.Arrays;
 import java.util.List;
+
+import zone.rong.mixinbooter.ILateMixinLoader;
 
 public class GTEMixinLoader implements ILateMixinLoader {
 

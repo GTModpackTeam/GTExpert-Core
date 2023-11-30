@@ -1,11 +1,11 @@
 package gtexpert.mixin;
 
-import gregtech.api.recipes.RecipeMaps;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
+
+import gregtech.api.recipes.RecipeMaps;
 
 @Mixin(RecipeMaps.class)
 public abstract class MixinRecipeMaps {

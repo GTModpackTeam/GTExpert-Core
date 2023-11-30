@@ -1,14 +1,11 @@
 package gtexpert.loaders.recipe;
 
-import gregtech.api.recipes.RecipeBuilder;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.recipes.ingredients.GTRecipeItemInput;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
-import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.GTERecipeMaps;
+import java.util.Arrays;
+import java.util.function.Consumer;
 
 import net.minecraft.entity.EntityList;
 import net.minecraft.init.Blocks;
@@ -19,15 +16,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.enderio.core.common.util.EntityUtil;
+
+import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.recipes.ingredients.GTRecipeItemInput;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
+
+import gtexpert.api.GTEValues;
+import gtexpert.api.recipes.GTERecipeMaps;
+
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
-
-import java.util.Arrays;
-import java.util.function.Consumer;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class EIOSoulRecipeLoader {
 

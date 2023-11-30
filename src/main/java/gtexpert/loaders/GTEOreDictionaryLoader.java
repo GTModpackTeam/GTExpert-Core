@@ -1,23 +1,23 @@
 package gtexpert.loaders;
 
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.ore.OrePrefix;
-
-import gtexpert.api.GTEValues;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.OreDictionary;
+import static gtexpert.api.util.GTEUtility.getModItem;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static gtexpert.api.util.GTEUtility.getModItem;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.oredict.OreDictionary;
+
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.ore.OrePrefix;
+
+import gtexpert.api.GTEValues;
 
 public class GTEOreDictionaryLoader {
 

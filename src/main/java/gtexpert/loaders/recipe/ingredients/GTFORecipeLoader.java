@@ -1,10 +1,10 @@
 package gtexpert.loaders.recipe.ingredients;
 
-import gregtech.api.recipes.RecipeMaps;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+
+import gregtech.api.recipes.RecipeMaps;
 
 public class GTFORecipeLoader {
 

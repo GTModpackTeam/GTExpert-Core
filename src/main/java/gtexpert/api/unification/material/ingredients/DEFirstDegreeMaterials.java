@@ -1,22 +1,23 @@
 package gtexpert.api.unification.material.ingredients;
 
-import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-import gregtech.api.fluids.FluidBuilder;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.material.properties.BlastProperty.GasTier;
-import gregtech.api.unification.material.properties.ToolProperty;
-
-import gtexpert.api.GTEValues;
-
-import net.minecraftforge.fml.common.Loader;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 import static gtexpert.api.unification.GTEElements.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
+
+import net.minecraftforge.fml.common.Loader;
+
+import gregtech.api.fluids.FluidBuilder;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialIconSet;
+import gregtech.api.unification.material.properties.BlastProperty.GasTier;
+import gregtech.api.unification.material.properties.ToolProperty;
+
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
+
+import gtexpert.api.GTEValues;
 
 public class DEFirstDegreeMaterials {
 
