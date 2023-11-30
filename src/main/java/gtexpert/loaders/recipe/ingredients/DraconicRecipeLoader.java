@@ -1,7 +1,22 @@
 package gtexpert.loaders.recipe.ingredients;
 
-import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.*;
+
+import net.foxmcloud.draconicadditions.DAFeatures;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
+
+import com.brandon3055.draconicevolution.DEFeatures;
+
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeBuilder;
@@ -15,27 +30,13 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
-
-import net.foxmcloud.draconicadditions.DAFeatures;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
-
-import com.brandon3055.draconicevolution.DEFeatures;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.*;
 
 public class DraconicRecipeLoader {
 

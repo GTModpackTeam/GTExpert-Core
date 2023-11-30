@@ -1,15 +1,8 @@
 package gtexpert.common;
 
-import gregtech.api.GregTechAPI;
-import gregtech.api.block.VariantItemBlock;
-import gregtech.api.cover.CoverDefinition;
+import static gtexpert.common.GTEMetaBlocks.*;
 
-import gtexpert.api.GTEValues;
-import gtexpert.api.util.GTELog;
-import gtexpert.common.items.*;
-import gtexpert.integration.theoneprobe.TOPProviders;
-import gtexpert.loaders.*;
-import gtexpert.loaders.recipe.*;
+import java.util.function.Function;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -30,9 +23,16 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.function.Function;
+import gregtech.api.GregTechAPI;
+import gregtech.api.block.VariantItemBlock;
+import gregtech.api.cover.CoverDefinition;
 
-import static gtexpert.common.GTEMetaBlocks.*;
+import gtexpert.api.GTEValues;
+import gtexpert.api.util.GTELog;
+import gtexpert.common.items.*;
+import gtexpert.integration.theoneprobe.TOPProviders;
+import gtexpert.loaders.*;
+import gtexpert.loaders.recipe.*;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class CommonProxy {

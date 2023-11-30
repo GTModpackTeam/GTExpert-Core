@@ -1,11 +1,11 @@
 package gtexpert.api.recipes.draconic.tierup;
 
-import gregtech.api.recipes.recipeproperties.RecipeProperty;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 
 import com.brandon3055.draconicevolution.lib.ToolUpgradeRecipe;
+
+import gregtech.api.recipes.recipeproperties.RecipeProperty;
 
 public class TierUpRecipeProperty extends RecipeProperty<ToolUpgradeRecipe> {
 

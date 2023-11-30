@@ -1,9 +1,9 @@
 package gtexpert.api.util;
 
-import gtexpert.api.GTEValues;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import gtexpert.api.GTEValues;
 
 public class GTELog {
 

@@ -1,16 +1,16 @@
 package gtexpert.api.unification.material.ingredients;
 
-import gregtech.api.fluids.FluidBuilder;
-import gregtech.api.unification.material.Material;
-
-import gtexpert.api.unification.material.info.GTEMaterialIconSet;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 import static gtexpert.api.unification.GTEElements.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
+
+import gregtech.api.fluids.FluidBuilder;
+import gregtech.api.unification.material.Material;
+
+import gtexpert.api.unification.material.info.GTEMaterialIconSet;
 
 public class AvaritiaFirstDegreeMaterials {
 

@@ -1,5 +1,23 @@
 package gtexpert.api.recipes.draconic;
 
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.fluids.FluidStack;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import com.brandon3055.brandonscore.utils.ItemNBTHelper;
+import com.brandon3055.draconicevolution.api.fusioncrafting.IFusionRecipe;
+import com.brandon3055.draconicevolution.api.fusioncrafting.SimpleFusionRecipe;
+import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
+import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
+import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
+import com.brandon3055.draconicevolution.items.ToolUpgrade;
+
 import gregtech.api.capability.FeCompat;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
@@ -13,31 +31,15 @@ import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeProperty;
 import gtexpert.api.util.GTELog;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.fluids.FluidStack;
-
 import cofh.redstoneflux.api.IEnergyContainerItem;
-import com.brandon3055.brandonscore.utils.ItemNBTHelper;
-import com.brandon3055.draconicevolution.api.fusioncrafting.IFusionRecipe;
-import com.brandon3055.draconicevolution.api.fusioncrafting.SimpleFusionRecipe;
-import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
-import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
-import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
-import com.brandon3055.draconicevolution.items.ToolUpgrade;
-
-import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private final RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap;
     private final RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap;
 
-    public RecipeMapDraconicFusion(@Nonnull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
-                                   int maxFluidOutputs, @Nonnull SimpleRecipeBuilder defaultRecipeBuilder,
+    public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
+                                   int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder,
                                    boolean isHidden, RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap,
                                    RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap) {
         super(unlocalizedName, maxInputs, maxOutputs, maxFluidInputs, maxFluidOutputs, defaultRecipeBuilder, isHidden);
@@ -128,7 +130,7 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
         return retRecipe;
     }
 
-    @Nonnull
+    @NotNull
     private ItemStack findCatalyst(List<ItemStack> inputs, IFusionRecipe fusionRecipe) {
         ItemStack expectedCatalyst = getCatalyst(fusionRecipe);
         if (expectedCatalyst == null || expectedCatalyst.isEmpty()) {

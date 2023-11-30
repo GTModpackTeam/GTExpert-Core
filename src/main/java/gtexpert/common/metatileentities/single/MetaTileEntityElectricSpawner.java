@@ -1,5 +1,22 @@
 package gtexpert.common.metatileentities.single;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.DoubleSupplier;
+
+import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.world.World;
+import net.minecraftforge.items.IItemHandlerModifiable;
+
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.GTValues;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.NotifiableItemStackHandler;
@@ -22,23 +39,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
 
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.World;
-import net.minecraftforge.items.IItemHandlerModifiable;
-
 import crazypants.enderio.base.init.ModObject;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.DoubleSupplier;
-import javax.annotation.Nullable;
 
 public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntity {
 

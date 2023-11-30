@@ -1,5 +1,24 @@
 package gtexpert.loaders.recipe;
 
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.items.GTEMetaItems.*;
+import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.*;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
+
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
@@ -24,24 +43,6 @@ import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
-
-import java.util.LinkedList;
-import java.util.List;
-import javax.annotation.Nonnull;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.items.GTEMetaItems.*;
-import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.*;
 
 public class GTERecipeLoader {
 
@@ -747,7 +748,7 @@ public class GTERecipeLoader {
      *
      * @param material The material to add recipes for
      */
-    private static void voidOreMiner(@Nonnull Material material) {
+    private static void voidOreMiner(@NotNull Material material) {
         // Skip if the material doesn't have an ore
         if (!material.hasProperty(PropertyKey.ORE)) return;
 

@@ -1,5 +1,15 @@
 package gtexpert.common.metatileentities.multi;
 
+import java.util.List;
+
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -17,15 +27,6 @@ import gtexpert.client.GTETextures;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
 
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-
-import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
 
     public MetaTileEntityDraconiumFusion(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
@@ -34,7 +35,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     }
 
     @Override
-    protected @Nonnull BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("CCC", "CCC", "CCC")
                 .aisle("CCC", "C#C", "CCC")
@@ -50,7 +51,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     protected abstract GTEBlockMetalCasing.MetalCasingType getCasingType();
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, @Nonnull List<String> tooltip,
+    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.draconium_fusion.tooltip.1"));
@@ -63,17 +64,17 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     }
 
     @Override
-    protected @Nonnull TextureArea getLogo() {
+    protected @NotNull TextureArea getLogo() {
         return GTEGuiTextures.GTE_LOGO_DARK;
     }
 
     @Override
-    protected @Nonnull TextureArea getWarningLogo() {
+    protected @NotNull TextureArea getWarningLogo() {
         return GTEGuiTextures.GTE_LOGO_BLINKING_YELLOW;
     }
 
     @Override
-    protected @Nonnull TextureArea getErrorLogo() {
+    protected @NotNull TextureArea getErrorLogo() {
         return GTEGuiTextures.GTE_LOGO_BLINKING_RED;
     }
 

@@ -1,15 +1,15 @@
 package gtexpert.common.metatileentities;
 
+import static gregtech.api.GTValues.*;
+import static gregtech.common.metatileentities.MetaTileEntities.*;
+import static gtexpert.api.util.GTEUtility.gteId;
+
 import gregtech.api.util.GTUtility;
 
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.multi.*;
 import gtexpert.common.metatileentities.single.*;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.common.metatileentities.MetaTileEntities.*;
-import static gtexpert.api.util.GTEUtility.gteId;
 
 public class GTESingleMetaTileEntities {
 

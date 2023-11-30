@@ -1,23 +1,11 @@
 package gtexpert.loaders.recipe.ingredients;
 
-import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-import gregtech.api.GTValues;
-import gregtech.api.items.toolitem.ToolHelper;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.ingredients.GTRecipeInput;
-import gregtech.api.recipes.ingredients.GTRecipeItemInput;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.items.ToolItems;
-
-import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
-import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
-import gtexpert.api.util.GTELog;
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
+import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
 
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
@@ -30,12 +18,25 @@ import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
+import gregtech.api.GTValues;
+import gregtech.api.items.toolitem.ToolHelper;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.ingredients.GTRecipeInput;
+import gregtech.api.recipes.ingredients.GTRecipeItemInput;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.items.ToolItems;
+
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
+
+import gtexpert.api.GTEValues;
+import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
+import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
+import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
+import gtexpert.api.util.GTELog;
 
 public class DraconicUpgradeRecipeLoader {
 

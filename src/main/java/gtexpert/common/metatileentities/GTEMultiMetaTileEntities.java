@@ -1,13 +1,13 @@
 package gtexpert.common.metatileentities;
 
+import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
+import static gtexpert.api.util.GTEUtility.gteId;
+
 import gtexpert.api.GTEValues;
 import gtexpert.common.metatileentities.multi.MetaTileEntityDraconiumFusion;
 import gtexpert.common.metatileentities.multi.MetaTileEntityLargeCrackingUnit;
 import gtexpert.common.metatileentities.multi.MetaTileEntitySawmill;
 import gtexpert.common.metatileentities.multi.MetaTileEntityVoidOreMiner;
-
-import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
-import static gtexpert.api.util.GTEUtility.gteId;
 
 public class GTEMultiMetaTileEntities {
 

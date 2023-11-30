@@ -1,8 +1,8 @@
 package gtexpert.common;
 
-import gtexpert.api.GTEValues;
-
 import net.minecraftforge.common.config.Config;
+
+import gtexpert.api.GTEValues;
 
 @Config(modid = GTEValues.MODID)
 public class GTEConfigHolder {

@@ -1,17 +1,17 @@
 package gtexpert.common.metatileentities;
 
+import static gregtech.common.metatileentities.MetaTileEntities.*;
+
+import java.util.function.Function;
+
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
+
 import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.GTEValues;
-
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
-
-import java.util.function.Function;
-
-import static gregtech.common.metatileentities.MetaTileEntities.*;
 
 public class MetaTileEntitiesManager {
 

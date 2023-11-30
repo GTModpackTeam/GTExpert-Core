@@ -1,7 +1,18 @@
 package gtexpert.common.metatileentities.multi;
 
-import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
-import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
+import java.util.List;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -18,19 +29,10 @@ import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 
+import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
+
 import gtexpert.api.gui.GTEGuiTextures;
-
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.World;
-
-import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockController {
 
@@ -45,7 +47,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
         return new MetaTileEntityLargeCrackingUnit(this.metaTileEntityId);
     }
 
-    @Nonnull
+    @NotNull
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
@@ -100,24 +102,24 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
         tooltip.add(I18n.format("gregtech.machine.cracker.tooltip.1"));
     }
 
-    @Nonnull
+    @NotNull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return Textures.CRACKING_UNIT_OVERLAY;
     }
 
     @Override
-    protected @Nonnull TextureArea getLogo() {
+    protected @NotNull TextureArea getLogo() {
         return GTEGuiTextures.GTE_LOGO_DARK;
     }
 
     @Override
-    protected @Nonnull TextureArea getWarningLogo() {
+    protected @NotNull TextureArea getWarningLogo() {
         return GTEGuiTextures.GTE_LOGO_BLINKING_YELLOW;
     }
 
     @Override
-    protected @Nonnull TextureArea getErrorLogo() {
+    protected @NotNull TextureArea getErrorLogo() {
         return GTEGuiTextures.GTE_LOGO_BLINKING_RED;
     }
 
