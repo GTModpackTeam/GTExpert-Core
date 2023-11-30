@@ -1,3 +1,9 @@
+# v1.5.3
+## Information
+- Vacuum Freezer recipes edge case fix.
+
+* * *
+
 # v1.5.2
 ## Information
 - CEu2.8 is now supported.
