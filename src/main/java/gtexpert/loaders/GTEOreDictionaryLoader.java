@@ -24,6 +24,12 @@ public class GTEOreDictionaryLoader {
     public static void init() {
         OreDictionary.registerOre("bookshelf", new ItemStack(Blocks.BOOKSHELF));
 
+        if (Loader.isModLoaded(GTEValues.MODID_FFM)) {
+            OreDictionary.registerOre("oreApatite", getModItem(GTEValues.MODID_FFM, "resources", 1, 0));
+            OreDictionary.registerOre("oreCopper", getModItem(GTEValues.MODID_FFM, "resources", 1, 1));
+            OreDictionary.registerOre("oreTin", getModItem(GTEValues.MODID_FFM, "resources", 1, 2));
+        }
+
         if (Loader.isModLoaded(GTEValues.MODID_AE)) {
             OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "quartz_block", 1, 0));
             OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "quartz_pillar", 1, 0));
@@ -137,6 +143,10 @@ public class GTEOreDictionaryLoader {
         }
 
         if (GTEValues.isModLoadedDEDA()) {
+            OreDictionary.registerOre("oreDraconium", getModItem(GTEValues.MODID_DE, "draconium_ore", 1, 0));
+            OreDictionary.registerOre("oreNetherrackDraconium", getModItem(GTEValues.MODID_DE, "resources", 1, 1));
+            OreDictionary.registerOre("oreEndstoneDraconium", getModItem(GTEValues.MODID_DE, "resources", 1, 2));
+
             OreDictionary.registerOre("blockDraconium", getModItem(GTEValues.MODID_DE, "draconium_block", 1, 0));
             OreDictionary.registerOre("blockAwakenedDraconium", getModItem(GTEValues.MODID_DE, "draconic_block", 1, 0));
         }
