@@ -30,6 +30,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
@@ -602,7 +603,7 @@ public class GTERecipeLoader {
 
         // Void Ore Miner Recipes
         List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        materials.forEach(GTERecipeLoader::voidOreMiner);
+        // materials.forEach(GTERecipeLoader::voidOreMiner);
 
         // Treated Wood Machine Casing
         ModHandler.addShapedRecipe(true, "casing_treated_wood",
@@ -751,6 +752,7 @@ public class GTERecipeLoader {
     private static void voidOreMiner(@NotNull Material material) {
         // Skip if the material doesn't have an ore
         if (!material.hasProperty(PropertyKey.ORE)) return;
+        if (material.hasFlag(MaterialFlags.DISABLE_ORE_BLOCK)) return;
 
         // Get the ore
         List<ItemStack> ores = OreDictUnifier.getAll(new UnificationEntry(ore, material));
