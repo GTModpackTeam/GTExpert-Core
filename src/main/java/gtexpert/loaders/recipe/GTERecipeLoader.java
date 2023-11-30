@@ -603,7 +603,7 @@ public class GTERecipeLoader {
 
         // Void Ore Miner Recipes
         List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        // materials.forEach(GTERecipeLoader::voidOreMiner);
+        materials.forEach(GTERecipeLoader::voidOreMiner);
 
         // Treated Wood Machine Casing
         ModHandler.addShapedRecipe(true, "casing_treated_wood",
