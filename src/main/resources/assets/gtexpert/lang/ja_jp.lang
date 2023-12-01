@@ -1,4 +1,3 @@
-# Japanese by GTModpackTeam
 
 
 # multiblock
@@ -18,6 +17,9 @@ gtexpert.machine.awakened_draconium_fusion.name=ドラコニック融合機 II
 gtexpert.machine.large_cracking_unit.name=大型接触分解装置
 gtexpert.machine.large_cracking_unit.tooltip=オイルクラッキングの最大手
 gtexpert.machine.large_cracking_unit.tooltip.1=§d作者:§f @Quarri6343
+gtexpert.machine.advanced_chemical_plant.name=発展型化学プラント
+gtexpert.machine.advanced_chemical_plant.tooltip=昔のGregicalityには居たやつ
+gtexpert.machine.advanced_chemical_plant.tooltip.1=§d作者:§f @tier940
 
 # singleblock
 # Auto Chisel
@@ -117,8 +119,6 @@ gregtech.material.cryotheum=クリオジウム
 gregtech.material.pyrotheum=パイロジウム
 gregtech.material.draconium=ドラコニウム
 gregtech.material.awakened_draconium=覚醒ドラコニウム
-gregtech.material.soul_sand=ソウルサンド
-gregtech.material.chorus_fruit=コーラスフルーツ
 gregtech.material.electrical_steel=ケイ素鋼
 gregtech.material.energetic_alloy=エナジェティック合金
 gregtech.material.vibrant_alloy=ヴァイブラント合金
@@ -126,6 +126,8 @@ gregtech.material.redstone_alloy=レッドストーン合金
 gregtech.material.conductive_iron=伝導鉄
 gregtech.material.pulsating_iron=脈動鉄
 gregtech.material.dark_steel=ダークスチール
+gregtech.material.soul_sand=ソウルサンド
+gregtech.material.chorus_fruit=コーラスフルーツ
 gregtech.material.soularium=ソウラリウム
 gregtech.material.end_steel=エンドスチール
 gregtech.material.construction_alloy=鉄合金
@@ -170,9 +172,9 @@ metaitem.shape.extruder.engineering_processor.tooltip=上級プロセッサを�
 # recipemaps
 recipemap.sawmill.name=製材機
 recipemap.vial_extractor.name=魂抽出器
-recipemap.auto_chisel.name=自動彫刻機
 recipemap.slice'n'splice.name=頭顱調整機
 recipemap.soul_binder.name=魂拘束器
+recipemap.auto_chisel.name=自動彫刻機
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 recipemap.draconium_fusion.name=ドラコニック融合機
 recipemap.awakened_draconium_fusion.name=ドラコニック融合機
@@ -184,9 +186,9 @@ recipemap.draconic_fusion_upgrade.name=ドラコニック装備のアップグ�
 recipemap.awakened_draconic_fusion_upgrade.name=ドラコニック装備のアップグレード
 recipemap.draconic_fusion_upgrade.property.1=アップグレードの状態と蓄電量は
 recipemap.draconic_fusion_upgrade.property.2= 保持されます
+recipemap.advanced_chemical_plant.name=発展型化学プラント
 
-#misc
-gtexpert.multiblock.needsun=コントローラーは必ず空に面する必要があります!
+# misc
 gtexpert.gui.electric_spawner_mode.spawn=スポーンモード
 gtexpert.gui.electric_spawner_mode.capture=捕獲モード
 gtexpert.gui.needs_redstone=動作にはレッドストーン入力が必要です

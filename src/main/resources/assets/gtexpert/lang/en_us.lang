@@ -18,6 +18,9 @@ gtexpert.machine.awakened_draconium_fusion.name=Draconic Fusion Crafter II
 gtexpert.machine.large_cracking_unit.name=Large Oil Cracking Unit
 gtexpert.machine.large_cracking_unit.tooltip=Largest oil cracking company
 gtexpert.machine.large_cracking_unit.tooltip.1=§dAuthor:§f @Quarri6343
+gtexpert.machine.advanced_chemical_plant.name=Advanced Chemical Plant
+gtexpert.machine.advanced_chemical_plant.tooltip=The one that was in the old Gregicality.
+gtexpert.machine.advanced_chemical_plant.tooltip.1=§dAuthor:§f @tier940
 
 # singleblock
 # Auto Chisel
@@ -184,9 +187,9 @@ recipemap.draconic_fusion_upgrade.name=Draconic Equipment Upgrades
 recipemap.awakened_draconic_fusion_upgrade.name=Draconic Equipment Upgrades
 recipemap.draconic_fusion_upgrade.property.1=Preserves upgrade info
 recipemap.draconic_fusion_upgrade.property.2= and stored energy
+recipemap.advanced_chemical_plant.name=Advanced Chemical Plant
 
 #misc
-gtexpert.multiblock.needsun=The Controller must be able to See the Sun!
 gtexpert.gui.electric_spawner_mode.spawn=Spawn Mode
 gtexpert.gui.electric_spawner_mode.capture=Capture Mode
 gtexpert.gui.needs_redstone=Needs Redstone signal to work

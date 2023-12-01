@@ -2,13 +2,17 @@ package gtexpert.common.metatileentities.multi;
 
 import java.util.List;
 
+import gregtech.api.pattern.TraceabilityPredicate;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,9 +29,9 @@ import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
-import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import gregtech.core.sound.GTSoundEvents;
 
 import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
@@ -50,16 +54,17 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     @NotNull
     @Override
     protected BlockPattern createStructurePattern() {
+        TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(10);
+        TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true, false);
         return FactoryBlockPattern.start()
                 .aisle("XCCXCCX", "XCCXCCX", "XCCXCCX")
                 .aisle("XCCXCCX", "X##T##X", "XCCXCCX")
                 .aisle("XCCXCCX", "XCCSCCX", "XCCXCCX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(10)
-                        .or(autoAbilities(true, true, true, true, true, true, false)))
+                .where('X', casing.or(abilities))
                 .where('T', tieredCasing().or(states(getCasingState())))
+                .where('C', heatingCoils().setMinGlobalLimited(32).setMaxGlobalLimited(32))
                 .where('#', air())
-                .where('C', heatingCoils())
                 .build();
         // return FactoryBlockPattern.start()
         // .aisle(" XXX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
@@ -77,13 +82,24 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
         // .build();
     }
 
+    @Override
+    public boolean isTiered() {
+        return true;
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
+        return Textures.CLEAN_STAINLESS_STEEL_CASING;
+    }
+
     protected IBlockState getCasingState() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
     }
 
     @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return Textures.CLEAN_STAINLESS_STEEL_CASING;
+    public SoundEvent getBreakdownSound() {
+        return GTSoundEvents.BREAKDOWN_ELECTRICAL;
     }
 
     @Override
@@ -102,12 +118,6 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
         tooltip.add(I18n.format("gregtech.machine.cracker.tooltip.1"));
     }
 
-    @NotNull
-    @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.CRACKING_UNIT_OVERLAY;
-    }
-
     @Override
     protected @NotNull TextureArea getLogo() {
         return GTEGuiTextures.GTE_LOGO_DARK;
@@ -123,9 +133,11 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
         return GTEGuiTextures.GTE_LOGO_BLINKING_RED;
     }
 
+    @SideOnly(Side.CLIENT)
+    @NotNull
     @Override
-    public boolean isTiered() {
-        return true;
+    protected ICubeRenderer getFrontOverlay() {
+        return Textures.CRACKING_UNIT_OVERLAY;
     }
 
     @Override
