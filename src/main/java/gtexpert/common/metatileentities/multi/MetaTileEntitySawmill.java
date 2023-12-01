@@ -61,6 +61,16 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     @Override
+    public boolean allowsExtendedFacing() {
+        return false;
+    }
+
+    @Override
+    public boolean allowsFlip() {
+        return false;
+    }
+
+    @Override
     public boolean hasMaintenanceMechanics() {
         return false;
     }

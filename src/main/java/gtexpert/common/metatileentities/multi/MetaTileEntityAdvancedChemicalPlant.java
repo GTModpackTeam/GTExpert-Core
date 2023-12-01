@@ -44,7 +44,7 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
 
     @Override
     public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityVoidOreMiner(metaTileEntityId);
+        return new MetaTileEntityAdvancedChemicalPlant(metaTileEntityId);
     }
 
     @NotNull
@@ -65,6 +65,16 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
                 .where('C', heatingCoils().setMinGlobalLimited(12).setMaxGlobalLimited(12))
                 .where(' ', any())
                 .build();
+    }
+
+    @Override
+    public boolean allowsExtendedFacing() {
+        return false;
+    }
+
+    @Override
+    public boolean allowsFlip() {
+        return false;
     }
 
     @Override

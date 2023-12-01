@@ -64,6 +64,16 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
                 .build();
     }
 
+    @Override
+    protected boolean shouldShowVoidingModeButton() {
+        return false;
+    }
+
+    @Override
+    public boolean allowsExtendedFacing() {
+        return false;
+    }
+
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
