@@ -1,6 +1,15 @@
+# v1.5.5
+## New tool material
+- Infinity
+
+## New machine
+- Advanced Chemical Plant
+
+* * *
+
 # v1.5.4
 - Fix Vacuum Freezer processing duration and EUt.
-- Add Infinity tools.
+- Error fixing of VOM by FFM integration.
 
 * * *
 
