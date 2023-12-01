@@ -30,7 +30,8 @@ public class GTEFirstDegreeMaterials {
                         Palladium, 1, Osmium, 1, Iridium, 1, Platinum, 1)
                 .blast(b -> b
                         .temp(9001, GasTier.HIGHER)
-                        .blastStats(VA[ZPM], 1000))
+                        .blastStats(VA[ZPM], 1000)
+                        .vacuumStats(VA[ZPM], 250))
                 .build();
 
         // Naquadah Rocket Fuel

@@ -38,10 +38,10 @@ dependencies {
 
     // Switchable Dependencies
     if (project.useAE2uelExtended.toBoolean()) {
-        compileOnlyApi rfg.deobf("curse.maven:ae2-uel-extended-913322:4846638") // AE2 UEL: Extended 0.55.24-0.3.4
+        implementation rfg.deobf("curse.maven:ae2-uel-extended-913322:4846638") // AE2 UEL: Extended 0.55.24-0.3.4
     } else {
-        compileOnlyApi rfg.deobf("curse.maven:ae2-extended-life-570458:4851091") // AE2UEL 0.55.27
-        compileOnlyApi rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371") // AEAdditions 1.3.8
+        implementation rfg.deobf("curse.maven:ae2-extended-life-570458:4851091") // AE2UEL 0.55.27
+        implementation rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371") // AEAdditions 1.3.8
     }
 
     // Debug Forestry
