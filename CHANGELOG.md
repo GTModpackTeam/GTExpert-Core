@@ -1,11 +1,14 @@
+# v1.5.4
+- Fix Vacuum Freezer processing duration and EUt
+
+* * *
+
 # v1.5.3
-## Information
 - Vacuum Freezer recipes edge case fix.
 
 * * *
 
 # v1.5.2
-## Information
 - CEu2.8 is now supported.
 - Removed dependence on ConfigAnyTime.
 
@@ -19,6 +22,5 @@
 * * *
 
 # v1.5.0
-## Information
 - Until now, GTExpertCore had various installation assumptions with AE2, EIO, DE, and DA, but this version has freed us from that dependency.
 - I also made sure to write a proper history of changes :trollface:
