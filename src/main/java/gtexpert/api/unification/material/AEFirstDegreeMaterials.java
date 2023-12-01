@@ -47,7 +47,8 @@ public class AEFirstDegreeMaterials {
                 .components(Fluix, 2, Carbon, 2, Silicon, 1, Iron, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.LOW)
-                        .blastStats(VA[HV], 1072))
+                        .blastStats(VA[HV], 1072)
+                        .vacuumStats(VA[HV], 268))
                 .build();
     }
 }

@@ -14,13 +14,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.items.OreDictNames;
@@ -31,6 +29,8 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.properties.BlastProperty;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -169,43 +169,7 @@ public class CEUOverrideRecipeLoader {
     }
 
     private static void blocks() {
-        // Diorite
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "diorite"));
-
-        // Granite
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "granite"));
-
-        // Andesite
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "andesite"));
-
-        // Comparator
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/vanilla_comparator"));
-
-        // Daylight Sensor
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/vanilla_daylight_detector"));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(gem, NetherQuartz, 3)
-                .input(slab, Wood, 2)
-                .fluidInputs(Glass.getFluid(144))
-                .output(Blocks.DAYLIGHT_DETECTOR)
-                .duration(200).EUt(10)
-                .buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(gem, CertusQuartz, 3)
-                .input(slab, Wood, 2)
-                .fluidInputs(Glass.getFluid(144))
-                .output(Blocks.DAYLIGHT_DETECTOR)
-                .duration(200).EUt(10)
-                .buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(gem, Quartzite, 3)
-                .input(slab, Wood, 2)
-                .fluidInputs(Glass.getFluid(144))
-                .output(Blocks.DAYLIGHT_DETECTOR)
-                .duration(200).EUt(10)
-                .buildAndRegister();
-
-        // Ennchanting Table
+        // Enchantment Table
         ModHandler.removeRecipeByOutput(new ItemStack(Blocks.ENCHANTING_TABLE));
         ModHandler.addShapedRecipe("enchantment_table", new ItemStack(Blocks.ENCHANTING_TABLE),
                 "DCD", "PBP", "DPD",
@@ -215,7 +179,6 @@ public class CEUOverrideRecipeLoader {
                 'B', "bookshelf");
 
         // Redstone Lamp
-        ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "redstone_lamp"));
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES,
                 OreDictUnifier.get(dust, Redstone, 4),
                 OreDictUnifier.get(dust, Glowstone, 4));
@@ -337,99 +300,114 @@ public class CEUOverrideRecipeLoader {
         Fluid molten = material.getFluid(GCYMFluidStorageKeys.MOLTEN);
         if (molten == null) return;
 
+        // Get the vacuum freezer EUt and duration
+        BlastProperty property = material.getProperty(PropertyKey.BLAST);
+        int vacuumEUt = property.getVacuumEUtOverride() != -1 ? property.getVacuumEUtOverride() : VA[MV];
+        int vacuumDuration = property.getVacuumDurationOverride() != -1 ? property.getVacuumDurationOverride() :
+                (int) material.getMass() * 3;
+
         // Check if the material has a blast temperature above 5000K
-        if (material.getBlastTemperature() >= 5000) {
+        if (property.getBlastTemperature() > 5000) {
             if (material.hasFlag(GENERATE_PLATE)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_PLATE)
-                        .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 144))
+                        .fluidInputs(new FluidStack(molten, 144))
                         .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                         .fluidOutputs(Helium.getFluid(250))
                         .output(plate, material, 1)
-                        .duration((int) material.getMass() << 1)
+                        .duration(vacuumDuration)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
 
                 if (GTEValues.isModLoadedDEDA()) {
                     RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                             .notConsumable(SHAPE_MOLD_PLATE)
-                            .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 144))
+                            .fluidInputs(new FluidStack(molten, 144))
                             .fluidInputs(Cryotheum.getFluid(250))
                             .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
                             .output(plate, material, 1)
-                            .duration((int) material.getMass() << 1)
+                            .duration(vacuumDuration / 2)
+                            .EUt(vacuumEUt)
                             .buildAndRegister();
                 }
             }
             if (material.hasFlag(GENERATE_SMALL_GEAR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_GEAR_SMALL)
-                        .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 144))
+                        .fluidInputs(new FluidStack(molten, 144))
                         .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                         .fluidOutputs(Helium.getFluid(250))
                         .output(gearSmall, material, 1)
-                        .duration((int) material.getMass() << 1)
+                        .duration(vacuumDuration)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
 
                 if (GTEValues.isModLoadedDEDA()) {
                     RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                             .notConsumable(SHAPE_MOLD_GEAR_SMALL)
-                            .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 144))
+                            .fluidInputs(new FluidStack(molten, 144))
                             .fluidInputs(Cryotheum.getFluid(250))
                             .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
                             .output(gearSmall, material, 1)
-                            .duration((int) material.getMass() << 1)
+                            .duration(vacuumDuration / 2)
+                            .EUt(vacuumEUt)
                             .buildAndRegister();
                 }
             }
             if (material.hasFlag(GENERATE_GEAR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_GEAR)
-                        .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 576))
+                        .fluidInputs(new FluidStack(molten, 576))
                         .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 2000))
                         .fluidOutputs(Helium.getFluid(1000))
                         .output(gear, material, 1)
-                        .duration((int) material.getMass() << 4)
+                        .duration(vacuumDuration * 4)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
 
                 if (GTEValues.isModLoadedDEDA()) {
                     RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                             .notConsumable(SHAPE_MOLD_GEAR)
-                            .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 576))
+                            .fluidInputs(new FluidStack(molten, 576))
                             .fluidInputs(Cryotheum.getFluid(1000))
                             .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
                             .output(gear, material, 1)
-                            .duration((int) material.getMass() << 4)
+                            .duration(vacuumDuration * 2)
+                            .EUt(vacuumEUt)
                             .buildAndRegister();
                 }
             }
             if (material.hasFlag(GENERATE_ROTOR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_ROTOR)
-                        .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 576))
+                        .fluidInputs(new FluidStack(molten, 576))
                         .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 2000))
                         .fluidOutputs(Helium.getFluid(1000))
                         .output(rotor, material, 1)
-                        .duration((int) material.getMass() << 4)
+                        .duration(vacuumDuration * 4)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
 
                 if (GTEValues.isModLoadedDEDA()) {
                     RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                             .notConsumable(SHAPE_MOLD_ROTOR)
-                            .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 576))
+                            .fluidInputs(new FluidStack(molten, 576))
                             .fluidInputs(Cryotheum.getFluid(1000))
                             .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
                             .output(rotor, material, 1)
-                            .duration((int) material.getMass() << 4)
+                            .duration(vacuumDuration / 2)
+                            .EUt(vacuumEUt)
                             .buildAndRegister();
                 }
             }
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
-                    .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 144))
+                    .fluidInputs(new FluidStack(molten, 144))
                     .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                     .fluidOutputs(Helium.getFluid(250))
                     .fluidOutputs(material.getFluid(144))
-                    .duration((int) material.getMass() << 1)
+                    .duration(vacuumDuration)
+                    .EUt(vacuumEUt)
                     .buildAndRegister();
 
             if (GTEValues.isModLoadedDEDA()) {
@@ -438,55 +416,62 @@ public class CEUOverrideRecipeLoader {
                         .fluidInputs(Cryotheum.getFluid(250))
                         .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
                         .output(ingot, material, 1)
-                        .duration((int) material.getMass() << 1)
+                        .duration(vacuumDuration / 2)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .circuitMeta(1)
-                        .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 144))
+                        .fluidInputs(new FluidStack(molten, 144))
                         .fluidInputs(Cryotheum.getFluid(250))
                         .fluidOutputs(Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
                         .fluidOutputs(material.getFluid(144))
-                        .duration((int) material.getMass() << 1)
+                        .duration(vacuumDuration / 2)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
             }
         } else {
             if (material.hasFlag(GENERATE_PLATE)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_PLATE)
-                        .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 144))
+                        .fluidInputs(new FluidStack(molten, 144))
                         .output(plate, material, 1)
-                        .duration((int) material.getMass() << 1)
+                        .duration(vacuumDuration)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
             }
             if (material.hasFlag(GENERATE_SMALL_GEAR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_GEAR_SMALL)
-                        .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 144))
+                        .fluidInputs(new FluidStack(molten, 144))
                         .output(gearSmall, material, 1)
-                        .duration((int) material.getMass() << 1)
+                        .duration(vacuumDuration)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
             }
             if (material.hasFlag(GENERATE_GEAR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_GEAR)
-                        .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 576))
+                        .fluidInputs(new FluidStack(molten, 576))
                         .output(gear, material, 1)
-                        .duration((int) material.getMass() << 4)
+                        .duration(vacuumDuration * 4)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
             }
             if (material.hasFlag(GENERATE_ROTOR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(SHAPE_MOLD_ROTOR)
-                        .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 576))
+                        .fluidInputs(new FluidStack(molten, 576))
                         .output(rotor, material, 1)
-                        .duration((int) material.getMass() << 4)
+                        .duration(vacuumDuration * 4)
+                        .EUt(vacuumEUt)
                         .buildAndRegister();
             }
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
-                    .fluidInputs(material.getFluid(GCYMFluidStorageKeys.MOLTEN, 144))
+                    .fluidInputs(new FluidStack(molten, 144))
                     .fluidOutputs(material.getFluid(144))
-                    .duration((int) material.getMass() << 1)
+                    .duration(vacuumDuration)
+                    .EUt(vacuumEUt)
                     .buildAndRegister();
         }
     }

@@ -62,7 +62,8 @@ public class DEFirstDegreeMaterials {
                 .components(Dragon, 1, Obsidian, 1, EnderPearl, 4, LiquidEnderAir, 8)
                 .blast(b -> b
                         .temp(7200, GasTier.HIGHER)
-                        .blastStats(VA[LuV], 600))
+                        .blastStats(VA[LuV], 400)
+                        .vacuumStats(VA[LuV], 100))
                 .toolStats(ToolProperty.Builder.of(80.0F, 2.0F, 4096, 5)
                         .enchantability(14).build())
                 .rotorStats(18.0f, 4.0f, 4096)

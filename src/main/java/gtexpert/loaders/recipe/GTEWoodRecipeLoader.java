@@ -3,14 +3,12 @@ package gtexpert.loaders.recipe;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -87,7 +85,10 @@ public class GTEWoodRecipeLoader {
                     GTEConfigHolder.ceuOverride.moreNerfPlankCrafting ? 2 : 4 : 6,
                     plankStack), "s", "P", 'P', allWoodLogs.get(i));
             recipeSawmill(allWoodLogs.get(i), plankStack);
-            recipeCutter(allWoodLogs.get(i), plankStack);
+
+            if (!plankStack.toString().contains(GTEValues.MODID_VANILLA) ||
+                    !plankStack.toString().contains(GTEValues.MODID_GTFO))
+                recipeCutter(allWoodLogs.get(i), plankStack);
         });
     }
 
@@ -110,24 +111,6 @@ public class GTEWoodRecipeLoader {
     }
 
     private static void recipeCutter(ItemStack input, ItemStack output) {
-        // TODO: Refactor this
-        if (input.equals(new ItemStack(Blocks.LOG, 1, 0)) ||
-                input.equals(new ItemStack(Blocks.LOG, 1, 1)) ||
-                input.equals(new ItemStack(Blocks.LOG, 1, 2)) ||
-                input.equals(new ItemStack(Blocks.LOG, 1, 3)) ||
-                input.equals(new ItemStack(Blocks.LOG2, 1, 0)) ||
-                input.equals(new ItemStack(Blocks.LOG2, 1, 1)) ||
-                input.equals(getModItem(GTEValues.MODID_GTFO, "gtfo_log_0", 1, 0)) ||
-                input.equals(getModItem(GTEValues.MODID_GTFO, "gtfo_log_0", 1, 4)) ||
-                input.equals(getModItem(GTEValues.MODID_GTFO, "gtfo_log_0", 1, 8)) ||
-                input.equals(getModItem(GTEValues.MODID_GTFO, "gtfo_log_0", 1, 12)) ||
-                input.equals(getModItem(GTEValues.MODID_GTFO, "gtfo_log_1", 1, 0)) ||
-                input.equals(getModItem(GTEValues.MODID_GTFO, "gtfo_log_1", 1, 4)) ||
-                input.equals(getModItem(GTEValues.MODID_GTFO, "gtfo_log_1", 1, 8)) ||
-                input.equals(getModItem(GTEValues.MODID_GTFO, "gtfo_log_1", 1, 12)) ||
-                input.equals(getModItem(GTEValues.MODID_GTFO, "gtfo_log_2", 1, 0)))
-            return;
-
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(input)
                 .fluidInputs(Lubricant.getFluid(1))
