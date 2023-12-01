@@ -1,5 +1,6 @@
 # v1.5.4
-- Fix Vacuum Freezer processing duration and EUt
+- Fix Vacuum Freezer processing duration and EUt.
+- Add Infinity tools.
 
 * * *
 
