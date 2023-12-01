@@ -4,6 +4,7 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
+import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.items.GTEMetaItems.*;
@@ -566,6 +567,21 @@ public class GTERecipeLoader {
                 'S', MetaTileEntities.CRACKER.getStackForm(),
                 'P', ELECTRIC_PUMP_IV.getStackForm(),
                 'F', FIELD_GENERATOR_IV.getStackForm());
+
+        // Advanced Chemical Plant
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(LARGE_CHEMICAL_REACTOR, 1)
+                .input(foil, Polybenzimidazole, 32)
+                .input(plate, IndiumTinBariumTitaniumCuprate, 32)
+                .input(stickLong, Cupronickel, 32)
+                .input(pipeLargeFluid, Polytetrafluoroethylene, 8)
+                .input(circuit, MarkerMaterials.Tier.LuV, 4)
+                .input(ELECTRIC_MOTOR_LuV, 4)
+                .fluidInputs(SolderingAlloy.getFluid(2304))
+                .fluidInputs(Polytetrafluoroethylene.getFluid(2304))
+                .output(ADVANCED_CHEMICAL_PLANT)
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
 
         // Void Ore Miner
         AssemblyLineRecipeBuilder builderVOM = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()

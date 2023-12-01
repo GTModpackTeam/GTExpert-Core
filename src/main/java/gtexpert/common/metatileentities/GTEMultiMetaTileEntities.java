@@ -4,10 +4,7 @@ import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTile
 import static gtexpert.api.util.GTEUtility.gteId;
 
 import gtexpert.api.GTEValues;
-import gtexpert.common.metatileentities.multi.MetaTileEntityDraconiumFusion;
-import gtexpert.common.metatileentities.multi.MetaTileEntityLargeCrackingUnit;
-import gtexpert.common.metatileentities.multi.MetaTileEntitySawmill;
-import gtexpert.common.metatileentities.multi.MetaTileEntityVoidOreMiner;
+import gtexpert.common.metatileentities.multi.*;
 
 public class GTEMultiMetaTileEntities {
 
@@ -16,6 +13,7 @@ public class GTEMultiMetaTileEntities {
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityDraconiumFusion DRACONIUM_FUSION;
     public static MetaTileEntityDraconiumFusion AWAKENED_DRACONIUM_FUSION;
+    public static MetaTileEntityAdvancedChemicalPlant ADVANCED_CHEMICAL_PLANT;
 
     public static void init() {
         SAWMILL = registerMetaTileEntity(12001,
@@ -31,5 +29,8 @@ public class GTEMultiMetaTileEntities {
             AWAKENED_DRACONIUM_FUSION = registerMetaTileEntity(12005,
                     new MetaTileEntityDraconiumFusion.TierAwakened(gteId("awakened_draconium_fusion")));
         }
+
+        ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(12006,
+                new MetaTileEntityAdvancedChemicalPlant(gteId("advanced_chemical_plant")));
     }
 }
