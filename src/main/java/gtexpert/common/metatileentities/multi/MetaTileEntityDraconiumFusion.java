@@ -2,7 +2,6 @@ package gtexpert.common.metatileentities.multi;
 
 import java.util.List;
 
-import gregtech.api.pattern.TraceabilityPredicate;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -22,6 +21,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.core.sound.GTSoundEvents;
