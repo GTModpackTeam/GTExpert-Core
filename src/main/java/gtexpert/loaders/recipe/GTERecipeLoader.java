@@ -121,6 +121,7 @@ public class GTERecipeLoader {
                 .duration(750).EUt(32)
                 .buildAndRegister();
 
+        // Air, Nether Air, Ender Air
         GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .input(dust, Stone, 16)
                 .fluidOutputs(Air.getFluid(10000))
@@ -135,6 +136,18 @@ public class GTERecipeLoader {
                 .input(dust, Endstone, 16)
                 .fluidOutputs(EnderAir.getFluid(10000))
                 .duration(200).EUt(VA[ZPM])
+                .buildAndRegister();
+
+        // Netherrack Dust, Endstone Dust
+        RecipeMaps.ROCK_BREAKER_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(Blocks.NETHERRACK, 1))
+                .outputs(new ItemStack(Blocks.NETHERRACK, 1))
+                .duration(16).EUt(VA[IV])
+                .buildAndRegister();
+        RecipeMaps.ROCK_BREAKER_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(Blocks.END_STONE, 1))
+                .outputs(new ItemStack(Blocks.END_STONE, 1))
+                .duration(16).EUt(VA[LuV])
                 .buildAndRegister();
     }
 
