@@ -120,6 +120,22 @@ public class GTERecipeLoader {
                 .fluidInputs(NaquadahRocketFuel.getFluid(1))
                 .duration(750).EUt(32)
                 .buildAndRegister();
+
+        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                .input(dust, Stone, 16)
+                .fluidOutputs(Air.getFluid(10000))
+                .duration(200).EUt(VA[ZPM])
+                .buildAndRegister();
+        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                .input(dust, Netherrack, 16)
+                .fluidOutputs(NetherAir.getFluid(10000))
+                .duration(200).EUt(VA[ZPM])
+                .buildAndRegister();
+        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                .input(dust, Endstone, 16)
+                .fluidOutputs(EnderAir.getFluid(10000))
+                .duration(200).EUt(VA[ZPM])
+                .buildAndRegister();
     }
 
     private static void items() {
