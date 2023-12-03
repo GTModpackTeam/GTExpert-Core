@@ -6,6 +6,7 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 import static gtexpert.api.unification.GTEElements.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.common.GTEConfigHolder.dedaIntegration;
 
 import net.minecraftforge.fml.common.Loader;
 
@@ -62,7 +63,7 @@ public class DEFirstDegreeMaterials {
                 .components(Dragon, 1, Obsidian, 1, EnderPearl, 4, LiquidEnderAir, 8)
                 .blast(b -> b
                         .temp(7200, GasTier.HIGHER)
-                        .blastStats(VA[LuV], 400)
+                        .blastStats(VA[dedaIntegration.voltageTier], 400)
                         .vacuumStats(VA[LuV], 100))
                 .toolStats(ToolProperty.Builder.of(80.0F, 2.0F, 4096, 5)
                         .enchantability(14).build())
@@ -81,7 +82,7 @@ public class DEFirstDegreeMaterials {
                         EXCLUDE_PLATE_COMPRESSOR_RECIPE, DISABLE_DECOMPOSITION)
                 .blast(b -> b
                         .temp(7200, GasTier.HIGHER)
-                        .blastStats(VA[LuV], 600))
+                        .blastStats(VA[dedaIntegration.voltageTier], 600))
                 .toolStats(ToolProperty.Builder.of(140.0F, 80.0F, 7168, 6).enchantability(20).build())
                 .rotorStats(21.5f, 7.5f, 7168)
                 .fluidPipeProperties(10_000_000, 150_000, true, true, true, true)

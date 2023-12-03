@@ -1,7 +1,6 @@
 package gtexpert.loaders.recipe;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 import java.util.Collections;
@@ -21,6 +20,7 @@ import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import gregtech.common.ConfigHolder;
@@ -44,25 +44,27 @@ public class GTEWoodRecipeLoader {
                 GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
                         new ItemStack(Items.STICK, 1) : new ItemStack(Items.STICK, 2) :
                 new ItemStack(Items.STICK, 4),
-                "P", "P", 'P', new UnificationEntry(plank, Wood));
+                "P", "P", 'P', new UnificationEntry(plank, Materials.Wood));
         ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "stick_saw"));
         ModHandler.addMirroredShapedRecipe("stick_saw", ConfigHolder.recipes.harderRods ?
                 GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
                         new ItemStack(Items.STICK, 2) : new ItemStack(Items.STICK, 4) :
                 new ItemStack(Items.STICK, 6),
-                "s", "P", "P", 'P', new UnificationEntry(plank, Wood));
+                "s", "P", "P", 'P', new UnificationEntry(plank, Materials.Wood));
 
         ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "treated_wood_stick"));
         ModHandler.addMirroredShapedRecipe("treated_wood_stick", ConfigHolder.recipes.harderRods ?
                 GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
-                        OreDictUnifier.get(stick, TreatedWood, 1) : OreDictUnifier.get(stick, TreatedWood, 2) :
-                OreDictUnifier.get(stick, TreatedWood, 4),
+                        OreDictUnifier.get(stick, Materials.TreatedWood, 1) :
+                        OreDictUnifier.get(stick, Materials.TreatedWood, 2) :
+                OreDictUnifier.get(stick, Materials.TreatedWood, 4),
                 "P", "P", 'P', MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK));
         ModHandler.removeRecipeByName(new ResourceLocation(GTValues.MODID, "treated_wood_stick_saw"));
         ModHandler.addMirroredShapedRecipe("treated_wood_stick_saw", ConfigHolder.recipes.harderRods ?
                 GTEConfigHolder.ceuOverride.moreNerfStickCrafting ?
-                        OreDictUnifier.get(stick, TreatedWood, 2) : OreDictUnifier.get(stick, TreatedWood, 4) :
-                OreDictUnifier.get(stick, TreatedWood, 6),
+                        OreDictUnifier.get(stick, Materials.TreatedWood, 2) :
+                        OreDictUnifier.get(stick, Materials.TreatedWood, 4) :
+                OreDictUnifier.get(stick, Materials.TreatedWood, 6),
                 "s", "P", "P", 'P', MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK));
     }
 
@@ -96,15 +98,15 @@ public class GTEWoodRecipeLoader {
         GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .inputs(GTUtility.copy(6, input))
-                .fluidInputs(Water.getFluid(1000))
+                .fluidInputs(Materials.Water.getFluid(1000))
                 .outputs(GTUtility.copy(48, output))
-                .output(dust, Wood, 12)
+                .output(dust, Materials.Wood, 12)
                 .duration(600).EUt(VA[LV])
                 .buildAndRegister();
         GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
                 .circuitMeta(2)
                 .inputs(GTUtility.copy(6, input))
-                .fluidInputs(Water.getFluid(2500))
+                .fluidInputs(Materials.Water.getFluid(2500))
                 .outputs(GTUtility.copy(60, output))
                 .duration(800).EUt(VA[LV])
                 .buildAndRegister();
@@ -113,23 +115,23 @@ public class GTEWoodRecipeLoader {
     private static void recipeCutter(ItemStack input, ItemStack output) {
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(input)
-                .fluidInputs(Lubricant.getFluid(1))
+                .fluidInputs(Materials.Lubricant.getFluid(1))
                 .outputs(GTUtility.copy(6, output))
-                .output(dust, Wood, 2)
+                .output(dust, Materials.Wood, 2)
                 .duration(200).EUt(VA[ULV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(input)
-                .fluidInputs(DistilledWater.getFluid(3))
+                .fluidInputs(Materials.DistilledWater.getFluid(3))
                 .outputs(GTUtility.copy(6, output))
-                .output(dust, Wood, 2)
+                .output(dust, Materials.Wood, 2)
                 .duration(300).EUt(VA[ULV])
                 .buildAndRegister();
         RecipeMaps.CUTTER_RECIPES.recipeBuilder()
                 .inputs(input)
-                .fluidInputs(Water.getFluid(4))
+                .fluidInputs(Materials.Water.getFluid(4))
                 .outputs(GTUtility.copy(6, output))
-                .output(dust, Wood, 2)
+                .output(dust, Materials.Wood, 2)
                 .duration(400).EUt(VA[ULV])
                 .buildAndRegister();
     }

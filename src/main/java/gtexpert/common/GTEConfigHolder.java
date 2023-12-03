@@ -19,6 +19,10 @@ public class GTEConfigHolder {
     @Config.RequiresMcRestart
     public static final EIOIntegration eioIntegration = new EIOIntegration();
 
+    @Config.Name("DE/DA Integration")
+    @Config.RequiresMcRestart
+    public static final DEDAIntegration dedaIntegration = new DEDAIntegration();
+
     @Config.Name("Chisel Integration")
     @Config.RequiresMcRestart
     public static final ChiselIntegration chiselIntegration = new ChiselIntegration();
@@ -51,9 +55,9 @@ public class GTEConfigHolder {
         public boolean enableAE2UELExtended = false;
 
         @Config.Comment({ "The voltage at which AE can be started.",
-                "The material is also adjusted to each voltage.", "Default: 1 (LV)" })
-        @Config.RangeInt(min = 1, max = 14)
-        public int voltageTier = 1;
+                "The material is also adjusted to each voltage.", "Default: 3 (HV)" })
+        @Config.RangeInt(min = 1, max = 10)
+        public int voltageTier = 3;
 
         @Config.Comment({ "Change AE swords, axes, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
@@ -65,6 +69,11 @@ public class GTEConfigHolder {
 
     public static class EIOIntegration {
 
+        @Config.Comment({ "The voltage at which EIO can be started.",
+                "The material is also adjusted to each voltage.", "Default: 3 (HV)" })
+        @Config.RangeInt(min = 1, max = 8)
+        public int voltageTier = 3;
+
         @Config.Comment({ "Change EIO swords, axes, armor, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
         public boolean hardToolArmorRecipes = false;
@@ -72,6 +81,14 @@ public class GTEConfigHolder {
         @Config.Comment({ "Add Shapeless Recipe in CoreMod Machines and EIO Machines.",
                 "This change adds a recipe for equivalent exchange of HV machines and EIO machines", "Default: false" })
         public boolean addShapelessRecipeMachines = false;
+    }
+
+    public static class DEDAIntegration {
+
+        @Config.Comment({ "The voltage at which DE/DA can be started.",
+                "The material is also adjusted to each voltage.", "Default: 6 (LuV)" })
+        @Config.RangeInt(min = 3, max = 6)
+        public int voltageTier = 6;
     }
 
     public static class ChiselIntegration {
