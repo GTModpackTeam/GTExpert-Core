@@ -1,5 +1,5 @@
 package gtexpert.loaders.recipe;
-;
+
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 import net.minecraft.init.Blocks;

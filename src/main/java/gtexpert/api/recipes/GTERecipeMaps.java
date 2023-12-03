@@ -87,7 +87,7 @@ public class GTERecipeMaps {
                         .setSmallRecipeMap(RecipeMaps.CHEMICAL_RECIPES);
 
         ADVANCED_GAS_COLLECTOR_RECIPES = new RecipeMap<>("advanced_gas_collector", 1,
-                0, 0, 1, new SimpleRecipeBuilder(), false)
+                0, 1, 2, new SimpleRecipeBuilder(), false)
                         .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
                         .setSlotOverlay(true, true, GuiTextures.CENTRIFUGE_OVERLAY)
                         .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)

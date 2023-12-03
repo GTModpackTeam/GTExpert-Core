@@ -4,8 +4,8 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.dedaIntegration;
-import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.*;
 
+import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -787,7 +787,7 @@ public class DraconicRecipeLoader {
                 .input(GTHelper.robotArm(dedaIntegration.voltageTier), 2)
                 .input(GTHelper.sensor(LuV), 2)
                 .input(GTHelper.emitter(LuV), 2)
-                .output(DRACONIUM_FUSION)
+                .output(GTEMultiMetaTileEntities.DRACONIUM_FUSION)
                 .duration(600).EUt(VA[dedaIntegration.voltageTier])
                 .buildAndRegister();
 
@@ -800,7 +800,7 @@ public class DraconicRecipeLoader {
                 .input(GTHelper.robotArm(UV), 2)
                 .input(GTHelper.sensor(UV), 2)
                 .input(GTHelper.emitter(UV), 2)
-                .output(AWAKENED_DRACONIUM_FUSION)
+                .output(GTEMultiMetaTileEntities.AWAKENED_DRACONIUM_FUSION)
                 .duration(600).EUt(VA[UV])
                 .buildAndRegister();
 

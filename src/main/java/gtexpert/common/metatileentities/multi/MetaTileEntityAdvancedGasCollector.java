@@ -18,6 +18,7 @@ import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.TraceabilityPredicate;
@@ -47,14 +48,16 @@ public class MetaTileEntityAdvancedGasCollector extends GCYMRecipeMapMultiblockC
     @NotNull
     @Override
     protected BlockPattern createStructurePattern() {
-        TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(7);
-        TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true, true);
+        TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(8);
+        TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true, false);
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX", "XXX")
-                .aisle("XXX", "X#X", "XXX")
+                .aisle("XTX", "X#X", "XHX")
                 .aisle("XXX", "XSX", "XXX")
                 .where('S', selfPredicate())
                 .where('X', casing.or(abilities))
+                .where('T', tieredCasing().or(states(getCasingState())))
+                .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('#', air())
                 .build();
     }
