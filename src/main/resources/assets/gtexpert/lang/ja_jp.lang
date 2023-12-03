@@ -20,6 +20,9 @@ gtexpert.machine.large_cracking_unit.tooltip.1=§d作者:§f @Quarri6343
 gtexpert.machine.advanced_chemical_plant.name=発展型化学プラント
 gtexpert.machine.advanced_chemical_plant.tooltip=昔のGregicalityには居たやつ
 gtexpert.machine.advanced_chemical_plant.tooltip.1=§d作者:§f @tier940
+gtexpert.machine.advanced_gas_collector.name=発展型ガス収集機
+gtexpert.machine.advanced_gas_collector.tooltip=粉から空気を搾り取る
+gtexpert.machine.advanced_gas_collector.tooltip.1=§d作者:§f @tier940
 
 # singleblock
 # Auto Chisel
@@ -187,6 +190,7 @@ recipemap.awakened_draconic_fusion_upgrade.name=ドラコニック装備のア�
 recipemap.draconic_fusion_upgrade.property.1=アップグレードの状態と蓄電量は
 recipemap.draconic_fusion_upgrade.property.2= 保持されます
 recipemap.advanced_chemical_plant.name=発展型化学プラント
+recipemap.advanced_gas_collector.name=発展型ガス収集機
 
 # misc
 gtexpert.gui.electric_spawner_mode.spawn=スポーンモード

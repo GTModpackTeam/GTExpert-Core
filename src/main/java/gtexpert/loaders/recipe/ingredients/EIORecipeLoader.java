@@ -1,4 +1,4 @@
-package gtexpert.loaders.recipe;
+package gtexpert.loaders.recipe.ingredients;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -6,8 +6,8 @@ import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.ae2Integration;
 import static gtexpert.common.GTEConfigHolder.eioIntegration;
-import static gtexpert.common.metatileentities.EIOMetaTileEntities.*;
 
+import gtexpert.common.metatileentities.EIOMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -467,7 +467,8 @@ public class EIORecipeLoader {
                 .buildAndRegister();
 
         // Vial Extractor
-        MetaTileEntityLoader.registerMachineRecipe(true, VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
+        MetaTileEntityLoader.registerMachineRecipe(true,
+                EIOMetaTileEntities.VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
                 'V', ModObject.itemSoulVial.getItemNN(),
                 'R', SENSOR,
                 'P', PISTON,
@@ -477,7 +478,8 @@ public class EIORecipeLoader {
                 'C', CIRCUIT);
 
         // Slice'N'Splice
-        MetaTileEntityLoader.registerMachineRecipe(true, SLICE_N_SPLICE, "PSP", "CHC", "MBM",
+        MetaTileEntityLoader.registerMachineRecipe(true,
+                EIOMetaTileEntities.SLICE_N_SPLICE, "PSP", "CHC", "MBM",
                 'P', new UnificationEntry(plate, GTEMaterials.Soularium),
                 'S', "itemSkull",
                 'C', CIRCUIT,
@@ -486,7 +488,8 @@ public class EIORecipeLoader {
                 'B', ModObject.blockDarkIronBars.getItemNN());
 
         // Soul Binder
-        MetaTileEntityLoader.registerMachineRecipe(true, SOUL_BINDER, "PEP", "CHC", "MZM",
+        MetaTileEntityLoader.registerMachineRecipe(true,
+                EIOMetaTileEntities.SOUL_BINDER, "PEP", "CHC", "MZM",
                 'P', new UnificationEntry(plate, GTEMaterials.Soularium),
                 'E', "skullEnderResonator",
                 'C', CIRCUIT,
@@ -495,7 +498,8 @@ public class EIORecipeLoader {
                 'Z', "skullZombieController");
 
         // Electric Spawner
-        MetaTileEntityLoader.registerMachineRecipe(true, ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
+        MetaTileEntityLoader.registerMachineRecipe(true,
+                EIOMetaTileEntities.ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
                 'P', new UnificationEntry(plate, GTEMaterials.ConstructionAlloy),
                 'E', "skullSentientEnder",
                 'S', new UnificationEntry(plate, GTEMaterials.Soularium),
@@ -507,22 +511,25 @@ public class EIORecipeLoader {
             // Slice'N'Splice
             ModHandler.addShapelessRecipe("eio_slice_n_splice",
                     new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()),
-                    SLICE_N_SPLICE[HV].getStackForm());
-            ModHandler.addShapelessRecipe("ceu_slice_n_splice", SLICE_N_SPLICE[HV].getStackForm(),
+                    EIOMetaTileEntities.SLICE_N_SPLICE[HV].getStackForm());
+            ModHandler.addShapelessRecipe("ceu_slice_n_splice",
+                    EIOMetaTileEntities.SLICE_N_SPLICE[HV].getStackForm(),
                     new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()));
 
             // Soul Binder
             ModHandler.addShapelessRecipe("eio_soul_binder",
                     new ItemStack(MachineObject.block_soul_binder.getBlockNN()),
-                    SOUL_BINDER[HV].getStackForm());
-            ModHandler.addShapelessRecipe("ceu_soul_binder", SOUL_BINDER[HV].getStackForm(),
+                    EIOMetaTileEntities.SOUL_BINDER[HV].getStackForm());
+            ModHandler.addShapelessRecipe("ceu_soul_binder",
+                    EIOMetaTileEntities.SOUL_BINDER[HV].getStackForm(),
                     new ItemStack(MachineObject.block_soul_binder.getBlockNN()));
 
             // Electric Spawner
             ModHandler.addShapelessRecipe("eio_electric_spawner",
                     new ItemStack(MachineObject.block_powered_spawner.getBlockNN()),
-                    ELECTRIC_SPAWNER[HV].getStackForm());
-            ModHandler.addShapelessRecipe("ceu_electric_spawner", ELECTRIC_SPAWNER[HV].getStackForm(),
+                    EIOMetaTileEntities.ELECTRIC_SPAWNER[HV].getStackForm());
+            ModHandler.addShapelessRecipe("ceu_electric_spawner",
+                    EIOMetaTileEntities.ELECTRIC_SPAWNER[HV].getStackForm(),
                     new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
         }
 

@@ -2,13 +2,12 @@ package gtexpert.loaders.recipe;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.*;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -18,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -36,6 +36,8 @@ import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
@@ -118,6 +120,65 @@ public class GTERecipeLoader {
         RecipeMaps.COMBUSTION_GENERATOR_FUELS.recipeBuilder()
                 .fluidInputs(GTEMaterials.NaquadahRocketFuel.getFluid(1))
                 .duration(750).EUt(32)
+                .buildAndRegister();
+
+        // Liquid Air, Liquid Nether Air, Liquid Ender Air
+        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                .input(dust, Materials.Stone, 32)
+                .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
+                .fluidOutputs(Materials.Helium.getFluid(2500))
+                .fluidOutputs(Materials.LiquidAir.getFluid(10000))
+                .duration(200).EUt(VA[ZPM])
+                .buildAndRegister();
+        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                .input(dust, Materials.Netherrack, 32)
+                .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
+                .fluidOutputs(Materials.Helium.getFluid(2500))
+                .fluidOutputs(Materials.LiquidNetherAir.getFluid(10000))
+                .duration(200).EUt(VA[ZPM])
+                .buildAndRegister();
+        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                .input(dust, Materials.Endstone, 32)
+                .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
+                .fluidOutputs(Materials.Helium.getFluid(2500))
+                .fluidOutputs(Materials.LiquidEnderAir.getFluid(10000))
+                .duration(200).EUt(VA[ZPM])
+                .buildAndRegister();
+
+        if (GTEValues.isModLoadedDEDA()) {
+            GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                    .input(dust, Materials.Stone, 32)
+                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
+                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 250))
+                    .fluidOutputs(Materials.LiquidAir.getFluid(10000))
+                    .duration(20).EUt(VA[ZPM])
+                    .buildAndRegister();
+            GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                    .input(dust, Materials.Netherrack, 32)
+                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
+                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 250))
+                    .fluidOutputs(Materials.LiquidNetherAir.getFluid(10000))
+                    .duration(20).EUt(VA[ZPM])
+                    .buildAndRegister();
+            GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                    .input(dust, Materials.Endstone, 32)
+                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
+                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 250))
+                    .fluidOutputs(Materials.LiquidEnderAir.getFluid(10000))
+                    .duration(20).EUt(VA[ZPM])
+                    .buildAndRegister();
+        }
+
+        // Netherrack Dust, Endstone Dust
+        RecipeMaps.ROCK_BREAKER_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(Blocks.NETHERRACK, 1))
+                .outputs(new ItemStack(Blocks.NETHERRACK, 1))
+                .duration(16).EUt(VA[LuV])
+                .buildAndRegister();
+        RecipeMaps.ROCK_BREAKER_RECIPES.recipeBuilder()
+                .notConsumable(new ItemStack(Blocks.END_STONE, 1))
+                .outputs(new ItemStack(Blocks.END_STONE, 1))
+                .duration(16).EUt(VA[ZPM])
                 .buildAndRegister();
     }
 
@@ -551,7 +612,7 @@ public class GTERecipeLoader {
     private static void blocks() {
         // Sawmill
         ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",
-                SAWMILL.getStackForm(), "SBs", "MHM", "COC",
+                GTEMultiMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
                 'S', new UnificationEntry(screw, Materials.Steel),
                 'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Steel),
                 'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
@@ -561,7 +622,7 @@ public class GTERecipeLoader {
 
         // Large Oil Cracking Unit
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit",
-                LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",
+                GTEMultiMetaTileEntities.LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ZPM),
                 'S', MetaTileEntities.CRACKER.getStackForm(),
                 'P', MetaItems.ELECTRIC_PUMP_IV.getStackForm(),
@@ -569,7 +630,7 @@ public class GTERecipeLoader {
 
         // Advanced Chemical Plant
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(LARGE_CHEMICAL_REACTOR, 1)
+                .input(MetaTileEntities.LARGE_CHEMICAL_REACTOR, 1)
                 .input(foil, Materials.Polybenzimidazole, 32)
                 .input(plate, Materials.IndiumTinBariumTitaniumCuprate, 32)
                 .input(stickLong, Materials.Cupronickel, 32)
@@ -578,15 +639,29 @@ public class GTERecipeLoader {
                 .input(MetaItems.ELECTRIC_MOTOR_LuV, 4)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(2304))
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(2304))
-                .output(ADVANCED_CHEMICAL_PLANT)
+                .output(GTEMultiMetaTileEntities.ADVANCED_CHEMICAL_PLANT)
                 .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
+
+        // Advanced Gas Collector
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.GAS_COLLECTOR[ZPM], 1)
+                .input(plate, GTEMaterials.NM_HEA_NPs, 8)
+                .input(circuit, MarkerMaterials.Tier.ZPM, 16)
+                .input(MetaItems.SENSOR_ZPM, 4)
+                .input(MetaItems.FLUID_REGULATOR_ZPM, 4)
+                .input(MetaItems.FIELD_GENERATOR_ZPM, 4)
+                .fluidInputs(Materials.SolderingAlloy.getFluid(2304))
+                .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(2304))
+                .output(GTEMultiMetaTileEntities.ADVANCED_GAS_COLLECTOR)
+                .duration(200).EUt(VA[ZPM])
                 .buildAndRegister();
 
         // Void Ore Miner
         AssemblyLineRecipeBuilder builderVOM = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.ADVANCED_LARGE_MINER)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
-                .output(VOIDOREMINER);
+                .output(GTEMultiMetaTileEntities.VOIDOREMINER);
         if (GTEValues.isModLoadedDEDA()) {
             builderVOM.inputs(getModItem(GTEValues.MODID_DE, "awakened_core", 4, 0));
             builderVOM.input(MetaItems.ELECTRIC_MOTOR_UV, 4);

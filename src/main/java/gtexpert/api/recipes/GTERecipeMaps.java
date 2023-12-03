@@ -31,6 +31,9 @@ public class GTERecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> SOUL_BINDER_RECIPES;
 
     @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> ADVANCED_GAS_COLLECTOR_RECIPES;
+
+    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SAWMILL_RECIPES;
 
     @ZenProperty
@@ -82,5 +85,13 @@ public class GTERecipeMaps {
                         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL)
                         .setSound(GTSoundEvents.CHEMICAL_REACTOR)
                         .setSmallRecipeMap(RecipeMaps.CHEMICAL_RECIPES);
+
+        ADVANCED_GAS_COLLECTOR_RECIPES = new RecipeMap<>("advanced_gas_collector", 1,
+                0, 1, 2, new SimpleRecipeBuilder(), false)
+                        .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
+                        .setSlotOverlay(true, true, GuiTextures.CENTRIFUGE_OVERLAY)
+                        .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)
+                        .setSound(GTSoundEvents.COOLING)
+                        .setSmallRecipeMap(RecipeMaps.GAS_COLLECTOR_RECIPES);
     }
 }

@@ -21,6 +21,9 @@ gtexpert.machine.large_cracking_unit.tooltip.1=§dAuthor:§f @Quarri6343
 gtexpert.machine.advanced_chemical_plant.name=Advanced Chemical Plant
 gtexpert.machine.advanced_chemical_plant.tooltip=The one that was in the old Gregicality.
 gtexpert.machine.advanced_chemical_plant.tooltip.1=§dAuthor:§f @tier940
+gtexpert.machine.advanced_gas_collector.name=Advanced Gas Collector
+gtexpert.machine.advanced_gas_collector.tooltip=Squeeze air out of dust
+gtexpert.machine.advanced_gas_collector.tooltip.1=§dAuthor:§f @tier940
 
 # singleblock
 # Auto Chisel
@@ -188,6 +191,7 @@ recipemap.awakened_draconic_fusion_upgrade.name=Draconic Equipment Upgrades
 recipemap.draconic_fusion_upgrade.property.1=Preserves upgrade info
 recipemap.draconic_fusion_upgrade.property.2= and stored energy
 recipemap.advanced_chemical_plant.name=Advanced Chemical Plant
+recipemap.advanced_gas_collector.name=Advanced Gas Collector
 
 #misc
 gtexpert.gui.electric_spawner_mode.spawn=Spawn Mode

@@ -1,4 +1,4 @@
-package gtexpert.loaders.recipe;
+package gtexpert.loaders.recipe.ingredients;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
