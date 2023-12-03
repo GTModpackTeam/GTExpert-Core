@@ -2,7 +2,6 @@ package gtexpert.loaders.recipe.ingredients;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.ModHandler.removeRecipeByName;
-import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.blocks.BlockWarningSign.SignType.*;
 import static gregtech.common.blocks.BlockWarningSign1.SignType.*;
@@ -103,7 +102,7 @@ public class ChiselRecipeLoader {
                 GTEUtility.getModItem(GTEValues.MODID_CHISEL, "auto_chisel", 1));
         MetaTileEntityLoader.registerMachineRecipe(true, AUTO_CHISEL,
                 "BSB", "THT", "MCM",
-                'B', new UnificationEntry(toolHeadBuzzSaw, Invar),
+                'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Invar),
                 'S', SENSOR,
                 'T', "craftChisel",
                 'H', HULL,
@@ -517,25 +516,25 @@ public class ChiselRecipeLoader {
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
             ModHandler.addShapedRecipe(true, "chisel_iron", new ItemStack(ChiselItems.chisel_iron),
                     "fPP", " CP", "S h",
-                    'P', new UnificationEntry(plate, Iron),
-                    'C', new UnificationEntry(screw, Iron),
-                    'S', new UnificationEntry(stick, Bronze));
+                    'P', new UnificationEntry(plate, Materials.Iron),
+                    'C', new UnificationEntry(screw, Materials.Iron),
+                    'S', new UnificationEntry(stick, Materials.Bronze));
 
             // Diamond Chisel
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_diamond"));
             ModHandler.addShapedRecipe(true, "chisel_diamond", new ItemStack(ChiselItems.chisel_diamond),
                     "fPP", " CP", "S h",
-                    'P', new UnificationEntry(plate, Diamond),
+                    'P', new UnificationEntry(plate, Materials.Diamond),
                     'C', new ItemStack(ChiselItems.chisel_iron),
-                    'S', new UnificationEntry(stick, RoseGold));
+                    'S', new UnificationEntry(stick, Materials.RoseGold));
 
             // iChisel
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_hitech"));
             ModHandler.addShapedRecipe(true, "chisel_hitech", new ItemStack(ChiselItems.chisel_hitech),
                     "fPP", " CP", "S h",
-                    'P', new UnificationEntry(plate, Diamond),
+                    'P', new UnificationEntry(plate, Materials.Diamond),
                     'C', new ItemStack(ChiselItems.chisel_diamond),
-                    'S', new UnificationEntry(stick, StainlessSteel));
+                    'S', new UnificationEntry(stick, Materials.StainlessSteel));
         }
     }
 

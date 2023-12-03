@@ -1,7 +1,6 @@
 package gtexpert.loaders.recipe;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 import net.minecraft.init.Blocks;
@@ -26,7 +25,7 @@ public class LowestOverrideRecipeLoader {
                 // Add terracotta macerator recipes
                 RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                         .inputs(new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, i))
-                        .output(dust, Clay, 4)
+                        .output(dust, Materials.Clay, 4)
                         .duration(60).EUt(VA[MV])
                         .buildAndRegister();
             }
