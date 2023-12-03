@@ -7,7 +7,6 @@ import static gtexpert.api.util.GTEUtility.getModItem;
 import java.util.LinkedList;
 import java.util.List;
 
-import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -46,6 +45,7 @@ import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
+import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 
 public class GTERecipeLoader {
 

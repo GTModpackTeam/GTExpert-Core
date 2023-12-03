@@ -7,7 +7,6 @@ import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.ae2Integration;
 import static gtexpert.common.GTEConfigHolder.eioIntegration;
 
-import gtexpert.common.metatileentities.EIOMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -31,6 +30,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.GTEConfigHolder;
+import gtexpert.common.metatileentities.EIOMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
 
 import crazypants.enderio.base.fluid.Fluids;

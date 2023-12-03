@@ -5,7 +5,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.dedaIntegration;
 
-import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -36,6 +35,7 @@ import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.GTEBlockMetalCasing;
 import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
 
 public class DraconicRecipeLoader {
