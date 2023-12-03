@@ -6,9 +6,9 @@ gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らない�
 gtexpert.machine.sawmill.tooltip.1=§d作者:§f @Quarri6343
 gtexpert.machine.void_ore_miner.name=亜空間型鉱石採掘機
 gtexpert.machine.void_ore_miner.tooltip=スターゲート建設機
-gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します。§r
+gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します§r
 gtexpert.machine.void_ore_miner.tooltip.2=§6ネザーかエンド鉱石を消費することでで生産量が倍になります!§r
-gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です。§r
+gtexpert.machine.void_ore_miner.tooltip.3=§6一回の動作にエンダーパール576mbと採掘油10000mbが必要です§r
 gtexpert.machine.void_ore_miner.tooltip.4=§d作者:§f @Quarri6343
 gtexpert.machine.draconium_fusion.name=ドラコニック融合機
 gtexpert.machine.draconium_fusion.tooltip.1=なんだか強そうですね?
@@ -32,6 +32,20 @@ gtexpert.machine.auto_chisel.mv.name=発展型自動彫刻機
 gtexpert.machine.auto_chisel.mv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
 gtexpert.machine.auto_chisel.hv.name=発展型自動彫刻機 II
 gtexpert.machine.auto_chisel.hv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
+
+# Primitive Machines
+gtexpert.machine.primitive_mixer_bronze.name=初歩的なブロンズミキサー
+gtexpert.machine.primitive_mixer_steel.name=初歩的なスチールミキサー
+gtexpert.machine.primitive_mixer.tooltip=§d作者:§f @tier940
+gtexpert.machine.primitive_mixer.tooltip.1=手で混ぜるよりはマシ
+gtexpert.machine.primitive_assembler_bronze.name=初歩的なブロンズ組立機
+gtexpert.machine.primitive_assembler_steel.name=初歩的なスチールア組立機
+gtexpert.machine.primitive_assembler.tooltip=§d作者:§f @tier940
+gtexpert.machine.primitive_assembler.tooltip.1=手で組み立てるよりはマシ
+gtexpert.machine.primitive_circuit_assembler_bronze.name=初歩的なブロンズ回路作成機
+gtexpert.machine.primitive_circuit_assembler_steel.name=初歩的なスチール回路作成機
+gtexpert.machine.primitive_circuit_assembler.tooltip=§d作者:§f @tier940
+gtexpert.machine.primitive_circuit_assembler.tooltip.1=手で回路を作るよりはマシ
 
 # Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=基本型魂抽出器

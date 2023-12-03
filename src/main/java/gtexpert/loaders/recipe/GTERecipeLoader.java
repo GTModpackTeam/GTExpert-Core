@@ -7,6 +7,7 @@ import static gtexpert.api.util.GTEUtility.getModItem;
 import java.util.LinkedList;
 import java.util.List;
 
+import gtexpert.common.metatileentities.GTESingleMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
