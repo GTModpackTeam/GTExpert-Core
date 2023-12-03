@@ -5,6 +5,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.common.GTEConfigHolder.ae2Integration;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
@@ -47,8 +48,8 @@ public class AEFirstDegreeMaterials {
                 .components(Fluix, 2, Carbon, 2, Silicon, 1, Iron, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.LOW)
-                        .blastStats(VA[HV], 1072)
-                        .vacuumStats(VA[HV], 268))
+                        .blastStats(VA[ae2Integration.voltageTier], 1072)
+                        .vacuumStats(VA[ae2Integration.voltageTier], 268))
                 .build();
     }
 }
