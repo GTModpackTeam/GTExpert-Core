@@ -166,7 +166,7 @@ public class DraconicUpgradeRecipeLoader {
                 .input(DEFeatures.draconicCore, 4)
                 .fluidInputs(GTEMaterials.Cryotheum.getFluid(32000))
                 .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
-                .duration(400).EUt(VA[dedaIntegration.voltageTier] + 1)
+                .duration(400).EUt(VA[dedaIntegration.voltageTier + 1])
                 .buildAndRegister();
 
         // Draconic Helm
@@ -268,7 +268,7 @@ public class DraconicUpgradeRecipeLoader {
                     .input(DEFeatures.draconicEnergyCore, 1)
                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(32000))
                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
-                    .duration(400).EUt(VA[dedaIntegration.voltageTier] + 1);
+                    .duration(400).EUt(VA[dedaIntegration.voltageTier + 1]);
             case CHAOTIC -> recipeBuilder
                     .input(DEFeatures.chaosShard, 4, 0)
                     .input(DEFeatures.infusedObsidian, 2)
@@ -276,7 +276,7 @@ public class DraconicUpgradeRecipeLoader {
                     .input(DAFeatures.chaoticEnergyCore, 1)
                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(48000))
                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 12000))
-                    .duration(600).EUt(VA[dedaIntegration.voltageTier] + 2);
+                    .duration(600).EUt(VA[dedaIntegration.voltageTier + 2]);
         }
         recipeBuilder.buildAndRegister();
     }
@@ -345,7 +345,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(DEFeatures.wyvernCore)
                                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(8000))
                                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 2000))
-                                    .duration(100).EUt(VA[dedaIntegration.voltageTier] - 1);
+                                    .duration(100).EUt(VA[dedaIntegration.voltageTier - 1]);
                             case 1 -> recipeBuilder
                                     .input(OrePrefix.gem, Materials.NetherStar, 2)
                                     .input(DEFeatures.wyvernCore, 2)
@@ -361,7 +361,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(DEFeatures.awakenedCore)
                                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(32000))
                                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
-                                    .duration(400).EUt(VA[dedaIntegration.voltageTier] + 1);
+                                    .duration(400).EUt(VA[dedaIntegration.voltageTier + 1]);
                             case 3 -> recipeBuilder
                                     .input(DEFeatures.draconicCore, 2)
                                     .input(DEFeatures.awakenedCore, 2)
@@ -369,7 +369,7 @@ public class DraconicUpgradeRecipeLoader {
                                     .input(DEFeatures.chaoticCore)
                                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(48000))
                                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 12000))
-                                    .duration(600).EUt(VA[dedaIntegration.voltageTier] + 2);
+                                    .duration(600).EUt(VA[dedaIntegration.voltageTier + 2]);
                         }
                         recipeBuilder.buildAndRegister();
                     }
