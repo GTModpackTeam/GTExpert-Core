@@ -64,7 +64,7 @@ jobs:
       - name: Build Project
         run: ./gradlew --build-cache --info --stacktrace build
 
-      - name: Publish to Curseforge
+      - name: Publish to Curseforge and Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           github-tag: "v${{ env.FULL_VERSION }}"

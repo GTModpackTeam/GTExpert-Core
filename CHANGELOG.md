@@ -1,3 +1,11 @@
+# v1.5.6
+- Increase the applicability of recipes that can be changed by changing cfg.
+
+## New machine
+- Add Advanced Gas Collector
+
+* * *
+
 # v1.5.5
 ## New tool material
 - Infinity
