@@ -1,12 +1,5 @@
 package gtexpert.common.items;
 
-import gregtech.api.capability.GregtechCapabilities;
-import gregtech.api.capability.IElectricItem;
-import gregtech.api.items.armor.ArmorLogicSuite;
-import gregtech.api.util.GTUtility;
-import gregtech.api.util.input.KeyBind;
-import gregtech.common.items.armor.IStepAssist;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,7 +14,14 @@ import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
+import gregtech.api.capability.GregtechCapabilities;
+import gregtech.api.capability.IElectricItem;
+import gregtech.api.items.armor.ArmorLogicSuite;
+import gregtech.api.util.GTUtility;
+import gregtech.api.util.input.KeyBind;
+import gregtech.common.items.armor.IStepAssist;
 
 public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
 
@@ -32,7 +32,7 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
     }
 
     @Override
-    public void onArmorTick(@Nonnull World world, @Nonnull EntityPlayer player, @Nonnull ItemStack itemStack) {
+    public void onArmorTick(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {
         IElectricItem container = itemStack.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
         NBTTagCompound data = GTUtility.getOrCreateNbtCompound(itemStack);
 
@@ -85,7 +85,7 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
     }
 
     @Override
-    public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor,
+    public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, @NotNull ItemStack armor,
                                                        DamageSource source, double damage,
                                                        EntityEquipmentSlot equipmentSlot) {
         IElectricItem container = armor.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
@@ -105,7 +105,7 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
     }
 
     @Override
-    public void damageArmor(EntityLivingBase entity, @Nonnull ItemStack itemStack, DamageSource source, int damage,
+    public void damageArmor(EntityLivingBase entity, @NotNull ItemStack itemStack, DamageSource source, int damage,
                             EntityEquipmentSlot equipmentSlot) {
         IElectricItem item = itemStack.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
         if (item != null) {
@@ -119,7 +119,7 @@ public class PistonBoots extends ArmorLogicSuite implements IStepAssist {
     }
 
     @Override
-    public @Nonnull String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+    public @NotNull String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
         return "gtexpert:textures/armor/piston_boots.png";
     }
 

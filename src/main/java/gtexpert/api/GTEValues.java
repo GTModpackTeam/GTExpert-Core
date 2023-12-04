@@ -25,9 +25,14 @@ public class GTEValues {
             MODID_DA = "draconicadditions",
             MODID_CHISEL = "chisel",
             MODID_AVARITIA = "avaritia",
-            MODID_AVAADDON = "avaritiaddons";
+            MODID_AVAADDON = "avaritiaddons",
+            MODID_FFM = "forestry";
 
     public static boolean isModLoadedDEDA() {
         return Loader.isModLoaded(MODID_DE) && Loader.isModLoaded(MODID_DA);
+    }
+
+    public static boolean isModLoadedAEACPU() {
+        return Loader.isModLoaded(GTEValues.MODID_AEA) && Loader.isModLoaded(GTEValues.MODID_EXCPU);
     }
 }

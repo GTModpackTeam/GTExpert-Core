@@ -1,7 +1,17 @@
 package gtexpert.api.recipes.draconic.tierup;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import com.brandon3055.draconicevolution.lib.ToolUpgradeRecipe;
+
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.chance.output.ChancedOutputList;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
@@ -10,15 +20,6 @@ import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
 
 import gtexpert.api.util.GTELog;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-
-import com.brandon3055.draconicevolution.lib.ToolUpgradeRecipe;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
 
@@ -37,7 +38,7 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
     }
 
     @Override
-    public boolean applyProperty(@Nonnull String key, @Nullable Object value) {
+    public boolean applyProperty(@NotNull String key, @Nullable Object value) {
         if (!key.equals(TierUpRecipeProperty.KEY)) {
             return super.applyProperty(key, value);
         }
@@ -76,8 +77,11 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
             setFusionProperties();
         }
 
-        return ValidationResult.newResult(validationResult, new Recipe(inputs, outputs, chancedOutputs,
-                fluidInputs, fluidOutputs, duration, EUt, hidden, isCTRecipe, recipePropertyStorage, category));
+        return ValidationResult.newResult(validationResult,
+                new Recipe(inputs, outputs, new ChancedOutputList<>(this.chancedOutputLogic, chancedOutputs),
+                        fluidInputs, fluidOutputs,
+                        new ChancedOutputList<>(this.chancedFluidOutputLogic, chancedFluidOutputs), duration, EUt,
+                        hidden, isCTRecipe, recipePropertyStorage, category));
     }
 
     private void setFusionProperties() {

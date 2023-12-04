@@ -15,18 +15,9 @@
     "logoFile" : "assets/gregtech/textures/gui/icon/gtexpert_core_logo_high_resolution.png",
     "dependencies" : [
       "mixinbooter",
-      "configanytime",
       "chickenchunks",
       "gregtech",
-      "gcym",
-      "appliedenergistics2",
-      "aeadditions",
-      "endercore",
-      "enderio",
-      "enderioendergy",
-      "enderiomachines",
-      "enderioconduits",
-      "enderioconduitsappliedenergistics"
+      "gcym"
     ]
   }
 ]

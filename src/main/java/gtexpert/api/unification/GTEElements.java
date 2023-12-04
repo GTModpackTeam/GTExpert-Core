@@ -1,8 +1,8 @@
 package gtexpert.api.unification;
 
-import gregtech.api.unification.Element;
-
 import java.util.*;
+
+import gregtech.api.unification.Element;
 
 public class GTEElements {
 

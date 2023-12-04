@@ -18,6 +18,12 @@ gtexpert.machine.awakened_draconium_fusion.name=Draconic Fusion Crafter II
 gtexpert.machine.large_cracking_unit.name=Large Oil Cracking Unit
 gtexpert.machine.large_cracking_unit.tooltip=Largest oil cracking company
 gtexpert.machine.large_cracking_unit.tooltip.1=§dAuthor:§f @Quarri6343
+gtexpert.machine.advanced_chemical_plant.name=Advanced Chemical Plant
+gtexpert.machine.advanced_chemical_plant.tooltip=The one that was in the old Gregicality
+gtexpert.machine.advanced_chemical_plant.tooltip.1=§dAuthor:§f @tier940
+gtexpert.machine.advanced_gas_collector.name=Advanced Gas Collector
+gtexpert.machine.advanced_gas_collector.tooltip=Squeeze air out of dust
+gtexpert.machine.advanced_gas_collector.tooltip.1=§dAuthor:§f @tier940
 
 # singleblock
 # Auto Chisel
@@ -113,8 +119,8 @@ gregtech.material.naquadah_rocket_fuel=Naquadah Rocket Fuel
 gregtech.material.infinity=Infinity
 gregtech.material.dragon=Dragon
 gregtech.material.chaos=Chaos
-gregtech.material.cryotheum=Cryotheum
-gregtech.material.pyrotheum=Pyrotheum
+gregtech.material.cryotheum=Liquid Cryotheum
+gregtech.material.pyrotheum=Molten Pyrotheum
 gregtech.material.draconium=Draconium
 gregtech.material.awakened_draconium=Awakened Draconium
 gregtech.material.electrical_steel=Electrical Steel
@@ -184,9 +190,10 @@ recipemap.draconic_fusion_upgrade.name=Draconic Equipment Upgrades
 recipemap.awakened_draconic_fusion_upgrade.name=Draconic Equipment Upgrades
 recipemap.draconic_fusion_upgrade.property.1=Preserves upgrade info
 recipemap.draconic_fusion_upgrade.property.2= and stored energy
+recipemap.advanced_chemical_plant.name=Advanced Chemical Plant
+recipemap.advanced_gas_collector.name=Advanced Gas Collector
 
 #misc
-gtexpert.multiblock.needsun=The Controller must be able to See the Sun!
 gtexpert.gui.electric_spawner_mode.spawn=Spawn Mode
 gtexpert.gui.electric_spawner_mode.capture=Capture Mode
 gtexpert.gui.needs_redstone=Needs Redstone signal to work

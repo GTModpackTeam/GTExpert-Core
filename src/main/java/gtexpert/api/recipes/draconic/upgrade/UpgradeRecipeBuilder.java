@@ -1,7 +1,20 @@
 package gtexpert.api.recipes.draconic.upgrade;
 
+import net.minecraft.item.ItemStack;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import com.brandon3055.draconicevolution.DEFeatures;
+import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
+import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
+import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
+import com.brandon3055.draconicevolution.items.ToolUpgrade;
+
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.chance.output.ChancedOutputList;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
@@ -10,18 +23,6 @@ import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
 
 import gtexpert.api.util.GTELog;
-
-import net.minecraft.item.ItemStack;
-
-import com.brandon3055.draconicevolution.DEFeatures;
-import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
-import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
-import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
-import com.brandon3055.draconicevolution.items.ToolUpgrade;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 
@@ -44,7 +45,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
     }
 
     @Override
-    public boolean applyProperty(@Nonnull String key, @Nullable Object value) {
+    public boolean applyProperty(@NotNull String key, @Nullable Object value) {
         if (!key.equals(UpgradeRecipeProperty.KEY)) {
             return super.applyProperty(key, value);
         }
@@ -101,8 +102,11 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
             setFusionProperties();
         }
 
-        return ValidationResult.newResult(validationResult, new Recipe(inputs, outputs, chancedOutputs,
-                fluidInputs, fluidOutputs, duration, EUt, hidden, isCTRecipe, recipePropertyStorage, category));
+        return ValidationResult.newResult(validationResult,
+                new Recipe(inputs, outputs, new ChancedOutputList<>(this.chancedOutputLogic, chancedOutputs),
+                        fluidInputs, fluidOutputs,
+                        new ChancedOutputList<>(this.chancedFluidOutputLogic, chancedFluidOutputs), duration, EUt,
+                        hidden, isCTRecipe, recipePropertyStorage, category));
     }
 
     private void setFusionProperties() {

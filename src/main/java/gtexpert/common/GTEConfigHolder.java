@@ -1,29 +1,31 @@
 package gtexpert.common;
 
-import gtexpert.api.GTEValues;
-
 import net.minecraftforge.common.config.Config;
 
-import com.cleanroommc.configanytime.ConfigAnytime;
+import gtexpert.api.GTEValues;
 
 @Config(modid = GTEValues.MODID)
 public class GTEConfigHolder {
 
     @Config.Name("Gregtech Override")
     @Config.RequiresMcRestart
-    public static GregtechOverride ceuOverride = new GregtechOverride();
+    public static final GregtechOverride ceuOverride = new GregtechOverride();
 
     @Config.Name("AE2 Integration")
     @Config.RequiresMcRestart
-    public static AE2Integration ae2Integration = new AE2Integration();
+    public static final AE2Integration ae2Integration = new AE2Integration();
 
     @Config.Name("EnderIO Integration")
     @Config.RequiresMcRestart
-    public static EIOIntegration eioIntegration = new EIOIntegration();
+    public static final EIOIntegration eioIntegration = new EIOIntegration();
+
+    @Config.Name("DE/DA Integration")
+    @Config.RequiresMcRestart
+    public static final DEDAIntegration dedaIntegration = new DEDAIntegration();
 
     @Config.Name("Chisel Integration")
     @Config.RequiresMcRestart
-    public static ChiselIntegration chiselIntegration = new ChiselIntegration();
+    public static final ChiselIntegration chiselIntegration = new ChiselIntegration();
 
     public static class GregtechOverride {
 
@@ -48,10 +50,14 @@ public class GTEConfigHolder {
 
     public static class AE2Integration {
 
+        @Config.Comment({ "Change the recipe to use AE2 UEL: Extended by setting it to true.",
+                "Changes are not recommended if you don't know what kind of mod it is.", "Default: false" })
+        public boolean enableAE2UELExtended = false;
+
         @Config.Comment({ "The voltage at which AE can be started.",
-                "The material is also adjusted to each voltage.", "Default: 1 (LV)" })
-        @Config.RangeInt(min = 1, max = 14)
-        public int voltageTier = 1;
+                "The material is also adjusted to each voltage.", "Default: 3 (HV)" })
+        @Config.RangeInt(min = 1, max = 10)
+        public int voltageTier = 3;
 
         @Config.Comment({ "Change AE swords, axes, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
@@ -63,6 +69,11 @@ public class GTEConfigHolder {
 
     public static class EIOIntegration {
 
+        @Config.Comment({ "The voltage at which EIO can be started.",
+                "The material is also adjusted to each voltage.", "Default: 3 (HV)" })
+        @Config.RangeInt(min = 1, max = 8)
+        public int voltageTier = 3;
+
         @Config.Comment({ "Change EIO swords, axes, armor, etc. to GT recipe standards.",
                 "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
         public boolean hardToolArmorRecipes = false;
@@ -70,6 +81,14 @@ public class GTEConfigHolder {
         @Config.Comment({ "Add Shapeless Recipe in CoreMod Machines and EIO Machines.",
                 "This change adds a recipe for equivalent exchange of HV machines and EIO machines", "Default: false" })
         public boolean addShapelessRecipeMachines = false;
+    }
+
+    public static class DEDAIntegration {
+
+        @Config.Comment({ "The voltage at which DE/DA can be started.",
+                "The material is also adjusted to each voltage.", "Default: 6 (LuV)" })
+        @Config.RangeInt(min = 3, max = 6)
+        public int voltageTier = 6;
     }
 
     public static class ChiselIntegration {
@@ -80,10 +99,5 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Change LED for Project:RED recipes to GT recipe standards.", "Default: false" })
         public boolean hardLedRecipes = false;
-    }
-
-    // Register the config holder
-    static {
-        ConfigAnytime.register(GTEConfigHolder.class);
     }
 }

@@ -1,14 +1,10 @@
-package gtexpert.loaders.recipe;
+package gtexpert.loaders.recipe.ingredients;
 
-import gregtech.api.recipes.RecipeBuilder;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.recipes.ingredients.GTRecipeItemInput;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
-import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.GTERecipeMaps;
+import java.util.Arrays;
+import java.util.function.Consumer;
 
 import net.minecraft.entity.EntityList;
 import net.minecraft.init.Blocks;
@@ -19,15 +15,20 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.enderio.core.common.util.EntityUtil;
+
+import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.recipes.ingredients.GTRecipeItemInput;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
+import gregtech.api.unification.material.Materials;
+
+import gtexpert.api.GTEValues;
+import gtexpert.api.recipes.GTERecipeMaps;
+
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
-
-import java.util.Arrays;
-import java.util.function.Consumer;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class EIOSoulRecipeLoader {
 
@@ -89,12 +90,12 @@ public class EIOSoulRecipeLoader {
         registerVialExtractorRecipe("minecraft:spider", new ItemStack(Items.SPIDER_EYE, 10),
                 new ItemStack(Items.STRING, 10));
         registerVialExtractorRecipe("minecraft:zombie_pigman", 1000,
-                builder -> builder.output(Items.ROTTEN_FLESH, 10).chancedOutput(ingot, Gold, 250, 250));
+                builder -> builder.output(Items.ROTTEN_FLESH, 10).chancedOutput(ingot, Materials.Gold, 250, 250));
         registerVialExtractorRecipe("minecraft:wither_skeleton", new ItemStack(Items.SKULL, 5, 1),
                 new ItemStack(Items.BONE, 5));
         for (String zombie : Arrays.asList("minecraft:zombie", "minecraft:husk", "minecraft:zombie_villager")) {
             registerVialExtractorRecipe(zombie, 1000, builder -> builder.output(Items.SKULL, 10, 2)
-                    .output(Items.ROTTEN_FLESH, 10).chancedOutput(ingot, Iron, 100, 0));
+                    .output(Items.ROTTEN_FLESH, 10).chancedOutput(ingot, Materials.Iron, 100, 0));
         }
         for (String guardian : Arrays.asList("minecraft:guardian", "minecraft:elder_guardian")) {
             registerVialExtractorRecipe(guardian, new ItemStack(Items.PRISMARINE_SHARD, 5),
@@ -124,7 +125,7 @@ public class EIOSoulRecipeLoader {
                 .input(GTRecipeItemInput.getOrCreate(stack)
                         .setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                                 NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:villager")))
-                .input(gem, Emerald)
+                .input(gem, Materials.Emerald)
                 .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 576))
                 .output(ModObject.itemSoulVial.getItemNN())
                 .output(ModObject.itemMaterial.getItemNN(), 1, 17)

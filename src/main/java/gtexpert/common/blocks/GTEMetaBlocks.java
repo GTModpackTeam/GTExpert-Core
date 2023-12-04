@@ -1,5 +1,7 @@
 package gtexpert.common.blocks;
 
+import static gregtech.common.blocks.MetaBlocks.statePropertiesToString;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -8,9 +10,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
-
-import static gregtech.common.blocks.MetaBlocks.statePropertiesToString;
+import org.jetbrains.annotations.NotNull;
 
 public class GTEMetaBlocks {
 
@@ -30,7 +30,7 @@ public class GTEMetaBlocks {
     }
 
     @SideOnly(Side.CLIENT)
-    private static void registerItemModel(@Nonnull Block block) {
+    private static void registerItemModel(@NotNull Block block) {
         for (IBlockState state : block.getBlockState().getValidStates()) {
             // noinspection ConstantConditions
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block),

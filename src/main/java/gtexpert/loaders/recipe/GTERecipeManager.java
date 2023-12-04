@@ -1,14 +1,11 @@
 package gtexpert.loaders.recipe;
 
+import net.minecraftforge.fml.common.Loader;
+
 import gtexpert.api.GTEValues;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.metatileentities.GTEMetaTileEntities;
-import gtexpert.loaders.recipe.ingredients.ChiselRecipeLoader;
-import gtexpert.loaders.recipe.ingredients.DraconicRecipeLoader;
-import gtexpert.loaders.recipe.ingredients.DraconicUpgradeRecipeLoader;
-import gtexpert.loaders.recipe.ingredients.GTFORecipeLoader;
-
-import net.minecraftforge.fml.common.Loader;
+import gtexpert.common.metatileentities.MetaTileEntitiesManager;
+import gtexpert.loaders.recipe.ingredients.*;
 
 public class GTERecipeManager {
 
@@ -18,7 +15,7 @@ public class GTERecipeManager {
 
     public static void load() {
         GTEMetaItems.init();
-        GTEMetaTileEntities.init();
+        MetaTileEntitiesManager.init();
     }
 
     public static void loadLow() {
@@ -26,14 +23,18 @@ public class GTERecipeManager {
         CEUOverrideRecipeLoader.init();
         GTERecipeLoader.init();
         GTEWoodRecipeLoader.init();
-        AERecipeLoader.init();
-        EIORecipeLoader.init();
-        EIOSoulRecipeLoader.init();
     }
 
     public static void loadLowest() {
         LowestOverrideRecipeLoader.init();
 
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            EIORecipeLoader.init();
+            EIOSoulRecipeLoader.init();
+        }
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            AERecipeLoader.init();
+        }
         if (GTEValues.isModLoadedDEDA()) {
             DraconicRecipeLoader.init();
             DraconicUpgradeRecipeLoader.init();

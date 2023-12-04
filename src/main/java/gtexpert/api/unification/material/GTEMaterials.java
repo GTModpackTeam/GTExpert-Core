@@ -1,11 +1,11 @@
 package gtexpert.api.unification.material;
 
+import net.minecraftforge.fml.common.Loader;
+
 import gregtech.api.unification.material.Material;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.ingredients.*;
-
-import net.minecraftforge.fml.common.Loader;
 
 /**
  * Material Registration.
@@ -97,11 +97,15 @@ public class GTEMaterials {
 
     public static void registerMaterialsLow() {
         GTEFirstDegreeMaterials.init(); // 24001 - 24100
-        EIOFirstDegreeMaterials.init(); // 24101 - 24150
-        AEFirstDegreeMaterials.init();  // 24151 - 24175
     }
 
     public static void registerMaterialsLowest() {
+        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+            EIOFirstDegreeMaterials.init(); // 24101 - 24150
+        }
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            AEFirstDegreeMaterials.init();  // 24151 - 24175
+        }
         if (GTEValues.isModLoadedDEDA()) {
             DEFirstDegreeMaterials.init(); // 24176 - 24185
         }

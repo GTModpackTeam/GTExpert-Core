@@ -1,8 +1,6 @@
 package gtexpert.common;
 
-import gregtech.api.GregTechAPI;
-import gregtech.api.block.VariantItemBlock;
-import gregtech.api.cover.CoverDefinition;
+import static gtexpert.common.GTEMetaBlocks.*;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
@@ -31,7 +29,9 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.function.Function;
+import gregtech.api.GregTechAPI;
+import gregtech.api.block.VariantItemBlock;
+import gregtech.api.cover.CoverDefinition;
 
 import static gregtech.api.GregTechAPI.HEATING_COILS;
 import static gtexpert.common.blocks.GTEMetaBlocks.*;

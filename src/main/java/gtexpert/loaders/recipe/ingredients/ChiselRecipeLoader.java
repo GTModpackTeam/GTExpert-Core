@@ -1,5 +1,32 @@
 package gtexpert.loaders.recipe.ingredients;
 
+import static gregtech.api.GTValues.*;
+import static gregtech.api.recipes.ModHandler.removeRecipeByName;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.blocks.BlockWarningSign.SignType.*;
+import static gregtech.common.blocks.BlockWarningSign1.SignType.*;
+import static gregtech.common.blocks.MetaBlocks.*;
+import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
+import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
+import static gregtech.loaders.recipe.CraftingComponent.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.metatileentities.GTESingleMetaTileEntities.AUTO_CHISEL;
+import static gtexpert.integration.chisel.ChiselHelper.*;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.oredict.OreDictionary;
+
+import com.google.common.base.CaseFormat;
+
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -14,36 +41,8 @@ import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.GTEConfigHolder;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.OreDictionary;
-
-import com.google.common.base.CaseFormat;
 import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.IntStream;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.ModHandler.removeRecipeByName;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.blocks.BlockWarningSign.SignType.*;
-import static gregtech.common.blocks.BlockWarningSign1.SignType.*;
-import static gregtech.common.blocks.MetaBlocks.*;
-import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
-import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
-import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.AUTO_CHISEL;
-import static gtexpert.integration.ae.AEHelper.aeBlocks;
-import static gtexpert.integration.chisel.ChiselHelper.*;
 
 public class ChiselRecipeLoader {
 
@@ -103,7 +102,7 @@ public class ChiselRecipeLoader {
                 GTEUtility.getModItem(GTEValues.MODID_CHISEL, "auto_chisel", 1));
         MetaTileEntityLoader.registerMachineRecipe(true, AUTO_CHISEL,
                 "BSB", "THT", "MCM",
-                'B', new UnificationEntry(toolHeadBuzzSaw, Invar),
+                'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Invar),
                 'S', SENSOR,
                 'T', "craftChisel",
                 'H', HULL,
@@ -276,9 +275,6 @@ public class ChiselRecipeLoader {
         }
 
         // Certus Quartz
-        OreDictionary.registerOre("blockCertus", aeBlocks.quartzBlock().maybeStack(1).get());
-        OreDictionary.registerOre("blockCertus", aeBlocks.quartzPillar().maybeStack(1).get());
-        OreDictionary.registerOre("blockCertus", aeBlocks.chiseledQuartzBlock().maybeStack(1).get());
         for (int i = 0; i < 16; i++) {
             OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus", 1, i));
             OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_CHISEL, "certus1", 1, i));
@@ -520,25 +516,25 @@ public class ChiselRecipeLoader {
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
             ModHandler.addShapedRecipe(true, "chisel_iron", new ItemStack(ChiselItems.chisel_iron),
                     "fPP", " CP", "S h",
-                    'P', new UnificationEntry(plate, Iron),
-                    'C', new UnificationEntry(screw, Iron),
-                    'S', new UnificationEntry(stick, Bronze));
+                    'P', new UnificationEntry(plate, Materials.Iron),
+                    'C', new UnificationEntry(screw, Materials.Iron),
+                    'S', new UnificationEntry(stick, Materials.Bronze));
 
             // Diamond Chisel
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_diamond"));
             ModHandler.addShapedRecipe(true, "chisel_diamond", new ItemStack(ChiselItems.chisel_diamond),
                     "fPP", " CP", "S h",
-                    'P', new UnificationEntry(plate, Diamond),
+                    'P', new UnificationEntry(plate, Materials.Diamond),
                     'C', new ItemStack(ChiselItems.chisel_iron),
-                    'S', new UnificationEntry(stick, RoseGold));
+                    'S', new UnificationEntry(stick, Materials.RoseGold));
 
             // iChisel
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_hitech"));
             ModHandler.addShapedRecipe(true, "chisel_hitech", new ItemStack(ChiselItems.chisel_hitech),
                     "fPP", " CP", "S h",
-                    'P', new UnificationEntry(plate, Diamond),
+                    'P', new UnificationEntry(plate, Materials.Diamond),
                     'C', new ItemStack(ChiselItems.chisel_diamond),
-                    'S', new UnificationEntry(stick, StainlessSteel));
+                    'S', new UnificationEntry(stick, Materials.StainlessSteel));
         }
     }
 

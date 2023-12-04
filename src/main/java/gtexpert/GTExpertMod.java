@@ -1,27 +1,27 @@
 package gtexpert;
 
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.*;
+
 import gregtech.GTInternalTags;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.CommonProxy;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.*;
-
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
      version = Tags.VERSION,
-     dependencies = "required-after:mixinbooter;required-after:configanytime;" +
+     dependencies = "required-after:mixinbooter;" +
              GTInternalTags.DEP_VERSION_STRING + "required-after:" + GTEValues.MODID_GCYM + ";" +
-             "after:" + GTEValues.MODID_GTFO + ";" + "required-after:" + GTEValues.MODID_ECO + ";" +
-             "required-after:" + GTEValues.MODID_EIO + ";" + "required-after:" + GTEValues.MODID_EIOE + ";" +
-             "required-after:" + GTEValues.MODID_EIOM + ";" + "required-after:" + GTEValues.MODID_EIOC + ";" +
-             "required-after:" + GTEValues.MODID_EIOCA + ";" + "required-after:" + GTEValues.MODID_AE + ";" +
-             "required-after:" + GTEValues.MODID_AEA + ";" + "after:" + GTEValues.MODID_AEFC + ";" +
-             "after:" + GTEValues.MODID_DE + ";" + "after:" + GTEValues.MODID_DA + ";" +
-             "after:" + GTEValues.MODID_CHISEL + ";" + "after:" + GTEValues.MODID_AVARITIA + ";" +
-             "after:" + GTEValues.MODID_AVAADDON + ";")
+             "after:" + GTEValues.MODID_GTFO + ";" + "after:" + GTEValues.MODID_AE + ";" +
+             "after:" + GTEValues.MODID_AEA + ";" + "after:" + GTEValues.MODID_AEFC + ";" +
+             "after:" + GTEValues.MODID_EXCPU + ";" + "after:" + GTEValues.MODID_ECO + ";" +
+             "after:" + GTEValues.MODID_EIO + ";" + "after:" + GTEValues.MODID_EIOE + ";" +
+             "after:" + GTEValues.MODID_EIOM + ";" + "after:" + GTEValues.MODID_EIOC + ";" +
+             "after:" + GTEValues.MODID_EIOCA + ";" + "after:" + GTEValues.MODID_DE + ";" +
+             "after:" + GTEValues.MODID_DA + ";" + "after:" + GTEValues.MODID_CHISEL + ";" +
+             "after:" + GTEValues.MODID_AVARITIA + ";" + "after:" + GTEValues.MODID_FFM + ";")
 
 public class GTExpertMod {
 
