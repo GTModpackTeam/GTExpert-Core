@@ -1,14 +1,9 @@
 package gtexpert.common;
 
-import static gtexpert.common.GTEMetaBlocks.*;
+import static gregtech.api.GregTechAPI.HEATING_COILS;
+import static gtexpert.common.blocks.GTEMetaBlocks.*;
 
-import gtexpert.api.GTEValues;
-import gtexpert.api.util.GTELog;
-import gtexpert.common.blocks.GTEBlockWireCoil;
-import gtexpert.common.items.*;
-import gtexpert.integration.theoneprobe.TOPProviders;
-import gtexpert.loaders.*;
-import gtexpert.loaders.recipe.*;
+import java.util.function.Function;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -33,18 +28,25 @@ import gregtech.api.GregTechAPI;
 import gregtech.api.block.VariantItemBlock;
 import gregtech.api.cover.CoverDefinition;
 
-import static gregtech.api.GregTechAPI.HEATING_COILS;
-import static gtexpert.common.blocks.GTEMetaBlocks.*;
+import gtexpert.api.GTEValues;
+import gtexpert.api.util.GTELog;
+import gtexpert.common.blocks.GTEBlockWireCoil;
+import gtexpert.common.blocks.GTEMetaBlocks;
+import gtexpert.common.items.*;
+import gtexpert.integration.theoneprobe.TOPProviders;
+import gtexpert.loaders.*;
+import gtexpert.loaders.recipe.*;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
+        GTEMetaBlocks.init();
         GTEMetaItems.init();
 
         /* Start API Block Registration */
         for (GTEBlockWireCoil.CoilType type : GTEBlockWireCoil.CoilType.values()) {
-            HEATING_COILS.put(GTE_BLOCK_WIRE_COIL.getState(type), type);
+            HEATING_COILS.put(GTE_WIRE_COIL.getState(type), type);
         }
         /* End API Block Registration */
     }
@@ -62,8 +64,8 @@ public class CommonProxy {
         GTELog.logger.info("Registering Blocks...");
         IForgeRegistry<Block> registry = event.getRegistry();
 
-        registry.register(GTE_BLOCK_WIRE_COIL);
-        registry.register(GTE_BLOCK_METAL_CASING);
+        registry.register(GTE_WIRE_COIL);
+        registry.register(GTE_METAL_CASING);
         registry.register(BLOCK_SAWMILL_CONVEYOR);
     }
 
@@ -73,7 +75,7 @@ public class CommonProxy {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         GTERecipeManager.preLoad();
-        registry.register(createItemBlock(GTE_BLOCK_METAL_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GTE_METAL_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
     }
 

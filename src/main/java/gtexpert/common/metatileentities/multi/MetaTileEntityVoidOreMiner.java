@@ -85,7 +85,7 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
     }
 
     protected IBlockState getCasingState() {
-        return GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER);
+        return GTEMetaBlocks.GTE_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER);
     }
 
     @Override

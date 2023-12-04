@@ -1,20 +1,9 @@
 package gtexpert.loaders.recipe.ingredients;
 
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-import gregtech.api.metatileentity.multiblock.CleanroomType;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.ingredients.nbtmatch.*;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.items.MetaItems;
-import gregtech.common.metatileentities.MetaTileEntities;
-
-import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
-import gtexpert.common.blocks.GTEBlockMetalCasing;
-import gtexpert.common.blocks.GTEMetaBlocks;
-import gtexpert.common.items.GTEMetaItems;
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.GTEConfigHolder.dedaIntegration;
 
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
@@ -44,8 +33,8 @@ import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
 
@@ -817,7 +806,7 @@ public class DraconicRecipeLoader {
 
         // Draconum Casing
         ModHandler.addShapedRecipe(true, "casing_draconum",
-                GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING,
                                 ConfigHolder.recipes.casingsPerCraft),
                 "PhP", "PFP", "PwP",
@@ -827,14 +816,14 @@ public class DraconicRecipeLoader {
                 .circuitMeta(6)
                 .input(plate, GTEMaterials.Draconium, 6)
                 .input(frameGt, GTEMaterials.Draconium, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                .outputs(GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[dedaIntegration.voltageTier])
                 .buildAndRegister();
 
         // Awakened Draconum Casing
         ModHandler.addShapedRecipe(true, "casing_awakened_draconum",
-                GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING,
                                 ConfigHolder.recipes.casingsPerCraft),
                 "PhP", "PFP", "PwP",
@@ -844,7 +833,7 @@ public class DraconicRecipeLoader {
                 .circuitMeta(6)
                 .input(plate, GTEMaterials.AwakenedDraconium, 6)
                 .input(frameGt, GTEMaterials.AwakenedDraconium, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                .outputs(GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[dedaIntegration.voltageTier + 1])
                 .buildAndRegister();

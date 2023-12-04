@@ -87,7 +87,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     protected IBlockState getCasingState() {
-        return GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill);
+        return GTEMetaBlocks.GTE_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill);
     }
 
     @Override

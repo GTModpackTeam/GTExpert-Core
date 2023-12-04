@@ -22,7 +22,6 @@ public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalC
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
         setDefaultState(getState(MetalCasingType.SAWMill));
-        setRegistryName("gte_metal_casing");
     }
 
     @Override

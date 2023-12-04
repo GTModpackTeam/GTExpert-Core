@@ -27,7 +27,6 @@ public class BlockSawmillConveyor extends Block {
         setResistance(10.0f);
         setSoundType(SoundType.WOOD);
         setHarvestLevel("wrench", 1);
-        setRegistryName("sawmill_conveyor");
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

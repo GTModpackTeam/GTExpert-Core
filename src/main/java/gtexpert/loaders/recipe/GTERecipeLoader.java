@@ -40,32 +40,12 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-
-import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.machines.init.MachineObject;
-import crazypants.enderio.powertools.init.PowerToolObject;
-
-import java.util.LinkedList;
-import java.util.List;
-import javax.annotation.Nonnull;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.items.GTEMetaItems.*;
-import static gtexpert.common.metatileentities.GTEMetaTileEntities.*;
-import static gtexpert.integration.ae.AEHelper.aeBlocks;
+import gtexpert.common.items.GTEMetaItems;
+import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 
 public class GTERecipeLoader {
 
@@ -717,7 +697,7 @@ public class GTERecipeLoader {
 
         // Treated Wood Machine Casing
         ModHandler.addShapedRecipe(true, "casing_treated_wood",
-                GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,
+                GTEMetaBlocks.GTE_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,
                         ConfigHolder.recipes.casingsPerCraft),
                 "PhP", "PFP", "PwP",
                 'P', new UnificationEntry(plate, Materials.TreatedWood),
@@ -726,7 +706,7 @@ public class GTERecipeLoader {
                 .circuitMeta(6)
                 .input(plate, Materials.TreatedWood, 6)
                 .input(frameGt, Materials.TreatedWood, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                .outputs(GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
                 .duration(50).EUt(VH[LV])
                 .buildAndRegister();
@@ -739,7 +719,7 @@ public class GTERecipeLoader {
                 .input(MetaItems.FIELD_GENERATOR_ZPM)
                 .input(plate, GTEMaterials.NM_HEA_NPs, 6)
                 .fluidInputs(Materials.EnderPearl.getFluid(GTValues.L << 2))
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                .outputs(GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER,
                                 ConfigHolder.recipes.casingsPerCraft))
                 .duration(100).EUt(VA[ZPM])

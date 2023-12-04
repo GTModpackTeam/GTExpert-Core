@@ -62,7 +62,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     }
 
     protected IBlockState getCasingState() {
-        return GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(getCasingType());
+        return GTEMetaBlocks.GTE_METAL_CASING.getState(getCasingType());
     }
 
     @Override
