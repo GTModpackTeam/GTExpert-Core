@@ -10,6 +10,7 @@ import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
 import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.GTEConfigHolder.chiselIntegration;
 import static gtexpert.common.metatileentities.GTESingleMetaTileEntities.AUTO_CHISEL;
 import static gtexpert.integration.chisel.ChiselHelper.*;
 
@@ -39,7 +40,6 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.common.GTEConfigHolder;
 
 import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
@@ -138,7 +138,7 @@ public class ChiselRecipeLoader {
         });
 
         // Lamp
-        if (GTEConfigHolder.chiselIntegration.hardLedRecipes) {
+        if (chiselIntegration.hardLedRecipes) {
             if (Loader.isModLoaded("projectred-illumination")) {
                 IntStream.range(0, 31).mapToObj(i -> getModItem("projectred-illumination", "lamp", 1, i))
                         .forEach(ModHandler::removeRecipeByOutput);
@@ -511,7 +511,7 @@ public class ChiselRecipeLoader {
     }
 
     private static void tools() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && GTEConfigHolder.chiselIntegration.hardToolRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes && chiselIntegration.hardToolRecipes) {
             // Iron Chisel
             removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
             ModHandler.addShapedRecipe(true, "chisel_iron", new ItemStack(ChiselItems.chisel_iron),

@@ -3,6 +3,7 @@ package gtexpert.loaders.recipe;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
+import static gtexpert.common.GTEConfigHolder.ceuOverride;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -42,7 +43,6 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
@@ -183,7 +183,7 @@ public class GTERecipeLoader {
     }
 
     private static void items() {
-        if (GTEConfigHolder.ceuOverride.hardPrimitiveCovers) {
+        if (ceuOverride.hardPrimitiveParts) {
             ModHandler.addShapedRecipe(true, "primitive_motor",
                     GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(), "CWR", "WMW", "RWC",
                     'R', new UnificationEntry(stick, Materials.Bronze),
@@ -274,6 +274,49 @@ public class GTERecipeLoader {
                     .duration(400)
                     .withRecycling()
                     .buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_field_generator",
+                    GTEMetaItems.PRIMITIVE_FIELD_GENERATOR.getStackForm(), "CPC", "UGU", "CPC",
+                    'C', new UnificationEntry(wireGtDouble, Materials.RedAlloy),
+                    'P', new UnificationEntry(plate, Materials.Bronze),
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'G', new UnificationEntry(gem, Materials.Lapis));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(gem, Materials.Lapis)
+                    .input(plate, Materials.Bronze, 2)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
+                    .input(wireGtDouble, Materials.RedAlloy, 4)
+                    .output(GTEMetaItems.PRIMITIVE_FIELD_GENERATOR)
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_emitter",
+                    GTEMetaItems.PRIMITIVE_EMITTER.getStackForm(), "CSU", "SGS", "USC",
+                    'C', new UnificationEntry(cableGtSingle, Materials.RedAlloy),
+                    'S', new UnificationEntry(stick, Materials.Bronze),
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'G', new UnificationEntry(gem, Materials.Lapis));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .input(stick, Materials.Bronze, 4)
+                    .input(cableGtSingle, Materials.RedAlloy, 2)
+                    .input(circuit, MarkerMaterials.Tier.ULV, 2)
+                    .input(gem, Materials.Lapis)
+                    .output(GTEMetaItems.PRIMITIVE_EMITTER)
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+
+            ModHandler.addShapedRecipe(true, "primitive_sensor",
+                    GTEMetaItems.PRIMITIVE_SENSOR.getStackForm(), "P G", "PS ", "UPP",
+                    'P', new UnificationEntry(plate, Materials.Bronze),
+                    'S', new UnificationEntry(stick, Materials.Bronze),
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'G', new UnificationEntry(gem, Materials.Lapis));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(stick, Materials.Bronze)
+                    .input(plate, Materials.Bronze, 4)
+                    .input(circuit, MarkerMaterials.Tier.ULV)
+                    .input(gem, Materials.Lapis)
+                    .output(GTEMetaItems.PRIMITIVE_SENSOR)
+                    .duration(100).EUt(VA[ULV]).buildAndRegister();
         } else {
             ModHandler.addShapedRecipe(true, "primitive_motor",
                     GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(), "WR", "MW",
@@ -312,10 +355,31 @@ public class GTERecipeLoader {
                     GTEMetaItems.PRIMITIVE_FLUID_REGULATOR.getStackForm(), "PC", "Cd",
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
                     'P', GTEMetaItems.PRIMITIVE_PUMP.getStackForm());
+
+            ModHandler.addShapedRecipe(true, "primitive_field_generator",
+                    GTEMetaItems.PRIMITIVE_FIELD_GENERATOR.getStackForm(), "CP", "UG",
+                    'C', new UnificationEntry(wireGtDouble, Materials.RedAlloy),
+                    'P', new UnificationEntry(plate, Materials.Bronze),
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'G', new UnificationEntry(gem, Materials.Lapis));
+
+            ModHandler.addShapedRecipe(true, "primitive_emitter",
+                    GTEMetaItems.PRIMITIVE_EMITTER.getStackForm(), "CS", "UG",
+                    'C', new UnificationEntry(cableGtSingle, Materials.RedAlloy),
+                    'S', new UnificationEntry(stick, Materials.Bronze),
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'G', new UnificationEntry(gem, Materials.Lapis));
+
+            ModHandler.addShapedRecipe(true, "primitive_sensor",
+                    GTEMetaItems.PRIMITIVE_SENSOR.getStackForm(), "PG", "US",
+                    'P', new UnificationEntry(plate, Materials.Bronze),
+                    'S', new UnificationEntry(stick, Materials.Bronze),
+                    'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                    'G', new UnificationEntry(gem, Materials.Lapis));
         }
 
         if (!ConfigHolder.machines.enableHighTierSolars) return;
-        if (GTEConfigHolder.ceuOverride.hardSolarPanel) {
+        if (ceuOverride.hardSolarPanel) {
             // Remove solar panels
             ModHandler.removeRecipeByOutput(MetaItems.COVER_SOLAR_PANEL.getStackForm());
             ModHandler.removeRecipeByOutput(MetaItems.COVER_SOLAR_PANEL_ULV.getStackForm());
