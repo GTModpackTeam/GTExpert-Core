@@ -6,7 +6,7 @@ permissions:
   contents: write
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       timeout:
         description: 'Timeout for runServer (seconds)'
