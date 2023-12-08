@@ -26,13 +26,13 @@ dependencies {
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
     implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848") // CCL 3.2.3.358
-    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4910613") // CEu 2.8.1
-    //implementation (files("libs/gregtech-1.12.2-2.8.0-beta-dev.jar")) // CEu pr 2.8.1
+    //implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4924179") // CEu 2.8.2
+    implementation (files("libs/gregtech-1.12.2-2.8.2-beta-dev.jar")) // CEu pr 2.8.2
     implementation rfg.deobf("curse.maven:gregicality-multiblocks-564858:4910674") // GCYM 1.2.7
 
     // Soft Dependencies
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.684" // CrT 4.1.20.684
-    implementation rfg.deobf("curse.maven:groovyscript-687577:4905039") // GrS 0.7.0
+    compileOnlyApi rfg.deobf("curse.maven:groovyscript-687577:4905039") // GrS 0.7.0
     implementation rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
     implementation rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465") // Forgelin 1.8.4
 

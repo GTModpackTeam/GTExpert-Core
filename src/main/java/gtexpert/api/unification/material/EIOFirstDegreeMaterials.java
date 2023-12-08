@@ -5,12 +5,13 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-import static gtexpert.common.GTEConfigHolder.eioIntegration;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
+
+import gtexpert.api.GTEValues;
 
 public class EIOFirstDegreeMaterials {
 
@@ -41,8 +42,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Steel, 1, Coal, 1, Silicon, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.HIGH)
-                        .blastStats(VA[eioIntegration.voltageTier], 120)
-                        .vacuumStats(VA[eioIntegration.voltageTier], 30))
+                        .blastStats(VA[GTEValues.eioVoltageTier], 120)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier], 30))
                 .build();
 
         // Energetic Alloy
@@ -54,8 +55,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Redstone, 1, Gold, 1, Glowstone, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.HIGH)
-                        .blastStats(VA[eioIntegration.voltageTier], 120)
-                        .vacuumStats(VA[eioIntegration.voltageTier], 30))
+                        .blastStats(VA[GTEValues.eioVoltageTier], 120)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier], 30))
                 .build();
         EnergeticAlloy.setFormula("Au2(Si(FeS2)5(CrAl2O3)Hg3)2", true);
 
@@ -68,8 +69,8 @@ public class EIOFirstDegreeMaterials {
                 .components(EnergeticAlloy, 1, EnderPearl, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.HIGH)
-                        .blastStats(VA[eioIntegration.voltageTier], 120)
-                        .vacuumStats(VA[eioIntegration.voltageTier], 30))
+                        .blastStats(VA[GTEValues.eioVoltageTier], 120)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier], 30))
                 .build();
         VibrantAlloy.setFormula("BeK4N5(Au2(Si(FeS2)5(CrAl2O3)Hg3)2)", true);
 
@@ -82,8 +83,8 @@ public class EIOFirstDegreeMaterials {
                 .components(RedAlloy, 1, Silicon, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.HIGH)
-                        .blastStats(VA[eioIntegration.voltageTier], 120)
-                        .vacuumStats(VA[eioIntegration.voltageTier], 30))
+                        .blastStats(VA[GTEValues.eioVoltageTier], 120)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier], 30))
                 .build();
 
         // Conductive Iron
@@ -95,8 +96,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Iron, 1, RedstoneAlloy, 1)
                 .blast(b -> b
                         .temp(1700, GasTier.HIGH)
-                        .blastStats(VA[eioIntegration.voltageTier], 120)
-                        .vacuumStats(VA[eioIntegration.voltageTier], 30))
+                        .blastStats(VA[GTEValues.eioVoltageTier], 120)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier], 30))
                 .build();
 
         // Pulsating Iron
@@ -108,8 +109,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Iron, 1, EnderPearl, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.HIGH)
-                        .blastStats(VA[eioIntegration.voltageTier], 120)
-                        .vacuumStats(VA[eioIntegration.voltageTier]))
+                        .blastStats(VA[GTEValues.eioVoltageTier], 120)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier]))
                 .build();
 
         // Dark Steel
@@ -121,8 +122,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Iron, 1, Coal, 1, Obsidian, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.HIGH)
-                        .blastStats(VA[eioIntegration.voltageTier], 120)
-                        .vacuumStats(VA[eioIntegration.voltageTier]))
+                        .blastStats(VA[GTEValues.eioVoltageTier], 120)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier]))
                 .build();
 
         // Soularium
@@ -134,8 +135,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Gold, 1, Ash, 1, SoulSand, 1)
                 .blast(b -> b
                         .temp(3600, GasTier.HIGH)
-                        .blastStats(VA[eioIntegration.voltageTier], 600)
-                        .vacuumStats(VA[eioIntegration.voltageTier], 150))
+                        .blastStats(VA[GTEValues.eioVoltageTier], 600)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier], 150))
                 .build();
 
         // End Steel
@@ -147,8 +148,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Endstone, 1, DarkSteel, 1, Obsidian, 1)
                 .blast(b -> b
                         .temp(4500, GasTier.HIGHER)
-                        .blastStats(VA[eioIntegration.voltageTier] + 1, 1072)
-                        .vacuumStats(VA[eioIntegration.voltageTier] + 1, 268))
+                        .blastStats(VA[GTEValues.eioVoltageTier] + 1, 1072)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier] + 1, 268))
                 .build();
         EndSteel.setFormula("FeC(MgFeSi2O4)2?", true);
 
@@ -161,8 +162,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Platinum, 1, Iron, 1, Aluminium, 1)
                 .blast(b -> b
                         .temp(1700, GasTier.HIGHER)
-                        .blastStats(VA[eioIntegration.voltageTier] + 1, 1072)
-                        .vacuumStats(VA[eioIntegration.voltageTier] + 1, 268))
+                        .blastStats(VA[GTEValues.eioVoltageTier] + 1, 1072)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier] + 1, 268))
                 .build();
 
         // Crystalline Alloy
@@ -174,8 +175,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Gold, 1, Platinum, 1, Emerald, 1, VibrantAlloy, 1)
                 .blast(b -> b
                         .temp(4500, GasTier.HIGHER)
-                        .blastStats(VA[eioIntegration.voltageTier] + 1, 600)
-                        .vacuumStats(VA[eioIntegration.voltageTier] + 1, 150))
+                        .blastStats(VA[GTEValues.eioVoltageTier] + 1, 600)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier] + 1, 150))
                 .build();
 
         // Melodic Alloy
@@ -187,8 +188,8 @@ public class EIOFirstDegreeMaterials {
                 .components(EndSteel, 1, ChorusFruit, 1)
                 .blast(b -> b
                         .temp(5400, GasTier.HIGHER)
-                        .blastStats(VA[eioIntegration.voltageTier] + 1, 600)
-                        .vacuumStats(VA[eioIntegration.voltageTier] + 1, 150))
+                        .blastStats(VA[GTEValues.eioVoltageTier] + 1, 600)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier] + 1, 150))
                 .build();
 
         // Stellar Alloy
@@ -200,8 +201,8 @@ public class EIOFirstDegreeMaterials {
                 .components(NetherStar, 1, MelodicAlloy, 1, Clay, 1)
                 .blast(b -> b
                         .temp(7200, GasTier.HIGHER)
-                        .blastStats(VA[eioIntegration.voltageTier] + 3, 600)
-                        .vacuumStats(VA[eioIntegration.voltageTier] + 3, 150))
+                        .blastStats(VA[GTEValues.eioVoltageTier] + 3, 600)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier] + 3, 150))
                 .build();
 
         // Crystalline Pink Slime
@@ -213,8 +214,8 @@ public class EIOFirstDegreeMaterials {
                 .components(MelodicAlloy, 1, RawRubber, 2)
                 .blast(b -> b
                         .temp(5400, GasTier.HIGHER)
-                        .blastStats(VA[eioIntegration.voltageTier] + 1, 600)
-                        .vacuumStats(VA[eioIntegration.voltageTier] + 1, 150))
+                        .blastStats(VA[GTEValues.eioVoltageTier] + 1, 600)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier] + 1, 150))
                 .build();
 
         // Energetic Silver
@@ -226,8 +227,8 @@ public class EIOFirstDegreeMaterials {
                 .components(Silver, 1, Redstone, 1, Glowstone, 1)
                 .blast(b -> b
                         .temp(5400, GasTier.HIGHER)
-                        .blastStats(VA[eioIntegration.voltageTier] + 1, 1072)
-                        .vacuumStats(VA[eioIntegration.voltageTier] + 1, 268))
+                        .blastStats(VA[GTEValues.eioVoltageTier] + 1, 1072)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier] + 1, 268))
                 .build();
 
         // Vivid Alloy
@@ -238,8 +239,8 @@ public class EIOFirstDegreeMaterials {
                 .components(EnergeticSilver, 1, EnderPearl, 1)
                 .blast(b -> b
                         .temp(5400, GasTier.HIGHER)
-                        .blastStats(VA[eioIntegration.voltageTier] + 1, 1072)
-                        .vacuumStats(VA[eioIntegration.voltageTier] + 1, 268))
+                        .blastStats(VA[GTEValues.eioVoltageTier] + 1, 1072)
+                        .vacuumStats(VA[GTEValues.eioVoltageTier] + 1, 268))
                 .build();
     }
 }

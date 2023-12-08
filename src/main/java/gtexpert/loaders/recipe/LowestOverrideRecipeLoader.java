@@ -2,6 +2,7 @@ package gtexpert.loaders.recipe;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gtexpert.common.GTEConfigHolder.ceuOverride;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -10,13 +11,11 @@ import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
 
-import gtexpert.common.GTEConfigHolder;
-
 public class LowestOverrideRecipeLoader {
 
     public static void init() {
         // Terracotta
-        if (GTEConfigHolder.ceuOverride.nerfTerracottaCrafting) {
+        if (ceuOverride.nerfTerracottaCrafting) {
             for (int i = 0; i < Materials.CHEMICAL_DYES.length; i++) {
                 // Remove terracotta macerator recipes
                 GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES,

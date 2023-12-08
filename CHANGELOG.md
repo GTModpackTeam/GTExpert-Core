@@ -1,3 +1,18 @@
+# v1.5.8
+- Fixed to return default value when voltageTier is set out of range in cfg.
+
+## New item
+- Primitive Field Generator
+- Primitive Emitter
+- Primitive Sensor
+
+* * *
+
+# v1.5.7
+- Bump version to CEu v2.8.2
+
+* * *
+
 # v1.5.6
 - Increase the applicability of recipes that can be changed by changing cfg.
 

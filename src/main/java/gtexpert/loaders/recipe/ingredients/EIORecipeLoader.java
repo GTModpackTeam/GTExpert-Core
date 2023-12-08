@@ -4,7 +4,6 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
-import static gtexpert.common.GTEConfigHolder.ae2Integration;
 import static gtexpert.common.GTEConfigHolder.eioIntegration;
 
 import net.minecraft.init.Blocks;
@@ -29,7 +28,6 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
-import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.metatileentities.EIOMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
 
@@ -127,14 +125,14 @@ public class EIORecipeLoader {
                 .input(dust, GTEMaterials.EndSteel, 2)
                 .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
                 .fluidOutputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(ModObject.itemMaterial.getItemNN(), 2, 35)
                 .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
                 .fluidInputs(GTEMaterials.EndSteel.getFluid(288))
                 .fluidOutputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Vapor of levity
@@ -143,7 +141,7 @@ public class EIORecipeLoader {
                 .input(ModObject.itemMaterial.getItemNN(), 2, 34)
                 .fluidInputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
                 .fluidOutputs(new FluidStack(Fluids.VAPOR_OF_LEVITY.getFluid(), 1000))
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Hootch
@@ -152,7 +150,7 @@ public class EIORecipeLoader {
                 .input(Items.SUGAR, 1)
                 .fluidInputs(Materials.Water.getFluid(2000))
                 .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
-                .duration(200).EUt(VA[eioIntegration.voltageTier])
+                .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
         if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
@@ -160,14 +158,14 @@ public class EIORecipeLoader {
                     .input(Items.SUGAR, 1)
                     .fluidInputs(Materials.Water.getFluid(2000))
                     .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
-                    .duration(200).EUt(VA[eioIntegration.voltageTier])
+                    .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                     .buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                     .inputs(getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 118))
                     .input(Items.SUGAR, 1)
                     .fluidInputs(Materials.Water.getFluid(2000))
                     .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
-                    .duration(200).EUt(VA[eioIntegration.voltageTier])
+                    .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                     .buildAndRegister();
         }
 
@@ -176,7 +174,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Redstone, 2)
                 .fluidInputs(Materials.Blaze.getFluid(1152))
                 .fluidOutputs(new FluidStack(Fluids.FIRE_WATER.getFluid(), 1000))
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Sunshine
@@ -186,7 +184,7 @@ public class EIORecipeLoader {
                 .input(Blocks.DOUBLE_PLANT, 1)
                 .fluidInputs(new FluidStack(Fluids.FIRE_WATER.getFluid(), 250))
                 .fluidOutputs(new FluidStack(Fluids.LIQUID_SUNSHINE.getFluid(), 250))
-                .duration(56).EUt(VA[eioIntegration.voltageTier])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Cloud Seed
@@ -195,7 +193,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Silver, 2)
                 .fluidInputs(Materials.Water.getFluid(3500))
                 .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 3500))
-                .duration(300).EUt(VA[eioIntegration.voltageTier])
+                .duration(300).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Concentrated Cloud
@@ -205,7 +203,7 @@ public class EIORecipeLoader {
                 .input(Items.SNOWBALL, 1)
                 .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1000))
                 .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED_CONCENTRATED.getFluid(), 500))
-                .duration(200).EUt(VA[eioIntegration.voltageTier])
+                .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
     }
 
@@ -232,7 +230,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Coal, 1)
                 .input(dust, Materials.Silicon, 1)
                 .output(dust, GTEMaterials.ElectricalSteel, 3)
-                .duration(40).EUt(VA[eioIntegration.voltageTier])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Energetic Alloy
@@ -241,7 +239,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Gold, 1)
                 .input(dust, Materials.Glowstone, 1)
                 .output(dust, GTEMaterials.EnergeticAlloy, 3)
-                .duration(40).EUt(VA[eioIntegration.voltageTier])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Vibrant Alloy
@@ -249,7 +247,7 @@ public class EIORecipeLoader {
                 .input(dust, GTEMaterials.EnergeticAlloy, 1)
                 .input(dust, Materials.EnderPearl, 1)
                 .output(dust, GTEMaterials.VibrantAlloy, 2)
-                .duration(40).EUt(VA[eioIntegration.voltageTier])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Redstone Alloy
@@ -257,7 +255,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.RedAlloy, 1)
                 .input(dust, Materials.Silicon, 1)
                 .output(dust, GTEMaterials.RedstoneAlloy, 2)
-                .duration(40).EUt(VA[eioIntegration.voltageTier])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Conductive Iron
@@ -265,7 +263,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Iron, 1)
                 .input(dust, GTEMaterials.RedstoneAlloy, 1)
                 .output(dust, GTEMaterials.ConductiveIron, 2)
-                .duration(40).EUt(VA[eioIntegration.voltageTier])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Pulsating Iron
@@ -273,7 +271,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Iron, 1)
                 .input(dust, Materials.EnderPearl, 1)
                 .output(dust, GTEMaterials.PulsatingIron, 2)
-                .duration(40).EUt(VA[eioIntegration.voltageTier])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Dark Steel
@@ -282,7 +280,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Coal, 1)
                 .input(dust, Materials.Obsidian, 1)
                 .output(dust, GTEMaterials.DarkSteel, 3)
-                .duration(40).EUt(VA[eioIntegration.voltageTier])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Soularium
@@ -291,7 +289,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Ash, 1)
                 .input(dust, GTEMaterials.SoulSand, 1)
                 .output(dust, GTEMaterials.Soularium, 3)
-                .duration(40).EUt(VA[eioIntegration.voltageTier])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // End Steel
@@ -300,7 +298,7 @@ public class EIORecipeLoader {
                 .input(dust, GTEMaterials.DarkSteel, 1)
                 .input(dust, Materials.Obsidian, 1)
                 .output(dust, GTEMaterials.EndSteel, 3)
-                .duration(40).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Iron Alloy
@@ -309,7 +307,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Iron, 1)
                 .input(dust, Materials.Aluminium, 1)
                 .output(dust, GTEMaterials.ConstructionAlloy, 3)
-                .duration(40).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Crystalline Alloy
@@ -320,7 +318,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Emerald, 1)
                 .input(dust, GTEMaterials.VibrantAlloy, 1)
                 .output(dust, GTEMaterials.CrystallineAlloy, 4)
-                .duration(40).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Melodic Alloy
@@ -328,7 +326,7 @@ public class EIORecipeLoader {
                 .input(dust, GTEMaterials.EndSteel, 1)
                 .input(dust, GTEMaterials.ChorusFruit, 1)
                 .output(dust, GTEMaterials.MelodicAlloy, 2)
-                .duration(40).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Stellar Alloy
@@ -337,7 +335,7 @@ public class EIORecipeLoader {
                 .input(dust, GTEMaterials.MelodicAlloy, 1)
                 .input(dust, Materials.Clay, 1)
                 .output(dust, GTEMaterials.StellarAlloy, 3)
-                .duration(40).EUt(VA[eioIntegration.voltageTier + 3])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier + 3])
                 .buildAndRegister();
 
         // Crystalline Pink Slime
@@ -345,7 +343,7 @@ public class EIORecipeLoader {
                 .input(dust, GTEMaterials.MelodicAlloy, 1)
                 .input(dust, Materials.RawRubber, 2)
                 .output(dust, GTEMaterials.CrystallinePinkSlime, 2)
-                .duration(40).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Energetic Silver
@@ -354,7 +352,7 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Redstone, 1)
                 .input(dust, Materials.Glowstone, 1)
                 .output(dust, GTEMaterials.EnergeticSilver, 3)
-                .duration(40).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Vivid Alloy
@@ -362,91 +360,91 @@ public class EIORecipeLoader {
                 .input(dust, GTEMaterials.EnergeticSilver, 1)
                 .input(dust, Materials.EnderPearl, 1)
                 .output(dust, GTEMaterials.VividAlloy, 2)
-                .duration(40).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(40).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
     }
 
     private static void items() {
         // Basic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(GTHelper.batteryHull(eioIntegration.voltageTier), 1)
-                .input(GTHelper.oreDictionaryCircuit(eioIntegration.voltageTier), 1)
+                .input(GTHelper.batteryHull(GTEValues.eioVoltageTier), 1)
+                .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier), 1)
                 .fluidInputs(GTEMaterials.ElectricalSteel.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 0)
-                .duration(56).EUt(VA[eioIntegration.voltageTier])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Double-Layer Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ModObject.itemBasicCapacitor.getItemNN(), 1, 0)
-                .input(GTHelper.oreDictionaryCircuit(eioIntegration.voltageTier + 1), 1)
+                .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
                 .fluidInputs(GTEMaterials.EnergeticAlloy.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 1)
-                .duration(56).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Octadic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ModObject.itemBasicCapacitor.getItemNN(), 2, 1)
-                .input(GTHelper.oreDictionaryCircuit(eioIntegration.voltageTier + 2), 1)
+                .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier + 2), 1)
                 .fluidInputs(GTEMaterials.VibrantAlloy.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 2)
-                .duration(56).EUt(VA[eioIntegration.voltageTier + 2])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier + 2])
                 .buildAndRegister();
 
         // Crystaline Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ModObject.itemBasicCapacitor.getItemNN(), 1, 1)
-                .input(GTHelper.oreDictionaryCircuit(eioIntegration.voltageTier + 1), 1)
+                .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
                 .fluidInputs(GTEMaterials.CrystallineAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorCrystalline.getItemNN(), 1)
-                .duration(56).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Melodic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(EndergyObject.itemCapacitorCrystalline.getItemNN(), 2)
-                .input(GTHelper.oreDictionaryCircuit(eioIntegration.voltageTier + 2), 1)
+                .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier + 2), 1)
                 .fluidInputs(GTEMaterials.MelodicAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorMelodic.getItemNN(), 1)
-                .duration(56).EUt(VA[eioIntegration.voltageTier + 2])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier + 2])
                 .buildAndRegister();
 
         // Silver Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(GTHelper.batteryHull(eioIntegration.voltageTier), 1)
-                .input(GTHelper.oreDictionaryCircuit(eioIntegration.voltageTier), 1)
+                .input(GTHelper.batteryHull(GTEValues.eioVoltageTier), 1)
+                .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier), 1)
                 .fluidInputs(Materials.Silver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorSilver.getItemNN(), 1)
-                .duration(56).EUt(VA[eioIntegration.voltageTier])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Endergenic Silver Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(EndergyObject.itemCapacitorSilver.getItemNN(), 2)
-                .input(GTHelper.oreDictionaryCircuit(eioIntegration.voltageTier + 1), 1)
+                .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
                 .fluidInputs(GTEMaterials.EnergeticSilver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorEnergeticSilver.getItemNN(), 1)
-                .duration(56).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Endergied Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(EndergyObject.itemCapacitorEnergeticSilver.getItemNN(), 2)
-                .input(GTHelper.oreDictionaryCircuit(eioIntegration.voltageTier + 2), 1)
+                .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier + 2), 1)
                 .fluidInputs(GTEMaterials.VividAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorVivid.getItemNN(), 1)
-                .duration(56).EUt(VA[eioIntegration.voltageTier + 2])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier + 2])
                 .buildAndRegister();
 
         // Stellar Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(EndergyObject.itemCapacitorVivid.getItemNN(), 2)
-                .input(GTHelper.oreDictionaryCircuit(eioIntegration.voltageTier + 3), 1)
+                .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier + 3), 1)
                 .input(Items.SHULKER_SHELL, 1)
                 .fluidInputs(GTEMaterials.StellarAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorStellar.getItemNN(), 1)
-                .duration(56).EUt(VA[eioIntegration.voltageTier + 3])
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier + 3])
                 .buildAndRegister();
     }
 
@@ -538,7 +536,7 @@ public class EIORecipeLoader {
             RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                     .inputs(new ItemStack(ModObject.block_infinity.getBlockNN(), 4, 2))
                     .outputs(getModItem(GTEValues.MODID_AE, "sky_stone_block", 1, 0))
-                    .duration(500).EUt(VA[GTEConfigHolder.ae2Integration.voltageTier])
+                    .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
                     .buildAndRegister();
         }
 
@@ -548,7 +546,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.PulsatingIron, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_item_conduit.getItemNN(), 1, 0)
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Fluid Conduit
@@ -557,7 +555,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.ElectricalSteel, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 0)
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Pressurized Fluid Conduit
@@ -566,7 +564,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.DarkSteel, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 1)
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Ender Fluid Conduit
@@ -575,7 +573,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.VibrantAlloy, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 2)
-                .duration(100).EUt(VA[eioIntegration.voltageTier + 2])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier + 2])
                 .buildAndRegister();
 
         // Energy Conduit
@@ -584,7 +582,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.ConductiveIron, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_power_conduit.getItemNN(), 1, 0)
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Enhaned Energy Conduit
@@ -593,7 +591,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.EnergeticAlloy, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_power_conduit.getItemNN(), 1, 1)
-                .duration(100).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Ender Energy Conduit
@@ -602,7 +600,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.VibrantAlloy, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_power_conduit.getItemNN(), 1, 2)
-                .duration(100).EUt(VA[eioIntegration.voltageTier + 2])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier + 2])
                 .buildAndRegister();
 
         // Redstone Conduit
@@ -611,7 +609,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.RedstoneAlloy, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_redstone_conduit.getItemNN(), 1, 0)
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Crude Endergy Conduitr
@@ -665,7 +663,7 @@ public class EIORecipeLoader {
                 .input(plate, Materials.Silver, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 5)
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Electrum Endergy Conduit
@@ -674,7 +672,7 @@ public class EIORecipeLoader {
                 .input(plate, Materials.Electrum, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 6)
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Electrum Endergy Conduit
@@ -683,7 +681,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.EnergeticSilver, 1)
                 .fluidInputs(Materials.Epoxy.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 7)
-                .duration(100).EUt(VA[eioIntegration.voltageTier])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Crystalline Endergy Conduit
@@ -692,7 +690,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.CrystallineAlloy, 1)
                 .fluidInputs(Materials.Epoxy.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 8)
-                .duration(100).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Crystalline Pink Slime Endergy Conduit
@@ -701,7 +699,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.CrystallinePinkSlime, 1)
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 9)
-                .duration(100).EUt(VA[eioIntegration.voltageTier + 1])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
 
         // Melodic Endergy Conduit
@@ -710,7 +708,7 @@ public class EIORecipeLoader {
                 .input(plate, GTEMaterials.MelodicAlloy, 1)
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 10)
-                .duration(100).EUt(VA[eioIntegration.voltageTier + 2])
+                .duration(100).EUt(VA[GTEValues.eioVoltageTier + 2])
                 .buildAndRegister();
 
         // Stellar Endergy Conduit
@@ -729,7 +727,7 @@ public class EIORecipeLoader {
                     .input(plate, Materials.StainlessSteel, 1)
                     .fluidInputs(GTEMaterials.ConductiveIron.getFluid(144))
                     .outputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 0))
-                    .duration(100).EUt(VA[ae2Integration.voltageTier])
+                    .duration(100).EUt(VA[GTEValues.ae2VoltageTier])
                     .buildAndRegister();
 
             // ME Dense Conduit
@@ -738,7 +736,7 @@ public class EIORecipeLoader {
                     .input(plate, Materials.Titanium, 1)
                     .fluidInputs(GTEMaterials.EnergeticAlloy.getFluid(144))
                     .outputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 1))
-                    .duration(100).EUt(VA[ae2Integration.voltageTier + 1])
+                    .duration(100).EUt(VA[GTEValues.ae2VoltageTier + 1])
                     .buildAndRegister();
         }
     }
