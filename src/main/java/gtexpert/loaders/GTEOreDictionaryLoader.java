@@ -1,5 +1,17 @@
 package gtexpert.loaders;
 
+import static gtexpert.api.util.GTEUtility.getModItem;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.IntStream;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.oredict.OreDictionary;
+
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
@@ -7,22 +19,16 @@ import gregtech.api.unification.ore.OrePrefix;
 
 import gtexpert.api.GTEValues;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.OreDictionary;
-
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.IntStream;
-
-import static gtexpert.api.util.GTEUtility.getModItem;
-
 public class GTEOreDictionaryLoader {
 
     public static void init() {
         OreDictionary.registerOre("bookshelf", new ItemStack(Blocks.BOOKSHELF));
+
+        if (Loader.isModLoaded(GTEValues.MODID_FFM)) {
+            OreDictionary.registerOre("oreApatite", getModItem(GTEValues.MODID_FFM, "resources", 1, 0));
+            OreDictionary.registerOre("oreCopper", getModItem(GTEValues.MODID_FFM, "resources", 1, 1));
+            OreDictionary.registerOre("oreTin", getModItem(GTEValues.MODID_FFM, "resources", 1, 2));
+        }
 
         if (Loader.isModLoaded(GTEValues.MODID_AE)) {
             OreDictionary.registerOre("blockCertus", getModItem(GTEValues.MODID_AE, "quartz_block", 1, 0));
@@ -137,6 +143,10 @@ public class GTEOreDictionaryLoader {
         }
 
         if (GTEValues.isModLoadedDEDA()) {
+            OreDictionary.registerOre("oreDraconium", getModItem(GTEValues.MODID_DE, "draconium_ore", 1, 0));
+            OreDictionary.registerOre("oreNetherrackDraconium", getModItem(GTEValues.MODID_DE, "resources", 1, 1));
+            OreDictionary.registerOre("oreEndstoneDraconium", getModItem(GTEValues.MODID_DE, "resources", 1, 2));
+
             OreDictionary.registerOre("blockDraconium", getModItem(GTEValues.MODID_DE, "draconium_block", 1, 0));
             OreDictionary.registerOre("blockAwakenedDraconium", getModItem(GTEValues.MODID_DE, "draconic_block", 1, 0));
         }

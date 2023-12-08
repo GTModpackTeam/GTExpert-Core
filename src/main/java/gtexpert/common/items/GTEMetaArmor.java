@@ -1,9 +1,9 @@
 package gtexpert.common.items;
 
-import gregtech.api.items.armor.ArmorMetaItem;
-
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
+
+import gregtech.api.items.armor.ArmorMetaItem;
 
 public class GTEMetaArmor extends ArmorMetaItem<ArmorMetaItem<?>.ArmorMetaValueItem> {
 

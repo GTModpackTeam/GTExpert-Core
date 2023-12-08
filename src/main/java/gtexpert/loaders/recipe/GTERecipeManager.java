@@ -1,14 +1,11 @@
 package gtexpert.loaders.recipe;
 
+import net.minecraftforge.fml.common.Loader;
+
 import gtexpert.api.GTEValues;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.MetaTileEntitiesManager;
-import gtexpert.loaders.recipe.ingredients.ChiselRecipeLoader;
-import gtexpert.loaders.recipe.ingredients.DraconicRecipeLoader;
-import gtexpert.loaders.recipe.ingredients.DraconicUpgradeRecipeLoader;
-import gtexpert.loaders.recipe.ingredients.GTFORecipeLoader;
-
-import net.minecraftforge.fml.common.Loader;
+import gtexpert.loaders.recipe.ingredients.*;
 
 public class GTERecipeManager {
 

@@ -1,14 +1,13 @@
 package gtexpert.integration.ae;
 
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
 
 import appeng.api.AEApi;
 import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
 import appeng.api.definitions.IParts;
-
-import static gregtech.api.unification.material.Materials.*;
 
 public class AEHelper {
 
@@ -18,15 +17,15 @@ public class AEHelper {
     public static final IParts aeParts = AEApi.instance().definitions().parts();
 
     public static final Material[] tierMaterials = new Material[] {
-            WroughtIron,
-            Steel,
-            Aluminium,
-            StainlessSteel,
-            Titanium,
-            TungstenSteel,
-            RhodiumPlatedPalladium,
-            NaquadahAlloy,
-            Darmstadtium,
-            Neutronium
+            Materials.WroughtIron,
+            Materials.Steel,
+            Materials.Aluminium,
+            Materials.StainlessSteel,
+            Materials.Titanium,
+            Materials.TungstenSteel,
+            Materials.RhodiumPlatedPalladium,
+            Materials.NaquadahAlloy,
+            Materials.Darmstadtium,
+            Materials.Neutronium
     };
 }

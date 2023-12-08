@@ -1,16 +1,18 @@
 package gtexpert.api.unification.material;
 
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.info.MaterialFlags.*;
+import static gregtech.api.util.GTUtility.gregtechId;
+import static gtexpert.api.unification.material.GTEMaterials.*;
+
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.ore.OrePrefix;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
-import static gregtech.api.util.GTUtility.gregtechId;
-import static gtexpert.api.unification.material.GTEMaterials.*;
+import gtexpert.api.GTEValues;
 
 public class AEFirstDegreeMaterials {
 
@@ -47,7 +49,8 @@ public class AEFirstDegreeMaterials {
                 .components(Fluix, 2, Carbon, 2, Silicon, 1, Iron, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.LOW)
-                        .blastStats(VA[HV], 1072))
+                        .blastStats(VA[GTEValues.ae2VoltageTier], 1072)
+                        .vacuumStats(VA[GTEValues.ae2VoltageTier], 268))
                 .build();
     }
 }

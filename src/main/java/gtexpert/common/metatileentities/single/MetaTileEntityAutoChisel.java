@@ -1,5 +1,9 @@
 package gtexpert.common.metatileentities.single;
 
+import java.util.function.Function;
+
+import net.minecraft.util.ResourceLocation;
+
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
@@ -7,10 +11,6 @@ import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.capability.SingleblockRecipeLogicNoCache;
 import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
-
-import net.minecraft.util.ResourceLocation;
-
-import java.util.function.Function;
 
 public class MetaTileEntityAutoChisel extends GTESimpleMachineMetaTileEntity {
 

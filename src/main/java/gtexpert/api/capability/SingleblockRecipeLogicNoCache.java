@@ -1,11 +1,11 @@
 package gtexpert.api.capability;
 
+import java.util.function.Supplier;
+
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.RecipeLogicEnergy;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMap;
-
-import java.util.function.Supplier;
 
 public class SingleblockRecipeLogicNoCache extends RecipeLogicEnergy {
 

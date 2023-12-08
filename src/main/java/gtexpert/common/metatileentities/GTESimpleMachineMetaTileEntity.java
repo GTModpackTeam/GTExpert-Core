@@ -1,5 +1,10 @@
 package gtexpert.common.metatileentities;
 
+import java.util.function.Function;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+
 import gregtech.api.GTValues;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
@@ -11,11 +16,6 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.gui.GTEGuiTextures;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
-
-import java.util.function.Function;
 
 public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity {
 

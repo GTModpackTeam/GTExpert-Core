@@ -1,13 +1,13 @@
 package gtexpert;
 
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.*;
+
 import gregtech.GTInternalTags;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.CommonProxy;
-
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.*;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.event.*;
              "after:" + GTEValues.MODID_EIOM + ";" + "after:" + GTEValues.MODID_EIOC + ";" +
              "after:" + GTEValues.MODID_EIOCA + ";" + "after:" + GTEValues.MODID_DE + ";" +
              "after:" + GTEValues.MODID_DA + ";" + "after:" + GTEValues.MODID_CHISEL + ";" +
-             "after:" + GTEValues.MODID_AVARITIA + ";")
+             "after:" + GTEValues.MODID_AVARITIA + ";" + "after:" + GTEValues.MODID_FFM + ";")
 
 public class GTExpertMod {
 

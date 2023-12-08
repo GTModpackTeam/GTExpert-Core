@@ -1,11 +1,11 @@
 package gtexpert.api.unification.material;
 
+import net.minecraftforge.fml.common.Loader;
+
 import gregtech.api.unification.material.Material;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.ingredients.*;
-
-import net.minecraftforge.fml.common.Loader;
 
 /**
  * Material Registration.
