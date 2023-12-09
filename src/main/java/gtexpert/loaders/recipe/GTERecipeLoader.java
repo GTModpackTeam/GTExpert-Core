@@ -8,7 +8,6 @@ import static gtexpert.common.GTEConfigHolder.ceuOverride;
 import java.util.LinkedList;
 import java.util.List;
 
-import gtexpert.common.metatileentities.GTESingleMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -59,12 +58,6 @@ public class GTERecipeLoader {
     }
 
     private static void materials() {
-        // Osmium
-        Materials.Osmium.getProperty(PropertyKey.ORE).setOreByProducts(Materials.Iridium);
-
-        // Iridium
-        Materials.Iridium.getProperty(PropertyKey.ORE).setOreByProducts(Materials.Platinum, Materials.Osmium);
-
         // Nether Star Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Materials.Diamond, 1)

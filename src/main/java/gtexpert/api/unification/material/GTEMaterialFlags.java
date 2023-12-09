@@ -44,8 +44,10 @@ public class GTEMaterialFlags {
 
         // Osmium
         Materials.Osmium.setProperty(PropertyKey.ORE, new OreProperty());
+        Materials.Osmium.getProperty(PropertyKey.ORE).setOreByProducts(Materials.Iridium);
 
         // Iridium
         Materials.Iridium.setProperty(PropertyKey.ORE, new OreProperty());
+        Materials.Iridium.getProperty(PropertyKey.ORE).setOreByProducts(Materials.Platinum, Materials.Osmium);
     }
 }

@@ -1,5 +1,8 @@
 package gtexpert.common.metatileentities.single;
 
+import java.util.List;
+
+import gtexpert.api.gui.GTEGuiTextures;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -9,6 +12,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.capability.impl.NotifiableItemStackHandler;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
@@ -16,17 +22,14 @@ import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.SteamMetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.texture.Textures;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+import gtexpert.api.recipes.GTERecipeMaps;
 
 public class PrimitiveAssembler extends SteamMetaTileEntity {
 
     public PrimitiveAssembler(ResourceLocation metaTileEntityId, boolean isHighPressure) {
-        super(metaTileEntityId, RecipeMaps.ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, isHighPressure);
+        super(metaTileEntityId, GTERecipeMaps.PRIMITIVE_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, isHighPressure);
     }
 
     @Override
@@ -57,7 +60,7 @@ public class PrimitiveAssembler extends SteamMetaTileEntity {
                 .slot(this.importItems, 7, 34, 53, GuiTextures.SLOT_STEAM.get(isHighPressure))
                 .slot(this.importItems, 8, 52, 53, GuiTextures.SLOT_STEAM.get(isHighPressure))
                 .progressBar(workableHandler::getProgressPercent, 79, 34, 20, 20,
-                        GuiTextures.PROGRESS_BAR_CIRCUIT, ProgressWidget.MoveType.HORIZONTAL,
+                        GTEGuiTextures.PROGRESS_BAR_PRIMITIVE_ASSEMBLER_STEAM.get(isHighPressure), ProgressWidget.MoveType.HORIZONTAL,
                         workableHandler.getRecipeMap())
                 .slot(this.exportItems, 0, 106, 35, true, false, GuiTextures.SLOT_STEAM.get(isHighPressure))
                 .slot(this.exportItems, 1, 124, 35, true, false, GuiTextures.SLOT_STEAM.get(isHighPressure))
