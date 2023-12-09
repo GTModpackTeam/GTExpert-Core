@@ -12,9 +12,10 @@ public class GTEValues {
     public static final String MODID = "gtexpert",
             MODID_VANILLA = "minecraft",
             MODID_GCYM = "gcym",
-            MODID_GCYS = "gcys",
             MODID_GTFO = "gregtechfoodoption",
             MODID_TOP = "theoneprobe",
+            MODID_MUI = "modularui",
+            MODID_MIXIN = "mixinbooter",
             MODID_ECO = "endercore",
             MODID_EIO = "enderio",
             MODID_EIOE = "enderioendergy",
@@ -29,7 +30,6 @@ public class GTEValues {
             MODID_DA = "draconicadditions",
             MODID_CHISEL = "chisel",
             MODID_AVARITIA = "avaritia",
-            MODID_AVAADDON = "avaritiaddons",
             MODID_FFM = "forestry";
 
     public static int ae2VoltageTier = voltageTier(ae2Integration.voltageTier) ? ae2Integration.voltageTier : 3,
