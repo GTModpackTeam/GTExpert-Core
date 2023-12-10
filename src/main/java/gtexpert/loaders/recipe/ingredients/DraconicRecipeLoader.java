@@ -32,8 +32,9 @@ import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEBlockWireCoil;
+import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
 
@@ -716,6 +717,15 @@ public class DraconicRecipeLoader {
     }
 
     private static void blocks() {
+        // Awakened Draconium Coil Block
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtDouble, GTEMaterials.AwakenedDraconium, 8)
+                .input(foil, Materials.Tritanium, 8)
+                .fluidInputs(GTEMaterials.AwakenedDraconium.getFluid(144))
+                .outputs(GTEMetaBlocks.GTE_WIRE_COIL.getItemVariant(GTEBlockWireCoil.GTECoilType.AWAKENED_DRACONIUM))
+                .duration(1000).EUt(VA[GTEValues.dedaVoltageTier + 1])
+                .buildAndRegister();
+
         // Dislocator Receptacle
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "dislocator_receptacle"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -805,7 +815,7 @@ public class DraconicRecipeLoader {
 
         // Draconum Casing
         ModHandler.addShapedRecipe(true, "casing_draconum",
-                GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING,
                                 ConfigHolder.recipes.casingsPerCraft),
                 "PhP", "PFP", "PwP",
@@ -815,14 +825,14 @@ public class DraconicRecipeLoader {
                 .circuitMeta(6)
                 .input(plate, GTEMaterials.Draconium, 6)
                 .input(frameGt, GTEMaterials.Draconium, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                .outputs(GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[GTEValues.dedaVoltageTier])
                 .buildAndRegister();
 
         // Awakened Draconum Casing
         ModHandler.addShapedRecipe(true, "casing_awakened_draconum",
-                GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING,
                                 ConfigHolder.recipes.casingsPerCraft),
                 "PhP", "PFP", "PwP",
@@ -832,7 +842,7 @@ public class DraconicRecipeLoader {
                 .circuitMeta(6)
                 .input(plate, GTEMaterials.AwakenedDraconium, 6)
                 .input(frameGt, GTEMaterials.AwakenedDraconium, 1)
-                .outputs(GTEMetaBlocks.GTE_BLOCK_METAL_CASING
+                .outputs(GTEMetaBlocks.GTE_METAL_CASING
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING, 2))
                 .duration(100).EUt(VA[GTEValues.dedaVoltageTier + 1])
                 .buildAndRegister();

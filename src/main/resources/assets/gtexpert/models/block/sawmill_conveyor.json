@@ -1,12 +1,12 @@
 {
   "parent" : "block/cube",
   "textures" : {
-    "particle" : "gregtech:blocks/sawmill_conveyor/belt",
-    "down" : "gregtech:blocks/sawmill_conveyor/frame",
-    "up" : "gregtech:blocks/sawmill_conveyor/belt",
-    "north" : "gregtech:blocks/sawmill_conveyor/frame",
-    "south" : "gregtech:blocks/sawmill_conveyor/frame",
-    "west" : "gregtech:blocks/sawmill_conveyor/frame",
-    "east" : "gregtech:blocks/sawmill_conveyor/frame"
+    "particle" : "gregtech:blocks/casings/sawmill_conveyor/belt",
+    "down" : "gregtech:blocks/casings/sawmill_conveyor/frame",
+    "up" : "gregtech:blocks/casings/sawmill_conveyor/belt",
+    "north" : "gregtech:blocks/casings/sawmill_conveyor/frame",
+    "south" : "gregtech:blocks/casings/sawmill_conveyor/frame",
+    "west" : "gregtech:blocks/casings/sawmill_conveyor/frame",
+    "east" : "gregtech:blocks/casings/sawmill_conveyor/frame"
   }
 }

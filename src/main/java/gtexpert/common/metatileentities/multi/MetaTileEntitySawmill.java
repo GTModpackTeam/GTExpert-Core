@@ -28,8 +28,8 @@ import gregtech.core.sound.GTSoundEvents;
 import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEMetaBlocks;
 
 public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
 
@@ -87,7 +87,7 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     }
 
     protected IBlockState getCasingState() {
-        return GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill);
+        return GTEMetaBlocks.GTE_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill);
     }
 
     @Override

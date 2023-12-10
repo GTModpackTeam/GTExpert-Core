@@ -30,8 +30,8 @@ import gtexpert.api.capability.MultiblockRecipeLogicNoCache;
 import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.client.GTETextures;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEMetaBlocks;
 
 public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
 
@@ -62,7 +62,7 @@ public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockC
     }
 
     protected IBlockState getCasingState() {
-        return GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(getCasingType());
+        return GTEMetaBlocks.GTE_METAL_CASING.getState(getCasingType());
     }
 
     @Override

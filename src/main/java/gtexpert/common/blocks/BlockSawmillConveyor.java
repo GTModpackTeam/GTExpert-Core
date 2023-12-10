@@ -1,9 +1,8 @@
-package gtexpert.common;
+package gtexpert.common.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -21,13 +20,12 @@ public class BlockSawmillConveyor extends Block {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
     public BlockSawmillConveyor() {
-        super(Material.IRON);
+        super(net.minecraft.block.material.Material.IRON);
         setTranslationKey("sawmill_conveyor");
         setHardness(2.5f);
         setResistance(10.0f);
         setSoundType(SoundType.WOOD);
         setHarvestLevel("wrench", 1);
-        setRegistryName("sawmill_conveyor");
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 
