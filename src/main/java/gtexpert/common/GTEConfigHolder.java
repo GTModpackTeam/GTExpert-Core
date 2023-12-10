@@ -45,7 +45,7 @@ public class GTEConfigHolder {
         public boolean nerfTerracottaCrafting = false;
 
         @Config.Comment({ "Recipe type Options: false (2x2 crafting), true (3x3 crafting).", "Default: false" })
-        public boolean hardPrimitiveCovers = false;
+        public boolean hardPrimitiveParts = false;
     }
 
     public static class AE2Integration {

@@ -50,6 +50,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem regulator(int voltage) {
         return switch (voltage) {
+            case 0 -> GTEMetaItems.PRIMITIVE_FLUID_REGULATOR;
             case 1 -> MetaItems.FLUID_REGULATOR_LV;
             case 2 -> MetaItems.FLUID_REGULATOR_MV;
             case 3 -> MetaItems.FLUID_REGULATOR_HV;
@@ -104,6 +105,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem fieldGenerator(int voltage) {
         return switch (voltage) {
+            case 0 -> GTEMetaItems.PRIMITIVE_FIELD_GENERATOR;
             case 1 -> MetaItems.FIELD_GENERATOR_LV;
             case 2 -> MetaItems.FIELD_GENERATOR_MV;
             case 3 -> MetaItems.FIELD_GENERATOR_HV;
@@ -143,6 +145,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem emitter(int voltage) {
         return switch (voltage) {
+            case 0 -> GTEMetaItems.PRIMITIVE_EMITTER;
             case 1 -> MetaItems.EMITTER_LV;
             case 2 -> MetaItems.EMITTER_MV;
             case 3 -> MetaItems.EMITTER_HV;
@@ -162,6 +165,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem sensor(int voltage) {
         return switch (voltage) {
+            case 0 -> GTEMetaItems.PRIMITIVE_SENSOR;
             case 1 -> MetaItems.SENSOR_LV;
             case 2 -> MetaItems.SENSOR_MV;
             case 3 -> MetaItems.SENSOR_HV;
