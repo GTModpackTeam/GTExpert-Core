@@ -111,6 +111,7 @@ tile.gte_metal_casing.void_ore_miner_casing.name=対虚無マシン外装
 tile.gte_metal_casing.draconium_casing.name=ドラコニウムマシン外装
 tile.gte_metal_casing.awakened_draconium_casing.name=覚醒ドラコニウムマシン外装
 tile.sawmill_conveyor.name=製材機用コンベア
+tile.gte_wire_coil.awakened_draconium.name=覚醒ドラコニウムコイルブロック
 
 # material
 gregtech.material.nm_hea_nps=貴金属ハイエントロピーナノ合金

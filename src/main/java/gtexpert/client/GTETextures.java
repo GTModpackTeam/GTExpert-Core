@@ -13,8 +13,10 @@ public class GTETextures {
     public static SimpleOverlayRenderer SAWMILL_CASING;
     public static OrientedOverlayRenderer SAWMILL_OVERLAY = new OrientedOverlayRenderer("machines/sawmill");
     public static OrientedOverlayRenderer AUTO_CHISEL_OVERLAY = new OrientedOverlayRenderer("machines/auto_chisel");
-    public static OrientedOverlayRenderer VIAL_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("machines/vial_extractor");
-    public static OrientedOverlayRenderer SLICE_N_SPLICE_OVERLAY = new OrientedOverlayRenderer("machines/slice_n_splice");
+    public static OrientedOverlayRenderer VIAL_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer(
+            "machines/vial_extractor");
+    public static OrientedOverlayRenderer SLICE_N_SPLICE_OVERLAY = new OrientedOverlayRenderer(
+            "machines/slice_n_splice");
     public static OrientedOverlayRenderer SOUL_BINDER_OVERLAY = new OrientedOverlayRenderer("machines/soul_binder");
     public static OrientedOverlayRenderer SPAWNER_OVERLAY = new OrientedOverlayRenderer("machines/powered_spawner");
     public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;

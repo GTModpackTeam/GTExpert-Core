@@ -1,7 +1,6 @@
 package gtexpert.common.blocks;
 
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.IStringSerializable;
@@ -15,7 +14,7 @@ import gregtech.api.block.VariantBlock;
 public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalCasingType> {
 
     public GTEBlockMetalCasing() {
-        super(Material.IRON);
+        super(net.minecraft.block.material.Material.IRON);
         setTranslationKey("gte_metal_casing");
         setHardness(5.0f);
         setResistance(10.0f);

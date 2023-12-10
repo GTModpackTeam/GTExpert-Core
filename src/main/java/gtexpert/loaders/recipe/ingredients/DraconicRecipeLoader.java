@@ -33,6 +33,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
@@ -716,6 +717,15 @@ public class DraconicRecipeLoader {
     }
 
     private static void blocks() {
+        // Awakened Draconium Coil Block
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtDouble, GTEMaterials.AwakenedDraconium, 8)
+                .input(foil, Materials.Tritanium, 8)
+                .fluidInputs(GTEMaterials.AwakenedDraconium.getFluid(144))
+                .outputs(GTEMetaBlocks.GTE_WIRE_COIL.getItemVariant(GTEBlockWireCoil.GTECoilType.AWAKENED_DRACONIUM))
+                .duration(1000).EUt(VA[GTEValues.dedaVoltageTier + 1])
+                .buildAndRegister();
+
         // Dislocator Receptacle
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "dislocator_receptacle"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()

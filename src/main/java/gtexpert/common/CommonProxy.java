@@ -30,7 +30,7 @@ import gregtech.api.cover.CoverDefinition;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
-import gtexpert.common.blocks.GTEBlockWireCoil;
+import gtexpert.common.blocks.GTEBlockWireCoil.GTECoilType;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.*;
 import gtexpert.integration.theoneprobe.TOPProviders;
@@ -45,7 +45,7 @@ public class CommonProxy {
         GTEMetaItems.init();
 
         /* Start API Block Registration */
-        for (GTEBlockWireCoil.CoilType type : GTEBlockWireCoil.CoilType.values()) {
+        for (GTECoilType type : GTECoilType.values()) {
             HEATING_COILS.put(GTE_WIRE_COIL.getState(type), type);
         }
         /* End API Block Registration */
@@ -75,6 +75,7 @@ public class CommonProxy {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         GTERecipeManager.preLoad();
+        registry.register(createItemBlock(GTE_WIRE_COIL, VariantItemBlock::new));
         registry.register(createItemBlock(GTE_METAL_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
     }
