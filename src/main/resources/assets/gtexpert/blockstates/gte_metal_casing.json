@@ -7,22 +7,22 @@
     "variant" : {
       "sawmill_casing" : {
         "textures" : {
-          "all" : "gregtech:blocks/sawmill_casing"
+          "all" : "gregtech:blocks/casings/sawmill_casing"
         }
       },
       "void_ore_miner_casing" : {
         "textures" : {
-          "all" : "gregtech:blocks/void_ore_miner_casing"
+          "all" : "gregtech:blocks/casings/void_ore_miner_casing"
         }
       },
       "draconium_casing" : {
         "textures" : {
-          "all" : "gregtech:blocks/draconium_casing"
+          "all" : "gregtech:blocks/casings/draconium_casing"
         }
       },
       "awakened_draconium_casing" : {
         "textures" : {
-          "all" : "gregtech:blocks/awakened_draconium_casing"
+          "all" : "gregtech:blocks/casings/awakened_draconium_casing"
         }
       }
     }

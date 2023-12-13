@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 import gtexpert.common.CommonProxy;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEMetaBlocks;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
