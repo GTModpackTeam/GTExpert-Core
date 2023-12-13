@@ -112,6 +112,7 @@ tile.gte_metal_casing.void_ore_miner_casing.name=Voiding Proof NM-HEA NP Machine
 tile.gte_metal_casing.draconium_casing.name=Dragon Proof Draconium Machine Casing
 tile.gte_metal_casing.awakened_draconium_casing.name=Dragon Proof Awakened Draconium Machine Casing
 tile.sawmill_conveyor.name=Sawmill Conveyor
+tile.gte_wire_coil.awakened_draconium.name=Awakened Draconium Coil Block
 
 # material
 gregtech.material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles

@@ -31,8 +31,8 @@ import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockControl
 import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
-import gtexpert.common.GTEBlockMetalCasing;
-import gtexpert.common.GTEMetaBlocks;
+import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEMetaBlocks;
 
 public class MetaTileEntityAdvancedGasCollector extends GCYMRecipeMapMultiblockController {
 
@@ -89,7 +89,7 @@ public class MetaTileEntityAdvancedGasCollector extends GCYMRecipeMapMultiblockC
     }
 
     protected IBlockState getCasingState() {
-        return GTEMetaBlocks.GTE_BLOCK_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER);
+        return GTEMetaBlocks.GTE_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER);
     }
 
     @Override
