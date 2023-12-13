@@ -71,7 +71,7 @@ public class GTERecipeMaps {
                 .setSound(GTSoundEvents.CHAINSAW_TOOL);
 
         VOID_ORE_MINER_RECIPES = new RecipeMap<>("void_ore_miner", 1, 1, 2, 0, new SimpleRecipeBuilder(), false)
-                .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOID, ProgressWidget.MoveType.VERTICAL)
+                .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOM, ProgressWidget.MoveType.VERTICAL)
                 .setSound(GTSoundEvents.DRILL_TOOL);
 
         ADVANCED_CHEMICAL_REACTOR_RECIPES = new RecipeMap<>("advanced_chemical_plant", 3, 3, 5, 4,
