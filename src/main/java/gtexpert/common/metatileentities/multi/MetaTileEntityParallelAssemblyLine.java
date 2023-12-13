@@ -82,29 +82,26 @@ public class MetaTileEntityParallelAssemblyLine extends GCYMRecipeMapMultiblockC
     @NotNull
     @Override
     protected BlockPattern createStructurePattern() {
+        TraceabilityPredicate casing = states(getCasingState());
+        TraceabilityPredicate abilities = autoAbilities(false, true, false, false, false, false, false);
         FactoryBlockPattern pattern = FactoryBlockPattern.start(FRONT, UP, RIGHT)
                 .aisle("FIF", "RTR", "SAG", " Y ")
                 .aisle("FIF", "RTR", "DAG", " Y ").setRepeatable(3, 15)
                 .aisle("FOF", "RTR", "DAG", " Y ")
                 .where('S', selfPredicate())
-                .where('F', states(getCasingState())
-                        .or(autoAbilities(false, true, false, false, false, false, false))
-                        .or(fluidInputPredicate()))
+                .where('F', casing.or(abilities).or(fluidInputPredicate()))
                 .where('O', abilities(MultiblockAbility.EXPORT_ITEMS)
                         .addTooltips("gregtech.multiblock.pattern.location_end"))
-                .where('Y', states(getCasingState())
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY)
-                                .setMinGlobalLimited(1)
-                                .setMaxGlobalLimited(3)))
+                .where('Y', casing.or(abilities(MultiblockAbility.INPUT_ENERGY)
+                        .setMinGlobalLimited(1)
+                        .setMaxGlobalLimited(3)))
                 .where('I', metaTileEntities(MetaTileEntities.ITEM_IMPORT_BUS))
-                .where('G', states(getGrateState()))
-                .where('A',
-                        states(MetaBlocks.MULTIBLOCK_CASING
-                                .getState(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLY_CONTROL)))
-                .where('R', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.LAMINATED_GLASS)))
-                .where('T',
-                        states(MetaBlocks.MULTIBLOCK_CASING
-                                .getState(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLY_LINE_CASING)))
+                .where('G', casing)
+                .where('A', states(MetaBlocks.MULTIBLOCK_CASING
+                        .getState(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLY_CONTROL)))
+                .where('R', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
+                .where('T', states(MetaBlocks.MULTIBLOCK_CASING
+                        .getState(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLY_LINE_CASING)))
                 .where('D', dataHatchPredicate())
                 .where(' ', any());
         return pattern.build();
