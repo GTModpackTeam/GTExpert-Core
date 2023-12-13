@@ -8,7 +8,6 @@ import gregtech.api.util.GTUtility;
 
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
-import gtexpert.common.metatileentities.multi.*;
 import gtexpert.common.metatileentities.single.*;
 
 public class GTESingleMetaTileEntities {

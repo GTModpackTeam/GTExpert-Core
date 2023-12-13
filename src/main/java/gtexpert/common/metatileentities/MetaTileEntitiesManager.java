@@ -48,23 +48,4 @@ public class MetaTileEntitiesManager {
             EIOMetaTileEntities.init();
         }
     }
-
-    public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,
-                                                       String name, RecipeMap<?> map, ICubeRenderer texture,
-                                                       boolean hasFrontFacing,
-                                                       Function<String, ResourceLocation> resourceId,
-                                                       Function<Integer, Integer> tankScalingFunction) {
-        for (int i = 0; i < machines.length - 1; ++i) {
-            if (i <= 4 || getMidTier(name)) {
-                if (i > 7 && !getHighTier(name)) {
-                    break;
-                }
-
-                String voltageName = GTValues.VN[i + 1].toLowerCase();
-                machines[i + 1] = registerMetaTileEntity(startId + i,
-                        new GTESimpleMachineMetaTileEntity(resourceId.apply(String.format("%s.%s", name, voltageName)),
-                                map, texture, i + 1, hasFrontFacing, tankScalingFunction));
-            }
-        }
-    }
 }
