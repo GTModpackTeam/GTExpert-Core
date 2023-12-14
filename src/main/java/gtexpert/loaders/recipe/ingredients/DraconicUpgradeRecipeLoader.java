@@ -49,7 +49,7 @@ public class DraconicUpgradeRecipeLoader {
         // Axe of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_axe"));
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(ToolItems.AXE.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
+                new GTRecipeItemInput(ToolItems.AXE.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", GTValues.MODID + ":draconium"))),
@@ -59,7 +59,7 @@ public class DraconicUpgradeRecipeLoader {
         // Pickaxe of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_pick"));
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(ToolItems.PICKAXE.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
+                new GTRecipeItemInput(ToolItems.PICKAXE.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", GTValues.MODID + ":draconium"))),
@@ -69,7 +69,7 @@ public class DraconicUpgradeRecipeLoader {
         // Shovel of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_shovel"));
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(ToolItems.SHOVEL.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
+                new GTRecipeItemInput(ToolItems.SHOVEL.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", GTValues.MODID + ":draconium"))),
@@ -85,10 +85,10 @@ public class DraconicUpgradeRecipeLoader {
         // Bow of the Wyvern
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_bow"));
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                new GTRecipeItemInput(Loader.isModLoaded(GTEValues.MODID_EIO) ?
                         getModItem(GTEValues.MODID_EIO, "item_dark_steel_bow", 1, 0) :
                         getModItem(GTEValues.MODID_VANILLA, "bow", 1, 0))
-                        .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
+                                .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 new ItemStack(DEFeatures.wyvernBow),
                 Tier.WYVERN, 2);
 
@@ -155,7 +155,7 @@ public class DraconicUpgradeRecipeLoader {
 
         // Draconic Staff of Power
         GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.recipeBuilder()
-                .catalyst(GTRecipeItemInput.getOrCreate(new ItemStack(DEFeatures.draconicPick))
+                .catalyst(new GTRecipeItemInput(new ItemStack(DEFeatures.draconicPick))
                         .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY))
                 .result(new ItemStack(DEFeatures.draconicStaffOfPower))
                 .input(plate, GTEMaterials.Draconium, 6)
@@ -239,7 +239,7 @@ public class DraconicUpgradeRecipeLoader {
 
     private static void addTierUpRecipe(ItemStack catalyst, ItemStack result, Tier tier, int plateAmount) {
         addTierUpRecipe(
-                GTRecipeItemInput.getOrCreate(catalyst).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
+                new GTRecipeItemInput(catalyst).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 result, tier, plateAmount);
     }
 

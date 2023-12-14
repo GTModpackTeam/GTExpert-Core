@@ -35,6 +35,7 @@ import gtexpert.common.items.GTEMetaItems;
 import appeng.api.util.AEColor;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
+@SuppressWarnings("OptionalGetWithoutIsPresent")
 public class AERecipeLoader {
 
     public static void init() {
@@ -1643,7 +1644,7 @@ public class AERecipeLoader {
                 .input(stick, tierMaterials[GTEValues.ae2VoltageTier - 1], 2)
                 .inputs(aeMaterials.engProcessor().maybeStack(1).get())
                 .inputs(aeMaterials.logicProcessor().maybeStack(1).get())
-                .input("craftMaterials.NetherQuartz", 1)
+                .input("craftNetherQuartz", 1)
                 .outputs(aeMaterials.formationCore().maybeStack(4).get())
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier + 1])
                 .buildAndRegister();
@@ -1691,7 +1692,7 @@ public class AERecipeLoader {
                 .input(stick, tierMaterials[GTEValues.ae2VoltageTier - 1], 2)
                 .inputs(aeMaterials.annihilationCore().maybeStack(1).get())
                 .inputs(aeMaterials.formationCore().maybeStack(1).get())
-                .input("craftGTEMaterials.Fluix", 1)
+                .input("craftFluix", 1)
                 .output(GTEMetaItems.MATRIX_CORE, 4)
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier + 1])
                 .buildAndRegister();
@@ -1701,9 +1702,9 @@ public class AERecipeLoader {
                 .inputs(aeMaterials.engProcessor().maybeStack(2).get())
                 .inputs(aeMaterials.logicProcessor().maybeStack(1).get())
                 .inputs(aeMaterials.calcProcessor().maybeStack(1).get())
-                .input("craftMaterials.NetherQuartz", 1)
+                .input("craftNetherQuartz", 1)
                 .input("craftCertusQuartz", 1)
-                .input("craftGTEMaterials.Fluix", 1)
+                .input("craftFluix", 1)
                 .output(GTEMetaItems.MATRIX_CORE, 4)
                 .duration(100).EUt(VA[GTEValues.ae2VoltageTier + 1])
                 .buildAndRegister();

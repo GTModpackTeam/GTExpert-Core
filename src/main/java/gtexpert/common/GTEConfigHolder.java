@@ -7,6 +7,10 @@ import gtexpert.api.GTEValues;
 @Config(modid = GTEValues.MODID)
 public class GTEConfigHolder {
 
+    @Config.Name("Gregtech Expert Options")
+    @Config.RequiresMcRestart
+    public static final ModpackFlag modpackFlag = new ModpackFlag();
+
     @Config.Name("Gregtech Override")
     @Config.RequiresMcRestart
     public static final GregtechOverride ceuOverride = new GregtechOverride();
@@ -26,6 +30,12 @@ public class GTEConfigHolder {
     @Config.Name("Chisel Integration")
     @Config.RequiresMcRestart
     public static final ChiselIntegration chiselIntegration = new ChiselIntegration();
+
+    public static class ModpackFlag {
+
+        @Config.Comment({ "Activate changes in the replacement schedule.", "Default: false" })
+        public boolean featureFlag = false;
+    }
 
     public static class GregtechOverride {
 

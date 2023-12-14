@@ -322,14 +322,14 @@ class ElectricSpawnerLogic extends RecipeLogicEnergy {
     }
 
     @Override
-    public void writeInitialData(@NotNull PacketBuffer buf) {
-        super.writeInitialData(buf);
+    public void writeInitialSyncData(@NotNull PacketBuffer buf) {
+        super.writeInitialSyncData(buf);
         buf.writeBoolean(needsRedstone);
     }
 
     @Override
-    public void receiveInitialData(@NotNull PacketBuffer buf) {
-        super.receiveInitialData(buf);
+    public void receiveInitialSyncData(@NotNull PacketBuffer buf) {
+        super.receiveInitialSyncData(buf);
         needsRedstone = buf.readBoolean();
     }
 
