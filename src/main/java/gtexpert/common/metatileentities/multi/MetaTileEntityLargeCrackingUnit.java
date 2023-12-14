@@ -21,6 +21,7 @@ import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
@@ -40,6 +41,7 @@ import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 
 import gtexpert.api.gui.GTEGuiTextures;
+import gtexpert.common.GTEConfigHolder;
 
 public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockController {
 
@@ -59,29 +61,33 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     protected BlockPattern createStructurePattern() {
         TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(10);
         TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true, false);
-        return FactoryBlockPattern.start()
-                .aisle("XCCXCCX", "XCCXCCX", "XCCXCCX")
-                .aisle("XCCXCCX", "X##T##X", "XCCXCCX")
-                .aisle("XCCXCCX", "XCCSCCX", "XCCXCCX")
-                .where('S', selfPredicate())
-                .where('X', casing.or(abilities))
-                .where('T', tieredCasing().or(states(getCasingState())))
-                .where('C', heatingCoils().setMinGlobalLimited(32).setMaxGlobalLimited(32))
-                .where('#', air())
-                .build();
-        // return FactoryBlockPattern.start()
-        // .aisle(" XXX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
-        // .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
-        // .aisle("XXTXX", "XXXXX", "XC#CX", "XC#CX", "XC#CX", "XXXXX", " XHX ")
-        // .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
-        // .aisle(" XSX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
-        // .where('S', selfPredicate())
-        // .where('X', casing.setMinGlobalLimited(10).or(abilities))
-        // .where('T', tieredCasing().or(casing))
-        // .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
-        // .where('C', heatingCoils())
-        // .where('#', air())
-        // .build();
+
+        if (GTEConfigHolder.modpackFlag.featureFlag) {
+            return FactoryBlockPattern.start()
+                    .aisle(" XXX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+                    .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
+                    .aisle("XXTXX", "XXXXX", "XC#CX", "XC#CX", "XC#CX", "XXXXX", " XHX ")
+                    .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
+                    .aisle(" XSX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+                    .where('S', selfPredicate())
+                    .where('X', casing.setMinGlobalLimited(10).or(abilities))
+                    .where('T', tieredCasing().or(casing))
+                    .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
+                    .where('C', heatingCoils())
+                    .where('#', air())
+                    .build();
+        } else {
+            return FactoryBlockPattern.start()
+                    .aisle("XCCXCCX", "XCCXCCX", "XCCXCCX")
+                    .aisle("XCCXCCX", "X##T##X", "XCCXCCX")
+                    .aisle("XCCXCCX", "XCCSCCX", "XCCXCCX")
+                    .where('S', selfPredicate())
+                    .where('X', casing.or(abilities))
+                    .where('T', tieredCasing().or(states(getCasingState())))
+                    .where('C', heatingCoils().setMinGlobalLimited(32).setMaxGlobalLimited(32))
+                    .where('#', air())
+                    .build();
+        }
     }
 
     @Override
