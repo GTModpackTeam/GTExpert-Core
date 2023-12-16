@@ -49,6 +49,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     public MetaTileEntityLargeCrackingUnit(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.CRACKING_RECIPES);
+        this.recipeMapWorkable = new LargeCrackingUnitWorkableHandler(this);
     }
 
     @Override
@@ -102,6 +103,11 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     @Override
     public boolean isTiered() {
+        return true;
+    }
+
+    @Override
+    public boolean isParallel() {
         return true;
     }
 

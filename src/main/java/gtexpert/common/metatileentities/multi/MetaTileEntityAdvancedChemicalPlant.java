@@ -2,7 +2,6 @@ package gtexpert.common.metatileentities.multi;
 
 import java.util.List;
 
-import gregtech.api.recipes.RecipeMaps;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -22,6 +21,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.TraceabilityPredicate;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -36,7 +36,7 @@ import gtexpert.api.gui.GTEGuiTextures;
 public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityAdvancedChemicalPlant(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId,RecipeMaps.LARGE_CHEMICAL_RECIPES);
+        super(metaTileEntityId, RecipeMaps.LARGE_CHEMICAL_RECIPES);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
     }
 
     @Override
-    public  boolean isParallel() {
+    public boolean isParallel() {
         return true;
     }
 
