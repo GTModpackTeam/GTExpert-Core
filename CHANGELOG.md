@@ -1,3 +1,8 @@
+# v1.5.11
+- Fixed a bug that prevented ACP and AGC recipe execution from working.
+
+* * *
+
 # v1.5.10
 - Bump version to CEu v2.8.3
 
