@@ -80,24 +80,13 @@ jobs:
       - name: Build Project
         run: ./gradlew --build-cache --info --stacktrace build
 
-      - name: Release under current tag
-        env:
-          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        run: |
-          export "CHANGELOG_FILE=$(mktemp --suffix=.md)"
-          echo "CHANGELOG_FILE=${CHANGELOG_FILE}" >> $GITHUB_ENV
-          gh api --method POST -H "Accept: application/vnd.github+json" \
-            "/repos/${GITHUB_REPOSITORY}/releases/generate-notes" \
-            -f tag_name="${RELEASE_VERSION}" \
-            --jq ".body" > "${CHANGELOG_FILE}"
-          cat "${CHANGELOG_FILE}"
-          gh release create "${RELEASE_VERSION}" -F "${CHANGELOG_FILE}" ./build/libs/*.jar
-        shell: bash
-        continue-on-error: true
-
       - name: Publish to Curseforge and Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
         with:
+          github-tag: "v${{ env.FULL_VERSION }}"
+          github-generate-changelog: true
+          github-draft: false
+          github-prerelease: false
           modrinth-id: 'ipueNiWG'
           modrinth-token: "${{ secrets.MODRINTH_API_KEY }}"
           modrinth-dependencies: |
