@@ -1,6 +1,5 @@
 package gtexpert.api.recipes;
 
-import gregtech.api.GTValues;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
@@ -39,8 +38,6 @@ public class GTERecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> VOID_ORE_MINER_RECIPES;
 
-    @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> ADVANCED_CHEMICAL_REACTOR_RECIPES;
 
     static {
         AUTO_CHISEL_RECIPES = new RecipeMap<>("auto_chisel", 2, 9, 0, 0, new SimpleRecipeBuilder(), false)
@@ -73,18 +70,6 @@ public class GTERecipeMaps {
         VOID_ORE_MINER_RECIPES = new RecipeMap<>("void_ore_miner", 1, 1, 2, 0, new SimpleRecipeBuilder(), false)
                 .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOM, ProgressWidget.MoveType.VERTICAL)
                 .setSound(GTSoundEvents.DRILL_TOOL);
-
-        ADVANCED_CHEMICAL_REACTOR_RECIPES = new RecipeMap<>("advanced_chemical_plant", 3, 3, 5, 4,
-                new SimpleRecipeBuilder().EUt(GTValues.VA[GTValues.LV]), false)
-                        .setSlotOverlay(false, false, false, GuiTextures.MOLECULAR_OVERLAY_1)
-                        .setSlotOverlay(false, false, true, GuiTextures.MOLECULAR_OVERLAY_2)
-                        .setSlotOverlay(false, true, false, GuiTextures.MOLECULAR_OVERLAY_3)
-                        .setSlotOverlay(false, true, true, GuiTextures.MOLECULAR_OVERLAY_4)
-                        .setSlotOverlay(true, false, GuiTextures.VIAL_OVERLAY_1)
-                        .setSlotOverlay(true, true, GuiTextures.VIAL_OVERLAY_2)
-                        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL)
-                        .setSound(GTSoundEvents.CHEMICAL_REACTOR)
-                        .setSmallRecipeMap(RecipeMaps.CHEMICAL_RECIPES);
 
         ADVANCED_GAS_COLLECTOR_RECIPES = new RecipeMap<>("advanced_gas_collector", 1,
                 0, 1, 2, new SimpleRecipeBuilder(), false)

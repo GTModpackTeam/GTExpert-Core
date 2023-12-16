@@ -2,6 +2,7 @@ package gtexpert.common.metatileentities.multi;
 
 import java.util.List;
 
+import gregtech.api.recipes.RecipeMaps;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -14,7 +15,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -24,7 +24,6 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
-import gregtech.client.utils.TooltipHelper;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -33,13 +32,11 @@ import gregtech.core.sound.GTSoundEvents;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 
 import gtexpert.api.gui.GTEGuiTextures;
-import gtexpert.api.recipes.GTERecipeMaps;
 
 public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityAdvancedChemicalPlant(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GTERecipeMaps.ADVANCED_CHEMICAL_REACTOR_RECIPES);
-        this.recipeMapWorkable = new MultiblockRecipeLogic(this, true);
+        super(metaTileEntityId,RecipeMaps.LARGE_CHEMICAL_RECIPES);
     }
 
     @Override
@@ -87,6 +84,11 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
         return true;
     }
 
+    @Override
+    public  boolean isParallel() {
+        return true;
+    }
+
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
@@ -110,7 +112,6 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.advanced_chemical_plant.tooltip.1"));
-        tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
     }
 
     @Override
