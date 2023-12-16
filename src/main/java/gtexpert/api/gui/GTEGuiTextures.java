@@ -14,8 +14,12 @@ public class GTEGuiTextures {
             .fullImage("textures/gui/icon/gte_logo_blinking_yellow.png");
     public static final TextureArea GTE_LOGO_BLINKING_RED = TextureArea
             .fullImage("textures/gui/icon/gte_logo_blinking_red.png");
-    public static final TextureArea PROGRESS_BAR_VOID = TextureArea
-            .fullImage("textures/gui/progress_bar/progress_bar_void.png");
+    public static final TextureArea PROGRESS_BAR_VOM = TextureArea
+            .fullImage("textures/gui/progress_bar/progress_bar_vom.png");
+    public static final TextureArea PROGRESS_BAR_VOM_FUEL = TextureArea
+            .fullImage("textures/gui/progress_bar/progress_bar_vom_fuel.png");
+    public static final TextureArea PROGRESS_BAR_VOM_ENDER = TextureArea
+            .fullImage("textures/gui/progress_bar/progress_bar_vom_ender.png");
     public static final TextureArea PROGRESS_BAR_CHISEL = TextureArea
             .fullImage("textures/gui/progress_bar/progress_bar_chisel.png");
     public static final TextureArea SOULVIAL_EMPTY_OVRELAY = TextureArea

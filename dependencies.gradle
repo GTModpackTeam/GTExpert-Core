@@ -35,7 +35,7 @@ dependencies {
 
     // Soft Dependencies
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.684" // CrT 4.1.20.684
-    implementation ("com.cleanroommc:groovyscript:0.7.1") { transitive = false } // GrS 0.7.1
+    compileOnlyApi ("com.cleanroommc:groovyscript:0.7.1") { transitive = false } // GrS 0.7.1
     implementation rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
     implementation rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465") // Forgelin 1.8.4
 

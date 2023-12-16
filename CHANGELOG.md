@@ -1,3 +1,13 @@
+# v1.5.10
+- Bump version to CEu v2.8.3
+
+* * *
+
+# v1.5.9
+- Add Awakened Draconium Coil Block
+
+* * *
+
 # v1.5.8
 - Fixed to return default value when voltageTier is set out of range in cfg.
 
