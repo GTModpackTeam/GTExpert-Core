@@ -34,16 +34,16 @@ gtexpert.machine.auto_chisel.hv.name=発展型自動彫刻機 II
 gtexpert.machine.auto_chisel.hv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
 
 # Primitive Machines
-gtexpert.machine.primitive_mixer_bronze.name=初歩的なブロンズミキサー
-gtexpert.machine.primitive_mixer_steel.name=初歩的なスチールミキサー
+gtexpert.machine.primitive_mixer_bronze.name=初歩的なミキサー
+gtexpert.machine.primitive_mixer_steel.name=初歩的な高圧式ミキサー
 gtexpert.machine.primitive_mixer.tooltip=§d作者:§f @tier940
 gtexpert.machine.primitive_mixer.tooltip.1=手で混ぜるよりはマシ
-gtexpert.machine.primitive_assembler_bronze.name=初歩的なブロンズ組立機
-gtexpert.machine.primitive_assembler_steel.name=初歩的なスチールア組立機
+gtexpert.machine.primitive_assembler_bronze.name=初歩的な組立機
+gtexpert.machine.primitive_assembler_steel.name=初歩的な高圧式組立機
 gtexpert.machine.primitive_assembler.tooltip=§d作者:§f @tier940
 gtexpert.machine.primitive_assembler.tooltip.1=手で組み立てるよりはマシ
-gtexpert.machine.primitive_circuit_assembler_bronze.name=初歩的なブロンズ回路作成機
-gtexpert.machine.primitive_circuit_assembler_steel.name=初歩的なスチール回路作成機
+gtexpert.machine.primitive_circuit_assembler_bronze.name=初歩的な回路作成機
+gtexpert.machine.primitive_circuit_assembler_steel.name=初歩的な高圧式回路作成機
 gtexpert.machine.primitive_circuit_assembler.tooltip=§d作者:§f @tier940
 gtexpert.machine.primitive_circuit_assembler.tooltip.1=手で回路を作るよりはマシ
 

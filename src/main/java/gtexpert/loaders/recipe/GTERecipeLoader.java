@@ -8,6 +8,9 @@ import static gtexpert.common.GTEConfigHolder.ceuOverride;
 import java.util.LinkedList;
 import java.util.List;
 
+import gregtech.common.blocks.BlockSteamCasing;
+import gtexpert.common.metatileentities.GTESingleMetaTileEntities;
+import gtexpert.integration.gt.GTHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -668,6 +671,34 @@ public class GTERecipeLoader {
     }
 
     private static void blocks() {
+        // Primitive Mixer
+        ModHandler.addShapedRecipe(true, "primitive_mixer_bronze",
+                GTESingleMetaTileEntities.PRIMITIVE_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
+                'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
+                'E', GTEMetaItems.PRIMITIVE_MOTOR,
+                'R', new UnificationEntry(rotor, Materials.Bronze),
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                'G', Blocks.GLASS);
+
+        // Primitive Assembler
+        ModHandler.addShapedRecipe(true, "primitive_assembler_bronze",
+                GTESingleMetaTileEntities.PRIMITIVE_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
+                'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
+                'V', GTEMetaItems.PRIMITIVE_CONVEYOR,
+                'A', GTEMetaItems.PRIMITIVE_ROBOT_ARM,
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                'W', new UnificationEntry(cableGtSingle, Materials.Lead));
+
+        // Primitive Circuit Assembler
+        ModHandler.addShapedRecipe(true, "primitive_circuit_assembler_bronze",
+                GTESingleMetaTileEntities.PRIMITIVE_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
+                'R', GTEMetaItems.PRIMITIVE_ROBOT_ARM,
+                'I', GTHelper.oreDictionaryCircuit(GTValues.LV),
+                'E', GTEMetaItems.PRIMITIVE_EMITTER,
+                'C', GTEMetaItems.PRIMITIVE_CONVEYOR,
+                'H', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
+                'W', new UnificationEntry(cableGtSingle, Materials.Lead));
+
         // Sawmill
         ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",
                 GTEMultiMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
