@@ -22,6 +22,8 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.TraceabilityPredicate;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.core.sound.GTSoundEvents;
@@ -37,7 +39,10 @@ import gtexpert.common.blocks.GTEMetaBlocks;
 public class MetaTileEntityAdvancedGasCollector extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityAdvancedGasCollector(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES);
+        super(metaTileEntityId, new RecipeMap[] {
+                RecipeMaps.GAS_COLLECTOR_RECIPES,
+                GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES
+        });
     }
 
     @Override
@@ -79,6 +84,11 @@ public class MetaTileEntityAdvancedGasCollector extends GCYMRecipeMapMultiblockC
 
     @Override
     public boolean canBeDistinct() {
+        return true;
+    }
+
+    @Override
+    public boolean isParallel() {
         return true;
     }
 
