@@ -1,10 +1,6 @@
 # Build and test the mod
 name: Build and test
 
-permissions:
-  pull-requests: write
-  contents: write
-
 on:
   workflow_dispatch:
     inputs:
@@ -13,11 +9,6 @@ on:
         required: false
         default: 90
         type: number
-      workspace:
-        description: 'setupCIWorkspace/setupDecompWorkspace'
-        required: false
-        default: "setupCIWorkspace"
-        type: string
       client-only:
         description: 'Do not execute runServer'
         required: false
@@ -48,9 +39,6 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-
-      - name: Setup the workspace
-        run: ./gradlew --build-cache --info --stacktrace ${{ inputs.workspace }}
 
       - name: Compile the mod
         run: ./gradlew --build-cache --info --stacktrace assemble
@@ -87,6 +75,7 @@ jobs:
           gh pr comment "${PR_BRANCH}" -F pr-message.log || true
         shell: bash # ensures set -eo pipefail
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_BRANCH: ${{ github.head_ref }}
           FIXED_BRANCH: ${{ github.head_ref }}-spotless-fixes
 
