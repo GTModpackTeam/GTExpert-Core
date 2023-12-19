@@ -15,6 +15,8 @@ import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
 
+import gregtech.api.items.toolitem.ToolClasses;
+
 public class BlockSawmillConveyor extends Block {
 
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
@@ -25,7 +27,7 @@ public class BlockSawmillConveyor extends Block {
         setHardness(2.5f);
         setResistance(10.0f);
         setSoundType(SoundType.WOOD);
-        setHarvestLevel("wrench", 1);
+        setHarvestLevel(ToolClasses.WRENCH, 1);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

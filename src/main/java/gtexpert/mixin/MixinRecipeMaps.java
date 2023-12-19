@@ -1,5 +1,6 @@
 package gtexpert.mixin;
 
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
@@ -14,10 +15,10 @@ public abstract class MixinRecipeMaps {
                 at = @At(value = "INVOKE",
                          target = "Lgregtech/api/recipes/RecipeMap;<init>(Ljava/lang/String;IIIILgregtech/api/recipes/RecipeBuilder;Z)V",
                          remap = false))
-    private static void gtexpert$modifyArgsStaticBlockRecipeMap(Args args) {
+    private static void gtexpert$modifyArgsStaticBlockRecipeMap(@NotNull Args args) {
         String unlocalizedName = args.get(0);
         if (unlocalizedName.equals("vacuum_freezer")) {
-            args.set(4, 2);
+            args.set(4, 2); // maxFluidOutputs
         }
     }
 }
