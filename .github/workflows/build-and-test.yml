@@ -28,11 +28,17 @@ jobs:
       - name: Set up JDK 8 and 17
         uses: actions/setup-java@v3
         with:
+          cache: gradle
+          distribution: 'zulu'
           java-version: |
             8
             17
-          distribution: 'zulu'
-          cache: gradle
+
+      - name: Apply patch to settings.gradle
+        run: |
+          if [ -f settings.gradle.patch ]; then
+            patch -p0 < settings.gradle.patch
+          fi
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
@@ -41,7 +47,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Compile the mod
-        run: ./gradlew --build-cache --info --stacktrace assemble
+        run: ./gradlew --scan --build-cache --info --stacktrace assemble
 
       - name: Upload Jars
         uses: actions/upload-artifact@v3
