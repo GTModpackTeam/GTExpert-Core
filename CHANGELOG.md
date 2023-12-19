@@ -1,5 +1,10 @@
-# v1.5.11
-- Bump version to CEu v2.8.5
+# v1.5.13
+- Modified mining level of Awakened Draconium Coil Block.
+- Recipe adjustment for AGC.
+
+* * *
+# v1.5.12
+- Bump version to CEu v2.8.5.
 
 * * *
 
@@ -9,12 +14,12 @@
 * * *
 
 # v1.5.10
-- Bump version to CEu v2.8.3
+- Bump version to CEu v2.8.3.
 
 * * *
 
 # v1.5.9
-- Add Awakened Draconium Coil Block
+- Add Awakened Draconium Coil Block.
 
 * * *
 
@@ -29,7 +34,7 @@
 * * *
 
 # v1.5.7
-- Bump version to CEu v2.8.2
+- Bump version to CEu v2.8.2.
 
 * * *
 
