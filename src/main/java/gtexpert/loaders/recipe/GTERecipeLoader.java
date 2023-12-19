@@ -124,25 +124,40 @@ public class GTERecipeLoader {
 
         // Liquid Air, Liquid Nether Air, Liquid Ender Air
         GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                .circuitMeta(4)
+                .fluidOutputs(Materials.Air.getFluid(10000))
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
+        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                .circuitMeta(5)
+                .fluidOutputs(Materials.NetherAir.getFluid(10000))
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
+        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+                .circuitMeta(6)
+                .fluidOutputs(Materials.EnderAir.getFluid(10000))
+                .duration(200).EUt(VA[LuV])
+                .buildAndRegister();
+        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .input(dust, Materials.Stone, 32)
                 .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
                 .fluidOutputs(Materials.Helium.getFluid(2500))
                 .fluidOutputs(Materials.LiquidAir.getFluid(10000))
-                .duration(200).EUt(VA[ZPM])
+                .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
         GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .input(dust, Materials.Netherrack, 32)
                 .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
                 .fluidOutputs(Materials.Helium.getFluid(2500))
                 .fluidOutputs(Materials.LiquidNetherAir.getFluid(10000))
-                .duration(200).EUt(VA[ZPM])
+                .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
         GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .input(dust, Materials.Endstone, 32)
                 .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
                 .fluidOutputs(Materials.Helium.getFluid(2500))
                 .fluidOutputs(Materials.LiquidEnderAir.getFluid(10000))
-                .duration(200).EUt(VA[ZPM])
+                .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
 
         if (GTEValues.isModLoadedDEDA()) {
@@ -151,21 +166,21 @@ public class GTERecipeLoader {
                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 250))
                     .fluidOutputs(Materials.LiquidAir.getFluid(10000))
-                    .duration(20).EUt(VA[ZPM])
+                    .duration(20).EUt(VA[LuV])
                     .buildAndRegister();
             GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
                     .input(dust, Materials.Netherrack, 32)
                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 250))
                     .fluidOutputs(Materials.LiquidNetherAir.getFluid(10000))
-                    .duration(20).EUt(VA[ZPM])
+                    .duration(20).EUt(VA[LuV])
                     .buildAndRegister();
             GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
                     .input(dust, Materials.Endstone, 32)
                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 250))
                     .fluidOutputs(Materials.LiquidEnderAir.getFluid(10000))
-                    .duration(20).EUt(VA[ZPM])
+                    .duration(20).EUt(VA[LuV])
                     .buildAndRegister();
         }
 
