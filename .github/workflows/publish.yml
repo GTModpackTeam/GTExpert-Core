@@ -1,10 +1,6 @@
 # Publishes built jars to distribution platforms
 name: Publish
 
-permissions:
-  pull-requests: write
-  contents: write
-
 on:
   workflow_dispatch:
     inputs:
@@ -19,11 +15,6 @@ on:
           - 'release'
           - 'beta'
           - 'alpha'
-      workspace:
-        description: 'setupCIWorkspace/setupDecompWorkspace'
-        required: false
-        default: "setupCIWorkspace"
-        type: string
 
 env:
   # Version of the mod
@@ -62,23 +53,26 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
+          cache: gradle
+          distribution: 'zulu'
           java-version: |
             8
             17
-          distribution: 'zulu'
-          cache: gradle
 
+      - name: Apply patch to settings.gradle
+        run: |
+          if [ -f settings.gradle.patch ]; then
+            patch -p0 < settings.gradle.patch
+          fi
+ 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Setup the workspace
-        run: ./gradlew --build-cache --info --stacktrace ${{ inputs.workspace }}
-
       - name: Build Project
-        run: ./gradlew --build-cache --info --stacktrace build
+        run: ./gradlew --scan --build-cache --info --stacktrace build
 
       - name: Publish to Curseforge and Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
@@ -87,6 +81,7 @@ jobs:
           github-generate-changelog: true
           github-draft: false
           github-prerelease: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           modrinth-id: 'ipueNiWG'
           modrinth-token: "${{ secrets.MODRINTH_API_KEY }}"
           modrinth-dependencies: |

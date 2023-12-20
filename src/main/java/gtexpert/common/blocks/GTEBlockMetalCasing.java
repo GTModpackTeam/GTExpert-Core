@@ -10,6 +10,7 @@ import net.minecraft.world.IBlockAccess;
 import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.block.VariantBlock;
+import gregtech.api.items.toolitem.ToolClasses;
 
 public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalCasingType> {
 
@@ -19,7 +20,7 @@ public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalC
         setHardness(5.0f);
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 2);
+        setHarvestLevel(ToolClasses.WRENCH, 2);
         setDefaultState(getState(MetalCasingType.SAWMill));
     }
 
