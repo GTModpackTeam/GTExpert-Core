@@ -1,6 +1,5 @@
 package gtexpert.api.recipes;
 
-import gregtech.api.GTValues;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
@@ -20,65 +19,35 @@ public class GTERecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> AUTO_CHISEL_RECIPES = new RecipeMap<>(
-            "auto_chisel", 2, 9, 0, 0,
-            new SimpleRecipeBuilder(), false)
+            "auto_chisel", 2, 9, 0, 0, new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, false, GuiTextures.BOXED_BACKGROUND)
                     .setProgressBar(GTEGuiTextures.PROGRESS_BAR_CHISEL, ProgressWidget.MoveType.HORIZONTAL)
                     .setSound(GTSoundEvents.FILE_TOOL);
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> VIAL_EXTRACTOR_RECIPES = new RecipeMap<>(
-            "vial_extractor", 1, 4, 0, 1,
-            new SimpleRecipeBuilder(), false)
+            "vial_extractor", 1, 4, 0, 1, new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, GTEGuiTextures.SOULVIAL_FULL_OVERLAY)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, ProgressWidget.MoveType.HORIZONTAL)
                     .setSound(GTSoundEvents.COMPRESSOR);
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SLICE_N_SPLICE_RECIPES = new RecipeMap<>(
-            "slice'n'splice", 6, 1, 0, 0,
-            new SimpleRecipeBuilder(), false)
+            "slice'n'splice", 6, 1, 0, 0, new SimpleRecipeBuilder(), false)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_SLICE, ProgressWidget.MoveType.HORIZONTAL)
                     .setSound(GTSoundEvents.CUT);
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SOUL_BINDER_RECIPES = new RecipeMap<>(
-            "soul_binder", 2, 2, 1, 0,
-            new SimpleRecipeBuilder(), false)
+            "soul_binder", 2, 2, 1, 0, new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, false, GTEGuiTextures.SOULVIAL_FULL_OVERLAY)
                     .setSlotOverlay(true, false, false, GTEGuiTextures.SOULVIAL_EMPTY_OVRELAY)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_CANNER, ProgressWidget.MoveType.HORIZONTAL)
                     .setSound(GTSoundEvents.ASSEMBLER);
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> PRIMITIVE_MIXER_RECIPES = new RecipeMap<>(
-            "primitive_mixer", 6, 1, 0, 0,
-            new SimpleRecipeBuilder(), false)
-                    .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
-                    .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
-                    .setProgressBar(GuiTextures.PROGRESS_BAR_MIXER, ProgressWidget.MoveType.CIRCULAR)
-                    .setSound(GTSoundEvents.MIXER);
-
-    @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> PRIMITIVE_ASSEMBLER_RECIPES = new RecipeMap<>(
-            "primitive_assembler", 9, 1, 0, 0,
-            new SimpleRecipeBuilder(), false)
-                    .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
-                    .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(GTSoundEvents.ASSEMBLER);
-
-    @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> PRIMITIVE_CIRCUIT_ASSEMBLER_RECIPES = new RecipeMap<>(
-            "primitive_circuit_assembler", 6, 1, 0, 0,
-            new SimpleRecipeBuilder(), false)
-                    .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
-                    .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT_ASSEMBLER, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(GTSoundEvents.ASSEMBLER);
-
-    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SAWMILL_RECIPES = new RecipeMap<>(
-            "sawmill", 2, 2, 1, 0,
-            new SimpleRecipeBuilder(), false)
+            "sawmill", 2, 2, 1, 0, new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, GuiTextures.SAWBLADE_OVERLAY)
                     .setSlotOverlay(true, false, false, GuiTextures.CUTTER_OVERLAY)
                     .setSlotOverlay(true, false, true, GuiTextures.DUST_OVERLAY)
@@ -87,29 +56,13 @@ public class GTERecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> VOID_ORE_MINER_RECIPES = new RecipeMap<>(
-            "void_ore_miner", 1, 1, 2, 0,
-            new SimpleRecipeBuilder(), false)
-                    .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOID, ProgressWidget.MoveType.VERTICAL)
+            "void_ore_miner", 1, 1, 2, 0, new SimpleRecipeBuilder(), false)
+                    .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOM, ProgressWidget.MoveType.VERTICAL)
                     .setSound(GTSoundEvents.DRILL_TOOL);
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> ADVANCED_CHEMICAL_REACTOR_RECIPES = new RecipeMap<>(
-            "advanced_chemical_plant", 3, 3, 5, 4,
-            new SimpleRecipeBuilder().EUt(GTValues.VA[GTValues.LV]), false)
-                    .setSlotOverlay(false, false, false, GuiTextures.MOLECULAR_OVERLAY_1)
-                    .setSlotOverlay(false, false, true, GuiTextures.MOLECULAR_OVERLAY_2)
-                    .setSlotOverlay(false, true, false, GuiTextures.MOLECULAR_OVERLAY_3)
-                    .setSlotOverlay(false, true, true, GuiTextures.MOLECULAR_OVERLAY_4)
-                    .setSlotOverlay(true, false, GuiTextures.VIAL_OVERLAY_1)
-                    .setSlotOverlay(true, true, GuiTextures.VIAL_OVERLAY_2)
-                    .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(GTSoundEvents.CHEMICAL_REACTOR)
-                    .setSmallRecipeMap(RecipeMaps.CHEMICAL_RECIPES);
-
-    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ADVANCED_GAS_COLLECTOR_RECIPES = new RecipeMap<>(
-            "advanced_gas_collector", 1, 0, 1, 2,
-            new SimpleRecipeBuilder(), false)
+            "advanced_gas_collector", 1, 0, 1, 2, new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
                     .setSlotOverlay(true, true, GuiTextures.CENTRIFUGE_OVERLAY)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)

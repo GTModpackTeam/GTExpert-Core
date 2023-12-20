@@ -3,16 +3,10 @@ package gtexpert.loaders.recipe.ingredients;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.ModHandler.removeRecipeByName;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.blocks.BlockWarningSign.SignType.*;
-import static gregtech.common.blocks.BlockWarningSign1.SignType.*;
-import static gregtech.common.blocks.MetaBlocks.*;
-import static gregtech.common.blocks.StoneVariantBlock.StoneType.*;
-import static gregtech.common.blocks.StoneVariantBlock.StoneVariant.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.chiselIntegration;
 import static gtexpert.common.metatileentities.GTESingleMetaTileEntities.AUTO_CHISEL;
-import static gtexpert.integration.chisel.ChiselHelper.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,6 +34,7 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.integration.chisel.ChiselHelper;
 
 import team.chisel.common.init.ChiselBlocks;
 import team.chisel.common.init.ChiselItems;
@@ -62,7 +57,7 @@ public class ChiselRecipeLoader {
                 new ItemStack(Items.BOOK, 3));
         String[] bookshelf = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "darkoak" };
         for (int i = 0; i < bookshelf.length; i++) {
-            addGroup("bookshelf" + bookshelf[i].toUpperCase());
+            ChiselHelper.addGroup("bookshelf" + bookshelf[i].toUpperCase());
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .inputs(new ItemStack(Blocks.PLANKS, 6, i))
                     .inputs(new ItemStack(Items.BOOK, 3))
@@ -109,34 +104,6 @@ public class ChiselRecipeLoader {
                 'M', MOTOR,
                 'C', CIRCUIT);
 
-        // Hazard Sign 1
-        addGroup("hazardSign");
-        Arrays.asList(YELLOW_STRIPES, SMALL_YELLOW_STRIPES,
-                RADIOACTIVE_HAZARD, BIO_HAZARD, EXPLOSION_HAZARD, FIRE_HAZARD, ACID_HAZARD, MAGIC_HAZARD, FROST_HAZARD,
-                NOISE_HAZARD, GENERIC_HAZARD, HIGH_VOLTAGE_HAZARD, MAGNETIC_HAZARD, ANTIMATTER_HAZARD,
-                HIGH_TEMPERATURE_HAZARD, VOID_HAZARD)
-                .forEach(hazardSign -> addVariation("hazardSign", WARNING_SIGN.getItemVariant(hazardSign)));
-        registerAutoChiselRecipe("hazardSign");
-
-        // Hazard Sign 2
-        addGroup("hazardSign1");
-        Arrays.asList(MOB_SPAWNER_HAZARD, SPATIAL_STORAGE_HAZARD,
-                LASER_HAZARD, MOB_HAZARD, BOSS_HAZARD, GREGIFICATION_HAZARD, CAUSALITY_HAZARD,
-                AUTOMATED_DEFENSES_HAZARD, HIGH_PRESSURE_HAZARD)
-                .forEach(hazardSign1 -> addVariation("hazardSign1", WARNING_SIGN_1.getItemVariant(hazardSign1)));
-        registerAutoChiselRecipe("hazardSign1");
-
-        // GT Stones
-        Arrays.asList(BLACK_GRANITE, RED_GRANITE, MARBLE, BASALT, CONCRETE_LIGHT, CONCRETE_DARK).forEach(stoneType -> {
-            String groupName = "stone" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, stoneType.getName());
-            addGroup(groupName);
-            Arrays.asList(SMOOTH, COBBLE, COBBLE_MOSSY, POLISHED, BRICKS, BRICKS_CRACKED, BRICKS_MOSSY, CHISELED,
-                    TILED, TILED_SMALL, BRICKS_SMALL, WINDMILL_A, WINDMILL_B, BRICKS_SQUARE)
-                    .forEach(stoneVariant -> addVariation(groupName,
-                            STONE_BLOCKS.get(stoneVariant).getItemVariant(stoneType)));
-            registerAutoChiselRecipe(groupName);
-        });
-
         // Lamp
         if (chiselIntegration.hardLedRecipes) {
             if (Loader.isModLoaded("projectred-illumination")) {
@@ -153,25 +120,26 @@ public class ChiselRecipeLoader {
                         CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, dyeColor.getName());
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
-                addGroup("lamp" + colorName);
+                ChiselHelper.addGroup("lamp" + colorName);
                 {
                     int lampMeta = 0;
                     while (lampMeta < lamp.getItemMetadataStates()) {
                         if (Loader.isModLoaded("projectred-illumination")) {
-                            addVariation("lamp" + colorName, getModItem("projectred-illumination", "lamp", 1, i));
+                            ChiselHelper.addVariation("lamp" + colorName,
+                                    getModItem("projectred-illumination", "lamp", 1, i));
                         }
-                        addVariation("lamp" + colorName,
+                        ChiselHelper.addVariation("lamp" + colorName,
                                 getModItem("projectred-illumination", "lamp", 1, i + 16));
-                        addVariation("lamp" + colorName, new ItemStack(lamp, 1, lampMeta));
+                        ChiselHelper.addVariation("lamp" + colorName, new ItemStack(lamp, 1, lampMeta));
                         lampMeta++;
                     }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
-                addGroup("lampBorderless" + colorName);
+                ChiselHelper.addGroup("lampBorderless" + colorName);
                 int lampMeta = 0;
                 while (lampMeta < lamp.getItemMetadataStates()) {
-                    addVariation("lampBorderless" + colorName, new ItemStack(lamp, 1, lampMeta));
+                    ChiselHelper.addVariation("lampBorderless" + colorName, new ItemStack(lamp, 1, lampMeta));
                     lampMeta++;
                 }
                 registerAutoChiselRecipe("lamp" + colorName);

@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,12 +21,16 @@ import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.util.GTUtility;
+import gregtech.api.util.TextComponentUtil;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -37,6 +41,7 @@ import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 
 import gtexpert.api.gui.GTEGuiTextures;
+import gtexpert.common.GTEConfigHolder;
 
 public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockController {
 
@@ -44,6 +49,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     public MetaTileEntityLargeCrackingUnit(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.CRACKING_RECIPES);
+        this.recipeMapWorkable = new LargeCrackingUnitWorkableHandler(this);
     }
 
     @Override
@@ -56,30 +62,33 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     protected BlockPattern createStructurePattern() {
         TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(10);
         TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true, false);
-        return FactoryBlockPattern.start()
-                .aisle("XCCXCCX", "XCCXCCX", "XCCXCCX")
-                .aisle("XCCXCCX", "X##T##X", "XCCXCCX")
-                .aisle("XCCXCCX", "XCCSCCX", "XCCXCCX")
-                .where('S', selfPredicate())
-                .where('X', casing.or(abilities))
-                .where('T', tieredCasing().or(states(getCasingState())))
-                .where('C', heatingCoils().setMinGlobalLimited(32).setMaxGlobalLimited(32))
-                .where('#', air())
-                .build();
-        // return FactoryBlockPattern.start()
-        // .aisle(" XXX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
-        // .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
-        // .aisle("XXTXX", "XXXXX", "XC#CX", "XC#CX", "XC#CX", "XXXXX", " XHX ")
-        // .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
-        // .aisle(" XSX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
-        // .where('S', selfPredicate())
-        // .where('X', states(getCasingState()).setMinGlobalLimited(10)
-        // .or(autoAbilities(true, true, true, true, true, true, false)))
-        // .where('T', tieredCasing().or(states(getCasingState())))
-        // .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
-        // .where('C', heatingCoils())
-        // .where('#', air())
-        // .build();
+
+        if (GTEConfigHolder.modpackFlag.featureFlag) {
+            return FactoryBlockPattern.start()
+                    .aisle(" XXX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+                    .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
+                    .aisle("XXTXX", "XXXXX", "XC#CX", "XC#CX", "XC#CX", "XXXXX", " XHX ")
+                    .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
+                    .aisle(" XSX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+                    .where('S', selfPredicate())
+                    .where('X', casing.setMinGlobalLimited(10).or(abilities))
+                    .where('T', tieredCasing().or(casing))
+                    .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
+                    .where('C', heatingCoils())
+                    .where('#', air())
+                    .build();
+        } else {
+            return FactoryBlockPattern.start()
+                    .aisle("XCCXCCX", "XCCXCCX", "XCCXCCX")
+                    .aisle("XCCXCCX", "X##T##X", "XCCXCCX")
+                    .aisle("XCCXCCX", "XCCSCCX", "XCCXCCX")
+                    .where('S', selfPredicate())
+                    .where('X', casing.or(abilities))
+                    .where('T', tieredCasing().or(states(getCasingState())))
+                    .where('C', heatingCoils().setMinGlobalLimited(32).setMaxGlobalLimited(32))
+                    .where('#', air())
+                    .build();
+        }
     }
 
     @Override
@@ -94,6 +103,11 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     @Override
     public boolean isTiered() {
+        return true;
+    }
+
+    @Override
+    public boolean isParallel() {
         return true;
     }
 
@@ -114,11 +128,31 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
-        if (isStructureFormed()) {
-            textList.add(new TextComponentTranslation("gregtech.multiblock.cracking_unit.energy",
-                    100 - 10 * this.coilTier));
-        }
+        MultiblockDisplayText.builder(textList, isStructureFormed())
+                .setWorkingStatus(recipeMapWorkable.isWorkingEnabled(), recipeMapWorkable.isActive())
+                .addEnergyUsageLine(getEnergyContainer())
+                .addEnergyTierLine(GTUtility.getTierByVoltage(recipeMapWorkable.getMaxVoltage()))
+                .addCustom(tl -> {
+                    // Coil energy discount line
+                    if (isStructureFormed()) {
+                        ITextComponent energyDiscount = TextComponentUtil.stringWithColor(TextFormatting.AQUA,
+                                (100 - 10 * this.coilTier) + "%");
+
+                        ITextComponent base = TextComponentUtil.translationWithColor(
+                                TextFormatting.GRAY,
+                                "gregtech.multiblock.cracking_unit.energy",
+                                energyDiscount);
+
+                        ITextComponent hover = TextComponentUtil.translationWithColor(
+                                TextFormatting.GRAY,
+                                "gregtech.multiblock.cracking_unit.energy_hover");
+
+                        tl.add(TextComponentUtil.setHover(base, hover));
+                    }
+                })
+                .addParallelsLine(recipeMapWorkable.getParallelLimit())
+                .addWorkingStatusLine()
+                .addProgressLine(recipeMapWorkable.getProgressPercent());
     }
 
     @Override

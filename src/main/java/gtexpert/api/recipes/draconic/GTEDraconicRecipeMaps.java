@@ -80,7 +80,8 @@ public class GTEDraconicRecipeMaps {
                     .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
                     .setSound(GTSoundEvents.ARC)
                     .onRecipeBuild(
-                            recipeBuilder -> GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
+                            recipeBuilder -> GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES
+                                    .recipeBuilder()
                                     .inputs(recipeBuilder.getInputs().toArray(new GTRecipeInput[0]))
                                     .fluidInputs(recipeBuilder.getFluidInputs())
                                     .outputs(recipeBuilder.getOutputs())

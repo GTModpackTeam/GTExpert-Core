@@ -22,12 +22,10 @@ public class GTEMaterialFlags {
         // Nether Quartz
         Materials.NetherQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
         Materials.NetherQuartz.addFlags(GENERATE_LENS, GENERATE_ROD);
-        OrePrefix.block.modifyMaterialAmount(Materials.NetherQuartz, 4);
 
         // Certus Quartz
         Materials.CertusQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
         Materials.CertusQuartz.addFlags(GENERATE_LENS, GENERATE_ROD);
-        OrePrefix.block.modifyMaterialAmount(Materials.CertusQuartz, 4);
 
         // Quartzite
         Materials.Quartzite.addFlags(GENERATE_ROD);
