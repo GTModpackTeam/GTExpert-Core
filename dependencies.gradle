@@ -95,8 +95,11 @@ dependencies {
     }
 
     // Debug Avaritia
+    //compileOnly rfg.deobf("curse.maven:avaritia-1-1x-kedition-913129:4777278") // Avaritia 1.1x Kedition 1.3
+    compileOnly (files("libs/Avaritia-1.12.2-kedition-universal.jar"))
     if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349")
+        //runtimeOnly rfg.deobf("curse.maven:avaritia-1-1x-kedition-913129:4777278")
+        runtimeOnly (files("libs/Avaritia-1.12.2-kedition-universal.jar"))
     }
 
     // Boot error fix
