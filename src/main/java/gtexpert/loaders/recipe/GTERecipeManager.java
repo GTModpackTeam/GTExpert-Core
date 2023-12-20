@@ -45,5 +45,8 @@ public class GTERecipeManager {
         if (Loader.isModLoaded(GTEValues.MODID_CHISEL)) {
             ChiselRecipeLoader.init();
         }
+        if (Loader.isModLoaded(GTEValues.MODID_AVARITIA)) {
+            AvaritiaRecipeLoader.init();
+        }
     }
 }
