@@ -2,7 +2,7 @@
 - Texture update of sawmill conveyor
     -  Thanks to @KatatsumuriPan for his support!!
 - Fix Avaritia integration
-- Fixed a strange bug reported in #202
+- Fixed a strange bug reported in [#202](https://github.com/GTModpackTeam/GTExpert-Core/issues/202)
     - ~~Maybe they fixed it?~~
 
 * * *
