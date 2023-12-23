@@ -35,7 +35,6 @@ import gtexpert.common.items.GTEMetaItems;
 import appeng.api.util.AEColor;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
-@SuppressWarnings("OptionalGetWithoutIsPresent")
 public class AERecipeLoader {
 
     public static void init() {
