@@ -1,5 +1,7 @@
 package gtexpert.api.recipes;
 
+import net.minecraft.init.SoundEvents;
+
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
@@ -46,6 +48,12 @@ public class GTERecipeMaps {
                     .setSound(GTSoundEvents.ASSEMBLER);
 
     @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> SIEVE_RECIPES = new RecipeMap<>(
+            "sieve", 2, 30, 0, 0, new SimpleRecipeBuilder(), false)
+                    .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.VERTICAL_INVERTED)
+                    .setSound(SoundEvents.BLOCK_SAND_PLACE);
+
+    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SAWMILL_RECIPES = new RecipeMap<>(
             "sawmill", 2, 2, 1, 0, new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, GuiTextures.SAWBLADE_OVERLAY)
@@ -68,4 +76,29 @@ public class GTERecipeMaps {
                     .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)
                     .setSound(GTSoundEvents.COOLING)
                     .setSmallRecipeMap(RecipeMaps.GAS_COLLECTOR_RECIPES);
+
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> STEAM_MIXER_RECIPES = new RecipeMap<>(
+            "primitive_mixer", 6, 2, 0, 0,
+            new SimpleRecipeBuilder(), false)
+                    .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
+                    .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
+                    .setProgressBar(GuiTextures.PROGRESS_BAR_MIXER, ProgressWidget.MoveType.CIRCULAR)
+                    .setSound(GTSoundEvents.MIXER);
+
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> STEAM_ASSEMBLER_RECIPES = new RecipeMap<>(
+            "primitive_assembler", 9, 2, 0, 0,
+            new SimpleRecipeBuilder(), false)
+                    .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
+                    .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT, ProgressWidget.MoveType.HORIZONTAL)
+                    .setSound(GTSoundEvents.ASSEMBLER);
+
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> STEAM_CIRCUIT_ASSEMBLER_RECIPES = new RecipeMap<>(
+            "primitive_circuit_assembler", 6, 2, 0, 0,
+            new SimpleRecipeBuilder(), false)
+                    .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
+                    .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT_ASSEMBLER, ProgressWidget.MoveType.HORIZONTAL)
+                    .setSound(GTSoundEvents.ASSEMBLER);
 }

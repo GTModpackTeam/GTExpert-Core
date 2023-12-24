@@ -2,14 +2,14 @@ package gtexpert.loaders.recipe.ingredients;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import gregtech.api.unification.material.Materials;
-import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Materials;
+import gregtech.common.items.MetaItems;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
@@ -47,7 +47,8 @@ public class AvaritiaRecipeLoader {
                 "I", 'I', new ItemStack(ModItems.resource, 1, 4));
 
         // Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AVARITIA, "blocks/resource/neutronium_block"));
+        ModHandler
+                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AVARITIA, "blocks/resource/neutronium_block"));
         ModHandler.addMirroredShapedRecipe("avaritia_neutronium_ingot", new ItemStack(ModBlocks.resource, 1, 0),
                 "B", 'B', OreDictUnifier.get(block, Materials.Neutronium));
         ModHandler.addMirroredShapedRecipe("ceu_neutronium_block", OreDictUnifier.get(block, Materials.Neutronium),

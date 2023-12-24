@@ -63,7 +63,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
         TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(10);
         TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true, false);
 
-        if (GTEConfigHolder.modpackFlag.featureFlag) {
+        if (GTEConfigHolder.gteFlag.featureFlag) {
             return FactoryBlockPattern.start()
                     .aisle(" XXX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
                     .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")

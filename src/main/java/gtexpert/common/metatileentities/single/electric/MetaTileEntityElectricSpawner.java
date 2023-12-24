@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities.single;
+package gtexpert.common.metatileentities.single.electric;
 
 import java.util.Arrays;
 import java.util.List;

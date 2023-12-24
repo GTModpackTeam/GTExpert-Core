@@ -7,9 +7,9 @@ import gtexpert.api.GTEValues;
 @Config(modid = GTEValues.MODID)
 public class GTEConfigHolder {
 
-    @Config.Name("Gregtech Expert Options")
+    @Config.Name("GTExpert-Core Options")
     @Config.RequiresMcRestart
-    public static final ModpackFlag modpackFlag = new ModpackFlag();
+    public static final ModpackFlag gteFlag = new ModpackFlag();
 
     @Config.Name("Gregtech Override")
     @Config.RequiresMcRestart
@@ -35,6 +35,16 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Activate changes in the replacement schedule.", "Default: false" })
         public boolean featureFlag = false;
+
+        @Config.Comment({ "Item name to be CEu standard instead of Primitive",
+                "Options: true (ULV), false (Primitive)",
+                "Default: false" })
+        public boolean componentsName = false;
+
+        @Config.Comment({
+                "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting), normal (3x3 crafting).",
+                "Default: easy" })
+        public String componentsRecipeType = "easy";
     }
 
     public static class GregtechOverride {
@@ -53,9 +63,6 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Raising Terracotta Grinding from ULV to MV.", "Default: false" })
         public boolean nerfTerracottaCrafting = false;
-
-        @Config.Comment({ "Recipe type Options: false (2x2 crafting), true (3x3 crafting).", "Default: false" })
-        public boolean hardPrimitiveParts = false;
     }
 
     public static class AE2Integration {
