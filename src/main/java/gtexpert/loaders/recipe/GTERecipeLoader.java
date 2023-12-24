@@ -203,7 +203,7 @@ public class GTERecipeLoader {
                 return;
             }
             case "easy" -> {
-                ModHandler.addShapedRecipe(true,  "electric_motor_" + componentsName,
+                ModHandler.addShapedRecipe(true, "electric_motor_" + componentsName,
                         GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm(), "WR", "MW",
                         'R', new UnificationEntry(stick, Materials.Bronze),
                         'M', new UnificationEntry(stick, Materials.IronMagnetic),
@@ -397,7 +397,7 @@ public class GTERecipeLoader {
                         .output(GTEMetaItems.GTE_SENSOR)
                         .duration(100).EUt(VA[ULV]).buildAndRegister();
             }
-            default -> GTELog.logger.error("Invalid component setting: " + gteFlag.componentsRecipeType);
+            default -> GTELog.logger.error("Invalid componentsRecipeType setting: " + gteFlag.componentsRecipeType);
         }
 
         if (!ConfigHolder.machines.enableHighTierSolars) return;
@@ -696,43 +696,51 @@ public class GTERecipeLoader {
     }
 
     private static void blocks() {
-        // Steam Mixer
-        ModHandler.addShapedRecipe(true, "steam_mixer_bronze",
-                GTESingleMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
-                'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
-                'E', GTEMetaItems.GTE_ELECTRIC_MOTOR,
-                'R', new UnificationEntry(rotor, Materials.Bronze),
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                'G', Blocks.GLASS);
+        switch (gteFlag.steamRecipeType) {
+            case "none":
+                return;
+            case "easy":
+            case "normal":
+                // Steam Mixer
+                ModHandler.addShapedRecipe(true, "steam_mixer_bronze",
+                        GTESingleMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
+                        'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
+                        'E', GTEMetaItems.GTE_ELECTRIC_MOTOR,
+                        'R', new UnificationEntry(rotor, Materials.Bronze),
+                        'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                        'G', Blocks.GLASS);
 
-        // Steam Assembler
-        ModHandler.addShapedRecipe(true, "steam_assembler_bronze",
-                GTESingleMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
-                'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
-                'V', GTEMetaItems.GTE_CONVEYOR_MODULE,
-                'A', GTEMetaItems.GTE_ROBOT_ARM,
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                'W', new UnificationEntry(cableGtSingle, Materials.Lead));
+                // Steam Assembler
+                ModHandler.addShapedRecipe(true, "steam_assembler_bronze",
+                        GTESingleMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
+                        'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
+                        'V', GTEMetaItems.GTE_CONVEYOR_MODULE,
+                        'A', GTEMetaItems.GTE_ROBOT_ARM,
+                        'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                        'W', new UnificationEntry(cableGtSingle, Materials.Lead));
 
-        // Steam Circuit Assembler
-        ModHandler.addShapedRecipe(true, "steam_circuit_assembler_bronze",
-                GTESingleMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
-                'R', GTEMetaItems.GTE_ROBOT_ARM,
-                'I', GTHelper.oreDictionaryCircuit(GTValues.LV),
-                'E', GTEMetaItems.GTE_EMITTER,
-                'C', GTEMetaItems.GTE_CONVEYOR_MODULE,
-                'H', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
-                'W', new UnificationEntry(cableGtSingle, Materials.Lead));
+                // Steam Circuit Assembler
+                ModHandler.addShapedRecipe(true, "steam_circuit_assembler_bronze",
+                        GTESingleMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
+                        'R', GTEMetaItems.GTE_ROBOT_ARM,
+                        'I', GTHelper.oreDictionaryCircuit(GTValues.LV),
+                        'E', GTEMetaItems.GTE_EMITTER,
+                        'C', GTEMetaItems.GTE_CONVEYOR_MODULE,
+                        'H', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
+                        'W', new UnificationEntry(cableGtSingle, Materials.Lead));
 
-        // Sawmill
-        ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",
-                GTEMultiMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
-                'S', new UnificationEntry(screw, Materials.Steel),
-                'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Steel),
-                'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
-                'H', MetaTileEntities.HULL[MV].getStackForm(),
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
-                'O', MetaItems.CONVEYOR_MODULE_MV.getStackForm());
+                // Sawmill
+                ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",
+                        GTEMultiMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
+                        'S', new UnificationEntry(screw, Materials.Steel),
+                        'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Steel),
+                        'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
+                        'H', MetaTileEntities.HULL[MV].getStackForm(),
+                        'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
+                        'O', MetaItems.CONVEYOR_MODULE_MV.getStackForm());
+            default:
+                GTELog.logger.error("Invalid steamRecipeType setting: " + gteFlag.steamRecipeType);
+        }
 
         // Large Oil Cracking Unit
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit",

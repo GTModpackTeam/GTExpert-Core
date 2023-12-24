@@ -45,6 +45,11 @@ public class GTEConfigHolder {
                 "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting), normal (3x3 crafting).",
                 "Default: easy" })
         public String componentsRecipeType = "easy";
+
+        @Config.Comment({
+                "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting(WIP)), normal (3x3 crafting).",
+                "Default: normal" })
+        public String steamRecipeType = "normal";
     }
 
     public static class GregtechOverride {

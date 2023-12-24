@@ -219,6 +219,9 @@ recipemap.draconic_fusion_upgrade.property.1=Preserves upgrade info
 recipemap.draconic_fusion_upgrade.property.2= and stored energy
 recipemap.advanced_chemical_plant.name=Advanced Chemical Plant
 recipemap.advanced_gas_collector.name=Advanced Gas Collector
+recipemap.steam_mixer.name=Steam Mixer
+recipemap.steam_assembler.name=Steam Assembler
+recipemap.steam_circuit_assembler.name=Steam Circuit Assembler
 
 #misc
 gtexpert.gui.electric_spawner_mode.spawn=Spawn Mode

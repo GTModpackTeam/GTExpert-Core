@@ -28,7 +28,7 @@ public class GTEMetaItem1 extends StandardMetaItem {
 
         // Primitive parts: ID 11-20
         String componentsName = gteFlag.componentsName ? "ulv" : "primitive";
-        GTE_ELECTRIC_MOTOR = addItem(11,  "electric.motor." + componentsName);
+        GTE_ELECTRIC_MOTOR = addItem(11, "electric.motor." + componentsName);
         GTE_ELECTRIC_PUMP = addItem(12, "electric.pump." + componentsName)
                 .addComponents(new TooltipBehavior(lines -> {
                     lines.add(I18n.format("metaitem.electric.pump.tooltip"));
