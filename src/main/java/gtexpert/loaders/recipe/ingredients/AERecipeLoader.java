@@ -114,6 +114,15 @@ public class AERecipeLoader {
                 .duration(1200).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
+        // Fluix Pearl
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/fluixpearl"));
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                .input(gem, Materials.EnderPearl, 1)
+                .input(dust, GTEMaterials.Fluix, 1)
+                .outputs(aeMaterials.fluixPearl().maybeStack(1).get())
+                .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                .buildAndRegister();
+
         // ########################################
         // Sky Stone
         // ########################################
@@ -1626,7 +1635,7 @@ public class AERecipeLoader {
 
         // Formation Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "materials/formationcore"));
-        ModHandler.addShapedRecipe("formation_core", aeMaterials.formationCore().maybeStack(1).get(),
+        ModHandler.addShapedRecipe(true, "formation_core", aeMaterials.formationCore().maybeStack(1).get(),
                 "SES", "LQL", "SES",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
                 'Q', "gemMaterials.NetherQuartz",
@@ -1650,7 +1659,7 @@ public class AERecipeLoader {
 
         // Annihilation Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "materials/annihilationcore"));
-        ModHandler.addShapedRecipe("annihilation_core", aeMaterials.annihilationCore().maybeStack(1).get(),
+        ModHandler.addShapedRecipe(true, "annihilation_core", aeMaterials.annihilationCore().maybeStack(1).get(),
                 "SES", "CQC", "SES",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
                 'Q', "gemCertusQuartz",
@@ -1674,7 +1683,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Matrix Core
-        ModHandler.addShapedRecipe("matrix_core", GTEMetaItems.MATRIX_CORE.getStackForm(),
+        ModHandler.addShapedRecipe(true, "matrix_core", GTEMetaItems.MATRIX_CORE.getStackForm(),
                 "SAS", "FQF", "SAS",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
                 'Q', aeMaterials.fluixCrystal().maybeStack(1).get(),
@@ -1753,6 +1762,7 @@ public class AERecipeLoader {
                 .fluidInputs(Materials.Redstone.getFluid(144))
                 .outputs(aeMaterials.logicProcessor().maybeStack(1).get())
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Calc Processor
@@ -1762,6 +1772,7 @@ public class AERecipeLoader {
                 .fluidInputs(Materials.Redstone.getFluid(144))
                 .outputs(aeMaterials.calcProcessor().maybeStack(1).get())
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Engineer Processor
@@ -1771,6 +1782,7 @@ public class AERecipeLoader {
                 .fluidInputs(Materials.Redstone.getFluid(144))
                 .outputs(aeMaterials.engProcessor().maybeStack(1).get())
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         if (ae2Integration.moveSteelShape) {
@@ -1791,7 +1803,7 @@ public class AERecipeLoader {
                             .buildAndRegister());
 
             // Mold (Printed Silicon)
-            ModHandler.addShapedRecipe("shape_mold_printed_silicon",
+            ModHandler.addShapedRecipe(true, "shape_mold_printed_silicon",
                     GTEMetaItems.SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
                     "h  ", "   ", "S  ",
                     'S', MetaItems.SHAPE_EMPTY);
@@ -1800,7 +1812,7 @@ public class AERecipeLoader {
                     aeMaterials.siliconPress().maybeStack(1).get());
 
             // Mold (Logic Processor)
-            ModHandler.addShapedRecipe("shape_mold_logic_processor",
+            ModHandler.addShapedRecipe(true, "shape_mold_logic_processor",
                     GTEMetaItems.SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm(),
                     " h ", "   ", "S  ",
                     'S', MetaItems.SHAPE_EMPTY);
@@ -1809,7 +1821,7 @@ public class AERecipeLoader {
                     aeMaterials.logicProcessorPress().maybeStack(1).get());
 
             // Mold (Calculation Processor)
-            ModHandler.addShapedRecipe("shape_mold_calculation_processor",
+            ModHandler.addShapedRecipe(true, "shape_mold_calculation_processor",
                     GTEMetaItems.SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm(),
                     "   ", "  h", "S  ",
                     'S', MetaItems.SHAPE_EMPTY);
@@ -1818,7 +1830,7 @@ public class AERecipeLoader {
                     aeMaterials.calcProcessorPress().maybeStack(1).get());
 
             // Mold (Engineering Processor)
-            ModHandler.addShapedRecipe("shape_mold_engineering_processor",
+            ModHandler.addShapedRecipe(true, "shape_mold_engineering_processor",
                     GTEMetaItems.SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm(),
                     "   ", "   ", "S h",
                     'S', MetaItems.SHAPE_EMPTY);
@@ -1827,25 +1839,25 @@ public class AERecipeLoader {
                     aeMaterials.engProcessorPress().maybeStack(1).get());
 
             // Extruder Shape (Printed Silicon)
-            ModHandler.addShapedRecipe("shape_extruder_printed_silicon",
+            ModHandler.addShapedRecipe(true, "shape_extruder_printed_silicon",
                     GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON.getStackForm(),
                     " x ", " S ", "   ",
                     'S', MetaItems.SHAPE_EMPTY);
 
             // Extruder Shape (Logic Processor)
-            ModHandler.addShapedRecipe("shape_extruder_logic_processor",
+            ModHandler.addShapedRecipe(true, "shape_extruder_logic_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm(),
                     " x ", "S  ", "   ",
                     'S', GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR);
 
             // Extruder Shape (Calculation Processor)
-            ModHandler.addShapedRecipe("shape_extruder_calculation_processor",
+            ModHandler.addShapedRecipe(true, "shape_extruder_calculation_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_CALCULATION_PROCESSOR.getStackForm(),
                     " x ", " S ", "   ",
                     'S', GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());
 
             // Extruder Shape (Engineering Processor)
-            ModHandler.addShapedRecipe("shape_extruder_engineering_processor",
+            ModHandler.addShapedRecipe(true, "shape_extruder_engineering_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_ENGINEERING_PROCESSOR.getStackForm(),
                     " x ", "  S", "   ",
                     'S', GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());

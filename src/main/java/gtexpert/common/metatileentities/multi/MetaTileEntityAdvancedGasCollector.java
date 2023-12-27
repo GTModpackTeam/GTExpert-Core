@@ -110,7 +110,7 @@ public class MetaTileEntityAdvancedGasCollector extends GCYMRecipeMapMultiblockC
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gtexpert.machine.advanced_chemical_plant.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.advanced_gas_collector.tooltip.1"));
     }
 
     @Override
