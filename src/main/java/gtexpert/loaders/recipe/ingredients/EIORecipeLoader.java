@@ -365,6 +365,13 @@ public class EIORecipeLoader {
     }
 
     private static void items() {
+        // Soul Vial
+        ModHandler.addShapedRecipe(true, "soul_vial",
+                getModItem(GTEValues.MODID_EIO, "item_soul_vial", 1, 0),
+                " S ", "G G", " G ",
+                'S', new UnificationEntry(plate, GTEMaterials.Soularium),
+                'G', getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0));
+
         // Basic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(GTHelper.batteryHull(GTEValues.eioVoltageTier), 1)
@@ -467,7 +474,7 @@ public class EIORecipeLoader {
         // Vial Extractor
         MetaTileEntityLoader.registerMachineRecipe(true,
                 EIOMetaTileEntities.VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
-                'V', ModObject.itemSoulVial.getItemNN(),
+                'V', getModItem(GTEValues.MODID_EIO, "item_soul_vial", 1, 0),
                 'R', SENSOR,
                 'P', PISTON,
                 'H', HULL,
@@ -483,7 +490,7 @@ public class EIORecipeLoader {
                 'C', CIRCUIT,
                 'H', HULL,
                 'M', MOTOR,
-                'B', ModObject.blockDarkIronBars.getItemNN());
+                'B', getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 1, 0));
 
         // Soul Binder
         MetaTileEntityLoader.registerMachineRecipe(true,
@@ -537,6 +544,46 @@ public class EIORecipeLoader {
                     .inputs(new ItemStack(ModObject.block_infinity.getBlockNN(), 4, 2))
                     .outputs(getModItem(GTEValues.MODID_AE, "sky_stone_block", 1, 0))
                     .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
+                    .buildAndRegister();
+        }
+
+        // Fused Quartz
+        RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
+                .input(block, Materials.NetherQuartz, 1)
+                .outputs(getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0))
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier])
+                .buildAndRegister();
+
+        // Quartz Clear Glass
+        RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
+                .inputs(getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0))
+                .outputs(getModItem(GTEValues.MODID_EIO, "block_fused_glass", 1, 0))
+                .duration(56).EUt(VA[GTEValues.eioVoltageTier])
+                .buildAndRegister();
+
+        if (ConfigHolder.recipes.hardIronRecipes) {
+            // Dark Iron Bars
+            ModHandler.addShapedRecipe(true, "dark_iron_bars",
+                    getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 8, 0),
+                    " h ", "SSS", "SSS",
+                    'S', new UnificationEntry(stick, GTEMaterials.DarkSteel));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(3)
+                    .input(stick, GTEMaterials.DarkSteel, 3)
+                    .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 4, 0))
+                    .duration(300).EUt(4)
+                    .buildAndRegister();
+
+            // End Steel Bars
+            ModHandler.addShapedRecipe(true, "end_steal_bars",
+                    getModItem(GTEValues.MODID_EIO, "block_end_iron_bars", 8, 0),
+                    " h ", "SSS", "SSS",
+                    'S', new UnificationEntry(stick, GTEMaterials.EndSteel));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(3)
+                    .input(stick, GTEMaterials.EndSteel, 3)
+                    .outputs(getModItem(GTEValues.MODID_EIO, "block_end_iron_bars", 4, 0))
+                    .duration(300).EUt(4)
                     .buildAndRegister();
         }
 
