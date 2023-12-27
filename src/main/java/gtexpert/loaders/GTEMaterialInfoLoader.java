@@ -34,6 +34,36 @@ public class GTEMaterialInfoLoader {
                 new ItemMaterialInfo(new MaterialStack(Materials.TreatedWood,
                         (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft)));
 
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 9),
+                    new ItemMaterialInfo(
+                            new MaterialStack(Materials.EnderPearl, GTValues.M),
+                            new MaterialStack(GTEMaterials.Fluix, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 20),
+                    new ItemMaterialInfo(new MaterialStack(Materials.Silicon, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 16),
+                    new ItemMaterialInfo(new MaterialStack(Materials.CertusQuartz, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 18),
+                    new ItemMaterialInfo(new MaterialStack(Materials.Gold, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 17),
+                    new ItemMaterialInfo(new MaterialStack(Materials.Diamond, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 23),
+                    new ItemMaterialInfo(
+                            new MaterialStack(Materials.Redstone, GTValues.M),
+                            new MaterialStack(Materials.Silicon, GTValues.M),
+                            new MaterialStack(Materials.CertusQuartz, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 22),
+                    new ItemMaterialInfo(
+                            new MaterialStack(Materials.Redstone, GTValues.M),
+                            new MaterialStack(Materials.Silicon, GTValues.M),
+                            new MaterialStack(Materials.Gold, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 24),
+                    new ItemMaterialInfo(
+                            new MaterialStack(Materials.Redstone, GTValues.M),
+                            new MaterialStack(Materials.Silicon, GTValues.M),
+                            new MaterialStack(Materials.Diamond, GTValues.M)));
+        }
+
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             OreDictUnifier.registerOre(getModItem(GTEValues.MODID_EIO, "item_soul_vial", 1, 0),
                     new ItemMaterialInfo(
@@ -73,6 +103,18 @@ public class GTEMaterialInfoLoader {
             OreDictUnifier.registerOre(GTEMetaBlocks.GTE_METAL_CASING.getItemVariant(AWAKENED_DRACONIUM_CASING),
                     new ItemMaterialInfo(new MaterialStack(GTEMaterials.AwakenedDraconium,
                             (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft)));
+            OreDictUnifier.registerOre(GTEMetaBlocks.GTE_METAL_CASING.getItemVariant(DRACONIUM_CASING),
+                    new ItemMaterialInfo(
+                            new MaterialStack(GTEMaterials.Draconium, GTValues.M * 9),
+                            new MaterialStack(Materials.Tritanium, GTValues.M * 2)));
+
+            if (Loader.isModLoaded(GTEValues.MODID_EIO)) {} else {
+                OreDictUnifier.registerOre(getModItem(GTEValues.MODID_DE, "infused_obsidian", 1, 0),
+                        new ItemMaterialInfo(
+                                new MaterialStack(Materials.Blaze, GTValues.M * 4),
+                                new MaterialStack(Materials.Obsidian, GTValues.M * 4),
+                                new MaterialStack(GTEMaterials.Draconium, GTValues.M)));
+            }
         }
     }
 }
