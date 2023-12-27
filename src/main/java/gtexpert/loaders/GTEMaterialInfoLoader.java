@@ -81,6 +81,9 @@ public class GTEMaterialInfoLoader {
                     new ItemMaterialInfo(new MaterialStack(GTEMaterials.DarkSteel, GTValues.M * 22)));
             OreDictUnifier.registerOre((getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil", 1, 2)),
                     new ItemMaterialInfo(new MaterialStack(GTEMaterials.DarkSteel, GTValues.M * 13)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder", 1, 0),
+                    new ItemMaterialInfo(new MaterialStack(GTEMaterials.DarkSteel, GTValues.M)));
+
             if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
                 OreDictUnifier.registerOre(getModItem(GTEValues.MODID_EIO, "block_dark_steel_door", 1, 0),
                         new ItemMaterialInfo(
@@ -107,14 +110,6 @@ public class GTEMaterialInfoLoader {
                     new ItemMaterialInfo(
                             new MaterialStack(GTEMaterials.Draconium, GTValues.M * 9),
                             new MaterialStack(Materials.Tritanium, GTValues.M * 2)));
-
-            if (Loader.isModLoaded(GTEValues.MODID_EIO)) {} else {
-                OreDictUnifier.registerOre(getModItem(GTEValues.MODID_DE, "infused_obsidian", 1, 0),
-                        new ItemMaterialInfo(
-                                new MaterialStack(Materials.Blaze, GTValues.M * 4),
-                                new MaterialStack(Materials.Obsidian, GTValues.M * 4),
-                                new MaterialStack(GTEMaterials.Draconium, GTValues.M)));
-            }
         }
     }
 }

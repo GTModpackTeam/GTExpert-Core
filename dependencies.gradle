@@ -62,7 +62,7 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
     compileOnly rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
     compileOnly rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
-    if (project.debug_eio.toBoolean()) {
+    if (project.debug_all.toBoolean() || project.debug_eio.toBoolean()) {
         runtimeOnly "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
         runtimeOnly "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
         runtimeOnly rfg.deobf("curse.maven:endercore-231868:4671384") // EnderCore 0.5.78
@@ -71,7 +71,6 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
         runtimeOnly rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
         runtimeOnly rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
-        runtimeOnly rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465") // Forgelin 1.8.4
     }
 
     // Debug Draconic Evolution/Additions
@@ -103,7 +102,7 @@ dependencies {
     }
 
     // Boot error fix
-    if (project.debug_eio.toBoolean()) {
+    if (project.debug_all.toBoolean() || project.debug_eio.toBoolean()) {
         runtimeOnly (files("libs/EnderCore-1.12.2-0.5.78-core.jar"))
     }
 }

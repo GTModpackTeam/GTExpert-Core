@@ -598,6 +598,102 @@ public class EIORecipeLoader {
                     .buildAndRegister();
         }
 
+        // Dark Steel Anvil
+        if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
+            ModHandler.addShapedRecipe(true, "dark_anvil",
+                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil", 1, 0),
+                    "BBB", "SBS", "PBP",
+                    'B', new UnificationEntry(block, GTEMaterials.DarkSteel),
+                    'S', new UnificationEntry(screw, GTEMaterials.DarkSteel),
+                    'P', new UnificationEntry(plate, GTEMaterials.DarkSteel));
+        }
+        RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
+                .notConsumable(MetaItems.SHAPE_MOLD_ANVIL)
+                .fluidInputs(GTEMaterials.DarkSteel.getFluid(L * 31))
+                .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil", 1, 0))
+                .duration(1680).EUt(16)
+                .buildAndRegister();
+        RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
+                .notConsumable(MetaItems.SHAPE_MOLD_ANVIL)
+                .input(ingot, GTEMaterials.DarkSteel, 31)
+                .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil", 1, 0))
+                .duration(1680).EUt(16)
+                .buildAndRegister();
+
+        // Dark Steel Trapdoor
+        if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
+            ModHandler.addShapedRecipe(true, "dark_steel_trapdoor",
+                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_trapdoor", 1, 0),
+                    "SPS", "PTP", "sPd",
+                    'S', new UnificationEntry(screw, GTEMaterials.DarkSteel),
+                    'P', new UnificationEntry(plate, GTEMaterials.DarkSteel),
+                    'T', new ItemStack(Blocks.IRON_TRAPDOOR));
+        }
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(4)
+                .input(plate, GTEMaterials.DarkSteel, 4)
+                .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_trapdoor", 1, 0))
+                .duration(100).EUt(16)
+                .withRecycling()
+                .buildAndRegister();
+
+        // Dark Steel Door
+        if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
+            ModHandler.addShapedRecipe(true, "dark_steel_door",
+                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_door", 1, 0),
+                    "PTh", "PRS", "PPd",
+                    'P', new UnificationEntry(plate, GTEMaterials.DarkSteel),
+                    'T', getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 1, 0),
+                    'R', new UnificationEntry(ring, GTEMaterials.DarkSteel),
+                    'S', new UnificationEntry(screw, GTEMaterials.DarkSteel));
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(plate, GTEMaterials.DarkSteel, 4)
+                    .inputs(getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 1, 0))
+                    .fluidInputs(GTEMaterials.DarkSteel.getFluid(L / 9))
+                    .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_door", 1, 0))
+                    .duration(400).EUt(VA[ULV])
+                    .withRecycling()
+                    .buildAndRegister();
+        } else {
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .circuitMeta(6)
+                    .input(plate, GTEMaterials.DarkSteel, 6)
+                    .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_door", 1, 0))
+                    .duration(100).EUt(VH[LV])
+                    .withRecycling()
+                    .buildAndRegister();
+        }
+
+        // Dark Steel Ladder
+        if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
+            ModHandler.addShapedRecipe(true, "dark_steel_ladder",
+                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder", 1, 0),
+                    "SrS", "SRS", "ShS",
+                    'S', new UnificationEntry(stick, GTEMaterials.DarkSteel),
+                    'R', new UnificationEntry(bolt, GTEMaterials.DarkSteel));
+        } else {
+            ModHandler.addShapedRecipe(true, "dark_steel_ladder",
+                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder", 3, 0),
+                    "S S", "SSS", "S S",
+                    'S', new UnificationEntry(stick, GTEMaterials.DarkSteel));
+        }
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(7)
+                .input(stick, GTEMaterials.DarkSteel, 7)
+                .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder",
+                        ConfigHolder.recipes.hardWoodRecipes ? 2 : 3, 0))
+                .EUt(1).duration(40)
+                .withRecycling()
+                .buildAndRegister();
+
+        // Reinforced Obsidian
+        ModHandler.addShapedRecipe(true, "reinforced_obsidian",
+                getModItem(GTEValues.MODID_EIO, "block_reinforced_obsidian", 1, 0),
+                "DBD", "BOB", "DBD",
+                'D', getModItem(GTEValues.MODID_EIO, "item_material", 1, 20),
+                'B', getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 1, 0),
+                'O', new UnificationEntry(block, Materials.Obsidian));
+
         // Item Conduit
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(pipeSmallItem, Materials.Electrum, 1)
