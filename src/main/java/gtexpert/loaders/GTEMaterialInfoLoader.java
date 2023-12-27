@@ -27,6 +27,32 @@ public class GTEMaterialInfoLoader {
                 new ItemMaterialInfo(new MaterialStack(Materials.TreatedWood,
                         (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft)));
 
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 20),
+                    new ItemMaterialInfo(new MaterialStack(Materials.Silicon, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 16),
+                    new ItemMaterialInfo(new MaterialStack(Materials.CertusQuartz, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 18),
+                    new ItemMaterialInfo(new MaterialStack(Materials.Gold, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 17),
+                    new ItemMaterialInfo(new MaterialStack(Materials.Diamond, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 23),
+                    new ItemMaterialInfo(
+                            new MaterialStack(Materials.Redstone, GTValues.M),
+                            new MaterialStack(Materials.Silicon, GTValues.M),
+                            new MaterialStack(Materials.CertusQuartz, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 22),
+                    new ItemMaterialInfo(
+                            new MaterialStack(Materials.Redstone, GTValues.M),
+                            new MaterialStack(Materials.Silicon, GTValues.M),
+                            new MaterialStack(Materials.Gold, GTValues.M)));
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 24),
+                    new ItemMaterialInfo(
+                            new MaterialStack(Materials.Redstone, GTValues.M),
+                            new MaterialStack(Materials.Silicon, GTValues.M),
+                            new MaterialStack(Materials.Diamond, GTValues.M)));
+        }
+
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             OreDictUnifier.registerOre(new ItemStack(Blocks.SOUL_SAND), OrePrefix.dust, GTEMaterials.SoulSand);
             OreDictUnifier.registerOre(new ItemStack(Items.CHORUS_FRUIT), OrePrefix.dust, GTEMaterials.ChorusFruit);
