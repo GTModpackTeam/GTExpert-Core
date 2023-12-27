@@ -211,7 +211,8 @@ public class GTERecipeLoader {
                     .input(stick, Materials.IronMagnetic)
                     .input(wireGtSingle, Materials.Tin, 4)
                     .output(GTEMetaItems.PRIMITIVE_MOTOR)
-                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+                    .duration(100).EUt(VA[ULV])
+                    .buildAndRegister();
 
             ModHandler.addShapedRecipe(true, "primitive_piston",
                     GTEMetaItems.PRIMITIVE_PISTON.getStackForm(), "PPP", "CRR", "CMG",
@@ -227,7 +228,8 @@ public class GTERecipeLoader {
                     .input(gearSmall, Materials.Bronze)
                     .input(GTEMetaItems.PRIMITIVE_MOTOR)
                     .output(GTEMetaItems.PRIMITIVE_PISTON)
-                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+                    .duration(100).EUt(VA[ULV])
+                    .buildAndRegister();
 
             ModHandler.addShapedRecipe(true, "primitive_pump",
                     GTEMetaItems.PRIMITIVE_PUMP.getStackForm(), "SRO", "dPw", "OMC",
@@ -245,7 +247,8 @@ public class GTERecipeLoader {
                     .input(ring, Materials.Rubber, 2)
                     .input(GTEMetaItems.PRIMITIVE_MOTOR)
                     .output(GTEMetaItems.PRIMITIVE_PUMP)
-                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+                    .duration(100).EUt(VA[ULV])
+                    .buildAndRegister();
 
             ModHandler.addShapedRecipe(true, "primitive_conveyor",
                     GTEMetaItems.PRIMITIVE_CONVEYOR.getStackForm(), "PPP", "MCM", "PPP",
@@ -258,7 +261,8 @@ public class GTERecipeLoader {
                     .fluidInputs(Materials.Rubber.getFluid(L * 6))
                     .circuitMeta(1)
                     .output(GTEMetaItems.PRIMITIVE_CONVEYOR)
-                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+                    .duration(100).EUt(VA[ULV])
+                    .buildAndRegister();
 
             ModHandler.addShapedRecipe(true, "primitive_robot_arm",
                     GTEMetaItems.PRIMITIVE_ROBOT_ARM.getStackForm(), "CCC", "MRM", "PUR",
@@ -274,7 +278,8 @@ public class GTERecipeLoader {
                     .input(GTEMetaItems.PRIMITIVE_PISTON)
                     .input(circuit, MarkerMaterials.Tier.ULV)
                     .output(GTEMetaItems.PRIMITIVE_ROBOT_ARM)
-                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+                    .duration(100).EUt(VA[ULV])
+                    .buildAndRegister();
 
             ModHandler.addShapedRecipe(true, "primitive_fluid_regulator",
                     GTEMetaItems.PRIMITIVE_FLUID_REGULATOR.getStackForm(), " U ", "dPw", " U ",
@@ -285,9 +290,7 @@ public class GTERecipeLoader {
                     .input(circuit, MarkerMaterials.Tier.ULV, 2)
                     .circuitMeta(1)
                     .output(GTEMetaItems.PRIMITIVE_FLUID_REGULATOR)
-                    .EUt(VA[ULV])
-                    .duration(400)
-                    .withRecycling()
+                    .EUt(VA[ULV]).duration(400)
                     .buildAndRegister();
 
             ModHandler.addShapedRecipe(true, "primitive_field_generator",
@@ -302,7 +305,8 @@ public class GTERecipeLoader {
                     .input(circuit, MarkerMaterials.Tier.ULV, 2)
                     .input(wireGtDouble, Materials.RedAlloy, 4)
                     .output(GTEMetaItems.PRIMITIVE_FIELD_GENERATOR)
-                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+                    .duration(100).EUt(VA[ULV])
+                    .buildAndRegister();
 
             ModHandler.addShapedRecipe(true, "primitive_emitter",
                     GTEMetaItems.PRIMITIVE_EMITTER.getStackForm(), "CSU", "SGS", "USC",
@@ -317,7 +321,8 @@ public class GTERecipeLoader {
                     .input(circuit, MarkerMaterials.Tier.ULV, 2)
                     .input(gem, Materials.Lapis)
                     .output(GTEMetaItems.PRIMITIVE_EMITTER)
-                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+                    .duration(100).EUt(VA[ULV])
+                    .buildAndRegister();
 
             ModHandler.addShapedRecipe(true, "primitive_sensor",
                     GTEMetaItems.PRIMITIVE_SENSOR.getStackForm(), "P G", "PS ", "UPP",
@@ -331,7 +336,8 @@ public class GTERecipeLoader {
                     .input(circuit, MarkerMaterials.Tier.ULV)
                     .input(gem, Materials.Lapis)
                     .output(GTEMetaItems.PRIMITIVE_SENSOR)
-                    .duration(100).EUt(VA[ULV]).buildAndRegister();
+                    .duration(100).EUt(VA[ULV])
+                    .buildAndRegister();
         } else {
             ModHandler.addShapedRecipe(true, "primitive_motor",
                     GTEMetaItems.PRIMITIVE_MOTOR.getStackForm(), "WR", "MW",
