@@ -114,6 +114,15 @@ public class AERecipeLoader {
                 .duration(1200).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
+        // Fluix Pearl
+        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/fluixpearl"));
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                .input(gem, Materials.EnderPearl, 1)
+                .input(dust, GTEMaterials.Fluix, 1)
+                .outputs(aeMaterials.fluixPearl().maybeStack(1).get())
+                .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                .buildAndRegister();
+
         // ########################################
         // Sky Stone
         // ########################################

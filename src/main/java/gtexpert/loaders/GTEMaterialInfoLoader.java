@@ -27,6 +27,13 @@ public class GTEMaterialInfoLoader {
 
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {}
 
+        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+            OreDictUnifier.registerOre(getModItem(GTEValues.MODID_AE, "material", 1, 9),
+                    new ItemMaterialInfo(
+                            new MaterialStack(Materials.EnderPearl, GTValues.M),
+                            new MaterialStack(GTEMaterials.Fluix, GTValues.M)));
+        }
+
         if (GTEValues.isModLoadedDEDA()) {
             OreDictUnifier.registerOre(new ItemStack(Blocks.DRAGON_EGG),
                     new ItemMaterialInfo(new MaterialStack(GTEMaterials.Dragon, GTValues.M * 8)));
@@ -42,6 +49,14 @@ public class GTEMaterialInfoLoader {
                     new ItemMaterialInfo(
                             new MaterialStack(GTEMaterials.Draconium, GTValues.M * 9),
                             new MaterialStack(Materials.Tritanium, GTValues.M * 2)));
+
+            if (Loader.isModLoaded(GTEValues.MODID_EIO)) {} else {
+                OreDictUnifier.registerOre(getModItem(GTEValues.MODID_DE, "infused_obsidian", 1, 0),
+                        new ItemMaterialInfo(
+                                new MaterialStack(Materials.Blaze, GTValues.M * 4),
+                                new MaterialStack(Materials.Obsidian, GTValues.M * 4),
+                                new MaterialStack(GTEMaterials.Draconium, GTValues.M)));
+            }
         }
     }
 }

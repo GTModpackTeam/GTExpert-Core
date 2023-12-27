@@ -1,9 +1,9 @@
 package gtexpert.loaders.recipe;
 
-import gregtech.loaders.recipe.RecyclingRecipes;
 import net.minecraftforge.fml.common.Loader;
 
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.loaders.recipe.RecyclingRecipes;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.items.GTEMetaItems;
