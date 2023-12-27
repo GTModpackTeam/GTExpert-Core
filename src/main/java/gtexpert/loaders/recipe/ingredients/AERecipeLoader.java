@@ -1753,6 +1753,7 @@ public class AERecipeLoader {
                 .fluidInputs(Materials.Redstone.getFluid(144))
                 .outputs(aeMaterials.logicProcessor().maybeStack(1).get())
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Calc Processor
@@ -1762,6 +1763,7 @@ public class AERecipeLoader {
                 .fluidInputs(Materials.Redstone.getFluid(144))
                 .outputs(aeMaterials.calcProcessor().maybeStack(1).get())
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Engineer Processor
@@ -1771,6 +1773,7 @@ public class AERecipeLoader {
                 .fluidInputs(Materials.Redstone.getFluid(144))
                 .outputs(aeMaterials.engProcessor().maybeStack(1).get())
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         if (ae2Integration.moveSteelShape) {
@@ -1791,7 +1794,7 @@ public class AERecipeLoader {
                             .buildAndRegister());
 
             // Mold (Printed Silicon)
-            ModHandler.addShapedRecipe("shape_mold_printed_silicon",
+            ModHandler.addShapedRecipe(true, "shape_mold_printed_silicon",
                     GTEMetaItems.SHAPE_MOLD_PRINTED_SILICON.getStackForm(),
                     "h  ", "   ", "S  ",
                     'S', MetaItems.SHAPE_EMPTY);
@@ -1800,7 +1803,7 @@ public class AERecipeLoader {
                     aeMaterials.siliconPress().maybeStack(1).get());
 
             // Mold (Logic Processor)
-            ModHandler.addShapedRecipe("shape_mold_logic_processor",
+            ModHandler.addShapedRecipe(true, "shape_mold_logic_processor",
                     GTEMetaItems.SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm(),
                     " h ", "   ", "S  ",
                     'S', MetaItems.SHAPE_EMPTY);
@@ -1809,7 +1812,7 @@ public class AERecipeLoader {
                     aeMaterials.logicProcessorPress().maybeStack(1).get());
 
             // Mold (Calculation Processor)
-            ModHandler.addShapedRecipe("shape_mold_calculation_processor",
+            ModHandler.addShapedRecipe(true, "shape_mold_calculation_processor",
                     GTEMetaItems.SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm(),
                     "   ", "  h", "S  ",
                     'S', MetaItems.SHAPE_EMPTY);
@@ -1818,7 +1821,7 @@ public class AERecipeLoader {
                     aeMaterials.calcProcessorPress().maybeStack(1).get());
 
             // Mold (Engineering Processor)
-            ModHandler.addShapedRecipe("shape_mold_engineering_processor",
+            ModHandler.addShapedRecipe(true, "shape_mold_engineering_processor",
                     GTEMetaItems.SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm(),
                     "   ", "   ", "S h",
                     'S', MetaItems.SHAPE_EMPTY);
@@ -1827,25 +1830,25 @@ public class AERecipeLoader {
                     aeMaterials.engProcessorPress().maybeStack(1).get());
 
             // Extruder Shape (Printed Silicon)
-            ModHandler.addShapedRecipe("shape_extruder_printed_silicon",
+            ModHandler.addShapedRecipe(true, "shape_extruder_printed_silicon",
                     GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON.getStackForm(),
                     " x ", " S ", "   ",
                     'S', MetaItems.SHAPE_EMPTY);
 
             // Extruder Shape (Logic Processor)
-            ModHandler.addShapedRecipe("shape_extruder_logic_processor",
+            ModHandler.addShapedRecipe(true, "shape_extruder_logic_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm(),
                     " x ", "S  ", "   ",
                     'S', GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR);
 
             // Extruder Shape (Calculation Processor)
-            ModHandler.addShapedRecipe("shape_extruder_calculation_processor",
+            ModHandler.addShapedRecipe(true, "shape_extruder_calculation_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_CALCULATION_PROCESSOR.getStackForm(),
                     " x ", " S ", "   ",
                     'S', GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());
 
             // Extruder Shape (Engineering Processor)
-            ModHandler.addShapedRecipe("shape_extruder_engineering_processor",
+            ModHandler.addShapedRecipe(true, "shape_extruder_engineering_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_ENGINEERING_PROCESSOR.getStackForm(),
                     " x ", "  S", "   ",
                     'S', GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());
