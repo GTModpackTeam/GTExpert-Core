@@ -1626,7 +1626,7 @@ public class AERecipeLoader {
 
         // Formation Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "materials/formationcore"));
-        ModHandler.addShapedRecipe("formation_core", aeMaterials.formationCore().maybeStack(1).get(),
+        ModHandler.addShapedRecipe(true, "formation_core", aeMaterials.formationCore().maybeStack(1).get(),
                 "SES", "LQL", "SES",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
                 'Q', "gemMaterials.NetherQuartz",
@@ -1650,7 +1650,7 @@ public class AERecipeLoader {
 
         // Annihilation Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "materials/annihilationcore"));
-        ModHandler.addShapedRecipe("annihilation_core", aeMaterials.annihilationCore().maybeStack(1).get(),
+        ModHandler.addShapedRecipe(true, "annihilation_core", aeMaterials.annihilationCore().maybeStack(1).get(),
                 "SES", "CQC", "SES",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
                 'Q', "gemCertusQuartz",
@@ -1674,7 +1674,7 @@ public class AERecipeLoader {
                 .buildAndRegister();
 
         // Matrix Core
-        ModHandler.addShapedRecipe("matrix_core", GTEMetaItems.MATRIX_CORE.getStackForm(),
+        ModHandler.addShapedRecipe(true, "matrix_core", GTEMetaItems.MATRIX_CORE.getStackForm(),
                 "SAS", "FQF", "SAS",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
                 'Q', aeMaterials.fluixCrystal().maybeStack(1).get(),
