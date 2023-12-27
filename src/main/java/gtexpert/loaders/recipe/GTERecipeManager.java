@@ -3,6 +3,7 @@ package gtexpert.loaders.recipe;
 import net.minecraftforge.fml.common.Loader;
 
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.loaders.recipe.RecyclingRecipes;
 
 import gtexpert.api.GTEValues;
 import gtexpert.common.items.GTEMetaItems;
@@ -52,5 +53,7 @@ public class GTERecipeManager {
         if (Loader.isModLoaded(GTEValues.MODID_AVARITIA)) {
             AvaritiaRecipeLoader.init();
         }
+
+        RecyclingRecipes.init();
     }
 }

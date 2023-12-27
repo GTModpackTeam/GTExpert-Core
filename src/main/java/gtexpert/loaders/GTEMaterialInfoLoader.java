@@ -4,7 +4,6 @@ import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.blocks.GTEBlockMetalCasing.MetalCasingType.*;
 
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
 

@@ -379,6 +379,7 @@ public class EIORecipeLoader {
                 .fluidInputs(GTEMaterials.ElectricalSteel.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 0)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Double-Layer Capacitor
@@ -388,6 +389,7 @@ public class EIORecipeLoader {
                 .fluidInputs(GTEMaterials.EnergeticAlloy.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 1])
+                .withRecycling()
                 .buildAndRegister();
 
         // Octadic Capacitor
@@ -397,6 +399,7 @@ public class EIORecipeLoader {
                 .fluidInputs(GTEMaterials.VibrantAlloy.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 2)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 2])
+                .withRecycling()
                 .buildAndRegister();
 
         // Crystaline Capacitor
@@ -406,6 +409,7 @@ public class EIORecipeLoader {
                 .fluidInputs(GTEMaterials.CrystallineAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorCrystalline.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 1])
+                .withRecycling()
                 .buildAndRegister();
 
         // Melodic Capacitor
@@ -415,6 +419,7 @@ public class EIORecipeLoader {
                 .fluidInputs(GTEMaterials.MelodicAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorMelodic.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 2])
+                .withRecycling()
                 .buildAndRegister();
 
         // Silver Capacitor
@@ -424,6 +429,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Silver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorSilver.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Endergenic Silver Capacitor
@@ -433,6 +439,7 @@ public class EIORecipeLoader {
                 .fluidInputs(GTEMaterials.EnergeticSilver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorEnergeticSilver.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 1])
+                .withRecycling()
                 .buildAndRegister();
 
         // Endergied Capacitor
@@ -442,6 +449,7 @@ public class EIORecipeLoader {
                 .fluidInputs(GTEMaterials.VividAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorVivid.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 2])
+                .withRecycling()
                 .buildAndRegister();
 
         // Stellar Capacitor
@@ -452,6 +460,7 @@ public class EIORecipeLoader {
                 .fluidInputs(GTEMaterials.StellarAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorStellar.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 3])
+                .withRecycling()
                 .buildAndRegister();
     }
 
@@ -572,6 +581,7 @@ public class EIORecipeLoader {
                     .input(stick, GTEMaterials.DarkSteel, 3)
                     .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 4, 0))
                     .duration(300).EUt(4)
+                    .withRecycling()
                     .buildAndRegister();
 
             // End Steel Bars
@@ -584,6 +594,7 @@ public class EIORecipeLoader {
                     .input(stick, GTEMaterials.EndSteel, 3)
                     .outputs(getModItem(GTEValues.MODID_EIO, "block_end_iron_bars", 4, 0))
                     .duration(300).EUt(4)
+                    .withRecycling()
                     .buildAndRegister();
         }
 
@@ -594,6 +605,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_item_conduit.getItemNN(), 1, 0)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Fluid Conduit
@@ -603,6 +615,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 0)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Pressurized Fluid Conduit
@@ -612,6 +625,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 1)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Ender Fluid Conduit
@@ -621,6 +635,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 2)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier + 2])
+                .withRecycling()
                 .buildAndRegister();
 
         // Energy Conduit
@@ -630,6 +645,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_power_conduit.getItemNN(), 1, 0)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Enhaned Energy Conduit
@@ -639,6 +655,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_power_conduit.getItemNN(), 1, 1)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier + 1])
+                .withRecycling()
                 .buildAndRegister();
 
         // Ender Energy Conduit
@@ -648,6 +665,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_power_conduit.getItemNN(), 1, 2)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier + 2])
+                .withRecycling()
                 .buildAndRegister();
 
         // Redstone Conduit
@@ -657,6 +675,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(ConduitObject.item_redstone_conduit.getItemNN(), 1, 0)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Crude Endergy Conduitr
@@ -666,6 +685,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Tin.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 0)
                 .duration(100).EUt(VA[ULV])
+                .withRecycling()
                 .buildAndRegister();
 
         // Iron Endergy Conduit
@@ -675,6 +695,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Tin.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 1)
                 .duration(100).EUt(VA[LV])
+                .withRecycling()
                 .buildAndRegister();
 
         // Aluminium Endergy Conduit
@@ -684,6 +705,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Tin.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 2)
                 .duration(100).EUt(VA[LV])
+                .withRecycling()
                 .buildAndRegister();
 
         // Gold Endergy Conduit
@@ -693,6 +715,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.SolderingAlloy.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 3)
                 .duration(100).EUt(VA[MV])
+                .withRecycling()
                 .buildAndRegister();
 
         // Copper Endergy Conduit
@@ -702,6 +725,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.SolderingAlloy.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 4)
                 .duration(100).EUt(VA[MV])
+                .withRecycling()
                 .buildAndRegister();
 
         // Silver Endergy Conduit
@@ -711,6 +735,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 5)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Electrum Endergy Conduit
@@ -720,6 +745,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 6)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Electrum Endergy Conduit
@@ -729,6 +755,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Epoxy.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 7)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
+                .withRecycling()
                 .buildAndRegister();
 
         // Crystalline Endergy Conduit
@@ -738,6 +765,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Epoxy.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 8)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier + 1])
+                .withRecycling()
                 .buildAndRegister();
 
         // Crystalline Pink Slime Endergy Conduit
@@ -747,6 +775,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 9)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier + 1])
+                .withRecycling()
                 .buildAndRegister();
 
         // Melodic Endergy Conduit
@@ -756,6 +785,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 10)
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier + 2])
+                .withRecycling()
                 .buildAndRegister();
 
         // Stellar Endergy Conduit
@@ -765,6 +795,7 @@ public class EIORecipeLoader {
                 .fluidInputs(Materials.Polybenzimidazole.getFluid(144))
                 .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 11)
                 .duration(100).EUt(VA[UV])
+                .withRecycling()
                 .buildAndRegister();
 
         if (Loader.isModLoaded(GTEValues.MODID_AE)) {
@@ -775,6 +806,7 @@ public class EIORecipeLoader {
                     .fluidInputs(GTEMaterials.ConductiveIron.getFluid(144))
                     .outputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 0))
                     .duration(100).EUt(VA[GTEValues.ae2VoltageTier])
+                    .withRecycling()
                     .buildAndRegister();
 
             // ME Dense Conduit
@@ -784,6 +816,7 @@ public class EIORecipeLoader {
                     .fluidInputs(GTEMaterials.EnergeticAlloy.getFluid(144))
                     .outputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 1))
                     .duration(100).EUt(VA[GTEValues.ae2VoltageTier + 1])
+                    .withRecycling()
                     .buildAndRegister();
         }
     }
@@ -988,7 +1021,7 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stickLong, GTEMaterials.StellarAlloy));
 
             // Stellar Pickaxe
-            ModHandler.addShapedRecipe("stellar_alloy_pickaxe",
+            ModHandler.addShapedRecipe(true, "stellar_alloy_pickaxe",
                     new ItemStack(EndergyObject.itemStellarAlloyPickaxe.getItemNN(), 1),
                     "PII", "hOf", " S ",
                     'P', OreDictUnifier.get(plate, GTEMaterials.StellarAlloy),
@@ -997,7 +1030,7 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stickLong, GTEMaterials.StellarAlloy));
 
             // Stellar Sword
-            ModHandler.addShapedRecipe("stellar_alloy_sword",
+            ModHandler.addShapedRecipe(true, "stellar_alloy_sword",
                     new ItemStack(EndergyObject.itemStellarAlloySword.getItemNN(), 1),
                     " P ", "hOf", " S ",
                     'P', OreDictUnifier.get(plate, GTEMaterials.StellarAlloy),
@@ -1005,7 +1038,7 @@ public class EIORecipeLoader {
                     'S', OreDictUnifier.get(stickLong, GTEMaterials.StellarAlloy));
 
             // Yeta Wrench
-            ModHandler.addShapedRecipe("yeta_wrench", new ItemStack(ModObject.itemYetaWrench.getItemNN(), 1),
+            ModHandler.addShapedRecipe(true, "yeta_wrench", new ItemStack(ModObject.itemYetaWrench.getItemNN(), 1),
                     "PhP", " P ", " P ",
                     'P', OreDictUnifier.get(plate, GTEMaterials.ElectricalSteel));
         }
