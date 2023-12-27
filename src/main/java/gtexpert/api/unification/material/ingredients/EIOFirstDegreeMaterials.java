@@ -1,4 +1,4 @@
-package gtexpert.api.unification.material;
+package gtexpert.api.unification.material.ingredients;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -118,7 +118,7 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x5F5F5F).iconSet(MaterialIconSet.METALLIC)
-                .flags(EXT2_METAL, GENERATE_RING, GENERATE_FRAME)
+                .flags(EXT2_METAL, GENERATE_RING, GENERATE_FRAME, GENERATE_ROD)
                 .components(Iron, 1, Coal, 1, Obsidian, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.HIGH)
@@ -144,7 +144,7 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xBCB682).iconSet(MaterialIconSet.METALLIC)
-                .flags(EXT2_METAL, GENERATE_RING)
+                .flags(EXT2_METAL, GENERATE_RING, GENERATE_ROD)
                 .components(Endstone, 1, DarkSteel, 1, Obsidian, 1)
                 .blast(b -> b
                         .temp(4500, GasTier.HIGHER)

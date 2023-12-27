@@ -1,4 +1,4 @@
-package gtexpert.api.unification.material;
+package gtexpert.api.unification.material.ingredients;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
