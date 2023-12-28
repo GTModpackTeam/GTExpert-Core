@@ -480,6 +480,10 @@ public class EIORecipeLoader {
                 .duration(1200).EUt(VA[UV])
                 .buildAndRegister();
 
+        ModHandler.addShapelessNBTClearingRecipe("creative_capacitor_bank_nbt",
+                new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 1, 0),
+                new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 1, 0));
+
         // Vial Extractor
         MetaTileEntityLoader.registerMachineRecipe(true,
                 EIOMetaTileEntities.VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
