@@ -894,6 +894,10 @@ public class GTERecipeLoader {
                         .CWUt(160).EUt(VA[UHV]))
                 .buildAndRegister();
 
+        ModHandler.addShapelessNBTClearingRecipe("creative_quantum_tank_nbt",
+                MetaTileEntities.CREATIVE_TANK.getStackForm(),
+                MetaTileEntities.CREATIVE_TANK.getStackForm());
+
         // Creative Quantum Chest
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.CREATIVE_TANK, 8)
@@ -910,6 +914,10 @@ public class GTERecipeLoader {
                         .CWUt(160).EUt(VA[UHV]))
                 .duration(2000).EUt(VA[UHV])
                 .buildAndRegister();
+
+        ModHandler.addShapelessNBTClearingRecipe("creative_quantum_chest_nbt",
+                MetaTileEntities.CREATIVE_CHEST.getStackForm(),
+                MetaTileEntities.CREATIVE_CHEST.getStackForm());
 
         // Creative Data Access Hatch
         AssemblyLineRecipeBuilder builderCDAH = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
