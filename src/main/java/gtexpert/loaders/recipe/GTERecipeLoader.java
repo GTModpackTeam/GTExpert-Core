@@ -2,7 +2,6 @@ package gtexpert.loaders.recipe;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.ceuOverride;
 
 import java.util.LinkedList;
@@ -42,6 +41,7 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
@@ -520,7 +520,7 @@ public class GTERecipeLoader {
                     .input(MetaItems.INTEGRATED_CIRCUIT_LV, 4)
                     .input(MetaItems.ULTRA_LOW_POWER_INTEGRATED_CIRCUIT, 8)
                     .inputs(Loader.isModLoaded(GTEValues.MODID_AE) ?
-                            getModItem(GTEValues.MODID_AE, "quartz_glass", 1, 0) :
+                            GTEUtility.getModItem(GTEValues.MODID_AE, "quartz_glass") :
                             new ItemStack(Blocks.GLASS))
                     .input(MetaTileEntities.TRANSFORMER[1])
                     .fluidInputs(Materials.Silicon.getFluid(L << 2))
@@ -538,7 +538,7 @@ public class GTERecipeLoader {
                     .input(MetaItems.INTEGRATED_CIRCUIT_MV, 4)
                     .input(MetaItems.LOW_POWER_INTEGRATED_CIRCUIT, 4)
                     .inputs(Loader.isModLoaded(GTEValues.MODID_EIO) ?
-                            getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0) :
+                            GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_quartz") :
                             new ItemStack(Blocks.GLASS))
                     .input(MetaTileEntities.TRANSFORMER[2])
                     .fluidInputs(Materials.Silicon.getFluid(L << 3))
@@ -556,7 +556,7 @@ public class GTERecipeLoader {
                     .input(MetaItems.INTEGRATED_CIRCUIT_HV, 4)
                     .input(MetaItems.LOW_POWER_INTEGRATED_CIRCUIT, 8)
                     .inputs(Loader.isModLoaded(GTEValues.MODID_EIO) ?
-                            getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0) :
+                            GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_quartz") :
                             new ItemStack(Blocks.GLASS))
                     .input(MetaTileEntities.TRANSFORMER[3])
                     .fluidInputs(Materials.Silicon.getFluid(L << 4))
@@ -573,7 +573,7 @@ public class GTERecipeLoader {
                     .input(MetaItems.SENSOR_EV, 8)
                     .input(MetaItems.WORKSTATION_EV, 4)
                     .input(MetaItems.POWER_INTEGRATED_CIRCUIT, 4)
-                    .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
+                    .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem())
                     .input(MetaTileEntities.TRANSFORMER[4])
                     .fluidInputs(Materials.Silicon.getFluid(L << 5))
                     .fluidInputs(Materials.SolderingAlloy.getFluid(L << 5))
@@ -589,7 +589,7 @@ public class GTERecipeLoader {
                     .input(MetaItems.SENSOR_IV, 8)
                     .input(MetaItems.MAINFRAME_IV, 4)
                     .input(MetaItems.POWER_INTEGRATED_CIRCUIT, 8)
-                    .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem(), 1, 0)
+                    .input(new ItemStack(MetaBlocks.TRANSPARENT_CASING).getItem())
                     .input(MetaTileEntities.TRANSFORMER[5])
                     .fluidInputs(Materials.Silicon.getFluid(L << 6))
                     .fluidInputs(Materials.SolderingAlloy.getFluid(L << 6))
@@ -757,7 +757,7 @@ public class GTERecipeLoader {
                 .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
                 .output(GTEMultiMetaTileEntities.VOIDOREMINER);
         if (GTEValues.isModLoadedDEDA()) {
-            builderVOM.inputs(getModItem(GTEValues.MODID_DE, "awakened_core", 4, 0));
+            builderVOM.inputs(GTEUtility.getModItem(GTEValues.MODID_DE, "awakened_core", 4, 0));
             builderVOM.input(MetaItems.ELECTRIC_MOTOR_UV, 4);
             builderVOM.input(MetaItems.ELECTRIC_PUMP_UV, 4);
             builderVOM.input(MetaItems.CONVEYOR_MODULE_UV, 4);
@@ -856,16 +856,16 @@ public class GTERecipeLoader {
             builderIGTEUE.input(circuit, MarkerMaterials.Tier.UV, 16);
         } else {
             if (GTEValues.isModLoadedDEDA()) {
-                builderIGTEUE.inputs(getModItem(GTEValues.MODID_DA, "chaotic_energy_core", 8, 0));
-                builderIGTEUE.inputs(getModItem(GTEValues.MODID_DA, "chaos_stabilizer_core", 8, 0));
+                builderIGTEUE.inputs(GTEUtility.getModItem(GTEValues.MODID_DA, "chaotic_energy_core", 8, 0));
+                builderIGTEUE.inputs(GTEUtility.getModItem(GTEValues.MODID_DA, "chaos_stabilizer_core", 8, 0));
             }
             if (Loader.isModLoaded(GTEValues.MODID_AE)) {
-                builderIGTEUE.inputs(getModItem(GTEValues.MODID_AE, "creative_energy_cell", 4, 0));
+                builderIGTEUE.inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "creative_energy_cell", 4, 0));
                 builderIGTEUE.stationResearch(
                         b -> b.researchStack(GTEMetaItems.GTE_ME_FAKE_COMPONENT.getStackForm()).CWUt(128).EUt(VA[UHV]));
             }
             if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
-                builderIGTEUE.inputNBT(getModItem(GTEValues.MODID_EIO, "block_cap_bank", 4, 3).getItem(),
+                builderIGTEUE.inputNBT(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_cap_bank", 4, 3).getItem(),
                         NBTMatcher.ANY, NBTCondition.ANY);
             }
         }
