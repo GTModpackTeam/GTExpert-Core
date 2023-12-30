@@ -3,13 +3,11 @@ package gtexpert.loaders.recipe.ingredients;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
 import static gtexpert.common.GTEConfigHolder.eioIntegration;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -28,10 +26,10 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.common.metatileentities.EIOMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
 
-import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.conduits.init.ConduitObject;
 import crazypants.enderio.endergy.init.EndergyObject;
@@ -47,7 +45,7 @@ public class EIORecipeLoader {
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.CHICKEN));
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.RABBIT));
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.MUTTON));
-        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.FISH, 1, 0));
+        OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.FISH));
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.FISH, 1, 1));
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.FISH, 1, 2));
 
@@ -60,7 +58,7 @@ public class EIORecipeLoader {
         OreDictionary.registerOre("craftHootch", new ItemStack(Items.POISONOUS_POTATO));
 
         // eio.capacitor
-        OreDictionary.registerOre("craftCapacitorEIO", new ItemStack(ModObject.itemBasicCapacitor.getItemNN(), 1, 0));
+        OreDictionary.registerOre("craftCapacitorEIO", new ItemStack(ModObject.itemBasicCapacitor.getItemNN()));
         OreDictionary.registerOre("craftCapacitorEIO", new ItemStack(EndergyObject.itemCapacitorSilver.getItemNN(), 1));
 
         fluid();
@@ -78,18 +76,18 @@ public class EIORecipeLoader {
                 .input(dust, Materials.Gold, 2)
                 .fluidInputs(Materials.Blaze.getFluid(288))
                 .fluidInputs(Materials.Glowstone.getFluid(576))
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
+                .fluidOutputs(GTEUtility.getModFluid("xpjuice", 200))
                 .duration(200).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CANNER_RECIPES.recipeBuilder()
                 .input(Items.GLASS_BOTTLE, 1)
-                .fluidInputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
+                .fluidInputs(GTEUtility.getModFluid("xpjuice", 200))
                 .output(Items.EXPERIENCE_BOTTLE, 1)
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.CANNER_RECIPES.recipeBuilder()
                 .input(Items.EXPERIENCE_BOTTLE, 1)
-                .fluidOutputs(new FluidStack(Fluids.XP_JUICE.getFluid(), 200))
+                .fluidOutputs(GTEUtility.getModFluid("xpjuice", 200))
                 .output(Items.GLASS_BOTTLE, 1)
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
@@ -99,22 +97,22 @@ public class EIORecipeLoader {
                 .input("craftNutrientDistillation", 8)
                 .input(Items.SPIDER_EYE, 2)
                 .fluidInputs(Materials.Water.getFluid(1000))
-                .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                .fluidOutputs(GTEUtility.getModFluid("nutrient_distillation", 1000))
                 .duration(100).EUt(VA[LV])
                 .buildAndRegister();
         if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 117))
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 117))
                     .input(Items.SPIDER_EYE, 2)
                     .fluidInputs(Materials.Water.getFluid(1000))
-                    .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                    .fluidOutputs(GTEUtility.getModFluid("nutrient_distillation", 1000))
                     .duration(100).EUt(VA[LV])
                     .buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 118))
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 118))
                     .input(Items.SPIDER_EYE, 2)
                     .fluidInputs(Materials.Water.getFluid(1000))
-                    .fluidOutputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                    .fluidOutputs(GTEUtility.getModFluid("nutrient_distillation", 1000))
                     .duration(100).EUt(VA[LV])
                     .buildAndRegister();
         }
@@ -123,15 +121,15 @@ public class EIORecipeLoader {
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(ModObject.itemMaterial.getItemNN(), 2, 35)
                 .input(dust, GTEMaterials.EndSteel, 2)
-                .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
-                .fluidOutputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
+                .fluidInputs(GTEUtility.getModFluid("nutrient_distillation", 1000))
+                .fluidOutputs(GTEUtility.getModFluid("ender_distillation", 1000))
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(ModObject.itemMaterial.getItemNN(), 2, 35)
-                .fluidInputs(new FluidStack(Fluids.NUTRIENT_DISTILLATION.getFluid(), 1000))
+                .fluidInputs(GTEUtility.getModFluid("nutrient_distillation", 1000))
                 .fluidInputs(GTEMaterials.EndSteel.getFluid(288))
-                .fluidOutputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
+                .fluidOutputs(GTEUtility.getModFluid("ender_distillation", 1000))
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
@@ -139,8 +137,8 @@ public class EIORecipeLoader {
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(ModObject.itemMaterial.getItemNN(), 2, 36)
                 .input(ModObject.itemMaterial.getItemNN(), 2, 34)
-                .fluidInputs(new FluidStack(Fluids.ENDER_DISTILLATION.getFluid(), 1000))
-                .fluidOutputs(new FluidStack(Fluids.VAPOR_OF_LEVITY.getFluid(), 1000))
+                .fluidInputs(GTEUtility.getModFluid("ender_distillation", 1000))
+                .fluidOutputs(GTEUtility.getModFluid("vapor_of_levity", 1000))
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
@@ -149,22 +147,22 @@ public class EIORecipeLoader {
                 .input("craftHootch", 4)
                 .input(Items.SUGAR, 1)
                 .fluidInputs(Materials.Water.getFluid(2000))
-                .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
+                .fluidOutputs(GTEUtility.getModFluid("hootch", 500))
                 .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
         if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 117))
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 117))
                     .input(Items.SUGAR, 1)
                     .fluidInputs(Materials.Water.getFluid(2000))
-                    .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
+                    .fluidOutputs(GTEUtility.getModFluid("hootch", 500))
                     .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                     .buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 118))
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 118))
                     .input(Items.SUGAR, 1)
                     .fluidInputs(Materials.Water.getFluid(2000))
-                    .fluidOutputs(new FluidStack(Fluids.HOOTCH.getFluid(), 500))
+                    .fluidOutputs(GTEUtility.getModFluid("hootch", 500))
                     .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                     .buildAndRegister();
         }
@@ -173,7 +171,7 @@ public class EIORecipeLoader {
         RecipeMaps.FERMENTING_RECIPES.recipeBuilder()
                 .input(dust, Materials.Redstone, 2)
                 .fluidInputs(Materials.Blaze.getFluid(1152))
-                .fluidOutputs(new FluidStack(Fluids.FIRE_WATER.getFluid(), 1000))
+                .fluidOutputs(GTEUtility.getModFluid("fire_water", 1000))
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
@@ -182,8 +180,8 @@ public class EIORecipeLoader {
                 .circuitMeta(1)
                 .input(dust, Materials.Glowstone, 2)
                 .input(Blocks.DOUBLE_PLANT, 1)
-                .fluidInputs(new FluidStack(Fluids.FIRE_WATER.getFluid(), 250))
-                .fluidOutputs(new FluidStack(Fluids.LIQUID_SUNSHINE.getFluid(), 250))
+                .fluidInputs(GTEUtility.getModFluid("fire_water", 250))
+                .fluidOutputs(GTEUtility.getModFluid("liquid_sunshine", 250))
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
@@ -192,7 +190,7 @@ public class EIORecipeLoader {
                 .circuitMeta(1)
                 .input(dust, Materials.Silver, 2)
                 .fluidInputs(Materials.Water.getFluid(3500))
-                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 3500))
+                .fluidOutputs(GTEUtility.getModFluid("cloud_seed", 3500))
                 .duration(300).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
@@ -201,8 +199,8 @@ public class EIORecipeLoader {
                 .circuitMeta(1)
                 .input(dust, Materials.Electrum, 2)
                 .input(Items.SNOWBALL, 1)
-                .fluidInputs(new FluidStack(Fluids.CLOUD_SEED.getFluid(), 1000))
-                .fluidOutputs(new FluidStack(Fluids.CLOUD_SEED_CONCENTRATED.getFluid(), 500))
+                .fluidInputs(GTEUtility.getModFluid("cloud_seed", 1000))
+                .fluidOutputs(GTEUtility.getModFluid("cloud_seed_concentrated", 500))
                 .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
     }
@@ -367,24 +365,24 @@ public class EIORecipeLoader {
     private static void items() {
         // Soul Vial
         ModHandler.addShapedRecipe(true, "soul_vial",
-                getModItem(GTEValues.MODID_EIO, "item_soul_vial", 1, 0),
+                GTEUtility.getModItem(GTEValues.MODID_EIO, "item_soul_vial"),
                 " S ", "G G", " G ",
                 'S', new UnificationEntry(plate, GTEMaterials.Soularium),
-                'G', getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0));
+                'G', GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_quartz"));
 
         // Basic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(GTHelper.batteryHull(GTEValues.eioVoltageTier), 1)
                 .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier), 1)
                 .fluidInputs(GTEMaterials.ElectricalSteel.getFluid(1152))
-                .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 0)
+                .output(ModObject.itemBasicCapacitor.getItemNN())
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
                 .withRecycling()
                 .buildAndRegister();
 
         // Double-Layer Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(ModObject.itemBasicCapacitor.getItemNN(), 1, 0)
+                .input(ModObject.itemBasicCapacitor.getItemNN())
                 .input(GTHelper.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
                 .fluidInputs(GTEMaterials.EnergeticAlloy.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 1)
@@ -476,18 +474,18 @@ public class EIORecipeLoader {
                 .fluidInputs(GTEMaterials.VibrantAlloy.getFluid(18432))
                 .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
                 .fluidInputs(Materials.Neutronium.getFluid(9216))
-                .outputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 1, 0))
+                .outputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN()))
                 .duration(1200).EUt(VA[UV])
                 .buildAndRegister();
 
         ModHandler.addShapelessNBTClearingRecipe("creative_capacitor_bank_nbt",
-                new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 1, 0),
-                new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 1, 0));
+                new ItemStack(PowerToolObject.block_cap_bank.getBlockNN()),
+                new ItemStack(PowerToolObject.block_cap_bank.getBlockNN()));
 
         // Vial Extractor
         MetaTileEntityLoader.registerMachineRecipe(true,
                 EIOMetaTileEntities.VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
-                'V', getModItem(GTEValues.MODID_EIO, "item_soul_vial", 1, 0),
+                'V', GTEUtility.getModItem(GTEValues.MODID_EIO, "item_soul_vial"),
                 'R', SENSOR,
                 'P', PISTON,
                 'H', HULL,
@@ -503,7 +501,7 @@ public class EIORecipeLoader {
                 'C', CIRCUIT,
                 'H', HULL,
                 'M', MOTOR,
-                'B', getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 1, 0));
+                'B', GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars"));
 
         // Soul Binder
         MetaTileEntityLoader.registerMachineRecipe(true,
@@ -555,7 +553,7 @@ public class EIORecipeLoader {
         if (Loader.isModLoaded(GTEValues.MODID_AE)) {
             RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                     .inputs(new ItemStack(ModObject.block_infinity.getBlockNN(), 4, 2))
-                    .outputs(getModItem(GTEValues.MODID_AE, "sky_stone_block", 1, 0))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "sky_stone_block"))
                     .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
                     .buildAndRegister();
         }
@@ -563,40 +561,40 @@ public class EIORecipeLoader {
         // Fused Quartz
         RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .input(block, Materials.NetherQuartz, 1)
-                .outputs(getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_quartz"))
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Quartz Clear Glass
         RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
-                .inputs(getModItem(GTEValues.MODID_EIO, "block_fused_quartz", 1, 0))
-                .outputs(getModItem(GTEValues.MODID_EIO, "block_fused_glass", 1, 0))
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_quartz"))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_glass"))
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         if (ConfigHolder.recipes.hardIronRecipes) {
             // Dark Iron Bars
             ModHandler.addShapedRecipe(true, "dark_iron_bars",
-                    getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 8, 0),
+                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 8, 0),
                     " h ", "SSS", "SSS",
                     'S', new UnificationEntry(stick, GTEMaterials.DarkSteel));
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .circuitMeta(3)
                     .input(stick, GTEMaterials.DarkSteel, 3)
-                    .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 4, 0))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 4, 0))
                     .duration(300).EUt(4)
                     .withRecycling()
                     .buildAndRegister();
 
             // End Steel Bars
             ModHandler.addShapedRecipe(true, "end_steal_bars",
-                    getModItem(GTEValues.MODID_EIO, "block_end_iron_bars", 8, 0),
+                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_end_iron_bars", 8, 0),
                     " h ", "SSS", "SSS",
                     'S', new UnificationEntry(stick, GTEMaterials.EndSteel));
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .circuitMeta(3)
                     .input(stick, GTEMaterials.EndSteel, 3)
-                    .outputs(getModItem(GTEValues.MODID_EIO, "block_end_iron_bars", 4, 0))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_end_iron_bars", 4, 0))
                     .duration(300).EUt(4)
                     .withRecycling()
                     .buildAndRegister();
@@ -605,7 +603,7 @@ public class EIORecipeLoader {
         // Dark Steel Anvil
         if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
             ModHandler.addShapedRecipe(true, "dark_anvil",
-                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil", 1, 0),
+                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil"),
                     "BBB", "SBS", "PBP",
                     'B', new UnificationEntry(block, GTEMaterials.DarkSteel),
                     'S', new UnificationEntry(screw, GTEMaterials.DarkSteel),
@@ -614,20 +612,20 @@ public class EIORecipeLoader {
         RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(MetaItems.SHAPE_MOLD_ANVIL)
                 .fluidInputs(GTEMaterials.DarkSteel.getFluid(L * 31))
-                .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil", 1, 0))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil"))
                 .duration(1680).EUt(16)
                 .buildAndRegister();
         RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .notConsumable(MetaItems.SHAPE_MOLD_ANVIL)
                 .input(ingot, GTEMaterials.DarkSteel, 31)
-                .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil", 1, 0))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil"))
                 .duration(1680).EUt(16)
                 .buildAndRegister();
 
         // Dark Steel Trapdoor
         if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
             ModHandler.addShapedRecipe(true, "dark_steel_trapdoor",
-                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_trapdoor", 1, 0),
+                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_trapdoor"),
                     "SPS", "PTP", "sPd",
                     'S', new UnificationEntry(screw, GTEMaterials.DarkSteel),
                     'P', new UnificationEntry(plate, GTEMaterials.DarkSteel),
@@ -636,7 +634,7 @@ public class EIORecipeLoader {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(4)
                 .input(plate, GTEMaterials.DarkSteel, 4)
-                .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_trapdoor", 1, 0))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_trapdoor"))
                 .duration(100).EUt(16)
                 .withRecycling()
                 .buildAndRegister();
@@ -644,17 +642,17 @@ public class EIORecipeLoader {
         // Dark Steel Door
         if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
             ModHandler.addShapedRecipe(true, "dark_steel_door",
-                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_door", 1, 0),
+                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_door"),
                     "PTh", "PRS", "PPd",
                     'P', new UnificationEntry(plate, GTEMaterials.DarkSteel),
-                    'T', getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 1, 0),
+                    'T', GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars"),
                     'R', new UnificationEntry(ring, GTEMaterials.DarkSteel),
                     'S', new UnificationEntry(screw, GTEMaterials.DarkSteel));
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .input(plate, GTEMaterials.DarkSteel, 4)
-                    .inputs(getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 1, 0))
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars"))
                     .fluidInputs(GTEMaterials.DarkSteel.getFluid(L / 9))
-                    .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_door", 1, 0))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_door"))
                     .duration(400).EUt(VA[ULV])
                     .withRecycling()
                     .buildAndRegister();
@@ -662,7 +660,7 @@ public class EIORecipeLoader {
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .circuitMeta(6)
                     .input(plate, GTEMaterials.DarkSteel, 6)
-                    .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_door", 1, 0))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_door"))
                     .duration(100).EUt(VH[LV])
                     .withRecycling()
                     .buildAndRegister();
@@ -671,20 +669,20 @@ public class EIORecipeLoader {
         // Dark Steel Ladder
         if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
             ModHandler.addShapedRecipe(true, "dark_steel_ladder",
-                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder", 1, 0),
+                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder"),
                     "SrS", "SRS", "ShS",
                     'S', new UnificationEntry(stick, GTEMaterials.DarkSteel),
                     'R', new UnificationEntry(bolt, GTEMaterials.DarkSteel));
         } else {
             ModHandler.addShapedRecipe(true, "dark_steel_ladder",
-                    getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder", 3, 0),
+                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder", 3, 0),
                     "S S", "SSS", "S S",
                     'S', new UnificationEntry(stick, GTEMaterials.DarkSteel));
         }
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(7)
                 .input(stick, GTEMaterials.DarkSteel, 7)
-                .outputs(getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder",
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder",
                         ConfigHolder.recipes.hardWoodRecipes ? 2 : 3, 0))
                 .EUt(1).duration(40)
                 .withRecycling()
@@ -692,10 +690,10 @@ public class EIORecipeLoader {
 
         // Reinforced Obsidian
         ModHandler.addShapedRecipe(true, "reinforced_obsidian",
-                getModItem(GTEValues.MODID_EIO, "block_reinforced_obsidian", 1, 0),
+                GTEUtility.getModItem(GTEValues.MODID_EIO, "block_reinforced_obsidian"),
                 "DBD", "BOB", "DBD",
-                'D', getModItem(GTEValues.MODID_EIO, "item_material", 1, 20),
-                'B', getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 1, 0),
+                'D', GTEUtility.getModItem(GTEValues.MODID_EIO, "item_material", 1, 20),
+                'B', GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars"),
                 'O', new UnificationEntry(block, Materials.Obsidian));
 
         // Item Conduit
@@ -703,7 +701,7 @@ public class EIORecipeLoader {
                 .input(pipeSmallItem, Materials.Electrum, 1)
                 .input(plate, GTEMaterials.PulsatingIron, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
-                .output(ConduitObject.item_item_conduit.getItemNN(), 1, 0)
+                .output(ConduitObject.item_item_conduit.getItemNN())
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .withRecycling()
                 .buildAndRegister();
@@ -713,7 +711,7 @@ public class EIORecipeLoader {
                 .input(pipeNormalFluid, Materials.Copper, 1)
                 .input(plate, GTEMaterials.ElectricalSteel, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
-                .output(ConduitObject.item_liquid_conduit.getItemNN(), 1, 0)
+                .output(ConduitObject.item_liquid_conduit.getItemNN())
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .withRecycling()
                 .buildAndRegister();
@@ -743,7 +741,7 @@ public class EIORecipeLoader {
                 .input(wireGtSingle, Materials.Gold, 1)
                 .input(plate, GTEMaterials.ConductiveIron, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
-                .output(ConduitObject.item_power_conduit.getItemNN(), 1, 0)
+                .output(ConduitObject.item_power_conduit.getItemNN())
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .withRecycling()
                 .buildAndRegister();
@@ -773,7 +771,7 @@ public class EIORecipeLoader {
                 .input(wireGtSingle, Materials.RedAlloy, 1)
                 .input(plate, GTEMaterials.RedstoneAlloy, 1)
                 .fluidInputs(Materials.Polyethylene.getFluid(144))
-                .output(ConduitObject.item_redstone_conduit.getItemNN(), 1, 0)
+                .output(ConduitObject.item_redstone_conduit.getItemNN())
                 .duration(100).EUt(VA[GTEValues.eioVoltageTier])
                 .withRecycling()
                 .buildAndRegister();
@@ -783,7 +781,7 @@ public class EIORecipeLoader {
                 .input(wireGtSingle, Materials.Lead, 1)
                 .input(plate, Materials.TinAlloy, 1)
                 .fluidInputs(Materials.Tin.getFluid(144))
-                .output(EndergyObject.itemEndergyConduit.getItemNN(), 1, 0)
+                .output(EndergyObject.itemEndergyConduit.getItemNN())
                 .duration(100).EUt(VA[ULV])
                 .withRecycling()
                 .buildAndRegister();
@@ -904,17 +902,17 @@ public class EIORecipeLoader {
                     .input("craftGlassCable", 4)
                     .input(plate, Materials.StainlessSteel, 1)
                     .fluidInputs(GTEMaterials.ConductiveIron.getFluid(144))
-                    .outputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 0))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 0))
                     .duration(100).EUt(VA[GTEValues.ae2VoltageTier])
                     .withRecycling()
                     .buildAndRegister();
 
             // ME Dense Conduit
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                    .inputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 16, 0))
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_me_conduit", 16, 0))
                     .input(plate, Materials.Titanium, 1)
                     .fluidInputs(GTEMaterials.EnergeticAlloy.getFluid(144))
-                    .outputs(getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 1))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 1))
                     .duration(100).EUt(VA[GTEValues.ae2VoltageTier + 1])
                     .withRecycling()
                     .buildAndRegister();
@@ -1148,7 +1146,7 @@ public class EIORecipeLoader {
         // Zombie Electrode
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.EnergeticAlloy)
-                .input(Items.SKULL, 1, 0)
+                .input(Items.SKULL)
                 .input(plate, GTEMaterials.EnergeticAlloy)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .input("craftCapacitorEIO", 1)
@@ -1170,7 +1168,7 @@ public class EIORecipeLoader {
         // Ender Resonator
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.Soularium)
-                .input(ModObject.blockEndermanSkull.getItemNN(), 1, 0)
+                .input(ModObject.blockEndermanSkull.getItemNN())
                 .input(plate, GTEMaterials.Soularium)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .input(plate, GTEMaterials.VibrantAlloy)
@@ -1181,7 +1179,7 @@ public class EIORecipeLoader {
         // Skeletal Controller
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.Soularium)
-                .input(Items.SKULL, 1, 0)
+                .input(Items.SKULL)
                 .input(plate, GTEMaterials.Soularium)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .input("craftCapacitorEIO", 1)
@@ -1192,7 +1190,7 @@ public class EIORecipeLoader {
         // Guardian Diode
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.EnergeticAlloy)
-                .input(Items.PRISMARINE_SHARD, 1, 0)
+                .input(Items.PRISMARINE_SHARD)
                 .input(plate, GTEMaterials.EnergeticAlloy)
                 .input(ModObject.itemMaterial.getItemNN(), 1, 14)
                 .input(MetaItems.SILICON_WAFER, 1)
@@ -1203,7 +1201,7 @@ public class EIORecipeLoader {
         // Tormented Enderman Head
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.Soularium)
-                .input(ModObject.blockEndermanSkull.getItemNN(), 1, 0)
+                .input(ModObject.blockEndermanSkull.getItemNN())
                 .input(plate, GTEMaterials.Soularium)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .input("craftCapacitorEIO", 1)
@@ -1214,7 +1212,7 @@ public class EIORecipeLoader {
         // Totemic Capacitor
         GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.Soularium)
-                .input(Items.TOTEM_OF_UNDYING, 1, 0)
+                .input(Items.TOTEM_OF_UNDYING)
                 .input(plate, GTEMaterials.Soularium)
                 .input(MetaItems.SILICON_WAFER, 1)
                 .input(EndergyObject.itemCapacitorMelodic.getItemNN(), 1)

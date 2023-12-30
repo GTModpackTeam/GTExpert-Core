@@ -2,7 +2,6 @@ package gtexpert.loaders.recipe.ingredients;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.api.util.GTEUtility.getModItem;
 
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
@@ -37,6 +36,7 @@ import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
 import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTELog;
+import gtexpert.api.util.GTEUtility;
 
 public class DraconicUpgradeRecipeLoader {
 
@@ -86,8 +86,8 @@ public class DraconicUpgradeRecipeLoader {
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_bow"));
         addTierUpRecipe(
                 new GTRecipeItemInput(Loader.isModLoaded(GTEValues.MODID_EIO) ?
-                        getModItem(GTEValues.MODID_EIO, "item_dark_steel_bow", 1, 0) :
-                        getModItem(GTEValues.MODID_VANILLA, "bow", 1, 0))
+                        GTEUtility.getModItem(GTEValues.MODID_EIO, "item_dark_steel_bow") :
+                        GTEUtility.getModItem(GTEValues.MODID_VANILLA, "bow"))
                                 .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 new ItemStack(DEFeatures.wyvernBow),
                 Tier.WYVERN, 2);
@@ -288,7 +288,7 @@ public class DraconicUpgradeRecipeLoader {
 
     private static void upgrade() {
         ItemStack[] upgradableItems = new ItemStack[] {
-                new ItemStack(DEFeatures.draconiumCapacitor, 1, 0),
+                new ItemStack(DEFeatures.draconiumCapacitor),
                 new ItemStack(DEFeatures.draconiumCapacitor, 1, 1),
                 new ItemStack(DEFeatures.wyvernAxe),
                 new ItemStack(DEFeatures.wyvernPick),
