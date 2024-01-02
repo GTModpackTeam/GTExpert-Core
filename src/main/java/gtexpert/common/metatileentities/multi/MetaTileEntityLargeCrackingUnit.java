@@ -159,7 +159,6 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.large_cracking_unit.tooltip.1"));
-        tooltip.add(I18n.format("gregtech.machine.cracker.tooltip.1"));
     }
 
     @Override

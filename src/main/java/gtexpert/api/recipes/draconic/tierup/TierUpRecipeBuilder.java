@@ -102,11 +102,11 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
     }
 
     public TierUpRecipeBuilder catalyst(ItemStack itemStack, NBTMatcher any, NBTCondition nbtCondition) {
-        return catalyst(GTRecipeItemInput.getOrCreate(itemStack).setNBTMatchingCondition(any, nbtCondition));
+        return catalyst(new GTRecipeItemInput(itemStack).setNBTMatchingCondition(any, nbtCondition));
     }
 
     public TierUpRecipeBuilder catalyst(ItemStack catalyst) {
-        return catalyst(GTRecipeItemInput.getOrCreate(catalyst));
+        return catalyst(new GTRecipeItemInput(catalyst));
     }
 
     public TierUpRecipeBuilder result(ItemStack result) {

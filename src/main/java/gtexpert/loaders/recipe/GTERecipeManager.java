@@ -2,6 +2,9 @@ package gtexpert.loaders.recipe;
 
 import net.minecraftforge.fml.common.Loader;
 
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.loaders.recipe.RecyclingRecipes;
+
 import gtexpert.api.GTEValues;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.MetaTileEntitiesManager;
@@ -11,7 +14,9 @@ public class GTERecipeManager {
 
     private GTERecipeManager() {}
 
-    public static void preLoad() {}
+    public static void preLoad() {
+        RecipeMaps.VACUUM_RECIPES.setMaxFluidOutputs(2);
+    }
 
     public static void load() {
         GTEMetaItems.init();
@@ -48,5 +53,7 @@ public class GTERecipeManager {
         if (Loader.isModLoaded(GTEValues.MODID_AVARITIA)) {
             AvaritiaRecipeLoader.init();
         }
+
+        RecyclingRecipes.init();
     }
 }

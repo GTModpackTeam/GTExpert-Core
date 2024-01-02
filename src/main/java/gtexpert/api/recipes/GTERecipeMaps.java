@@ -3,7 +3,6 @@ package gtexpert.api.recipes;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.core.sound.GTSoundEvents;
 
@@ -62,10 +61,9 @@ public class GTERecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ADVANCED_GAS_COLLECTOR_RECIPES = new RecipeMap<>(
-            "advanced_gas_collector", 1, 0, 1, 2, new SimpleRecipeBuilder(), false)
+            "advanced_gas_collector", 2, 0, 1, 2, new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
                     .setSlotOverlay(true, true, GuiTextures.CENTRIFUGE_OVERLAY)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(GTSoundEvents.COOLING)
-                    .setSmallRecipeMap(RecipeMaps.GAS_COLLECTOR_RECIPES);
+                    .setSound(GTSoundEvents.COOLING);
 }
