@@ -8,12 +8,15 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
+
+import gregtech.api.items.toolitem.ToolClasses;
 
 public class BlockSawmillConveyor extends Block {
 
@@ -25,7 +28,7 @@ public class BlockSawmillConveyor extends Block {
         setHardness(2.5f);
         setResistance(10.0f);
         setSoundType(SoundType.WOOD);
-        setHarvestLevel("wrench", 1);
+        setHarvestLevel(ToolClasses.WRENCH, 1);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 
@@ -55,5 +58,35 @@ public class BlockSawmillConveyor extends Block {
                                                      float hitY, float hitZ, int meta,
                                                      @NotNull EntityLivingBase placer) {
         return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    }
+
+    @Override
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.CUTOUT;
+    }
+
+    @Override
+    public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+        if (face == EnumFacing.UP) return false;
+        return super.doesSideBlockRendering(state, world, pos, face);
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isTopSolid(IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+        if (side == EnumFacing.UP) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
