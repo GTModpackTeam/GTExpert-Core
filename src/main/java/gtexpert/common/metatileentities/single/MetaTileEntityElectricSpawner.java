@@ -38,11 +38,12 @@ import gregtech.api.util.Position;
 import gregtech.api.util.Size;
 import gregtech.client.renderer.ICubeRenderer;
 
+import gtexpert.api.GTEValues;
 import gtexpert.api.gui.GTEGuiTextures;
+import gtexpert.api.util.GTEUtility;
+import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
 
-import crazypants.enderio.base.init.ModObject;
-
-public class MetaTileEntityElectricSpawner extends SimpleMachineMetaTileEntity {
+public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntity {
 
     private static IGuiTexture spawnEggTexture;
     private static IGuiTexture soulVialTexture;
@@ -129,7 +130,7 @@ public class MetaTileEntityElectricSpawner extends SimpleMachineMetaTileEntity {
             spawnEggTexture = new ItemStackTexture(Items.SPAWN_EGG);
         }
         if (soulVialTexture == null) {
-            soulVialTexture = new ItemStackTexture(ModObject.itemSoulVial.getItemNN());
+            soulVialTexture = new ItemStackTexture(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_soul_vial"));
         }
         if (redstoneTorchTexture == null) {
             redstoneTorchTexture = new ItemStackTexture(new ItemStack(Objects.requireNonNull(Blocks.REDSTONE_TORCH)));

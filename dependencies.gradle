@@ -32,7 +32,7 @@ dependencies {
 
     // Soft Dependencies
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.684" // CrT 4.1.20.684
-    implementation ("com.cleanroommc:groovyscript:0.7.1") { transitive = false } // GrS 0.7.1
+    compileOnlyApi ("com.cleanroommc:groovyscript:0.7.1") { transitive = false } // GrS 0.7.1
     implementation rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
     implementation rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465") // Forgelin 1.8.4
 
@@ -54,15 +54,15 @@ dependencies {
     }
 
     // Debug EnderIO
-    compileOnly "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
-    compileOnly "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
-    compileOnly rfg.deobf("curse.maven:endercore-231868:4671384") // EnderCore 0.5.78
-    compileOnly rfg.deobf("curse.maven:ender-io-base-297193:4674231") // EIO 5.3.72
-    compileOnly rfg.deobf("curse.maven:ender-io-endergy-304346:4674241") // EIOE 5.3.72
-    compileOnly rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
-    compileOnly rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
-    compileOnly rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
-    if (project.debug_eio.toBoolean()) {
+    compileOnlyApi "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
+    compileOnlyApi "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
+    compileOnlyApi rfg.deobf("curse.maven:endercore-231868:4671384") // EnderCore 0.5.78
+    compileOnlyApi rfg.deobf("curse.maven:ender-io-base-297193:4674231") // EIO 5.3.72
+    compileOnlyApi rfg.deobf("curse.maven:ender-io-endergy-304346:4674241") // EIOE 5.3.72
+    compileOnlyApi rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
+    compileOnlyApi rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
+    compileOnlyApi rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
+    if (project.debug_all.toBoolean() || project.debug_eio.toBoolean()) {
         runtimeOnly "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
         runtimeOnly "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
         runtimeOnly rfg.deobf("curse.maven:endercore-231868:4671384") // EnderCore 0.5.78
@@ -71,15 +71,14 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
         runtimeOnly rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
         runtimeOnly rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
-        runtimeOnly rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465") // Forgelin 1.8.4
     }
 
     // Debug Draconic Evolution/Additions
-    compileOnly rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
-    compileOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436") // RedstoneFlux 1.1.1
-    compileOnly rfg.deobf("curse.maven:brandons-core-231382:3408276") // BrandonsCore 2.4.20.162
-    compileOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261") // DraconicEvolution 2.3.28.354
-    compileOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704") // DraconicAdditions 1.17.0.45
+    compileOnlyApi rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
+    compileOnlyApi rfg.deobf("curse.maven:redstone-flux-270789:2920436") // RedstoneFlux 1.1.1
+    compileOnlyApi rfg.deobf("curse.maven:brandons-core-231382:3408276") // BrandonsCore 2.4.20.162
+    compileOnlyApi rfg.deobf("curse.maven:draconic-evolution-223565:3431261") // DraconicEvolution 2.3.28.354
+    compileOnlyApi rfg.deobf("curse.maven:draconicadditions-314515:3514704") // DraconicAdditions 1.17.0.45
     if (project.debug_all.toBoolean() || project.debug_de.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:baubles-227083:2518667")
         runtimeOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436")
@@ -89,18 +88,18 @@ dependencies {
     }
 
     // Debug Chisel
-    compileOnly rfg.deobf("curse.maven:chisel-235279:2915375") // Chisel 1.0.2.45
+    compileOnlyApi rfg.deobf("curse.maven:chisel-235279:2915375") // Chisel 1.0.2.45
     if (project.debug_all.toBoolean() || project.debug_chisel.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:chisel-235279:2915375")
     }
 
     // Debug Avaritia
     if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:avaritia-1-10-261348:3143349")
+        runtimeOnly rfg.deobf("curse.maven:avaritia-1-1x-kedition-913129:4777278") // Avaritia 1.1x Kedition 1.3
     }
 
     // Boot error fix
-    if (project.debug_eio.toBoolean()) {
+    if (project.debug_all.toBoolean() || project.debug_eio.toBoolean()) {
         runtimeOnly (files("libs/EnderCore-1.12.2-0.5.78-core.jar"))
     }
 }

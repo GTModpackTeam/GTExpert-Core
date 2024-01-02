@@ -116,11 +116,10 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         ItemStack output = catalyst.copy();
         UpgradeHelper.setUpgradeLevel(input, upgradeName, currentLevel);
         UpgradeHelper.setUpgradeLevel(output, upgradeName, upgradeLevel);
-        inputs.add(0, GTRecipeItemInput.getOrCreate(input)
-                .setNBTMatchingCondition(
-                        NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
-                                NBTTagType.COMPOUND, UpgradeHelper.UPGRADE_TAG, NBTCondition.create(
-                                        NBTTagType.BYTE, upgradeName, (byte) currentLevel))));
+        inputs.add(0, new GTRecipeItemInput(input).setNBTMatchingCondition(
+                NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
+                        NBTTagType.COMPOUND, UpgradeHelper.UPGRADE_TAG, NBTCondition.create(
+                                NBTTagType.BYTE, upgradeName, (byte) currentLevel))));
         outputs.add(output);
 
         ItemStack upgradeKey = new ItemStack(DEFeatures.toolUpgrade, 1, ToolUpgrade.NAME_TO_ID.get(upgradeName));
@@ -131,7 +130,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
                 currentLevel,
                 upgradeLevel,
                 input));
-        inputs.add(1, GTRecipeItemInput.getOrCreate(upgradeKey, upgradeKey.getCount()).setNonConsumable());
+        inputs.add(1, new GTRecipeItemInput(upgradeKey, upgradeKey.getCount()).setNonConsumable());
     }
 
     public UpgradeRecipeBuilder catalyst(ItemStack catalyst) {

@@ -22,6 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.block.VariantActiveBlock;
 import gregtech.api.block.VariantItemBlock;
+import gregtech.api.items.toolitem.ToolClasses;
 import gregtech.api.unification.material.Material;
 import gregtech.client.utils.TooltipHelper;
 import gregtech.common.ConfigHolder;
@@ -34,10 +35,10 @@ public class GTEBlockWireCoil extends VariantActiveBlock<GTEBlockWireCoil.GTECoi
     public GTEBlockWireCoil() {
         super(net.minecraft.block.material.Material.IRON);
         setTranslationKey("gte_wire_coil");
-        setHardness(10.0F);
-        setResistance(10.0F);
+        setHardness(5.0f);
+        setResistance(10.0f);
         setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 6);
+        setHarvestLevel(ToolClasses.WRENCH, 2);
         setDefaultState(getState(GTECoilType.AWAKENED_DRACONIUM));
     }
 
@@ -89,7 +90,7 @@ public class GTEBlockWireCoil extends VariantActiveBlock<GTEBlockWireCoil.GTECoi
 
     public enum GTECoilType implements IStringSerializable, IHeatingCoilBlockStats {
 
-        AWAKENED_DRACONIUM("awakened_draconium", 11701, 16, 16, GTEMaterials.AwakenedDraconium);
+        AWAKENED_DRACONIUM("awakened_draconium", 12600, 16, 16, GTEMaterials.AwakenedDraconium);
 
         private final String name;
         private final int coilTemperature;
