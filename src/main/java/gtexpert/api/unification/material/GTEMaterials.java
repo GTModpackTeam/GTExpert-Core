@@ -115,7 +115,7 @@ public class GTEMaterials {
             AvaritiaFirstDegreeMaterials.init(); // 24186 - 24190
         }
         if (Loader.isModLoaded(GTEValues.MODID_TC)) {
-            ThaumcraftFirstDegreeMaterials.init(); // 24191 - 24199
+            TCFirstDegreeMaterials.init(); // 24191 - 24199
         }
     }
 }

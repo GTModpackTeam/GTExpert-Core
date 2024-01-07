@@ -53,6 +53,9 @@ public class GTERecipeManager {
         if (Loader.isModLoaded(GTEValues.MODID_AVARITIA)) {
             AvaritiaRecipeLoader.init();
         }
+        if (Loader.isModLoaded(GTEValues.MODID_TC)) {
+            TCRecipeLoader.init();
+        }
 
         RecyclingRecipes.init();
     }

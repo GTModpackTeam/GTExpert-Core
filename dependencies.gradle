@@ -103,6 +103,7 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
         runtimeOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023") // Thaumcraft 6.1.BETA26
         runtimeOnly rfg.deobf("curse.maven:thaumic-energistics-extended-life-849094:4513158") // ThaumicEnergistics EL 2.2.7
+        runtimeOnly rfg.deobf("curse.maven:thaumic-jei-285492:2705304") // Thaumic JEI
     }
 
     // Boot error fix

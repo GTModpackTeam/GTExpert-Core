@@ -1,6 +1,5 @@
 package gtexpert.api.unification.material.ingredients;
 
-import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.util.GTUtility.gregtechId;
@@ -11,7 +10,7 @@ import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 
-public class ThaumcraftFirstDegreeMaterials {
+public class TCFirstDegreeMaterials {
 
     /**
      * 24191 - 24199
