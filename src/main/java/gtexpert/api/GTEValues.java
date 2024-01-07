@@ -15,6 +15,7 @@ public class GTEValues {
             MODID_GCYS = "gcys",
             MODID_GTFO = "gregtechfoodoption",
             MODID_TOP = "theoneprobe",
+            MODID_FFM = "forestry",
             MODID_ECO = "endercore",
             MODID_EIO = "enderio",
             MODID_EIOE = "enderioendergy",
@@ -30,7 +31,8 @@ public class GTEValues {
             MODID_CHISEL = "chisel",
             MODID_AVARITIA = "avaritia",
             MODID_AVAADDON = "avaritiaddons",
-            MODID_FFM = "forestry";
+            MODID_TC = "thaumcraft",
+            MODID_TE = "thaumicenergistics";
 
     public static int ae2VoltageTier = voltageTier(ae2Integration.voltageTier) ? ae2Integration.voltageTier : 3,
             eioVoltageTier = voltageTier(eioIntegration.voltageTier) ? eioIntegration.voltageTier : 3,

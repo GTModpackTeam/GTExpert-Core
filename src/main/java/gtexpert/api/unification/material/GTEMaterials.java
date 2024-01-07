@@ -82,6 +82,8 @@ public class GTEMaterials {
     public static Material Draconium;
     public static Material AwakenedDraconium;
     public static Material Infinity;
+    public static Material Thaumium;
+    public static Material VoidMetal;
 
     // Second Degree Materials
 
@@ -111,6 +113,9 @@ public class GTEMaterials {
         }
         if (Loader.isModLoaded(GTEValues.MODID_AVARITIA)) {
             AvaritiaFirstDegreeMaterials.init(); // 24186 - 24190
+        }
+        if (Loader.isModLoaded(GTEValues.MODID_TC)) {
+            ThaumcraftFirstDegreeMaterials.init(); // 24191 - 24199
         }
     }
 }
