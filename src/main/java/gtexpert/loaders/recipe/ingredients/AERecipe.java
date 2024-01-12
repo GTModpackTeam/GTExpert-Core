@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
@@ -31,13 +32,22 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.items.GTEMetaItems;
+import gtexpert.modules.GTEModules;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.IGTERecipe;
 
 import appeng.api.util.AEColor;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
-public class AERecipeLoader {
+@GTERecipe(
+           moduleID = GTEModules.MODULE_RECIPES,
+           containerID = GTEValues.MODID_AE,
+           name = "GTExpert AE Recipe",
+           priority = EventPriority.LOWEST)
+public class AERecipe implements IGTERecipe {
 
-    public static void init() {
+    @Override
+    public void init() {
         materials();
         items();
         blocks();

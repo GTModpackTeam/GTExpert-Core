@@ -9,6 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 
@@ -37,10 +38,19 @@ import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
+import gtexpert.modules.GTEModules;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.IGTERecipe;
 
-public class DraconicRecipeLoader {
+//@GTERecipe(
+//           moduleID = GTEModules.MODULE_RECIPES,
+//           containerID = GTEValues.MODID_DE,
+//           name = "GTExpert Draconic Evolution Recipe",
+//           priority = EventPriority.LOWEST)
+public class DraconicRecipeLoader implements IGTERecipe {
 
-    public static void init() {
+    @Override
+    public void init() {
         fluid();
         materials();
         items();

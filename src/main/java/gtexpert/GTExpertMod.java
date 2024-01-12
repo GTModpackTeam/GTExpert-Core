@@ -1,13 +1,14 @@
 package gtexpert;
 
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 
 import gregtech.GTInternalTags;
 
 import gtexpert.api.GTEValues;
-import gtexpert.common.CommonProxy;
+import gtexpert.modules.GTEModules;
+import gtexpert.modules.ModuleManager;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
@@ -25,38 +26,63 @@ import gtexpert.common.CommonProxy;
 
 public class GTExpertMod {
 
-    @SidedProxy(modId = GTEValues.MODID,
-                clientSide = "gtexpert.client.ClientProxy",
-                serverSide = "gtexpert.common.CommonProxy")
-    public static CommonProxy proxy;
+    private ModuleManager moduleManager;
+
+    @Mod.EventHandler
+    public void onConstruction(FMLConstructionEvent event) {
+        moduleManager = ModuleManager.getInstance();
+        moduleManager.registerContainer(new GTEModules());
+        moduleManager.setup(event.getASMHarvestedData(), Loader.instance().getConfigDir());
+        moduleManager.onConstruction(event);
+    }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        proxy.preInit(event);
+        moduleManager.onPreInit(event);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        proxy.init(event);
+        moduleManager.onInit(event);
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        proxy.postInit(event);
+        moduleManager.onPostInit(event);
     }
 
     @Mod.EventHandler
-    public void loadComplete(FMLLoadCompleteEvent event) {}
+    public void loadComplete(FMLLoadCompleteEvent event) {
+        moduleManager.onLoadComplete(event);
+    }
 
     @Mod.EventHandler
-    public void serverStarting(FMLServerStartingEvent event) {}
+    public void serverAboutToStart(FMLServerAboutToStartEvent event) {
+        moduleManager.onServerAboutToStart(event);
+    }
 
     @Mod.EventHandler
-    public void serverStarted(FMLServerStartedEvent event) {}
+    public void serverStarting(FMLServerStartingEvent event) {
+        moduleManager.onServerStarting(event);
+    }
 
     @Mod.EventHandler
-    public void serverStopped(FMLServerStoppedEvent event) {}
+    public void serverStarted(FMLServerStartedEvent event) {
+        moduleManager.onServerStarted(event);
+    }
 
     @Mod.EventHandler
-    public void respondIMC(FMLInterModComms.IMCEvent event) {}
+    public void serverStopping(FMLServerStoppingEvent event) {
+        moduleManager.onServerStopping(event);
+    }
+
+    @Mod.EventHandler
+    public void serverStopped(FMLServerStoppedEvent event) {
+        moduleManager.onServerStopped(event);
+    }
+
+    @Mod.EventHandler
+    public void respondIMC(FMLInterModComms.IMCEvent event) {
+        moduleManager.processIMC(event.getMessages());
+    }
 }

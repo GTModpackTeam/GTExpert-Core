@@ -9,6 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
@@ -37,10 +38,19 @@ import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTELog;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.modules.GTEModules;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.IGTERecipe;
 
-public class DraconicUpgradeRecipeLoader {
+//@GTERecipe(
+//           moduleID = GTEModules.MODULE_RECIPES,
+//           containerID = GTEValues.MODID_DE,
+//           name = "GTExpert Draconic Evolution Upgrade Recipe",
+//           priority = EventPriority.LOWEST)
+public class DraconicUpgradeRecipeLoader implements IGTERecipe {
 
-    public static void init() {
+    @Override
+    public void init() {
         tierUp();
         upgrade();
     }

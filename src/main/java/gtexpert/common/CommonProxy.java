@@ -14,12 +14,8 @@ import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -27,18 +23,28 @@ import net.minecraftforge.registries.IForgeRegistry;
 import gregtech.api.GregTechAPI;
 import gregtech.api.block.VariantItemBlock;
 import gregtech.api.cover.CoverDefinition;
+import gregtech.api.recipes.RecipeMaps;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.blocks.GTEBlockWireCoil.GTECoilType;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.*;
-import gtexpert.integration.theoneprobe.TOPProviders;
 import gtexpert.loaders.*;
 import gtexpert.loaders.recipe.*;
+import gtexpert.modules.GTEModules;
+import gtexpert.recipe.RecipeManager;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class CommonProxy {
+
+    private static RecipeManager recipeManager;
+
+    public void onConstruction(FMLConstructionEvent event) {
+        recipeManager = RecipeManager.getInstance();
+        recipeManager.registerContainer(new GTEModules());
+        recipeManager.setup(event.getASMHarvestedData());
+    }
 
     public void preInit(FMLPreInitializationEvent event) {
         GTEMetaBlocks.init();
@@ -51,11 +57,7 @@ public class CommonProxy {
         /* End API Block Registration */
     }
 
-    public void init(FMLInitializationEvent event) {
-        if (Loader.isModLoaded(GTEValues.MODID_TOP)) {
-            TOPProviders.init();
-        }
-    }
+    public void init(FMLInitializationEvent event) {}
 
     public void postInit(FMLPostInitializationEvent event) {}
 
@@ -74,7 +76,9 @@ public class CommonProxy {
         GTELog.logger.info("Registering Items...");
         IForgeRegistry<Item> registry = event.getRegistry();
 
-        GTERecipeManager.preLoad();
+        // TODO Add preLoad to RecipeManager
+        RecipeMaps.VACUUM_RECIPES.setMaxFluidOutputs(2);
+
         registry.register(createItemBlock(GTE_WIRE_COIL, VariantItemBlock::new));
         registry.register(createItemBlock(GTE_METAL_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
@@ -86,6 +90,16 @@ public class CommonProxy {
         GTECoverBehaviors.init();
     }
 
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public void registerRecipesHighest(RegistryEvent.Register<IRecipe> event) {
+        recipeManager.loadHighest();
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public void registerRecipesHigh(RegistryEvent.Register<IRecipe> event) {
+        recipeManager.loadHigh();
+    }
+
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GTELog.logger.info("Registering ore dictionary...");
@@ -94,25 +108,24 @@ public class CommonProxy {
 
         GTELog.logger.info("Registering Recipes...");
         GTERecipeManager.load();
+
+        recipeManager.loadNormal();
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
         GTELog.logger.info("Registering Recipes...");
         GTERecipeManager.loadLow();
-    }
 
-    @SubscribeEvent
-    public static void syncConfigValues(ConfigChangedEvent.OnConfigChangedEvent event) {
-        if (event.getModID().equals(GTEValues.MODID)) {
-            ConfigManager.sync(GTEValues.MODID, Config.Type.INSTANCE);
-        }
+        recipeManager.loadLow();
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
         GTELog.logger.info("Registering Recipes...");
         GTERecipeManager.loadLowest();
+
+        recipeManager.loadLowest();
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
@@ -123,6 +136,13 @@ public class CommonProxy {
         }
         itemBlock.setRegistryName(registryName);
         return itemBlock;
+    }
+
+    @SubscribeEvent
+    public static void syncConfigValues(ConfigChangedEvent.OnConfigChangedEvent event) {
+        if (event.getModID().equals(GTEValues.MODID)) {
+            ConfigManager.sync(GTEValues.MODID, Config.Type.INSTANCE);
+        }
     }
 
     public void onPreLoad() {}
