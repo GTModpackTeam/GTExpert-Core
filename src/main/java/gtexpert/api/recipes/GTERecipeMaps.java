@@ -71,8 +71,7 @@ public class GTERecipeMaps {
                     .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
                     .setSlotOverlay(true, true, GuiTextures.CENTRIFUGE_OVERLAY)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(GTSoundEvents.COOLING)
-                    .setSmallRecipeMap(RecipeMaps.GAS_COLLECTOR_RECIPES);
+                    .setSound(GTSoundEvents.COOLING);
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> STEAM_MIXER_RECIPES = new RecipeMap<>(
