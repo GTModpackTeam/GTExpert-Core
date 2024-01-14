@@ -50,7 +50,6 @@ public class GTECoreModule implements IGTEModule {
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
 
-        GTEMetaItems.init();
         MetaTileEntitiesManager.init();
     }
 
