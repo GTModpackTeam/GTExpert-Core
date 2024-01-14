@@ -3,6 +3,7 @@ package gtexpert.loaders.recipe.ingredients;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -13,14 +14,17 @@ import gregtech.common.items.MetaItems;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
 import gtexpert.recipe.GTERecipeSubModule;
 
-// @GTERecipe(
-// moduleID = GTERecipeModules.AVARITIA_RECIPE,
-// containerID = GTEValues.MODID,
-// modDependencies = GTEValues.MODID_AVARITIA,
-// name = "GTExpert Avaritia Recipe",
-// priority = EventPriority.LOWEST)
+@GTERecipe(
+           moduleID = GTERecipeModules.AVARITIA_RECIPE,
+           containerID = GTEValues.MODID,
+           modDependencies = GTEValues.MODID_AVARITIA,
+           name = "GTExpert Avaritia Recipe",
+           priority = EventPriority.LOWEST)
+
 public class AvaritiaGTERecipeLoader extends GTERecipeSubModule {
 
     @Override

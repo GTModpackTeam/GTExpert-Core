@@ -17,8 +17,9 @@ import gtexpert.recipe.GTERecipeSubModule;
            moduleID = GTERecipeModules.GTFO_RECIPE,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_GTFO,
-           name = "GTExpert GTFO Recipe",
+           name = "GTExpert GregTech Food Option Recipe",
            priority = EventPriority.LOWEST)
+
 public class GTFOGTERecipeLoader extends GTERecipeSubModule {
 
     @Override

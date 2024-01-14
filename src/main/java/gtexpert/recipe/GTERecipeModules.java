@@ -11,6 +11,7 @@ public class GTERecipeModules implements IGTERecipeContainer {
             EIO_RECIPE = "eio_recipe",
             EIO_SOUL_RECIPE = "eio_soul_recipe",
             GTFO_RECIPE = "gtfo_recipe",
+            TC_RECIPE = "tc_recipe",
             VANILLA_RECIPE = "vanilla_recipe",
             CEU_OVERRIDE_RECIPE = "ceu_override_recipe",
             GTE_WOOD_RECIPE = "gte_wood_recipe",

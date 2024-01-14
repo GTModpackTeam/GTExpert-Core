@@ -48,6 +48,7 @@ import gtexpert.recipe.GTERecipeSubModule;
            modDependencies = GTEValues.MODID_DE,
            name = "GTExpert Draconic Evolution Recipe",
            priority = EventPriority.LOWEST)
+
 public class DraconicGTERecipeLoader extends GTERecipeSubModule {
 
     @Override

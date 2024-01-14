@@ -4,6 +4,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.common.GTEConfigHolder.tcIntegration;
 
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
@@ -13,10 +14,21 @@ import gregtech.common.ConfigHolder;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
-public class TCRecipeLoader {
+@GTERecipe(
+           moduleID = GTERecipeModules.TC_RECIPE,
+           containerID = GTEValues.MODID,
+           modDependencies = GTEValues.MODID_TC,
+           name = "GTExpert Thaumcraft Recipe",
+           priority = EventPriority.LOWEST)
 
-    public static void init() {
+public class TCRecipeLoader extends GTERecipeSubModule {
+
+    @Override
+    public void init() {
         materials();
         items();
         blocks();
@@ -133,24 +145,27 @@ public class TCRecipeLoader {
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumaxe"));
             ModHandler.addShapedRecipe(true, "thaumium_axe",
                     GTEUtility.getModItem(GTEValues.MODID_TC, "thaumium_axe"),
-                    "PPf", "PS ", "hS ",
+                    "PIf", "PS ", "hS ",
                     'P', OreDictUnifier.get(plate, GTEMaterials.Thaumium),
+                    'I', OreDictUnifier.get(ingot, GTEMaterials.Thaumium),
                     'S', OreDictUnifier.get(stick, Materials.Wood));
 
             // Thaumium Hoe
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumhoe"));
             ModHandler.addShapedRecipe(true, "thaumium_hoe",
                     GTEUtility.getModItem(GTEValues.MODID_TC, "thaumium_hoe"),
-                    "PPf", "hS ", " S ",
+                    "PIf", "hS ", " S ",
                     'P', OreDictUnifier.get(plate, GTEMaterials.Thaumium),
+                    'I', OreDictUnifier.get(ingot, GTEMaterials.Thaumium),
                     'S', OreDictUnifier.get(stick, Materials.Wood));
 
             // Thaumium Pickaxe
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumpick"));
             ModHandler.addShapedRecipe(true, "thaumium_pick",
                     GTEUtility.getModItem(GTEValues.MODID_TC, "thaumium_pick"),
-                    "PPP", "hSf", " S ",
+                    "PII", "hSf", " S ",
                     'P', OreDictUnifier.get(plate, GTEMaterials.Thaumium),
+                    'I', OreDictUnifier.get(ingot, GTEMaterials.Thaumium),
                     'S', OreDictUnifier.get(stick, Materials.Wood));
 
             // Thaumium Shovel
@@ -173,24 +188,27 @@ public class TCRecipeLoader {
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidaxe"));
             ModHandler.addShapedRecipe(true, "void_axe",
                     GTEUtility.getModItem(GTEValues.MODID_TC, "void_axe"),
-                    "PPf", "PS ", "hS ",
+                    "PIf", "PS ", "hS ",
                     'P', OreDictUnifier.get(plate, GTEMaterials.VoidMetal),
+                    'I', OreDictUnifier.get(ingot, GTEMaterials.VoidMetal),
                     'S', OreDictUnifier.get(stick, Materials.Wood));
 
             // Void Hoe
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidhoe"));
             ModHandler.addShapedRecipe(true, "void_hoe",
                     GTEUtility.getModItem(GTEValues.MODID_TC, "void_hoe"),
-                    "PPf", "hS ", " S ",
+                    "PIf", "hS ", " S ",
                     'P', OreDictUnifier.get(plate, GTEMaterials.VoidMetal),
+                    'I', OreDictUnifier.get(ingot, GTEMaterials.VoidMetal),
                     'S', OreDictUnifier.get(stick, Materials.Wood));
 
             // Void Pickaxe
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidpick"));
             ModHandler.addShapedRecipe(true, "void_pick",
                     GTEUtility.getModItem(GTEValues.MODID_TC, "void_pick"),
-                    "PPP", "hSf", " S ",
+                    "PII", "hSf", " S ",
                     'P', OreDictUnifier.get(plate, GTEMaterials.VoidMetal),
+                    'I', OreDictUnifier.get(ingot, GTEMaterials.VoidMetal),
                     'S', OreDictUnifier.get(stick, Materials.Wood));
 
             // Void Shovel

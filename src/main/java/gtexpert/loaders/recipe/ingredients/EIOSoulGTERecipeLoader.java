@@ -37,8 +37,9 @@ import crazypants.enderio.base.init.ModObject;
            moduleID = GTERecipeModules.EIO_SOUL_RECIPE,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_EIO,
-           name = "GTExpert EIO Soul Recipe",
+           name = "GTExpert EnderIO Soul Recipe",
            priority = EventPriority.LOWEST)
+
 public class EIOSoulGTERecipeLoader extends GTERecipeSubModule {
 
     @Override
