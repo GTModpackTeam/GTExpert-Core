@@ -61,11 +61,11 @@ public class RecipeManager implements IGTERecipeManager {
 
         canRegisterContainer = false;
         Map<String, List<IGTERecipe>> modules = getModules(asmDataTable);
-        logger.info("Size of modules: " + modules.size());
+        logger.debug("Size of modules: " + modules.size());
         for (String key : modules.keySet()) {
-            logger.info("Key: " + key);
+            logger.debug("Key: " + key);
             for(IGTERecipe recipe: modules.get(key)) {
-                logger.info("- Name: " + recipe.getClass().getName());
+                logger.debug("- Name: " + recipe.getClass().getName());
             }
         }
         configureModules(modules);
@@ -74,10 +74,10 @@ public class RecipeManager implements IGTERecipeManager {
     private void init(EventPriority priority) {
         List<IGTERecipe> recipes = recipePriorities.get(priority);
         if (recipes == null) {
-            logger.info("priority " + priority.name() + " has no gtexpert recipes");
+            logger.debug("priority " + priority.name() + " has no gtexpert recipes");
             return;
         }
-        logger.info("priority " + priority.name() + " has" + recipes.size() + "recipes");
+        logger.debug("priority " + priority.name() + " has" + recipes.size() + "recipes");
         for (IGTERecipe recipe : recipes) {
             recipe.getLogger().debug("initialize start");
             recipe.init();
@@ -106,13 +106,13 @@ public class RecipeManager implements IGTERecipeManager {
     }
 
     private void configureModules(Map<String, List<IGTERecipe>> modules) {
-        logger.info("Configuring Modules...");
+        logger.debug("Configuring Modules...");
         Locale locale = Locale.getDefault();
         Locale.setDefault(Locale.ENGLISH);
         Set<ResourceLocation> toLoad = new LinkedHashSet<>();
         for (IGTERecipeContainer container : containers.values()) {
             String containerID = container.getID();
-            logger.info("Putting recipe modules of container " + containerID);
+            logger.debug("Putting recipe modules of container " + containerID);
             List<IGTERecipe> containerModules = modules.get(containerID);
             IGTERecipe coreModule = getCoreRecipeModule(containerModules);
             if (coreModule == null) {
@@ -122,17 +122,17 @@ public class RecipeManager implements IGTERecipeManager {
                 containerModules.add(0, coreModule);
             }
             for (IGTERecipe module : containerModules) {
-                logger.info(module.getClass().getName() + " was added to toLoad");
+                logger.debug(module.getClass().getName() + " was added to toLoad");
                 GTERecipe annotation = module.getClass().getAnnotation(GTERecipe.class);
                 toLoad.add(new ResourceLocation(containerID, annotation.moduleID()));
                 if (toLoad.containsAll(module.getDependencyUids())) {
                     GTERecipe moduleAnnotation = module.getClass().getAnnotation(GTERecipe.class);
                     String moduleID = moduleAnnotation.moduleID();
                     toLoad.remove(new ResourceLocation(moduleID));
-                    logger.info("Recipe Module {} is missing at least one of module dependencies: {}, skipping loading...",
+                    logger.debug("Recipe Module {} is missing at least one of module dependencies: {}, skipping loading...",
                             moduleID, module.getDependencyUids());
                 } else {
-                    logger.info(module.getClass().getName() + " passed dependency check.");
+                    logger.debug(module.getClass().getName() + " passed dependency check.");
                 }
                 if (sortedModules.keySet().containsAll(module.getDependencyUids())) {
                     GTERecipe Annotation = module.getClass().getAnnotation(GTERecipe.class);
@@ -140,7 +140,7 @@ public class RecipeManager implements IGTERecipeManager {
                     List<IGTERecipe> recipes = recipePriorities.getOrDefault(Annotation.priority(), new ArrayList<>());
                     recipes.add(module);
                     recipePriorities.put(Annotation.priority(), recipes);
-                    logger.info("Recipe was put to map! priority: " + Annotation.priority() + " size: " + recipes.size());
+                    logger.debug("Recipe was put to map! priority: " + Annotation.priority() + " size: " + recipes.size());
                 }
             }
         }
@@ -184,7 +184,7 @@ public class RecipeManager implements IGTERecipeManager {
                     logger.error("Could not initialize module " + moduleID, e);
                 }
             } else {
-                logger.info("Module {} is missing at least one of mod dependencies; {}, skipping loading...", moduleID,
+                logger.debug("Module {} is missing at least one of mod dependencies; {}, skipping loading...", moduleID,
                         modDependencies);
             }
         }
