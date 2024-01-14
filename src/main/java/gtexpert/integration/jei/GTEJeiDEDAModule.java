@@ -1,6 +1,7 @@
 package gtexpert.integration.jei;
 
-import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.*;
+import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.AWAKENED_DRACONIUM_FUSION;
+import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.DRACONIUM_FUSION;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -13,9 +14,8 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 
-@SuppressWarnings("unused")
 @JEIPlugin
-public class GTEJEIPlugin implements IModPlugin {
+public class GTEJeiDEDAModule implements IModPlugin {
 
     @Override
     public void register(@NotNull IModRegistry registry) {

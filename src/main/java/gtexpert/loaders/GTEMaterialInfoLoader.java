@@ -16,6 +16,7 @@ import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
+import gtexpert.integration.gt.GTHelper;
 
 public class GTEMaterialInfoLoader {
 
@@ -34,6 +35,7 @@ public class GTEMaterialInfoLoader {
                 new ItemMaterialInfo(new MaterialStack(Materials.TreatedWood,
                         (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft)));
 
+        // TODO Applied Energistics
         if (Loader.isModLoaded(GTEValues.MODID_AE)) {
             OreDictUnifier.registerOre(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 9),
                     new ItemMaterialInfo(
@@ -64,6 +66,7 @@ public class GTEMaterialInfoLoader {
                             new MaterialStack(Materials.Diamond, GTValues.M)));
         }
 
+        // TODO Ender IO Module
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             OreDictUnifier.registerOre(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_soul_vial"),
                     new ItemMaterialInfo(
@@ -95,21 +98,21 @@ public class GTEMaterialInfoLoader {
             }
         }
 
+        // TODO Draconic Evolution Module
         if (GTEValues.isModLoadedDEDA()) {
-            OreDictUnifier.registerOre(new ItemStack(Blocks.DRAGON_EGG),
-                    new ItemMaterialInfo(new MaterialStack(GTEMaterials.Dragon, GTValues.M * 8)));
-            OreDictUnifier.registerOre(GTEUtility.getModItem(GTEValues.MODID_DE, "chaos_shard", 1, 1),
-                    new ItemMaterialInfo(new MaterialStack(GTEMaterials.Chaos, GTValues.M)));
-            OreDictUnifier.registerOre(
+            GTHelper.registerOre(new ItemStack(Blocks.DRAGON_EGG), GTEMaterials.Dragon, GTValues.M * 8);
+            GTHelper.registerOre(GTEUtility.getModItem(GTEValues.MODID_DE, "chaos_shard", 1, 1), GTEMaterials.Chaos,
+                    GTValues.M);
+            GTHelper.registerOre(
                     GTEMetaBlocks.GTE_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING),
-                    new ItemMaterialInfo(new MaterialStack(GTEMaterials.Draconium,
-                            (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft)));
-            OreDictUnifier.registerOre(
+                    GTEMaterials.Draconium,
+                    (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft);
+            GTHelper.registerOre(
                     GTEMetaBlocks.GTE_METAL_CASING
                             .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING),
-                    new ItemMaterialInfo(new MaterialStack(GTEMaterials.AwakenedDraconium,
-                            (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft)));
-            OreDictUnifier.registerOre(
+                    GTEMaterials.AwakenedDraconium,
+                    (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft);
+            GTHelper.registerOre(
                     GTEMetaBlocks.GTE_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING),
                     new ItemMaterialInfo(
                             new MaterialStack(GTEMaterials.Draconium, GTValues.M * 9),

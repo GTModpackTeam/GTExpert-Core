@@ -12,6 +12,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
 import com.enderio.core.common.util.EntityUtil;
 
@@ -26,12 +27,22 @@ import gregtech.api.unification.material.Materials;
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
 import crazypants.enderio.base.init.ModObject;
 
-public class EIOSoulRecipeLoader {
+@GTERecipe(
+           moduleID = GTERecipeModules.EIO_SOUL_RECIPE,
+           containerID = GTEValues.MODID,
+           modDependencies = GTEValues.MODID_EIO,
+           name = "GTExpert EIO Soul Recipe",
+           priority = EventPriority.LOWEST)
+public class EIOSoulGTERecipeLoader extends GTERecipeSubModule {
 
-    public static void init() {
+    @Override
+    public void init() {
         soulBinderRecipes();
         vialExtractorRecipes();
         recipeVillager();

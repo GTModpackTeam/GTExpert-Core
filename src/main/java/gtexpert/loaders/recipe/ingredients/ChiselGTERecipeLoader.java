@@ -16,6 +16,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.google.common.base.CaseFormat;
@@ -33,10 +34,20 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.chisel.ChiselHelper;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
-public class ChiselRecipeLoader {
+@GTERecipe(
+           moduleID = GTERecipeModules.CHISEL_RECIPE,
+           containerID = GTEValues.MODID,
+           modDependencies = GTEValues.MODID_CHISEL,
+           name = "GTExpert Chisel Recipe",
+           priority = EventPriority.LOWEST)
+public class ChiselGTERecipeLoader extends GTERecipeSubModule {
 
-    public static void init() {
+    @Override
+    public void init() {
         // craftChisel
         OreDictionary.registerOre("craftChisel", GTEUtility.getModItem(GTEValues.MODID_CHISEL, "chisel_iron"));
         OreDictionary.registerOre("craftChisel", GTEUtility.getModItem(GTEValues.MODID_CHISEL, "chisel_diamond"));
@@ -154,7 +165,7 @@ public class ChiselRecipeLoader {
         Arrays.asList("blockAluminium", "blockBronze", "blockCharcoal", "blockCoal", "blockFuelCoke", "blockCobalt",
                 "blockCopper", "blockDiamond", "blockElectrum", "blockEmerald", "blockGold", "blockInvar", "blockIron",
                 "blockLapis", "blockLead", "blockNickel", "blockPlatinum", "blockSilver", "blockSteel", "blockTin",
-                "blockUranium").forEach(ChiselRecipeLoader::registerAutoChiselRecipe);
+                "blockUranium").forEach(ChiselGTERecipeLoader::registerAutoChiselRecipe);
 
         // Andesite
         registerAutoChiselRecipe("stoneAndesite");
