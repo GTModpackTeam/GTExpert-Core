@@ -34,6 +34,20 @@ gtexpert.machine.auto_chisel.mv.tooltip=Your ideal, we will sculpt it/nMaterial 
 gtexpert.machine.auto_chisel.hv.name=Advanced Auto Chisel II
 gtexpert.machine.auto_chisel.hv.tooltip=Your ideal, we will sculpt it/nMaterial in the left, chiseling to the right. See JEI's Chiseling page for details./n§dAuthor:§f @tier940
 
+# Steam Machines
+gtexpert.machine.steam_mixer_bronze.name=Steam Mixer
+gtexpert.machine.steam_mixer_steel.name=High Pressure Steam Mixer
+gtexpert.machine.steam_mixer.tooltip=§dAuthor:§f @tier940
+gtexpert.machine.steam_mixer.tooltip.1=Better than mixing by hand
+gtexpert.machine.steam_assembler_bronze.name=Steam Assembling Machine
+gtexpert.machine.steam_assembler_steel.name=High Pressure Steam Assembling Machine
+gtexpert.machine.steam_assembler.tooltip=§dAuthor:§f @tier940
+gtexpert.machine.steam_assembler.tooltip.1=Better than assembling by hand
+gtexpert.machine.steam_circuit_assembler_bronze.name=Steam Circuit Assembler
+gtexpert.machine.steam_circuit_assembler_steel.name=High Pressure Steam Circuit Assembler
+gtexpert.machine.steam_circuit_assembler.tooltip=§dAuthor:§f @tier940
+gtexpert.machine.steam_circuit_assembler.tooltip.1=Better than making circuits by hand
+
 # Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
 gtexpert.machine.vial_extractor.lv.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
@@ -145,21 +159,32 @@ gregtech.material.vivid_alloy=Vivid Alloy
 gregtech.material.fluix=Fluix
 gregtech.material.fluix_alloy=Fluix Alloy
 gregtech.material.charged_certus_quartz=Charged Certus Quartz
+gregtech.material.thaumium=Thaumium
+gregtech.material.void_metal=Void Metal
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME fake component
 metaitem.matrix_core.name=Matrix Core
 metaitem.piston_boots.name=Piston Boots
 metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Higher!
-metaitem.primitive.motor.name=Primitive Motor
-metaitem.primitive.pump.name=Primitive Pump
-metaitem.primitive.conveyor.name=Primitive Conveyor Module
-metaitem.primitive.piston.name=Primitive Piston
-metaitem.primitive.robot.arm.name=Primitive Robot Arm
-metaitem.primitive.fluid.regulator.name=Primitive Fluid Regulator
-metaitem.primitive.field.generator.name=Primitive Field Generator
-metaitem.primitive.emitter.name=Primitive Emitter
-metaitem.primitive.sensor.name=Primitive Sensor
+metaitem.electric.motor.primitive.name=Primitive Motor
+metaitem.electric.pump.primitive.name=Primitive Pump
+metaitem.conveyor.module.primitive.name=Primitive Conveyor Module
+metaitem.electric.piston.primitive.name=Primitive Piston
+metaitem.robot.arm.primitive.name=Primitive Robot Arm
+metaitem.fluid.regulator.primitive.name=Primitive Fluid Regulator
+metaitem.field.generator.primitive.name=Primitive Field Generator
+metaitem.emitter.primitive.name=Primitive Emitter
+metaitem.sensor.primitive.name=Primitive Sensor
+metaitem.electric.motor.ulv.name=ULV Motor
+metaitem.electric.pump.ulv.name=ULV Pump
+metaitem.conveyor.module.ulv.name=ULV Conveyor Module
+metaitem.electric.piston.ulv.name=ULV Piston
+metaitem.robot.arm.ulv.name=ULV Robot Arm
+metaitem.fluid.regulator.ulv.name=ULV Fluid Regulator
+metaitem.field.generator.ulv.name=ULV Field Generator
+metaitem.emitter.ulv.name=ULV Emitter
+metaitem.sensor.ulv.name=ULV Sensor
 metaitem.shape.mold.printed_silicon.name=Mold (Printed Silicon)
 metaitem.shape.mold.printed_silicon.tooltip=Used to craft Printed Silicon
 metaitem.shape.mold.logic_processor.name=Mold (Logic Processor)
@@ -196,6 +221,9 @@ recipemap.draconic_fusion_upgrade.property.1=Preserves upgrade info
 recipemap.draconic_fusion_upgrade.property.2= and stored energy
 recipemap.advanced_chemical_plant.name=Advanced Chemical Plant
 recipemap.advanced_gas_collector.name=Advanced Gas Collector
+recipemap.steam_mixer.name=Steam Mixer
+recipemap.steam_assembler.name=Steam Assembler
+recipemap.steam_circuit_assembler.name=Steam Circuit Assembler
 
 #misc
 gtexpert.gui.electric_spawner_mode.spawn=Spawn Mode

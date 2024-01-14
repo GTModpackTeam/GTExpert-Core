@@ -33,6 +33,20 @@ gtexpert.machine.auto_chisel.mv.tooltip=あなたの理想、彫刻します/n�
 gtexpert.machine.auto_chisel.hv.name=発展型自動彫刻機 II
 gtexpert.machine.auto_chisel.hv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
 
+# Steam Machines
+gtexpert.machine.steam_mixer_bronze.name=蒸気式ミキサー
+gtexpert.machine.steam_mixer_steel.name=高圧蒸気式ミキサー
+gtexpert.machine.steam_mixer.tooltip=§d作者:§f @tier940
+gtexpert.machine.steam_mixer.tooltip.1=手で混ぜるよりはマシ
+gtexpert.machine.steam_assembler_bronze.name=蒸気式組立機
+gtexpert.machine.steam_assembler_steel.name=高圧蒸気式組立機
+gtexpert.machine.steam_assembler.tooltip=§d作者:§f @tier940
+gtexpert.machine.steam_assembler.tooltip.1=手で組み立てるよりはマシ
+gtexpert.machine.steam_circuit_assembler_bronze.name=蒸気式回路作成機
+gtexpert.machine.steam_circuit_assembler_steel.name=高圧蒸気式回路作成機
+gtexpert.machine.steam_circuit_assembler.tooltip=§d作者:§f @tier940
+gtexpert.machine.steam_circuit_assembler.tooltip.1=手で回路を作るよりはマシ
+
 # Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=基本型魂抽出器
 gtexpert.machine.vial_extractor.lv.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
@@ -144,21 +158,32 @@ gregtech.material.vivid_alloy=ビビッド合金
 gregtech.material.fluix=フルーシュ
 gregtech.material.fluix_alloy=フルーシュ合金
 gregtech.material.charged_certus_quartz=チャージドケルタスクォーツ
+gregtech.material.thaumium=ソーミウム
+gregtech.material.void_metal=ボイドメタル
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert 虚構MEストレージセル素材
 metaitem.matrix_core.name=マトリックスコア
 metaitem.piston_boots.name=ピストンブーツ
 metaitem.piston_boots.tooltip=トロッコのように走り、ピストンのように跳ねる!
-metaitem.primitive.motor.name=初歩的なモーター
-metaitem.primitive.pump.name=初歩的なポンプ
-metaitem.primitive.conveyor.name=初歩的なコンベアーモジュール
-metaitem.primitive.piston.name=初歩的なピストン
-metaitem.primitive.robot.arm.name=初歩的なロボットアーム
-metaitem.primitive.fluid.regulator.name=初歩的な流量制御器
-metaitem.primitive.field.generator.name=初歩的な空間発生器
-metaitem.primitive.emitter.name=初歩的なエミッタ
-metaitem.primitive.sensor.name=初歩的なセンサ
+metaitem.electric.motor.primitive.name=初歩的なモーター
+metaitem.electric.pump.primitive.name=初歩的なポンプ
+metaitem.conveyor.module.primitive.name=初歩的なコンベアーモジュール
+metaitem.electric.piston.primitive.name=初歩的なピストン
+metaitem.robot.arm.primitive.name=初歩的なロボットアーム
+metaitem.fluid.regulator.primitive.name=初歩的な流量制御器
+metaitem.field.generator.primitive.name=初歩的な空間発生器
+metaitem.emitter.primitive.name=初歩的なエミッタ
+metaitem.sensor.primitive.name=初歩的なセンサ
+metaitem.electric.motor.ulv.name=ULV電動モーター
+metaitem.electric.pump.ulv.name=ULVポンプポンプ
+metaitem.conveyor.module.ulv.name=ULVコンベアーモジュール
+metaitem.electric.piston.ulv.name=ULV電動ピストン
+metaitem.robot.arm.ulv.name=ULVロボットアーム
+metaitem.fluid.regulator.ulv.name=ULV流量制御器
+metaitem.field.generator.ulv.name=ULV空間発生器
+metaitem.emitter.ulv.name=ULVエミッタ
+metaitem.sensor.ulv.name=ULVセンサ
 metaitem.shape.mold.printed_silicon.name=シリコン基板の金型
 metaitem.shape.mold.printed_silicon.tooltip=シリコン基板を作る為の金型
 metaitem.shape.mold.logic_processor.name=基本プロセッサの金型
@@ -195,6 +220,9 @@ recipemap.draconic_fusion_upgrade.property.1=アップグレードの状態と�
 recipemap.draconic_fusion_upgrade.property.2= 保持されます
 recipemap.advanced_chemical_plant.name=発展型化学プラント
 recipemap.advanced_gas_collector.name=発展型ガス収集機
+recipemap.steam_mixer.name=蒸気式ミキサー
+recipemap.steam_assembler.name=蒸気式組立機
+recipemap.steam_circuit_assembler.name=蒸気式回路作成機
 
 # misc
 gtexpert.gui.electric_spawner_mode.spawn=スポーンモード

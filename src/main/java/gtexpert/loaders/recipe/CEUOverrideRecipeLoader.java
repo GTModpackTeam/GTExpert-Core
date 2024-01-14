@@ -13,6 +13,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -39,10 +40,19 @@ import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
-public class CEUOverrideRecipeLoader {
+@GTERecipe(
+           moduleID = GTERecipeModules.CEU_OVERRIDE_RECIPE,
+           containerID = GTEValues.MODID,
+           name = "GTExpert CEu Override Recipe",
+           priority = EventPriority.LOWEST)
+public class CEUOverrideRecipeLoader extends GTERecipeSubModule {
 
-    public static void init() {
+    @Override
+    public void init() {
         materials();
         items();
         blocks();

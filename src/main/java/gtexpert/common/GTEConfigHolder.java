@@ -7,9 +7,9 @@ import gtexpert.api.GTEValues;
 @Config(modid = GTEValues.MODID)
 public class GTEConfigHolder {
 
-    @Config.Name("Gregtech Expert Options")
+    @Config.Name("GTExpert-Core Options")
     @Config.RequiresMcRestart
-    public static final ModpackFlag modpackFlag = new ModpackFlag();
+    public static final ModpackFlag gteFlag = new ModpackFlag();
 
     @Config.Name("Gregtech Override")
     @Config.RequiresMcRestart
@@ -31,10 +31,29 @@ public class GTEConfigHolder {
     @Config.RequiresMcRestart
     public static final ChiselIntegration chiselIntegration = new ChiselIntegration();
 
+    @Config.Name("Thaumcraft Integration")
+    @Config.RequiresMcRestart
+    public static final TCIntegration tcIntegration = new TCIntegration();
+
     public static class ModpackFlag {
 
         @Config.Comment({ "Activate changes in the replacement schedule.", "Default: false" })
         public boolean featureFlag = false;
+
+        @Config.Comment({ "Item name to be CEu standard instead of Primitive",
+                "Options: true (ULV), false (Primitive)",
+                "Default: false" })
+        public boolean componentsName = false;
+
+        @Config.Comment({
+                "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting), normal (3x3 crafting).",
+                "Default: easy" })
+        public String componentsRecipeType = "easy";
+
+        @Config.Comment({
+                "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting(WIP)), normal (3x3 crafting).",
+                "Default: normal" })
+        public String steamRecipeType = "normal";
     }
 
     public static class GregtechOverride {
@@ -53,9 +72,6 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Raising Terracotta Grinding from ULV to MV.", "Default: false" })
         public boolean nerfTerracottaCrafting = false;
-
-        @Config.Comment({ "Recipe type Options: false (2x2 crafting), true (3x3 crafting).", "Default: false" })
-        public boolean hardPrimitiveParts = false;
     }
 
     public static class AE2Integration {
@@ -109,5 +125,12 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Change LED for Project:RED recipes to GT recipe standards.", "Default: false" })
         public boolean hardLedRecipes = false;
+    }
+
+    public static class TCIntegration {
+
+        @Config.Comment({ "Change Thaumcraft recipes to GT recipe standards.",
+                "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
+        public boolean hardToolRecipes = false;
     }
 }

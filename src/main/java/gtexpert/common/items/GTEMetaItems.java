@@ -9,15 +9,15 @@ public final class GTEMetaItems {
 
     public static MetaItem<?>.MetaValueItem GTE_ME_FAKE_COMPONENT;
     public static MetaItem<?>.MetaValueItem MATRIX_CORE;
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_MOTOR;
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_PUMP;
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_CONVEYOR;
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_PISTON;
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_ROBOT_ARM;
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_FLUID_REGULATOR;
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_FIELD_GENERATOR;
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_EMITTER;
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_SENSOR;
+    public static MetaItem<?>.MetaValueItem GTE_ELECTRIC_MOTOR;
+    public static MetaItem<?>.MetaValueItem GTE_ELECTRIC_PUMP;
+    public static MetaItem<?>.MetaValueItem GTE_CONVEYOR_MODULE;
+    public static MetaItem<?>.MetaValueItem GTE_ELECTRIC_PISTON;
+    public static MetaItem<?>.MetaValueItem GTE_ROBOT_ARM;
+    public static MetaItem<?>.MetaValueItem GTE_FLUID_REGULATOR;
+    public static MetaItem<?>.MetaValueItem GTE_FIELD_GENERATOR;
+    public static MetaItem<?>.MetaValueItem GTE_EMITTER;
+    public static MetaItem<?>.MetaValueItem GTE_SENSOR;
 
     public static final MetaItem<?>.MetaValueItem[] GTE_SHAPE_MOLDS = new MetaItem.MetaValueItem[4];
     public static MetaItem<?>.MetaValueItem SHAPE_MOLD_PRINTED_SILICON;

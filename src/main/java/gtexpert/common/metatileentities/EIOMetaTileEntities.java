@@ -10,7 +10,7 @@ import gregtech.api.util.GTUtility;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.client.GTETextures;
-import gtexpert.common.metatileentities.single.MetaTileEntityElectricSpawner;
+import gtexpert.common.metatileentities.single.electric.MetaTileEntityElectricSpawner;
 
 public class EIOMetaTileEntities {
 
