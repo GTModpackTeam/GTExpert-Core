@@ -19,7 +19,6 @@ public class RecipeManager implements IGTERecipeManager {
 
     private Map<String, IGTERecipeContainer> containers = new LinkedHashMap<>();
     private final Map<ResourceLocation, IGTERecipe> sortedModules = new LinkedHashMap<>();
-    private final Set<IGTERecipe> loadedRecipes = new LinkedHashSet<>();
     private final Map<EventPriority, List<IGTERecipe>> recipePriorities = new LinkedHashMap<>();
 
     private boolean canRegisterContainer = true;
@@ -111,7 +110,6 @@ public class RecipeManager implements IGTERecipeManager {
         Locale locale = Locale.getDefault();
         Locale.setDefault(Locale.ENGLISH);
         Set<ResourceLocation> toLoad = new LinkedHashSet<>();
-        Set<IGTERecipe> modulesToLoad = new LinkedHashSet<>();
         for (IGTERecipeContainer container : containers.values()) {
             String containerID = container.getID();
             logger.info("Putting recipe modules of container " + containerID);
@@ -127,61 +125,25 @@ public class RecipeManager implements IGTERecipeManager {
                 logger.info(module.getClass().getName() + " was added to toLoad");
                 GTERecipe annotation = module.getClass().getAnnotation(GTERecipe.class);
                 toLoad.add(new ResourceLocation(containerID, annotation.moduleID()));
-                modulesToLoad.add(module);
-            }
-        }
-
-        // Check any module dependencies
-        Iterator<IGTERecipe> iterator;
-        boolean changed;
-        do {
-            changed = false;
-            iterator = modulesToLoad.iterator();
-            while (iterator.hasNext()) {
-                IGTERecipe module = iterator.next();
-
-                // Check module dependencies
-                Set<ResourceLocation> dependencies = module.getDependencyUids();
-                if (!toLoad.containsAll(dependencies)) {
-                    iterator.remove();
-                    changed = true;
-                    GTERecipe annotation = module.getClass().getAnnotation(GTERecipe.class);
-                    String moduleID = annotation.moduleID();
+                if (toLoad.containsAll(module.getDependencyUids())) {
+                    GTERecipe moduleAnnotation = module.getClass().getAnnotation(GTERecipe.class);
+                    String moduleID = moduleAnnotation.moduleID();
                     toLoad.remove(new ResourceLocation(moduleID));
-                    logger.info("Module {} is missing at least one of module dependencies: {}, skipping loading...",
-                            moduleID, dependencies);
+                    logger.info("Recipe Module {} is missing at least one of module dependencies: {}, skipping loading...",
+                            moduleID, module.getDependencyUids());
+                } else {
+                    logger.info(module.getClass().getName() + " passed dependency check.");
                 }
-            }
-        } while (changed);
-
-        // Sort modules by their module dependencies
-        do {
-            changed = false;
-            iterator = modulesToLoad.iterator();
-            while (iterator.hasNext()) {
-                IGTERecipe module = iterator.next();
                 if (sortedModules.keySet().containsAll(module.getDependencyUids())) {
-                    iterator.remove();
-                    GTERecipe annotation = module.getClass().getAnnotation(GTERecipe.class);
-                    sortedModules.put(new ResourceLocation(annotation.containerID(), annotation.moduleID()), module);
-                    changed = true;
-                    break;
+                    GTERecipe Annotation = module.getClass().getAnnotation(GTERecipe.class);
+                    sortedModules.put(new ResourceLocation(Annotation.containerID(), Annotation.moduleID()), module);
+                    List<IGTERecipe> recipes = recipePriorities.getOrDefault(Annotation.priority(), new ArrayList<>());
+                    recipes.add(module);
+                    recipePriorities.put(Annotation.priority(), recipes);
+                    logger.info("Recipe was put to map! priority: " + Annotation.priority() + " size: " + recipes.size());
                 }
             }
-        } while (changed);
-
-        logger.info("Putting recipe modules... size: " + loadedRecipes.size());
-        for (IGTERecipe recipe : loadedRecipes) {
-            GTERecipe annotation = recipe.getClass().getAnnotation(GTERecipe.class);
-            List<IGTERecipe> recipes = recipePriorities.get(annotation.priority());
-            if (recipes == null) recipes = new ArrayList<>();
-            recipes.add(recipe);
-            recipePriorities.put(annotation.priority(), recipes);
-            logger.info("Recipe was put to map! priority: " + annotation.priority() + " size: " + recipes.size());
         }
-
-        loadedRecipes.addAll(sortedModules.values());
-
         Locale.setDefault(locale);
     }
 

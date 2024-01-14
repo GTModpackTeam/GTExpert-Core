@@ -18,12 +18,12 @@ import gtexpert.api.util.GTEUtility;
 import gtexpert.loaders.recipe.RecipeSubModule;
 import gtexpert.recipe.GTERecipe;
 
-@GTERecipe(
-        moduleID = GTERecipeModules.AVARITIA_RECIPE,
-        containerID = GTEValues.MODID,
-        modDependencies = GTEValues.MODID_AVARITIA,
-        name = "GTExpert Avaritia Recipe",
-        priority = EventPriority.LOWEST)
+//@GTERecipe(
+//        moduleID = GTERecipeModules.AVARITIA_RECIPE,
+//        containerID = GTEValues.MODID,
+//        modDependencies = GTEValues.MODID_AVARITIA,
+//        name = "GTExpert Avaritia Recipe",
+//        priority = EventPriority.LOWEST)
 public class AvaritiaRecipeLoader extends RecipeSubModule {
 
     @Override

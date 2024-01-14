@@ -53,6 +53,7 @@ public class AERecipe extends RecipeSubModule {
         items();
         blocks();
         tools();
+        getLogger().info("AERecipe was initialized!");
     }
 
     private static void materials() {

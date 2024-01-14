@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.IGTERecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -61,7 +62,7 @@ import gtexpert.recipe.GTERecipe;
         description = "General GTExpert Recipe Module. Disabling this disables all integration modules.",
         priority = EventPriority.LOW,
         coreModule = true)
-public class GTERecipeLoader extends BaseGTERecipe {
+public class GTERecipeLoader implements IGTERecipe {
 
     public static final Logger logger = LogManager.getLogger("GTExpert Recipe Module");
 
