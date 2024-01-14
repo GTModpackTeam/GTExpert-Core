@@ -3,15 +3,13 @@ package gtexpert.loaders.recipe.ingredients;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import gtexpert.modules.GTEModules;
-import gtexpert.recipe.GTERecipe;
-import gtexpert.recipe.GTERecipeModules;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
@@ -40,16 +38,17 @@ import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTELog;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.loaders.recipe.RecipeSubModule;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
 @GTERecipe(
-        moduleID = GTERecipeModules.DRACONIC_UPGRADE_RECIPE,
-        containerID = GTEValues.MODID,
-        modDependencies = GTEValues.MODID_DE,
-        name = "GTExpert Draconic Evolution Upgrade Recipe",
-        priority = EventPriority.LOWEST)
-public class DraconicUpgradeRecipeLoader extends RecipeSubModule {
+           moduleID = GTERecipeModules.DRACONIC_UPGRADE_RECIPE,
+           containerID = GTEValues.MODID,
+           modDependencies = GTEValues.MODID_DE,
+           name = "GTExpert Draconic Evolution Upgrade Recipe",
+           priority = EventPriority.LOWEST)
+public class DraconicUpgradeGTERecipeLoader extends GTERecipeSubModule {
 
     @Override
     public void init() {
@@ -100,7 +99,7 @@ public class DraconicUpgradeRecipeLoader extends RecipeSubModule {
                 new GTRecipeItemInput(Loader.isModLoaded(GTEValues.MODID_EIO) ?
                         GTEUtility.getModItem(GTEValues.MODID_EIO, "item_dark_steel_bow") :
                         GTEUtility.getModItem(GTEValues.MODID_VANILLA, "bow"))
-                        .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
+                                .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 new ItemStack(DEFeatures.wyvernBow),
                 Tier.WYVERN, 2);
 
@@ -299,7 +298,7 @@ public class DraconicUpgradeRecipeLoader extends RecipeSubModule {
     }
 
     private static void upgrade() {
-        ItemStack[] upgradableItems = new ItemStack[]{
+        ItemStack[] upgradableItems = new ItemStack[] {
                 new ItemStack(DEFeatures.draconiumCapacitor),
                 new ItemStack(DEFeatures.draconiumCapacitor, 1, 1),
                 new ItemStack(DEFeatures.wyvernAxe),

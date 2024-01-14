@@ -10,10 +10,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+import gregtech.loaders.recipe.RecyclingRecipes;
+
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.modules.IGTEModule;
 import gtexpert.common.CommonProxy;
+import gtexpert.common.items.GTEMetaItems;
+import gtexpert.common.metatileentities.MetaTileEntitiesManager;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
@@ -45,6 +49,9 @@ public class GTECoreModule implements IGTEModule {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+
+        GTEMetaItems.init();
+        MetaTileEntitiesManager.init();
     }
 
     @Override
@@ -55,5 +62,7 @@ public class GTECoreModule implements IGTEModule {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
+
+        RecyclingRecipes.init();
     }
 }

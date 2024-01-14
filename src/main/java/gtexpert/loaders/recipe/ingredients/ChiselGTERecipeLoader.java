@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import gtexpert.recipe.GTERecipeModules;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -35,16 +34,17 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.chisel.ChiselHelper;
-import gtexpert.loaders.recipe.RecipeSubModule;
 import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
 @GTERecipe(
-        moduleID = GTERecipeModules.CHISEL_RECIPE,
-        containerID = GTEValues.MODID,
-        modDependencies = GTEValues.MODID_CHISEL,
-        name = "GTExpert Chisel Recipe",
-        priority = EventPriority.LOWEST)
-public class ChiselRecipeLoader extends RecipeSubModule {
+           moduleID = GTERecipeModules.CHISEL_RECIPE,
+           containerID = GTEValues.MODID,
+           modDependencies = GTEValues.MODID_CHISEL,
+           name = "GTExpert Chisel Recipe",
+           priority = EventPriority.LOWEST)
+public class ChiselGTERecipeLoader extends GTERecipeSubModule {
 
     @Override
     public void init() {
@@ -61,7 +61,7 @@ public class ChiselRecipeLoader extends RecipeSubModule {
         // Bookshelf
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack(Blocks.PLANKS, 6, 0),
                 new ItemStack(Items.BOOK, 3));
-        String[] bookshelf = new String[]{"oak", "spruce", "birch", "jungle", "acacia", "darkoak"};
+        String[] bookshelf = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "darkoak" };
         for (int i = 0; i < bookshelf.length; i++) {
             ChiselHelper.addGroup("bookshelf" + bookshelf[i].toUpperCase());
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -80,8 +80,8 @@ public class ChiselRecipeLoader extends RecipeSubModule {
                     "uncraft_blockiron", "uncraft_blockaluminium", "uncraft_blockcobalt", "uncraft_blocknickel",
                     "uncraft_blockelectrum", "uncraft_blockuranium", "uncraft_blockcopper", "uncraft_blockbronze",
                     "uncraft_blockinvar", "uncraft_blockgold").forEach(
-                    block -> ModHandler
-                            .removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, block)));
+                            block -> ModHandler
+                                    .removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, block)));
         }
 
         // Glass Panes
@@ -92,8 +92,8 @@ public class ChiselRecipeLoader extends RecipeSubModule {
                     "glass/terrain-glass-steelframe", "glass/terrain-glassstone", "glass/terrain-glassstreak",
                     "glass/terrain-glass-thickgrid", "glass/a1-glasswindow-ironfencemodern", "glass/chrono",
                     "glass/chinese2", "glass/japanese2").forEach(
-                    block -> ModHandler
-                            .removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, block)));
+                            block -> ModHandler
+                                    .removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, block)));
         }
 
         // Auto Chisel
@@ -165,7 +165,7 @@ public class ChiselRecipeLoader extends RecipeSubModule {
         Arrays.asList("blockAluminium", "blockBronze", "blockCharcoal", "blockCoal", "blockFuelCoke", "blockCobalt",
                 "blockCopper", "blockDiamond", "blockElectrum", "blockEmerald", "blockGold", "blockInvar", "blockIron",
                 "blockLapis", "blockLead", "blockNickel", "blockPlatinum", "blockSilver", "blockSteel", "blockTin",
-                "blockUranium").forEach(ChiselRecipeLoader::registerAutoChiselRecipe);
+                "blockUranium").forEach(ChiselGTERecipeLoader::registerAutoChiselRecipe);
 
         // Andesite
         registerAutoChiselRecipe("stoneAndesite");

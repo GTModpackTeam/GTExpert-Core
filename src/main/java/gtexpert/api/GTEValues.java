@@ -30,7 +30,8 @@ public class GTEValues {
             MODID_CHISEL = "chisel",
             MODID_AVARITIA = "avaritia",
             MODID_AVAADDON = "avaritiaddons",
-            MODID_FFM = "forestry";
+            MODID_FFM = "forestry",
+            MODID_JEI = "jei";
 
     public static int ae2VoltageTier = voltageTier(ae2Integration.voltageTier) ? ae2Integration.voltageTier : 3,
             eioVoltageTier = voltageTier(eioIntegration.voltageTier) ? eioIntegration.voltageTier : 3,

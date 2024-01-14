@@ -8,7 +8,6 @@ import static gtexpert.integration.ae.AEHelper.*;
 import java.util.*;
 import java.util.stream.IntStream;
 
-import gtexpert.recipe.GTERecipeModules;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -33,8 +32,9 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.loaders.recipe.RecipeSubModule;
 import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
 import appeng.api.util.AEColor;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
@@ -45,7 +45,7 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
            modDependencies = GTEValues.MODID_AE,
            name = "GTExpert AE Recipe",
            priority = EventPriority.LOWEST)
-public class AERecipe extends RecipeSubModule {
+public class AEGTERecipe extends GTERecipeSubModule {
 
     @Override
     public void init() {

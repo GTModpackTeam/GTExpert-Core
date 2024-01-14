@@ -3,22 +3,23 @@ package gtexpert.loaders.recipe.ingredients;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.material.Materials;
-import gtexpert.api.GTEValues;
-import gtexpert.loaders.recipe.RecipeSubModule;
-import gtexpert.recipe.GTERecipe;
-import gtexpert.recipe.GTERecipeModules;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.unification.material.Materials;
+
+import gtexpert.api.GTEValues;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
+
 @GTERecipe(
-        moduleID = GTERecipeModules.GTFO_RECIPE,
-        containerID = GTEValues.MODID,
-        modDependencies = GTEValues.MODID_GTFO,
-        name = "GTExpert GTFO Recipe",
-        priority = EventPriority.LOWEST
-)
-public class GTFORecipeLoader extends RecipeSubModule {
+           moduleID = GTERecipeModules.GTFO_RECIPE,
+           containerID = GTEValues.MODID,
+           modDependencies = GTEValues.MODID_GTFO,
+           name = "GTExpert GTFO Recipe",
+           priority = EventPriority.LOWEST)
+public class GTFOGTERecipeLoader extends GTERecipeSubModule {
 
     @Override
     public void init() {

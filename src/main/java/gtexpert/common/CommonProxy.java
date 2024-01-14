@@ -5,7 +5,6 @@ import static gtexpert.common.blocks.GTEMetaBlocks.*;
 
 import java.util.function.Function;
 
-import gtexpert.recipe.GTERecipeModules;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -33,7 +32,7 @@ import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.*;
 import gtexpert.loaders.*;
 import gtexpert.loaders.recipe.*;
-import gtexpert.modules.GTEModules;
+import gtexpert.recipe.GTERecipeModules;
 import gtexpert.recipe.RecipeManager;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
@@ -104,11 +103,9 @@ public class CommonProxy {
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GTELog.logger.info("Registering ore dictionary...");
-        GTEOreDictionaryLoader.init();
         GTEMaterialInfoLoader.init();
 
         GTELog.logger.info("Registering Recipes...");
-        GTERecipeManager.load();
 
         recipeManager.loadNormal();
     }
@@ -116,7 +113,6 @@ public class CommonProxy {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
         GTELog.logger.info("Registering Recipes...");
-        GTERecipeManager.loadLow();
 
         recipeManager.loadLow();
     }
@@ -124,7 +120,6 @@ public class CommonProxy {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
         GTELog.logger.info("Registering Recipes...");
-        GTERecipeManager.loadLowest();
 
         recipeManager.loadLowest();
     }

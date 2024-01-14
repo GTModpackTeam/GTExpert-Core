@@ -8,7 +8,6 @@ import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 import gtexpert.api.util.GTEUtility;
-import gtexpert.modules.GTEModules;
 
 public abstract class BaseGTERecipe implements IGTERecipe {
 

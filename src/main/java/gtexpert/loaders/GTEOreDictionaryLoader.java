@@ -17,10 +17,18 @@ import gregtech.api.unification.ore.OrePrefix;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
-public class GTEOreDictionaryLoader {
+@GTERecipe(
+           moduleID = GTERecipeModules.GTE_ORE_DICTIONARY,
+           containerID = GTEValues.MODID,
+           name = "GTExpert Ore Dictionary")
+public class GTEOreDictionaryLoader extends GTERecipeSubModule {
 
-    public static void init() {
+    @Override
+    public void init() {
         OreDictionary.registerOre("bookshelf", new ItemStack(Blocks.BOOKSHELF));
 
         if (Loader.isModLoaded(GTEValues.MODID_FFM)) {

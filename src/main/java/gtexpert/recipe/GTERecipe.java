@@ -5,10 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import gtexpert.api.GTEValues;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
-
-import gtexpert.modules.GTEModules;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

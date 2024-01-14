@@ -1,17 +1,17 @@
 package gtexpert.recipe;
 
-import com.google.common.base.Preconditions;
-import gtexpert.api.modules.GTEModule;
-import gtexpert.api.modules.IGTEModule;
+import java.util.*;
+import java.util.stream.Collectors;
+
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import com.google.common.base.Preconditions;
 
 public class RecipeManager implements IGTERecipeManager {
 
@@ -25,8 +25,7 @@ public class RecipeManager implements IGTERecipeManager {
 
     private final Logger logger = LogManager.getLogger("GTExpert Recipe Loader");
 
-    private RecipeManager() {
-    }
+    private RecipeManager() {}
 
     public static RecipeManager getInstance() {
         return INSTANCE;
@@ -64,7 +63,7 @@ public class RecipeManager implements IGTERecipeManager {
         logger.debug("Size of modules: " + modules.size());
         for (String key : modules.keySet()) {
             logger.debug("Key: " + key);
-            for(IGTERecipe recipe: modules.get(key)) {
+            for (IGTERecipe recipe : modules.get(key)) {
                 logger.debug("- Name: " + recipe.getClass().getName());
             }
         }
@@ -114,12 +113,13 @@ public class RecipeManager implements IGTERecipeManager {
             String containerID = container.getID();
             logger.debug("Putting recipe modules of container " + containerID);
             List<IGTERecipe> containerModules = modules.get(containerID);
-            IGTERecipe coreModule = getCoreRecipeModule(containerModules);
-            if (coreModule == null) {
-                throw new IllegalStateException("Could not find core module for recipe module container " + containerID);
+            Optional<IGTERecipe> coreModule = getCoreRecipeModule(containerModules);
+            if (coreModule.isPresent()) {
+                containerModules.remove(coreModule.get());
+                containerModules.add(0, coreModule.get());
             } else {
-                containerModules.remove(coreModule);
-                containerModules.add(0, coreModule);
+                throw new IllegalStateException(
+                        "Could not find core module for recipe module container " + containerID);
             }
             for (IGTERecipe module : containerModules) {
                 logger.debug(module.getClass().getName() + " was added to toLoad");
@@ -129,7 +129,8 @@ public class RecipeManager implements IGTERecipeManager {
                     GTERecipe moduleAnnotation = module.getClass().getAnnotation(GTERecipe.class);
                     String moduleID = moduleAnnotation.moduleID();
                     toLoad.remove(new ResourceLocation(moduleID));
-                    logger.debug("Recipe Module {} is missing at least one of module dependencies: {}, skipping loading...",
+                    logger.debug(
+                            "Recipe Module {} is missing at least one of module dependencies: {}, skipping loading...",
                             moduleID, module.getDependencyUids());
                 } else {
                     logger.debug(module.getClass().getName() + " passed dependency check.");
@@ -140,7 +141,8 @@ public class RecipeManager implements IGTERecipeManager {
                     List<IGTERecipe> recipes = recipePriorities.getOrDefault(Annotation.priority(), new ArrayList<>());
                     recipes.add(module);
                     recipePriorities.put(Annotation.priority(), recipes);
-                    logger.debug("Recipe was put to map! priority: " + Annotation.priority() + " size: " + recipes.size());
+                    logger.debug(
+                            "Recipe was put to map! priority: " + Annotation.priority() + " size: " + recipes.size());
                 }
             }
         }
@@ -195,13 +197,13 @@ public class RecipeManager implements IGTERecipeManager {
         }).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private static IGTERecipe getCoreRecipeModule(List<IGTERecipe> modules) {
+    private static Optional<IGTERecipe> getCoreRecipeModule(List<IGTERecipe> modules) {
         for (IGTERecipe module : modules) {
             GTERecipe annotation = module.getClass().getAnnotation(GTERecipe.class);
             if (annotation.coreModule()) {
-                return module;
+                return Optional.of(module);
             }
         }
-        return null;
+        return Optional.empty();
     }
 }

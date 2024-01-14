@@ -7,8 +7,6 @@ import static gtexpert.common.GTEConfigHolder.ceuOverride;
 import java.util.LinkedList;
 import java.util.List;
 
-import gtexpert.recipe.GTERecipeModules;
-import gtexpert.recipe.IGTERecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -52,16 +50,17 @@ import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
-import gtexpert.recipe.BaseGTERecipe;
 import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.IGTERecipe;
 
 @GTERecipe(
-        moduleID = GTERecipeModules.MODULE_CORE,
-        containerID = GTEValues.MODID,
-        name = "GTExpert Core Recipe",
-        description = "General GTExpert Recipe Module. Disabling this disables all integration modules.",
-        priority = EventPriority.LOW,
-        coreModule = true)
+           moduleID = GTERecipeModules.MODULE_CORE,
+           containerID = GTEValues.MODID,
+           name = "GTExpert Core Recipe",
+           description = "General GTExpert Recipe Module. Disabling this disables all integration modules.",
+           priority = EventPriority.LOW,
+           coreModule = true)
 public class GTERecipeLoader implements IGTERecipe {
 
     public static final Logger logger = LogManager.getLogger("GTExpert Recipe Module");
@@ -900,8 +899,8 @@ public class GTERecipeLoader implements IGTERecipe {
             builderIGTEUE.input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4);
         } else if (Loader.isModLoaded(GTEValues.MODID_AE) &&
                 !(GTEValues.isModLoadedDEDA() && Loader.isModLoaded(GTEValues.MODID_EIO))) {
-            builderIGTEUE.input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4);
-        }
+                    builderIGTEUE.input(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 4);
+                }
         builderIGTEUE.buildAndRegister();
 
         // Creative Quantum Tank

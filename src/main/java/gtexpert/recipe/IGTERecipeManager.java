@@ -1,7 +1,8 @@
 package gtexpert.recipe;
 
-import gtexpert.api.util.GTEUtility;
 import net.minecraft.util.ResourceLocation;
+
+import gtexpert.api.util.GTEUtility;
 
 public interface IGTERecipeManager {
 
