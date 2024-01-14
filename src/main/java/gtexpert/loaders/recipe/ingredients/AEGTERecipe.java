@@ -1870,19 +1870,19 @@ public class AEGTERecipe extends GTERecipeSubModule {
             ModHandler.addShapedRecipe(true, "shape_extruder_logic_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm(),
                     " x ", "S  ", "   ",
-                    'S', GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR);
+                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON);
 
             // Extruder Shape (Calculation Processor)
             ModHandler.addShapedRecipe(true, "shape_extruder_calculation_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_CALCULATION_PROCESSOR.getStackForm(),
                     " x ", " S ", "   ",
-                    'S', GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());
+                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON.getStackForm());
 
             // Extruder Shape (Engineering Processor)
             ModHandler.addShapedRecipe(true, "shape_extruder_engineering_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_ENGINEERING_PROCESSOR.getStackForm(),
                     " x ", "  S", "   ",
-                    'S', GTEMetaItems.SHAPE_EXTRUDER_LOGIC_PROCESSOR.getStackForm());
+                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON.getStackForm());
         } else {
             // Silicon Processor Press
             RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()

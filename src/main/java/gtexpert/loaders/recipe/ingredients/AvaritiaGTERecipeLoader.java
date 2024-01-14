@@ -2,7 +2,6 @@ package gtexpert.loaders.recipe.ingredients;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
