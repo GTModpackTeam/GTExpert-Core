@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.DoubleSupplier;
 
+import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -15,6 +16,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import gregtech.api.GTValues;
@@ -161,7 +163,7 @@ public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntit
         leftButtonStartX += 18;
 
         ImageWidget logo = new ImageWidget(152, 63 + yOffset, 17, 17,
-                GTValues.XMAS.get() ? GTEGuiTextures.GTE_LOGO_XMAS : GTEGuiTextures.GTE_LOGO).setIgnoreColor(true);
+                GTValues.XMAS.get() ? getXmasLogo() : getLogo()).setIgnoreColor(true);
         builder.widget(logo);
 
         builder.widget(new ToggleButtonWidget(leftButtonStartX, 62 + yOffset, 18, 18,
@@ -210,6 +212,16 @@ public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntit
         });
 
         return builder;
+    }
+
+    @Override
+    protected @NotNull TextureArea getLogo() {
+        return GTEGuiTextures.GTE_LOGO;
+    }
+
+    @Override
+    protected @NotNull TextureArea getXmasLogo() {
+        return GTEGuiTextures.GTE_LOGO_XMAS;
     }
 
     // === Copied from RecipeMap with some adjustments ===
