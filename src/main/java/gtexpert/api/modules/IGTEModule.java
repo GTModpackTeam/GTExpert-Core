@@ -4,7 +4,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.*;
 
 import org.apache.logging.log4j.Logger;
@@ -49,8 +51,18 @@ public interface IGTEModule {
 
     default void serverStopped(FMLServerStoppedEvent event) {}
 
+    default void registerRecipesHighest(RegistryEvent.Register<IRecipe> event) {}
+
+    default void registerRecipesHigh(RegistryEvent.Register<IRecipe> event) {}
+
+    default void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {}
+
+    default void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {}
+
+    default void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {}
+
     /**
-     * Register packets using GregTech's packet handling API here.
+     * Register packets using GTExpert's packet handling API here.
      */
     default void registerPackets() {}
 
