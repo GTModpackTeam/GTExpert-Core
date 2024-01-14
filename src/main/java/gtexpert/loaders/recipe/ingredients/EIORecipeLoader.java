@@ -5,6 +5,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gtexpert.common.GTEConfigHolder.eioIntegration;
 
+import gtexpert.recipe.GTERecipeModules;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -30,9 +31,8 @@ import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.metatileentities.EIOMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
-import gtexpert.modules.GTEModules;
+import gtexpert.loaders.recipe.RecipeSubModule;
 import gtexpert.recipe.GTERecipe;
-import gtexpert.recipe.IGTERecipe;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.conduits.init.ConduitObject;
@@ -41,11 +41,12 @@ import crazypants.enderio.machines.init.MachineObject;
 import crazypants.enderio.powertools.init.PowerToolObject;
 
 @GTERecipe(
-           moduleID = GTEModules.MODULE_RECIPES,
-           containerID = GTEValues.MODID_EIO,
-           name = "GTExpert EIO Recipe",
-           priority = EventPriority.LOWEST)
-public class EIORecipeLoader implements IGTERecipe {
+        moduleID = GTERecipeModules.EIO_RECIPE,
+        containerID = GTEValues.MODID,
+        modDependencies = GTEValues.MODID_EIO,
+        name = "GTExpert EIO Recipe",
+        priority = EventPriority.LOWEST)
+public class EIORecipeLoader extends RecipeSubModule {
 
     @Override
     public void init() {

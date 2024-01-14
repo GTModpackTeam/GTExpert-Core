@@ -223,7 +223,7 @@ public class ModuleManager implements IModuleManager {
         Configuration config = getConfiguration();
         config.load();
         config.addCustomCategoryComment(MODULE_CFG_CATEGORY_NAME,
-                "Module configuration file. Can individually enable/disable modules from GregTech and its addons");
+                "Module configuration file. Can individually enable/disable modules from GTExpert and its addons");
 
         for (IModuleContainer container : containers.values()) {
             String containerID = container.getID();
@@ -235,6 +235,8 @@ public class ModuleManager implements IModuleManager {
                 containerModules.remove(coreModule);
                 containerModules.add(0, coreModule);
             }
+
+            logger.info("containterModule size: " + containerModules.size());
 
             // Remove disabled modules and gather potential modules to load
             Iterator<IGTEModule> iterator = containerModules.iterator();

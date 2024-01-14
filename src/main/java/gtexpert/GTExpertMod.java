@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.event.*;
 import gregtech.GTInternalTags;
 
 import gtexpert.api.GTEValues;
+import gtexpert.api.util.GTELog;
 import gtexpert.modules.GTEModules;
 import gtexpert.modules.ModuleManager;
 
@@ -30,10 +31,12 @@ public class GTExpertMod {
 
     @Mod.EventHandler
     public void onConstruction(FMLConstructionEvent event) {
+        GTELog.logger.info("Hello World!!!!!!!!!");
         moduleManager = ModuleManager.getInstance();
         moduleManager.registerContainer(new GTEModules());
         moduleManager.setup(event.getASMHarvestedData(), Loader.instance().getConfigDir());
         moduleManager.onConstruction(event);
+        GTELog.logger.info("finish construction!");
     }
 
     @Mod.EventHandler

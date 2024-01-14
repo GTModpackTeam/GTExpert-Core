@@ -6,6 +6,9 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
+import gtexpert.loaders.recipe.RecipeSubModule;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
 import net.minecraft.entity.EntityList;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -28,10 +31,18 @@ import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 
 import crazypants.enderio.base.init.ModObject;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
-public class EIOSoulRecipeLoader {
+@GTERecipe(
+        moduleID = GTERecipeModules.EIO_SOUL_RECIPE,
+        containerID = GTEValues.MODID,
+        modDependencies = GTEValues.MODID_EIO,
+        name = "GTExpert EIO Soul Recipe",
+        priority = EventPriority.LOWEST)
+public class EIOSoulRecipeLoader extends RecipeSubModule {
 
-    public static void init() {
+    @Override
+    public void init() {
         soulBinderRecipes();
         vialExtractorRecipes();
         recipeVillager();

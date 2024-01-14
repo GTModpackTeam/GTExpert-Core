@@ -10,8 +10,8 @@ public class GTEModules implements IModuleContainer {
     public static final String MODULE_BLOCKS = "blocks";
     public static final String MODULE_FLUIDS = "fluids";
     public static final String MODULE_RECIPES = "recipes";
-    public static final String MODULE_MATERIALS = "materials";
-    public static final String MODULE_INTEGRATION = "integration";
+    public static final String MODULE_INTEGRATION = "integration",
+            TOP_INTEGRATION = "top_integration";
 
     @Override
     public String getID() {

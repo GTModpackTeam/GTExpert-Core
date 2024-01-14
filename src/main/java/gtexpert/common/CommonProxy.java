@@ -5,6 +5,7 @@ import static gtexpert.common.blocks.GTEMetaBlocks.*;
 
 import java.util.function.Function;
 
+import gtexpert.recipe.GTERecipeModules;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -42,7 +43,7 @@ public class CommonProxy {
 
     public void onConstruction(FMLConstructionEvent event) {
         recipeManager = RecipeManager.getInstance();
-        recipeManager.registerContainer(new GTEModules());
+        recipeManager.registerContainer(new GTERecipeModules());
         recipeManager.setup(event.getASMHarvestedData());
     }
 
@@ -100,7 +101,7 @@ public class CommonProxy {
         recipeManager.loadHigh();
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GTELog.logger.info("Registering ore dictionary...");
         GTEOreDictionaryLoader.init();

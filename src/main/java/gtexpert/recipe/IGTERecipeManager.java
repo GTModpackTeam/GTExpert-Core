@@ -1,9 +1,7 @@
 package gtexpert.recipe;
 
-import net.minecraft.util.ResourceLocation;
-
-import gtexpert.api.modules.IModuleContainer;
 import gtexpert.api.util.GTEUtility;
+import net.minecraft.util.ResourceLocation;
 
 public interface IGTERecipeManager {
 
@@ -17,7 +15,7 @@ public interface IGTERecipeManager {
 
     boolean isModuleEnabled(ResourceLocation id);
 
-    void registerContainer(IModuleContainer container);
+    void registerContainer(IGTERecipeContainer container);
 
-    IModuleContainer getLoadedContainer();
+    IGTERecipeContainer getLoadedContainer();
 }

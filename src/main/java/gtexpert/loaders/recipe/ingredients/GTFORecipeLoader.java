@@ -5,10 +5,23 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
+import gtexpert.api.GTEValues;
+import gtexpert.loaders.recipe.RecipeSubModule;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
-public class GTFORecipeLoader {
+@GTERecipe(
+        moduleID = GTERecipeModules.GTFO_RECIPE,
+        containerID = GTEValues.MODID,
+        modDependencies = GTEValues.MODID_GTFO,
+        name = "GTExpert GTFO Recipe",
+        priority = EventPriority.LOWEST
+)
+public class GTFORecipeLoader extends RecipeSubModule {
 
-    public static void init() {
+    @Override
+    public void init() {
         // AmmoniumChloride * 2 & SodiumBicarbonate * 6
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .circuitMeta(2)

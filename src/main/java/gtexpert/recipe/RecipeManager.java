@@ -1,26 +1,23 @@
 package gtexpert.recipe;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
+import com.google.common.base.Preconditions;
+import gtexpert.api.modules.GTEModule;
+import gtexpert.api.modules.IGTEModule;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.google.common.base.Preconditions;
-
-import gtexpert.api.modules.IModuleContainer;
-import gtexpert.api.modules.ModuleContainer;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RecipeManager implements IGTERecipeManager {
 
     private static final RecipeManager INSTANCE = new RecipeManager();
 
-    private Map<String, IModuleContainer> containers = new LinkedHashMap<>();
+    private Map<String, IGTERecipeContainer> containers = new LinkedHashMap<>();
     private final Map<ResourceLocation, IGTERecipe> sortedModules = new LinkedHashMap<>();
     private final Set<IGTERecipe> loadedRecipes = new LinkedHashSet<>();
     private final Map<EventPriority, List<IGTERecipe>> recipePriorities = new LinkedHashMap<>();
@@ -29,7 +26,8 @@ public class RecipeManager implements IGTERecipeManager {
 
     private final Logger logger = LogManager.getLogger("GTExpert Recipe Loader");
 
-    private RecipeManager() {}
+    private RecipeManager() {
+    }
 
     public static RecipeManager getInstance() {
         return INSTANCE;
@@ -41,7 +39,7 @@ public class RecipeManager implements IGTERecipeManager {
     }
 
     @Override
-    public void registerContainer(IModuleContainer container) {
+    public void registerContainer(IGTERecipeContainer container) {
         if (!canRegisterContainer) {
             logger.error("Failed to register module container {}, as recipe loading has a already begun", container);
             return;
@@ -51,7 +49,7 @@ public class RecipeManager implements IGTERecipeManager {
     }
 
     @Override
-    public IModuleContainer getLoadedContainer() {
+    public IGTERecipeContainer getLoadedContainer() {
         return null;
     }
 
@@ -65,15 +63,22 @@ public class RecipeManager implements IGTERecipeManager {
         canRegisterContainer = false;
         Map<String, List<IGTERecipe>> modules = getModules(asmDataTable);
         logger.info("Size of modules: " + modules.size());
+        for (String key : modules.keySet()) {
+            logger.info("Key: " + key);
+            for(IGTERecipe recipe: modules.get(key)) {
+                logger.info("- Name: " + recipe.getClass().getName());
+            }
+        }
         configureModules(modules);
     }
 
     private void init(EventPriority priority) {
         List<IGTERecipe> recipes = recipePriorities.get(priority);
-        if(recipes == null) {
+        if (recipes == null) {
             logger.info("priority " + priority.name() + " has no gtexpert recipes");
             return;
         }
+        logger.info("priority " + priority.name() + " has" + recipes.size() + "recipes");
         for (IGTERecipe recipe : recipes) {
             recipe.getLogger().debug("initialize start");
             recipe.init();
@@ -102,20 +107,24 @@ public class RecipeManager implements IGTERecipeManager {
     }
 
     private void configureModules(Map<String, List<IGTERecipe>> modules) {
+        logger.info("Configuring Modules...");
         Locale locale = Locale.getDefault();
         Locale.setDefault(Locale.ENGLISH);
         Set<ResourceLocation> toLoad = new LinkedHashSet<>();
         Set<IGTERecipe> modulesToLoad = new LinkedHashSet<>();
-        for (IModuleContainer container : containers.values()) {
+        for (IGTERecipeContainer container : containers.values()) {
             String containerID = container.getID();
+            logger.info("Putting recipe modules of container " + containerID);
             List<IGTERecipe> containerModules = modules.get(containerID);
-            if(containerModules == null) {
-                logger.error("containerModules was null!");
-                continue;
+            IGTERecipe coreModule = getCoreRecipeModule(containerModules);
+            if (coreModule == null) {
+                throw new IllegalStateException("Could not find core module for recipe module container " + containerID);
+            } else {
+                containerModules.remove(coreModule);
+                containerModules.add(0, coreModule);
             }
-            Iterator<IGTERecipe> iterator = containerModules.iterator();
-            while (iterator.hasNext()) {
-                IGTERecipe module = iterator.next();
+            for (IGTERecipe module : containerModules) {
+                logger.info(module.getClass().getName() + " was added to toLoad");
                 GTERecipe annotation = module.getClass().getAnnotation(GTERecipe.class);
                 toLoad.add(new ResourceLocation(containerID, annotation.moduleID()));
                 modulesToLoad.add(module);
@@ -161,24 +170,27 @@ public class RecipeManager implements IGTERecipeManager {
             }
         } while (changed);
 
-        loadedRecipes.addAll(sortedModules.values());
-
+        logger.info("Putting recipe modules... size: " + loadedRecipes.size());
         for (IGTERecipe recipe : loadedRecipes) {
             GTERecipe annotation = recipe.getClass().getAnnotation(GTERecipe.class);
-            List<IGTERecipe> recipes = recipePriorities.getOrDefault(annotation.priority(), new ArrayList<>());
+            List<IGTERecipe> recipes = recipePriorities.get(annotation.priority());
+            if (recipes == null) recipes = new ArrayList<>();
             recipes.add(recipe);
             recipePriorities.put(annotation.priority(), recipes);
+            logger.info("Recipe was put to map! priority: " + annotation.priority() + " size: " + recipes.size());
         }
+
+        loadedRecipes.addAll(sortedModules.values());
 
         Locale.setDefault(locale);
     }
 
     private void discoverContainers(ASMDataTable table) {
-        Set<ASMDataTable.ASMData> dataSet = table.getAll(ModuleContainer.class.getCanonicalName());
+        Set<ASMDataTable.ASMData> dataSet = table.getAll(GTERecipeContainer.class.getCanonicalName());
         for (ASMDataTable.ASMData data : dataSet) {
             try {
                 Class<?> clazz = Class.forName(data.getClassName());
-                registerContainer((IModuleContainer) clazz.newInstance());
+                registerContainer((IGTERecipeContainer) clazz.newInstance());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                 logger.error("Could not initialize module container " + data.getClassName(), e);
             }
@@ -219,5 +231,15 @@ public class RecipeManager implements IGTERecipeManager {
             GTERecipe m2a = m2.getClass().getAnnotation(GTERecipe.class);
             return (m1a.containerID() + ":" + m1a.moduleID()).compareTo(m2a.containerID() + ":" + m2a.moduleID());
         }).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    private static IGTERecipe getCoreRecipeModule(List<IGTERecipe> modules) {
+        for (IGTERecipe module : modules) {
+            GTERecipe annotation = module.getClass().getAnnotation(GTERecipe.class);
+            if (annotation.coreModule()) {
+                return module;
+            }
+        }
+        return null;
     }
 }
