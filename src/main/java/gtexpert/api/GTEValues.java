@@ -14,6 +14,7 @@ public class GTEValues {
             MODID_GCYM = "gcym",
             MODID_GCYS = "gcys",
             MODID_GTFO = "gregtechfoodoption",
+            MODID_JEI = "jei",
             MODID_TOP = "theoneprobe",
             MODID_FFM = "forestry",
             MODID_ECO = "endercore",

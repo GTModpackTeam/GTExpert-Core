@@ -11,7 +11,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.GTValues;
@@ -47,10 +50,29 @@ import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.IGTERecipe;
 
-public class GTERecipeLoader {
+@GTERecipe(
+           moduleID = GTERecipeModules.MODULE_CORE,
+           containerID = GTEValues.MODID,
+           name = "GTExpert Core Recipe",
+           description = "General GTExpert Recipe Module. Disabling this disables all integration modules.",
+           priority = EventPriority.LOW,
+           coreModule = true)
+public class GTERecipeLoader implements IGTERecipe {
 
-    public static void init() {
+    public static final Logger logger = LogManager.getLogger("GTExpert Recipe Module");
+
+    @NotNull
+    @Override
+    public Logger getLogger() {
+        return logger;
+    }
+
+    @Override
+    public void init() {
         materials();
         items();
         blocks();

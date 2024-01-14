@@ -9,6 +9,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.oredict.OreDictionary;
 
 import gregtech.api.recipes.ModHandler;
@@ -29,6 +30,9 @@ import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.metatileentities.EIOMetaTileEntities;
 import gtexpert.integration.gt.GTHelper;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.conduits.init.ConduitObject;
@@ -36,9 +40,16 @@ import crazypants.enderio.endergy.init.EndergyObject;
 import crazypants.enderio.machines.init.MachineObject;
 import crazypants.enderio.powertools.init.PowerToolObject;
 
-public class EIORecipeLoader {
+@GTERecipe(
+           moduleID = GTERecipeModules.EIO_RECIPE,
+           containerID = GTEValues.MODID,
+           modDependencies = GTEValues.MODID_EIO,
+           name = "GTExpert EIO Recipe",
+           priority = EventPriority.LOWEST)
+public class EIOGTERecipeLoader extends GTERecipeSubModule {
 
-    public static void init() {
+    @Override
+    public void init() {
         // craftNutrientDistillation
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.PORKCHOP));
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.BEEF));

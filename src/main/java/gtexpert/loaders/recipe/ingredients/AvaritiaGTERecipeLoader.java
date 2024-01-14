@@ -13,10 +13,18 @@ import gregtech.common.items.MetaItems;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.recipe.GTERecipeSubModule;
 
-public class AvaritiaRecipeLoader {
+// @GTERecipe(
+// moduleID = GTERecipeModules.AVARITIA_RECIPE,
+// containerID = GTEValues.MODID,
+// modDependencies = GTEValues.MODID_AVARITIA,
+// name = "GTExpert Avaritia Recipe",
+// priority = EventPriority.LOWEST)
+public class AvaritiaGTERecipeLoader extends GTERecipeSubModule {
 
-    public static void init() {
+    @Override
+    public void init() {
         materials();
     }
 
