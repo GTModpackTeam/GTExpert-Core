@@ -16,7 +16,6 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.modules.IGTEModule;
 import gtexpert.common.CommonProxy;
-import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.MetaTileEntitiesManager;
 import gtexpert.modules.GTEModules;
 

@@ -1,16 +1,18 @@
 package gtexpert.integration.jei;
 
+import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.AWAKENED_DRACONIUM_FUSION;
+import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.DRACONIUM_FUSION;
+
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.GTValues;
+
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
-import gtexpert.integration.IntegrationModule;
+
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
-import org.jetbrains.annotations.NotNull;
-
-import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.AWAKENED_DRACONIUM_FUSION;
-import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.DRACONIUM_FUSION;
 
 @JEIPlugin
 public class GTEJeiDEDAModule implements IModPlugin {
