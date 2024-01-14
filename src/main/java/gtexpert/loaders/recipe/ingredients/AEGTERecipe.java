@@ -43,11 +43,13 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
            moduleID = GTERecipeModules.AE_RECIPE,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_AE,
-           name = "GTExpert AE Recipe",
+           name = "GTExpert Applied Energistics 2 Recipe",
            priority = EventPriority.LOWEST)
+
 public class AEGTERecipe extends GTERecipeSubModule {
 
     @Override
+
     public void init() {
         materials();
         items();

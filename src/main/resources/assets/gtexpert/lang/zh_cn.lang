@@ -89,6 +89,8 @@ gregtech.material.vivid_alloy=生动合金
 gregtech.material.fluix=福鲁伊克斯
 gregtech.material.fluix_alloy=福鲁伊克斯合金
 gregtech.material.charged_certus_quartz=充能赛特斯石英
+gregtech.material.thaumium=神秘
+gregtech.material.void_metal=虚空金属
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME存储组件

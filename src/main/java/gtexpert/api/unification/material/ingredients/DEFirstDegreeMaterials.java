@@ -48,6 +48,7 @@ public class DEFirstDegreeMaterials {
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(Iridium, 1, EnderEye, 1, SaltWater, 1,
                         Loader.isModLoaded(GTEValues.MODID_EIO) ? EndSteel : Endstone, 1)
+                .element(Dr)
                 .build();
 
         // Draconium
@@ -95,6 +96,7 @@ public class DEFirstDegreeMaterials {
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(AwakenedDraconium, 8, Pyrotheum, 8, Dragon, 8)
+                .element(Dr1)
                 .build();
     }
 }

@@ -44,6 +44,7 @@ import gtexpert.recipe.GTERecipeSubModule;
            modDependencies = GTEValues.MODID_CHISEL,
            name = "GTExpert Chisel Recipe",
            priority = EventPriority.LOWEST)
+
 public class ChiselGTERecipeLoader extends GTERecipeSubModule {
 
     @Override

@@ -44,8 +44,9 @@ import crazypants.enderio.powertools.init.PowerToolObject;
            moduleID = GTERecipeModules.EIO_RECIPE,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_EIO,
-           name = "GTExpert EIO Recipe",
+           name = "GTExpert EnderIO Recipe",
            priority = EventPriority.LOWEST)
+
 public class EIOGTERecipeLoader extends GTERecipeSubModule {
 
     @Override
