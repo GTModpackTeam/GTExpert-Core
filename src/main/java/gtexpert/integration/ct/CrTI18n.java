@@ -1,27 +1,27 @@
 package gtexpert.integration.ct;
 
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@ZenRegister
 @ZenClass("mods.gtexpert.I18n")
+@ZenRegister
 public class CrTI18n {
 
     @ZenMethod
     public static boolean hasKey(String key) {
-        return I18n.canTranslate(key);
+        return I18n.hasKey(key);
     }
 
     @ZenMethod
     public static String format(String format, Object... args) {
-        return I18n.translateToLocalFormatted(format, args);
+        return I18n.format(format, args);
     }
 
     @ZenMethod
     public static String format(String format) {
-        return I18n.translateToLocal(format);
+        return I18n.format(format);
     }
 }

@@ -159,6 +159,8 @@ gregtech.material.vivid_alloy=Vivid Alloy
 gregtech.material.fluix=Fluix
 gregtech.material.fluix_alloy=Fluix Alloy
 gregtech.material.charged_certus_quartz=Charged Certus Quartz
+gregtech.material.thaumium=Thaumium
+gregtech.material.void_metal=Void Metal
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME fake component

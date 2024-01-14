@@ -1,7 +1,13 @@
 package gtexpert.integration.gt;
 
+import net.minecraft.item.ItemStack;
+
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.stack.ItemMaterialInfo;
+import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.MetaItems;
 
 import gtexpert.common.items.GTEMetaItems;
@@ -228,5 +234,17 @@ public class GTHelper {
             case 13 -> "circuitOpv";
             default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
         };
+    }
+
+    public static void registerOre(ItemStack itemStack, Material material, long amount) {
+        registerOre(itemStack, new MaterialStack(material, amount));
+    }
+
+    public static void registerOre(ItemStack itemStack, MaterialStack... materialStacks) {
+        registerOre(itemStack, new ItemMaterialInfo(materialStacks));
+    }
+
+    public static void registerOre(ItemStack itemStack, ItemMaterialInfo materialInfo) {
+        OreDictUnifier.registerOre(itemStack, materialInfo);
     }
 }

@@ -31,6 +31,10 @@ public class GTEConfigHolder {
     @Config.RequiresMcRestart
     public static final ChiselIntegration chiselIntegration = new ChiselIntegration();
 
+    @Config.Name("Thaumcraft Integration")
+    @Config.RequiresMcRestart
+    public static final TCIntegration tcIntegration = new TCIntegration();
+
     public static class ModpackFlag {
 
         @Config.Comment({ "Activate changes in the replacement schedule.", "Default: false" })
@@ -121,5 +125,12 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Change LED for Project:RED recipes to GT recipe standards.", "Default: false" })
         public boolean hardLedRecipes = false;
+    }
+
+    public static class TCIntegration {
+
+        @Config.Comment({ "Change Thaumcraft recipes to GT recipe standards.",
+                "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
+        public boolean hardToolRecipes = false;
     }
 }

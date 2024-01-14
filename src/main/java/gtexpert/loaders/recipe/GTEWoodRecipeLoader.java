@@ -4,8 +4,7 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.common.GTEConfigHolder.ceuOverride;
 
-import java.util.Collections;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -13,7 +12,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -30,10 +29,19 @@ import gregtech.common.blocks.wood.BlockGregPlanks;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.recipe.GTERecipe;
+import gtexpert.recipe.GTERecipeModules;
+import gtexpert.recipe.GTERecipeSubModule;
 
-public class GTEWoodRecipeLoader {
+@GTERecipe(
+           moduleID = GTERecipeModules.GTE_WOOD_RECIPE,
+           containerID = GTEValues.MODID,
+           name = "GTExpert Wood Recipe",
+           priority = EventPriority.LOWEST)
+public class GTEWoodRecipeLoader extends GTERecipeSubModule {
 
-    public static void init() {
+    @Override
+    public void init() {
         sticks();
         planks();
     }
@@ -69,10 +77,9 @@ public class GTEWoodRecipeLoader {
     }
 
     private static void planks() {
-        List<ItemStack> allWoodLogs = new LinkedList<>();
-        for (ItemStack stack : OreDictionary.getOres("logWood")) {
-            allWoodLogs.addAll(stack.getItemDamage() != 32767 ? Collections.singleton(stack) :
-                    GTUtility.getAllSubItems(stack.getItem()));
+        List<ItemStack> allWoodLogs = new ArrayList<>();
+        for (ItemStack stack : OreDictUnifier.getAllWithOreDictionaryName("logWood")) {
+            allWoodLogs.addAll(GTUtility.getAllSubItems(stack.getItem()));
         }
         IntStream.range(0, allWoodLogs.size()).forEach(i -> {
             Pair<IRecipe, ItemStack> outputPair = ModHandler.getRecipeOutput(null, allWoodLogs.get(i));

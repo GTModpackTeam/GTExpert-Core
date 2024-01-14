@@ -158,6 +158,8 @@ gregtech.material.vivid_alloy=ビビッド合金
 gregtech.material.fluix=フルーシュ
 gregtech.material.fluix_alloy=フルーシュ合金
 gregtech.material.charged_certus_quartz=チャージドケルタスクォーツ
+gregtech.material.thaumium=ソーミウム
+gregtech.material.void_metal=ボイドメタル
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert 虚構MEストレージセル素材

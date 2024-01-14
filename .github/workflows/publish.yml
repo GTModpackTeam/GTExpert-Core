@@ -47,27 +47,15 @@ jobs:
           file_pattern: gradle.properties
           tagging_message: "v${{ env.FULL_VERSION }}"
 
-      - name: Validate gradle wrapper checksum
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          cache: gradle
-          distribution: 'zulu'
-          java-version: |
-            8
-            17
-
       - name: Apply patch to settings.gradle
         run: |
           if [ -f settings.gradle.patch ]; then
             patch -p0 < settings.gradle.patch
           fi
- 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
 
+      - name: Setup Build
+        uses: ./.github/actions/build_setup
+      
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 

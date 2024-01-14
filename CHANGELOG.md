@@ -1,3 +1,22 @@
+# v1.5.15
+- Increase in recycled recipes.
+- Re: AGC recipe adjustment.
+- NBT Clearing Recipes
+    - Creative Quantum Tank
+    - Creative Quantum Chest
+    - Creative Capacitor Bank
+
+* * *
+
+# v1.5.14
+- Texture update of sawmill conveyor
+    -  Thanks to @KatatsumuriPan for his support!!
+- Fix Avaritia integration
+- Fixed a strange bug reported in [#202](https://github.com/GTModpackTeam/GTExpert-Core/issues/202)
+    - ~~Maybe they fixed it?~~
+
+* * *
+
 # v1.5.13
 - Modified mining level of Awakened Draconium Coil Block.
 - Recipe adjustment for AGC.

@@ -16,9 +16,9 @@ public class GTECoverBehaviors {
         String componentsName = gteFlag.componentsName ? "ulv" : "primitive";
         registerBehavior(gteId(componentsName + ".conveyor"), GTEMetaItems.GTE_CONVEYOR_MODULE,
                 (def, tile, side) -> new CoverConveyor(def, tile, side, GTValues.ULV, 2));
-        registerBehavior(gteId(componentsName + ".pump"), GTEMetaItems.GTE_ELECTRIC_PUMP,
-                (def, tile, side) -> new CoverPump(def, tile, side, GTValues.ULV, 320));
-        registerBehavior(gteId(componentsName + ".robot.arm"), GTEMetaItems.GTE_ROBOT_ARM,
+        registerBehavior(gteId("primitive.pump"), GTEMetaItems.PRIMITIVE_PUMP,
+                (def, tile, side) -> new CoverPump(def, tile, side, GTValues.ULV, 16));
+        registerBehavior(gteId("primitive.robot.arm"), GTEMetaItems.PRIMITIVE_ROBOT_ARM,
                 (def, tile, side) -> new CoverRoboticArm(def, tile, side, GTValues.ULV, 2));
         registerBehavior(gteId(componentsName + ".fluid.regulator"), GTEMetaItems.GTE_FLUID_REGULATOR,
                 (def, tile, side) -> new CoverFluidRegulator(def, tile, side, GTValues.ULV, 16));
