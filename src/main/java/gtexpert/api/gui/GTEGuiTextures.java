@@ -1,5 +1,6 @@
 package gtexpert.api.gui;
 
+import gregtech.api.gui.resources.SteamTexture;
 import gregtech.api.gui.resources.TextureArea;
 
 public class GTEGuiTextures {
@@ -26,4 +27,12 @@ public class GTEGuiTextures {
             .fullImage("textures/gui/overlay/soul_vial_e_overlay.png");
     public static final TextureArea SOULVIAL_FULL_OVERLAY = TextureArea
             .fullImage("textures/gui/overlay/soul_vial_f_overlay.png");
+    public static final SteamTexture PROGRESS_BAR_STEAM_MIXER_STEAM = SteamTexture
+            .fullImage("textures/gui/progress_bar/progress_bar_mixer_%s.png");
+    public static final SteamTexture PROGRESS_BAR_STEAM_ASSEMBLER_STEAM = SteamTexture
+            .fullImage("textures/gui/progress_bar/progress_bar_circuit_%s.png");
+    public static final SteamTexture PROGRESS_BAR_STEAM_CIRCUIT_ASSEMBLER_STEAM = SteamTexture
+            .fullImage("textures/gui/progress_bar/progress_bar_circuit_assembler_%s.png");
+    public static final SteamTexture PROGRESS_BAR_STEAM_SIFTER = SteamTexture
+            .fullImage("textures/gui/progress_bar/progress_bar_sift_%s.png");
 }

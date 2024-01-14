@@ -40,10 +40,10 @@ public class GTEMaterials {
      * claimed ranges below this comment. Max value is 32767.
      *
      * - Gregicality: 3000-19999
-     * - FREE RANGE 20000-20999
+     * - Gregification: 20000-20999
      * - HtmlTech: 21000-21499
-     * - GregTech Food Option: 21500-21999
-     * - PCM's Ore Addon: 22000-23599
+     * - GregTech Food Option: 21500-22499
+     * - FREE RANGE 22500-23599
      * - MechTech: 23600-23999
      * - FREE RANGE 24000-31999
      * - Reserved for CraftTweaker: 32000-32767

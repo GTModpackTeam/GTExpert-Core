@@ -16,7 +16,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem motor(int voltage) {
         return switch (voltage) {
-            case 0 -> GTEMetaItems.PRIMITIVE_MOTOR;
+            case 0 -> GTEMetaItems.GTE_ELECTRIC_MOTOR;
             case 1 -> MetaItems.ELECTRIC_MOTOR_LV;
             case 2 -> MetaItems.ELECTRIC_MOTOR_MV;
             case 3 -> MetaItems.ELECTRIC_MOTOR_HV;
@@ -36,7 +36,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem pump(int voltage) {
         return switch (voltage) {
-            case 0 -> GTEMetaItems.PRIMITIVE_PUMP;
+            case 0 -> GTEMetaItems.GTE_ELECTRIC_PUMP;
             case 1 -> MetaItems.ELECTRIC_PUMP_LV;
             case 2 -> MetaItems.ELECTRIC_PUMP_MV;
             case 3 -> MetaItems.ELECTRIC_PUMP_HV;
@@ -56,7 +56,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem regulator(int voltage) {
         return switch (voltage) {
-            case 0 -> GTEMetaItems.PRIMITIVE_FLUID_REGULATOR;
+            case 0 -> GTEMetaItems.GTE_FLUID_REGULATOR;
             case 1 -> MetaItems.FLUID_REGULATOR_LV;
             case 2 -> MetaItems.FLUID_REGULATOR_MV;
             case 3 -> MetaItems.FLUID_REGULATOR_HV;
@@ -71,7 +71,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem piston(int voltage) {
         return switch (voltage) {
-            case 0 -> GTEMetaItems.PRIMITIVE_PISTON;
+            case 0 -> GTEMetaItems.GTE_ELECTRIC_PISTON;
             case 1 -> MetaItems.ELECTRIC_PISTON_LV;
             case 2 -> MetaItems.ELECTRIC_PISTON_MV;
             case 3 -> MetaItems.ELECTRIC_PISTON_HV;
@@ -91,7 +91,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem robotArm(int voltage) {
         return switch (voltage) {
-            case 0 -> GTEMetaItems.PRIMITIVE_ROBOT_ARM;
+            case 0 -> GTEMetaItems.GTE_ROBOT_ARM;
             case 1 -> MetaItems.ROBOT_ARM_LV;
             case 2 -> MetaItems.ROBOT_ARM_MV;
             case 3 -> MetaItems.ROBOT_ARM_HV;
@@ -111,7 +111,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem fieldGenerator(int voltage) {
         return switch (voltage) {
-            case 0 -> GTEMetaItems.PRIMITIVE_FIELD_GENERATOR;
+            case 0 -> GTEMetaItems.GTE_FIELD_GENERATOR;
             case 1 -> MetaItems.FIELD_GENERATOR_LV;
             case 2 -> MetaItems.FIELD_GENERATOR_MV;
             case 3 -> MetaItems.FIELD_GENERATOR_HV;
@@ -131,7 +131,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem conveyorModule(int voltage) {
         return switch (voltage) {
-            case 0 -> GTEMetaItems.PRIMITIVE_CONVEYOR;
+            case 0 -> GTEMetaItems.GTE_CONVEYOR_MODULE;
             case 1 -> MetaItems.CONVEYOR_MODULE_LV;
             case 2 -> MetaItems.CONVEYOR_MODULE_MV;
             case 3 -> MetaItems.CONVEYOR_MODULE_HV;
@@ -151,7 +151,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem emitter(int voltage) {
         return switch (voltage) {
-            case 0 -> GTEMetaItems.PRIMITIVE_EMITTER;
+            case 0 -> GTEMetaItems.GTE_EMITTER;
             case 1 -> MetaItems.EMITTER_LV;
             case 2 -> MetaItems.EMITTER_MV;
             case 3 -> MetaItems.EMITTER_HV;
@@ -171,7 +171,7 @@ public class GTHelper {
 
     public static MetaItem<?>.MetaValueItem sensor(int voltage) {
         return switch (voltage) {
-            case 0 -> GTEMetaItems.PRIMITIVE_SENSOR;
+            case 0 -> GTEMetaItems.GTE_SENSOR;
             case 1 -> MetaItems.SENSOR_LV;
             case 2 -> MetaItems.SENSOR_MV;
             case 3 -> MetaItems.SENSOR_HV;
