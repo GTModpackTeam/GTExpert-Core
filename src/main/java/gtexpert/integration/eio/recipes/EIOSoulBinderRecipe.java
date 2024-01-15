@@ -17,7 +17,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.unification.material.Materials;
 
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.core.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.eio.EnderIOModule;
 

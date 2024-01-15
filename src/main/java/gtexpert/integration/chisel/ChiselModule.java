@@ -12,7 +12,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.core.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.chisel.recipes.ChiselBlocksRecipe;

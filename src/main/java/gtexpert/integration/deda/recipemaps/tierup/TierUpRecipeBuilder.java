@@ -1,4 +1,4 @@
-package gtexpert.api.recipes.draconic.tierup;
+package gtexpert.integration.deda.recipemaps.tierup;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;

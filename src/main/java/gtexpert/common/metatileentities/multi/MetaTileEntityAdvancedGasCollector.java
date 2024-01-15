@@ -31,7 +31,7 @@ import gregtech.core.sound.GTSoundEvents;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 
 import gtexpert.api.gui.GTEGuiTextures;
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.core.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;

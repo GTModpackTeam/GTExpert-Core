@@ -9,7 +9,7 @@ import gregtech.api.GTValues;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
-import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
+import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.modules.GTEModules;
 

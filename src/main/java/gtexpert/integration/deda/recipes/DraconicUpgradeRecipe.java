@@ -18,8 +18,8 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
-import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
+import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
+import gtexpert.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTELog;
 

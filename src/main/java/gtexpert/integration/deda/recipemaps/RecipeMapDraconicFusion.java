@@ -1,7 +1,10 @@
-package gtexpert.api.recipes.draconic;
+package gtexpert.integration.deda.recipemaps;
 
 import java.util.List;
 
+import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
+import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeProperty;
+import gtexpert.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.Constants;
@@ -25,10 +28,7 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeProperty;
-import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
-import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeProperty;
+import gtexpert.integration.deda.recipemaps.upgrade.UpgradeRecipeProperty;
 import gtexpert.api.util.GTELog;
 
 import cofh.redstoneflux.api.IEnergyContainerItem;

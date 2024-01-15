@@ -6,7 +6,7 @@ import static gtexpert.api.util.GTEUtility.gteId;
 
 import gregtech.api.util.GTUtility;
 
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.core.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.single.electric.*;
 import gtexpert.common.metatileentities.single.steam.*;

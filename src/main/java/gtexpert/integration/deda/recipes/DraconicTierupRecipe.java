@@ -25,8 +25,8 @@ import gregtech.common.items.ToolItems;
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
+import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
+import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 

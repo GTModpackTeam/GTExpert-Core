@@ -1,4 +1,4 @@
-package gtexpert.api.recipes.draconic;
+package gtexpert.integration.deda.recipemaps;
 
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
@@ -7,8 +7,8 @@ import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.core.sound.GTSoundEvents;
 
-import gtexpert.api.recipes.draconic.tierup.TierUpRecipeBuilder;
-import gtexpert.api.recipes.draconic.upgrade.UpgradeRecipeBuilder;
+import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
+import gtexpert.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
 
 import stanhebben.zenscript.annotations.ZenProperty;
 

@@ -1,4 +1,4 @@
-package gtexpert.api.recipes;
+package gtexpert.core;
 
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;

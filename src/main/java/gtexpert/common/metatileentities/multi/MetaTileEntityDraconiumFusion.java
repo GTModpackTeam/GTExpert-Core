@@ -28,7 +28,7 @@ import gregtech.core.sound.GTSoundEvents;
 
 import gtexpert.api.capability.MultiblockRecipeLogicNoCache;
 import gtexpert.api.gui.GTEGuiTextures;
-import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
+import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;

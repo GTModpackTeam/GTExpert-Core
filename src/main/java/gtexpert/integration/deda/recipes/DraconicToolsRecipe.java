@@ -23,7 +23,7 @@ import gregtech.api.unification.material.Materials;
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.draconic.GTEDraconicRecipeMaps;
+import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 
 public class DraconicToolsRecipe {

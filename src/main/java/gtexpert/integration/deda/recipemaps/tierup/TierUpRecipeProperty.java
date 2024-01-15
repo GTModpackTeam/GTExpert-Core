@@ -1,4 +1,4 @@
-package gtexpert.api.recipes.draconic.tierup;
+package gtexpert.integration.deda.recipemaps.tierup;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;

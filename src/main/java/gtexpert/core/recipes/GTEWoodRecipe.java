@@ -27,7 +27,7 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.blocks.wood.BlockGregPlanks;
 
 import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.core.GTERecipeMaps;
 
 public class GTEWoodRecipe {
 

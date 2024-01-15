@@ -1,4 +1,4 @@
-package gtexpert.api.recipes.draconic;
+package gtexpert.integration.deda.recipemaps;
 
 import org.jetbrains.annotations.NotNull;
 

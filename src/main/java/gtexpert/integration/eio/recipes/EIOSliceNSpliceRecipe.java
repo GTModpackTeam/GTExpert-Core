@@ -10,7 +10,7 @@ import net.minecraft.init.Items;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.items.MetaItems;
 
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.core.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 
 import crazypants.enderio.base.init.ModObject;
