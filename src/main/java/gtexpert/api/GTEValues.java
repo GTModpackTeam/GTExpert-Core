@@ -4,12 +4,13 @@ import static gtexpert.common.GTEConfigHolder.*;
 
 import net.minecraftforge.fml.common.Loader;
 
+import gtexpert.Tags;
 import gtexpert.api.util.GTELog;
 
 public class GTEValues {
 
-    public static final String MODNAME = "GTExpert-Core";
-    public static final String MODID = "gtexpert",
+    public static final String MODNAME = Tags.MODNAME;
+    public static final String MODID = Tags.MODID,
             MODID_VANILLA = "minecraft",
             MODID_GCYM = "gcym",
             MODID_GCYS = "gcys",
