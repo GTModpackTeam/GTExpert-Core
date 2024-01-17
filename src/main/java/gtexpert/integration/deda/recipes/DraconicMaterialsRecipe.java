@@ -2,7 +2,6 @@ package gtexpert.integration.deda.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
-import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_ROTOR;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 import java.util.LinkedList;
@@ -143,10 +142,7 @@ public class DraconicMaterialsRecipe {
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
 
-        overrideRecipes();
-    }
-
-    private static void overrideRecipes() {
+        // Extended recipes
         List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
         materials.forEach(DraconicMaterialsRecipe::vacuumFreezerExtended);
         materials.forEach(DraconicMaterialsRecipe::alloyBlastFurnaceExtended);
