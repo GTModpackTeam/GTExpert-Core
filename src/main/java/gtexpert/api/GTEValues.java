@@ -33,7 +33,8 @@ public class GTEValues {
             MODID_AVARITIA = "avaritia",
             MODID_AVAADDON = "avaritiaddons",
             MODID_TC = "thaumcraft",
-            MODID_TE = "thaumicenergistics";
+            MODID_TE = "thaumicenergistics",
+            MODID_CT = "crafttweaker";
 
     public static int ae2VoltageTier = voltageTier(ae2Integration.voltageTier) ? ae2Integration.voltageTier : 3,
             eioVoltageTier = voltageTier(eioIntegration.voltageTier) ? eioIntegration.voltageTier : 3,

@@ -26,10 +26,10 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.core.sound.GTSoundEvents;
 
 import gtexpert.api.gui.GTEGuiTextures;
-import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
+import gtexpert.core.GTERecipeMaps;
 
 public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
 

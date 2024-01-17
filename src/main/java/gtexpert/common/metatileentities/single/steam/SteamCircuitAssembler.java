@@ -24,7 +24,7 @@ import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.client.renderer.texture.Textures;
 
 import gtexpert.api.gui.GTEGuiTextures;
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.core.GTERecipeMaps;
 
 public class SteamCircuitAssembler extends SteamMetaTileEntity {
 

@@ -4,10 +4,12 @@ import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
 import net.minecraftforge.fml.common.event.*;
@@ -215,6 +217,41 @@ public class ModuleManager implements IModuleManager {
         }
     }
 
+    public void registerRecipesHighest(RegistryEvent.Register<IRecipe> event) {
+        for (IGTEModule module : loadedModules) {
+            currentContainer = containers.get(getContainerID(module));
+            module.registerRecipesHighest(event);
+        }
+    }
+
+    public void registerRecipesHigh(RegistryEvent.Register<IRecipe> event) {
+        for (IGTEModule module : loadedModules) {
+            currentContainer = containers.get(getContainerID(module));
+            module.registerRecipesHigh(event);
+        }
+    }
+
+    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
+        for (IGTEModule module : loadedModules) {
+            currentContainer = containers.get(getContainerID(module));
+            module.registerRecipesNormal(event);
+        }
+    }
+
+    public void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
+        for (IGTEModule module : loadedModules) {
+            currentContainer = containers.get(getContainerID(module));
+            module.registerRecipesLow(event);
+        }
+    }
+
+    public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        for (IGTEModule module : loadedModules) {
+            currentContainer = containers.get(getContainerID(module));
+            module.registerRecipesLowest(event);
+        }
+    }
+
     private void configureModules(Map<String, List<IGTEModule>> modules) {
         Locale locale = Locale.getDefault();
         Locale.setDefault(Locale.ENGLISH);
@@ -236,7 +273,7 @@ public class ModuleManager implements IModuleManager {
                 containerModules.add(0, coreModule);
             }
 
-            logger.info("containterModule size: " + containerModules.size());
+            logger.debug("containterModule size: " + containerModules.size());
 
             // Remove disabled modules and gather potential modules to load
             Iterator<IGTEModule> iterator = containerModules.iterator();
@@ -270,7 +307,7 @@ public class ModuleManager implements IModuleManager {
                     GTEModule annotation = module.getClass().getAnnotation(GTEModule.class);
                     String moduleID = annotation.moduleID();
                     toLoad.remove(new ResourceLocation(moduleID));
-                    logger.info("Module {} is missing at least one of module dependencies: {}, skipping loading...",
+                    logger.debug("Module {} is missing at least one of module dependencies: {}, skipping loading...",
                             moduleID, dependencies);
                 }
             }
@@ -340,7 +377,7 @@ public class ModuleManager implements IModuleManager {
                     logger.error("Could not initialize module " + moduleID, e);
                 }
             } else {
-                logger.info("Module {} is missing at least one of mod dependencies: {}, skipping loading...", moduleID,
+                logger.debug("Module {} is missing at least one of mod dependencies: {}, skipping loading...", moduleID,
                         modDependencies);
             }
         }

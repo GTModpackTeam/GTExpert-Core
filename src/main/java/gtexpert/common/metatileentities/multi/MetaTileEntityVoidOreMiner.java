@@ -28,11 +28,11 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
 
 import gtexpert.api.gui.GTEGuiTextures;
-import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.client.GTETextures;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
+import gtexpert.core.GTERecipeMaps;
 
 public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
 
