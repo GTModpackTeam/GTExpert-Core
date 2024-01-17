@@ -168,7 +168,7 @@ public class DraconicMaterialsRecipe {
         BlastProperty property = material.getProperty(PropertyKey.BLAST);
         int vacuumEUt = property.getVacuumEUtOverride() != -1 ? property.getVacuumEUtOverride() : VA[MV];
         int vacuumDuration = property.getVacuumDurationOverride() != -1 ? property.getVacuumDurationOverride() :
-                (int) material.getMass() * 3;
+                (int) (material.getMass() * 0.5);
 
         // Check if the material has a blast temperature above 5000K
         if (property.getBlastTemperature() > 5000) {

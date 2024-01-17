@@ -1,3 +1,12 @@
+# v2.0.0
+- Fork from CEu module system.
+- Recipe Module can be switched on/off from config.
+- Pyrotheum added as accelerate in ABF.
+
+- Thanks, @sysnote8main for all the above changes!!
+
+* * *
+
 # v1.5.15
 - Increase in recycled recipes.
 - Re: AGC recipe adjustment.
