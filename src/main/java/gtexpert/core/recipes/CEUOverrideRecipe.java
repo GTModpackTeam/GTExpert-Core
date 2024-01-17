@@ -37,9 +37,6 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
-import gtexpert.api.GTEValues;
-import gtexpert.api.unification.material.GTEMaterials;
-
 public class CEUOverrideRecipe {
 
     public static void init() {
@@ -320,18 +317,6 @@ public class CEUOverrideRecipe {
                         .duration(vacuumDuration)
                         .EUt(vacuumEUt)
                         .buildAndRegister();
-
-                if (GTEValues.isModLoadedDEDA()) {
-                    RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                            .notConsumable(MetaItems.SHAPE_MOLD_PLATE)
-                            .fluidInputs(new FluidStack(molten, 144))
-                            .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
-                            .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
-                            .output(plate, material, 1)
-                            .duration(vacuumDuration / 2)
-                            .EUt(vacuumEUt)
-                            .buildAndRegister();
-                }
             }
             if (material.hasFlag(GENERATE_SMALL_GEAR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
@@ -343,18 +328,6 @@ public class CEUOverrideRecipe {
                         .duration(vacuumDuration)
                         .EUt(vacuumEUt)
                         .buildAndRegister();
-
-                if (GTEValues.isModLoadedDEDA()) {
-                    RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                            .notConsumable(MetaItems.SHAPE_MOLD_GEAR_SMALL)
-                            .fluidInputs(new FluidStack(molten, 144))
-                            .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
-                            .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
-                            .output(gearSmall, material, 1)
-                            .duration(vacuumDuration / 2)
-                            .EUt(vacuumEUt)
-                            .buildAndRegister();
-                }
             }
             if (material.hasFlag(GENERATE_GEAR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
@@ -366,18 +339,6 @@ public class CEUOverrideRecipe {
                         .duration(vacuumDuration * 4)
                         .EUt(vacuumEUt)
                         .buildAndRegister();
-
-                if (GTEValues.isModLoadedDEDA()) {
-                    RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                            .notConsumable(MetaItems.SHAPE_MOLD_GEAR)
-                            .fluidInputs(new FluidStack(molten, 576))
-                            .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
-                            .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
-                            .output(gear, material, 1)
-                            .duration(vacuumDuration * 2)
-                            .EUt(vacuumEUt)
-                            .buildAndRegister();
-                }
             }
             if (material.hasFlag(GENERATE_ROTOR)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
@@ -389,18 +350,6 @@ public class CEUOverrideRecipe {
                         .duration(vacuumDuration * 4)
                         .EUt(vacuumEUt)
                         .buildAndRegister();
-
-                if (GTEValues.isModLoadedDEDA()) {
-                    RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                            .notConsumable(MetaItems.SHAPE_MOLD_ROTOR)
-                            .fluidInputs(new FluidStack(molten, 576))
-                            .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
-                            .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
-                            .output(rotor, material, 1)
-                            .duration(vacuumDuration / 2)
-                            .EUt(vacuumEUt)
-                            .buildAndRegister();
-                }
             }
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                     .circuitMeta(1)
@@ -411,26 +360,6 @@ public class CEUOverrideRecipe {
                     .duration(vacuumDuration)
                     .EUt(vacuumEUt)
                     .buildAndRegister();
-
-            if (GTEValues.isModLoadedDEDA()) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .input(ingotHot, material, 1)
-                        .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
-                        .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
-                        .output(ingot, material, 1)
-                        .duration(vacuumDuration / 2)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .circuitMeta(1)
-                        .fluidInputs(new FluidStack(molten, 144))
-                        .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
-                        .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
-                        .fluidOutputs(material.getFluid(144))
-                        .duration(vacuumDuration / 2)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
         } else {
             if (material.hasFlag(GENERATE_PLATE)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
