@@ -2,9 +2,6 @@ package gtexpert.integration.deda.recipemaps;
 
 import java.util.List;
 
-import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
-import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeProperty;
-import gtexpert.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.Constants;
@@ -28,8 +25,11 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 
-import gtexpert.integration.deda.recipemaps.upgrade.UpgradeRecipeProperty;
 import gtexpert.api.util.GTELog;
+import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
+import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeProperty;
+import gtexpert.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
+import gtexpert.integration.deda.recipemaps.upgrade.UpgradeRecipeProperty;
 
 import cofh.redstoneflux.api.IEnergyContainerItem;
 

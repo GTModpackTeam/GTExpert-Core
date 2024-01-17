@@ -10,8 +10,8 @@ import net.minecraft.init.Items;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.items.MetaItems;
 
-import gtexpert.core.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.integration.eio.EnderIORecipeMaps;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;
@@ -20,7 +20,7 @@ public class EIOSliceNSpliceRecipe {
 
     public static void init() {
         // Zombie Electrode
-        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+        EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.EnergeticAlloy)
                 .input(Items.SKULL)
                 .input(plate, GTEMaterials.EnergeticAlloy)
@@ -31,7 +31,7 @@ public class EIOSliceNSpliceRecipe {
                 .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Z-Logic Controller
-        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+        EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.Soularium)
                 .input(Items.SKULL, 1, 2)
                 .input(plate, GTEMaterials.Soularium)
@@ -42,7 +42,7 @@ public class EIOSliceNSpliceRecipe {
                 .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Ender Resonator
-        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+        EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.Soularium)
                 .input(ModObject.blockEndermanSkull.getItemNN())
                 .input(plate, GTEMaterials.Soularium)
@@ -53,7 +53,7 @@ public class EIOSliceNSpliceRecipe {
                 .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Skeletal Controller
-        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+        EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.Soularium)
                 .input(Items.SKULL)
                 .input(plate, GTEMaterials.Soularium)
@@ -64,7 +64,7 @@ public class EIOSliceNSpliceRecipe {
                 .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Guardian Diode
-        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+        EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.EnergeticAlloy)
                 .input(Items.PRISMARINE_SHARD)
                 .input(plate, GTEMaterials.EnergeticAlloy)
@@ -75,7 +75,7 @@ public class EIOSliceNSpliceRecipe {
                 .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Tormented Enderman Head
-        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+        EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.Soularium)
                 .input(ModObject.blockEndermanSkull.getItemNN())
                 .input(plate, GTEMaterials.Soularium)
@@ -86,7 +86,7 @@ public class EIOSliceNSpliceRecipe {
                 .duration(400).EUt(VA[LV]).buildAndRegister();
 
         // Totemic Capacitor
-        GTERecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
+        EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.recipeBuilder()
                 .input(plate, GTEMaterials.Soularium)
                 .input(Items.TOTEM_OF_UNDYING)
                 .input(plate, GTEMaterials.Soularium)

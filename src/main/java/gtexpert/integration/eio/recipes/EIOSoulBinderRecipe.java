@@ -17,9 +17,9 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.unification.material.Materials;
 
-import gtexpert.core.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.eio.EnderIOModule;
+import gtexpert.integration.eio.EnderIORecipeMaps;
 
 import crazypants.enderio.base.init.ModObject;
 
@@ -42,7 +42,7 @@ public class EIOSoulBinderRecipe {
             stack.setTagCompound(tag);
 
             // SoulBinder - Soul Filter
-            GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+            EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
                     .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                             NBTCondition.create(NBTTagType.STRING, "entityId", name.toString())))
                     .input(ModObject.itemBasicItemFilter.getItem())
@@ -52,7 +52,7 @@ public class EIOSoulBinderRecipe {
                     .duration(1000).EUt(VA[LV]).buildAndRegister();
 
             // SoulBinder - Big Soul Filter
-            GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+            EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
                     .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                             NBTCondition.create(NBTTagType.STRING, "entityId", name.toString())))
                     .input(ModObject.itemBigItemFilter.getItem())
@@ -70,7 +70,7 @@ public class EIOSoulBinderRecipe {
         stack.setTagCompound(tag);
 
         // Soul Binder - Enticing Crystal
-        GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+        EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
                 .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                         NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:villager")))
                 .input(gem, Materials.Emerald)
@@ -89,7 +89,7 @@ public class EIOSoulBinderRecipe {
             stack.setTagCompound(tag);
 
             // Soul Binder - Sentient Ender
-            GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+            EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
                     .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                             NBTCondition.create(NBTTagType.STRING, "entityId", witch)))
                     .input(ModObject.itemMaterial.getItemNN(), 1, 43)
@@ -108,7 +108,7 @@ public class EIOSoulBinderRecipe {
             stack.setTagCompound(tag);
 
             // Soul Binder - Frank'N'Zombie
-            GTERecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
+            EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
                     .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
                             NBTCondition.create(NBTTagType.STRING, "entityId", zombie)))
                     .input(ModObject.itemMaterial.getItemNN(), 1, 41)

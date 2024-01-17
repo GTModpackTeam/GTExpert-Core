@@ -25,10 +25,10 @@ import gregtech.common.items.ToolItems;
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
-import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
-import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
+import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
 
 public class DraconicTierupRecipe {
 

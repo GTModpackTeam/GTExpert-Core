@@ -12,7 +12,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
-import gtexpert.core.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.chisel.recipes.ChiselBlocksRecipe;
@@ -39,7 +38,7 @@ public class ChiselModule extends GTEIntegrationSubmodule {
 
     private static void registerAutoChiselRecipe(String oreDictName) {
         List<ItemStack> targets = OreDictionary.getOres(oreDictName);
-        targets.forEach(target -> GTERecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
+        targets.forEach(target -> ChiselRecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
                 .input(oreDictName)
                 .notConsumable(target)
                 .outputs(target)

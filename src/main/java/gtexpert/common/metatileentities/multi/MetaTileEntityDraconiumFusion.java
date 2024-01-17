@@ -28,10 +28,10 @@ import gregtech.core.sound.GTSoundEvents;
 
 import gtexpert.api.capability.MultiblockRecipeLogicNoCache;
 import gtexpert.api.gui.GTEGuiTextures;
-import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
+import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
 public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
 

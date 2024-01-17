@@ -6,10 +6,10 @@ import static gtexpert.api.util.GTEUtility.gteId;
 
 import gregtech.api.util.GTUtility;
 
-import gtexpert.core.GTERecipeMaps;
 import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.single.electric.*;
 import gtexpert.common.metatileentities.single.steam.*;
+import gtexpert.integration.chisel.ChiselRecipeMaps;
 
 public class GTESingleMetaTileEntities {
 
@@ -24,13 +24,13 @@ public class GTESingleMetaTileEntities {
     public static void init() {
         // Auto Chisel 11001~11003
         AUTO_CHISEL[0] = registerMetaTileEntity(11001,
-                new MetaTileEntityAutoChisel(gteId("auto_chisel.lv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
+                new MetaTileEntityAutoChisel(gteId("auto_chisel.lv"), ChiselRecipeMaps.AUTO_CHISEL_RECIPES,
                         GTETextures.AUTO_CHISEL_OVERLAY, LV, true, GTUtility.defaultTankSizeFunction));
         AUTO_CHISEL[1] = registerMetaTileEntity(11002,
-                new MetaTileEntityAutoChisel(gteId("auto_chisel.mv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
+                new MetaTileEntityAutoChisel(gteId("auto_chisel.mv"), ChiselRecipeMaps.AUTO_CHISEL_RECIPES,
                         GTETextures.AUTO_CHISEL_OVERLAY, MV, true, GTUtility.defaultTankSizeFunction));
         AUTO_CHISEL[2] = registerMetaTileEntity(11003,
-                new MetaTileEntityAutoChisel(gteId("auto_chisel.hv"), GTERecipeMaps.AUTO_CHISEL_RECIPES,
+                new MetaTileEntityAutoChisel(gteId("auto_chisel.hv"), ChiselRecipeMaps.AUTO_CHISEL_RECIPES,
                         GTETextures.AUTO_CHISEL_OVERLAY, HV, true, GTUtility.defaultTankSizeFunction));
 
         // Steam machine 11004~11009

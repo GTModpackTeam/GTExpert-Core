@@ -9,8 +9,8 @@ import gregtech.api.GTValues;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
-import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import gtexpert.modules.GTEModules;
 
 import mezz.jei.api.IModPlugin;

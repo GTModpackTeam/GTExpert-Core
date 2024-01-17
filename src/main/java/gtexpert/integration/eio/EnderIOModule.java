@@ -25,7 +25,6 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
-import gtexpert.core.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.eio.recipes.*;
@@ -92,7 +91,7 @@ public class EnderIOModule extends GTEIntegrationSubmodule {
         tag.setString("entityId", entityName);
         stack.setTagCompound(tag);
 
-        RecipeBuilder<SimpleRecipeBuilder> recipeBuilder = GTERecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder();
+        RecipeBuilder<SimpleRecipeBuilder> recipeBuilder = EnderIORecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder();
 
         recipeBuilder
                 .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,

@@ -7,10 +7,10 @@ import static gtexpert.common.metatileentities.MetaTileEntitiesManager.registerG
 
 import gregtech.api.util.GTUtility;
 
-import gtexpert.core.GTERecipeMaps;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.client.GTETextures;
 import gtexpert.common.metatileentities.single.electric.MetaTileEntityElectricSpawner;
+import gtexpert.integration.eio.EnderIORecipeMaps;
 
 public class EIOMetaTileEntities {
 
@@ -21,15 +21,17 @@ public class EIOMetaTileEntities {
 
     public static void init() {
         // VIAL_EXTRACTOR 11010~11022
-        registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor", GTERecipeMaps.VIAL_EXTRACTOR_RECIPES,
+        registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor",
+                EnderIORecipeMaps.VIAL_EXTRACTOR_RECIPES,
                 GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEUtility::gteId, GTUtility.hvCappedTankSizeFunction);
 
         // SLICE_N_SPLICE 11023~11035
-        registerGTESimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice", GTERecipeMaps.SLICE_N_SPLICE_RECIPES,
+        registerGTESimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice",
+                EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES,
                 GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // SOUL_BINDER 11036~11048
-        registerGTESimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", GTERecipeMaps.SOUL_BINDER_RECIPES,
+        registerGTESimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", EnderIORecipeMaps.SOUL_BINDER_RECIPES,
                 GTETextures.SOUL_BINDER_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // ELECTRIC_SPAWNER 11049~11061

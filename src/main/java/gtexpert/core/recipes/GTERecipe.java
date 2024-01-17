@@ -42,7 +42,6 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
-import gtexpert.core.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTELog;
 import gtexpert.api.util.GTEUtility;
@@ -51,6 +50,7 @@ import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import gtexpert.common.metatileentities.GTESingleMetaTileEntities;
+import gtexpert.core.GTERecipeMaps;
 import gtexpert.integration.gt.GTHelper;
 
 public class GTERecipe {
