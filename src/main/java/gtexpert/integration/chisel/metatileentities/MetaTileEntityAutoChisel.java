@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities.single.electric;
+package gtexpert.integration.chisel.metatileentities;
 
 import java.util.function.Function;
 
@@ -10,7 +10,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.capability.SingleblockRecipeLogicNoCache;
-import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
+import gtexpert.core.metatileentities.GTESimpleMachineMetaTileEntity;
 
 public class MetaTileEntityAutoChisel extends GTESimpleMachineMetaTileEntity {
 

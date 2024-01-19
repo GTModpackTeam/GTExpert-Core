@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities.multi;
+package gtexpert.integration.deda.metatileentities;
 
 import java.util.List;
 

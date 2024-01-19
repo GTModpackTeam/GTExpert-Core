@@ -1,15 +1,21 @@
-package gtexpert.common.metatileentities;
+package gtexpert.integration.eio.metatileentities;
 
-import static gregtech.api.GTValues.V;
-import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntities;
+import static gregtech.api.GTValues.*;
+import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static gtexpert.api.util.GTEUtility.gteId;
-import static gtexpert.common.metatileentities.MetaTileEntitiesManager.registerGTESimpleMetaTileEntity;
 
+import java.util.function.Function;
+
+import net.minecraft.util.ResourceLocation;
+
+import gregtech.api.GTValues;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.GTUtility;
+import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.util.GTEUtility;
 import gtexpert.client.GTETextures;
-import gtexpert.common.metatileentities.single.electric.MetaTileEntityElectricSpawner;
+import gtexpert.core.metatileentities.GTESimpleMachineMetaTileEntity;
 import gtexpert.integration.eio.EnderIORecipeMaps;
 
 public class EIOMetaTileEntities {
@@ -40,5 +46,24 @@ public class EIOMetaTileEntities {
                         gteId(String.format("%s.%s", "electric_spawner", voltageName)),
                         GTETextures.SPAWNER_OVERLAY,
                         tier));
+    }
+
+    public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,
+                                                       String name, RecipeMap<?> map, ICubeRenderer texture,
+                                                       boolean hasFrontFacing,
+                                                       Function<String, ResourceLocation> resourceId,
+                                                       Function<Integer, Integer> tankScalingFunction) {
+        for (int i = 0; i < machines.length - 1; ++i) {
+            if (i <= 4 || getMidTier(name)) {
+                if (i > 7 && !getHighTier(name)) {
+                    break;
+                }
+
+                String voltageName = GTValues.VN[i + 1].toLowerCase();
+                machines[i + 1] = registerMetaTileEntity(startId + i,
+                        new GTESimpleMachineMetaTileEntity(resourceId.apply(String.format("%s.%s", name, voltageName)),
+                                map, texture, i + 1, hasFrontFacing, tankScalingFunction));
+            }
+        }
     }
 }

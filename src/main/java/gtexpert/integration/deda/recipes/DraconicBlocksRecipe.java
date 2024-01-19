@@ -33,8 +33,8 @@ import gtexpert.api.util.GTEUtility;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
-import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import gtexpert.core.GTHelper;
+import gtexpert.integration.deda.metatileentities.DEDAMetaTileEntities;
 import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
 public class DraconicBlocksRecipe {
@@ -124,7 +124,7 @@ public class DraconicBlocksRecipe {
                 .input(GTHelper.robotArm(GTEValues.dedaVoltageTier), 2)
                 .input(GTHelper.sensor(LuV), 2)
                 .input(GTHelper.emitter(LuV), 2)
-                .output(GTEMultiMetaTileEntities.DRACONIUM_FUSION)
+                .output(DEDAMetaTileEntities.DRACONIUM_FUSION)
                 .duration(600).EUt(VA[GTEValues.dedaVoltageTier])
                 .withRecycling()
                 .buildAndRegister();
@@ -138,7 +138,7 @@ public class DraconicBlocksRecipe {
                 .input(GTHelper.robotArm(UV), 2)
                 .input(GTHelper.sensor(UV), 2)
                 .input(GTHelper.emitter(UV), 2)
-                .output(GTEMultiMetaTileEntities.AWAKENED_DRACONIUM_FUSION)
+                .output(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION)
                 .duration(600).EUt(VA[UV])
                 .withRecycling()
                 .buildAndRegister();

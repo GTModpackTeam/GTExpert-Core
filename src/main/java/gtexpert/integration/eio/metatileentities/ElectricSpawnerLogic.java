@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities.single.electric;
+package gtexpert.integration.eio.metatileentities;
 
 import java.util.Collections;
 import java.util.function.Supplier;
@@ -37,7 +37,7 @@ import crazypants.enderio.machines.config.config.SpawnerConfig;
 import crazypants.enderio.machines.machine.spawner.BlockPoweredSpawner;
 import crazypants.enderio.util.CapturedMob;
 
-class ElectricSpawnerLogic extends RecipeLogicEnergy {
+public class ElectricSpawnerLogic extends RecipeLogicEnergy {
 
     private boolean spawnMode = true;
     private CapturedMob mobToSpawn;

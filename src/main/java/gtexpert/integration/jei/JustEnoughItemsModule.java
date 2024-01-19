@@ -1,8 +1,5 @@
 package gtexpert.integration.jei;
 
-import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.AWAKENED_DRACONIUM_FUSION;
-import static gtexpert.common.metatileentities.GTEMultiMetaTileEntities.DRACONIUM_FUSION;
-
 import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.GTValues;
@@ -10,6 +7,7 @@ import gregtech.api.GTValues;
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.deda.metatileentities.DEDAMetaTileEntities;
 import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import gtexpert.modules.GTEModules;
 
@@ -28,13 +26,13 @@ public class JustEnoughItemsModule extends GTEIntegrationSubmodule implements IM
     @Override
     public void register(@NotNull IModRegistry registry) {
         if (GTEValues.isModLoadedDEDA()) {
-            registry.addRecipeCatalyst(DRACONIUM_FUSION.getStackForm(),
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION,
                     GTValues.MODID + ":" + GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.unlocalizedName);
-            registry.addRecipeCatalyst(AWAKENED_DRACONIUM_FUSION.getStackForm(), GTValues.MODID +
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION, GTValues.MODID +
                     ":" + GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.unlocalizedName);
-            registry.addRecipeCatalyst(DRACONIUM_FUSION.getStackForm(),
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION,
                     GTValues.MODID + ":" + GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_FAKE_RECIPES.unlocalizedName);
-            registry.addRecipeCatalyst(AWAKENED_DRACONIUM_FUSION.getStackForm(), GTValues.MODID +
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION, GTValues.MODID +
                     ":" + GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES.unlocalizedName);
         }
     }

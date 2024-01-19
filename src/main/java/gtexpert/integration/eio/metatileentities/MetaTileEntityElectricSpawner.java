@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities.single.electric;
+package gtexpert.integration.eio.metatileentities;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +39,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gtexpert.api.GTEValues;
 import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
+import gtexpert.core.metatileentities.GTESimpleMachineMetaTileEntity;
 
 public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntity {
 

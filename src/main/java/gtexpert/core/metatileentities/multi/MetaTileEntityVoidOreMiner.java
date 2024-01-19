@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities.multi;
+package gtexpert.core.metatileentities.multi;
 
 import java.util.List;
 
@@ -23,41 +23,50 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
 
 import gtexpert.api.gui.GTEGuiTextures;
+import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.client.GTETextures;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.core.GTERecipeMaps;
 
-public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
+public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
 
-    public MetaTileEntitySawmill(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GTERecipeMaps.SAWMILL_RECIPES);
+    public MetaTileEntityVoidOreMiner(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, GTERecipeMaps.VOID_ORE_MINER_RECIPES);
     }
 
     @Override
     public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntitySawmill(metaTileEntityId);
+        return new MetaTileEntityVoidOreMiner(metaTileEntityId);
     }
 
     @Override
     protected @NotNull BlockPattern createStructurePattern() {
-        TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(14);
-        TraceabilityPredicate abilities = autoAbilities(true, false, true, true, true, false, false);
+        TraceabilityPredicate frame = states(getFrameState());
+        TraceabilityPredicate casing = states(getCasingState());
+        TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, false, false);
         return FactoryBlockPattern.start()
-                .aisle("XCX", "X#X", "X X")
-                .aisle(" C ", " # ", "XXX")
-                .aisle(" C ", " # ", "X X")
-                .aisle(" C ", " # ", "XXX")
-                .aisle("XCX", "S#X", "X X")
+                .aisle("XXXXX", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
+                .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
+                .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FCF ", " FCF ", " FCF ", "  F  ", "  F  ", "  F  ")
+                .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
+                .aisle("XXSXX", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
                 .where('S', selfPredicate())
-                .where('X', casing.or(abilities))
-                .where('C', blocks(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR))
-                .where('#', air())
+                .where('X', casing.setMinGlobalLimited(17).or(abilities))
+                .where('C', casing.setMinGlobalLimited(30))
+                .where('F', frame.setMinGlobalLimited(55))
                 .where(' ', any())
                 .build();
+    }
+
+    @Override
+    protected boolean shouldShowVoidingModeButton() {
+        return false;
     }
 
     @Override
@@ -65,29 +74,18 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
         return false;
     }
 
-    @Override
-    public boolean allowsFlip() {
-        return false;
-    }
-
-    @Override
-    public boolean hasMaintenanceMechanics() {
-        return false;
-    }
-
-    @Override
-    public boolean canBeDistinct() {
-        return true;
-    }
-
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GTETextures.SAWMILL_CASING;
+        return GTETextures.VOID_ORE_MINER_CASING;
+    }
+
+    protected IBlockState getFrameState() {
+        return MetaBlocks.FRAMES.get(GTEMaterials.NM_HEA_NPs).getBlock(GTEMaterials.NM_HEA_NPs);
     }
 
     protected IBlockState getCasingState() {
-        return GTEMetaBlocks.GTE_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.SAWMill);
+        return GTEMetaBlocks.GTE_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER);
     }
 
     @Override
@@ -99,7 +97,10 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gtexpert.machine.sawmill.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.2"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.3"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.4"));
     }
 
     @Override
@@ -121,6 +122,6 @@ public class MetaTileEntitySawmill extends RecipeMapMultiblockController {
     @NotNull
     @Override
     protected ICubeRenderer getFrontOverlay() {
-        return GTETextures.SAWMILL_OVERLAY;
+        return Textures.ITEM_VOIDING_ADVANCED;
     }
 }

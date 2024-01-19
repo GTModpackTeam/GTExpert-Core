@@ -24,9 +24,9 @@ import gtexpert.common.CommonProxy;
 import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.metatileentities.MetaTileEntitiesManager;
 import gtexpert.core.loaders.GTEMaterialInfoLoader;
 import gtexpert.core.loaders.GTEOreDictionaryLoader;
+import gtexpert.core.metatileentities.GTEMetaTileEntities;
 import gtexpert.core.recipes.*;
 import gtexpert.modules.GTEModules;
 
@@ -66,7 +66,7 @@ public class GTECoreModule implements IGTEModule {
         }
         /* End API Block Registration */
 
-        MetaTileEntitiesManager.init();
+        GTEMetaTileEntities.init();
     }
 
     @Override

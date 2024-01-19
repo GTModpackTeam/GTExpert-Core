@@ -12,6 +12,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.enderio.core.common.util.EntityUtil;
@@ -28,6 +29,7 @@ import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.eio.loaders.EnderIOMaterialInfoLoader;
+import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
 import gtexpert.integration.eio.recipes.*;
 import gtexpert.modules.GTEModules;
 
@@ -40,6 +42,11 @@ import crazypants.enderio.endergy.init.EndergyObject;
            modDependencies = GTEValues.MODID_EIO,
            name = "GTExpert Ender IO Module")
 public class EnderIOModule extends GTEIntegrationSubmodule {
+
+    @Override
+    public void preInit(FMLPreInitializationEvent event) {
+        EIOMetaTileEntities.init();
+    }
 
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {

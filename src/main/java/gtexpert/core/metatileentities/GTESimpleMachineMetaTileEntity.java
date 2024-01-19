@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities;
+package gtexpert.core.metatileentities;
 
 import java.util.function.Function;
 

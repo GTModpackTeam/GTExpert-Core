@@ -8,8 +8,12 @@ import gregtech.core.sound.GTSoundEvents;
 
 import gtexpert.api.gui.GTEGuiTextures;
 
+import crafttweaker.annotations.ZenRegister;
+import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenProperty;
 
+@ZenExpansion("mods.gregtech.recipe.RecipeMaps")
+@ZenRegister
 public class ChiselRecipeMaps {
 
     @ZenProperty

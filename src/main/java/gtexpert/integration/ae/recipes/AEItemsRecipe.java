@@ -770,14 +770,14 @@ public class AEItemsRecipe {
             // All shapes
             Arrays.stream(GTEMetaItems.GTE_SHAPE_MOLDS)
                     .forEach(shapeMold -> RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                            .notConsumable(shapeMold.getStackForm())
+                            .notConsumable(shapeMold)
                             .input(MetaItems.SHAPE_EMPTY)
                             .output(shapeMold)
                             .duration(120).EUt(22)
                             .buildAndRegister());
             Arrays.stream(GTEMetaItems.GTE_SHAPE_EXTRUDERS).filter(Objects::nonNull)
                     .forEach(shapeExtruder -> RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                            .notConsumable(shapeExtruder.getStackForm())
+                            .notConsumable(shapeExtruder)
                             .input(MetaItems.SHAPE_EMPTY)
                             .output(shapeExtruder)
                             .duration(120).EUt(22)
@@ -835,13 +835,13 @@ public class AEItemsRecipe {
             ModHandler.addShapedRecipe(true, "shape_extruder_calculation_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_CALCULATION_PROCESSOR.getStackForm(),
                     " x ", " S ", "   ",
-                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON.getStackForm());
+                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON);
 
             // Extruder Shape (Engineering Processor)
             ModHandler.addShapedRecipe(true, "shape_extruder_engineering_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_ENGINEERING_PROCESSOR.getStackForm(),
                     " x ", "  S", "   ",
-                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON.getStackForm());
+                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON);
         } else {
             // Silicon Processor Press
             RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()

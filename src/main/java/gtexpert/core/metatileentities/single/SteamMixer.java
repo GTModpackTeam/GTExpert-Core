@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities.single.steam;
+package gtexpert.core.metatileentities.single;
 
 import java.util.List;
 

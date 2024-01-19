@@ -1,4 +1,4 @@
-package gtexpert.common.metatileentities.multi;
+package gtexpert.core.metatileentities.multi;
 
 import java.util.List;
 
@@ -18,49 +18,52 @@ import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.TraceabilityPredicate;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
 
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 
 import gtexpert.api.gui.GTEGuiTextures;
+import gtexpert.client.GTETextures;
+import gtexpert.common.blocks.GTEBlockMetalCasing;
+import gtexpert.common.blocks.GTEMetaBlocks;
+import gtexpert.core.GTERecipeMaps;
 
-public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblockController {
+public class MetaTileEntityAdvancedGasCollector extends GCYMRecipeMapMultiblockController {
 
-    public MetaTileEntityAdvancedChemicalPlant(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.LARGE_CHEMICAL_RECIPES);
+    public MetaTileEntityAdvancedGasCollector(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, new RecipeMap[] {
+                RecipeMaps.GAS_COLLECTOR_RECIPES,
+                GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES
+        });
     }
 
     @Override
     public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityAdvancedChemicalPlant(metaTileEntityId);
+        return new MetaTileEntityAdvancedGasCollector(metaTileEntityId);
     }
 
     @NotNull
     @Override
     protected BlockPattern createStructurePattern() {
-        TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(22);
+        TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(8);
         TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true, false);
         return FactoryBlockPattern.start()
-                .aisle("X   X", "XXXXX", "X   X", "XXXXX", "X   X")
-                .aisle("XXXXX", "XCCCX", "XPPPX", "XCCCX", "XXXXX")
-                .aisle("X   X", "XPPPX", "XPTPX", "XPPPX", "X   X")
-                .aisle("XXXXX", "XCCCX", "XPPPX", "XCCCX", "XXXXX")
-                .aisle("X   X", "SXXXX", "X   X", "XXXXX", "X   X")
+                .aisle("XXX", "XXX", "XXX")
+                .aisle("XTX", "X#X", "XHX")
+                .aisle("XXX", "XSX", "XXX")
                 .where('S', selfPredicate())
                 .where('X', casing.or(abilities))
                 .where('T', tieredCasing().or(states(getCasingState())))
-                .where('P', states(getPipeCasingState()))
-                .where('C', heatingCoils().setMinGlobalLimited(12).setMaxGlobalLimited(12))
-                .where(' ', any())
+                .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
+                .where('#', air())
                 .build();
     }
 
@@ -92,15 +95,11 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return Textures.INERT_PTFE_CASING;
+        return GTETextures.VOID_ORE_MINER_CASING;
     }
 
     protected IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING);
-    }
-
-    protected IBlockState getPipeCasingState() {
-        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE);
+        return GTEMetaBlocks.GTE_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER);
     }
 
     @Override
@@ -111,7 +110,7 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gtexpert.machine.advanced_chemical_plant.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.advanced_gas_collector.tooltip.1"));
     }
 
     @Override
@@ -133,6 +132,6 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
     @NotNull
     @Override
     protected ICubeRenderer getFrontOverlay() {
-        return Textures.CHEMICAL_REACTOR_OVERLAY;
+        return Textures.GAS_COLLECTOR_OVERLAY;
     }
 }

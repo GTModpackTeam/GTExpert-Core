@@ -48,10 +48,9 @@ import gtexpert.api.util.GTEUtility;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
-import gtexpert.common.metatileentities.GTESingleMetaTileEntities;
 import gtexpert.core.GTERecipeMaps;
 import gtexpert.core.GTHelper;
+import gtexpert.core.metatileentities.GTEMetaTileEntities;
 
 public class GTERecipe {
 
@@ -224,32 +223,32 @@ public class GTERecipe {
                         'R', new UnificationEntry(stick, Materials.Bronze),
                         'G', new UnificationEntry(gearSmall, Materials.Bronze),
                         'P', new UnificationEntry(plate, Materials.Bronze),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
 
                 ModHandler.addShapedRecipe(true, "electric_pump_" + componentsName,
                         GTEMetaItems.GTE_ELECTRIC_PUMP.getStackForm(), "PR", "MO",
                         'R', new UnificationEntry(rotor, Materials.Bronze),
                         'O', new UnificationEntry(ring, Materials.Rubber),
                         'P', new UnificationEntry(pipeNormalFluid, Materials.Copper),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
 
                 ModHandler.addShapedRecipe(true, "conveyor_module_" + componentsName,
                         GTEMetaItems.GTE_CONVEYOR_MODULE.getStackForm(), "PC", "MP",
                         'P', new UnificationEntry(plate, Materials.Rubber),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
 
                 ModHandler.addShapedRecipe(true, "robot_arm_" + componentsName,
                         GTEMetaItems.GTE_ROBOT_ARM.getStackForm(), "PR", "MC",
                         'R', new UnificationEntry(stick, Materials.Bronze),
                         'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'P', GTEMetaItems.GTE_ELECTRIC_PISTON.getStackForm(),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
+                        'P', GTEMetaItems.GTE_ELECTRIC_PISTON,
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
 
                 ModHandler.addShapedRecipe(true, "fluid_regulator_" + componentsName,
                         GTEMetaItems.GTE_FLUID_REGULATOR.getStackForm(), "PC", "Cd",
                         'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'P', GTEMetaItems.GTE_ELECTRIC_PUMP.getStackForm());
+                        'P', GTEMetaItems.GTE_ELECTRIC_PUMP);
 
                 ModHandler.addShapedRecipe(true, "field_generator_" + componentsName,
                         GTEMetaItems.GTE_FIELD_GENERATOR.getStackForm(), "CP", "UG",
@@ -293,7 +292,7 @@ public class GTERecipe {
                         'G', new UnificationEntry(gearSmall, Materials.Bronze),
                         'P', new UnificationEntry(plate, Materials.Bronze),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(stick, Materials.Bronze, 2)
                         .input(cableGtSingle, Materials.Lead, 2)
@@ -310,7 +309,7 @@ public class GTERecipe {
                         'O', new UnificationEntry(ring, Materials.Rubber),
                         'P', new UnificationEntry(pipeNormalFluid, Materials.Copper),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(cableGtSingle, Materials.Lead)
                         .input(pipeNormalFluid, Materials.Copper)
@@ -325,7 +324,7 @@ public class GTERecipe {
                         GTEMetaItems.GTE_CONVEYOR_MODULE.getStackForm(), "PPP", "MCM", "PPP",
                         'P', new UnificationEntry(plate, Materials.Rubber),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(cableGtSingle, Materials.Lead)
                         .inputs(GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm(2))
@@ -339,8 +338,8 @@ public class GTERecipe {
                         'R', new UnificationEntry(stick, Materials.Bronze),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
                         'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'P', GTEMetaItems.GTE_ELECTRIC_PISTON.getStackForm(),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
+                        'P', GTEMetaItems.GTE_ELECTRIC_PISTON,
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(cableGtSingle, Materials.Lead, 3)
                         .input(stick, Materials.Bronze, 2)
@@ -353,7 +352,7 @@ public class GTERecipe {
                 ModHandler.addShapedRecipe(true, "fluid_regulator_" + componentsName,
                         GTEMetaItems.GTE_FLUID_REGULATOR.getStackForm(), " U ", "dPw", " U ",
                         'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'P', GTEMetaItems.GTE_ELECTRIC_PUMP.getStackForm());
+                        'P', GTEMetaItems.GTE_ELECTRIC_PUMP);
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(GTEMetaItems.GTE_ELECTRIC_PUMP)
                         .input(circuit, MarkerMaterials.Tier.ULV, 2)
@@ -659,25 +658,25 @@ public class GTERecipe {
             ModHandler.addShapedRecipe("solar_panel_lv_gt5u",
                     MetaItems.COVER_SOLAR_PANEL_LV.getStackForm(), " S ", "SCS", " S ",
                     'S', MetaItems.COVER_SOLAR_PANEL_ULV,
-                    'C', MetaTileEntities.TRANSFORMER[0].getStackForm());
+                    'C', MetaTileEntities.TRANSFORMER[0]);
 
             // Solar Panel (MV)
             ModHandler.addShapedRecipe("solar_panel_mv_gt5u",
                     MetaItems.COVER_SOLAR_PANEL_MV.getStackForm(), " S ", "SCS", " S ",
                     'S', MetaItems.COVER_SOLAR_PANEL_LV,
-                    'C', MetaTileEntities.TRANSFORMER[LV].getStackForm());
+                    'C', MetaTileEntities.TRANSFORMER[LV]);
 
             // Solar Panel (HV)
             ModHandler.addShapedRecipe("solar_panel_hv_gt5u",
                     MetaItems.COVER_SOLAR_PANEL_HV.getStackForm(), " S ", "SCS", " S ",
                     'S', MetaItems.COVER_SOLAR_PANEL_MV,
-                    'C', MetaTileEntities.TRANSFORMER[MV].getStackForm());
+                    'C', MetaTileEntities.TRANSFORMER[MV]);
 
             // Solar Panel (EV)
             ModHandler.addShapedRecipe("solar_panel_ev_gt5u",
                     MetaItems.COVER_SOLAR_PANEL_EV.getStackForm(), " S ", "SCS", " S ",
                     'S', MetaItems.COVER_SOLAR_PANEL_HV,
-                    'C', MetaTileEntities.TRANSFORMER[HV].getStackForm());
+                    'C', MetaTileEntities.TRANSFORMER[HV]);
 
             if (!ConfigHolder.machines.enableHighTierSolars) return;
 
@@ -715,7 +714,7 @@ public class GTERecipe {
             case "normal":
                 // Steam Mixer
                 ModHandler.addShapedRecipe(true, "steam_mixer_bronze",
-                        GTESingleMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
+                        GTEMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
                         'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
                         'E', GTEMetaItems.GTE_ELECTRIC_MOTOR,
                         'R', new UnificationEntry(rotor, Materials.Bronze),
@@ -724,7 +723,7 @@ public class GTERecipe {
 
                 // Steam Assembler
                 ModHandler.addShapedRecipe(true, "steam_assembler_bronze",
-                        GTESingleMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
+                        GTEMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
                         'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
                         'V', GTEMetaItems.GTE_CONVEYOR_MODULE,
                         'A', GTEMetaItems.GTE_ROBOT_ARM,
@@ -733,7 +732,7 @@ public class GTERecipe {
 
                 // Steam Circuit Assembler
                 ModHandler.addShapedRecipe(true, "steam_circuit_assembler_bronze",
-                        GTESingleMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
+                        GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
                         'R', GTEMetaItems.GTE_ROBOT_ARM,
                         'I', GTHelper.oreDictionaryCircuit(GTValues.LV),
                         'E', GTEMetaItems.GTE_EMITTER,
@@ -743,7 +742,7 @@ public class GTERecipe {
 
                 // Sawmill
                 ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",
-                        GTEMultiMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
+                        GTEMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
                         'S', new UnificationEntry(screw, Materials.Steel),
                         'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Steel),
                         'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
@@ -756,7 +755,7 @@ public class GTERecipe {
 
         // Large Oil Cracking Unit
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit",
-                GTEMultiMetaTileEntities.LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",
+                GTEMetaTileEntities.LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ZPM),
                 'S', MetaTileEntities.CRACKER.getStackForm(),
                 'P', MetaItems.ELECTRIC_PUMP_IV.getStackForm(),
@@ -773,7 +772,7 @@ public class GTERecipe {
                 .input(MetaItems.ELECTRIC_MOTOR_LuV, 4)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(2304))
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(2304))
-                .output(GTEMultiMetaTileEntities.ADVANCED_CHEMICAL_PLANT)
+                .output(GTEMetaTileEntities.ADVANCED_CHEMICAL_PLANT)
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
 
@@ -787,7 +786,7 @@ public class GTERecipe {
                 .input(MetaItems.FIELD_GENERATOR_ZPM, 4)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(2304))
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(2304))
-                .output(GTEMultiMetaTileEntities.ADVANCED_GAS_COLLECTOR)
+                .output(GTEMetaTileEntities.ADVANCED_GAS_COLLECTOR)
                 .duration(200).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -795,7 +794,7 @@ public class GTERecipe {
         AssemblyLineRecipeBuilder builderVOM = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.ADVANCED_LARGE_MINER)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
-                .output(GTEMultiMetaTileEntities.VOIDOREMINER);
+                .output(GTEMetaTileEntities.VOIDOREMINER);
         if (GTEValues.isModLoadedDEDA()) {
             builderVOM.inputs(GTEUtility.getModItem(GTEValues.MODID_DE, "awakened_core", 4, 0));
             builderVOM.input(MetaItems.ELECTRIC_MOTOR_UV, 4);

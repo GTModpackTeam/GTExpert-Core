@@ -8,12 +8,14 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.chisel.metatileentities.ChiselMetaTileEntities;
 import gtexpert.integration.chisel.recipes.ChiselBlocksRecipe;
 import gtexpert.integration.chisel.recipes.ChiselToolsRecipe;
 import gtexpert.modules.GTEModules;
@@ -24,6 +26,11 @@ import gtexpert.modules.GTEModules;
            modDependencies = GTEValues.MODID_CHISEL,
            name = "GTExpert Chisel Module")
 public class ChiselModule extends GTEIntegrationSubmodule {
+
+    @Override
+    public void preInit(FMLPreInitializationEvent event) {
+        ChiselMetaTileEntities.init();
+    }
 
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {

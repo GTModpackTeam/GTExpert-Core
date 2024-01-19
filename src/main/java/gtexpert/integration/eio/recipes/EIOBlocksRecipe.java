@@ -26,7 +26,7 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.common.metatileentities.EIOMetaTileEntities;
+import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.conduits.init.ConduitObject;
