@@ -13,7 +13,7 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.integration.gt.GTHelper;
+import gtexpert.core.GTHelper;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;

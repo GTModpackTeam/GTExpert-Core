@@ -34,8 +34,8 @@ import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
+import gtexpert.core.GTHelper;
 import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
-import gtexpert.integration.gt.GTHelper;
 
 public class DraconicBlocksRecipe {
 

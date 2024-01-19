@@ -1,4 +1,4 @@
-package gtexpert.integration.ct;
+package gtexpert.integration.crafttweaker;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;

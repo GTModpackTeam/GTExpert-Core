@@ -31,9 +31,8 @@ import gregtech.api.recipes.RecipeMaps;
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.items.GTECoverBehaviors;
-import gtexpert.core.loaders.GTEMaterialInfoLoader;
+import gtexpert.modules.GTEModuleManager;
 import gtexpert.modules.GTEModules;
-import gtexpert.modules.ModuleManager;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
@@ -51,13 +50,13 @@ import gtexpert.modules.ModuleManager;
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 
-    private ModuleManager moduleManager;
+    private GTEModuleManager moduleManager;
 
     @Mod.EventHandler
     public void onConstruction(FMLConstructionEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
         GTELog.logger.info("starting construction event...");
-        moduleManager = ModuleManager.getInstance();
+        moduleManager = GTEModuleManager.getInstance();
         moduleManager.registerContainer(new GTEModules());
         moduleManager.setup(event.getASMHarvestedData(), Loader.instance().getConfigDir());
         moduleManager.onConstruction(event);
@@ -155,25 +154,16 @@ public class GTExpertMod {
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        GTELog.logger.info("Registering ore dictionary...");
-        GTEMaterialInfoLoader.init();
-
-        GTELog.logger.info("Registering Recipes...");
-
         moduleManager.registerRecipesNormal(event);
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
-        GTELog.logger.info("Registering Recipes...");
-
         moduleManager.registerRecipesLow(event);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
-        GTELog.logger.info("Registering Recipes...");
-
         moduleManager.registerRecipesLowest(event);
     }
 

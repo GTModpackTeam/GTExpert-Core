@@ -1,4 +1,4 @@
-package gtexpert.integration.ct;
+package gtexpert.integration.crafttweaker.provider;
 
 import net.minecraft.client.resources.I18n;
 

@@ -1,4 +1,4 @@
-package gtexpert.integration.gt;
+package gtexpert.core;
 
 import net.minecraft.item.ItemStack;
 

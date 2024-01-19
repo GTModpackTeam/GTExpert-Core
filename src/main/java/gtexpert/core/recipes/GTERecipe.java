@@ -51,7 +51,7 @@ import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
 import gtexpert.common.metatileentities.GTESingleMetaTileEntities;
 import gtexpert.core.GTERecipeMaps;
-import gtexpert.integration.gt.GTHelper;
+import gtexpert.core.GTHelper;
 
 public class GTERecipe {
 

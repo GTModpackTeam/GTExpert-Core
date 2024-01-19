@@ -29,8 +29,8 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.core.GTHelper;
 import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
-import gtexpert.integration.gt.GTHelper;
 
 public class DraconicItemsRecipe {
 

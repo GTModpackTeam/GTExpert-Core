@@ -27,6 +27,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.eio.loaders.EnderIOMaterialInfoLoader;
 import gtexpert.integration.eio.recipes.*;
 import gtexpert.modules.GTEModules;
 
@@ -39,6 +40,11 @@ import crazypants.enderio.endergy.init.EndergyObject;
            modDependencies = GTEValues.MODID_EIO,
            name = "GTExpert Ender IO Module")
 public class EnderIOModule extends GTEIntegrationSubmodule {
+
+    @Override
+    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
+        EnderIOMaterialInfoLoader.init();
+    }
 
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {

@@ -23,9 +23,9 @@ import com.google.common.collect.ImmutableList;
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.*;
 
-public class ModuleManager implements IModuleManager {
+public class GTEModuleManager implements IModuleManager {
 
-    private static final ModuleManager INSTANCE = new ModuleManager();
+    private static final GTEModuleManager INSTANCE = new GTEModuleManager();
     private static final String MODULE_CFG_FILE_NAME = "modules.cfg";
     private static final String MODULE_CFG_CATEGORY_NAME = "modules";
     private static File configFolder;
@@ -40,9 +40,9 @@ public class ModuleManager implements IModuleManager {
     private final Logger logger = LogManager.getLogger("GTExpert Module Loader");
     private Configuration config;
 
-    private ModuleManager() {}
+    private GTEModuleManager() {}
 
-    public static ModuleManager getInstance() {
+    public static GTEModuleManager getInstance() {
         return INSTANCE;
     }
 
