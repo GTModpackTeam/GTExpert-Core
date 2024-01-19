@@ -41,7 +41,7 @@ import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 
 import gtexpert.api.gui.GTEGuiTextures;
-import gtexpert.common.GTEConfigHolder;
+import gtexpert.core.GTEConfigHolder;
 
 public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockController {
 

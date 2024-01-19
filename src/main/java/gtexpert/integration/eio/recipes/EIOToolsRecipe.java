@@ -1,8 +1,6 @@
 package gtexpert.integration.eio.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.plate;
-import static gtexpert.common.GTEConfigHolder.eioIntegration;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -12,6 +10,7 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.ConfigHolder;
 
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.integration.eio.EnderIOConfig;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;
@@ -19,7 +18,7 @@ import crazypants.enderio.endergy.init.EndergyObject;
 public class EIOToolsRecipe {
 
     public static void init() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && eioIntegration.hardToolArmorRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes && EnderIOConfig.hardToolArmorRecipes) {
             // Dark Helm
             ModHandler.addShapedRecipe(true, "dark_steel_helmet",
                     new ItemStack(ModObject.itemDarkSteelHelmet.getItemNN(), 1),

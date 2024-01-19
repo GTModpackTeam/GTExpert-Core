@@ -9,7 +9,7 @@ import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
 import appeng.api.definitions.IParts;
 
-public class AEHelper {
+public class AEUtil {
 
     public static final IItems aeItems = AEApi.instance().definitions().items();
     public static final IBlocks aeBlocks = AEApi.instance().definitions().blocks();

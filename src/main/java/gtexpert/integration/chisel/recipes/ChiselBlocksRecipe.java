@@ -3,7 +3,6 @@ package gtexpert.integration.chisel.recipes;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gtexpert.common.GTEConfigHolder.chiselIntegration;
 import static gtexpert.integration.chisel.metatileentities.ChiselMetaTileEntities.AUTO_CHISEL;
 
 import java.util.Arrays;
@@ -31,8 +30,9 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.integration.chisel.ChiselHelper;
+import gtexpert.integration.chisel.ChiselConfig;
 import gtexpert.integration.chisel.ChiselRecipeMaps;
+import gtexpert.integration.chisel.ChiselUtil;
 
 public class ChiselBlocksRecipe {
 
@@ -42,7 +42,7 @@ public class ChiselBlocksRecipe {
                 new ItemStack(Items.BOOK, 3));
         String[] bookshelf = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "darkoak" };
         for (int i = 0; i < bookshelf.length; i++) {
-            ChiselHelper.addGroup("bookshelf" + bookshelf[i].toUpperCase());
+            ChiselUtil.addGroup("bookshelf" + bookshelf[i].toUpperCase());
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .inputs(new ItemStack(Blocks.PLANKS, 6, i))
                     .inputs(new ItemStack(Items.BOOK, 3))
@@ -92,7 +92,7 @@ public class ChiselBlocksRecipe {
                 'C', CIRCUIT);
 
         // Lamp
-        if (chiselIntegration.hardLedRecipes) {
+        if (ChiselConfig.hardLedRecipes) {
             if (Loader.isModLoaded("projectred-illumination")) {
                 IntStream.range(0, 31).mapToObj(i -> GTEUtility.getModItem("projectred-illumination", "lamp", 1, i))
                         .forEach(ModHandler::removeRecipeByOutput);
@@ -107,26 +107,26 @@ public class ChiselBlocksRecipe {
                         CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, dyeColor.getName());
                 BlockLamp lamp = MetaBlocks.LAMPS.get(color);
 
-                ChiselHelper.addGroup("lamp" + colorName);
+                ChiselUtil.addGroup("lamp" + colorName);
                 {
                     int lampMeta = 0;
                     while (lampMeta < lamp.getItemMetadataStates()) {
                         if (Loader.isModLoaded("projectred-illumination")) {
-                            ChiselHelper.addVariation("lamp" + colorName,
+                            ChiselUtil.addVariation("lamp" + colorName,
                                     GTEUtility.getModItem("projectred-illumination", "lamp", 1, i));
                         }
-                        ChiselHelper.addVariation("lamp" + colorName,
+                        ChiselUtil.addVariation("lamp" + colorName,
                                 GTEUtility.getModItem("projectred-illumination", "lamp", 1, i + 16));
-                        ChiselHelper.addVariation("lamp" + colorName, new ItemStack(lamp, 1, lampMeta));
+                        ChiselUtil.addVariation("lamp" + colorName, new ItemStack(lamp, 1, lampMeta));
                         lampMeta++;
                     }
                 }
 
                 lamp = MetaBlocks.BORDERLESS_LAMPS.get(color);
-                ChiselHelper.addGroup("lampBorderless" + colorName);
+                ChiselUtil.addGroup("lampBorderless" + colorName);
                 int lampMeta = 0;
                 while (lampMeta < lamp.getItemMetadataStates()) {
-                    ChiselHelper.addVariation("lampBorderless" + colorName, new ItemStack(lamp, 1, lampMeta));
+                    ChiselUtil.addVariation("lampBorderless" + colorName, new ItemStack(lamp, 1, lampMeta));
                     lampMeta++;
                 }
                 registerAutoChiselRecipe("lamp" + colorName);

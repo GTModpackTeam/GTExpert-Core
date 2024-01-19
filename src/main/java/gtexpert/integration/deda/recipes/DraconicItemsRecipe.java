@@ -1,9 +1,7 @@
 package gtexpert.integration.deda.recipes;
 
-import static gregtech.api.GTValues.VA;
-import static gregtech.api.GTValues.VH;
+import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.wireFine;
 
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
@@ -29,7 +27,7 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.core.GTHelper;
+import gtexpert.core.GTUtil;
 import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
 public class DraconicItemsRecipe {
@@ -68,7 +66,7 @@ public class DraconicItemsRecipe {
         // Wyvern Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_core"));
         RecipeBuilder<?> builderWyvernCore1 = RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier - 2), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier - 2), 1)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 24)
                 .input(wireFine, GTEMaterials.Draconium, 16)
                 .fluidInputs(Materials.Tin.getFluid(144))
@@ -79,12 +77,12 @@ public class DraconicItemsRecipe {
             builderWyvernCore1
                     .inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_capacitor_energetic_silver", 4, 0));
         } else {
-            builderWyvernCore1.input(GTHelper.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 2), 4);
+            builderWyvernCore1.input(GTUtil.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 2), 4);
         }
         builderWyvernCore1.buildAndRegister();
 
         RecipeBuilder<?> builderWyvernCore2 = RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier - 2), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier - 2), 1)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 24)
                 .input(wireFine, GTEMaterials.Draconium, 16)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(72))
@@ -95,14 +93,14 @@ public class DraconicItemsRecipe {
             builderWyvernCore2
                     .inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_capacitor_energetic_silver", 4, 0));
         } else {
-            builderWyvernCore2.input(GTHelper.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 2), 4);
+            builderWyvernCore2.input(GTUtil.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 2), 4);
         }
         builderWyvernCore2.buildAndRegister();
 
         // Draconic Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_core"));
         RecipeBuilder<?> builderDraconicCore1 = GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier - 1), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier - 1), 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 4)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 24)
@@ -115,12 +113,12 @@ public class DraconicItemsRecipe {
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderDraconicCore1.inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_capacitor_crystalline", 4, 0));
         } else {
-            builderDraconicCore1.input(GTHelper.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 2), 4);
+            builderDraconicCore1.input(GTUtil.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 2), 4);
         }
         builderDraconicCore1.buildAndRegister();
 
         RecipeBuilder<?> builderDraconicCore2 = GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier - 1), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier - 1), 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(DEFeatures.wyvernEnergyCore, 4)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 24)
@@ -133,13 +131,13 @@ public class DraconicItemsRecipe {
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderDraconicCore2.inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_capacitor_crystalline", 4, 0));
         } else {
-            builderDraconicCore2.input(GTHelper.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 2), 4);
+            builderDraconicCore2.input(GTUtil.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 2), 4);
         }
         builderDraconicCore2.buildAndRegister();
 
         // Awakened Core
         RecipeBuilder<?> builderAwakenedCore1 = GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier), 1)
                 .input(DEFeatures.draconicCore, 1)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 32)
@@ -152,12 +150,12 @@ public class DraconicItemsRecipe {
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderAwakenedCore1.inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_capacitor_melodic", 4, 0));
         } else {
-            builderAwakenedCore1.input(GTHelper.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 1), 4);
+            builderAwakenedCore1.input(GTUtil.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 1), 4);
         }
         builderAwakenedCore1.buildAndRegister();
 
         RecipeBuilder<?> builderAwakenedCore2 = GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier), 1)
                 .input(DEFeatures.draconicCore, 1)
                 .input(DEFeatures.draconicEnergyCore, 1)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 32)
@@ -170,14 +168,14 @@ public class DraconicItemsRecipe {
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderAwakenedCore2.inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_capacitor_melodic", 4, 0));
         } else {
-            builderAwakenedCore2.input(GTHelper.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 1), 4);
+            builderAwakenedCore2.input(GTUtil.oreDictionaryCircuit(GTEValues.dedaVoltageTier - 1), 4);
         }
         builderAwakenedCore2.buildAndRegister();
 
         // Wyvern Energy Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_energy_core"));
         GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier - 1), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier - 1), 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 32)
                 .input(wireFine, GTEMaterials.Draconium, 24)
@@ -189,7 +187,7 @@ public class DraconicItemsRecipe {
                 .duration(100).EUt(VA[GTEValues.dedaVoltageTier])
                 .buildAndRegister();
         GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier - 1), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier - 1), 1)
                 .input(DEFeatures.wyvernCore, 1)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 32)
                 .input(wireFine, GTEMaterials.Draconium, 24)
@@ -204,7 +202,7 @@ public class DraconicItemsRecipe {
         // Draconic Energy Core
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_energy_core"));
         GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier + 1), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier + 1), 1)
                 .input(DEFeatures.draconicCore, 1)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 40)
                 .input(wireFine, GTEMaterials.AwakenedDraconium, 24)
@@ -216,7 +214,7 @@ public class DraconicItemsRecipe {
                 .duration(200).EUt(VA[GTEValues.dedaVoltageTier + 1])
                 .buildAndRegister();
         GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier + 1), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier + 1), 1)
                 .input(DEFeatures.draconicCore, 1)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 40)
                 .input(wireFine, GTEMaterials.AwakenedDraconium, 24)
@@ -512,7 +510,7 @@ public class DraconicItemsRecipe {
         // ########################################
         // Chaotic Core
         RecipeBuilder<?> builderChaoticCore1 = GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier + 1), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier + 1), 1)
                 .input(DEFeatures.awakenedCore, 1)
                 .input(DEFeatures.draconicEnergyCore, 4)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 40)
@@ -526,12 +524,12 @@ public class DraconicItemsRecipe {
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderChaoticCore1.inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_capacitor_stellar", 4, 0));
         } else {
-            builderChaoticCore1.input(GTHelper.oreDictionaryCircuit(GTEValues.dedaVoltageTier), 4);
+            builderChaoticCore1.input(GTUtil.oreDictionaryCircuit(GTEValues.dedaVoltageTier), 4);
         }
         builderChaoticCore1.buildAndRegister();
 
         RecipeBuilder<?> builderChaoticCore2 = GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier + 1), 1)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier + 1), 1)
                 .input(DEFeatures.awakenedCore, 1)
                 .input(DEFeatures.draconicEnergyCore, 4)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 40)
@@ -545,13 +543,13 @@ public class DraconicItemsRecipe {
         if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
             builderChaoticCore2.inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_capacitor_stellar", 4, 0));
         } else {
-            builderChaoticCore2.input(GTHelper.oreDictionaryCircuit(GTEValues.dedaVoltageTier), 4);
+            builderChaoticCore2.input(GTUtil.oreDictionaryCircuit(GTEValues.dedaVoltageTier), 4);
         }
         builderChaoticCore2.buildAndRegister();
 
         // Chaotic Energy Core
         GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier + 1), 2)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier + 1), 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 48)
@@ -564,7 +562,7 @@ public class DraconicItemsRecipe {
                 .duration(400).EUt(VA[GTEValues.dedaVoltageTier + 3])
                 .buildAndRegister();
         GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
-                .input(GTHelper.circuitBoard(GTEValues.dedaVoltageTier + 1), 2)
+                .input(GTUtil.circuitBoard(GTEValues.dedaVoltageTier + 1), 2)
                 .input(DEFeatures.chaoticCore, 1)
                 .input(DEFeatures.chaosShard, 4, 0)
                 .input(MetaItems.RANDOM_ACCESS_MEMORY, 48)

@@ -2,7 +2,7 @@ package gtexpert.common.items;
 
 import static gregtech.common.covers.CoverBehaviors.registerBehavior;
 import static gtexpert.api.util.GTEUtility.gteId;
-import static gtexpert.common.GTEConfigHolder.gteFlag;
+import static gtexpert.core.GTEConfigHolder.gteFlag;
 
 import gregtech.api.GTValues;
 import gregtech.common.covers.CoverConveyor;

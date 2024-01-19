@@ -2,7 +2,7 @@ package gtexpert.core.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.common.GTEConfigHolder.ceuOverride;
+import static gtexpert.core.GTEConfigHolder.ceuOverride;
 
 import java.util.ArrayList;
 import java.util.List;

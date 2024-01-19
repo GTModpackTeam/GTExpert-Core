@@ -1,7 +1,6 @@
 package gtexpert.integration.avaritia.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.block;
 
 import net.minecraft.util.ResourceLocation;
 

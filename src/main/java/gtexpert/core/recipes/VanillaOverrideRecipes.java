@@ -3,7 +3,7 @@ package gtexpert.core.recipes;
 import static gregtech.api.GTValues.MV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.common.GTEConfigHolder.ceuOverride;
+import static gtexpert.core.GTEConfigHolder.ceuOverride;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

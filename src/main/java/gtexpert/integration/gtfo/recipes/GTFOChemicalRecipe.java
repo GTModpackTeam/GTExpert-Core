@@ -1,7 +1,6 @@
 package gtexpert.integration.gtfo.recipes;
 
-import static gregtech.api.GTValues.LV;
-import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
 import gregtech.api.recipes.RecipeMaps;

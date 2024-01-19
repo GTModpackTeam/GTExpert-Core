@@ -2,10 +2,7 @@ package gtexpert.integration.ae.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gtexpert.common.GTEConfigHolder.ae2Integration;
-import static gtexpert.integration.ae.AEHelper.*;
-import static gtexpert.integration.ae.AEHelper.aeBlocks;
+import static gtexpert.integration.ae.AEUtil.*;
 
 import java.util.Map;
 import java.util.stream.IntStream;
@@ -27,6 +24,7 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.integration.ae.AEConfig;
 
 import appeng.api.util.AEColor;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
@@ -93,7 +91,7 @@ public class AEBlocksRecipe {
                 " ", "I",
                 'I', GTEUtility.getModItem(GTEValues.MODID_AE, "fluid_interface"));
 
-        if (ae2Integration.enableAE2UELExtended) {
+        if (AEConfig.enableAE2UELExtended) {
             // ME Delivery Interface
             ModHandler.removeRecipeByName(
                     new ResourceLocation(GTEValues.MODID_AE, "network/blocks/interfaces_interfaceimp_alt"));
@@ -543,7 +541,7 @@ public class AEBlocksRecipe {
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
 
-        if (ae2Integration.enableAE2UELExtended) {
+        if (AEConfig.enableAE2UELExtended) {
             // 1mb Crafting Storage
             ModHandler.removeRecipeByName(
                     new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_1mb"));

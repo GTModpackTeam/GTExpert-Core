@@ -1,9 +1,7 @@
 package gtexpert.integration.deda.recipes;
 
-import static gregtech.api.GTValues.UHV;
-import static gregtech.api.GTValues.VA;
-import static gregtech.api.unification.ore.OrePrefix.plate;
-import static gregtech.api.unification.ore.OrePrefix.stick;
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Items;

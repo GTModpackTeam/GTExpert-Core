@@ -12,7 +12,7 @@ import gregtech.common.items.MetaItems;
 
 import gtexpert.common.items.GTEMetaItems;
 
-public class GTHelper {
+public class GTUtil {
 
     public static MetaItem<?>.MetaValueItem motor(int voltage) {
         return switch (voltage) {

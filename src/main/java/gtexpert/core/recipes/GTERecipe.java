@@ -2,8 +2,8 @@ package gtexpert.core.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.common.GTEConfigHolder.ceuOverride;
-import static gtexpert.common.GTEConfigHolder.gteFlag;
+import static gtexpert.core.GTEConfigHolder.ceuOverride;
+import static gtexpert.core.GTEConfigHolder.gteFlag;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -49,7 +49,7 @@ import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.core.GTERecipeMaps;
-import gtexpert.core.GTHelper;
+import gtexpert.core.GTUtil;
 import gtexpert.core.metatileentities.GTEMetaTileEntities;
 
 public class GTERecipe {
@@ -734,7 +734,7 @@ public class GTERecipe {
                 ModHandler.addShapedRecipe(true, "steam_circuit_assembler_bronze",
                         GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
                         'R', GTEMetaItems.GTE_ROBOT_ARM,
-                        'I', GTHelper.oreDictionaryCircuit(GTValues.LV),
+                        'I', GTUtil.oreDictionaryCircuit(GTValues.LV),
                         'E', GTEMetaItems.GTE_EMITTER,
                         'C', GTEMetaItems.GTE_CONVEYOR_MODULE,
                         'H', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),

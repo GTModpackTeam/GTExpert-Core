@@ -1,8 +1,7 @@
 package gtexpert.common.items;
 
-import static gtexpert.common.GTEConfigHolder.ae2Integration;
-import static gtexpert.common.GTEConfigHolder.gteFlag;
 import static gtexpert.common.items.GTEMetaItems.*;
+import static gtexpert.core.GTEConfigHolder.gteFlag;
 
 import net.minecraft.client.resources.I18n;
 
@@ -12,6 +11,8 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.behaviors.TooltipBehavior;
+
+import gtexpert.integration.ae.AEConfig;
 
 public class GTEMetaItem1 extends StandardMetaItem {
 
@@ -55,7 +56,7 @@ public class GTEMetaItem1 extends StandardMetaItem {
         GTE_SENSOR = addItem(19, "sensor." + componentsName);
 
         // Shapes: ID 101-110
-        if (ae2Integration.moveSteelShape) {
+        if (AEConfig.moveSteelShape) {
             GTE_SHAPE_MOLDS[0] = SHAPE_MOLD_PRINTED_SILICON = addItem(101, "shape.mold.printed_silicon")
                     .setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, GTValues.M * 4)));
             GTE_SHAPE_MOLDS[1] = SHAPE_MOLD_LOGIC_PROCESSOR = addItem(102, "shape.mold.logic_processor")

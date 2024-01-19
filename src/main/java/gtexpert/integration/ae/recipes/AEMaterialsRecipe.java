@@ -1,11 +1,8 @@
 package gtexpert.integration.ae.recipes;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gtexpert.integration.ae.AEHelper.aeBlocks;
-import static gtexpert.integration.ae.AEHelper.aeMaterials;
+import static gtexpert.integration.ae.AEUtil.*;
 
 import net.minecraft.util.ResourceLocation;
 
