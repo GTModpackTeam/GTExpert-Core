@@ -15,6 +15,7 @@ public class GTEMultiMetaTileEntities {
     public static MetaTileEntityDraconiumFusion AWAKENED_DRACONIUM_FUSION;
     public static MetaTileEntityAdvancedChemicalPlant ADVANCED_CHEMICAL_PLANT;
     public static MetaTileEntityAdvancedGasCollector ADVANCED_GAS_COLLECTOR;
+    public static MetaTileEntityParallelAssemblyLine PARALLEL_ASSEMBLY_LINE;
 
     public static void init() {
         SAWMILL = registerMetaTileEntity(12001,
@@ -36,5 +37,8 @@ public class GTEMultiMetaTileEntities {
 
         ADVANCED_GAS_COLLECTOR = registerMetaTileEntity(12007,
                 new MetaTileEntityAdvancedGasCollector(gteId("advanced_gas_collector")));
+
+        PARALLEL_ASSEMBLY_LINE = registerMetaTileEntity(12008,
+                new MetaTileEntityParallelAssemblyLine(gteId("parallel_assembly_line")));
     }
 }
