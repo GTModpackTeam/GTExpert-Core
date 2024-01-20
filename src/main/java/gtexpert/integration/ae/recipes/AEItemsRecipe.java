@@ -23,7 +23,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.integration.ae.AEConfig;
+import gtexpert.integration.ae.AEConfigHolder;
 
 public class AEItemsRecipe {
 
@@ -36,7 +36,7 @@ public class AEItemsRecipe {
                 .fluidInputs(Materials.Neutronium.getFluid(9216))
                 .output(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 1)
                 .duration(1200).EUt(VA[UV]);
-        if (AEConfig.enableAE2UELExtended) {
+        if (AEConfigHolder.enableAE2UELExtended) {
             if (Loader.isModLoaded(GTEValues.MODID_AEA)) {
                 builderGTECore.inputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3));
                 builderGTECore.inputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6));
@@ -292,7 +292,7 @@ public class AEItemsRecipe {
                 .duration(56).EUt(VA[LV])
                 .buildAndRegister();
 
-        if (AEConfig.enableAE2UELExtended) {
+        if (AEConfigHolder.enableAE2UELExtended) {
             // 1mb Storage Cell
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1mb"));
             ModHandler.removeRecipeByName(
@@ -697,7 +697,7 @@ public class AEItemsRecipe {
 
         // Printed Silicon
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(AEConfig.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_PRINTED_SILICON.getStackForm() :
+                .notConsumable(AEConfigHolder.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_PRINTED_SILICON.getStackForm() :
                         aeMaterials.siliconPress().maybeStack(1).get())
                 .input(plate, Materials.Silicon, 1)
                 .outputs(aeMaterials.siliconPrint().maybeStack(1).get())
@@ -706,7 +706,7 @@ public class AEItemsRecipe {
 
         // Logic Circuit
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(AEConfig.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm() :
+                .notConsumable(AEConfigHolder.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm() :
                         aeMaterials.logicProcessorPress().maybeStack(1).get())
                 .input(plate, Materials.Gold, 1)
                 .outputs(aeMaterials.logicProcessorPrint().maybeStack(1).get())
@@ -716,7 +716,7 @@ public class AEItemsRecipe {
         // Calc Circuit
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
                 .notConsumable(
-                        AEConfig.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm() :
+                        AEConfigHolder.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm() :
                                 aeMaterials.calcProcessorPress().maybeStack(1).get())
                 .input(plate, Materials.CertusQuartz, 1)
                 .outputs(aeMaterials.calcProcessorPrint().maybeStack(1).get())
@@ -726,7 +726,7 @@ public class AEItemsRecipe {
         // Engineer Circuit
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
                 .notConsumable(
-                        AEConfig.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm() :
+                        AEConfigHolder.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm() :
                                 aeMaterials.engProcessorPress().maybeStack(1).get())
                 .input(plate, Materials.Diamond, 1)
                 .outputs(aeMaterials.engProcessorPrint().maybeStack(1).get())
@@ -763,18 +763,18 @@ public class AEItemsRecipe {
                 .withRecycling()
                 .buildAndRegister();
 
-        if (AEConfig.moveSteelShape) {
+        if (AEConfigHolder.moveSteelShape) {
             // All shapes
             Arrays.stream(GTEMetaItems.GTE_SHAPE_MOLDS)
                     .forEach(shapeMold -> RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                            .notConsumable(shapeMold)
+                            .notConsumable(shapeMold.getStackForm())
                             .input(MetaItems.SHAPE_EMPTY)
                             .output(shapeMold)
                             .duration(120).EUt(22)
                             .buildAndRegister());
             Arrays.stream(GTEMetaItems.GTE_SHAPE_EXTRUDERS).filter(Objects::nonNull)
                     .forEach(shapeExtruder -> RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                            .notConsumable(shapeExtruder)
+                            .notConsumable(shapeExtruder.getStackForm())
                             .input(MetaItems.SHAPE_EMPTY)
                             .output(shapeExtruder)
                             .duration(120).EUt(22)

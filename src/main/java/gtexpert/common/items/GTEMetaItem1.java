@@ -12,7 +12,7 @@ import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.behaviors.TooltipBehavior;
 
-import gtexpert.integration.ae.AEConfig;
+import gtexpert.integration.ae.AEConfigHolder;
 
 public class GTEMetaItem1 extends StandardMetaItem {
 
@@ -33,7 +33,7 @@ public class GTEMetaItem1 extends StandardMetaItem {
         GTE_ELECTRIC_PUMP = addItem(12, "electric.pump." + componentsName)
                 .addComponents(new TooltipBehavior(lines -> {
                     lines.add(I18n.format("metaitem.electric.pump.tooltip"));
-                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 1280 / 4));
+                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", (1280 / 4) / 20));
                 }));
         GTE_CONVEYOR_MODULE = addItem(13, "conveyor.module." + componentsName)
                 .addComponents(new TooltipBehavior(lines -> {
@@ -49,14 +49,14 @@ public class GTEMetaItem1 extends StandardMetaItem {
         GTE_FLUID_REGULATOR = addItem(16, "fluid.regulator." + componentsName)
                 .addComponents(new TooltipBehavior(lines -> {
                     lines.add(I18n.format("metaitem.fluid.regulator.tooltip"));
-                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 320 / 4));
+                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", (1280 / 4) / 20));
                 }));
         GTE_FIELD_GENERATOR = addItem(17, "field.generator." + componentsName);
         GTE_EMITTER = addItem(18, "emitter." + componentsName);
         GTE_SENSOR = addItem(19, "sensor." + componentsName);
 
         // Shapes: ID 101-110
-        if (AEConfig.moveSteelShape) {
+        if (AEConfigHolder.moveSteelShape) {
             GTE_SHAPE_MOLDS[0] = SHAPE_MOLD_PRINTED_SILICON = addItem(101, "shape.mold.printed_silicon")
                     .setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, GTValues.M * 4)));
             GTE_SHAPE_MOLDS[1] = SHAPE_MOLD_LOGIC_PROCESSOR = addItem(102, "shape.mold.logic_processor")

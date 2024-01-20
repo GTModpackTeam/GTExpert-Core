@@ -11,12 +11,12 @@ import gregtech.common.ConfigHolder;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.integration.chisel.ChiselConfig;
+import gtexpert.integration.chisel.ChiselConfigHolder;
 
 public class ChiselToolsRecipe {
 
     public static void init() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && ChiselConfig.hardToolRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes && ChiselConfigHolder.hardToolRecipes) {
             // Iron Chisel
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
             ModHandler.addShapedRecipe(true, "chisel_iron",

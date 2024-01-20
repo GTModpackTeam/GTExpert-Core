@@ -1,8 +1,8 @@
 package gtexpert.integration.deda;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
@@ -23,7 +23,7 @@ import gtexpert.modules.GTEModules;
 public class DEDAModule extends GTEIntegrationSubmodule {
 
     @Override
-    public void preInit(FMLPreInitializationEvent event) {
+    public void registerBlocks(RegistryEvent.Register<Block> event) {
         DEDAMetaTileEntities.init();
     }
 

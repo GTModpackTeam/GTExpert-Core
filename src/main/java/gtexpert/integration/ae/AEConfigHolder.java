@@ -10,7 +10,7 @@ import gtexpert.modules.GTEModules;
 @Config(modid = GTEValues.MODID,
         name = GTEValues.MODID + "/" + GTEModules.MODULE_AE,
         category = "Applied Energistics 2")
-public class AEConfig {
+public class AEConfigHolder {
 
     @Config.Comment({ "Change the recipe to use AE2 UEL: Extended by setting it to true.",
             "Changes are not recommended if you don't know what kind of mod it is.", "Default: false" })

@@ -3,6 +3,14 @@ package gtexpert.core.metatileentities;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static gtexpert.api.util.GTEUtility.gteId;
 
+import java.util.function.Function;
+
+import net.minecraft.util.ResourceLocation;
+
+import gregtech.api.GTValues;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.client.renderer.ICubeRenderer;
+
 import gtexpert.core.metatileentities.multi.*;
 import gtexpert.core.metatileentities.single.SteamAssembler;
 import gtexpert.core.metatileentities.single.SteamCircuitAssembler;
@@ -53,5 +61,24 @@ public class GTEMetaTileEntities {
                 new MetaTileEntityAdvancedChemicalPlant(gteId("advanced_chemical_plant")));
         ADVANCED_GAS_COLLECTOR = registerMetaTileEntity(12007,
                 new MetaTileEntityAdvancedGasCollector(gteId("advanced_gas_collector")));
+    }
+
+    public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,
+                                                       String name, RecipeMap<?> map, ICubeRenderer texture,
+                                                       boolean hasFrontFacing,
+                                                       Function<String, ResourceLocation> resourceId,
+                                                       Function<Integer, Integer> tankScalingFunction) {
+        for (int i = 0; i < machines.length - 1; ++i) {
+            if (i <= 4 || getMidTier(name)) {
+                if (i > 7 && !getHighTier(name)) {
+                    break;
+                }
+
+                String voltageName = GTValues.VN[i + 1].toLowerCase();
+                machines[i + 1] = registerMetaTileEntity(startId + i,
+                        new GTESimpleMachineMetaTileEntity(resourceId.apply(String.format("%s.%s", name, voltageName)),
+                                map, texture, i + 1, hasFrontFacing, tankScalingFunction));
+            }
+        }
     }
 }

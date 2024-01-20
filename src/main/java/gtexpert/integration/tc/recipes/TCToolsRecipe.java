@@ -12,12 +12,12 @@ import gregtech.common.ConfigHolder;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.integration.tc.TCConfig;
+import gtexpert.integration.tc.TCConfigHolder;
 
 public class TCToolsRecipe {
 
     public static void init() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && TCConfig.hardToolRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes && TCConfigHolder.hardToolRecipes) {
             // Dark Helm
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumhelm"));
             ModHandler.addShapedRecipe(true, "thaumium_helm",

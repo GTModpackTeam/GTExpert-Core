@@ -11,12 +11,12 @@ import gregtech.api.unification.material.Materials;
 import gregtech.common.ConfigHolder;
 
 import gtexpert.api.GTEValues;
-import gtexpert.integration.ae.AEConfig;
+import gtexpert.integration.ae.AEConfigHolder;
 
 public class AEToolsRecipe {
 
     public static void init() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && AEConfig.hardToolRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes && AEConfigHolder.hardToolRecipes) {
             // Nether Quartz Axe
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_axe"));
             ModHandler.addShapedRecipe(true, "nether_quartz_axe",

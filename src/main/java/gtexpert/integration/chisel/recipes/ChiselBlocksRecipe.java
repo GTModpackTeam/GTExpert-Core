@@ -30,7 +30,7 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.integration.chisel.ChiselConfig;
+import gtexpert.integration.chisel.ChiselConfigHolder;
 import gtexpert.integration.chisel.ChiselRecipeMaps;
 import gtexpert.integration.chisel.ChiselUtil;
 
@@ -92,7 +92,7 @@ public class ChiselBlocksRecipe {
                 'C', CIRCUIT);
 
         // Lamp
-        if (ChiselConfig.hardLedRecipes) {
+        if (ChiselConfigHolder.hardLedRecipes) {
             if (Loader.isModLoaded("projectred-illumination")) {
                 IntStream.range(0, 31).mapToObj(i -> GTEUtility.getModItem("projectred-illumination", "lamp", 1, i))
                         .forEach(ModHandler::removeRecipeByOutput);
@@ -499,6 +499,6 @@ public class ChiselBlocksRecipe {
                 .notConsumable(target)
                 .outputs(target)
                 .duration(10).EUt(VH[ULV])
-                .hidden().buildAndRegister());
+                .buildAndRegister());
     }
 }

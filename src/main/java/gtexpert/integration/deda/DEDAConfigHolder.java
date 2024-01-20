@@ -9,7 +9,7 @@ import gtexpert.modules.GTEModules;
 @Config(modid = GTEValues.MODID,
         name = GTEValues.MODID + "/" + GTEModules.MODULE_DEDA,
         category = "Draconic Evolution & Draconic Additions")
-public class DEDAConfig {
+public class DEDAConfigHolder {
 
     @Config.Comment({ "The voltage at which DE/DA can be started.",
             "The material is also adjusted to each voltage.", "Default: 6 (LuV)" })

@@ -9,7 +9,7 @@ import gtexpert.modules.GTEModules;
 @Config(modid = GTEValues.MODID,
         name = GTEValues.MODID + "/" + GTEModules.MODULE_EIO,
         category = "Ender IO")
-public class EnderIOConfig {
+public class EnderIOConfigHolder {
 
     @Config.Comment({ "The voltage at which EIO can be started.",
             "The material is also adjusted to each voltage.", "Default: 3 (HV)" })

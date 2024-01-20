@@ -130,7 +130,7 @@ public class CEUOverrideRecipe {
 
         // Block
         RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
-                .notConsumable(MetaItems.SHAPE_MOLD_BLOCK)
+                .notConsumable(MetaItems.SHAPE_MOLD_BLOCK.getStackForm())
                 .fluidInputs(Materials.Ice.getFluid(1000))
                 .output(block, Materials.Ice, 1)
                 .duration(6).EUt(VA[ULV])

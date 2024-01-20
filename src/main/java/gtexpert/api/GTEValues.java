@@ -4,9 +4,9 @@ import net.minecraftforge.fml.common.Loader;
 
 import gtexpert.Tags;
 import gtexpert.api.util.GTELog;
-import gtexpert.integration.ae.AEConfig;
-import gtexpert.integration.deda.DEDAConfig;
-import gtexpert.integration.eio.EnderIOConfig;
+import gtexpert.integration.ae.AEConfigHolder;
+import gtexpert.integration.deda.DEDAConfigHolder;
+import gtexpert.integration.eio.EnderIOConfigHolder;
 
 public class GTEValues {
 
@@ -38,9 +38,9 @@ public class GTEValues {
             MODID_TE = "thaumicenergistics",
             MODID_CT = "crafttweaker";
 
-    public static int ae2VoltageTier = voltageTier(AEConfig.voltageTier) ? AEConfig.voltageTier : 3,
-            eioVoltageTier = voltageTier(EnderIOConfig.voltageTier) ? EnderIOConfig.voltageTier : 3,
-            dedaVoltageTier = voltageTier(DEDAConfig.voltageTier) ? DEDAConfig.voltageTier : 6;
+    public static int ae2VoltageTier = voltageTier(AEConfigHolder.voltageTier) ? AEConfigHolder.voltageTier : 3,
+            eioVoltageTier = voltageTier(EnderIOConfigHolder.voltageTier) ? EnderIOConfigHolder.voltageTier : 3,
+            dedaVoltageTier = voltageTier(DEDAConfigHolder.voltageTier) ? DEDAConfigHolder.voltageTier : 6;
 
     public static boolean isModLoadedDEDA() {
         return Loader.isModLoaded(MODID_DE) && Loader.isModLoaded(MODID_DA);

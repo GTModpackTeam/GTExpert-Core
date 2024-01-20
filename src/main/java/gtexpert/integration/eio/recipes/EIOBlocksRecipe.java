@@ -22,7 +22,7 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.integration.eio.EnderIOConfig;
+import gtexpert.integration.eio.EnderIOConfigHolder;
 import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
 
 import crazypants.enderio.base.init.ModObject;
@@ -94,7 +94,7 @@ public class EIOBlocksRecipe {
                 'C', "itemEnderCrystal",
                 'Z', "skullZombieFrankenstein");
 
-        if (EnderIOConfig.addShapelessRecipeMachines) {
+        if (EnderIOConfigHolder.addShapelessRecipeMachines) {
             // Slice'N'Splice
             ModHandler.addShapelessRecipe("eio_slice_n_splice",
                     new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()),

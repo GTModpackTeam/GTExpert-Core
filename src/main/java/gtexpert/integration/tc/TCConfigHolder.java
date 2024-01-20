@@ -9,7 +9,7 @@ import gtexpert.modules.GTEModules;
 @Config(modid = GTEValues.MODID,
         name = GTEValues.MODID + "/" + GTEModules.MODULE_TC,
         category = "Thaumcraft")
-public class TCConfig {
+public class TCConfigHolder {
 
     @Config.Comment({ "Change Thaumcraft recipes to GT recipe standards.",
             "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })

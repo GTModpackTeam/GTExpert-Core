@@ -223,32 +223,32 @@ public class GTERecipe {
                         'R', new UnificationEntry(stick, Materials.Bronze),
                         'G', new UnificationEntry(gearSmall, Materials.Bronze),
                         'P', new UnificationEntry(plate, Materials.Bronze),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
 
                 ModHandler.addShapedRecipe(true, "electric_pump_" + componentsName,
                         GTEMetaItems.GTE_ELECTRIC_PUMP.getStackForm(), "PR", "MO",
                         'R', new UnificationEntry(rotor, Materials.Bronze),
                         'O', new UnificationEntry(ring, Materials.Rubber),
                         'P', new UnificationEntry(pipeNormalFluid, Materials.Copper),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
 
                 ModHandler.addShapedRecipe(true, "conveyor_module_" + componentsName,
                         GTEMetaItems.GTE_CONVEYOR_MODULE.getStackForm(), "PC", "MP",
                         'P', new UnificationEntry(plate, Materials.Rubber),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
 
                 ModHandler.addShapedRecipe(true, "robot_arm_" + componentsName,
                         GTEMetaItems.GTE_ROBOT_ARM.getStackForm(), "PR", "MC",
                         'R', new UnificationEntry(stick, Materials.Bronze),
                         'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'P', GTEMetaItems.GTE_ELECTRIC_PISTON,
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
+                        'P', GTEMetaItems.GTE_ELECTRIC_PISTON.getStackForm(),
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
 
                 ModHandler.addShapedRecipe(true, "fluid_regulator_" + componentsName,
                         GTEMetaItems.GTE_FLUID_REGULATOR.getStackForm(), "PC", "Cd",
                         'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'P', GTEMetaItems.GTE_ELECTRIC_PUMP);
+                        'P', GTEMetaItems.GTE_ELECTRIC_PUMP.getStackForm());
 
                 ModHandler.addShapedRecipe(true, "field_generator_" + componentsName,
                         GTEMetaItems.GTE_FIELD_GENERATOR.getStackForm(), "CP", "UG",
@@ -292,7 +292,7 @@ public class GTERecipe {
                         'G', new UnificationEntry(gearSmall, Materials.Bronze),
                         'P', new UnificationEntry(plate, Materials.Bronze),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(stick, Materials.Bronze, 2)
                         .input(cableGtSingle, Materials.Lead, 2)
@@ -309,7 +309,7 @@ public class GTERecipe {
                         'O', new UnificationEntry(ring, Materials.Rubber),
                         'P', new UnificationEntry(pipeNormalFluid, Materials.Copper),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(cableGtSingle, Materials.Lead)
                         .input(pipeNormalFluid, Materials.Copper)
@@ -324,7 +324,7 @@ public class GTERecipe {
                         GTEMetaItems.GTE_CONVEYOR_MODULE.getStackForm(), "PPP", "MCM", "PPP",
                         'P', new UnificationEntry(plate, Materials.Rubber),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(cableGtSingle, Materials.Lead)
                         .inputs(GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm(2))
@@ -338,8 +338,8 @@ public class GTERecipe {
                         'R', new UnificationEntry(stick, Materials.Bronze),
                         'C', new UnificationEntry(cableGtSingle, Materials.Lead),
                         'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'P', GTEMetaItems.GTE_ELECTRIC_PISTON,
-                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR);
+                        'P', GTEMetaItems.GTE_ELECTRIC_PISTON.getStackForm(),
+                        'M', GTEMetaItems.GTE_ELECTRIC_MOTOR.getStackForm());
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(cableGtSingle, Materials.Lead, 3)
                         .input(stick, Materials.Bronze, 2)
@@ -352,7 +352,7 @@ public class GTERecipe {
                 ModHandler.addShapedRecipe(true, "fluid_regulator_" + componentsName,
                         GTEMetaItems.GTE_FLUID_REGULATOR.getStackForm(), " U ", "dPw", " U ",
                         'U', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'P', GTEMetaItems.GTE_ELECTRIC_PUMP);
+                        'P', GTEMetaItems.GTE_ELECTRIC_PUMP.getStackForm());
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input(GTEMetaItems.GTE_ELECTRIC_PUMP)
                         .input(circuit, MarkerMaterials.Tier.ULV, 2)
@@ -658,25 +658,25 @@ public class GTERecipe {
             ModHandler.addShapedRecipe("solar_panel_lv_gt5u",
                     MetaItems.COVER_SOLAR_PANEL_LV.getStackForm(), " S ", "SCS", " S ",
                     'S', MetaItems.COVER_SOLAR_PANEL_ULV,
-                    'C', MetaTileEntities.TRANSFORMER[0]);
+                    'C', MetaTileEntities.TRANSFORMER[0].getStackForm());
 
             // Solar Panel (MV)
             ModHandler.addShapedRecipe("solar_panel_mv_gt5u",
                     MetaItems.COVER_SOLAR_PANEL_MV.getStackForm(), " S ", "SCS", " S ",
                     'S', MetaItems.COVER_SOLAR_PANEL_LV,
-                    'C', MetaTileEntities.TRANSFORMER[LV]);
+                    'C', MetaTileEntities.TRANSFORMER[LV].getStackForm());
 
             // Solar Panel (HV)
             ModHandler.addShapedRecipe("solar_panel_hv_gt5u",
                     MetaItems.COVER_SOLAR_PANEL_HV.getStackForm(), " S ", "SCS", " S ",
                     'S', MetaItems.COVER_SOLAR_PANEL_MV,
-                    'C', MetaTileEntities.TRANSFORMER[MV]);
+                    'C', MetaTileEntities.TRANSFORMER[MV].getStackForm());
 
             // Solar Panel (EV)
             ModHandler.addShapedRecipe("solar_panel_ev_gt5u",
                     MetaItems.COVER_SOLAR_PANEL_EV.getStackForm(), " S ", "SCS", " S ",
                     'S', MetaItems.COVER_SOLAR_PANEL_HV,
-                    'C', MetaTileEntities.TRANSFORMER[HV]);
+                    'C', MetaTileEntities.TRANSFORMER[HV].getStackForm());
 
             if (!ConfigHolder.machines.enableHighTierSolars) return;
 

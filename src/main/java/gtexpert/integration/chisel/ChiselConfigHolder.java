@@ -2,7 +2,7 @@ package gtexpert.integration.chisel;
 
 import net.minecraftforge.common.config.Config;
 
-public class ChiselConfig {
+public class ChiselConfigHolder {
 
     @Config.Comment({ "Change Chisel recipes to GT recipe standards.",
             "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })

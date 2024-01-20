@@ -18,7 +18,7 @@ public class ChiselRecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> AUTO_CHISEL_RECIPES = new RecipeMap<>(
-            "auto_chisel", 2, 9, 0, 0, new SimpleRecipeBuilder(), false)
+            "auto_chisel", 2, 9, 0, 0, new SimpleRecipeBuilder(), true)
                     .setSlotOverlay(false, false, false, GuiTextures.BOXED_BACKGROUND)
                     .setProgressBar(GTEGuiTextures.PROGRESS_BAR_CHISEL, ProgressWidget.MoveType.HORIZONTAL)
                     .setSound(GTSoundEvents.FILE_TOOL);

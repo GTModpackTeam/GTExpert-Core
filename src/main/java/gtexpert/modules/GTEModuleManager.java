@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -214,6 +216,20 @@ public class GTEModuleManager implements IModuleManager {
                     break;
                 }
             }
+        }
+    }
+
+    public void registerBlocks(RegistryEvent.Register<Block> event) {
+        for (IGTEModule module : loadedModules) {
+            currentContainer = containers.get(getContainerID(module));
+            module.registerBlocks(event);
+        }
+    }
+
+    public void registerItems(RegistryEvent.Register<Item> event) {
+        for (IGTEModule module : loadedModules) {
+            currentContainer = containers.get(getContainerID(module));
+            module.registerItems(event);
         }
     }
 

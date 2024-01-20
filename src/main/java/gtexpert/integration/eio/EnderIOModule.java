@@ -5,6 +5,7 @@ import static gregtech.api.GTValues.VA;
 
 import java.util.function.Consumer;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityList;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -12,7 +13,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.enderio.core.common.util.EntityUtil;
@@ -44,7 +44,7 @@ import crazypants.enderio.endergy.init.EndergyObject;
 public class EnderIOModule extends GTEIntegrationSubmodule {
 
     @Override
-    public void preInit(FMLPreInitializationEvent event) {
+    public void registerBlocks(RegistryEvent.Register<Block> event) {
         EIOMetaTileEntities.init();
     }
 
