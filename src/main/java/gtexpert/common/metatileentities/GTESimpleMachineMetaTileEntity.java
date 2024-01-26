@@ -34,8 +34,8 @@ public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity 
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new GTESimpleMachineMetaTileEntity(this.metaTileEntityId, this.workable.getRecipeMap(), this.renderer,
-                this.getTier(), this.hasFrontFacing(), this.getTankScalingFunction());
+        return new GTESimpleMachineMetaTileEntity(metaTileEntityId, workable.getRecipeMap(), renderer, getTier(),
+                hasFrontFacing(), getTankScalingFunction());
     }
 
     protected ModularUI.Builder createGuiTemplate(EntityPlayer player) {
