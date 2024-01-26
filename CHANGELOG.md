@@ -1,3 +1,8 @@
+# v1.5.16
+- Corrective action by [GTModpackTeam/GregTech-Expert-2#373](https://github.com/GTModpackTeam/GregTech-Expert-2/issues/373)
+
+* * *
+
 # v1.5.15
 - Increase in recycled recipes.
 - Re: AGC recipe adjustment.
