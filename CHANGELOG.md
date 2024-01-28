@@ -1,3 +1,9 @@
+# v2.0.1
+- Re: Fix of Module System #221
+    - Configuration file is located at `./config/gtexpert/`, so please be careful when updating.
+
+* * *
+
 # v2.0.0
 - Fork from CEu module system.
 - Recipe Module can be switched on/off from config.
