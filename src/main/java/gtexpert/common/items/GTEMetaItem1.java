@@ -30,7 +30,7 @@ public class GTEMetaItem1 extends StandardMetaItem {
         PRIMITIVE_PUMP = addItem(12, "primitive.pump")
                 .addComponents(new TooltipBehavior(lines -> {
                     lines.add(I18n.format("metaitem.electric.pump.tooltip"));
-                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 1280 / 4));
+                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", (1280 / 4) / 20));
                 }));
         PRIMITIVE_CONVEYOR = addItem(13, "primitive.conveyor")
                 .addComponents(new TooltipBehavior(lines -> {
@@ -46,7 +46,7 @@ public class GTEMetaItem1 extends StandardMetaItem {
         PRIMITIVE_FLUID_REGULATOR = addItem(16, "primitive.fluid.regulator")
                 .addComponents(new TooltipBehavior(lines -> {
                     lines.add(I18n.format("metaitem.fluid.regulator.tooltip"));
-                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 320 / 4));
+                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", (1280 / 4) / 20));
                 }));
         PRIMITIVE_FIELD_GENERATOR = addItem(17, "primitive.field.generator");
         PRIMITIVE_EMITTER = addItem(18, "primitive.emitter");

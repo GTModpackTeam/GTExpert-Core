@@ -15,10 +15,10 @@ public class GTECoverBehaviors {
         registerBehavior(gteId("primitive.conveyor"), GTEMetaItems.PRIMITIVE_CONVEYOR,
                 (def, tile, side) -> new CoverConveyor(def, tile, side, GTValues.ULV, 2));
         registerBehavior(gteId("primitive.pump"), GTEMetaItems.PRIMITIVE_PUMP,
-                (def, tile, side) -> new CoverPump(def, tile, side, GTValues.ULV, 320));
+                (def, tile, side) -> new CoverPump(def, tile, side, GTValues.ULV, 1280 / 4));
         registerBehavior(gteId("primitive.robot.arm"), GTEMetaItems.PRIMITIVE_ROBOT_ARM,
                 (def, tile, side) -> new CoverRoboticArm(def, tile, side, GTValues.ULV, 2));
         registerBehavior(gteId("primitive.fluid.regulator"), GTEMetaItems.PRIMITIVE_FLUID_REGULATOR,
-                (def, tile, side) -> new CoverFluidRegulator(def, tile, side, GTValues.ULV, 16));
+                (def, tile, side) -> new CoverFluidRegulator(def, tile, side, GTValues.ULV, 1280 / 4));
     }
 }
