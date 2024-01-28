@@ -1,7 +1,6 @@
 package gtexpert.integration.eio;
 
-import static gregtech.api.GTValues.LV;
-import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.*;
 
 import java.util.function.Consumer;
 
