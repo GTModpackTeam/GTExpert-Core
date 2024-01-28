@@ -1,9 +1,7 @@
 package gtexpert.integration.ae.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.plate;
-import static gtexpert.common.GTEConfigHolder.ae2Integration;
-import static gtexpert.integration.ae.AEHelper.aeItems;
+import static gtexpert.integration.ae.AEUtil.aeItems;
 
 import net.minecraft.util.ResourceLocation;
 
@@ -13,11 +11,12 @@ import gregtech.api.unification.material.Materials;
 import gregtech.common.ConfigHolder;
 
 import gtexpert.api.GTEValues;
+import gtexpert.integration.ae.AEConfigHolder;
 
 public class AEToolsRecipe {
 
     public static void init() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && ae2Integration.hardToolRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes && AEConfigHolder.hardToolRecipes) {
             // Nether Quartz Axe
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "tools/nether_quartz_axe"));
             ModHandler.addShapedRecipe(true, "nether_quartz_axe",

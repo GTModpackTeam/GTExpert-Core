@@ -2,8 +2,8 @@ package gtexpert.core.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.common.GTEConfigHolder.ceuOverride;
-import static gtexpert.common.GTEConfigHolder.gteFlag;
+import static gtexpert.core.GTEConfigHolder.ceuOverride;
+import static gtexpert.core.GTEConfigHolder.gteFlag;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -48,10 +48,9 @@ import gtexpert.api.util.GTEUtility;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.metatileentities.GTEMultiMetaTileEntities;
-import gtexpert.common.metatileentities.GTESingleMetaTileEntities;
 import gtexpert.core.GTERecipeMaps;
-import gtexpert.integration.gt.GTHelper;
+import gtexpert.core.GTUtil;
+import gtexpert.core.metatileentities.GTEMetaTileEntities;
 
 public class GTERecipe {
 
@@ -715,7 +714,7 @@ public class GTERecipe {
             case "normal":
                 // Steam Mixer
                 ModHandler.addShapedRecipe(true, "steam_mixer_bronze",
-                        GTESingleMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
+                        GTEMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
                         'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
                         'E', GTEMetaItems.GTE_ELECTRIC_MOTOR,
                         'R', new UnificationEntry(rotor, Materials.Bronze),
@@ -724,7 +723,7 @@ public class GTERecipe {
 
                 // Steam Assembler
                 ModHandler.addShapedRecipe(true, "steam_assembler_bronze",
-                        GTESingleMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
+                        GTEMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
                         'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
                         'V', GTEMetaItems.GTE_CONVEYOR_MODULE,
                         'A', GTEMetaItems.GTE_ROBOT_ARM,
@@ -733,9 +732,9 @@ public class GTERecipe {
 
                 // Steam Circuit Assembler
                 ModHandler.addShapedRecipe(true, "steam_circuit_assembler_bronze",
-                        GTESingleMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
+                        GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
                         'R', GTEMetaItems.GTE_ROBOT_ARM,
-                        'I', GTHelper.oreDictionaryCircuit(GTValues.LV),
+                        'I', GTUtil.oreDictionaryCircuit(GTValues.LV),
                         'E', GTEMetaItems.GTE_EMITTER,
                         'C', GTEMetaItems.GTE_CONVEYOR_MODULE,
                         'H', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
@@ -743,7 +742,7 @@ public class GTERecipe {
 
                 // Sawmill
                 ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",
-                        GTEMultiMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
+                        GTEMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
                         'S', new UnificationEntry(screw, Materials.Steel),
                         'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Steel),
                         'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
@@ -756,7 +755,7 @@ public class GTERecipe {
 
         // Large Oil Cracking Unit
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit",
-                GTEMultiMetaTileEntities.LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",
+                GTEMetaTileEntities.LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ZPM),
                 'S', MetaTileEntities.CRACKER.getStackForm(),
                 'P', MetaItems.ELECTRIC_PUMP_IV.getStackForm(),
@@ -773,7 +772,7 @@ public class GTERecipe {
                 .input(MetaItems.ELECTRIC_MOTOR_LuV, 4)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(2304))
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(2304))
-                .output(GTEMultiMetaTileEntities.ADVANCED_CHEMICAL_PLANT)
+                .output(GTEMetaTileEntities.ADVANCED_CHEMICAL_PLANT)
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
 
@@ -787,7 +786,7 @@ public class GTERecipe {
                 .input(MetaItems.FIELD_GENERATOR_ZPM, 4)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(2304))
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(2304))
-                .output(GTEMultiMetaTileEntities.ADVANCED_GAS_COLLECTOR)
+                .output(GTEMetaTileEntities.ADVANCED_GAS_COLLECTOR)
                 .duration(200).EUt(VA[ZPM])
                 .buildAndRegister();
 
@@ -795,7 +794,7 @@ public class GTERecipe {
         AssemblyLineRecipeBuilder builderVOM = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.ADVANCED_LARGE_MINER)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
-                .output(GTEMultiMetaTileEntities.VOIDOREMINER);
+                .output(GTEMetaTileEntities.VOIDOREMINER);
         if (GTEValues.isModLoadedDEDA()) {
             builderVOM.inputs(GTEUtility.getModItem(GTEValues.MODID_DE, "awakened_core", 4, 0));
             builderVOM.input(MetaItems.ELECTRIC_MOTOR_UV, 4);

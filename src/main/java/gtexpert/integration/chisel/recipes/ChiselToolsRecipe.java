@@ -1,7 +1,6 @@
 package gtexpert.integration.chisel.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.common.GTEConfigHolder.chiselIntegration;
 
 import net.minecraft.util.ResourceLocation;
 
@@ -12,11 +11,12 @@ import gregtech.common.ConfigHolder;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.integration.chisel.ChiselConfigHolder;
 
 public class ChiselToolsRecipe {
 
     public static void init() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && chiselIntegration.hardToolRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes && ChiselConfigHolder.hardToolRecipes) {
             // Iron Chisel
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_CHISEL, "chisel_iron"));
             ModHandler.addShapedRecipe(true, "chisel_iron",

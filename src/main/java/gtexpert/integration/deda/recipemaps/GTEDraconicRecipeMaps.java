@@ -10,8 +10,12 @@ import gregtech.core.sound.GTSoundEvents;
 import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
 import gtexpert.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
 
+import crafttweaker.annotations.ZenRegister;
+import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenProperty;
 
+@ZenExpansion("mods.gregtech.recipe.RecipeMaps")
+@ZenRegister
 public class GTEDraconicRecipeMaps {
 
     /**

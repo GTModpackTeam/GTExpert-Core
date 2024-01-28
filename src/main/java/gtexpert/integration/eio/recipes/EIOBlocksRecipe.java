@@ -1,12 +1,8 @@
 package gtexpert.integration.eio.recipes;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.plate;
 import static gregtech.loaders.recipe.CraftingComponent.*;
-import static gregtech.loaders.recipe.CraftingComponent.HULL;
-import static gtexpert.common.GTEConfigHolder.eioIntegration;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -26,7 +22,8 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
-import gtexpert.common.metatileentities.EIOMetaTileEntities;
+import gtexpert.integration.eio.EnderIOConfigHolder;
+import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.conduits.init.ConduitObject;
@@ -97,7 +94,7 @@ public class EIOBlocksRecipe {
                 'C', "itemEnderCrystal",
                 'Z', "skullZombieFrankenstein");
 
-        if (eioIntegration.addShapelessRecipeMachines) {
+        if (EnderIOConfigHolder.addShapelessRecipeMachines) {
             // Slice'N'Splice
             ModHandler.addShapelessRecipe("eio_slice_n_splice",
                     new ItemStack(MachineObject.block_slice_and_splice.getBlockNN()),

@@ -17,6 +17,7 @@ public class GTEModules implements IModuleContainer {
     public static final String MODULE_DEDA = "deda_integration";
     public static final String MODULE_CHISEL = "chisel_integration";
     public static final String MODULE_CT = "ct_integration";
+    public static final String MODULE_FFM = "ffm_integration";
 
     @Override
     public String getID() {

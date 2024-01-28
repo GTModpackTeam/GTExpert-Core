@@ -1,8 +1,5 @@
 package gtexpert;
 
-import static gtexpert.common.blocks.GTEMetaBlocks.*;
-import static gtexpert.common.blocks.GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR;
-
 import java.util.function.Function;
 
 import net.minecraft.block.Block;
@@ -20,20 +17,16 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import gregtech.GTInternalTags;
 import gregtech.api.GregTechAPI;
-import gregtech.api.block.VariantItemBlock;
 import gregtech.api.cover.CoverDefinition;
-import gregtech.api.recipes.RecipeMaps;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.common.items.GTECoverBehaviors;
-import gtexpert.core.loaders.GTEMaterialInfoLoader;
+import gtexpert.modules.GTEModuleManager;
 import gtexpert.modules.GTEModules;
-import gtexpert.modules.ModuleManager;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
@@ -51,13 +44,13 @@ import gtexpert.modules.ModuleManager;
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 
-    private ModuleManager moduleManager;
+    private GTEModuleManager moduleManager;
 
     @Mod.EventHandler
     public void onConstruction(FMLConstructionEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
         GTELog.logger.info("starting construction event...");
-        moduleManager = ModuleManager.getInstance();
+        moduleManager = GTEModuleManager.getInstance();
         moduleManager.registerContainer(new GTEModules());
         moduleManager.setup(event.getASMHarvestedData(), Loader.instance().getConfigDir());
         moduleManager.onConstruction(event);
@@ -115,26 +108,16 @@ public class GTExpertMod {
     }
 
     @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+    public void registerBlocks(RegistryEvent.Register<Block> event) {
         GTELog.logger.info("Registering Blocks...");
-        IForgeRegistry<Block> registry = event.getRegistry();
-
-        registry.register(GTE_WIRE_COIL);
-        registry.register(GTE_METAL_CASING);
-        registry.register(BLOCK_SAWMILL_CONVEYOR);
+        moduleManager.registerBlocks(event);
     }
 
     @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
+    public void registerItems(RegistryEvent.Register<Item> event) {
         GTELog.logger.info("Registering Items...");
-        IForgeRegistry<Item> registry = event.getRegistry();
 
-        // TODO Add preLoad to RecipeManager
-        RecipeMaps.VACUUM_RECIPES.setMaxFluidOutputs(2);
-
-        registry.register(createItemBlock(GTE_WIRE_COIL, VariantItemBlock::new));
-        registry.register(createItemBlock(GTE_METAL_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
+        moduleManager.registerItems(event);
     }
 
     @SubscribeEvent
@@ -155,29 +138,20 @@ public class GTExpertMod {
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        GTELog.logger.info("Registering ore dictionary...");
-        GTEMaterialInfoLoader.init();
-
-        GTELog.logger.info("Registering Recipes...");
-
         moduleManager.registerRecipesNormal(event);
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
-        GTELog.logger.info("Registering Recipes...");
-
         moduleManager.registerRecipesLow(event);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
-        GTELog.logger.info("Registering Recipes...");
-
         moduleManager.registerRecipesLowest(event);
     }
 
-    private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
+    public static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
         ResourceLocation registryName = block.getRegistryName();
         if (registryName == null) {

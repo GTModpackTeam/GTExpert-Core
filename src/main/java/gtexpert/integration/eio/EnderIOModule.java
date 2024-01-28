@@ -5,6 +5,7 @@ import static gregtech.api.GTValues.VA;
 
 import java.util.function.Consumer;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityList;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -27,6 +28,8 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.eio.loaders.EnderIOMaterialInfoLoader;
+import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
 import gtexpert.integration.eio.recipes.*;
 import gtexpert.modules.GTEModules;
 
@@ -39,6 +42,16 @@ import crazypants.enderio.endergy.init.EndergyObject;
            modDependencies = GTEValues.MODID_EIO,
            name = "GTExpert Ender IO Module")
 public class EnderIOModule extends GTEIntegrationSubmodule {
+
+    @Override
+    public void registerBlocks(RegistryEvent.Register<Block> event) {
+        EIOMetaTileEntities.init();
+    }
+
+    @Override
+    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
+        EnderIOMaterialInfoLoader.init();
+    }
 
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {

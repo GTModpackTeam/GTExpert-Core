@@ -1,19 +1,14 @@
 package gtexpert.integration.chisel;
 
-import static gregtech.api.GTValues.ULV;
-import static gregtech.api.GTValues.VH;
-
-import java.util.List;
-
-import net.minecraft.item.ItemStack;
+import net.minecraft.block.Block;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.oredict.OreDictionary;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
-import gtexpert.api.util.GTEUtility;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.chisel.loaders.ChiselOreDictionaryLoader;
+import gtexpert.integration.chisel.metatileentities.ChiselMetaTileEntities;
 import gtexpert.integration.chisel.recipes.ChiselBlocksRecipe;
 import gtexpert.integration.chisel.recipes.ChiselToolsRecipe;
 import gtexpert.modules.GTEModules;
@@ -26,23 +21,18 @@ import gtexpert.modules.GTEModules;
 public class ChiselModule extends GTEIntegrationSubmodule {
 
     @Override
-    public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
-        // craftChisel
-        OreDictionary.registerOre("craftChisel", GTEUtility.getModItem(GTEValues.MODID_CHISEL, "chisel_iron"));
-        OreDictionary.registerOre("craftChisel", GTEUtility.getModItem(GTEValues.MODID_CHISEL, "chisel_diamond"));
-        OreDictionary.registerOre("craftChisel", GTEUtility.getModItem(GTEValues.MODID_CHISEL, "chisel_hitech"));
-
-        ChiselBlocksRecipe.init();
-        ChiselToolsRecipe.init();
+    public void registerBlocks(RegistryEvent.Register<Block> event) {
+        ChiselMetaTileEntities.init();
     }
 
-    private static void registerAutoChiselRecipe(String oreDictName) {
-        List<ItemStack> targets = OreDictionary.getOres(oreDictName);
-        targets.forEach(target -> ChiselRecipeMaps.AUTO_CHISEL_RECIPES.recipeBuilder()
-                .input(oreDictName)
-                .notConsumable(target)
-                .outputs(target)
-                .duration(10).EUt(VH[ULV])
-                .hidden().buildAndRegister());
+    @Override
+    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
+        ChiselOreDictionaryLoader.init();
+    }
+
+    @Override
+    public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        ChiselBlocksRecipe.init();
+        ChiselToolsRecipe.init();
     }
 }

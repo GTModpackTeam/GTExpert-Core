@@ -8,6 +8,7 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
 import org.jetbrains.annotations.Nullable;
 
+import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 
 public class GTECoreMod implements IFMLLoadingPlugin {
@@ -38,7 +39,7 @@ public class GTECoreMod implements IFMLLoadingPlugin {
         File configDir = new File(mcLocation, "config");
         // noinspection ResultOfMethodCallIgnored
         configDir.mkdir();
-        File config = new File(configDir, "GTECoreMod.properties");
+        File config = new File(configDir, GTEValues.MODID + "/GTECoreMod.properties");
         try (Reader r = new FileReader(config)) {
             coremodConfig.load(r);
         } catch (FileNotFoundException ignored) {

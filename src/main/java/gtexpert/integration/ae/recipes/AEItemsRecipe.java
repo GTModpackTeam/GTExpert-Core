@@ -1,12 +1,8 @@
 package gtexpert.integration.ae.recipes;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.block;
-import static gtexpert.common.GTEConfigHolder.ae2Integration;
-import static gtexpert.integration.ae.AEHelper.*;
-import static gtexpert.integration.ae.AEHelper.aeMaterials;
+import static gtexpert.integration.ae.AEUtil.*;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -27,6 +23,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.common.items.GTEMetaItems;
+import gtexpert.integration.ae.AEConfigHolder;
 
 public class AEItemsRecipe {
 
@@ -39,7 +36,7 @@ public class AEItemsRecipe {
                 .fluidInputs(Materials.Neutronium.getFluid(9216))
                 .output(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 1)
                 .duration(1200).EUt(VA[UV]);
-        if (ae2Integration.enableAE2UELExtended) {
+        if (AEConfigHolder.enableAE2UELExtended) {
             if (Loader.isModLoaded(GTEValues.MODID_AEA)) {
                 builderGTECore.inputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 16, 3));
                 builderGTECore.inputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 16, 6));
@@ -295,7 +292,7 @@ public class AEItemsRecipe {
                 .duration(56).EUt(VA[LV])
                 .buildAndRegister();
 
-        if (ae2Integration.enableAE2UELExtended) {
+        if (AEConfigHolder.enableAE2UELExtended) {
             // 1mb Storage Cell
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cells/storage_cell_1mb"));
             ModHandler.removeRecipeByName(
@@ -700,7 +697,7 @@ public class AEItemsRecipe {
 
         // Printed Silicon
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(ae2Integration.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_PRINTED_SILICON.getStackForm() :
+                .notConsumable(AEConfigHolder.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_PRINTED_SILICON.getStackForm() :
                         aeMaterials.siliconPress().maybeStack(1).get())
                 .input(plate, Materials.Silicon, 1)
                 .outputs(aeMaterials.siliconPrint().maybeStack(1).get())
@@ -709,7 +706,7 @@ public class AEItemsRecipe {
 
         // Logic Circuit
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .notConsumable(ae2Integration.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm() :
+                .notConsumable(AEConfigHolder.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm() :
                         aeMaterials.logicProcessorPress().maybeStack(1).get())
                 .input(plate, Materials.Gold, 1)
                 .outputs(aeMaterials.logicProcessorPrint().maybeStack(1).get())
@@ -719,7 +716,7 @@ public class AEItemsRecipe {
         // Calc Circuit
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
                 .notConsumable(
-                        ae2Integration.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm() :
+                        AEConfigHolder.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm() :
                                 aeMaterials.calcProcessorPress().maybeStack(1).get())
                 .input(plate, Materials.CertusQuartz, 1)
                 .outputs(aeMaterials.calcProcessorPrint().maybeStack(1).get())
@@ -729,7 +726,7 @@ public class AEItemsRecipe {
         // Engineer Circuit
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
                 .notConsumable(
-                        ae2Integration.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm() :
+                        AEConfigHolder.moveSteelShape ? GTEMetaItems.SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm() :
                                 aeMaterials.engProcessorPress().maybeStack(1).get())
                 .input(plate, Materials.Diamond, 1)
                 .outputs(aeMaterials.engProcessorPrint().maybeStack(1).get())
@@ -766,7 +763,7 @@ public class AEItemsRecipe {
                 .withRecycling()
                 .buildAndRegister();
 
-        if (ae2Integration.moveSteelShape) {
+        if (AEConfigHolder.moveSteelShape) {
             // All shapes
             Arrays.stream(GTEMetaItems.GTE_SHAPE_MOLDS)
                     .forEach(shapeMold -> RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
@@ -835,13 +832,13 @@ public class AEItemsRecipe {
             ModHandler.addShapedRecipe(true, "shape_extruder_calculation_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_CALCULATION_PROCESSOR.getStackForm(),
                     " x ", " S ", "   ",
-                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON.getStackForm());
+                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON);
 
             // Extruder Shape (Engineering Processor)
             ModHandler.addShapedRecipe(true, "shape_extruder_engineering_processor",
                     GTEMetaItems.SHAPE_EXTRUDER_ENGINEERING_PROCESSOR.getStackForm(),
                     " x ", "  S", "   ",
-                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON.getStackForm());
+                    'S', GTEMetaItems.SHAPE_EXTRUDER_PRINTED_SILICON);
         } else {
             // Silicon Processor Press
             RecipeMaps.LASER_ENGRAVER_RECIPES.recipeBuilder()

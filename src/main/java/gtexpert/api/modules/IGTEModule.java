@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -50,6 +52,10 @@ public interface IGTEModule {
     default void serverStopping(FMLServerStoppingEvent event) {}
 
     default void serverStopped(FMLServerStoppedEvent event) {}
+
+    default void registerItems(RegistryEvent.Register<Item> event) {}
+
+    default void registerBlocks(RegistryEvent.Register<Block> event) {}
 
     default void registerRecipesHighest(RegistryEvent.Register<IRecipe> event) {}
 

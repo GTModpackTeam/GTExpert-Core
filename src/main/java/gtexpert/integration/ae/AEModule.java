@@ -6,6 +6,8 @@ import net.minecraftforge.event.RegistryEvent;
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.ae.loaders.AEMaterialInfoLoader;
+import gtexpert.integration.ae.loaders.AEOreDictionaryLoader;
 import gtexpert.integration.ae.recipes.AEBlocksRecipe;
 import gtexpert.integration.ae.recipes.AEItemsRecipe;
 import gtexpert.integration.ae.recipes.AEMaterialsRecipe;
@@ -18,6 +20,12 @@ import gtexpert.modules.GTEModules;
            modDependencies = GTEValues.MODID_AE,
            name = "GTExpert Applied Energistics 2 Module")
 public class AEModule extends GTEIntegrationSubmodule {
+
+    @Override
+    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
+        AEMaterialInfoLoader.init();
+        AEOreDictionaryLoader.init();
+    }
 
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
