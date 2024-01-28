@@ -11,9 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.enderio.core.common.util.EntityUtil;
@@ -89,14 +87,6 @@ public class EnderIOModule extends GTEIntegrationSubmodule {
         // Ender IO Soul Recipe
         EIOSoulBinderRecipe.init();
         EIOVialExtractorRecipe.init();
-    }
-
-    @Override
-    public void loadComplete(FMLLoadCompleteEvent event) {
-        EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.setSound(
-                SoundEvent.REGISTRY.getObject(new ResourceLocation(GTEValues.MODID_EIO, "machine.slicensplice")));
-        EnderIORecipeMaps.SOUL_BINDER_RECIPES.setSound(
-                SoundEvent.REGISTRY.getObject(new ResourceLocation(GTEValues.MODID_EIO, "machine.soulbinder")));
     }
 
     /**
