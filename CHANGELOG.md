@@ -1,3 +1,8 @@
+# v1.5.17
+- Fixed a problem with incorrect transfer rates for pumps and fluid regulators.
+
+* * *
+
 # v1.5.16
 - Corrective action by [GTModpackTeam/GregTech-Expert-2#373](https://github.com/GTModpackTeam/GregTech-Expert-2/issues/373)
 
