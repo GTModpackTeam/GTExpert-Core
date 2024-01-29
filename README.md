@@ -17,7 +17,8 @@
 
 ## Credits
 
-- I modified some textures from [GregTech CE: Unofficial](https://www.curseforge.com/minecraft/mc-mods/gregtech-ce-unofficial) under [LGPL-3.0](https://github.com/GregTechCEu/GregTech/blob/master/LICENSE) License
+- I modified some textures & codes from [GregTech CE: Unofficial](https://www.curseforge.com/minecraft/mc-mods/gregtech-ce-unofficial) under [LGPL-3.0](https://github.com/GregTechCEu/GregTech/blob/master/LICENSE) License
 - I also borrowed some contents from [Impact-Core](https://github.com/GT-IMPACT/Impact-Core) under [MIT](https://github.com/GT-IMPACT/Impact-Core/blob/master/LICENSE) License
 - Piston Boots are from [Adventure Backpack](https://www.curseforge.com/minecraft/mc-mods/adventure-backpack) under [LGPL-3.0](https://github.com/Darkona/AdventureBackpack2/blob/master/LICENSE.md) License
 - Primitive(ULV) Motor/Pump/ConveyorModule/Piston/RobotArm from [ULV-Covers](https://github.com/Cosmic-Chaos/ULV-Covers) under [LGPL-2.1](https://github.com/Cosmic-Chaos/ULV-Covers/blob/main/LICENSE.txt) License
+- DepLoader from [NewHorizonsCoreMod](https://github.com/GTNewHorizons/NewHorizonsCoreMod)

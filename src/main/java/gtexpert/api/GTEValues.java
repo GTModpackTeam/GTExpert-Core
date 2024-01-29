@@ -1,15 +1,17 @@
 package gtexpert.api;
 
-import static gtexpert.common.GTEConfigHolder.*;
-
 import net.minecraftforge.fml.common.Loader;
 
+import gtexpert.Tags;
 import gtexpert.api.util.GTELog;
+import gtexpert.integration.ae.AEConfigHolder;
+import gtexpert.integration.deda.DEDAConfigHolder;
+import gtexpert.integration.eio.EnderIOConfigHolder;
 
 public class GTEValues {
 
-    public static final String MODNAME = "GTExpert-Core";
-    public static final String MODID = "gtexpert",
+    public static final String MODNAME = Tags.MODNAME;
+    public static final String MODID = Tags.MODID,
             MODID_VANILLA = "minecraft",
             MODID_GCYM = "gcym",
             MODID_GTFO = "gregtechfoodoption",
@@ -34,11 +36,12 @@ public class GTEValues {
             MODID_AVARITIA = "avaritia",
             MODID_AVAADDON = "avaritiaddons",
             MODID_TC = "thaumcraft",
-            MODID_TE = "thaumicenergistics";
+            MODID_TE = "thaumicenergistics",
+            MODID_CT = "crafttweaker";
 
-    public static int ae2VoltageTier = voltageTier(ae2Integration.voltageTier) ? ae2Integration.voltageTier : 3,
-            eioVoltageTier = voltageTier(eioIntegration.voltageTier) ? eioIntegration.voltageTier : 3,
-            dedaVoltageTier = voltageTier(dedaIntegration.voltageTier) ? dedaIntegration.voltageTier : 6;
+    public static int ae2VoltageTier = voltageTier(AEConfigHolder.voltageTier) ? AEConfigHolder.voltageTier : 3,
+            eioVoltageTier = voltageTier(EnderIOConfigHolder.voltageTier) ? EnderIOConfigHolder.voltageTier : 3,
+            dedaVoltageTier = voltageTier(DEDAConfigHolder.voltageTier) ? DEDAConfigHolder.voltageTier : 6;
 
     public static boolean isModLoadedDEDA() {
         return Loader.isModLoaded(MODID_DE) && Loader.isModLoaded(MODID_DA);
