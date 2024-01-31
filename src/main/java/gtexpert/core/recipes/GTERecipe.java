@@ -2,8 +2,7 @@ package gtexpert.core.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.core.GTEConfigHolder.ceuOverride;
-import static gtexpert.core.GTEConfigHolder.gteFlag;
+import static gtexpert.core.GTEConfigHolder.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -30,6 +29,7 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockGlassCasing;
@@ -739,6 +739,30 @@ public class GTERecipe {
                         'C', GTEMetaItems.GTE_CONVEYOR_MODULE,
                         'H', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
                         'W', new UnificationEntry(cableGtSingle, Materials.Lead));
+
+                // High Pressure Steam Mixer
+                ModHandler.addShapedRecipe(true, "steam_compressor_steel",
+                        GTEMetaTileEntities.STEAM_MIXER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
+                        'M', GTEMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(),
+                        'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
+                        'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
+                        'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
+
+                // High Pressure Steam Assembler
+                ModHandler.addShapedRecipe(true, "steam_assembler_steel",
+                        GTEMetaTileEntities.STEAM_ASSEMBLER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
+                        'M', GTEMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(),
+                        'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
+                        'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
+                        'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
+
+                // High Pressure Steam Circuit Assembler
+                ModHandler.addShapedRecipe(true, "steam_circuit_assembler_steel",
+                        GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
+                        'M', GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(),
+                        'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
+                        'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
+                        'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
 
                 // Sawmill
                 ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",

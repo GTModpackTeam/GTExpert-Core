@@ -7,7 +7,7 @@
     <br>
     <a href="https://www.curseforge.com/minecraft/mc-mods/gte2-coremod"><img src="https://cf.way2muchnoise.eu/851103.svg?badge_style=for_the_badge" alt="CurseForge"></a>
     <a href="https://modrinth.com/mod/gte2-coremod"><img src="https://img.shields.io/modrinth/dt/gte2-coremod?logo=modrinth&label=&suffix=%20&style=for-the-badge&color=2d2d2d&labelColor=5ca424&logoColor=1c1c1c" alt="Modrinth"></a>
-    <a href="https://www.curseforge.com/minecraft/mc-mods/gte2-coremod/releases"><img src="https://img.shields.io/github/downloads/GTModpackTeam/GTExpert-Core/total?sort=semver&logo=github&label=&style=for-the-badge&color=2d2d2d&labelColor=545454&logoColor=FFFFFF" alt="GitHub"></a>
+    <a href="https://github.com/GTModpackTeam/GTExpert-Core/releases"><img src="https://img.shields.io/github/downloads/GTModpackTeam/GTExpert-Core/total?sort=semver&logo=github&label=&style=for-the-badge&color=2d2d2d&labelColor=545454&logoColor=FFFFFF" alt="GitHub"></a>
 </h1>
 
 ## Info
