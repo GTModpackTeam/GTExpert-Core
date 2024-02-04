@@ -4,7 +4,7 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.core.GTEConfigHolder.*;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.init.Blocks;
@@ -849,7 +849,7 @@ public class GTERecipe {
         builderVOM.buildAndRegister();
 
         // Void Ore Miner Recipes
-        List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
+        List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
         materials.forEach(GTERecipe::voidOreMiner);
 
         // Treated Wood Machine Casing
