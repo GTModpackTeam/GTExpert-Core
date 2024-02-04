@@ -4,7 +4,7 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.init.Blocks;
@@ -143,7 +143,7 @@ public class DraconicMaterialsRecipe {
                 .buildAndRegister();
 
         // Extended recipes
-        List<Material> materials = new LinkedList<>(GregTechAPI.materialManager.getRegisteredMaterials());
+        List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
         materials.forEach(DraconicMaterialsRecipe::vacuumFreezerExtended);
         materials.forEach(DraconicMaterialsRecipe::alloyBlastFurnaceExtended);
     }

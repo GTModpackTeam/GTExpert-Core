@@ -1,7 +1,7 @@
 package gtexpert.integration.ae.loaders;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -63,7 +63,7 @@ public class AEOreDictionaryLoader {
         OreDictionary.registerOre("crystalChargedCertusQuartz",
                 GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 1));
 
-        List<ItemStack> craftGlassCable = new LinkedList<>();
+        List<ItemStack> craftGlassCable = new ArrayList<>();
         IntStream.rangeClosed(0, 16).forEach(i -> {
             craftGlassCable.add(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 8, i));
@@ -78,7 +78,7 @@ public class AEOreDictionaryLoader {
             }
         }
 
-        List<ItemStack> craftCoveredCable = new LinkedList<>();
+        List<ItemStack> craftCoveredCable = new ArrayList<>();
         IntStream.rangeClosed(20, 36).forEach(i -> {
             craftCoveredCable.add(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 8, i));
@@ -93,7 +93,7 @@ public class AEOreDictionaryLoader {
             }
         }
 
-        List<ItemStack> craftSmartCable = new LinkedList<>();
+        List<ItemStack> craftSmartCable = new ArrayList<>();
         IntStream.rangeClosed(40, 56).forEach(i -> {
             craftSmartCable.add(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 8, i));
@@ -108,7 +108,7 @@ public class AEOreDictionaryLoader {
             }
         }
 
-        List<ItemStack> craftDenseCoveredCable = new LinkedList<>();
+        List<ItemStack> craftDenseCoveredCable = new ArrayList<>();
         IntStream.rangeClosed(500, 516).forEach(i -> {
             craftDenseCoveredCable.add(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 8, i));
@@ -123,7 +123,7 @@ public class AEOreDictionaryLoader {
             }
         }
 
-        List<ItemStack> craftDenseSmartCable = new LinkedList<>();
+        List<ItemStack> craftDenseSmartCable = new ArrayList<>();
         IntStream.rangeClosed(60, 76).forEach(i -> {
             craftDenseSmartCable.add(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 1, i));
             ModHandler.removeRecipeByOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 8, i));
