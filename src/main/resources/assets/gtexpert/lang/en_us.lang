@@ -205,7 +205,7 @@ metaitem.shape.extruder.engineering_processor.tooltip=Used to craft Engineering 
 # recipemaps
 recipemap.sawmill.name=Saw Mill
 recipemap.vial_extractor.name=Vial Extractor
-recipemap.slice'n'splice.name=Slice'N'Splice
+recipemap.slice_n_splice.name=Slice'N'Splice
 recipemap.soul_binder.name=Soul Binder
 recipemap.auto_chisel.name=Auto Chisel
 recipemap.void_ore_miner.name=Void Ore Miner

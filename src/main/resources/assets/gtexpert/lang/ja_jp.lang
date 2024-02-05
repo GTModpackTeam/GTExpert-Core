@@ -204,7 +204,7 @@ metaitem.shape.extruder.engineering_processor.tooltip=上級プロセッサを�
 # recipemaps
 recipemap.sawmill.name=製材機
 recipemap.vial_extractor.name=魂抽出器
-recipemap.slice'n'splice.name=頭顱調整機
+recipemap.slice_n_splice.name=頭顱調整機
 recipemap.soul_binder.name=魂拘束器
 recipemap.auto_chisel.name=自動彫刻機
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
