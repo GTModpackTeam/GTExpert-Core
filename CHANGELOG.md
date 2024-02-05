@@ -1,5 +1,16 @@
+# v2.0.3
+- Fixed a bug where Chisel cfg was not being generated [#230](https://github.com/GTModpackTeam/GTExpert-Core/pull/230)
+
+* * *
+
+# v2.0.2
+- Changed Slice'N'Splice and Soul Binder sounds to EIO [#223](https://github.com/GTModpackTeam/GTExpert-Core/pull/223)
+- Fixed crash with AE and split EIO and no EIO AE2 Conduits [#229](https://github.com/GTModpackTeam/GTExpert-Core/pull/229)
+
+* * *
+
 # v2.0.1
-- Re: Fix of Module System #221
+- Re: Fix of Module System [#221](https://github.com/GTModpackTeam/GTExpert-Core/pull/221)
     - Configuration file is located at `./config/gtexpert/`, so please be careful when updating.
 
 * * *
