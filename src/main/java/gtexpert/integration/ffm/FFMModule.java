@@ -13,7 +13,8 @@ import gtexpert.modules.GTEModules;
            moduleID = GTEModules.MODULE_FFM,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_FFM,
-           name = "GTExpert Forestry For Minecraft Module")
+           name = "GTExpert Forestry For Minecraft Integration",
+           description = "Forestry For Minecraft Integration Module")
 public class FFMModule extends GTEIntegrationSubmodule {
 
     @Override

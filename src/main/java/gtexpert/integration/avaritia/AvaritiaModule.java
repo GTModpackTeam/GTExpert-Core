@@ -13,7 +13,8 @@ import gtexpert.modules.GTEModules;
            moduleID = GTEModules.MODULE_AVARITIA,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_AVARITIA,
-           name = "GTExpert Avaritia Module")
+           name = "GTExpert Avaritia Integration",
+           description = "Avaritia Integration Module")
 public class AvaritiaModule extends GTEIntegrationSubmodule {
 
     @Override

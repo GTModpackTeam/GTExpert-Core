@@ -18,7 +18,8 @@ import gtexpert.modules.GTEModules;
            moduleID = GTEModules.MODULE_AE,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_AE,
-           name = "GTExpert Applied Energistics 2 Module")
+           name = "GTExpert Applied Energistics 2 Integration",
+           description = "Applied Energistics 2 Integration Module")
 public class AEModule extends GTEIntegrationSubmodule {
 
     @Override

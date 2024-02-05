@@ -39,7 +39,8 @@ import crazypants.enderio.endergy.init.EndergyObject;
            moduleID = GTEModules.MODULE_EIO,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_EIO,
-           name = "GTExpert Ender IO Module")
+           name = "GTExpert Ender IO Integration",
+           description = "Ender IO Integration Module")
 public class EnderIOModule extends GTEIntegrationSubmodule {
 
     @Override

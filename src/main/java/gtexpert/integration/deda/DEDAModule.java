@@ -19,7 +19,8 @@ import gtexpert.modules.GTEModules;
            moduleID = GTEModules.MODULE_DEDA,
            containerID = GTEValues.MODID,
            modDependencies = { GTEValues.MODID_DE, GTEValues.MODID_DA },
-           name = "GTExpert Draconic Evolution & Draconic Additions Module")
+           name = "GTExpert Draconic Evolution & Draconic Additions Integration",
+           description = "Draconic Evolution & Draconic Additions Integration Module")
 public class DEDAModule extends GTEIntegrationSubmodule {
 
     @Override
