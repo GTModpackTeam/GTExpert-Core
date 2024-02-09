@@ -6,10 +6,10 @@ import net.minecraftforge.common.config.Config.LangKey;
 import gtexpert.api.GTEValues;
 import gtexpert.modules.GTEModules;
 
-@LangKey(GTEValues.MODID + ".config.extracpus")
+@LangKey(GTEValues.MODID + ".config.nae2")
 @Config(modid = GTEValues.MODID,
-        name = GTEValues.MODID + "/" + GTEModules.MODULE_EXCPUS,
-        category = "Extra CPUs")
+        name = GTEValues.MODID + "/" + GTEModules.MODULE_NAE2,
+        category = "Neeve's AE2")
 public class NAE2ConfigHolder {
 
 }

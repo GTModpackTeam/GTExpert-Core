@@ -335,7 +335,7 @@ public class AEMaterialsRecipe {
         // Dust
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
-                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "fluix_block", 2, 45))
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 2, 45))
                 .input(dust, GTEMaterials.Fluix, 2)
                 .input(dust, Materials.Carbon, 2)
                 .input(dust, Materials.Silicon, 1)
