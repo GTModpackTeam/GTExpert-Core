@@ -480,6 +480,16 @@ public class AEBlocksRecipe {
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
 
+        // Crafting Co-Processing Unit
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_accelerator"));
+        ModHandler.addShapelessRecipe("crafting_accelerator",
+                GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator"),
+                GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"),
+                GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 23),
+                GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 22),
+                GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 24));
+
         // 1k Crafting Storage
         ModHandler.removeRecipeByName(
                 new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_storage_1k"));
@@ -654,68 +664,6 @@ public class AEBlocksRecipe {
                     .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_storage_15gb"))
                     .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
                     .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 67))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-        }
-
-        if (GTEValues.isModLoadedAEACPU()) {
-            // 256k Crafting Storage
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_256k"));
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component"))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EXCPU, "crafting_storage_256k"))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_EXCPU, "crafting_storage_256k"))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component"))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-
-            // 1024k Crafting Storage
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_1024k"));
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 1, 1))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EXCPU, "crafting_storage_1024k"))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_EXCPU, "crafting_storage_1024k"))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 1, 1))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-
-            // 4096k Crafting Storage
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_4096k"));
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 1, 2))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EXCPU, "crafting_storage_4096k"))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_EXCPU, "crafting_storage_4096k"))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 1, 2))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-
-            // 16384k Crafting Storage
-            ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_EXCPU, "crafting_storage_16384k"));
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 1, 3))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EXCPU, "crafting_storage_16384k"))
-                    .duration(10).EUt(VA[ULV])
-                    .buildAndRegister();
-            RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_EXCPU, "crafting_storage_16384k"))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 1, 3))
                     .duration(10).EUt(VA[ULV])
                     .buildAndRegister();
         }
