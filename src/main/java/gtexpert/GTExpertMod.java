@@ -30,17 +30,19 @@ import gtexpert.modules.GTEModules;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
+     acceptedMinecraftVersions = "[1.12.2,1.13)",
      version = Tags.VERSION,
-     dependencies = "required-after:mixinbooter;" +
+     dependencies = "required-after:mixinbooter@[8.0,);" +
              GTInternalTags.DEP_VERSION_STRING + "required-after:" + GTEValues.MODID_GCYM + ";" +
              "after:" + GTEValues.MODID_GTFO + ";" + "after:" + GTEValues.MODID_AE + ";" +
              "after:" + GTEValues.MODID_AEA + ";" + "after:" + GTEValues.MODID_AEFC + ";" +
-             "after:" + GTEValues.MODID_EXCPU + ";" + "after:" + GTEValues.MODID_ECO + ";" +
-             "after:" + GTEValues.MODID_EIO + ";" + "after:" + GTEValues.MODID_EIOE + ";" +
-             "after:" + GTEValues.MODID_EIOM + ";" + "after:" + GTEValues.MODID_EIOC + ";" +
-             "after:" + GTEValues.MODID_EIOCA + ";" + "after:" + GTEValues.MODID_DE + ";" +
-             "after:" + GTEValues.MODID_DA + ";" + "after:" + GTEValues.MODID_CHISEL + ";" +
-             "after:" + GTEValues.MODID_AVARITIA + ";" + "after:" + GTEValues.MODID_FFM + ";")
+             "after:" + GTEValues.MODID_NAE2 + ";" + "after:" + GTEValues.MODID_EXCPUS + ";" +
+             "after:" + GTEValues.MODID_ECO + ";" + "after:" + GTEValues.MODID_EIO + ";" +
+             "after:" + GTEValues.MODID_EIOE + ";" + "after:" + GTEValues.MODID_EIOM + ";" +
+             "after:" + GTEValues.MODID_EIOC + ";" + "after:" + GTEValues.MODID_EIOCA + ";" +
+             "after:" + GTEValues.MODID_DE + ";" + "after:" + GTEValues.MODID_DA + ";" +
+             "after:" + GTEValues.MODID_CHISEL + ";" + "after:" + GTEValues.MODID_AVARITIA + ";" +
+             "after:" + GTEValues.MODID_FFM + ";")
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 

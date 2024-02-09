@@ -14,7 +14,6 @@ public class GTEValues {
     public static final String MODID = Tags.MODID,
             MODID_VANILLA = "minecraft",
             MODID_GCYM = "gcym",
-            MODID_GCYS = "gcys",
             MODID_GTFO = "gregtechfoodoption",
             MODID_JEI = "jei",
             MODID_TOP = "theoneprobe",
@@ -28,7 +27,8 @@ public class GTEValues {
             MODID_AE = "appliedenergistics2",
             MODID_AEA = "aeadditions",
             MODID_AEFC = "ae2fc",
-            MODID_EXCPU = "extracpus",
+            MODID_NAE2 = "nae2",
+            MODID_EXCPUS = "extracpus",
             MODID_DE = "draconicevolution",
             MODID_DA = "draconicadditions",
             MODID_CHISEL = "chisel",
@@ -44,10 +44,6 @@ public class GTEValues {
 
     public static boolean isModLoadedDEDA() {
         return Loader.isModLoaded(MODID_DE) && Loader.isModLoaded(MODID_DA);
-    }
-
-    public static boolean isModLoadedAEACPU() {
-        return Loader.isModLoaded(GTEValues.MODID_AEA) && Loader.isModLoaded(GTEValues.MODID_EXCPU);
     }
 
     private static boolean voltageTier(int voltage) {
