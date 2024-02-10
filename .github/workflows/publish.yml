@@ -75,6 +75,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: "build/libs/*.jar"
+          name: "${{ env.NAME }}-v${{ env.FULL_VERSION }}"
+          tag_name: "v${{ env.FULL_VERSION }}"
           generate_release_notes: true
           fail_on_unmatched_files: true
 
