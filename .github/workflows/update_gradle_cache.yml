@@ -27,4 +27,4 @@ jobs:
           update-cache: true
 
       - name: Build Project with Gradle
-        run: ./gradlew assemble
+        run: ./gradlew --info assemble
