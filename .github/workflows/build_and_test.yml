@@ -37,7 +37,7 @@ jobs:
             patch -p0 < settings.gradle.patch
           fi
 
-      - name: Apply patch to build.gradle
+      - name: Apply patch to gradle.properties
         run: sed -i 's/debug_all = false/debug_all = true/g' gradle.properties
 
       - name: Setup Build
