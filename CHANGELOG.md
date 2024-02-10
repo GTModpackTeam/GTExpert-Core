@@ -1,3 +1,9 @@
+# v2.0.4
+- ExtraCPUs and NAE2 added to integration.
+- Fluix Alloy Dust recipe fixes.
+
+* * *
+
 # v2.0.3
 - Fixed a bug where Chisel cfg was not being generated [#230](https://github.com/GTModpackTeam/GTExpert-Core/pull/230)
 
