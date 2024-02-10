@@ -47,7 +47,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Compile the mod
-        run: ./gradlew --scan assemble
+        run: ./gradlew --info --scan assemble
 
       - name: Upload Jars
         uses: actions/upload-artifact@v4
@@ -58,14 +58,14 @@ jobs:
 
       - name: Run post-build checks
         id: build_mod
-        run: ./gradlew build
+        run: ./gradlew --info build
 
       - name: Attempt to make a PR fixing spotless errors
         if: ${{ failure() && steps.build_mod.conclusion == 'failure' && github.event_name == 'pull_request' && !github.event.pull_request.draft }}
         run: |
           git reset --hard
           git checkout "${PR_BRANCH}"
-          ./gradlew spotlessApply || exit 1
+          ./gradlew --info spotlessApply || exit 1
           git diff --exit-code && exit 1
           git config user.name "GitHub Actions"
           git config user.email "<>"
