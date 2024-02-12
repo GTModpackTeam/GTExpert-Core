@@ -11,6 +11,7 @@ import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 
+import gtexpert.core.GTEConfigHolder;
 import gtexpert.core.metatileentities.multi.*;
 import gtexpert.core.metatileentities.single.SteamAssembler;
 import gtexpert.core.metatileentities.single.SteamCircuitAssembler;
@@ -31,23 +32,25 @@ public class GTEMetaTileEntities {
     public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityAdvancedChemicalPlant ADVANCED_CHEMICAL_PLANT;
-    public static MetaTileEntityAdvancedGasCollector ADVANCED_GAS_COLLECTOR;
+    public static MetaTileEntityLargeGasCollector LARGE_GAS_COLLECTOR;
 
     public static void init() {
         // Single Machine
         // Steam machine 11004~11009
-        STEAM_MIXER_BRONZE = registerMetaTileEntity(11004,
-                new SteamMixer(gteId("steam_mixer_bronze"), false));
-        STEAM_MIXER_STEEL = registerMetaTileEntity(11005,
-                new SteamMixer(gteId("steam_mixer_steel"), true));
-        STEAM_ASSEMBLER_BRONZE = registerMetaTileEntity(11006,
-                new SteamAssembler(gteId("steam_assembler_bronze"), false));
-        STEAM_ASSEMBLER_STEEL = registerMetaTileEntity(11007,
-                new SteamAssembler(gteId("steam_assembler_steel"), true));
-        STEAM_CIRCUIT_ASSEMBLER_BRONZE = registerMetaTileEntity(11008,
-                new SteamCircuitAssembler(gteId("steam_circuit_assembler_bronze"), false));
-        STEAM_CIRCUIT_ASSEMBLER_STEEL = registerMetaTileEntity(11009,
-                new SteamCircuitAssembler(gteId("steam_circuit_assembler_steel"), true));
+        if (GTEConfigHolder.gteFlag.steamNewMachine) {
+            STEAM_MIXER_BRONZE = registerMetaTileEntity(11004,
+                    new SteamMixer(gteId("steam_mixer_bronze"), false));
+            STEAM_MIXER_STEEL = registerMetaTileEntity(11005,
+                    new SteamMixer(gteId("steam_mixer_steel"), true));
+            STEAM_ASSEMBLER_BRONZE = registerMetaTileEntity(11006,
+                    new SteamAssembler(gteId("steam_assembler_bronze"), false));
+            STEAM_ASSEMBLER_STEEL = registerMetaTileEntity(11007,
+                    new SteamAssembler(gteId("steam_assembler_steel"), true));
+            STEAM_CIRCUIT_ASSEMBLER_BRONZE = registerMetaTileEntity(11008,
+                    new SteamCircuitAssembler(gteId("steam_circuit_assembler_bronze"), false));
+            STEAM_CIRCUIT_ASSEMBLER_STEEL = registerMetaTileEntity(11009,
+                    new SteamCircuitAssembler(gteId("steam_circuit_assembler_steel"), true));
+        }
 
         // Multi Machine
         SAWMILL = registerMetaTileEntity(12001,
@@ -59,8 +62,9 @@ public class GTEMetaTileEntities {
         // 12004~12005 is reserved for Draconic Evolution
         ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(12006,
                 new MetaTileEntityAdvancedChemicalPlant(gteId("advanced_chemical_plant")));
-        ADVANCED_GAS_COLLECTOR = registerMetaTileEntity(12007,
-                new MetaTileEntityAdvancedGasCollector(gteId("advanced_gas_collector")));
+        LARGE_GAS_COLLECTOR = registerMetaTileEntity(12007,
+                new MetaTileEntityLargeGasCollector(gteId(GTEConfigHolder.gteFlag.featureFlag ?
+                        "large_gas_collector" : "advanced_gas_collector")));
     }
 
     public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,

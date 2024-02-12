@@ -1,4 +1,4 @@
-package gtexpert.core;
+package gtexpert.core.deploader;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;

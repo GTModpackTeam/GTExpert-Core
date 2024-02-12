@@ -61,21 +61,23 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     @Override
     protected BlockPattern createStructurePattern() {
         TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(10);
-        TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true, false);
+        TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true,
+                GTEConfigHolder.gteFlag.featureFlag);
 
         if (GTEConfigHolder.gteFlag.featureFlag) {
             return FactoryBlockPattern.start()
-                    .aisle(" XXX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+                    .aisle(" XXX ", " XXX ", "  X  ", "  X  ", "  X  ", " XXX ", "     ")
                     .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
                     .aisle("XXTXX", "XXXXX", "XC#CX", "XC#CX", "XC#CX", "XXXXX", " XHX ")
                     .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
-                    .aisle(" XSX ", " XXX ", " X ", " X ", " X ", " XXX ", " ")
+                    .aisle(" XSX ", " XXX ", "  X  ", "  X  ", "  X  ", " XXX ", "     ")
                     .where('S', selfPredicate())
                     .where('X', casing.setMinGlobalLimited(10).or(abilities))
                     .where('T', tieredCasing().or(casing))
                     .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
                     .where('C', heatingCoils())
                     .where('#', air())
+                    .where(' ', any())
                     .build();
         } else {
             return FactoryBlockPattern.start()
@@ -109,6 +111,11 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     @Override
     public boolean isParallel() {
         return true;
+    }
+
+    @Override
+    public boolean hasMufflerMechanics() {
+        return GTEConfigHolder.gteFlag.featureFlag;
     }
 
     @SideOnly(Side.CLIENT)

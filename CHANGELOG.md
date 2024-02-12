@@ -93,7 +93,7 @@
 - Increase the applicability of recipes that can be changed by changing cfg.
 
 ## New machine
-- Add Advanced Gas Collector
+- Add Large Gas Collector
 
 * * *
 

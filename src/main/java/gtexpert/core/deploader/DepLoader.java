@@ -1,4 +1,4 @@
-package gtexpert.core;
+package gtexpert.core.deploader;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -26,6 +26,8 @@ import org.apache.logging.log4j.Logger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+
+import gtexpert.core.GTECoreMod;
 
 public class DepLoader implements IFMLCallHook {
 

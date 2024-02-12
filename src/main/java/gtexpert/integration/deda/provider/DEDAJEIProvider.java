@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.GTValues;
 
+import gtexpert.api.GTEValues;
 import gtexpert.integration.deda.metatileentities.DEDAMetaTileEntities;
 import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
@@ -17,13 +18,15 @@ public class DEDAJEIProvider implements IModPlugin {
 
     @Override
     public void register(@NotNull IModRegistry registry) {
-        registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(),
-                GTValues.MODID + ":" + GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.unlocalizedName);
-        registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(), GTValues.MODID +
-                ":" + GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.unlocalizedName);
-        registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(),
-                GTValues.MODID + ":" + GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_FAKE_RECIPES.unlocalizedName);
-        registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(), GTValues.MODID +
-                ":" + GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES.unlocalizedName);
+        if (GTEValues.isModLoadedDEDA()) {
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(),
+                    GTValues.MODID + ":" + GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.unlocalizedName);
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(), GTValues.MODID +
+                    ":" + GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.unlocalizedName);
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(),
+                    GTValues.MODID + ":" + GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_FAKE_RECIPES.unlocalizedName);
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(), GTValues.MODID +
+                    ":" + GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES.unlocalizedName);
+        }
     }
 }
