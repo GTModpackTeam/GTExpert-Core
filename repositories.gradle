@@ -5,8 +5,4 @@ repositories {
         name 'Mod Maven'
         url 'https://modmaven.dev'
     }
-    maven {  // GTCEu Mavem
-        name 'GTCEu Mavem'
-        url 'https://maven.gtceu.com'
-    }
 }
