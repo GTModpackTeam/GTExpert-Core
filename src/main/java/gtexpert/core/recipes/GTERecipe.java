@@ -2,7 +2,6 @@ package gtexpert.core.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.core.GTEConfigHolder.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +47,7 @@ import gtexpert.api.util.GTEUtility;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
+import gtexpert.core.GTEConfigHolder;
 import gtexpert.core.GTERecipeMaps;
 import gtexpert.core.GTUtil;
 import gtexpert.core.metatileentities.GTEMetaTileEntities;
@@ -122,25 +122,25 @@ public class GTERecipe {
                 .buildAndRegister();
 
         // Liquid Air, Liquid Nether Air, Liquid Ender Air
-        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+        GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .circuitMeta(4)
                 .input(dust, Materials.Stone, 32)
                 .fluidOutputs(Materials.Air.getFluid(10000))
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
-        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+        GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .circuitMeta(4)
                 .input(dust, Materials.Netherrack, 32)
                 .fluidOutputs(Materials.NetherAir.getFluid(10000))
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
-        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+        GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .circuitMeta(4)
                 .input(dust, Materials.Endstone, 32)
                 .fluidOutputs(Materials.EnderAir.getFluid(10000))
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
-        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+        GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .circuitMeta(5)
                 .input(dust, Materials.Stone, 32)
                 .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
@@ -148,7 +148,7 @@ public class GTERecipe {
                 .fluidOutputs(Materials.LiquidAir.getFluid(10000))
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
-        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+        GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .circuitMeta(5)
                 .input(dust, Materials.Netherrack, 32)
                 .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
@@ -156,7 +156,7 @@ public class GTERecipe {
                 .fluidOutputs(Materials.LiquidNetherAir.getFluid(10000))
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
-        GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+        GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES.recipeBuilder()
                 .circuitMeta(5)
                 .input(dust, Materials.Endstone, 32)
                 .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
@@ -166,7 +166,7 @@ public class GTERecipe {
                 .buildAndRegister();
 
         if (GTEValues.isModLoadedDEDA()) {
-            GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+            GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES.recipeBuilder()
                     .circuitMeta(6)
                     .input(dust, Materials.Stone, 32)
                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
@@ -174,7 +174,7 @@ public class GTERecipe {
                     .fluidOutputs(Materials.LiquidAir.getFluid(10000))
                     .duration(20).EUt(VA[LuV])
                     .buildAndRegister();
-            GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+            GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES.recipeBuilder()
                     .circuitMeta(6)
                     .input(dust, Materials.Netherrack, 32)
                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
@@ -182,7 +182,7 @@ public class GTERecipe {
                     .fluidOutputs(Materials.LiquidNetherAir.getFluid(10000))
                     .duration(20).EUt(VA[LuV])
                     .buildAndRegister();
-            GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES.recipeBuilder()
+            GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES.recipeBuilder()
                     .circuitMeta(6)
                     .input(dust, Materials.Endstone, 32)
                     .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
@@ -206,8 +206,8 @@ public class GTERecipe {
     }
 
     private static void items() {
-        String componentsName = gteFlag.componentsName ? "ulv" : "primitive";
-        switch (gteFlag.componentsRecipeType) {
+        String componentsName = GTEConfigHolder.gteFlag.componentsName ? "ulv" : "primitive";
+        switch (GTEConfigHolder.gteFlag.componentsRecipeType) {
             case "none" -> {
                 return;
             }
@@ -406,13 +406,14 @@ public class GTERecipe {
                         .output(GTEMetaItems.GTE_SENSOR)
                         .duration(100).EUt(VA[ULV]).buildAndRegister();
             }
-            default -> GTELog.logger.error("Invalid componentsRecipeType setting: " + gteFlag.componentsRecipeType);
+            default -> GTELog.logger
+                    .error("Invalid componentsRecipeType setting: " + GTEConfigHolder.gteFlag.componentsRecipeType);
         }
 
         // Solar Panels
         ModHandler.removeRecipeByOutput(MetaItems.COVER_SOLAR_PANEL_ULV.getStackForm());
         ModHandler.removeRecipeByOutput(MetaItems.COVER_SOLAR_PANEL_LV.getStackForm());
-        if (ceuOverride.hardSolarPanel) {
+        if (GTEConfigHolder.ceuOverride.hardSolarPanel) {
             // Solar Panel
             ModHandler.removeRecipeByOutput(MetaItems.COVER_SOLAR_PANEL.getStackForm());
             ModHandler.addShapedRecipe("solar_panel_basic",
@@ -707,75 +708,77 @@ public class GTERecipe {
     }
 
     private static void blocks() {
-        switch (gteFlag.steamRecipeType) {
-            case "none":
-                return;
-            case "easy":
-            case "normal":
-                // Steam Mixer
-                ModHandler.addShapedRecipe(true, "steam_mixer_bronze",
-                        GTEMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
-                        'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
-                        'E', GTEMetaItems.GTE_ELECTRIC_MOTOR,
-                        'R', new UnificationEntry(rotor, Materials.Bronze),
-                        'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'G', Blocks.GLASS);
+        if (GTEConfigHolder.gteFlag.steamNewMachine) {
+            switch (GTEConfigHolder.gteFlag.steamRecipeType) {
+                case "none":
+                    return;
+                case "easy":
+                case "normal":
+                    // Steam Mixer
+                    ModHandler.addShapedRecipe(true, "steam_mixer_bronze",
+                            GTEMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
+                            'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
+                            'E', GTEMetaItems.GTE_ELECTRIC_MOTOR,
+                            'R', new UnificationEntry(rotor, Materials.Bronze),
+                            'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                            'G', Blocks.GLASS);
 
-                // Steam Assembler
-                ModHandler.addShapedRecipe(true, "steam_assembler_bronze",
-                        GTEMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
-                        'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
-                        'V', GTEMetaItems.GTE_CONVEYOR_MODULE,
-                        'A', GTEMetaItems.GTE_ROBOT_ARM,
-                        'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                        'W', new UnificationEntry(cableGtSingle, Materials.Lead));
+                    // Steam Assembler
+                    ModHandler.addShapedRecipe(true, "steam_assembler_bronze",
+                            GTEMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
+                            'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
+                            'V', GTEMetaItems.GTE_CONVEYOR_MODULE,
+                            'A', GTEMetaItems.GTE_ROBOT_ARM,
+                            'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
+                            'W', new UnificationEntry(cableGtSingle, Materials.Lead));
 
-                // Steam Circuit Assembler
-                ModHandler.addShapedRecipe(true, "steam_circuit_assembler_bronze",
-                        GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
-                        'R', GTEMetaItems.GTE_ROBOT_ARM,
-                        'I', GTUtil.oreDictionaryCircuit(GTValues.LV),
-                        'E', GTEMetaItems.GTE_EMITTER,
-                        'C', GTEMetaItems.GTE_CONVEYOR_MODULE,
-                        'H', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
-                        'W', new UnificationEntry(cableGtSingle, Materials.Lead));
+                    // Steam Circuit Assembler
+                    ModHandler.addShapedRecipe(true, "steam_circuit_assembler_bronze",
+                            GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
+                            'R', GTEMetaItems.GTE_ROBOT_ARM,
+                            'I', GTUtil.oreDictionaryCircuit(GTValues.LV),
+                            'E', GTEMetaItems.GTE_EMITTER,
+                            'C', GTEMetaItems.GTE_CONVEYOR_MODULE,
+                            'H', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
+                            'W', new UnificationEntry(cableGtSingle, Materials.Lead));
 
-                // High Pressure Steam Mixer
-                ModHandler.addShapedRecipe(true, "steam_compressor_steel",
-                        GTEMetaTileEntities.STEAM_MIXER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
-                        'M', GTEMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(),
-                        'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
-                        'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
-                        'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
+                    // High Pressure Steam Mixer
+                    ModHandler.addShapedRecipe(true, "steam_compressor_steel",
+                            GTEMetaTileEntities.STEAM_MIXER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
+                            'M', GTEMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(),
+                            'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
+                            'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
+                            'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
 
-                // High Pressure Steam Assembler
-                ModHandler.addShapedRecipe(true, "steam_assembler_steel",
-                        GTEMetaTileEntities.STEAM_ASSEMBLER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
-                        'M', GTEMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(),
-                        'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
-                        'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
-                        'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
+                    // High Pressure Steam Assembler
+                    ModHandler.addShapedRecipe(true, "steam_assembler_steel",
+                            GTEMetaTileEntities.STEAM_ASSEMBLER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
+                            'M', GTEMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(),
+                            'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
+                            'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
+                            'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
 
-                // High Pressure Steam Circuit Assembler
-                ModHandler.addShapedRecipe(true, "steam_circuit_assembler_steel",
-                        GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
-                        'M', GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(),
-                        'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
-                        'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
-                        'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
-
-                // Sawmill
-                ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",
-                        GTEMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
-                        'S', new UnificationEntry(screw, Materials.Steel),
-                        'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Steel),
-                        'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
-                        'H', MetaTileEntities.HULL[MV].getStackForm(),
-                        'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
-                        'O', MetaItems.CONVEYOR_MODULE_MV.getStackForm());
-            default:
-                GTELog.logger.error("Invalid steamRecipeType setting: " + gteFlag.steamRecipeType);
+                    // High Pressure Steam Circuit Assembler
+                    ModHandler.addShapedRecipe(true, "steam_circuit_assembler_steel",
+                            GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
+                            'M', GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(),
+                            'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
+                            'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
+                            'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
+                default:
+                    GTELog.logger.error("Invalid steamRecipeType setting: " + GTEConfigHolder.gteFlag.steamRecipeType);
+            }
         }
+
+        // Sawmill
+        ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",
+                GTEMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
+                'S', new UnificationEntry(screw, Materials.Steel),
+                'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Steel),
+                'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
+                'H', MetaTileEntities.HULL[MV].getStackForm(),
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
+                'O', MetaItems.CONVEYOR_MODULE_MV.getStackForm());
 
         // Large Oil Cracking Unit
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit",
@@ -800,7 +803,7 @@ public class GTERecipe {
                 .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
 
-        // Advanced Gas Collector
+        // Large Gas Collector
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.GAS_COLLECTOR[ZPM], 1)
                 .input(plate, GTEMaterials.NM_HEA_NPs, 8)
@@ -810,7 +813,7 @@ public class GTERecipe {
                 .input(MetaItems.FIELD_GENERATOR_ZPM, 4)
                 .fluidInputs(Materials.SolderingAlloy.getFluid(2304))
                 .fluidInputs(Materials.Polytetrafluoroethylene.getFluid(2304))
-                .output(GTEMetaTileEntities.ADVANCED_GAS_COLLECTOR)
+                .output(GTEMetaTileEntities.LARGE_GAS_COLLECTOR)
                 .duration(200).EUt(VA[ZPM])
                 .buildAndRegister();
 

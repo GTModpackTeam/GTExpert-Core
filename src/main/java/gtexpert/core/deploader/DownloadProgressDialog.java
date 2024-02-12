@@ -1,4 +1,4 @@
-package gtexpert.core;
+package gtexpert.core.deploader;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;

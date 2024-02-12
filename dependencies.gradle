@@ -1,128 +1,142 @@
 //file:noinspection DependencyNotationArgument
 // TODO remove when fixed in RFG ^
 /*
- * Add your dependencies here. Common configurations:
- *  - implementation("group:name:version:classifier"): if you need this for internal implementation details of the mod.
- *       Available at compiletime and runtime for your environment.
- *
- *  - compileOnlyApi("g:n:v:c"): if you need this for internal implementation details of the mod.
- *       Available at compiletime but not runtime for your environment.
- *
+ * Add your dependencies here. Supported configurations:
+ *  - api("group:name:version:classifier"): if you use the types from this dependency in the public API of this mod
+ *       Available at runtime and compiletime for mods depending on this mod
+ *  - api("g:n:v:c"): if you need this for internal api details of the mod, but none of it is visible via the public API
+ *       Available at runtime but not compiletime for mods depending on this mod
+ *  - compileOnly("g:n:v:c"): if the mod you're building doesn't need this dependency during runtime at all, e.g. for optional mods
+ *       Not available at all for mods depending on this mod, only visible at compiletime for this mod
+ *  - compileOnly("g:n:v:c"): like compileOnly, but also visible at compiletime for mods depending on this mod
+ *       Available at compiletime but not runtime for mods depending on this mod
+ *  - runtimeOnlyNonPublishableNonPublishable("g:n:v:c"): if you want to include a mod in this mod's runClient/runServer runs, but not publish it as a dependency
+ *       Not available at all for mods depending on this mod, only visible at runtime for this mod
+ *  - devOnlyNonPublishable("g:n:v:c"): a combination of runtimeOnlyNonPublishableNonPublishable and compileOnly for dependencies present at both compiletime and runtime,
+ *       but not published as Maven dependencies - useful for RFG-deobfuscated dependencies or local testing
+ *  - runtimeOnlyNonPublishable("g:n:v:c"): if you don't need this at compile time, but want it to be present at runtime
+ *       Available at runtime for mods depending on this mod
  *  - annotationProcessor("g:n:v:c"): mostly for java compiler plugins, if you know you need this, use it, otherwise don't worry
+ *  - testCONFIG("g:n:v:c") - replace CONFIG by one of the above (except api), same as above but for the test sources instead of main
  *
- *  - testCONFIG("g:n:v:c"): replace CONFIG by one of the above, same as above but for the test sources instead of main
+ *  - shadowapi("g:n:v:c"): effectively the same as API, but the dependency is included in your jar under a renamed package name
+ *       Requires you to enable usesShadowedDependencies in gradle.properties
+ *       For more info, see https://github.com/GregTechCEu/Buildscripts/blob/master/docs/shadow.md
  *
- * You can exclude transitive dependencies (dependencies of the chosen dependency) by appending { transitive = false } if needed.
+ * You can exclude transitive dependencies (dependencies of the chosen dependency) by appending { transitive = false } if needed,
+ * but use this sparingly as it can break using your mod as another mod's dependency if you're not careful.
+ *
+ * To depend on obfuscated jars you can use `devOnlyNonPublishable(rfg.deobf("dep:spec:1.2.3"))` to fetch an obfuscated jar from maven,
+ * or `devOnlyNonPublishable(rfg.deobf(project.files("libs/my-mod-jar.jar")))` to use a file.
  *
  * To add a mod with CurseMaven, replace '("g:n:v:c")' in the above with 'rfg.deobf("curse.maven:project_slug-project_id:file_id")'
- * Example: implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4527757")
+ * Example: devOnlyNonPublishable(rfg.deobf("curse.maven:top-245211:2667280"))
  *
- * To shadow a dependency, use 'shadowImplementation'. For more info, see https://github.com/GregTechCEu/Buildscripts/blob/master/docs/shadow.md
+ * Gradle names for some of the configuration can be misleading, compileOnly and runtimeOnlyNonPublishable both get published as dependencies in Maven, but compileOnly does not.
+ * The buildscript adds runtimeOnlyNonPublishableNonPublishable to also have a runtime dependency that's not published.
  *
- * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
+ * For more details, see https://docs.gradle.org/8.4/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
 dependencies {
-    // Hard Dependencies
-    // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
-    // therefore we manually deobf the regular jar
-    implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848") // CCL 3.2.3.358
-    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5050979") // CEu 2.8.6
-    //implementation (files("libs/gregtech-1.12.2-2.8.4-beta-dev.jar")) // CEu pr 2.8.4
-    implementation rfg.deobf("curse.maven:gregicality-multiblocks-564858:4910674") // GCYM 1.2.7
+    // Published dependencies
+    api("codechicken:codechickenlib:3.2.3.358") // CCL 3.2.3.358
+    api("com.cleanroommc:groovyscript:0.7.3") { transitive = false } // GrS 0.7.3
+    api("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.684") // CrT 4.1.20.684
+    api rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
 
-    // Soft Dependencies
-    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.684" // CrT 4.1.20.684
-    compileOnlyApi ("com.cleanroommc:groovyscript:0.7.1") { transitive = false } // GrS 0.7.1
-    implementation rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
-    implementation rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465") // Forgelin 1.8.4
+    // Hard Dependencies
+    api rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5050979") // CEu 2.8.6
+    //api rfg.deobf(files("libs/gregtech-1.12.2-2.8.4-beta-dev.jar")) // CEu pr 2.8.4
+    api rfg.deobf("curse.maven:gregicality-multiblocks-564858:4910674") // GCYM 1.2.7
+    api rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465") // Forgelin 1.8.4
 
     // Switchable Dependencies
     if (project.useAE2uelExtended.toBoolean()) {
-        implementation rfg.deobf("curse.maven:ae2-uel-extended-913322:5006535") // AE2 UEL: Extended 0.55.30-0.4.0.2
+        api rfg.deobf("curse.maven:ae2-uel-extended-913322:5006535") // AE2 UEL: Extended 0.55.30-0.4.0.2
     } else {
-        implementation rfg.deobf("curse.maven:ae2-extended-life-570458:5088803") // AE2UEL 0.56.3
-        implementation rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371") // AEAdditions 1.3.8
+        api rfg.deobf("curse.maven:ae2-extended-life-570458:5088803") // AE2UEL 0.56.3
+        api rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371") // AEAdditions 1.3.8
     }
 
     // Debug Forestry
     if (project.debug_all.toBoolean() || project.debug_ffm.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:forestry-59751:2684780") // Forestry 5.8.2.387
-        runtimeOnly rfg.deobf("curse.maven:beebetteratbees-244516:2627215") // BeeBetterAtBees 2.0.3
-        runtimeOnly rfg.deobf("curse.maven:jei-bees-248370:2490058") // JEIBees 0.9.0.5
-        runtimeOnly rfg.deobf("curse.maven:gendustry-70492:2516215") // Gendustry 1.6.5.8
-        runtimeOnly rfg.deobf("curse.maven:bdlib-70496:2518031") // BdLib 1.14.3.12
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-59751:2684780") // Forestry 5.8.2.387
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:beebetteratbees-244516:2627215") // BeeBetterAtBees 2.0.3
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:jei-bees-248370:2490058") // JEIBees 0.9.0.5
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:gendustry-70492:2516215") // Gendustry 1.6.5.8
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:bdlib-70496:2518031") // BdLib 1.14.3.12
     }
 
     // Debug Chisel
-    compileOnlyApi rfg.deobf("curse.maven:chisel-235279:2915375") // Chisel 1.0.2.45
+    compileOnly rfg.deobf("curse.maven:chisel-235279:2915375") // Chisel 1.0.2.45
     if (project.debug_all.toBoolean() || project.debug_chisel.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:chisel-235279:2915375")
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:chisel-235279:2915375")
     }
 
     // Debug GTFO
     if (project.debug_all.toBoolean() || project.debug_gtfo.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:gregtech-food-option-477021:5085993") // GTFO 1.11.0.1
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:gregtech-food-option-477021:5085993") // GTFO 1.11.0.1
     }
 
     // Debug EnderIO
-    compileOnlyApi "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
-    compileOnlyApi "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
-    compileOnlyApi rfg.deobf("curse.maven:endercore-231868:4671384") // EnderCore 0.5.78
-    compileOnlyApi rfg.deobf("curse.maven:ender-io-base-297193:4674231") // EIO 5.3.72
-    compileOnlyApi rfg.deobf("curse.maven:ender-io-endergy-304346:4674241") // EIOE 5.3.72
-    compileOnlyApi rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
-    compileOnlyApi rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
-    compileOnlyApi rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
+    compileOnly "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
+    compileOnly "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
+    compileOnly rfg.deobf("curse.maven:endercore-231868:4671384") // EnderCore 0.5.78
+    compileOnly rfg.deobf("curse.maven:ender-io-base-297193:4674231") // EIO 5.3.72
+    compileOnly rfg.deobf("curse.maven:ender-io-endergy-304346:4674241") // EIOE 5.3.72
+    compileOnly rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
+    compileOnly rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
+    compileOnly rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
     if (project.debug_all.toBoolean() || project.debug_eio.toBoolean()) {
-        runtimeOnly "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
-        runtimeOnly "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
-        runtimeOnly rfg.deobf("curse.maven:endercore-231868:4671384") // EnderCore 0.5.78
-        runtimeOnly rfg.deobf("curse.maven:ender-io-base-297193:4674231") // EIO 5.3.72
-        runtimeOnly rfg.deobf("curse.maven:ender-io-endergy-304346:4674241") // EIOE 5.3.72
-        runtimeOnly rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
-        runtimeOnly rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
-        runtimeOnly rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
+        runtimeOnlyNonPublishable "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.2" // AutoConfig 1.0.2
+        runtimeOnlyNonPublishable "info.loenwind.autosave:AutoSave:1.12.2-1.0.11" // AutoSave 1.0.11
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:endercore-231868:4671384") // EnderCore 0.5.78
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:ender-io-base-297193:4674231") // EIO 5.3.72
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:ender-io-endergy-304346:4674241") // EIOE 5.3.72
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:ender-io-machines-297196:4674232") // EIOM 5.3.72
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:ender-io-conduits-297197:4674233") // EIOC 5.3.72
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:ender-io-ae2-conduits-297199:4674234") // EIOCA 5.3.72
     }
 
     // Debug Draconic Evolution/Additions
-    compileOnlyApi rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
-    compileOnlyApi rfg.deobf("curse.maven:redstone-flux-270789:2920436") // RedstoneFlux 1.1.1
-    compileOnlyApi rfg.deobf("curse.maven:brandons-core-231382:3408276") // BrandonsCore 2.4.20.162
-    compileOnlyApi rfg.deobf("curse.maven:draconic-evolution-223565:3431261") // DraconicEvolution 2.3.28.354
-    compileOnlyApi rfg.deobf("curse.maven:draconicadditions-314515:3514704") // DraconicAdditions 1.17.0.45
+    compileOnly rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
+    compileOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436") // RedstoneFlux 1.1.1
+    compileOnly rfg.deobf("curse.maven:brandons-core-231382:3408276") // BrandonsCore 2.4.20.162
+    compileOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261") // DraconicEvolution 2.3.28.354
+    compileOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704") // DraconicAdditions 1.17.0.45
     if (project.debug_all.toBoolean() || project.debug_de.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:baubles-227083:2518667")
-        runtimeOnly rfg.deobf("curse.maven:redstone-flux-270789:2920436")
-        runtimeOnly rfg.deobf("curse.maven:brandons-core-231382:3408276")
-        runtimeOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
-        runtimeOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704")
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:baubles-227083:2518667")
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:redstone-flux-270789:2920436")
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:brandons-core-231382:3408276")
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:draconicadditions-314515:3514704")
     }
 
     // Debug Avaritia
     if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:avaritia-1-1x-kedition-913129:4777278") // Avaritia 1.1x Kedition 1.3
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:avaritia-1-1x-kedition-913129:4777278") // Avaritia 1.1x Kedition 1.3
     }
 
     // Debug Thaumcraft
     if (project.debug_all.toBoolean() || project.debug_thaumcraft.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
-        runtimeOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023") // Thaumcraft 6.1.BETA26
-        runtimeOnly rfg.deobf("curse.maven:thaumic-energistics-extended-life-849094:4513158") // ThaumicEnergistics EL 2.2.7
-        runtimeOnly rfg.deobf("curse.maven:thaumic-jei-285492:2705304") // Thaumic JEI
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:baubles-227083:2518667") // Baubles 1.5.2
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:thaumcraft-223628:2629023") // Thaumcraft 6.1.BETA26
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:thaumic-energistics-extended-life-849094:4513158") // ThaumicEnergistics EL 2.2.7
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:thaumic-jei-285492:2705304") // Thaumic JEI
     }
 
     // Debug NAE2
     if (project.debug_all.toBoolean() || project.debug_nae2.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:nae2-884359:4955559") // NAE2 1.6.1
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:nae2-884359:4955559") // NAE2 1.6.1
     }
 
     // Extra CPUs
     if (project.debug_all.toBoolean() || project.debug_extracpus.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:extracpus-408089:3479639") // ExtraCPUs 1.2.1
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:extracpus-408089:3479639") // ExtraCPUs 1.2.1
     }
 
     // Boot error fix
     if (project.debug_all.toBoolean() || project.debug_eio.toBoolean()) {
-        runtimeOnly (files("libs/EnderCore-1.12.2-0.5.78-core.jar"))
+        runtimeOnlyNonPublishable (files("libs/EnderCore-1.12.2-0.5.78-core.jar"))
     }
 }

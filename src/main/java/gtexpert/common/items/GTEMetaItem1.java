@@ -1,7 +1,6 @@
 package gtexpert.common.items;
 
 import static gtexpert.common.items.GTEMetaItems.*;
-import static gtexpert.core.GTEConfigHolder.gteFlag;
 
 import net.minecraft.client.resources.I18n;
 
@@ -12,6 +11,7 @@ import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.behaviors.TooltipBehavior;
 
+import gtexpert.core.GTEConfigHolder;
 import gtexpert.integration.ae.AEConfigHolder;
 
 public class GTEMetaItem1 extends StandardMetaItem {
@@ -28,7 +28,7 @@ public class GTEMetaItem1 extends StandardMetaItem {
         // Free range: ID 2-10
 
         // Primitive parts: ID 11-20
-        String componentsName = gteFlag.componentsName ? "ulv" : "primitive";
+        String componentsName = GTEConfigHolder.gteFlag.componentsName ? "ulv" : "primitive";
         GTE_ELECTRIC_MOTOR = addItem(11, "electric.motor." + componentsName);
         GTE_ELECTRIC_PUMP = addItem(12, "electric.pump." + componentsName)
                 .addComponents(new TooltipBehavior(lines -> {

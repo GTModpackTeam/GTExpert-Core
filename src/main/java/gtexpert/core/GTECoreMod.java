@@ -14,7 +14,7 @@ import gtexpert.api.util.GTELog;
 public class GTECoreMod implements IFMLLoadingPlugin {
 
     static Properties coremodConfig = new Properties();
-    static boolean downloadOnlyOnce;
+    public static boolean downloadOnlyOnce;
 
     @Override
     public String[] getASMTransformerClass() {
@@ -29,7 +29,7 @@ public class GTECoreMod implements IFMLLoadingPlugin {
     @Nullable
     @Override
     public String getSetupClass() {
-        return "gtexpert.core.DepLoader";
+        return "gtexpert.core.deploader.DepLoader";
     }
 
     @Override

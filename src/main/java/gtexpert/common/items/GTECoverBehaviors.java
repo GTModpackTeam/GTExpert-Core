@@ -2,7 +2,6 @@ package gtexpert.common.items;
 
 import static gregtech.common.covers.CoverBehaviors.registerBehavior;
 import static gtexpert.api.util.GTEUtility.gteId;
-import static gtexpert.core.GTEConfigHolder.gteFlag;
 
 import gregtech.api.GTValues;
 import gregtech.common.covers.CoverConveyor;
@@ -10,10 +9,12 @@ import gregtech.common.covers.CoverFluidRegulator;
 import gregtech.common.covers.CoverPump;
 import gregtech.common.covers.CoverRoboticArm;
 
+import gtexpert.core.GTEConfigHolder;
+
 public class GTECoverBehaviors {
 
     public static void init() {
-        String componentsName = gteFlag.componentsName ? "ulv" : "primitive";
+        String componentsName = GTEConfigHolder.gteFlag.componentsName ? "ulv" : "primitive";
         registerBehavior(gteId("conveyor." + componentsName), GTEMetaItems.GTE_CONVEYOR_MODULE,
                 (def, tile, side) -> new CoverConveyor(def, tile, side, GTValues.ULV, 2));
         registerBehavior(gteId("pump." + componentsName), GTEMetaItems.GTE_ELECTRIC_PUMP,

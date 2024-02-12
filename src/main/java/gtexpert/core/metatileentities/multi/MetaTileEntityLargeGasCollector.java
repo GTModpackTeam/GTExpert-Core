@@ -34,20 +34,21 @@ import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.client.GTETextures;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
+import gtexpert.core.GTEConfigHolder;
 import gtexpert.core.GTERecipeMaps;
 
-public class MetaTileEntityAdvancedGasCollector extends GCYMRecipeMapMultiblockController {
+public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockController {
 
-    public MetaTileEntityAdvancedGasCollector(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityLargeGasCollector(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, new RecipeMap[] {
                 RecipeMaps.GAS_COLLECTOR_RECIPES,
-                GTERecipeMaps.ADVANCED_GAS_COLLECTOR_RECIPES
+                GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES
         });
     }
 
     @Override
     public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityAdvancedGasCollector(metaTileEntityId);
+        return new MetaTileEntityLargeGasCollector(metaTileEntityId);
     }
 
     @NotNull
@@ -110,7 +111,9 @@ public class MetaTileEntityAdvancedGasCollector extends GCYMRecipeMapMultiblockC
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gtexpert.machine.advanced_gas_collector.tooltip.1"));
+        tooltip.add(I18n.format(GTEConfigHolder.gteFlag.featureFlag ?
+                "gtexpert.machine.large_gas_collector.tooltip.1" :
+                "gtexpert.machine.advanced_gas_collector.tooltip.1"));
     }
 
     @Override
