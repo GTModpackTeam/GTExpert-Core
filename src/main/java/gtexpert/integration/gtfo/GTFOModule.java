@@ -13,7 +13,8 @@ import gtexpert.modules.GTEModules;
            moduleID = GTEModules.MODULE_GTFO,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_GTFO,
-           name = "GTExpert GregTech Food Option Module")
+           name = "GTExpert GregTech Food Option Integration",
+           description = "GregTech Food Option Integration Module")
 public class GTFOModule extends GTEIntegrationSubmodule {
 
     @Override

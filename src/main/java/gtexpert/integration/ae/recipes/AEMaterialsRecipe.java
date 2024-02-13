@@ -2,7 +2,6 @@ package gtexpert.integration.ae.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.integration.ae.AEUtil.*;
 
 import net.minecraft.util.ResourceLocation;
 
@@ -22,10 +21,10 @@ public class AEMaterialsRecipe {
 
     public static void init() {
         // Iron Ingot
-        ModHandler.removeFurnaceSmelting(aeMaterials.ironDust().maybeStack(1).get());
+        ModHandler.removeFurnaceSmelting(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 49));
 
         // Gold Ingot
-        ModHandler.removeFurnaceSmelting(aeMaterials.goldDust().maybeStack(1).get());
+        ModHandler.removeFurnaceSmelting(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 51));
 
         // Pure Certus Quartz Crystal
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/seeds_certus"));
@@ -38,13 +37,13 @@ public class AEMaterialsRecipe {
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crystal_seed"))
                 .fluidInputs(Materials.DistilledWater.getFluid(50))
-                .outputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 10))
                 .duration(600).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crystal_seed"))
                 .fluidInputs(Materials.Water.getFluid(250))
-                .chancedOutput(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get(), 7000, 1000)
+                .chancedOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 10), 7000, 1000)
                 .duration(1200).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
@@ -59,13 +58,13 @@ public class AEMaterialsRecipe {
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 600))
                 .fluidInputs(Materials.DistilledWater.getFluid(50))
-                .outputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 11))
                 .duration(600).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 600))
                 .fluidInputs(Materials.Water.getFluid(250))
-                .chancedOutput(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get(), 7000, 1000)
+                .chancedOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 11), 7000, 1000)
                 .duration(1200).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
@@ -80,22 +79,22 @@ public class AEMaterialsRecipe {
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 1200))
                 .fluidInputs(Materials.DistilledWater.getFluid(50))
-                .outputs(aeMaterials.purifiedFluixCrystal().maybeStack(1).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 12))
                 .duration(600).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crystal_seed", 1, 1200))
                 .fluidInputs(Materials.Water.getFluid(250))
-                .chancedOutput(aeMaterials.purifiedFluixCrystal().maybeStack(1).get(), 7000, 1000)
+                .chancedOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 12), 7000, 1000)
                 .duration(1200).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
         // Fluix Pearl
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "misc/fluixpearl"));
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+        RecipeMaps.CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input(gem, Materials.EnderPearl, 1)
-                .input(dust, GTEMaterials.Fluix, 1)
-                .outputs(aeMaterials.fluixPearl().maybeStack(1).get())
+                .fluidInputs(GTEMaterials.Fluix.getFluid(144))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 9))
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
@@ -104,27 +103,27 @@ public class AEMaterialsRecipe {
         // ########################################
         // Dust
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
-                .outputs(aeMaterials.skyDust().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "sky_stone_block"))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 45))
                 .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(aeBlocks.smoothSkyStoneBlock().maybeStack(1).get())
-                .outputs(aeMaterials.skyDust().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "smooth_sky_stone_block"))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 45))
                 .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
         // Block
-        ModHandler.removeFurnaceSmelting(aeBlocks.skyStoneBlock().maybeStack(1).get());
+        ModHandler.removeFurnaceSmelting(GTEUtility.getModItem(GTEValues.MODID_AE, "sky_stone_block"));
         RecipeMaps.BLAST_RECIPES.recipeBuilder()
-                .inputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
-                .outputs(aeBlocks.smoothSkyStoneBlock().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "sky_stone_block"))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "smooth_sky_stone_block"))
                 .duration(100).EUt(VA[GTEValues.ae2VoltageTier])
                 .blastFurnaceTemp(2700)
                 .buildAndRegister();
         RecipeMaps.ROCK_BREAKER_RECIPES.recipeBuilder()
-                .notConsumable(aeBlocks.skyStoneBlock().maybeStack(1).get())
-                .outputs(aeBlocks.skyStoneBlock().maybeStack(1).get())
+                .notConsumable(GTEUtility.getModItem(GTEValues.MODID_AE, "sky_stone_block"))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "sky_stone_block"))
                 .duration(100).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
@@ -133,14 +132,14 @@ public class AEMaterialsRecipe {
         // ########################################
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 11))
                 .fluidOutputs(Materials.NetherQuartz.getFluid(72))
                 .duration(14).EUt(VA[LV])
                 .buildAndRegister();
 
         // Dust
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 11))
                 .output(dustSmall, Materials.NetherQuartz, 2)
                 .duration(14).EUt(2)
                 .buildAndRegister();
@@ -148,14 +147,14 @@ public class AEMaterialsRecipe {
         // Block
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/quartz_block_pure"));
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(8).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 8, 11))
                 .output(block, Materials.NetherQuartz, 1)
                 .duration(300).EUt(2)
                 .buildAndRegister();
 
         // Rod
         RecipeMaps.LATHE_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedNetherQuartzCrystal().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 11))
                 .output(stick, Materials.NetherQuartz, 1)
                 .duration(40).EUt(VH[LV])
                 .buildAndRegister();
@@ -170,14 +169,14 @@ public class AEMaterialsRecipe {
 
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 10))
                 .fluidOutputs(Materials.CertusQuartz.getFluid(72))
                 .duration(14).EUt(VA[LV])
                 .buildAndRegister();
 
         // Dust
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 10))
                 .output(dustSmall, Materials.CertusQuartz, 2)
                 .duration(14).EUt(2)
                 .buildAndRegister();
@@ -185,22 +184,22 @@ public class AEMaterialsRecipe {
         // Block
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/certus_quartz_block"));
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/certus_quartz_block_pure"));
-        ModHandler.removeRecipeByOutput(aeMaterials.certusQuartzCrystal().maybeStack(4).get());
+        ModHandler.removeRecipeByOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "quartz_block", 4));
         ModHandler.addMirroredShapedRecipe("ae2_certus_quartz_block",
-                aeBlocks.quartzBlock().maybeStack(1).get(), "B", 'B',
+                GTEUtility.getModItem(GTEValues.MODID_AE, "quartz_block"), "B", 'B',
                 new UnificationEntry(block, Materials.CertusQuartz));
         ModHandler.addMirroredShapedRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, Materials.CertusQuartz),
                 "B", 'B',
-                aeBlocks.quartzBlock().maybeStack(1).get());
+                GTEUtility.getModItem(GTEValues.MODID_AE, "quartz_block"));
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(8).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 8, 10))
                 .output(block, Materials.CertusQuartz, 1)
                 .duration(300).EUt(2)
                 .buildAndRegister();
 
         // Rod
         RecipeMaps.LATHE_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedCertusQuartzCrystal().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 10))
                 .output(stick, Materials.CertusQuartz, 1)
                 .duration(40).EUt(VH[LV])
                 .buildAndRegister();
@@ -211,7 +210,7 @@ public class AEMaterialsRecipe {
         // Gem
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
                 .input(gem, Materials.CertusQuartz, 1)
-                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 1))
                 .duration(100).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.ELECTROLYZER_RECIPES.recipeBuilder()
@@ -222,26 +221,26 @@ public class AEMaterialsRecipe {
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(dust, GTEMaterials.ChargedCertusQuartz, 1)
                 .fluidInputs(Materials.DistilledWater.getFluid(50))
-                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 1))
                 .duration(600).EUt(24)
                 .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(dust, GTEMaterials.ChargedCertusQuartz, 1)
                 .fluidInputs(Materials.Water.getFluid(250))
-                .chancedOutput(aeMaterials.certusQuartzCrystalCharged().maybeStack(1).get(), 7000, 1000)
+                .chancedOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 1), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(dust, GTEMaterials.ChargedCertusQuartz, 4)
                 .explosivesAmount(2)
-                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(3).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 3, 1))
                 .output(dustSmall, Materials.DarkAsh, 1)
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(dust, GTEMaterials.ChargedCertusQuartz, 4)
                 .explosivesType(MetaItems.DYNAMITE.getStackForm())
-                .outputs(aeMaterials.certusQuartzCrystalCharged().maybeStack(3).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 3, 1))
                 .output(dustSmall, Materials.DarkAsh, 1)
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
@@ -259,7 +258,7 @@ public class AEMaterialsRecipe {
         // ########################################
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedFluixCrystal().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 12))
                 .fluidOutputs(GTEMaterials.Fluix.getFluid(72))
                 .duration(14).EUt(VA[LV])
                 .buildAndRegister();
@@ -274,7 +273,7 @@ public class AEMaterialsRecipe {
                 .duration(200).EUt(VA[3])
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedFluixCrystal().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 12))
                 .output(dustSmall, GTEMaterials.Fluix, 2)
                 .duration(14).EUt(2)
                 .buildAndRegister();
@@ -283,26 +282,26 @@ public class AEMaterialsRecipe {
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(dust, GTEMaterials.Fluix, 1)
                 .fluidInputs(Materials.DistilledWater.getFluid(50))
-                .outputs(aeMaterials.fluixCrystal().maybeStack(1).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 7))
                 .duration(600).EUt(24)
                 .buildAndRegister();
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(dust, GTEMaterials.Fluix, 1)
                 .fluidInputs(Materials.Water.getFluid(250))
-                .chancedOutput(aeMaterials.fluixCrystal().maybeStack(1).get(), 7000, 1000)
+                .chancedOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 7), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(dust, GTEMaterials.Fluix, 4)
                 .explosivesAmount(2)
-                .outputs(aeMaterials.fluixCrystal().maybeStack(3).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 3, 7))
                 .output(dustSmall, Materials.DarkAsh, 1)
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(dust, GTEMaterials.Fluix, 4)
                 .explosivesType(MetaItems.DYNAMITE.getStackForm())
-                .outputs(aeMaterials.fluixCrystal().maybeStack(3).get())
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 3, 7))
                 .output(dustSmall, Materials.DarkAsh, 1)
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
@@ -310,15 +309,15 @@ public class AEMaterialsRecipe {
         // Block
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/fluix_block"));
         ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "decorative/fluix_block_pure"));
-        ModHandler.removeRecipeByOutput(aeMaterials.fluixCrystal().maybeStack(4).get());
+        ModHandler.removeRecipeByOutput(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 4, 7));
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.fluixCrystal().maybeStack(4).get())
-                .outputs(aeBlocks.fluixBlock().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 4, 7))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "fluix_block"))
                 .duration(300).EUt(2)
                 .buildAndRegister();
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .inputs(aeMaterials.purifiedFluixCrystal().maybeStack(8).get())
-                .outputs(aeBlocks.fluixBlock().maybeStack(1).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 8, 12))
+                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "fluix_block"))
                 .duration(300).EUt(2)
                 .buildAndRegister();
 
@@ -336,7 +335,7 @@ public class AEMaterialsRecipe {
         // Dust
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
-                .inputs(aeMaterials.skyDust().maybeStack(2).get())
+                .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 2, 45))
                 .input(dust, GTEMaterials.Fluix, 2)
                 .input(dust, Materials.Carbon, 2)
                 .input(dust, Materials.Silicon, 1)

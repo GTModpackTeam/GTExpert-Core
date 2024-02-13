@@ -82,7 +82,7 @@ public class GTEDraconicRecipeMaps {
             "draconium_fusion", 6, 3, 3, 1, new SimpleRecipeBuilder(), false, DRACONIC_FUSION_TIER_UP_FAKE_RECIPES,
             DRACONIC_FUSION_UPGRADE_FAKE_RECIPES)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(GTSoundEvents.ARC)
+                    .setSound(GTSoundEvents.ELECTROLYZER)
                     .onRecipeBuild(
                             recipeBuilder -> GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES
                                     .recipeBuilder()
@@ -99,6 +99,6 @@ public class GTEDraconicRecipeMaps {
             "awakened_draconium_fusion", 6, 3, 3, 1, new SimpleRecipeBuilder(), false,
             AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES, AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(GTSoundEvents.ARC)
+                    .setSound(GTSoundEvents.ELECTROLYZER)
                     .setSmallRecipeMap(DRACONIUM_FUSION_RECIPES);
 }

@@ -17,7 +17,8 @@ import gtexpert.modules.GTEModules;
            moduleID = GTEModules.MODULE_CHISEL,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_CHISEL,
-           name = "GTExpert Chisel Module")
+           name = "GTExpert Chisel Integration",
+           description = "Chisel Integration Module")
 public class ChiselModule extends GTEIntegrationSubmodule {
 
     @Override

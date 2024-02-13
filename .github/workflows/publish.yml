@@ -1,5 +1,5 @@
-# Publishes built jars to distribution platforms
-name: Publish
+# Publishes the project to GitHub Releases, CurseForge, and Modrinth
+name: Publish Project
 
 on:
   workflow_dispatch:
@@ -17,14 +17,29 @@ on:
           - 'alpha'
 
 env:
+  # link to the changelog with a format code for the version
+  CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }})"
   # Version of the mod
   FULL_VERSION: "${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
   # type of release
   NAME: "GTExpertCore"
 
+  # Curseforge and Modrinth project IDs
+  CURSEFORGE_PROJECT_ID: "851103"
+  MODRINTH_PROJECT_ID: "ipueNiWG"
+
+concurrency:
+  group: publish-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  publish:
+    name: Publish
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -47,12 +62,6 @@ jobs:
           file_pattern: gradle.properties
           tagging_message: "v${{ env.FULL_VERSION }}"
 
-      - name: Apply patch to settings.gradle
-        run: |
-          if [ -f settings.gradle.patch ]; then
-            patch -p0 < settings.gradle.patch
-          fi
-
       - name: Setup Build
         uses: ./.github/actions/build_setup
       
@@ -60,54 +69,29 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Project
-        run: ./gradlew --scan --build-cache --info --stacktrace build
+        run: ./gradlew --info build
 
-      - name: Publish to Curseforge and Modrinth
-        uses: Kir-Antipov/mc-publish@v3.3
+      - name: Publish to GitHub
+        uses: softprops/action-gh-release@v1
         with:
-          github-tag: "v${{ env.FULL_VERSION }}"
-          github-generate-changelog: true
-          github-draft: false
-          github-prerelease: false
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          modrinth-id: 'ipueNiWG'
-          modrinth-token: "${{ secrets.MODRINTH_API_KEY }}"
-          modrinth-dependencies: |
-            G1ckZuWK(required)
-            tULldUx4(required)
-            tZiutdLG(required)
-          curseforge-id: '851103'
-          curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
-          curseforge-dependencies: |
-            mixin-booter(required)
-            gregtech-ce-unofficial(required)
-            gregicality-multiblocks(required)
-            ae2-extended-life(recommended)
-            ae-additions-extra-cells-2-fork(recommended)
-            ender-io-base(recommended)
-            ender-io-machines(recommended)
-            ender-io-endergy(recommended)
-            ender-io-conduits(recommended)
-            ender-io-ae2-conduits(recommended)
-            gregtech-food-option(recommended)
-            chisel(recommended)
-            extracpus(recommended)
-            draconic-evolution(recommended)
-            draconicadditions(recommended)
-            project-red-illumination(recommended)
-            ulv-covers(incompatible)
-          files: |
-            build/libs/!(*-@(dev|sources|javadoc)).jar
-            build/libs/*-@(sources).jar
-            build/libs/*-@(dev).jar
-          name: "${{ env.NAME }}-${{ env.FULL_VERSION }}.jar"
-          changelog: "Changelog is available [here](https://github.com/${{github.repository}}/blob/master/CHANGELOG.md)"
-          version: "${{ github.event.inputs.version }}"
-          version-type: "${{ github.event.inputs.release_type }}"
-          loaders: |
-            forge
-          game-versions: |
-            1.12.2
-          java: |
-            8
-          retry-attempts: 2
+          files: "build/libs/*.jar"
+          name: "${{ env.NAME }}-v${{ env.FULL_VERSION }}"
+          tag_name: "v${{ env.FULL_VERSION }}"
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+
+      - name: Publish to Curseforge
+        env:
+          CURSEFORGE_API_KEY: "${{ secrets.CURSEFORGE_API_KEY }}"
+          CURSEFORGE_PROJECT_ID: "${{ env.CURSEFORGE_PROJECT_ID }}"
+          CHANGELOG_LOCATION: "${{ env.CHANGELOG_LOCATION }}"
+          RELEASE_TYPE: "${{ github.event.inputs.release_type }}"
+        run: ./gradlew --info curseforge
+
+      - name: Publish to Modrinth
+        env:
+          MODRINTH_API_KEY: "${{ secrets.MODRINTH_API_KEY }}"
+          MODRINTH_PROJECT_ID: "${{ env.MODRINTH_PROJECT_ID }}"
+          CHANGELOG_LOCATION: "${{ env.CHANGELOG_LOCATION }}"
+          RELEASE_TYPE: "${{ github.event.inputs.release_type }}"
+        run: ./gradlew --info modrinth

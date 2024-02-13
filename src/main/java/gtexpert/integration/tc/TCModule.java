@@ -16,7 +16,8 @@ import gtexpert.modules.GTEModules;
            moduleID = GTEModules.MODULE_TC,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_TC,
-           name = "GTExpert Thaumcraft Module")
+           name = "GTExpert Thaumcraft Integration",
+           description = "Thaumcraft Integration Module")
 public class TCModule extends GTEIntegrationSubmodule {
 
     @Override

@@ -19,7 +19,10 @@ public class GTEConfigHolder {
 
     public static class ModpackFlag {
 
-        @Config.Comment({ "Activate changes in the replacement schedule.", "Default: false" })
+        @Config.Comment({ "Activate changes in the replacement schedule.",
+                "1. When enabled, the following structure and mte name changes: ",
+                "Large Cracking Unit",
+                "Default: false" })
         public boolean featureFlag = false;
 
         @Config.Comment({ "Item name to be CEu standard instead of Primitive",
@@ -33,8 +36,14 @@ public class GTEConfigHolder {
         public String componentsRecipeType = "easy";
 
         @Config.Comment({
+                "Enable the new steam machines.",
+                "Steam Mixer, Steam Assembler, Steam Circuit Assembler",
+                "Default: false" })
+        public boolean steamNewMachine = false;
+
+        @Config.Comment({
                 "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting(WIP)), normal (3x3 crafting).",
-                "Default: normal" })
+                "The steamNewMachine must also be enabled.", "Default: normal" })
         public String steamRecipeType = "normal";
     }
 

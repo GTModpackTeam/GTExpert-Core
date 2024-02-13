@@ -9,5 +9,6 @@ import gtexpert.modules.GTEModules;
            moduleID = GTEModules.MODULE_CT,
            containerID = GTEValues.MODID,
            modDependencies = GTEValues.MODID_CT,
-           name = "GTExpert CraftTweaker Module")
+           name = "GTExpert CraftTweaker Integration",
+           description = "CraftTweaker Integration Module")
 public class CraftTweakerModule extends GTEIntegrationSubmodule {}

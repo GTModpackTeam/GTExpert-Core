@@ -15,9 +15,18 @@ on:
         default: false
         type: boolean
 
+concurrency:
+  group: build-and-test-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -28,6 +37,9 @@ jobs:
             patch -p0 < settings.gradle.patch
           fi
 
+      - name: Apply patch to gradle.properties
+        run: sed -i 's/debug_all = false/debug_all = true/g' gradle.properties
+
       - name: Setup Build
         uses: ./.github/actions/build_setup
       
@@ -35,7 +47,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Compile the mod
-        run: ./gradlew --scan --build-cache --info --stacktrace assemble
+        run: ./gradlew --info --scan assemble
 
       - name: Upload Jars
         uses: actions/upload-artifact@v4
@@ -46,14 +58,14 @@ jobs:
 
       - name: Run post-build checks
         id: build_mod
-        run: ./gradlew --build-cache --info --stacktrace build
+        run: ./gradlew --info build
 
       - name: Attempt to make a PR fixing spotless errors
         if: ${{ failure() && steps.build_mod.conclusion == 'failure' && github.event_name == 'pull_request' && !github.event.pull_request.draft }}
         run: |
           git reset --hard
           git checkout "${PR_BRANCH}"
-          ./gradlew --build-cache --info --stacktrace spotlessApply || exit 1
+          ./gradlew --info spotlessApply || exit 1
           git diff --exit-code && exit 1
           git config user.name "GitHub Actions"
           git config user.email "<>"
@@ -80,7 +92,7 @@ jobs:
           echo "eula=true" > run/eula.txt
           # Set a constant seed with a village at spawn
           echo "stop" > run/stop.txt
-          timeout ${{ inputs.timeout }} ./gradlew --build-cache --info --stacktrace runServer 2>&1 < run/stop.txt | tee -a server.log || true
+          timeout ${{ inputs.timeout }} ./gradlew runServer 2>&1 < run/stop.txt | tee -a server.log || true
 
       - name: Test no errors reported during server run
         if: ${{ !inputs.client-only }}

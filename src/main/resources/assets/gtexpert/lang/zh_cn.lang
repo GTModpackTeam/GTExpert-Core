@@ -101,7 +101,7 @@ metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Highe
 # recipemaps
 recipemap.sawmill.name=锯木机
 recipemap.vial_extractor.name=灵魂提取机
-recipemap.slice'n'splice.name=头颅装配机
+recipemap.slice_n_splice.name=头颅装配机
 recipemap.soul_binder.name=灵魂绑定器
 recipemap.void_ore_miner.name=虚空矿物采掘机
 

@@ -22,8 +22,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Apply patch to settings.gradle
+        run: |
+          if [ -f settings.gradle.patch ]; then
+            patch -p0 < settings.gradle.patch
+          fi
+
+      - name: Apply patch to build.gradle
+        run: sed -i 's/debug_all = false/debug_all = true/g' gradle.properties
+
       - name: Setup Build
         uses: ./.github/actions/build_setup
 
       - name: Run Tests with Gradle
-        run: ./gradlew test --warning-mode all --build-cache
+        run: ./gradlew --info --scan test

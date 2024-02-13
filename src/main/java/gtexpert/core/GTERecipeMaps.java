@@ -1,5 +1,7 @@
 package gtexpert.core;
 
+import net.minecraft.init.SoundEvents;
+
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
@@ -16,11 +18,11 @@ import stanhebben.zenscript.annotations.ZenProperty;
 @ZenRegister
 public class GTERecipeMaps {
 
-    // @ZenProperty
-    // public static final RecipeMap<SimpleRecipeBuilder> SIEVE_RECIPES = new RecipeMap<>(
-    // "sieve", 2, 30, 0, 0, new SimpleRecipeBuilder(), false)
-    // .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.VERTICAL_INVERTED)
-    // .setSound(SoundEvents.BLOCK_SAND_PLACE);
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> SIEVE_RECIPES = new RecipeMap<>(
+            "sieve", 2, 30, 0, 0, new SimpleRecipeBuilder(), false)
+                    .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.VERTICAL_INVERTED)
+                    .setSound(SoundEvents.BLOCK_SAND_PLACE);
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SAWMILL_RECIPES = new RecipeMap<>(
@@ -38,8 +40,8 @@ public class GTERecipeMaps {
                     .setSound(GTSoundEvents.DRILL_TOOL);
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> ADVANCED_GAS_COLLECTOR_RECIPES = new RecipeMap<>(
-            "advanced_gas_collector", 2, 0, 1, 2, new SimpleRecipeBuilder(), false)
+    public static final RecipeMap<SimpleRecipeBuilder> LARGE_GAS_COLLECTOR_RECIPES = new RecipeMap<>(
+            "large_gas_collector", 2, 0, 1, 2, new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
                     .setSlotOverlay(true, true, GuiTextures.CENTRIFUGE_OVERLAY)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)
