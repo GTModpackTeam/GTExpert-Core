@@ -18,7 +18,7 @@ on:
 
 env:
   # link to the changelog with a format code for the version
-  CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }})"
+  CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{ github.repository }}/releases/tag/GTExpertCore-v${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }})"
   # Version of the mod
   FULL_VERSION: "${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
   # type of release
