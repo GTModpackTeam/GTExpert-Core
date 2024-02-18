@@ -369,7 +369,8 @@ public class AEBlocksRecipe {
         }
 
         // Dense Covered Cable
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_covered_fluix"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_covered_fluix"));
         ModHandler.removeRecipeByName(
                 new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_covered_fluix_clean"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
@@ -402,9 +403,10 @@ public class AEBlocksRecipe {
         }
 
         // Dense Smart Cable
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_smart_fluix"));
-        ModHandler
-                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_smart_fluix_clean"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_smart_fluix"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/cables/dense_smart_fluix_clean"));
         ModHandler.addShapedRecipe("fluix_dense_smart_cable_1",
                 GTEUtility.getModItem(GTEValues.MODID_AE, "part", 1, 76),
                 " G ", "RCR", " G ",
@@ -465,8 +467,8 @@ public class AEBlocksRecipe {
         }
 
         // Crafting Monitor
-        ModHandler
-                .removeRecipeByName(new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_monitor"));
+        ModHandler.removeRecipeByName(
+                new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_monitor"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
                 .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "part", 1, 400))
@@ -489,6 +491,56 @@ public class AEBlocksRecipe {
                 GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 23),
                 GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 22),
                 GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 24));
+
+        if (AEConfigHolder.enableAE2UELExtended) {
+            // 4x Crafting Co-Processing Unit
+            ModHandler.removeRecipeByName(
+                    new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_accelerator_4x"));
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator"))
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 35))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator_4x"))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator_4x"))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator"))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 35))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+
+            // 16x Crafting Co-Processing Unit
+            ModHandler.removeRecipeByName(
+                    new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_accelerator_16x"));
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator"))
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 36))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator_16x"))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator_16x"))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator"))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 36))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+
+            // 64x Crafting Co-Processing Unit
+            ModHandler.removeRecipeByName(
+                    new ResourceLocation(GTEValues.MODID_AE, "network/crafting/cpu_crafting_accelerator_64x"));
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator"))
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 37))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator_64x"))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+            RecipeMaps.PACKER_RECIPES.recipeBuilder()
+                    .inputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator_64x"))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_accelerator"))
+                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "material", 1, 37))
+                    .duration(10).EUt(VA[ULV])
+                    .buildAndRegister();
+        }
 
         // 1k Crafting Storage
         ModHandler.removeRecipeByName(

@@ -16,6 +16,7 @@ public class GTEModules implements IModuleContainer {
     public static final String MODULE_FFM = "ffm_integration";
     public static final String MODULE_CHISEL = "chisel_integration";
     public static final String MODULE_AE = "ae_integration";
+    public static final String MODULE_AEA = "aeadditions_integration";
     public static final String MODULE_NAE2 = "nae2_integration";
     public static final String MODULE_EXCPUS = "extracpus_integration";
     public static final String MODULE_GTFO = "gtfo_integration";
