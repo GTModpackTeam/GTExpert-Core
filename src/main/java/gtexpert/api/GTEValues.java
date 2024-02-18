@@ -51,6 +51,10 @@ public class GTEValues {
             GTELog.logger.error("Base Voltage must be greater than 0! Set to default value.");
             return false;
         }
+        if (ae2VoltageTier < 2) {
+            GTELog.logger.error("Base Voltage must be greater than 2! Set to default value.");
+            return false;
+        }
         if (ae2VoltageTier > 10) {
             GTELog.logger.error("Base Voltage must be less than 10! Set to default value.");
             return false;

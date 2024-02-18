@@ -18,7 +18,7 @@ public class AEConfigHolder {
 
     @Config.Comment({ "The voltage at which AE can be started.",
             "The material is also adjusted to each voltage.", "Default: 3 (HV)" })
-    @Config.RangeInt(min = 1, max = 10)
+    @Config.RangeInt(min = 2, max = 10)
     public static int voltageTier = 3;
 
     @Config.Comment({ "Change AE swords, axes, etc. to GT recipe standards.",
