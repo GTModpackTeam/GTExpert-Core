@@ -13,7 +13,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.google.common.base.CaseFormat;
@@ -92,8 +91,9 @@ public class ChiselBlocksRecipe {
 
         // Lamp
         if (ChiselConfigHolder.hardLedRecipes) {
-            if (Loader.isModLoaded("projectred-illumination")) {
-                IntStream.range(0, 31).mapToObj(i -> GTEUtility.getModItem("projectred-illumination", "lamp", 1, i))
+            if (Mods.ProjectRedIllumination.isModLoaded()) {
+                IntStream.range(0, 31)
+                        .mapToObj(i -> GTEUtility.getModItem(Mods.Names.PROJECT_RED_ILLUMINATION, "lamp", 1, i))
                         .forEach(ModHandler::removeRecipeByOutput);
             }
 
@@ -110,12 +110,12 @@ public class ChiselBlocksRecipe {
                 {
                     int lampMeta = 0;
                     while (lampMeta < lamp.getItemMetadataStates()) {
-                        if (Loader.isModLoaded("projectred-illumination")) {
+                        if (Mods.ProjectRedIllumination.isModLoaded()) {
                             ChiselUtil.addVariation("lamp" + colorName,
-                                    GTEUtility.getModItem("projectred-illumination", "lamp", 1, i));
+                                    GTEUtility.getModItem(Mods.Names.PROJECT_RED_ILLUMINATION, "lamp", 1, i));
                         }
                         ChiselUtil.addVariation("lamp" + colorName,
-                                GTEUtility.getModItem("projectred-illumination", "lamp", 1, i + 16));
+                                GTEUtility.getModItem(Mods.Names.PROJECT_RED_ILLUMINATION, "lamp", 1, i + 16));
                         ChiselUtil.addVariation("lamp" + colorName, new ItemStack(lamp, 1, lampMeta));
                         lampMeta++;
                     }
