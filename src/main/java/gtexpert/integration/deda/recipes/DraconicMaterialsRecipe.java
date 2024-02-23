@@ -9,10 +9,8 @@ import java.util.List;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.Loader;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,6 +40,7 @@ import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.Mods;
 
 public class DraconicMaterialsRecipe {
 
@@ -60,7 +59,7 @@ public class DraconicMaterialsRecipe {
                 .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, GTEMaterials.Dragon, 2)
                 .duration(600).EUt(VA[GTEValues.dedaVoltageTier]);
-        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+        if (Mods.EnderIO.isModLoaded()) {
             builderDD.input(dust, GTEMaterials.EndSteel, 1);
         } else {
             builderDD.input(dust, Materials.Endstone, 1);
@@ -111,7 +110,7 @@ public class DraconicMaterialsRecipe {
                 .buildAndRegister();
 
         // Draconium Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconium_block"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconium_block"));
         ModHandler.addMirroredShapedRecipe("de_draconium_block", new ItemStack(DEFeatures.draconiumBlock), "B", 'B',
                 OreDictUnifier.get(block, GTEMaterials.Draconium));
         ModHandler.addMirroredShapedRecipe("ceu_draconium_block", OreDictUnifier.get(block, GTEMaterials.Draconium),
@@ -119,7 +118,7 @@ public class DraconicMaterialsRecipe {
                 new ItemStack(DEFeatures.draconiumBlock));
 
         // Awakened Draconium Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_block"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconic_block"));
         ModHandler.addMirroredShapedRecipe("de_draconic_block", new ItemStack(DEFeatures.draconicBlock), "B", 'B',
                 OreDictUnifier.get(block, GTEMaterials.AwakenedDraconium));
         ModHandler.addMirroredShapedRecipe("ceu_draconic_block",

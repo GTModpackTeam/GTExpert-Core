@@ -45,19 +45,20 @@ dependencies {
     api rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
 
     // Hard Dependencies
-    devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5050979")) // CEu 2.8.6
+    devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5121638")) // CEu 2.8.7
     // devOnlyNonPublishable(rfg.deobf(files("libs/gregtech-1.12.2-2.8.4-beta-dev.jar"))) // CEu pr 2.8.4
-    devOnlyNonPublishable(rfg.deobf("curse.maven:gregicality-multiblocks-564858:4910674")) // GCYM 1.2.7
+    devOnlyNonPublishable(rfg.deobf("curse.maven:gregicality-multiblocks-564858:5121714")) // GCYM 1.2.8
     devOnlyNonPublishable(rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")) // Forgelin 1.8.4
 
     // Switchable Dependencies
     if (project.useAE2uelExtended.toBoolean()) {
         devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-uel-extended-913322:5006535")) // AE2 UEL: Extended 0.55.30-0.4.0.2
     } else {
-        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5088803")) // AE2UEL 0.56.
+        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5088803")) // AE2UEL 0.56.3
     }
 
     // Debug Forestry
+    compileOnly rfg.deobf("curse.maven:forestry-59751:2684780") // Forestry 5.8.2.387
     if (project.debug_all.toBoolean() || project.debug_ffm.toBoolean()) {
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-59751:2684780") // Forestry 5.8.2.387
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:beebetteratbees-244516:2627215") // BeeBetterAtBees 2.0.3

@@ -7,8 +7,6 @@ import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 
@@ -29,6 +27,7 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
@@ -50,7 +49,7 @@ public class DraconicBlocksRecipe {
                 .buildAndRegister();
 
         // Dislocator Receptacle
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "dislocator_receptacle"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("dislocator_receptacle"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(DEFeatures.draconicCore, 1)
                 .input(DEFeatures.infusedObsidian, 1)
@@ -72,7 +71,7 @@ public class DraconicBlocksRecipe {
                 .buildAndRegister();
 
         // Celestial Manipulator
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "celestial_manipulator"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("celestial_manipulator"));
         RecipeBuilder<?> builderCM = RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(Items.CLOCK, 1)
                 .input(plate, GTEMaterials.Draconium, 4)
@@ -80,7 +79,7 @@ public class DraconicBlocksRecipe {
                 .input(DEFeatures.wyvernCore, 1)
                 .outputs(new ItemStack(DEFeatures.celestialManipulator))
                 .duration(600).EUt(VA[GTEValues.dedaVoltageTier]);
-        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+        if (Mods.EnderIO.isModLoaded()) {
             builderCM.input(stickLong, GTEMaterials.DarkSteel, 4);
             builderCM.input(stick, GTEMaterials.DarkSteel, 4);
         } else {
@@ -90,10 +89,10 @@ public class DraconicBlocksRecipe {
         builderCM.buildAndRegister();
 
         // Dislocation Normalization Field Projector
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "item_dislocation_inhibitor"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("item_dislocation_inhibitor"));
 
         // Particle Generator
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "particle_generator"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("particle_generator"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(block, Materials.Redstone, 4)
                 .input(stick, Materials.Blaze, 4)
@@ -104,7 +103,7 @@ public class DraconicBlocksRecipe {
                 .buildAndRegister();
 
         // Energy Core Stabilizer
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "particle_generator_1"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("particle_generator_1"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(block, Materials.Diamond, 4)
                 .input(stick, Materials.Blaze, 4)
@@ -179,21 +178,21 @@ public class DraconicBlocksRecipe {
                 .buildAndRegister();
 
         // Infused Obsidian
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "infused_obsidian"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("infused_obsidian"));
         ModHandler.addShapedRecipe(true, "infused_obsidian", new ItemStack(DEFeatures.infusedObsidian),
                 "BOB", "ODO", "BOB",
                 'B', Items.BLAZE_POWDER,
-                'O', Loader.isModLoaded(GTEValues.MODID_EIO) ?
-                        GTEUtility.getModItem(GTEValues.MODID_EIO, "block_reinforced_obsidian") :
-                        GTEUtility.getModItem(GTEValues.MODID_VANILLA, "obsidian"),
+                'O', Mods.EnderIO.isModLoaded() ?
+                        GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_reinforced_obsidian") :
+                        Mods.Vanilla.getItem("obsidian"),
                 'D', OreDictUnifier.get(dust, GTEMaterials.Draconium));
 
         // Basic Energy Relay Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_5"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("energy_crystal"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("energy_crystal_5"));
 
         // Wyvern Energy Relay Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_1"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("energy_crystal_1"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(plate, Materials.Diamond, 4)
@@ -216,13 +215,13 @@ public class DraconicBlocksRecipe {
                 .buildAndRegister();
 
         // Basic Energy I/O Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_2"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("energy_crystal_2"));
 
         // Basic Wireless Energy Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_8"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("energy_crystal_8"));
 
         // Wyvern Wireless Energy Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_9"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("energy_crystal_9"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(gem, Materials.EnderPearl, 4)
@@ -235,7 +234,7 @@ public class DraconicBlocksRecipe {
                 .buildAndRegister();
 
         // Draconic Wireless Energy Crystal
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "energy_crystal_10"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("energy_crystal_10"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(gem, Materials.EnderPearl, 4)
@@ -292,7 +291,7 @@ public class DraconicBlocksRecipe {
                 .output(DAFeatures.capacitorSupplier, 1)
                 .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                 .duration(100).EUt(VA[GTEValues.dedaVoltageTier]);
-        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+        if (Mods.EnderIO.isModLoaded()) {
             builderCS.input(plate, GTEMaterials.StellarAlloy, 4);
             builderCS.input(stick, GTEMaterials.StellarAlloy, 4);
         } else {

@@ -5,6 +5,7 @@ import net.minecraftforge.event.RegistryEvent;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.tc.recipes.TCBlocksRecipe;
 import gtexpert.integration.tc.recipes.TCItemsRecipe;
@@ -15,7 +16,7 @@ import gtexpert.modules.GTEModules;
 @GTEModule(
            moduleID = GTEModules.MODULE_TC,
            containerID = GTEValues.MODID,
-           modDependencies = GTEValues.MODID_TC,
+           modDependencies = Mods.Names.THAUMCRAFT,
            name = "GTExpert Thaumcraft Integration",
            description = "Thaumcraft Integration Module")
 public class TCModule extends GTEIntegrationSubmodule {

@@ -10,6 +10,7 @@ import com.google.common.collect.ImmutableList;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.theoneprobe.provider.ElectricSpawnerInfoProvider;
 import gtexpert.modules.GTEModules;
@@ -20,7 +21,7 @@ import mcjty.theoneprobe.api.ITheOneProbe;
 @GTEModule(
            moduleID = GTEModules.MODULE_TOP,
            containerID = GTEValues.MODID,
-           modDependencies = GTEValues.MODID_TOP,
+           modDependencies = Mods.Names.THE_ONE_PROBE,
            name = "GTExpert TheOneProbe Integration",
            description = "TheOneProbe Integration Module")
 public class TheOneProbeModule extends GTEIntegrationSubmodule {

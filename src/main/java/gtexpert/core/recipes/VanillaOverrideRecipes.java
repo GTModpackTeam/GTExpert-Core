@@ -8,14 +8,13 @@ import static gtexpert.core.GTEConfigHolder.ceuOverride;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
 
-import gtexpert.api.GTEValues;
+import gtexpert.api.util.Mods;
 
 public class VanillaOverrideRecipes {
 
@@ -27,13 +26,13 @@ public class VanillaOverrideRecipes {
                 new ItemStack(Blocks.GRAVEL, 1));
 
         // Diorite
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "diorite"));
+        ModHandler.removeRecipeByName(Mods.Vanilla.getResource("diorite"));
 
         // Granite
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "granite"));
+        ModHandler.removeRecipeByName(Mods.Vanilla.getResource("granite"));
 
         // Andesite
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_VANILLA, "andesite"));
+        ModHandler.removeRecipeByName(Mods.Vanilla.getResource("andesite"));
 
         // Daylight Sensor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()

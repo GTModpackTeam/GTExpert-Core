@@ -5,7 +5,6 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraftforge.fml.common.Loader;
 
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
@@ -13,6 +12,7 @@ import gregtech.api.unification.material.Materials;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 
 import crazypants.enderio.base.init.ModObject;
 
@@ -49,16 +49,16 @@ public class EIOFluidRecipe {
                 .fluidOutputs(GTEUtility.getModFluid("nutrient_distillation", 1000))
                 .duration(100).EUt(VA[LV])
                 .buildAndRegister();
-        if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
+        if (Mods.GregTechFoodOption.isModLoaded()) {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 117))
+                    .inputs(Mods.GregTechFoodOption.getItem("gtfo_meta_item", 2, 117))
                     .input(Items.SPIDER_EYE, 2)
                     .fluidInputs(Materials.Water.getFluid(1000))
                     .fluidOutputs(GTEUtility.getModFluid("nutrient_distillation", 1000))
                     .duration(100).EUt(VA[LV])
                     .buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 2, 118))
+                    .inputs(Mods.GregTechFoodOption.getItem("gtfo_meta_item", 2, 118))
                     .input(Items.SPIDER_EYE, 2)
                     .fluidInputs(Materials.Water.getFluid(1000))
                     .fluidOutputs(GTEUtility.getModFluid("nutrient_distillation", 1000))
@@ -99,16 +99,16 @@ public class EIOFluidRecipe {
                 .fluidOutputs(GTEUtility.getModFluid("hootch", 500))
                 .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
-        if (Loader.isModLoaded(GTEValues.MODID_GTFO)) {
+        if (Mods.GregTechFoodOption.isModLoaded()) {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 117))
+                    .inputs(Mods.GregTechFoodOption.getItem("gtfo_meta_item", 1, 117))
                     .input(Items.SUGAR, 1)
                     .fluidInputs(Materials.Water.getFluid(2000))
                     .fluidOutputs(GTEUtility.getModFluid("hootch", 500))
                     .duration(200).EUt(VA[GTEValues.eioVoltageTier])
                     .buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_GTFO, "gtfo_meta_item", 1, 118))
+                    .inputs(Mods.GregTechFoodOption.getItem("gtfo_meta_item", 1, 118))
                     .input(Items.SUGAR, 1)
                     .fluidInputs(Materials.Water.getFluid(2000))
                     .fluidOutputs(GTEUtility.getModFluid("hootch", 500))

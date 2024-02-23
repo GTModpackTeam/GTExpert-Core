@@ -6,7 +6,6 @@ import static gregtech.loaders.recipe.CraftingComponent.*;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -22,6 +21,7 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.eio.EnderIOConfigHolder;
 import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
 
@@ -56,7 +56,7 @@ public class EIOBlocksRecipe {
         // Vial Extractor
         MetaTileEntityLoader.registerMachineRecipe(true,
                 EIOMetaTileEntities.VIAL_EXTRACTOR, "VRV", "PHF", "WCW",
-                'V', GTEUtility.getModItem(GTEValues.MODID_EIO, "item_soul_vial"),
+                'V', GTEUtility.getModItem(Mods.Names.ENDER_IO, "item_soul_vial"),
                 'R', SENSOR,
                 'P', PISTON,
                 'H', HULL,
@@ -72,7 +72,7 @@ public class EIOBlocksRecipe {
                 'C', CIRCUIT,
                 'H', HULL,
                 'M', MOTOR,
-                'B', GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars"));
+                'B', GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_iron_bars"));
 
         // Soul Binder
         MetaTileEntityLoader.registerMachineRecipe(true,
@@ -121,10 +121,10 @@ public class EIOBlocksRecipe {
         }
 
         // Sky Stone Block
-        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+        if (Mods.AppliedEnergistics2.isModLoaded()) {
             RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                     .inputs(new ItemStack(ModObject.block_infinity.getBlockNN(), 4, 2))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "sky_stone_block"))
+                    .outputs(Mods.AppliedEnergistics2.getItem("sky_stone_block"))
                     .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
                     .buildAndRegister();
         }
@@ -132,40 +132,40 @@ public class EIOBlocksRecipe {
         // Fused Quartz
         RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .input(block, Materials.NetherQuartz, 1)
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_quartz"))
+                .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_fused_quartz"))
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         // Quartz Clear Glass
         RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
-                .inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_quartz"))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_glass"))
+                .inputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_fused_quartz"))
+                .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_fused_glass"))
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
                 .buildAndRegister();
 
         if (ConfigHolder.recipes.hardIronRecipes) {
             // Dark Iron Bars
             ModHandler.addShapedRecipe(true, "dark_iron_bars",
-                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 8, 0),
+                    GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_iron_bars", 8, 0),
                     " h ", "SSS", "SSS",
                     'S', new UnificationEntry(stick, GTEMaterials.DarkSteel));
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .circuitMeta(3)
                     .input(stick, GTEMaterials.DarkSteel, 3)
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars", 4, 0))
+                    .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_iron_bars", 4, 0))
                     .duration(300).EUt(4)
                     .withRecycling()
                     .buildAndRegister();
 
             // End Steel Bars
             ModHandler.addShapedRecipe(true, "end_steal_bars",
-                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_end_iron_bars", 8, 0),
+                    GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_end_iron_bars", 8, 0),
                     " h ", "SSS", "SSS",
                     'S', new UnificationEntry(stick, GTEMaterials.EndSteel));
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .circuitMeta(3)
                     .input(stick, GTEMaterials.EndSteel, 3)
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_end_iron_bars", 4, 0))
+                    .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_end_iron_bars", 4, 0))
                     .duration(300).EUt(4)
                     .withRecycling()
                     .buildAndRegister();
@@ -174,7 +174,7 @@ public class EIOBlocksRecipe {
         // Dark Steel Anvil
         if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
             ModHandler.addShapedRecipe(true, "dark_anvil",
-                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil"),
+                    GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_anvil"),
                     "BBB", "SBS", "PBP",
                     'B', new UnificationEntry(block, GTEMaterials.DarkSteel),
                     'S', new UnificationEntry(screw, GTEMaterials.DarkSteel),
@@ -183,20 +183,20 @@ public class EIOBlocksRecipe {
         RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(MetaItems.SHAPE_MOLD_ANVIL)
                 .fluidInputs(GTEMaterials.DarkSteel.getFluid(L * 31))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil"))
+                .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_anvil"))
                 .duration(1680).EUt(16)
                 .buildAndRegister();
         RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .notConsumable(MetaItems.SHAPE_MOLD_ANVIL)
                 .input(ingot, GTEMaterials.DarkSteel, 31)
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_anvil"))
+                .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_anvil"))
                 .duration(1680).EUt(16)
                 .buildAndRegister();
 
         // Dark Steel Trapdoor
         if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
             ModHandler.addShapedRecipe(true, "dark_steel_trapdoor",
-                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_trapdoor"),
+                    GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_trapdoor"),
                     "SPS", "PTP", "sPd",
                     'S', new UnificationEntry(screw, GTEMaterials.DarkSteel),
                     'P', new UnificationEntry(plate, GTEMaterials.DarkSteel),
@@ -205,7 +205,7 @@ public class EIOBlocksRecipe {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(4)
                 .input(plate, GTEMaterials.DarkSteel, 4)
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_trapdoor"))
+                .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_trapdoor"))
                 .duration(100).EUt(16)
                 .withRecycling()
                 .buildAndRegister();
@@ -213,17 +213,17 @@ public class EIOBlocksRecipe {
         // Dark Steel Door
         if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
             ModHandler.addShapedRecipe(true, "dark_steel_door",
-                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_door"),
+                    GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_door"),
                     "PTh", "PRS", "PPd",
                     'P', new UnificationEntry(plate, GTEMaterials.DarkSteel),
-                    'T', GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars"),
+                    'T', GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_iron_bars"),
                     'R', new UnificationEntry(ring, GTEMaterials.DarkSteel),
                     'S', new UnificationEntry(screw, GTEMaterials.DarkSteel));
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .input(plate, GTEMaterials.DarkSteel, 4)
-                    .inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars"))
+                    .inputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_iron_bars"))
                     .fluidInputs(GTEMaterials.DarkSteel.getFluid(L / 9))
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_door"))
+                    .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_door"))
                     .duration(400).EUt(VA[ULV])
                     .withRecycling()
                     .buildAndRegister();
@@ -231,7 +231,7 @@ public class EIOBlocksRecipe {
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .circuitMeta(6)
                     .input(plate, GTEMaterials.DarkSteel, 6)
-                    .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_door"))
+                    .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_door"))
                     .duration(100).EUt(VH[LV])
                     .withRecycling()
                     .buildAndRegister();
@@ -240,20 +240,20 @@ public class EIOBlocksRecipe {
         // Dark Steel Ladder
         if (ConfigHolder.recipes.hardAdvancedIronRecipes) {
             ModHandler.addShapedRecipe(true, "dark_steel_ladder",
-                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder"),
+                    GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_ladder"),
                     "SrS", "SRS", "ShS",
                     'S', new UnificationEntry(stick, GTEMaterials.DarkSteel),
                     'R', new UnificationEntry(bolt, GTEMaterials.DarkSteel));
         } else {
             ModHandler.addShapedRecipe(true, "dark_steel_ladder",
-                    GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder", 3, 0),
+                    GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_ladder", 3, 0),
                     "S S", "SSS", "S S",
                     'S', new UnificationEntry(stick, GTEMaterials.DarkSteel));
         }
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(7)
                 .input(stick, GTEMaterials.DarkSteel, 7)
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_steel_ladder",
+                .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_steel_ladder",
                         ConfigHolder.recipes.hardWoodRecipes ? 2 : 3, 0))
                 .EUt(1).duration(40)
                 .withRecycling()
@@ -261,14 +261,14 @@ public class EIOBlocksRecipe {
 
         // Reinforced Obsidian
         ModHandler.addShapedRecipe(true, "reinforced_obsidian",
-                GTEUtility.getModItem(GTEValues.MODID_EIO, "block_reinforced_obsidian"),
+                GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_reinforced_obsidian"),
                 "DBD", "BOB", "DBD",
-                'D', GTEUtility.getModItem(GTEValues.MODID_EIO, "item_material", 1, 20),
-                'B', GTEUtility.getModItem(GTEValues.MODID_EIO, "block_dark_iron_bars"),
+                'D', GTEUtility.getModItem(Mods.Names.ENDER_IO, "item_material", 1, 20),
+                'B', GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_dark_iron_bars"),
                 'O', new UnificationEntry(block, Materials.Obsidian));
 
         // Conduits
-        if (Loader.isModLoaded(GTEValues.MODID_EIOC)) {
+        if (Mods.EnderIOConduits.isModLoaded()) {
             // Item Conduit
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .input(pipeSmallItem, Materials.Electrum, 1)
@@ -469,23 +469,23 @@ public class EIOBlocksRecipe {
                     .withRecycling()
                     .buildAndRegister();
 
-            if (Loader.isModLoaded(GTEValues.MODID_AE) && Loader.isModLoaded(GTEValues.MODID_EIOCA)) {
+            if (Mods.AppliedEnergistics2.isModLoaded() && Mods.EnderIOAE2Conduits.isModLoaded()) {
                 // ME Conduit
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                         .input("craftGlassCable", 4)
                         .input(plate, Materials.StainlessSteel, 1)
                         .fluidInputs(GTEMaterials.ConductiveIron.getFluid(144))
-                        .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 0))
+                        .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "item_me_conduit", 4, 0))
                         .duration(100).EUt(VA[GTEValues.ae2VoltageTier])
                         .withRecycling()
                         .buildAndRegister();
 
                 // ME Dense Conduit
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                        .inputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_me_conduit", 16, 0))
+                        .inputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "item_me_conduit", 16, 0))
                         .input(plate, Materials.Titanium, 1)
                         .fluidInputs(GTEMaterials.EnergeticAlloy.getFluid(144))
-                        .outputs(GTEUtility.getModItem(GTEValues.MODID_EIO, "item_me_conduit", 4, 1))
+                        .outputs(GTEUtility.getModItem(Mods.Names.ENDER_IO, "item_me_conduit", 4, 1))
                         .duration(100).EUt(VA[GTEValues.ae2VoltageTier + 1])
                         .withRecycling()
                         .buildAndRegister();

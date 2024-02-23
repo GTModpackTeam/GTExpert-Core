@@ -5,41 +5,40 @@ import static gregtech.api.GTValues.VA;
 
 import gregtech.api.recipes.RecipeMaps;
 
-import gtexpert.api.GTEValues;
-import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 
 public class EXCPUSItemsRecipe {
 
     public static void init() {
         // 256k ME Storage Component
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputs(GTEUtility.getModItem(GTEValues.MODID_EXCPUS, "crafting_storage_256k"))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component"))
+                .inputs(Mods.ExtraCPUs.getItem("crafting_storage_256k"))
+                .outputs(Mods.AppliedEnergistics2.getItem("crafting_unit"))
+                .outputs(Mods.AEAdditions.getItem("storage.component"))
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
 
         // 1024k ME Storage Component
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputs(GTEUtility.getModItem(GTEValues.MODID_EXCPUS, "crafting_storage_1024k"))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 1, 1))
+                .inputs(Mods.ExtraCPUs.getItem("crafting_storage_1024k"))
+                .outputs(Mods.AppliedEnergistics2.getItem("crafting_unit"))
+                .outputs(Mods.AEAdditions.getItem("storage.component", 1, 1))
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
 
         // 4096k ME Storage Component
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputs(GTEUtility.getModItem(GTEValues.MODID_EXCPUS, "crafting_storage_4096k"))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 1, 2))
+                .inputs(Mods.ExtraCPUs.getItem("crafting_storage_4096k"))
+                .outputs(Mods.AppliedEnergistics2.getItem("crafting_unit"))
+                .outputs(Mods.AEAdditions.getItem("storage.component", 1, 2))
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
 
         // 16384k ME Storage Component
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
-                .inputs(GTEUtility.getModItem(GTEValues.MODID_EXCPUS, "crafting_storage_16384k"))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_AE, "crafting_unit"))
-                .outputs(GTEUtility.getModItem(GTEValues.MODID_AEA, "storage.component", 1, 3))
+                .inputs(Mods.ExtraCPUs.getItem("crafting_storage_16384k"))
+                .outputs(Mods.AppliedEnergistics2.getItem("crafting_unit"))
+                .outputs(Mods.AEAdditions.getItem("storage.component", 1, 3))
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
     }
