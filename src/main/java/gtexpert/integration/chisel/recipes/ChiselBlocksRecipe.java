@@ -13,7 +13,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -60,7 +59,7 @@ public class ChiselBlocksRecipe {
                     "uncraft_blockelectrum", "uncraft_blockuranium", "uncraft_blockcopper", "uncraft_blockbronze",
                     "uncraft_blockinvar", "uncraft_blockgold").forEach(
                             block -> ModHandler
-                                    .removeRecipeByName(new ResourceLocation(Mods.Names.CHISEL, block)));
+                                    .removeRecipeByName(Mods.Chisel.getResource(block)));
         }
 
         // Glass Panes
@@ -72,11 +71,11 @@ public class ChiselBlocksRecipe {
                     "glass/terrain-glass-thickgrid", "glass/a1-glasswindow-ironfencemodern", "glass/chrono",
                     "glass/chinese2", "glass/japanese2").forEach(
                             block -> ModHandler
-                                    .removeRecipeByName(new ResourceLocation(Mods.Names.CHISEL, block)));
+                                    .removeRecipeByName(Mods.Chisel.getResource(block)));
         }
 
         // Auto Chisel
-        ModHandler.removeRecipeByName(new ResourceLocation(Mods.Names.CHISEL, "autochisel"));
+        ModHandler.removeRecipeByName(Mods.Chisel.getResource("autochisel"));
         ModHandler.addShapelessRecipe("normal_auto_chisel",
                 GTEUtility.getModItem(Mods.Names.CHISEL, "auto_chisel", 1),
                 AUTO_CHISEL[2].getStackForm());

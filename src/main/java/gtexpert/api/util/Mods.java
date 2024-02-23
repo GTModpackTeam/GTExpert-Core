@@ -19,6 +19,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import gregtech.api.GTValues;
+
 import gtexpert.api.GTEValues;
 
 public enum Mods {
@@ -50,6 +52,7 @@ public enum Mods {
     GregicalityMultiblocks(Names.GREGICALITY_MULTIBLOCKS),
     GregTech(Names.GREGTECH),
     GregTechFoodOption(Names.GREGTECH_FOOD_OPTION),
+    GregTechExpertCore(Names.GREGTECH_EXPERT_CORE),
     GroovyScript(Names.GROOVY_SCRIPT),
     HWYLA(Names.HWYLA),
     InventoryTweaks(Names.INVENTORY_TWEAKS),
@@ -120,8 +123,9 @@ public enum Mods {
         public static final String GALACTICRAFT_CORE = "galacticraftcore";
         public static final String GENETICS = "genetics";
         public static final String GREGICALITY_MULTIBLOCKS = "gcym";
-        public static final String GREGTECH = GTEValues.MODID;
+        public static final String GREGTECH = GTValues.MODID;
         public static final String GREGTECH_FOOD_OPTION = "gregtechfoodoption";
+        public static final String GREGTECH_EXPERT_CORE = GTEValues.MODID;
         public static final String GROOVY_SCRIPT = "groovyscript";
         public static final String HWYLA = "hwyla";
         public static final String INVENTORY_TWEAKS = "inventorytweaks";

@@ -2,8 +2,6 @@ package gtexpert.integration.chisel.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import net.minecraft.util.ResourceLocation;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -18,7 +16,7 @@ public class ChiselToolsRecipe {
     public static void init() {
         if (ConfigHolder.recipes.hardToolArmorRecipes && ChiselConfigHolder.hardToolRecipes) {
             // Iron Chisel
-            ModHandler.removeRecipeByName(new ResourceLocation(Mods.Names.CHISEL, "chisel_iron"));
+            ModHandler.removeRecipeByName(Mods.Chisel.getResource("chisel_iron"));
             ModHandler.addShapedRecipe(true, "chisel_iron",
                     GTEUtility.getModItem(Mods.Names.CHISEL, "chisel_iron"),
                     "fPP", " CP", "S h",
@@ -27,7 +25,7 @@ public class ChiselToolsRecipe {
                     'S', new UnificationEntry(stick, Materials.Bronze));
 
             // Diamond Chisel
-            ModHandler.removeRecipeByName(new ResourceLocation(Mods.Names.CHISEL, "chisel_diamond"));
+            ModHandler.removeRecipeByName(Mods.Chisel.getResource("chisel_diamond"));
             ModHandler.addShapedRecipe(true, "chisel_diamond",
                     GTEUtility.getModItem(Mods.Names.CHISEL, "chisel_diamond"),
                     "fPP", " CP", "S h",
@@ -36,7 +34,7 @@ public class ChiselToolsRecipe {
                     'S', new UnificationEntry(stick, Materials.RoseGold));
 
             // iChisel
-            ModHandler.removeRecipeByName(new ResourceLocation(Mods.Names.CHISEL, "chisel_hitech"));
+            ModHandler.removeRecipeByName(Mods.Chisel.getResource("chisel_hitech"));
             ModHandler.addShapedRecipe(true, "chisel_hitech",
                     GTEUtility.getModItem(Mods.Names.CHISEL, "chisel_hitech"),
                     "fPP", " CP", "S h",
