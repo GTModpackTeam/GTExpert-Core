@@ -1,11 +1,10 @@
 package gtexpert.api.unification.material;
 
-import net.minecraftforge.fml.common.Loader;
-
 import gregtech.api.unification.material.Material;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.ingredients.*;
+import gtexpert.api.util.Mods;
 
 /**
  * Material Registration.
@@ -102,19 +101,19 @@ public class GTEMaterials {
     }
 
     public static void registerMaterialsLowest() {
-        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+        if (Mods.EnderIO.isModLoaded()) {
             EIOFirstDegreeMaterials.init(); // 24101 - 24150
         }
-        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+        if (Mods.AppliedEnergistics2.isModLoaded()) {
             AEFirstDegreeMaterials.init();  // 24151 - 24175
         }
         if (GTEValues.isModLoadedDEDA()) {
             DEFirstDegreeMaterials.init(); // 24176 - 24185
         }
-        if (Loader.isModLoaded(GTEValues.MODID_AVARITIA)) {
+        if (Mods.Avaritia.isModLoaded()) {
             AvaritiaFirstDegreeMaterials.init(); // 24186 - 24190
         }
-        if (Loader.isModLoaded(GTEValues.MODID_TC)) {
+        if (Mods.Thaumcraft.isModLoaded()) {
             TCFirstDegreeMaterials.init(); // 24191 - 24199
         }
     }

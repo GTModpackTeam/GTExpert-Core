@@ -1,6 +1,5 @@
 package gtexpert.integration.eio;
 
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 
 import gregtech.api.gui.GuiTextures;
@@ -9,8 +8,8 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.core.sound.GTSoundEvents;
 
-import gtexpert.api.GTEValues;
 import gtexpert.api.gui.GTEGuiTextures;
+import gtexpert.api.util.Mods;
 
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -31,7 +30,7 @@ public class EnderIORecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> SLICE_N_SPLICE_RECIPES = new RecipeMap<>(
             "slice_n_splice", 6, 1, 0, 0, new SimpleRecipeBuilder(), false)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_SLICE, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(new SoundEvent(new ResourceLocation(GTEValues.MODID_EIO, "machine.slicensplice")));
+                    .setSound(new SoundEvent(Mods.EnderIO.getResource("machine.slicensplice")));
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SOUL_BINDER_RECIPES = new RecipeMap<>(
@@ -39,5 +38,5 @@ public class EnderIORecipeMaps {
                     .setSlotOverlay(false, false, false, GTEGuiTextures.SOULVIAL_FULL_OVERLAY)
                     .setSlotOverlay(true, false, false, GTEGuiTextures.SOULVIAL_EMPTY_OVRELAY)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_CANNER, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(new SoundEvent(new ResourceLocation(GTEValues.MODID_EIO, "machine.soulbinder")));
+                    .setSound(new SoundEvent(Mods.EnderIO.getResource("machine.soulbinder")));
 }

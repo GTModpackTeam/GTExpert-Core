@@ -58,6 +58,7 @@ dependencies {
     }
 
     // Debug Forestry
+    compileOnly rfg.deobf("curse.maven:forestry-59751:2684780") // Forestry 5.8.2.387
     if (project.debug_all.toBoolean() || project.debug_ffm.toBoolean()) {
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-59751:2684780") // Forestry 5.8.2.387
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:beebetteratbees-244516:2627215") // BeeBetterAtBees 2.0.3

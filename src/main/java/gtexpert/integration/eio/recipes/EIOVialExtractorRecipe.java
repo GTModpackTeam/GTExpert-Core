@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 
 import gregtech.api.unification.material.Materials;
 
-import gtexpert.api.GTEValues;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.eio.EnderIOModule;
 
 import crazypants.enderio.base.init.ModObject;
@@ -54,7 +54,7 @@ public class EIOVialExtractorRecipe {
         EnderIOModule.registerVialExtractorRecipe("minecraft:rabbit", 200, builder -> builder.output(Items.RABBIT, 5)
                 .output(Items.RABBIT_HIDE, 2)
                 .chancedOutput(new ItemStack(Items.RABBIT_FOOT, 1), 2000, 0));
-        for (String cow : Arrays.asList("minecraft:cow", GTEValues.MODID_GTFO + ":italian_buffalo")) {
+        for (String cow : Arrays.asList("minecraft:cow", Mods.GregTechFoodOption.name() + ":italian_buffalo")) {
             EnderIOModule.registerVialExtractorRecipe(cow, new ItemStack(Items.BEEF, 10),
                     new ItemStack(Items.LEATHER, 5));
         }

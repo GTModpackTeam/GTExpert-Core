@@ -26,7 +26,7 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.blocks.wood.BlockGregPlanks;
 
-import gtexpert.api.GTEValues;
+import gtexpert.api.util.Mods;
 import gtexpert.core.GTERecipeMaps;
 
 public class GTEWoodRecipe {
@@ -85,8 +85,8 @@ public class GTEWoodRecipe {
                     plankStack), "s", "P", 'P', allWoodLogs.get(i));
             recipeSawmill(allWoodLogs.get(i), plankStack);
 
-            if (!plankStack.toString().contains(GTEValues.MODID_VANILLA) ||
-                    !plankStack.toString().contains(GTEValues.MODID_GTFO))
+            if (!plankStack.toString().contains(Mods.Vanilla.name()) ||
+                    !plankStack.toString().contains(Mods.GregTechFoodOption.name()))
                 recipeCutter(allWoodLogs.get(i), plankStack);
         });
     }
