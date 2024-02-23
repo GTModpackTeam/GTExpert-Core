@@ -3,7 +3,6 @@ package gtexpert.integration.deda.recipes;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import gtexpert.api.util.GTEUtility;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -27,6 +26,7 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEBlockWireCoil;

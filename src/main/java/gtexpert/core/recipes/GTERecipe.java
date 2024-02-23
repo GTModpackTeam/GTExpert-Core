@@ -6,7 +6,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import gtexpert.api.util.GTEUtility;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -43,6 +42,7 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTELog;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;

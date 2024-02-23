@@ -23,20 +23,13 @@ import gtexpert.api.GTEValues;
 
 public enum Mods {
 
-    AdvancedRocketry(Names.ADVANCED_ROCKETRY),
     AEAdditions(Names.AE_ADDITIONS),
     AE2FluidCrafting(Names.AE2_FLUID_CRAFTING),
     AppliedEnergistics2(Names.APPLIED_ENERGISTICS2),
     Avaritia(Names.AVARITIA),
     Avaritiaaddons(Names.AVARITIAADDONS),
-    Baubles(Names.BAUBLES),
-    BinnieCore(Names.BINNIE_CORE),
-    BiomesOPlenty(Names.BIOMES_O_PLENTY),
-    BuildCraftCore(Names.BUILD_CRAFT_CORE),
     Chisel(Names.CHISEL),
-    CoFHCore(Names.COFH_CORE),
     CTM(Names.CONNECTED_TEXTURES_MOD),
-    CubicChunks(Names.CUBIC_CHUNKS),
     CraftTweaker(Names.CRAFT_TWEAKER),
     DraconicAdditions(Names.DRACONIC_ADDITIONS),
     DraconicEvolution(Names.DRACONIC_EVOLUTION),
@@ -48,8 +41,6 @@ public enum Mods {
     EnderIOAE2Conduits(Names.ENDER_AE2_CONDUITS),
     ExtraBees(Names.EXTRA_BEES),
     ExtraCPUs(Names.EXTRA_CPUS),
-    ExtraTrees(Names.EXTRA_TREES),
-    ExtraUtilities2(Names.EXTRA_UTILITIES2),
     Forestry(Names.FORESTRY),
     ForestryApiculture(Names.FORESTRY, forestryModule(Names.FORESTRY_APICULTURE)),
     ForestryArboriculture(Names.FORESTRY, forestryModule(Names.FORESTRY_ARBORICULTURE)),
@@ -60,10 +51,7 @@ public enum Mods {
     GregTech(Names.GREGTECH),
     GregTechFoodOption(Names.GREGTECH_FOOD_OPTION),
     GroovyScript(Names.GROOVY_SCRIPT),
-    GTCE2OC(Names.GTCE_2_OC),
     HWYLA(Names.HWYLA),
-    ImmersiveEngineering(Names.IMMERSIVE_ENGINEERING),
-    IndustrialCraft2(Names.INDUSTRIAL_CRAFT2),
     InventoryTweaks(Names.INVENTORY_TWEAKS),
     JourneyMap(Names.JOURNEY_MAP),
     JustEnoughItems(Names.JUST_ENOUGH_ITEMS),
@@ -77,15 +65,12 @@ public enum Mods {
     ProjectRedIllumination(Names.PROJECT_RED_ILLUMINATION),
     Railcraft(Names.RAILCRAFT),
     RefinedStorage(Names.REFINED_STORAGE),
-    TechReborn(Names.TECH_REBORN),
     Thaumcraft(Names.THAUMCRAFT),
     ThaumicEnergistics(Names.THAUMIC_ENERGISTICS),
     TheOneProbe(Names.THE_ONE_PROBE),
     TinkersConstruct(Names.TINKERS_CONSTRUCT),
     TOPAddons(Names.TOP_ADDONS),
     Vanilla(Names.VANILLA),
-    VoxelMap(Names.VOXEL_MAP),
-    XaerosMinimap(Names.XAEROS_MINIMAP),
 
     // Special Optifine handler, but consolidated here for simplicity
     Optifine(null) {
@@ -108,20 +93,14 @@ public enum Mods {
 
     public static class Names {
 
-        public static final String ADVANCED_ROCKETRY = "advancedrocketry";
         public static final String AE_ADDITIONS = "aeadditions";
         public static final String AE2_FLUID_CRAFTING = "ae2fc";
         public static final String APPLIED_ENERGISTICS2 = "appliedenergistics2";
         public static final String AVARITIA = "avaritia";
         public static final String AVARITIAADDONS = "avaritiaddons";
         public static final String BAUBLES = "baubles";
-        public static final String BINNIE_CORE = "binniecore";
-        public static final String BIOMES_O_PLENTY = "biomesoplenty";
-        public static final String BUILD_CRAFT_CORE = "buildcraftcore";
         public static final String CHISEL = "chisel";
-        public static final String COFH_CORE = "cofhcore";
         public static final String CONNECTED_TEXTURES_MOD = "ctm";
-        public static final String CUBIC_CHUNKS = "cubicchunks";
         public static final String CRAFT_TWEAKER = "crafttweaker";
         public static final String DRACONIC_ADDITIONS = "draconicadditions";
         public static final String DRACONIC_EVOLUTION = "draconicevolution";
@@ -134,7 +113,6 @@ public enum Mods {
         public static final String EXTRA_BEES = "extrabees";
         public static final String EXTRA_CPUS = "extracpus";
         public static final String EXTRA_TREES = "extratrees";
-        public static final String EXTRA_UTILITIES2 = "extrautils2";
         public static final String FORESTRY = "forestry";
         public static final String FORESTRY_APICULTURE = "apiculture";
         public static final String FORESTRY_ARBORICULTURE = "arboriculture";
@@ -145,10 +123,7 @@ public enum Mods {
         public static final String GREGTECH = GTEValues.MODID;
         public static final String GREGTECH_FOOD_OPTION = "gregtechfoodoption";
         public static final String GROOVY_SCRIPT = "groovyscript";
-        public static final String GTCE_2_OC = "gtce2oc";
         public static final String HWYLA = "hwyla";
-        public static final String IMMERSIVE_ENGINEERING = "immersiveengineering";
-        public static final String INDUSTRIAL_CRAFT2 = "ic2";
         public static final String INVENTORY_TWEAKS = "inventorytweaks";
         public static final String JOURNEY_MAP = "journeymap";
         public static final String JUST_ENOUGH_ITEMS = "jei";
@@ -161,15 +136,12 @@ public enum Mods {
         public static final String PROJECT_RED_ILLUMINATION = "projectred-illumination";
         public static final String RAILCRAFT = "railcraft";
         public static final String REFINED_STORAGE = "refinedstorage";
-        public static final String TECH_REBORN = "techreborn";
         public static final String THAUMCRAFT = "thaumcraft";
         public static final String THAUMIC_ENERGISTICS = "haumicenergistics";
         public static final String THE_ONE_PROBE = "theoneprobe";
         public static final String TINKERS_CONSTRUCT = "tconstruct";
         public static final String TOP_ADDONS = "topaddons";
         public static final String VANILLA = "minecraft";
-        public static final String VOXEL_MAP = "voxelmap";
-        public static final String XAEROS_MINIMAP = "xaerominimap";
     }
 
     private final String ID;
@@ -231,25 +203,25 @@ public enum Mods {
     }
 
     public ItemStack getItem(@NotNull String name) {
-        return getItem(name, 0, 1, null);
+        return getItem(name, 1, 0, null);
     }
 
     @NotNull
-    public ItemStack getItem(@NotNull String name, int meta) {
-        return getItem(name, meta, 1, null);
+    public ItemStack getItem(@NotNull String name, int count) {
+        if (count > 0) count = 1;
+        return getItem(name, count, 0, null);
     }
 
     @NotNull
-    public ItemStack getItem(@NotNull String name, int meta, int amount) {
-        return getItem(name, meta, amount, null);
+    public ItemStack getItem(@NotNull String name, int count, int meta) {
+        if (count > 0) count = 1;
+        return getItem(name, count, meta, null);
     }
 
     @NotNull
-    public ItemStack getItem(@NotNull String name, int meta, int amount, @Nullable String nbt) {
-//        if (!isModLoaded()) {
-//            return ItemStack.EMPTY;
-//        }
-        return GameRegistry.makeItemStack(ID + ":" + name, meta, amount, nbt);
+    public ItemStack getItem(@NotNull String name, int count, int meta, @Nullable String nbt) {
+        // The following statement is intentional.
+        return GameRegistry.makeItemStack(ID + ":" + name, meta, count, nbt);
     }
 
     @NotNull

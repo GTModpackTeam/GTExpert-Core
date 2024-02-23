@@ -2,7 +2,6 @@ package gtexpert.integration.chisel.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import gtexpert.api.util.Mods;
 import net.minecraft.util.ResourceLocation;
 
 import gregtech.api.recipes.ModHandler;
@@ -10,8 +9,8 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 
-import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.chisel.ChiselConfigHolder;
 
 public class ChiselToolsRecipe {

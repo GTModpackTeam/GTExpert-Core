@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.DoubleSupplier;
 
-import gtexpert.api.util.GTEUtility;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -38,6 +37,7 @@ import gregtech.api.util.Size;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.gui.GTEGuiTextures;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
 import gtexpert.core.metatileentities.GTESimpleMachineMetaTileEntity;
 

@@ -3,7 +3,6 @@ package gtexpert.integration.eio.recipes;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.ore.OrePrefix.plate;
 
-import gtexpert.api.util.GTEUtility;
 import net.minecraft.init.Items;
 
 import gregtech.api.recipes.ModHandler;
@@ -13,6 +12,7 @@ import gregtech.api.unification.stack.UnificationEntry;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
 import gtexpert.core.GTUtil;
 

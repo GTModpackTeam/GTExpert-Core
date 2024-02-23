@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import gtexpert.api.util.Mods;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -29,8 +28,8 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.*;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
 
-import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.chisel.ChiselConfigHolder;
 import gtexpert.integration.chisel.ChiselRecipeMaps;
 import gtexpert.integration.chisel.ChiselUtil;

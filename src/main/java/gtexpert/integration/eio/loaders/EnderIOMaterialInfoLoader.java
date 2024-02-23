@@ -1,6 +1,5 @@
 package gtexpert.integration.eio.loaders;
 
-import gtexpert.api.util.GTEUtility;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
@@ -12,6 +11,7 @@ import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.ConfigHolder;
 
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
 
 public class EnderIOMaterialInfoLoader {

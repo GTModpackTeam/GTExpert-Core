@@ -4,7 +4,6 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 
-import gtexpert.api.util.GTEUtility;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
@@ -21,6 +20,7 @@ import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
 import gtexpert.integration.eio.EnderIOConfigHolder;
 import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
