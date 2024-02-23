@@ -1,54 +1,52 @@
 package gtexpert.integration.tc.recipes;
 
-import net.minecraft.util.ResourceLocation;
-
 import gregtech.api.recipes.ModHandler;
 
-import gtexpert.api.GTEValues;
+import gtexpert.api.util.Mods;
 
 public class TCMaterialsRecipe {
 
     public static void init() {
         // Brass Ingot
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "nuggetatobrass"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "brassblocktoingots"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("nuggetatobrass"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("brassblocktoingots"));
 
         // Brass Nugget
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "brasstonuggets"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("brasstonuggets"));
 
         // Brass Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "brassingotstoblock"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("brassingotstoblock"));
 
         // Brass Palte
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "brassplate"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("brassplate"));
 
         // Iron Plate
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "ironplate"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("ironplate"));
 
         // Thaumium Ingot
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "nuggetatothaumium"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumblocktoingots"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("nuggetatothaumium"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("thaumiumblocktoingots"));
 
         // Thaumium Nugget
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumtonuggets"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("thaumiumtonuggets"));
 
         // Thaumium Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumingotstoblock"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("thaumiumingotstoblock"));
 
         // Thaumium Plate
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumplate"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("thaumiumplate"));
 
         // Void Plate
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidplate"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("voidplate"));
 
         // Void Ingot
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "nuggetatovoid"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidblocktoingots"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("nuggetatovoid"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("voidblocktoingots"));
 
         // Void Nugget
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidtonuggets"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("voidtonuggets"));
 
         // Void Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidingotstoblock"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("voidingotstoblock"));
     }
 }

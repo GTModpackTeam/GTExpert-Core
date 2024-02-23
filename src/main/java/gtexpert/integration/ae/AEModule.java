@@ -5,6 +5,7 @@ import net.minecraftforge.event.RegistryEvent;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.ae.loaders.AEMaterialInfoLoader;
 import gtexpert.integration.ae.loaders.AEOreDictionaryLoader;
@@ -17,7 +18,7 @@ import gtexpert.modules.GTEModules;
 @GTEModule(
            moduleID = GTEModules.MODULE_AE,
            containerID = GTEValues.MODID,
-           modDependencies = GTEValues.MODID_AE,
+           modDependencies = Mods.Names.APPLIED_ENERGISTICS2,
            name = "GTExpert Applied Energistics 2 Integration",
            description = "Applied Energistics 2 Integration Module")
 public class AEModule extends GTEIntegrationSubmodule {

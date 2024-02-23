@@ -13,6 +13,7 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 import gtexpert.core.GTUtil;
 
 import crazypants.enderio.base.init.ModObject;
@@ -23,10 +24,10 @@ public class EIOItemsRecipe {
     public static void init() {
         // Soul Vial
         ModHandler.addShapedRecipe(true, "soul_vial",
-                GTEUtility.getModItem(GTEValues.MODID_EIO, "item_soul_vial"),
+                GTEUtility.getModItem(Mods.Names.ENDER_IO, "item_soul_vial"),
                 " S ", "G G", " G ",
                 'S', new UnificationEntry(plate, GTEMaterials.Soularium),
-                'G', GTEUtility.getModItem(GTEValues.MODID_EIO, "block_fused_quartz"));
+                'G', GTEUtility.getModItem(Mods.Names.ENDER_IO, "block_fused_quartz"));
 
         // Basic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()

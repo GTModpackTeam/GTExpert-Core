@@ -9,9 +9,8 @@ import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.ConfigHolder;
 
-import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
-import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.core.GTUtil;
@@ -20,7 +19,7 @@ public class DEDAMaterialInfoLoader {
 
     public static void init() {
         GTUtil.registerOre(new ItemStack(Blocks.DRAGON_EGG), GTEMaterials.Dragon, GTValues.M * 8);
-        GTUtil.registerOre(GTEUtility.getModItem(GTEValues.MODID_DE, "chaos_shard", 1, 1), GTEMaterials.Chaos,
+        GTUtil.registerOre(Mods.DraconicEvolution.getItem("chaos_shard", 1, 1), GTEMaterials.Chaos,
                 GTValues.M);
         GTUtil.registerOre(
                 GTEMetaBlocks.GTE_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING),

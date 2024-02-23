@@ -26,6 +26,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.eio.loaders.EnderIOMaterialInfoLoader;
 import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
@@ -38,7 +39,7 @@ import crazypants.enderio.endergy.init.EndergyObject;
 @GTEModule(
            moduleID = GTEModules.MODULE_EIO,
            containerID = GTEValues.MODID,
-           modDependencies = GTEValues.MODID_EIO,
+           modDependencies = Mods.Names.ENDER_IO,
            name = "GTExpert Ender IO Integration",
            description = "Ender IO Integration Module")
 public class EnderIOModule extends GTEIntegrationSubmodule {

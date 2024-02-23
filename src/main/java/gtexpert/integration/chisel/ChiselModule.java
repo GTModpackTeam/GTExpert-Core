@@ -6,6 +6,7 @@ import net.minecraftforge.event.RegistryEvent;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.chisel.loaders.ChiselOreDictionaryLoader;
 import gtexpert.integration.chisel.metatileentities.ChiselMetaTileEntities;
@@ -16,7 +17,7 @@ import gtexpert.modules.GTEModules;
 @GTEModule(
            moduleID = GTEModules.MODULE_CHISEL,
            containerID = GTEValues.MODID,
-           modDependencies = GTEValues.MODID_CHISEL,
+           modDependencies = Mods.Names.CHISEL,
            name = "GTExpert Chisel Integration",
            description = "Chisel Integration Module")
 public class ChiselModule extends GTEIntegrationSubmodule {

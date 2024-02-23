@@ -2,22 +2,21 @@ package gtexpert.integration.deda.loaders;
 
 import net.minecraftforge.oredict.OreDictionary;
 
-import gtexpert.api.GTEValues;
-import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 
 public class DEDAOreDictionaryLoader {
 
     public static void init() {
         OreDictionary.registerOre("oreDraconium",
-                GTEUtility.getModItem(GTEValues.MODID_DE, "draconium_ore"));
+                Mods.DraconicEvolution.getItem("draconium_ore"));
         OreDictionary.registerOre("oreNetherrackDraconium",
-                GTEUtility.getModItem(GTEValues.MODID_DE, "resources", 1, 1));
+                Mods.DraconicEvolution.getItem("resources", 1, 1));
         OreDictionary.registerOre("oreEndstoneDraconium",
-                GTEUtility.getModItem(GTEValues.MODID_DE, "resources", 1, 2));
+                Mods.DraconicEvolution.getItem("resources", 1, 2));
 
         OreDictionary.registerOre("blockDraconium",
-                GTEUtility.getModItem(GTEValues.MODID_DE, "draconium_block"));
+                Mods.DraconicEvolution.getItem("draconium_block"));
         OreDictionary.registerOre("blockAwakenedDraconium",
-                GTEUtility.getModItem(GTEValues.MODID_DE, "draconic_block"));
+                Mods.DraconicEvolution.getItem("draconic_block"));
     }
 }

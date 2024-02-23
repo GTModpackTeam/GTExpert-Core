@@ -24,6 +24,7 @@ import gregtech.api.cover.CoverDefinition;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
+import gtexpert.api.util.Mods;
 import gtexpert.common.items.GTECoverBehaviors;
 import gtexpert.modules.GTEModuleManager;
 import gtexpert.modules.GTEModules;
@@ -33,16 +34,16 @@ import gtexpert.modules.GTEModules;
      acceptedMinecraftVersions = "[1.12.2,1.13)",
      version = Tags.VERSION,
      dependencies = "required-after:mixinbooter@[8.0,);" +
-             GTInternalTags.DEP_VERSION_STRING + "required-after:" + GTEValues.MODID_GCYM + ";" +
-             "after:" + GTEValues.MODID_GTFO + ";" + "after:" + GTEValues.MODID_AE + ";" +
-             "after:" + GTEValues.MODID_AEA + ";" + "after:" + GTEValues.MODID_AEFC + ";" +
-             "after:" + GTEValues.MODID_NAE2 + ";" + "after:" + GTEValues.MODID_EXCPUS + ";" +
-             "after:" + GTEValues.MODID_ECO + ";" + "after:" + GTEValues.MODID_EIO + ";" +
-             "after:" + GTEValues.MODID_EIOE + ";" + "after:" + GTEValues.MODID_EIOM + ";" +
-             "after:" + GTEValues.MODID_EIOC + ";" + "after:" + GTEValues.MODID_EIOCA + ";" +
-             "after:" + GTEValues.MODID_DE + ";" + "after:" + GTEValues.MODID_DA + ";" +
-             "after:" + GTEValues.MODID_CHISEL + ";" + "after:" + GTEValues.MODID_AVARITIA + ";" +
-             "after:" + GTEValues.MODID_FFM + ";")
+             GTInternalTags.DEP_VERSION_STRING + "required-after:" + Mods.Names.GREGICALITY_MULTIBLOCKS + ";" +
+             "after:" + Mods.Names.GREGTECH_FOOD_OPTION + ";" + "after:" + Mods.Names.APPLIED_ENERGISTICS2 + ";" +
+             "after:" + Mods.Names.AE_ADDITIONS + ";" + "after:" + Mods.Names.AE2_FLUID_CRAFTING + ";" +
+             "after:" + Mods.Names.NEEVES_AE2 + ";" + "after:" + Mods.Names.EXTRA_CPUS + ";" +
+             "after:" + Mods.Names.ENDER_CORE + ";" + "after:" + Mods.Names.ENDER_IO + ";" +
+             "after:" + Mods.Names.ENDER_ENDERGY + ";" + "after:" + Mods.Names.ENDER_MACHINES + ";" +
+             "after:" + Mods.Names.ENDER_CONDUITS + ";" + "after:" + Mods.Names.ENDER_AE2_CONDUITS + ";" +
+             "after:" + Mods.Names.DRACONIC_EVOLUTION + ";" + "after:" + Mods.Names.DRACONIC_ADDITIONS + ";" +
+             "after:" + Mods.Names.CHISEL + ";" + "after:" + Mods.Names.AVARITIA + ";" +
+             "after:" + Mods.Names.FORESTRY + ";")
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 
