@@ -29,10 +29,12 @@ jobs:
         uses: ./.github/actions/build_setup
 
       - name: Run Spotless Formatting Check with Gradle
+        id: build
+        continue-on-error: true
         run: ./gradlew --info build
 
       - name: Attempt to make a PR fixing spotless errors
-        if: ${{ failure() && steps.build_mod.conclusion == 'failure' && github.event_name == 'pull_request' && !github.event.pull_request.draft }}
+        if: ${{ failure() }}
         run: |
           git reset --hard
           git checkout "${PR_BRANCH}"
