@@ -1,3 +1,8 @@
+# v2.0.8
+- Multiplayer bug fixes [#243](https://github.com/GTModpackTeam/GTExpert-Core/pull/243)
+
+* * *
+
 # v2.0.7
 - Following `#2354` in CEu [#255](https://github.com/GTModpackTeam/GTExpert-Core/issues/225)
 
