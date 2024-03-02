@@ -93,6 +93,7 @@ jobs:
             gregicality-multiblocks(required)
             ae2-extended-life(recommended)
             ae-additions-extra-cells-2-fork(recommended)
+            nae2(recommended)
             ender-io-base(recommended)
             ender-io-machines(recommended)
             ender-io-endergy(recommended)
@@ -104,6 +105,8 @@ jobs:
             draconic-evolution(recommended)
             draconicadditions(recommended)
             project-red-illumination(recommended)
+            avaritia-1-1x-kedition(recommended)
+            thaumcraft(recommended)
             ulv-covers(incompatible)
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar
