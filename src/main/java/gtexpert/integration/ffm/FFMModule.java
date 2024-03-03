@@ -1,5 +1,6 @@
 package gtexpert.integration.ffm;
 
+import gtexpert.integration.ffm.loaders.FFMWoodRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 
@@ -21,5 +22,6 @@ public class FFMModule extends GTEIntegrationSubmodule {
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
         FFMOreDictionaryLoader.init();
+        FFMWoodRecipe.init();
     }
 }
