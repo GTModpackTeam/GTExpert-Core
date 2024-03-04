@@ -2,8 +2,6 @@ package gtexpert.integration.ffm.loaders;
 
 import static gregtech.loaders.recipe.WoodRecipeLoader.registerWoodTypeRecipe;
 
-import net.minecraft.util.ResourceLocation;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.loaders.WoodTypeEntry;
 
@@ -66,6 +64,7 @@ public class FFMWoodRecipe {
                                 .stairs(Mods.Forestry.getItem("stairs." + woodName[i]))
                                 .registerAllUnificationInfo()
                                 .build());
+
                 case 4, 5, 6, 7 -> registerWoodTypeRecipe(new WoodTypeEntry.Builder(
                         ffmModId, woodName[i])
                                 .planks(Mods.Forestry.getItem("planks.0", 1, metaPlank[i]), "planks_" + woodName[i])
@@ -352,28 +351,28 @@ public class FFMWoodRecipe {
     public static void remove() {
         // Crafting Recipe
         for (String name : woodName) {
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "planks_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "slabs_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "doors_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "stairs_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fences_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fence_gates_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("planks_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("slabs_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("doors_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("stairs_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fences_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fence_gates_" + name));
 
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_planks_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_slabs_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_doors_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_stairs_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_fences_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_fence_gates_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_planks_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_slabs_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_doors_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_stairs_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fences_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fence_gates_" + name));
         }
 
         for (String name : woodNameVanilla) {
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_planks_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_slabs_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_doors_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_stairs_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_fences_" + name));
-            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_fence_gates_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_planks_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_slabs_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_doors_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_stairs_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fences_" + name));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fence_gates_" + name));
         }
 
         // Smelting Recipe
