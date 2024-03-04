@@ -1,8 +1,10 @@
 package gtexpert.integration.ffm.loaders;
 
+import gregtech.api.recipes.ModHandler;
 import gregtech.loaders.WoodTypeEntry;
 
 import gtexpert.api.util.Mods;
+import net.minecraft.util.ResourceLocation;
 
 import static gregtech.loaders.recipe.WoodRecipeLoader.registerWoodTypeRecipe;
 
@@ -154,6 +156,7 @@ public class FFMWoodRecipe {
                         ffmModId, "fireproof_" + woodName[i])
                         .planks(Mods.Forestry.getItem("planks.fireproof.0", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
                         .log(Mods.Forestry.getItem("logs.fireproof.0", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem("doors." + woodName[i]), "fireproof_doors_" + woodName[i])
                         .slab(Mods.Forestry.getItem("slabs.fireproof.0", 1, metaSlab[i]), "fireproof_slabs_" + woodName[i])
                         .fence(Mods.Forestry.getItem("fences.fireproof.0", 1, metaPlank[i]), "fireproof_fences_" + woodName[i])
                         .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodName[i]), "fireproof_fence_gates_" + woodName[i])
@@ -165,6 +168,7 @@ public class FFMWoodRecipe {
                         ffmModId, "fireproof_" + woodName[i])
                         .planks(Mods.Forestry.getItem("planks.fireproof.0", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
                         .log(Mods.Forestry.getItem("logs.fireproof.1", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem("doors." + woodName[i]), "fireproof_doors_" + woodName[i])
                         .slab(Mods.Forestry.getItem("slabs.fireproof.0", 1, metaSlab[i]), "fireproof_slabs_" + woodName[i])
                         .fence(Mods.Forestry.getItem("fences.fireproof.0", 1, metaPlank[i]), "fireproof_fences_" + woodName[i])
                         .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodName[i]), "fireproof_fence_gates_" + woodName[i])
@@ -176,6 +180,7 @@ public class FFMWoodRecipe {
                         ffmModId, "fireproof_" + woodName[i])
                         .planks(Mods.Forestry.getItem("planks.fireproof.0", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
                         .log(Mods.Forestry.getItem("logs.fireproof.2", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem("doors." + woodName[i]), "fireproof_doors_" + woodName[i])
                         .slab(Mods.Forestry.getItem("slabs.fireproof.1", 1, metaSlab[i]), "fireproof_slabs_" + woodName[i])
                         .fence(Mods.Forestry.getItem("fences.fireproof.0", 1, metaPlank[i]), "fireproof_fences_" + woodName[i])
                         .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodName[i]), "fireproof_fence_gates_" + woodName[i])
@@ -187,6 +192,7 @@ public class FFMWoodRecipe {
                         ffmModId, "fireproof_" + woodName[i])
                         .planks(Mods.Forestry.getItem("planks.fireproof.0", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
                         .log(Mods.Forestry.getItem("logs.fireproof.3", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem("doors." + woodName[i]), "fireproof_doors_" + woodName[i])
                         .slab(Mods.Forestry.getItem("slabs.fireproof.1", 1, metaSlab[i]), "fireproof_slabs_" + woodName[i])
                         .fence(Mods.Forestry.getItem("fences.fireproof.0", 1, metaPlank[i]), "fireproof_fences_" + woodName[i])
                         .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodName[i]), "fireproof_fence_gates_" + woodName[i])
@@ -198,6 +204,7 @@ public class FFMWoodRecipe {
                         ffmModId, "fireproof_" + woodName[i])
                         .planks(Mods.Forestry.getItem("planks.fireproof.1", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
                         .log(Mods.Forestry.getItem("logs.fireproof.4", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem("doors." + woodName[i]), "fireproof_doors_" + woodName[i])
                         .slab(Mods.Forestry.getItem("slabs.fireproof.2", 1, metaSlab[i]), "fireproof_slabs_" + woodName[i])
                         .fence(Mods.Forestry.getItem("fences.fireproof.1", 1, metaPlank[i]), "fireproof_fences_" + woodName[i])
                         .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodName[i]), "fireproof_fence_gates_" + woodName[i])
@@ -209,6 +216,7 @@ public class FFMWoodRecipe {
                         ffmModId, "fireproof_" + woodName[i])
                         .planks(Mods.Forestry.getItem("planks.fireproof.1", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
                         .log(Mods.Forestry.getItem("logs.fireproof.5", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem("doors." + woodName[i]), "fireproof_doors_" + woodName[i])
                         .slab(Mods.Forestry.getItem("slabs.fireproof.2", 1, metaSlab[i]), "fireproof_slabs_" + woodName[i])
                         .fence(Mods.Forestry.getItem("fences.fireproof.1", 1, metaPlank[i]), "fireproof_fences_" + woodName[i])
                         .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodName[i]), "fireproof_fence_gates_" + woodName[i])
@@ -220,6 +228,7 @@ public class FFMWoodRecipe {
                         ffmModId, "fireproof_" + woodName[i])
                         .planks(Mods.Forestry.getItem("planks.fireproof.1", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
                         .log(Mods.Forestry.getItem("logs.fireproof.6", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem("doors." + woodName[i]), "fireproof_doors_" + woodName[i])
                         .slab(Mods.Forestry.getItem("slabs.fireproof.3", 1, metaSlab[i]), "fireproof_slabs_" + woodName[i])
                         .fence(Mods.Forestry.getItem("fences.fireproof.1", 1, metaPlank[i]), "fireproof_fences_" + woodName[i])
                         .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodName[i]), "fireproof_fence_gates_" + woodName[i])
@@ -231,6 +240,7 @@ public class FFMWoodRecipe {
                         ffmModId, "fireproof_" + woodName[i])
                         .planks(Mods.Forestry.getItem("planks.fireproof.1", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
                         .log(Mods.Forestry.getItem("logs.fireproof.7", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem("doors." + woodName[i]), "fireproof_doors_" + woodName[i])
                         .slab(Mods.Forestry.getItem("slabs.fireproof.3", 1, metaSlab[i]), "fireproof_slabs_" + woodName[i])
                         .fence(Mods.Forestry.getItem("fences.fireproof.1", 1, metaPlank[i]), "fireproof_fences_" + woodName[i])
                         .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodName[i]), "fireproof_fence_gates_" + woodName[i])
@@ -243,28 +253,83 @@ public class FFMWoodRecipe {
         // Vanilla Wood (Fireproof)
         for (int i = 0; i < woodNameVanilla.length; i++ ) {
             switch (i) {
-                case 0, 1, 2, 3 -> registerWoodTypeRecipe(new WoodTypeEntry.Builder(
-                        ffmModId, "fireproof_" + woodNameVanilla[i])
-                        .planks(Mods.Forestry.getItem("planks.fireproof.0", 1, metaPlank[i]), "fireproof_planks_" + woodNameVanilla[i])
-                        .log(Mods.Forestry.getItem("logs.fireproof.0", 1, metaLog[i])).removeCharcoalRecipe()
-                        .slab(Mods.Forestry.getItem("slabs.fireproof.0", 1, metaSlab[i]), "fireproof_slabs_" + woodNameVanilla[i])
-                        .fence(Mods.Forestry.getItem("fences.fireproof.0", 1, metaPlank[i]), "fireproof_fences_" + woodNameVanilla[i])
-                        .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodNameVanilla[i]), "fireproof_fence_gates_" + woodNameVanilla[i])
-                        .stairs(Mods.Forestry.getItem("stairs.fireproof." + woodNameVanilla[i]))
+                case 0 -> registerWoodTypeRecipe(new WoodTypeEntry.Builder(
+                        ffmModId, woodNameVanilla[i])
+                        .planks(Mods.Forestry.getItem("planks.vanilla.fireproof.0", 1, metaPlank[i]), "fireproof_planks_" + woodNameVanilla[i])
+                        .log(Mods.Forestry.getItem("logs.vanilla.fireproof.0", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem("wooden_door"), "fireproof_doors_" + woodNameVanilla[i])
+                        .slab(Mods.Forestry.getItem("slabs.vanilla.fireproof.0", 1, metaSlab[i]), "fireproof_slabs_" + woodNameVanilla[i])
+                        .fence(Mods.Forestry.getItem("fences.vanilla.fireproof.0", 1, metaPlank[i]), "fireproof_fences_" + woodNameVanilla[i])
+                        .fenceGate(Mods.Forestry.getItem("fence.gates.vanilla.fireproof." + woodNameVanilla[i]), "fireproof_fence_gates_" + woodNameVanilla[i])
+                        .stairs(Mods.Forestry.getItem("stairs.vanilla.fireproof." + woodNameVanilla[i]))
+                        .registerAllUnificationInfo()
+                        .build());
+
+                case 1, 2, 3 -> registerWoodTypeRecipe(new WoodTypeEntry.Builder(
+                        ffmModId, woodNameVanilla[i])
+                        .planks(Mods.Forestry.getItem("planks.vanilla.fireproof.0", 1, metaPlank[i]), "fireproof_planks_" + woodNameVanilla[i])
+                        .log(Mods.Forestry.getItem("logs.vanilla.fireproof.0", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem(woodNameVanilla[i] + "_door"), "fireproof_doors_" + woodNameVanilla[i])
+                        .slab(Mods.Forestry.getItem("slabs.vanilla.fireproof.0", 1, metaSlab[i]), "fireproof_slabs_" + woodNameVanilla[i])
+                        .fence(Mods.Forestry.getItem("fences.vanilla.fireproof.0", 1, metaPlank[i]), "fireproof_fences_" + woodNameVanilla[i])
+                        .fenceGate(Mods.Forestry.getItem("fence.gates.vanilla.fireproof." + woodNameVanilla[i]), "fireproof_fence_gates_" + woodNameVanilla[i])
+                        .stairs(Mods.Forestry.getItem("stairs.vanilla.fireproof." + woodNameVanilla[i]))
                         .registerAllUnificationInfo()
                         .build());
 
                 case 4, 5 -> registerWoodTypeRecipe(new WoodTypeEntry.Builder(
                         ffmModId, "fireproof_" + woodNameVanilla[i])
-                        .planks(Mods.Forestry.getItem("planks.fireproof.0", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
-                        .log(Mods.Forestry.getItem("logs.fireproof.1", 1, metaLog[i])).removeCharcoalRecipe()
-                        .slab(Mods.Forestry.getItem("slabs.fireproof.0", 1, metaSlab[i]), "fireproof_slabs_" + woodNameVanilla[i])
-                        .fence(Mods.Forestry.getItem("fences.fireproof.0", 1, metaPlank[i]), "fireproof_fences_" + woodNameVanilla[i])
-                        .fenceGate(Mods.Forestry.getItem("fence.gates.fireproof." + woodNameVanilla[i]), "fireproof_fence_gates_" + woodNameVanilla[i])
-                        .stairs(Mods.Forestry.getItem("stairs.fireproof." + woodNameVanilla[i]))
+                        .planks(Mods.Forestry.getItem("planks.vanilla.fireproof.0", 1, metaPlank[i]), "fireproof_planks_" + woodName[i])
+                        .log(Mods.Forestry.getItem("logs.vanilla.fireproof.1", 1, metaLog[i])).removeCharcoalRecipe()
+                        .door(Mods.Forestry.getItem(woodNameVanilla[i] + "_door"), "fireproof_doors_" + woodNameVanilla[i])
+                        .slab(Mods.Forestry.getItem("slabs.vanilla.fireproof.0", 1, metaSlab[i]), "fireproof_slabs_" + woodNameVanilla[i])
+                        .fence(Mods.Forestry.getItem("fences.vanilla.fireproof.0", 1, metaPlank[i]), "fireproof_fences_" + woodNameVanilla[i])
+                        .fenceGate(Mods.Forestry.getItem("fence.gates.vanilla.fireproof." + woodNameVanilla[i]), "fireproof_fence_gates_" + woodNameVanilla[i])
+                        .stairs(Mods.Forestry.getItem("stairs.vanilla.fireproof." + woodNameVanilla[i]))
                         .registerAllUnificationInfo()
                         .build());
             }
         }
+    }
+
+    public static void remove() {
+        //Crafting Recipe
+        for (String name : woodName) {
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "planks_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "slabs_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "doors_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "stairs_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fences_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fence_gates_" + name));
+
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_planks_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_slabs_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_doors_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_stairs_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_fences_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_fence_gates_" + name));
+        }
+
+        for (String name : woodNameVanilla) {
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_planks_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_slabs_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_doors_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_stairs_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_fences_" + name));
+            ModHandler.removeRecipeByName(new ResourceLocation(ffmModId, "fireproof_fence_gates_" + name));
+        }
+
+        //Smelting Recipe
+        for (int i = 0; i < 4; i++) {
+            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.0", 1, i));
+            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.1", 1, i));
+            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.2", 1, i));
+            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.3", 1, i));
+            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.4", 1, i));
+            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.5", 1, i));
+            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.6", 1, i));
+        }
+
+        ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.", 1, 0));
     }
 }

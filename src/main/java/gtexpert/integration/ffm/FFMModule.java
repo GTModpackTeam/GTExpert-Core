@@ -10,6 +10,8 @@ import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.ffm.loaders.FFMOreDictionaryLoader;
 import gtexpert.modules.GTEModules;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 @GTEModule(
            moduleID = GTEModules.MODULE_FFM,
@@ -20,8 +22,21 @@ import gtexpert.modules.GTEModules;
 public class FFMModule extends GTEIntegrationSubmodule {
 
     @Override
+    public void postInit(FMLPostInitializationEvent event) {
+        FFMWoodRecipe.remove();
+    }
+
+    @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
         FFMOreDictionaryLoader.init();
         FFMWoodRecipe.init();
+    }
+
+    @Override
+    public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+    }
+
+    @Override
+    public void loadComplete(FMLLoadCompleteEvent event) {
     }
 }
