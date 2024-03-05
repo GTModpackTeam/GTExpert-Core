@@ -1,6 +1,5 @@
 package gtexpert.integration.ffm;
 
-import gtexpert.integration.ffm.loaders.FFMCharcoalRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -9,6 +8,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.ffm.loaders.FFMCharcoalRecipe;
 import gtexpert.integration.ffm.loaders.FFMOreDictionaryLoader;
 import gtexpert.integration.ffm.loaders.FFMWoodRecipe;
 import gtexpert.modules.GTEModules;

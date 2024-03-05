@@ -1,18 +1,20 @@
 package gtexpert.integration.ffm.loaders;
 
-import forestry.modules.ForestryModuleUids;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.ConfigHolder;
-import gtexpert.api.util.Mods;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-
 import static gregtech.api.recipes.RecipeMaps.*;
 import static net.minecraft.init.Items.BRICK;
 import static net.minecraft.init.Items.CLAY_BALL;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.ConfigHolder;
+
+import gtexpert.api.util.Mods;
+
+import forestry.modules.ForestryModuleUids;
 
 public class FFMCharcoalRecipe {
 
@@ -20,7 +22,6 @@ public class FFMCharcoalRecipe {
         if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CHARCOAL)) {
             register();
         }
-
     }
 
     public static void register() {
@@ -64,4 +65,3 @@ public class FFMCharcoalRecipe {
         }
     }
 }
-
