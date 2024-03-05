@@ -1,7 +1,9 @@
 package gtexpert.integration.ffm.recipes;
 
 import static gregtech.api.recipes.RecipeMaps.ALLOY_SMELTER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
 import static net.minecraft.init.Items.BRICK;
+import static net.minecraft.init.Items.CLAY_BALL;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -21,6 +23,9 @@ public class FFMBlockRecipe {
         if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CORE)) {
             blockCore();
         }
+        if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CHARCOAL)) {
+            blockCharcoal();
+        }
     }
 
     public static void blockCore() {
@@ -38,5 +43,16 @@ public class FFMBlockRecipe {
                     .outputs(Mods.Forestry.getItem("ash_brick"))
                     .duration(100).EUt(2).buildAndRegister();
         }
+    }
+
+    public static void blockCharcoal() {
+        // Loam
+        ModHandler.removeRecipeByName(Mods.Forestry.getResource("loam"));
+        MIXER_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(CLAY_BALL, 4))
+                .input("sand", 2)
+                .inputs(Mods.Forestry.getItem("fertilizer_bio", 2))
+                .outputs(Mods.Forestry.getItem("loam", 4))
+                .duration(200).EUt(16).buildAndRegister();
     }
 }

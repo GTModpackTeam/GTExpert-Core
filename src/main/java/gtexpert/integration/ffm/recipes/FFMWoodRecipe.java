@@ -2,9 +2,6 @@ package gtexpert.integration.ffm.recipes;
 
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.loaders.recipe.WoodRecipeLoader.registerWoodTypeRecipe;
-import static net.minecraft.init.Items.CLAY_BALL;
-
-import net.minecraft.item.ItemStack;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.common.ConfigHolder;
@@ -61,7 +58,6 @@ public class FFMWoodRecipe {
         if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CHARCOAL)) {
             registerCharcoalRecipe();
         }
-
         if (Mods.ForestryArboriculture.isModLoaded()) {
             removeWoodRecipe();
         }
@@ -431,21 +427,6 @@ public class FFMWoodRecipe {
                     .input("logWood", 4)
                     .outputs(Mods.Forestry.getItem("wood_pile"))
                     .duration(300).EUt(2).buildAndRegister();
-        }
-
-        // Loam
-        ModHandler.removeRecipeByName(Mods.Forestry.getResource("loam"));
-        MIXER_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(CLAY_BALL, 4))
-                .input("sand", 2)
-                .inputs(Mods.Forestry.getItem("fertilizer_bio", 2))
-                .outputs(Mods.Forestry.getItem("loam", 4))
-                .duration(200).EUt(16).buildAndRegister();
-
-        // Block of Charcoal
-        if (ConfigHolder.recipes.disableManualCompression) {
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("charcoal_block"));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("charcoal"));
         }
     }
 }

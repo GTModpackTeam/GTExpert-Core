@@ -12,10 +12,12 @@ public class FFMMaterialsRecipe {
         if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CORE)) {
             materialsCore();
         }
+        if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CHARCOAL)) {
+            materialCharcoal();
+        }
     }
 
     public static void materialsCore() {
-        // Core
         // Copper
         ModHandler.removeRecipeByName(Mods.Forestry.getResource("copper_block"));
         ModHandler.removeRecipeByName(Mods.Forestry.getResource("block_to_copper"));
@@ -32,5 +34,10 @@ public class FFMMaterialsRecipe {
         // Apatite
         ModHandler.removeRecipeByName(Mods.Forestry.getResource("apatite_block"));
         ModHandler.removeRecipeByName(Mods.Forestry.getResource("block_to_apatite"));
+    }
+
+    public static void materialCharcoal() {
+        ModHandler.removeRecipeByName(Mods.Forestry.getResource("charcoal_block"));
+        ModHandler.removeRecipeByName(Mods.Forestry.getResource("charcoal"));
     }
 }
