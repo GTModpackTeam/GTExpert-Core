@@ -1,5 +1,6 @@
 package gtexpert.integration.ffm;
 
+import gtexpert.integration.ffm.loaders.FFMCharcoalRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -23,6 +24,7 @@ public class FFMModule extends GTEIntegrationSubmodule {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         FFMWoodRecipe.remove();
+        FFMCharcoalRecipe.init();
     }
 
     @Override
