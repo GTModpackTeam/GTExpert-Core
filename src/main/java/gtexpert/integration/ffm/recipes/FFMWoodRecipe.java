@@ -1,11 +1,18 @@
-package gtexpert.integration.ffm.loaders;
+package gtexpert.integration.ffm.recipes;
 
+import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.loaders.recipe.WoodRecipeLoader.registerWoodTypeRecipe;
+import static net.minecraft.init.Items.CLAY_BALL;
+
+import net.minecraft.item.ItemStack;
 
 import gregtech.api.recipes.ModHandler;
+import gregtech.common.ConfigHolder;
 import gregtech.loaders.WoodTypeEntry;
 
 import gtexpert.api.util.Mods;
+
+import forestry.modules.ForestryModuleUids;
 
 public class FFMWoodRecipe {
 
@@ -47,7 +54,23 @@ public class FFMWoodRecipe {
             0, 1, 2, 3, 4, 5, 6, 7,
             0, 1, 2, 3, 4 };
 
-    public static void init() {
+    /**
+     * Should be called after FMLInitializationEvent
+     */
+    public static void register() {
+        if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CHARCOAL)) {
+            registerCharcoalRecipe();
+        }
+
+        if (Mods.ForestryArboriculture.isModLoaded()) {
+            removeWoodRecipe();
+        }
+    }
+
+    /**
+     * Should be called before GTEWoodRecipe.java
+     */
+    public static void registerWoodRecipe() {
         // Forestry Wood (Normal)
         for (int i = 0; i < woodName.length; i++) {
             // Normal
@@ -348,44 +371,81 @@ public class FFMWoodRecipe {
         }
     }
 
-    public static void remove() {
+    public static void removeWoodRecipe() {
         // Crafting Recipe
         for (String name : woodName) {
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("planks_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("slabs_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("doors_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("stairs_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fences_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fence_gates_" + name));
+            if (ConfigHolder.recipes.nerfWoodCrafting) {
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("planks_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_planks_" + name));
+            }
 
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_planks_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_slabs_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_doors_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_stairs_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fences_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fence_gates_" + name));
+            if (ConfigHolder.recipes.hardWoodRecipes) {
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("slabs_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("doors_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("stairs_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fences_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fence_gates_" + name));
+
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_slabs_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_doors_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_stairs_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fences_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fence_gates_" + name));
+            }
         }
 
         for (String name : woodNameVanilla) {
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_planks_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_slabs_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_doors_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_stairs_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fences_" + name));
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fence_gates_" + name));
+            if (ConfigHolder.recipes.nerfWoodCrafting) {
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_planks_" + name));
+            }
+            if (ConfigHolder.recipes.hardWoodRecipes) {
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_slabs_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_doors_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_stairs_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fences_" + name));
+                ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_fence_gates_" + name));
+            }
         }
 
         // Smelting Recipe
-        for (int i = 0; i < 4; i++) {
-            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.0", 1, i));
-            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.1", 1, i));
-            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.2", 1, i));
-            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.3", 1, i));
-            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.4", 1, i));
-            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.5", 1, i));
-            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.6", 1, i));
+        if (ConfigHolder.recipes.harderCharcoalRecipe) {
+            for (int i = 0; i < 4; i++) {
+                ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.0", 1, i));
+                ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.1", 1, i));
+                ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.2", 1, i));
+                ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.3", 1, i));
+                ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.4", 1, i));
+                ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.5", 1, i));
+                ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.6", 1, i));
+            }
+
+            ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.", 1, 0));
+        }
+    }
+
+    public static void registerCharcoalRecipe() {
+        // Log x4 -> Wood Pile
+        if (ConfigHolder.recipes.harderCharcoalRecipe) {
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("wood_pile"));
+            COMPRESSOR_RECIPES.recipeBuilder()
+                    .input("logWood", 4)
+                    .outputs(Mods.Forestry.getItem("wood_pile"))
+                    .duration(300).EUt(2).buildAndRegister();
         }
 
-        ModHandler.removeFurnaceSmelting(Mods.Forestry.getItem("logs.", 1, 0));
+        // Loam
+        ModHandler.removeRecipeByName(Mods.Forestry.getResource("loam"));
+        MIXER_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(CLAY_BALL, 4))
+                .input("sand", 2)
+                .inputs(Mods.Forestry.getItem("fertilizer_bio", 2))
+                .outputs(Mods.Forestry.getItem("loam", 4))
+                .duration(200).EUt(16).buildAndRegister();
+
+        // Block of Charcoal
+        if (ConfigHolder.recipes.disableManualCompression) {
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("charcoal_block"));
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("charcoal"));
+        }
     }
 }

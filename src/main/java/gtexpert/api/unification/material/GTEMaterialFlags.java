@@ -5,6 +5,7 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.*;
 import gregtech.api.unification.ore.OrePrefix;
+import gtexpert.api.util.Mods;
 
 public class GTEMaterialFlags {
 
@@ -47,5 +48,12 @@ public class GTEMaterialFlags {
         // Iridium
         Materials.Iridium.setProperty(PropertyKey.ORE, new OreProperty());
         Materials.Iridium.getProperty(PropertyKey.ORE).setOreByProducts(Materials.Platinum, Materials.Osmium);
+
+        if (Mods.Forestry.isModLoaded()) {
+            // Copper
+            Materials.Copper.addFlags(GENERATE_GEAR);
+            // Tin
+            Materials.Tin.addFlags(GENERATE_GEAR);
+        }
     }
 }

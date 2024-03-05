@@ -8,9 +8,8 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
-import gtexpert.integration.ffm.loaders.FFMCharcoalRecipe;
 import gtexpert.integration.ffm.loaders.FFMOreDictionaryLoader;
-import gtexpert.integration.ffm.loaders.FFMWoodRecipe;
+import gtexpert.integration.ffm.recipes.*;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
@@ -23,13 +22,18 @@ public class FFMModule extends GTEIntegrationSubmodule {
 
     @Override
     public void postInit(FMLPostInitializationEvent event) {
-        FFMWoodRecipe.remove();
-        FFMCharcoalRecipe.init();
+        FFMBlockRecipe.register();
+        FFMItemRecipe.register();
+        FFMMaterialsRecipe.register();
+        FFMToolRecipe.register();
+        FFMWoodRecipe.register();
     }
 
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
         FFMOreDictionaryLoader.init();
-        FFMWoodRecipe.init();
+        if (Mods.ForestryArboriculture.isModLoaded()) {
+            FFMWoodRecipe.registerWoodRecipe();
+        }
     }
 }
