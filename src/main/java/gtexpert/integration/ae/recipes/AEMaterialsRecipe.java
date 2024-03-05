@@ -11,6 +11,7 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 
 import gtexpert.api.GTEValues;
@@ -149,7 +150,6 @@ public class AEMaterialsRecipe {
                 .buildAndRegister();
 
         // Block
-        ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/quartz_block_pure"));
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 8, 11))
                 .output(block, Materials.NetherQuartz, 1)
@@ -186,8 +186,6 @@ public class AEMaterialsRecipe {
                 .buildAndRegister();
 
         // Block
-        ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/certus_quartz_block"));
-        ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/certus_quartz_block_pure"));
         ModHandler.removeRecipeByOutput(Mods.AppliedEnergistics2.getItem("quartz_block", 4));
         ModHandler.addMirroredShapedRecipe("ae2_certus_quartz_block",
                 Mods.AppliedEnergistics2.getItem("quartz_block"), "B", 'B',
@@ -311,8 +309,6 @@ public class AEMaterialsRecipe {
                 .buildAndRegister();
 
         // Block
-        ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/fluix_block"));
-        ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/fluix_block_pure"));
         ModHandler.removeRecipeByOutput(Mods.AppliedEnergistics2.getItem("material", 4, 7));
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 4, 7))
@@ -347,5 +343,20 @@ public class AEMaterialsRecipe {
                 .output(dust, GTEMaterials.FluixAlloy, 8)
                 .duration(200).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
+    }
+
+    public static void remove() {
+        if (ConfigHolder.recipes.disableManualCompression) {
+            // Nether Quartz Block
+            ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/quartz_block_pure"));
+
+            // Certus Quartz Block
+            ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/certus_quartz_block"));
+            ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/certus_quartz_block_pure"));
+
+            // Fluix Block
+            ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/fluix_block"));
+            ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/fluix_block_pure"));
+        }
     }
 }

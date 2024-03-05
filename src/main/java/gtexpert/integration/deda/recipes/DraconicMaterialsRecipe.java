@@ -31,6 +31,7 @@ import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
+import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
@@ -373,5 +374,32 @@ public class DraconicMaterialsRecipe {
      */
     private static int getGasCircuitNum(int componentAmount) {
         return componentAmount + 11;
+    }
+
+    public static void remove() {
+        // Draconium Ore
+        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1, 0));
+        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1, 1));
+        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1, 2));
+
+        // Draconium Dust
+        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_dust"));
+
+        if (ConfigHolder.recipes.disableManualCompression) {
+            // Draconium Nugget
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("nugget"));
+
+            // Draconium Ingot
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconium_ingot"));
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconium_ingot_1"));
+            ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ingot"));
+
+            // Awakened Draconium Nugget
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("nugget_1"));
+
+            // Awakened Draconium Ingot
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconic_ingot"));
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconic_ingot_1"));
+        }
     }
 }

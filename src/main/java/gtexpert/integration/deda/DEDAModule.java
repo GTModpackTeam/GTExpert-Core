@@ -3,6 +3,7 @@ package gtexpert.integration.deda;
 import net.minecraft.block.Block;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
@@ -27,6 +28,11 @@ public class DEDAModule extends GTEIntegrationSubmodule {
     @Override
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         DEDAMetaTileEntities.init();
+    }
+
+    @Override
+    public void postInit(FMLPostInitializationEvent event) {
+        DraconicMaterialsRecipe.remove();
     }
 
     @Override

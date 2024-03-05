@@ -212,13 +212,11 @@ public enum Mods {
 
     @NotNull
     public ItemStack getItem(@NotNull String name, int count) {
-        if (count > 0) count = 1;
         return getItem(name, count, 0, null);
     }
 
     @NotNull
     public ItemStack getItem(@NotNull String name, int count, int meta) {
-        if (count > 0) count = 1;
         return getItem(name, count, meta, null);
     }
 
