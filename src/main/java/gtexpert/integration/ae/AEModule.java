@@ -31,6 +31,8 @@ public class AEModule extends GTEIntegrationSubmodule {
 
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        AEMaterialsRecipe.remove();
+
         AEMaterialsRecipe.init();
         AEItemsRecipe.init();
         AEBlocksRecipe.init();

@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
+import gregtech.common.ConfigHolder;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
@@ -171,5 +172,9 @@ public class EIOMaterialsRecipe {
                 .output(dust, GTEMaterials.VividAlloy, 2)
                 .duration(40).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
+    }
+
+    public static void remove() {
+        if (ConfigHolder.recipes.disableManualCompression) {}
     }
 }

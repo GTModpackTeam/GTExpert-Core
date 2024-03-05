@@ -1,6 +1,5 @@
 package gtexpert.core.recipes;
 
-import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.core.GTEConfigHolder.ceuOverride;
 
@@ -15,7 +14,6 @@ import net.minecraft.item.crafting.IRecipe;
 import org.apache.commons.lang3.tuple.Pair;
 
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -25,7 +23,7 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.blocks.wood.BlockGregPlanks;
 
 import gtexpert.api.util.Mods;
-import gtexpert.core.GTERecipeMaps;
+import gtexpert.core.loaders.GTEWoodRecipeLoader;
 
 public class GTEWoodRecipe {
 
@@ -81,53 +79,11 @@ public class GTEWoodRecipe {
             ModHandler.addMirroredShapedRecipe("plank_saw_" + i, GTUtility.copy(ConfigHolder.recipes.nerfWoodCrafting ?
                     ceuOverride.moreNerfPlankCrafting ? 2 : 4 : 6,
                     plankStack), "s", "P", 'P', allWoodLogs.get(i));
-            recipeSawmill(allWoodLogs.get(i), plankStack);
+            GTEWoodRecipeLoader.recipeSawmill(allWoodLogs.get(i), plankStack);
 
             if (!plankStack.toString().contains(Mods.Vanilla.name()) ||
                     !plankStack.toString().contains(Mods.GregTechFoodOption.name()))
-                recipeCutter(allWoodLogs.get(i), plankStack);
+                GTEWoodRecipeLoader.recipeCutter(allWoodLogs.get(i), plankStack);
         });
-    }
-
-    private static void recipeSawmill(ItemStack input, ItemStack output) {
-        GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
-                .circuitMeta(1)
-                .inputs(GTUtility.copy(6, input))
-                .fluidInputs(Materials.Water.getFluid(1000))
-                .outputs(GTUtility.copy(48, output))
-                .output(dust, Materials.Wood, 12)
-                .duration(600).EUt(VA[LV])
-                .buildAndRegister();
-        GTERecipeMaps.SAWMILL_RECIPES.recipeBuilder()
-                .circuitMeta(2)
-                .inputs(GTUtility.copy(6, input))
-                .fluidInputs(Materials.Water.getFluid(2500))
-                .outputs(GTUtility.copy(60, output))
-                .duration(800).EUt(VA[LV])
-                .buildAndRegister();
-    }
-
-    private static void recipeCutter(ItemStack input, ItemStack output) {
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .inputs(input)
-                .fluidInputs(Materials.Lubricant.getFluid(1))
-                .outputs(GTUtility.copy(6, output))
-                .output(dust, Materials.Wood, 2)
-                .duration(200).EUt(VA[ULV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .inputs(input)
-                .fluidInputs(Materials.DistilledWater.getFluid(3))
-                .outputs(GTUtility.copy(6, output))
-                .output(dust, Materials.Wood, 2)
-                .duration(300).EUt(VA[ULV])
-                .buildAndRegister();
-        RecipeMaps.CUTTER_RECIPES.recipeBuilder()
-                .inputs(input)
-                .fluidInputs(Materials.Water.getFluid(4))
-                .outputs(GTUtility.copy(6, output))
-                .output(dust, Materials.Wood, 2)
-                .duration(400).EUt(VA[ULV])
-                .buildAndRegister();
     }
 }

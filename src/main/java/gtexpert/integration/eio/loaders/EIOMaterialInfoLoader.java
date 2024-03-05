@@ -14,7 +14,7 @@ import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
 
-public class EnderIOMaterialInfoLoader {
+public class EIOMaterialInfoLoader {
 
     public static void init() {
         OreDictUnifier.registerOre(new ItemStack(Blocks.SKULL),

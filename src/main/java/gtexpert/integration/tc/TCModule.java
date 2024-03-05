@@ -7,6 +7,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.tc.loaders.TCOreDictionaryLoader;
 import gtexpert.integration.tc.recipes.TCBlocksRecipe;
 import gtexpert.integration.tc.recipes.TCItemsRecipe;
 import gtexpert.integration.tc.recipes.TCMaterialsRecipe;
@@ -22,7 +23,14 @@ import gtexpert.modules.GTEModules;
 public class TCModule extends GTEIntegrationSubmodule {
 
     @Override
+    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
+        TCOreDictionaryLoader.init();
+    }
+
+    @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        TCMaterialsRecipe.remove();
+
         TCMaterialsRecipe.init();
         TCItemsRecipe.init();
         TCBlocksRecipe.init();

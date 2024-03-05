@@ -20,6 +20,8 @@ public class AvaritiaModule extends GTEIntegrationSubmodule {
 
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        AvaritiaMaterialsRecipe.remove();
+
         AvaritiaMaterialsRecipe.init();
     }
 }
