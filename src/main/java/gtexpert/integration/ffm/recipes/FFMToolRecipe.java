@@ -12,14 +12,13 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 
 import gtexpert.api.util.Mods;
-import gtexpert.integration.ae.AEConfigHolder;
 
 import forestry.modules.ForestryModuleUids;
 
 public class FFMToolRecipe {
 
     public static void register() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && AEConfigHolder.hardToolRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes) {
             if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CORE)) {
                 toolCore();
             }
