@@ -9,12 +9,10 @@ import gregtech.api.unification.stack.UnificationEntry;
 
 import gtexpert.api.util.Mods;
 
-import forestry.modules.ForestryModuleUids;
-
 public class FFMItemRecipe {
 
     public static void register() {
-        if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CORE)) {
+        if (Mods.ForestryCore.isModLoaded()) {
             itemCore();
         }
     }
