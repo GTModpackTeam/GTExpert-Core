@@ -13,13 +13,11 @@ import gregtech.common.ConfigHolder;
 
 import gtexpert.api.util.Mods;
 
-import forestry.modules.ForestryModuleUids;
-
 public class FFMToolRecipe {
 
     public static void register() {
         if (ConfigHolder.recipes.hardToolArmorRecipes) {
-            if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CORE)) {
+            if (Mods.ForestryCore.isModLoaded()) {
                 toolCore();
             }
             if (Mods.ForestryArboriculture.isModLoaded()) {

@@ -5,11 +5,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 import crazypants.enderio.base.init.ModObject;
+import crazypants.enderio.base.material.material.Material;
 import crazypants.enderio.endergy.init.EndergyObject;
 
 public class EIOOreDictionaryLoader {
 
     public static void init() {
+        // Gears
+        OreDictionary.registerOre("gearEnergeticAlloy", Material.GEAR_ENERGIZED.getStack());
+        OreDictionary.registerOre("gearVibrantAlloy", Material.GEAR_VIBRANT.getStack());
+
         // craftNutrientDistillation
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.PORKCHOP));
         OreDictionary.registerOre("craftNutrientDistillation", new ItemStack(Items.BEEF));

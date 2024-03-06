@@ -5,6 +5,7 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.*;
 import gregtech.api.unification.ore.OrePrefix;
+
 import gtexpert.api.util.Mods;
 
 public class GTEMaterialFlags {
@@ -52,6 +53,7 @@ public class GTEMaterialFlags {
         if (Mods.Forestry.isModLoaded()) {
             // Copper
             Materials.Copper.addFlags(GENERATE_GEAR);
+
             // Tin
             Materials.Tin.addFlags(GENERATE_GEAR);
         }

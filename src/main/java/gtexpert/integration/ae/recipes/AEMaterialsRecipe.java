@@ -186,13 +186,20 @@ public class AEMaterialsRecipe {
                 .buildAndRegister();
 
         // Block
-        ModHandler.removeRecipeByOutput(Mods.AppliedEnergistics2.getItem("quartz_block", 4));
+        ModHandler.addShapedRecipe("decorative/certus_quartz_block_pure",
+                OreDictUnifier.get(block, Materials.CertusQuartz), "QQQ", "Q Q", "QQQ",
+                'Q', Mods.AppliedEnergistics2.getItem("material", 1, 10));
         ModHandler.addMirroredShapedRecipe("ae2_certus_quartz_block",
-                Mods.AppliedEnergistics2.getItem("quartz_block"), "B", 'B',
-                new UnificationEntry(block, Materials.CertusQuartz));
-        ModHandler.addMirroredShapedRecipe("ceu_certus_quartz_block", OreDictUnifier.get(block, Materials.CertusQuartz),
-                "B", 'B',
-                Mods.AppliedEnergistics2.getItem("quartz_block"));
+                Mods.AppliedEnergistics2.getItem("quartz_block"), "B",
+                'B', new UnificationEntry(block, Materials.CertusQuartz));
+        ModHandler.addMirroredShapedRecipe("ceu_certus_quartz_block",
+                OreDictUnifier.get(block, Materials.CertusQuartz), "B",
+                'B', Mods.AppliedEnergistics2.getItem("quartz_block"));
+        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
+                .inputs(Mods.AppliedEnergistics2.getItem("material", 4))
+                .output(block, Materials.CertusQuartz, 1)
+                .duration(300).EUt(2)
+                .buildAndRegister();
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 8, 10))
                 .output(block, Materials.CertusQuartz, 1)
@@ -309,7 +316,6 @@ public class AEMaterialsRecipe {
                 .buildAndRegister();
 
         // Block
-        ModHandler.removeRecipeByOutput(Mods.AppliedEnergistics2.getItem("material", 4, 7));
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 4, 7))
                 .outputs(Mods.AppliedEnergistics2.getItem("fluix_block"))
@@ -346,15 +352,19 @@ public class AEMaterialsRecipe {
     }
 
     public static void remove() {
+        // Certus Quartz Block
+        ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/certus_quartz_block"));
+        ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/certus_quartz_block_pure"));
+
         if (ConfigHolder.recipes.disableManualCompression) {
             // Nether Quartz Block
             ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/quartz_block_pure"));
 
             // Certus Quartz Block
-            ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/certus_quartz_block"));
-            ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/certus_quartz_block_pure"));
+            ModHandler.removeRecipeByOutput(Mods.AppliedEnergistics2.getItem("quartz_block", 4, 0));
 
             // Fluix Block
+            ModHandler.removeRecipeByOutput(Mods.AppliedEnergistics2.getItem("material", 4, 7));
             ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/fluix_block"));
             ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("decorative/fluix_block_pure"));
         }

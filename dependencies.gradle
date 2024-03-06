@@ -144,4 +144,7 @@ dependencies {
     if (project.debug_all.toBoolean() || project.debug_eio.toBoolean()) {
         runtimeOnlyNonPublishable (files("libs/EnderCore-1.12.2-0.5.78-core.jar"))
     }
+
+    // Client only
+    runtimeOnlyNonPublishable rfg.deobf("curse.maven:lolasm-460609:5120166") // CensoredASM 5.19
 }

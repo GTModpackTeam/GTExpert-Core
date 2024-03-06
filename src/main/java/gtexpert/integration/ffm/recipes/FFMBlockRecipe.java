@@ -15,15 +15,13 @@ import gregtech.common.ConfigHolder;
 
 import gtexpert.api.util.Mods;
 
-import forestry.modules.ForestryModuleUids;
-
 public class FFMBlockRecipe {
 
     public static void register() {
-        if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CORE)) {
+        if (Mods.ForestryCore.isModLoaded()) {
             blockCore();
         }
-        if (forestry.modules.ModuleHelper.isEnabled(ForestryModuleUids.CHARCOAL)) {
+        if (Mods.ForestryCharcoal.isModLoaded()) {
             blockCharcoal();
         }
     }
