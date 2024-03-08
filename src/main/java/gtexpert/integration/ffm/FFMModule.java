@@ -22,18 +22,15 @@ public class FFMModule extends GTEIntegrationSubmodule {
 
     @Override
     public void postInit(FMLPostInitializationEvent event) {
-        FFMBlockRecipe.register();
-        FFMItemRecipe.register();
-        FFMMaterialsRecipe.register();
-        FFMToolRecipe.register();
-        FFMWoodRecipe.register();
+        FFMBlockRecipe.init();
+        FFMItemRecipe.init();
+        FFMMaterialsRecipe.init();
+        FFMToolRecipe.init();
+        FFMWoodRecipe.init();
     }
 
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
         FFMOreDictionaryLoader.init();
-        if (Mods.ForestryArboriculture.isModLoaded()) {
-            FFMWoodRecipe.registerWoodRecipe();
-        }
     }
 }

@@ -146,5 +146,5 @@ dependencies {
     }
 
     // Client only
-    runtimeOnlyNonPublishable rfg.deobf("curse.maven:lolasm-460609:5120166") // CensoredASM 5.19
+    //runtimeOnlyNonPublishable rfg.deobf("curse.maven:lolasm-460609:5120166") // CensoredASM 5.19
 }

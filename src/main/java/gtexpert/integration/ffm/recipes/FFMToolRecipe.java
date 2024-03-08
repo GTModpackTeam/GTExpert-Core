@@ -15,7 +15,7 @@ import gtexpert.api.util.Mods;
 
 public class FFMToolRecipe {
 
-    public static void register() {
+    public static void init() {
         if (ConfigHolder.recipes.hardToolArmorRecipes) {
             if (Mods.ForestryCore.isModLoaded()) {
                 toolCore();

@@ -6,7 +6,7 @@ import gtexpert.api.util.Mods;
 
 public class FFMMaterialsRecipe {
 
-    public static void register() {
+    public static void init() {
         if (Mods.ForestryCore.isModLoaded()) {
             materialsCore();
         }
