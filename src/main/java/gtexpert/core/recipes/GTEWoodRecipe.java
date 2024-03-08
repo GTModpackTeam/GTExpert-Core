@@ -62,7 +62,8 @@ public class GTEWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(GTValues.MODID, "rubber")
-                            .planks(MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.RUBBER_PLANK), null)
+                            .planks(MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.RUBBER_PLANK),
+                                    "rubber_planks")
                             .log(new ItemStack(MetaBlocks.RUBBER_LOG))
                             .registerAllUnificationInfo()
                             .build(),
@@ -103,13 +104,11 @@ public class GTEWoodRecipe {
     }
 
     private static void planks() {
-        if (ConfigHolder.recipes.nerfWoodCrafting) {
-            for (WoodTypeEntry entry : getDefaultEntries()) {
-                GTEWoodRecipeLoader.removeGTWoodRecipes(entry);
+        for (WoodTypeEntry entry : getDefaultEntries()) {
+            GTEWoodRecipeLoader.removePlankRecipes(true, entry, GTValues.MODID);
 
-                GTEWoodRecipeLoader.addWoodRecipes(entry);
-                GTEWoodRecipeLoader.recipeSawmill(entry.log, entry.planks);
-            }
+            GTEWoodRecipeLoader.addPlankRecipes(entry);
+            GTEWoodRecipeLoader.addSawmillRecipes(entry);
         }
     }
 }
