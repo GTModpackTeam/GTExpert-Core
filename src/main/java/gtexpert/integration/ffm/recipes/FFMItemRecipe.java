@@ -11,7 +11,7 @@ import gtexpert.api.util.Mods;
 
 public class FFMItemRecipe {
 
-    public static void register() {
+    public static void init() {
         if (Mods.ForestryCore.isModLoaded()) {
             itemCore();
         }

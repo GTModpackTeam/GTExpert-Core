@@ -1,7 +1,6 @@
 package gtexpert.integration.ffm.recipes;
 
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.loaders.recipe.WoodRecipeLoader.registerWoodTypeRecipe;
 
 import java.util.Arrays;
 import java.util.List;
@@ -392,31 +391,25 @@ public class FFMWoodRecipe {
         return DEFAULT_ENTRIES;
     }
 
-    public static void registerCEuWoodRecipe() {
+    public static void init() {
+        if (!Mods.ForestryArboriculture.isModLoaded()) return;
+
         for (WoodTypeEntry entry : getDefaultEntries()) {
-            registerWoodTypeRecipe(entry);
-        }
-    }
+            GTEWoodRecipeLoader.removePlankRecipes(entry);
 
-    public static void registerGTEWoodRecipe() {
-        if (Mods.ForestryArboriculture.isModLoaded()) {
-            for (WoodTypeEntry entry : getDefaultEntries()) {
-                GTEWoodRecipeLoader.removePlankRecipes(entry);
+            GTEWoodRecipeLoader.addPlankRecipes(entry);
+            GTEWoodRecipeLoader.addCutterRecipes(entry);
+            GTEWoodRecipeLoader.addSawmillRecipes(entry);
 
-                GTEWoodRecipeLoader.addPlankRecipes(entry);
-                GTEWoodRecipeLoader.addCutterRecipes(entry);
-                GTEWoodRecipeLoader.addSawmillRecipes(entry);
+            if (!Mods.ForestryCharcoal.isModLoaded()) return;
+            if (!ConfigHolder.recipes.harderCharcoalRecipe) return;
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("wood_pile"));
 
-                if (!Mods.ForestryCharcoal.isModLoaded()) return;
-                if (!ConfigHolder.recipes.harderCharcoalRecipe) return;
-                ModHandler.removeRecipeByName(Mods.Forestry.getResource("wood_pile"));
-
-                COMPRESSOR_RECIPES.recipeBuilder()
-                        .input("logWood", 4)
-                        .outputs(Mods.Forestry.getItem("wood_pile"))
-                        .duration(300).EUt(2)
-                        .buildAndRegister();
-            }
+            COMPRESSOR_RECIPES.recipeBuilder()
+                    .input("logWood", 4)
+                    .outputs(Mods.Forestry.getItem("wood_pile"))
+                    .duration(300).EUt(2)
+                    .buildAndRegister();
         }
     }
 }

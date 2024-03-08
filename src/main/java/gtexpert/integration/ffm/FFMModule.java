@@ -22,12 +22,11 @@ public class FFMModule extends GTEIntegrationSubmodule {
 
     @Override
     public void postInit(FMLPostInitializationEvent event) {
-        FFMBlockRecipe.register();
-        FFMItemRecipe.register();
-        FFMMaterialsRecipe.register();
-        FFMToolRecipe.register();
-        FFMWoodRecipe.registerGTEWoodRecipe();
-        FFMWoodRecipe.registerCEuWoodRecipe();
+        FFMBlockRecipe.init();
+        FFMItemRecipe.init();
+        FFMMaterialsRecipe.init();
+        FFMToolRecipe.init();
+        FFMWoodRecipe.init();
     }
 
     @Override

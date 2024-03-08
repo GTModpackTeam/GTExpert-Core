@@ -17,7 +17,7 @@ import gtexpert.api.util.Mods;
 
 public class FFMBlockRecipe {
 
-    public static void register() {
+    public static void init() {
         if (Mods.ForestryCore.isModLoaded()) {
             blockCore();
         }
