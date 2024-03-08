@@ -1,3 +1,11 @@
+# v2.1.0
+- Forestry wood partially GT compliant.
+    - Part 1 [#245](https://github.com/GTModpackTeam/GTExpert-Core/pull/245)
+    - Part 2 [#247](https://github.com/GTModpackTeam/GTExpert-Core/pull/247)
+- Fixed a recipe change that ignored a CEu cfg setting called `disableManualCompression`. [#244](https://github.com/GTModpackTeam/GTExpert-Core/pull/244)
+
+* * *
+
 # v2.0.8
 - Multiplayer bug fixes [#243](https://github.com/GTModpackTeam/GTExpert-Core/pull/243)
 
