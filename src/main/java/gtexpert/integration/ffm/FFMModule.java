@@ -26,7 +26,8 @@ public class FFMModule extends GTEIntegrationSubmodule {
         FFMItemRecipe.register();
         FFMMaterialsRecipe.register();
         FFMToolRecipe.register();
-        FFMWoodRecipe.register();
+        FFMWoodRecipe.registerGTEWoodRecipe();
+        FFMWoodRecipe.registerCEuWoodRecipe();
     }
 
     @Override

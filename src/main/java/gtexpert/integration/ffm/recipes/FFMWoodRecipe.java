@@ -1,6 +1,7 @@
 package gtexpert.integration.ffm.recipes;
 
 import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.loaders.recipe.WoodRecipeLoader.registerWoodTypeRecipe;
 
 import java.util.Arrays;
 import java.util.List;
@@ -102,7 +103,7 @@ public class FFMWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "kapok")
                             .planks(Mods.Forestry.getItem("planks.0", 1, 8), "planks_kapok")
-                            .log(Mods.Forestry.getItem("logs.2", 1, 4)).removeCharcoalRecipe()
+                            .log(Mods.Forestry.getItem("logs.2", 1, 0)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.kapok"), "doors_kapok")
                             .slab(Mods.Forestry.getItem("slabs.1", 1, 0), "slabs_kapok")
                             .fence(Mods.Forestry.getItem("fences.0", 1, 8), "fences_kapok")
@@ -112,7 +113,7 @@ public class FFMWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "ebony")
                             .planks(Mods.Forestry.getItem("planks.0", 1, 9), "planks_ebony")
-                            .log(Mods.Forestry.getItem("logs.2", 1, 5)).removeCharcoalRecipe()
+                            .log(Mods.Forestry.getItem("logs.2", 1, 1)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.ebony"), "doors_ebony")
                             .slab(Mods.Forestry.getItem("slabs.1", 1, 1), "slabs_ebony")
                             .fence(Mods.Forestry.getItem("fences.0", 1, 9), "fences_ebony")
@@ -122,7 +123,7 @@ public class FFMWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "mahogany")
                             .planks(Mods.Forestry.getItem("planks.0", 1, 10), "planks_mahogany")
-                            .log(Mods.Forestry.getItem("logs.2", 1, 6)).removeCharcoalRecipe()
+                            .log(Mods.Forestry.getItem("logs.2", 1, 2)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.mahogany"), "doors_mahogany")
                             .slab(Mods.Forestry.getItem("slabs.1", 1, 2), "slabs_mahogany")
                             .fence(Mods.Forestry.getItem("fences.0", 1, 10), "fences_mahogany")
@@ -132,7 +133,7 @@ public class FFMWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "balsa")
                             .planks(Mods.Forestry.getItem("planks.0", 1, 11), "planks_balsa")
-                            .log(Mods.Forestry.getItem("logs.2", 1, 7)).removeCharcoalRecipe()
+                            .log(Mods.Forestry.getItem("logs.2", 1, 3)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.balsa"), "doors_balsa")
                             .slab(Mods.Forestry.getItem("slabs.1", 1, 3), "slabs_balsa")
                             .fence(Mods.Forestry.getItem("fences.0", 1, 11), "fences_balsa")
@@ -142,7 +143,7 @@ public class FFMWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "willow")
                             .planks(Mods.Forestry.getItem("planks.0", 1, 12), "planks_willow")
-                            .log(Mods.Forestry.getItem("logs.3", 1, 8)).removeCharcoalRecipe()
+                            .log(Mods.Forestry.getItem("logs.3", 1, 0)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.willow"), "doors_willow")
                             .slab(Mods.Forestry.getItem("slabs.0", 1, 4), "slabs_willow")
                             .fence(Mods.Forestry.getItem("fences.0", 1, 12), "fences_willow")
@@ -152,7 +153,7 @@ public class FFMWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "walnut")
                             .planks(Mods.Forestry.getItem("planks.0", 1, 13), "planks_walnut")
-                            .log(Mods.Forestry.getItem("logs.3", 1, 9)).removeCharcoalRecipe()
+                            .log(Mods.Forestry.getItem("logs.3", 1, 1)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.walnut"), "doors_walnut")
                             .slab(Mods.Forestry.getItem("slabs.0", 1, 5), "slabs_walnut")
                             .fence(Mods.Forestry.getItem("fences.0", 1, 13), "fences_walnut")
@@ -162,7 +163,7 @@ public class FFMWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "greenheart")
                             .planks(Mods.Forestry.getItem("planks.0", 1, 14), "planks_greenheart")
-                            .log(Mods.Forestry.getItem("logs.3", 1, 10)).removeCharcoalRecipe()
+                            .log(Mods.Forestry.getItem("logs.3", 1, 2)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.greenheart"), "doors_greenheart")
                             .slab(Mods.Forestry.getItem("slabs.0", 1, 6), "slabs_greenheart")
                             .fence(Mods.Forestry.getItem("fences.0", 1, 14), "fences_greenheart")
@@ -172,7 +173,7 @@ public class FFMWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "cherry")
                             .planks(Mods.Forestry.getItem("planks.0", 1, 15), "planks_cherry")
-                            .log(Mods.Forestry.getItem("logs.3", 1, 11)).removeCharcoalRecipe()
+                            .log(Mods.Forestry.getItem("logs.3", 1, 3)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.cherry"), "doors_cherry")
                             .slab(Mods.Forestry.getItem("slabs.0", 1, 7), "slabs_cherry")
                             .fence(Mods.Forestry.getItem("fences.0", 1, 15), "fences_cherry")
@@ -181,8 +182,8 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "mahoe")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 0), "planks_mahoe")
-                            .log(Mods.Forestry.getItem("logs.4", 1, 12)).removeCharcoalRecipe()
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 0), "planks_mahoe")
+                            .log(Mods.Forestry.getItem("logs.4", 1, 0)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.mahoe"), "doors_mahoe")
                             .slab(Mods.Forestry.getItem("slabs.2", 1, 0), "slabs_mahoe")
                             .fence(Mods.Forestry.getItem("fences.1", 1, 0), "fences_mahoe")
@@ -191,8 +192,8 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "poplar")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 10), "planks_poplar")
-                            .log(Mods.Forestry.getItem("logs.4", 1, 13)).removeCharcoalRecipe()
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 1), "planks_poplar")
+                            .log(Mods.Forestry.getItem("logs.4", 1, 1)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.poplar"), "doors_poplar")
                             .slab(Mods.Forestry.getItem("slabs.2", 1, 1), "slabs_poplar")
                             .fence(Mods.Forestry.getItem("fences.1", 1, 1), "fences_poplar")
@@ -201,8 +202,8 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "palm")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 2), "planks_palm")
-                            .log(Mods.Forestry.getItem("logs.4", 1, 14)).removeCharcoalRecipe()
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 2), "planks_palm")
+                            .log(Mods.Forestry.getItem("logs.4", 1, 2)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.palm"), "doors_palm")
                             .slab(Mods.Forestry.getItem("slabs.2", 1, 2), "slabs_palm")
                             .fence(Mods.Forestry.getItem("fences.1", 1, 2), "fences_palm")
@@ -211,8 +212,8 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "papaya")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 3), "planks_papaya")
-                            .log(Mods.Forestry.getItem("logs.4", 1, 15)).removeCharcoalRecipe()
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 3), "planks_papaya")
+                            .log(Mods.Forestry.getItem("logs.4", 1, 3)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.papaya"), "doors_papaya")
                             .slab(Mods.Forestry.getItem("slabs.2", 1, 3), "slabs_papaya")
                             .fence(Mods.Forestry.getItem("fences.1", 1, 3), "fences_papaya")
@@ -221,7 +222,7 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "pine")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 4), "planks_pine")
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 4), "planks_pine")
                             .log(Mods.Forestry.getItem("logs.5", 1, 0)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.pine"), "doors_pine")
                             .slab(Mods.Forestry.getItem("slabs.0", 1, 4), "slabs_pine")
@@ -231,7 +232,7 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "plum")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 5), "planks_plum")
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 5), "planks_plum")
                             .log(Mods.Forestry.getItem("logs.5", 1, 1)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.plum"), "doors_plum")
                             .slab(Mods.Forestry.getItem("slabs.0", 1, 5), "slabs_plum")
@@ -241,7 +242,7 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "maple")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 6), "planks_maple")
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 6), "planks_maple")
                             .log(Mods.Forestry.getItem("logs.5", 1, 2)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.maple"), "doors_maple")
                             .slab(Mods.Forestry.getItem("slabs.0", 1, 6), "slabs_maple")
@@ -251,7 +252,7 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "citrus")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 7), "planks_citrus")
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 7), "planks_citrus")
                             .log(Mods.Forestry.getItem("logs.5", 1, 3)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.citrus"), "doors_citrus")
                             .slab(Mods.Forestry.getItem("slabs.0", 1, 7), "slabs_citrus")
@@ -261,8 +262,8 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "giganteum")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 8), "planks_giganteum")
-                            .log(Mods.Forestry.getItem("logs.6", 1, 4)).removeCharcoalRecipe()
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 8), "planks_giganteum")
+                            .log(Mods.Forestry.getItem("logs.6", 1, 0)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.giganteum"), "doors_giganteum")
                             .slab(Mods.Forestry.getItem("slabs.3", 1, 0), "slabs_giganteum")
                             .fence(Mods.Forestry.getItem("fences.1", 1, 8), "fences_giganteum")
@@ -271,8 +272,8 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "ipe")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 9), "planks_ipe")
-                            .log(Mods.Forestry.getItem("logs.6", 1, 5)).removeCharcoalRecipe()
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 9), "planks_ipe")
+                            .log(Mods.Forestry.getItem("logs.6", 1, 1)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.ipe"), "doors_ipe")
                             .slab(Mods.Forestry.getItem("slabs.3", 1, 1), "slabs_ipe")
                             .fence(Mods.Forestry.getItem("fences.1", 1, 9), "fences_ipe")
@@ -281,8 +282,8 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "padauk")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 10), "planks_padauk")
-                            .log(Mods.Forestry.getItem("logs.6", 1, 6)).removeCharcoalRecipe()
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 10), "planks_padauk")
+                            .log(Mods.Forestry.getItem("logs.6", 1, 2)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.padauk"), "doors_padauk")
                             .slab(Mods.Forestry.getItem("slabs.3", 1, 2), "slabs_padauk")
                             .fence(Mods.Forestry.getItem("fences.1", 1, 10), "fences_padauk")
@@ -291,8 +292,8 @@ public class FFMWoodRecipe {
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "cocobolo")
-                            .planks(Mods.Forestry.getItem("planks.0", 1, 11), "planks_cocobolo")
-                            .log(Mods.Forestry.getItem("logs.6", 1, 7)).removeCharcoalRecipe()
+                            .planks(Mods.Forestry.getItem("planks.1", 1, 11), "planks_cocobolo")
+                            .log(Mods.Forestry.getItem("logs.6", 1, 3)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.cocobolo"), "doors_cocobolo")
                             .slab(Mods.Forestry.getItem("slabs.3", 1, 3), "slabs_cocobolo")
                             .fence(Mods.Forestry.getItem("fences.1", 1, 11), "fences_cocobolo")
@@ -302,7 +303,7 @@ public class FFMWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "zebrawood")
                             .planks(Mods.Forestry.getItem("planks.1", 1, 12), "planks_zebrawood")
-                            .log(Mods.Forestry.getItem("logs.7", 1, 8)).removeCharcoalRecipe()
+                            .log(Mods.Forestry.getItem("logs.7", 1, 0)).removeCharcoalRecipe()
                             .door(Mods.Forestry.getItem("doors.zebrawood"), "doors_zebrawood")
                             .slab(Mods.Forestry.getItem("slabs.3", 1, 4), "slabs_zebrawood")
                             .fence(Mods.Forestry.getItem("fences.1", 1, 12), "fences_zebrawood")
@@ -391,7 +392,13 @@ public class FFMWoodRecipe {
         return DEFAULT_ENTRIES;
     }
 
-    public static void register() {
+    public static void registerCEuWoodRecipe() {
+        for (WoodTypeEntry entry : getDefaultEntries()) {
+            registerWoodTypeRecipe(entry);
+        }
+    }
+
+    public static void registerGTEWoodRecipe() {
         if (Mods.ForestryArboriculture.isModLoaded()) {
             for (WoodTypeEntry entry : getDefaultEntries()) {
                 GTEWoodRecipeLoader.removePlankRecipes(entry);
@@ -400,8 +407,8 @@ public class FFMWoodRecipe {
                 GTEWoodRecipeLoader.addCutterRecipes(entry);
                 GTEWoodRecipeLoader.addSawmillRecipes(entry);
 
+                if (!Mods.ForestryCharcoal.isModLoaded()) return;
                 if (!ConfigHolder.recipes.harderCharcoalRecipe) return;
-                ModHandler.removeFurnaceSmelting(entry.log);
                 ModHandler.removeRecipeByName(Mods.Forestry.getResource("wood_pile"));
 
                 COMPRESSOR_RECIPES.recipeBuilder()
