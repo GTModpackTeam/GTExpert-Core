@@ -30,11 +30,10 @@ jobs:
 
       - name: Run Spotless Formatting Check with Gradle
         id: build
-        continue-on-error: true
-        run: ./gradlew --info build
+        run: ./gradlew --info spotlessCheck
 
       - name: Attempt to make a PR fixing spotless errors
-        if: ${{ failure() }}
+        if: failure()
         run: |
           git reset --hard
           git checkout "${PR_BRANCH}"
