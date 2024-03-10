@@ -30,7 +30,6 @@ jobs:
 
       - name: Run Spotless Formatting Check with Gradle
         id: build
-        continue-on-error: true
         run: ./gradlew --info build
 
       - name: Attempt to make a PR fixing spotless errors
@@ -45,6 +44,22 @@ jobs:
           git switch -c "${FIXED_BRANCH}"
           git commit -am "spotlessApply"
           git push --force-with-lease origin "${FIXED_BRANCH}"
+#          gh pr create \
+#            --head "${FIXED_BRANCH}" \
+#            --base "${PR_BRANCH}" \
+#            --title "Spotless apply for branch ${{ github.event.pull_request.head.ref }} for #${{ github.event.pull_request.number }}" \
+#            --body "Automatic spotless apply to fix formatting errors, applies to PR #${{ github.event.pull_request.number }}" \
+#            2>&1 | tee pr-message.log || true
+#          gh pr comment "${PR_BRANCH}" -F pr-message.log || true
+        shell: bash # ensures set -eo pipefail
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_BRANCH: ${{ github.head_ref }}
+          FIXED_BRANCH: ${{ github.head_ref }}-spotless-fixes
+
+      - name: Pull Requests
+        if: ${{ failure() }}
+        run: |
           gh pr create \
             --head "${FIXED_BRANCH}" \
             --base "${PR_BRANCH}" \
@@ -52,7 +67,6 @@ jobs:
             --body "Automatic spotless apply to fix formatting errors, applies to PR #${{ github.event.pull_request.number }}" \
             2>&1 | tee pr-message.log || true
           gh pr comment "${PR_BRANCH}" -F pr-message.log || true
-        shell: bash # ensures set -eo pipefail
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_BRANCH: ${{ github.head_ref }}
