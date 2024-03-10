@@ -34,7 +34,7 @@ jobs:
         run: ./gradlew --info build
 
       - name: Attempt to make a PR fixing spotless errors
-        if: ${{ failure() }}
+        if: failure()
         run: |
           git reset --hard
           git checkout "${PR_BRANCH}"
