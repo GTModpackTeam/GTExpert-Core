@@ -20,10 +20,13 @@ jobs:
 
     permissions:
       pull-requests: write
+      contents: write
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Setup Build
         uses: ./.github/actions/build_setup
@@ -47,12 +50,13 @@ jobs:
           gh pr create \
             --head "${FIXED_BRANCH}" \
             --base "${PR_BRANCH}" \
-            --title "Spotless apply for branch ${PR_BRANCH} for #${{ github.event.pull_request.number }}" \
-            --body "Automatic spotless apply to fix formatting errors, applies to PR #${{ github.event.pull_request.number }}" \
+            --title "Spotless apply for branch ${PR_BRANCH} for #${PR_NUMBER}" \
+            --body "Automatic spotless apply to fix formatting errors, applies to PR #${PR_NUMBER}" \
             2>&1 | tee pr-message.log || true
           gh pr comment "${PR_BRANCH}" -F pr-message.log || true
         shell: bash # ensures set -eo pipefail
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           FIXED_BRANCH: ${{ github.head_ref }}-spotless-fixes
