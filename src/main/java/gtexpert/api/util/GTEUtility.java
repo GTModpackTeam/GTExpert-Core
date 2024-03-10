@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,5 +43,11 @@ public class GTEUtility {
 
     public static @NotNull ResourceLocation gteId(String path) {
         return new ResourceLocation(GTEValues.MODID, path);
+    }
+
+    public static void registerOre(String dictName, ItemStack... itemStacks) {
+        for (ItemStack stack : itemStacks) {
+            OreDictionary.registerOre(dictName, stack);
+        }
     }
 }
