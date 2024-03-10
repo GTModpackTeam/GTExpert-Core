@@ -14,7 +14,7 @@ public class EIOOreDictionaryLoader {
 
     public static void init() {
         // Gears
-        GTEUtility.registerOre("gearEnergeticAlloy", Material.GEAR_ENERGIZED.getStack());
+        OreDictionary.registerOre("gearEnergeticAlloy", Material.GEAR_ENERGIZED.getStack());
         OreDictionary.registerOre("gearVibrantAlloy", Material.GEAR_VIBRANT.getStack());
 
         // craftNutrientDistillation
