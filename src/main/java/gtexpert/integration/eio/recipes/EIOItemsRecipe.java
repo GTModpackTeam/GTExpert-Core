@@ -1,6 +1,8 @@
 package gtexpert.integration.eio.recipes;
 
+import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.VA;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.plate;
 
 import net.minecraft.init.Items;
@@ -14,6 +16,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
+import gtexpert.common.items.GTEMetaItems;
 import gtexpert.core.GTUtil;
 
 import crazypants.enderio.base.init.ModObject;
@@ -22,6 +25,15 @@ import crazypants.enderio.endergy.init.EndergyObject;
 public class EIOItemsRecipe {
 
     public static void init() {
+        // Enderman Head
+        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .circuitMeta(5)
+                .input(dust, Materials.EnderPearl, 2)
+                .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
+                .output(ModObject.blockEndermanSkull.getItemNN(), 1, 0)
+                .duration(200).EUt(VA[HV])
+                .buildAndRegister();
+
         // Soul Vial
         ModHandler.addShapedRecipe(true, "soul_vial",
                 GTEUtility.getModItem(Mods.Names.ENDER_IO, "item_soul_vial"),

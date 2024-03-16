@@ -206,6 +206,53 @@ public class GTERecipe {
     }
 
     private static void items() {
+        // Artificial Bone
+        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .circuitMeta(10)
+                .input(dust, Materials.Calcium, 10)
+                .input(dust, Materials.Phosphate, 6)
+                .fluidInputs(Materials.Hydrogen.getFluid(2000))
+                .fluidInputs(Materials.Oxygen.getFluid(2000))
+                .output(GTEMetaItems.ARTIFICIAL_BONE, 2)
+                .duration(1000).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Skeleton Skull
+        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
+                .outputs(Mods.Vanilla.getItem("skull", 1))
+                .duration(200).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Wither Skeleton Skull
+        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .circuitMeta(2)
+                .input(dust, Materials.Coal, 2)
+                .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
+                .outputs(Mods.Vanilla.getItem("skull", 1, 1))
+                .duration(200).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Zombie Head
+        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .circuitMeta(3)
+                .input(dust, Materials.Meat, 2)
+                .input(GTEMetaItems.ARTIFICIAL_BONE, 4)
+                .outputs(Mods.Vanilla.getItem("skull", 1, 2))
+                .duration(200).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Creeper Head
+        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .circuitMeta(4)
+                .input(dust, Materials.Gunpowder, 6)
+                .input(GTEMetaItems.ARTIFICIAL_BONE, 2)
+                .outputs(Mods.Vanilla.getItem("skull", 1, 4))
+                .duration(200).EUt(VA[HV])
+                .buildAndRegister();
+
+        // Primitive Parts
         String componentsName = GTEConfigHolder.gteFlag.componentsName ? "ulv" : "primitive";
         switch (GTEConfigHolder.gteFlag.componentsRecipeType) {
             case "none" -> {

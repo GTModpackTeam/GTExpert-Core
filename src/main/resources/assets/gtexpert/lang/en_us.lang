@@ -168,6 +168,7 @@ gregtech.material.void_metal=Void Metal
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME fake component
 metaitem.matrix_core.name=Matrix Core
+metaitem.artificial_bone.name=Artificial Bone
 metaitem.piston_boots.name=Piston Boots
 metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Higher!
 metaitem.electric.motor.primitive.name=Primitive Motor
