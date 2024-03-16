@@ -65,6 +65,7 @@ tile.gte_metal_casing.void_ore_miner_casing.name=抗虚空NM-HEA NP机械外壳
 tile.sawmill_conveyor.name=锯木机传送带
 
 # material
+gregtech.material.artificial_bone=人工骨
 gregtech.material.nm_hea_nps=纳米粒子贵金属高熵合金
 gregtech.material.naquadah_rocket_fuel=硅岩火箭燃料
 gregtech.material.infinity=无尽之

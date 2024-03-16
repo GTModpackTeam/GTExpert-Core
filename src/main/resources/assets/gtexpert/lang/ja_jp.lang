@@ -131,6 +131,7 @@ tile.sawmill_conveyor.name=製材機用コンベア
 tile.gte_wire_coil.awakened_draconium.name=覚醒ドラコニウムコイルブロック
 
 # material
+gregtech.material.artificial_bone=人工骨
 gregtech.material.nm_hea_nps=貴金属ハイエントロピーナノ合金
 gregtech.material.naquadah_rocket_fuel=ナクアダロケット燃料
 gregtech.material.infinity=インフィニティ

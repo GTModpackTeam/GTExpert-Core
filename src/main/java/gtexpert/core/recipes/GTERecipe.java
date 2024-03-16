@@ -214,15 +214,20 @@ public class GTERecipe {
                 .fluidInputs(Materials.Hydrogen.getFluid(2000))
                 .fluidInputs(Materials.Oxygen.getFluid(2000))
                 .output(GTEMetaItems.ARTIFICIAL_BONE, 2)
-                .duration(1000).EUt(VA[HV])
+                .duration(1000).EUt(VA[LuV])
                 .buildAndRegister();
+        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
+                .input(dust, GTEMaterials.ArtificialBone, 9)
+                .output(block, GTEMaterials.ArtificialBone)
+                .duration(300).EUt(2).buildAndRegister();
 
         // Skeleton Skull
         RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
+                .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1))
-                .duration(200).EUt(VA[HV])
+                .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
 
         // Wither Skeleton Skull
@@ -230,8 +235,9 @@ public class GTERecipe {
                 .circuitMeta(2)
                 .input(dust, Materials.Coal, 2)
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
+                .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1, 1))
-                .duration(200).EUt(VA[HV])
+                .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
 
         // Zombie Head
@@ -239,8 +245,9 @@ public class GTERecipe {
                 .circuitMeta(3)
                 .input(dust, Materials.Meat, 2)
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 4)
+                .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1, 2))
-                .duration(200).EUt(VA[HV])
+                .duration(200).EUt(VA[LuV])
                 .buildAndRegister();
 
         // Creeper Head
@@ -248,8 +255,9 @@ public class GTERecipe {
                 .circuitMeta(4)
                 .input(dust, Materials.Gunpowder, 6)
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 2)
+                .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1, 4))
-                .duration(200).EUt(VA[HV])
+                .duration(200).EUt(VA[IV])
                 .buildAndRegister();
 
         // Primitive Parts

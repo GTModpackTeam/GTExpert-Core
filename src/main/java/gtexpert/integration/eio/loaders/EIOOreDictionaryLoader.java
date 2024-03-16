@@ -4,6 +4,12 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.stack.ItemMaterialInfo;
+import gregtech.api.unification.stack.MaterialStack;
+
+import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 
 import crazypants.enderio.base.init.ModObject;
@@ -13,6 +19,12 @@ import crazypants.enderio.endergy.init.EndergyObject;
 public class EIOOreDictionaryLoader {
 
     public static void init() {
+        OreDictUnifier.registerOre(
+                new ItemStack(ModObject.blockEndermanSkull.getItemNN()),
+                new ItemMaterialInfo(
+                        new MaterialStack(Materials.EnderPearl, 2),
+                        new MaterialStack(GTEMaterials.ArtificialBone, 8)));
+
         // Gears
         OreDictionary.registerOre("gearEnergeticAlloy", Material.GEAR_ENERGIZED.getStack());
         OreDictionary.registerOre("gearVibrantAlloy", Material.GEAR_VIBRANT.getStack());

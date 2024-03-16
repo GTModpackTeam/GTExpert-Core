@@ -17,7 +17,13 @@ public class GTEFirstDegreeMaterials {
      * 24001 - 24100
      */
     public static void init() {
-        // FreeSpace 24001
+        // Artificial Bone 24001
+        ArtificialBone = new Material.Builder(24001, gregtechId("artificial_bone"))
+                .dust(1)
+                .color(0xFAFAFA)
+                .flags(FORCE_GENERATE_BLOCK, MORTAR_GRINDABLE, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES)
+                .components(Calcium, 10, Phosphate, 6, Hydrogen, 2, Oxygen, 2)
+                .build();
 
         // NM_HEA_NPs
         NM_HEA_NPs = new Material.Builder(24002, gregtechId("nm_hea_nps"))
