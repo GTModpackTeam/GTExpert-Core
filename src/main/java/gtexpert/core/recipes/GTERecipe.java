@@ -214,7 +214,7 @@ public class GTERecipe {
                 .fluidInputs(Materials.Hydrogen.getFluid(2000))
                 .fluidInputs(Materials.Oxygen.getFluid(2000))
                 .output(GTEMetaItems.ARTIFICIAL_BONE, 2)
-                .duration(1000).EUt(VA[LuV])
+                .duration(400).EUt(VA[IV])
                 .buildAndRegister();
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .input(dust, GTEMaterials.ArtificialBone, 9)
@@ -227,7 +227,7 @@ public class GTERecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1))
-                .duration(200).EUt(VA[LuV])
+                .duration(100).EUt(VA[IV])
                 .buildAndRegister();
 
         // Wither Skeleton Skull
@@ -237,7 +237,7 @@ public class GTERecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1, 1))
-                .duration(200).EUt(VA[LuV])
+                .duration(100).EUt(VA[IV])
                 .buildAndRegister();
 
         // Zombie Head
@@ -247,7 +247,7 @@ public class GTERecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 4)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1, 2))
-                .duration(200).EUt(VA[LuV])
+                .duration(100).EUt(VA[IV])
                 .buildAndRegister();
 
         // Creeper Head
@@ -257,7 +257,7 @@ public class GTERecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 2)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1, 4))
-                .duration(200).EUt(VA[IV])
+                .duration(100).EUt(VA[IV])
                 .buildAndRegister();
 
         // Primitive Parts

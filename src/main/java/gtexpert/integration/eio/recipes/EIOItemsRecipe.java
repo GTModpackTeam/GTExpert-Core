@@ -31,7 +31,7 @@ public class EIOItemsRecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .output(ModObject.blockEndermanSkull.getItemNN())
-                .duration(200).EUt(VA[LuV])
+                .duration(100).EUt(VA[IV])
                 .buildAndRegister();
 
         // Soul Vial
