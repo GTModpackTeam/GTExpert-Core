@@ -1,3 +1,9 @@
+# v2.1.1
+- Added a recipe to create Mob heads for users playing Peaceful.
+    -  Thanks to @hag-hag for his support!!
+
+* * *
+
 # v2.1.0
 - Forestry wood partially GT compliant.
     - Part 1 [#245](https://github.com/GTModpackTeam/GTExpert-Core/pull/245)
