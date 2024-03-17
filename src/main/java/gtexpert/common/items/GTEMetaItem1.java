@@ -25,7 +25,10 @@ public class GTEMetaItem1 extends StandardMetaItem {
         GTE_ME_FAKE_COMPONENT = addItem(0, "gte_me_fake_component");
         MATRIX_CORE = addItem(1, "matrix_core");
 
-        // Free range: ID 2-10
+        // Artificial bone
+        ARTIFICIAL_BONE = addItem(2, "artificial_bone");
+
+        // Free range: ID 3-10
 
         // Primitive parts: ID 11-20
         String componentsName = GTEConfigHolder.gteFlag.componentsName ? "ulv" : "primitive";

@@ -51,6 +51,7 @@ public class GTEMaterials {
     // Element Materials
 
     // First Degree Materials
+    public static Material ArtificialBone;
     public static Material NM_HEA_NPs;
     public static Material NaquadahRocketFuel;
     public static Material SoulSand;

@@ -131,6 +131,7 @@ tile.sawmill_conveyor.name=製材機用コンベア
 tile.gte_wire_coil.awakened_draconium.name=覚醒ドラコニウムコイルブロック
 
 # material
+gregtech.material.artificial_bone=人工骨
 gregtech.material.nm_hea_nps=貴金属ハイエントロピーナノ合金
 gregtech.material.naquadah_rocket_fuel=ナクアダロケット燃料
 gregtech.material.infinity=インフィニティ
@@ -167,6 +168,7 @@ gregtech.material.void_metal=ボイドメタル
 # item
 metaitem.gte_me_fake_component.name=GTExpert 虚構MEストレージセル素材
 metaitem.matrix_core.name=マトリックスコア
+metaitem.artificial_bone.name=人工骨
 metaitem.piston_boots.name=ピストンブーツ
 metaitem.piston_boots.tooltip=トロッコのように走り、ピストンのように跳ねる!
 metaitem.electric.motor.primitive.name=初歩的なモーター
