@@ -20,19 +20,23 @@ jobs:
 
     permissions:
       pull-requests: write
+      contents: write
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Setup Build
         uses: ./.github/actions/build_setup
 
       - name: Run Spotless Formatting Check with Gradle
-        run: ./gradlew --info build
+        id: build
+        run: ./gradlew --info spotlessCheck
 
       - name: Attempt to make a PR fixing spotless errors
-        if: ${{ failure() && steps.build_mod.conclusion == 'failure' && github.event_name == 'pull_request' && !github.event.pull_request.draft }}
+        if: failure()
         run: |
           git reset --hard
           git checkout "${PR_BRANCH}"
@@ -46,12 +50,13 @@ jobs:
           gh pr create \
             --head "${FIXED_BRANCH}" \
             --base "${PR_BRANCH}" \
-            --title "Spotless apply for branch ${{ github.event.pull_request.head.ref }} for #${{ github.event.pull_request.number }}" \
-            --body "Automatic spotless apply to fix formatting errors, applies to PR #${{ github.event.pull_request.number }}" \
+            --title "Spotless apply for branch ${PR_BRANCH} for #${PR_NUMBER}" \
+            --body "Automatic spotless apply to fix formatting errors, applies to PR #${PR_NUMBER}" \
             2>&1 | tee pr-message.log || true
           gh pr comment "${PR_BRANCH}" -F pr-message.log || true
         shell: bash # ensures set -eo pipefail
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_BRANCH: ${{ github.head_ref }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           FIXED_BRANCH: ${{ github.head_ref }}-spotless-fixes

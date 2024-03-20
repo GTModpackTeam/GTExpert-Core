@@ -1,54 +1,57 @@
 package gtexpert.integration.tc.recipes;
 
-import net.minecraft.util.ResourceLocation;
-
 import gregtech.api.recipes.ModHandler;
+import gregtech.common.ConfigHolder;
 
-import gtexpert.api.GTEValues;
+import gtexpert.api.util.Mods;
 
 public class TCMaterialsRecipe {
 
     public static void init() {
-        // Brass Ingot
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "nuggetatobrass"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "brassblocktoingots"));
-
-        // Brass Nugget
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "brasstonuggets"));
-
-        // Brass Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "brassingotstoblock"));
-
         // Brass Palte
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "brassplate"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("brassplate"));
 
         // Iron Plate
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "ironplate"));
-
-        // Thaumium Ingot
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "nuggetatothaumium"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumblocktoingots"));
-
-        // Thaumium Nugget
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumtonuggets"));
-
-        // Thaumium Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumingotstoblock"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("ironplate"));
 
         // Thaumium Plate
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "thaumiumplate"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("thaumiumplate"));
 
         // Void Plate
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidplate"));
+        ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("voidplate"));
+    }
 
-        // Void Ingot
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "nuggetatovoid"));
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidblocktoingots"));
+    public static void remove() {
+        if (ConfigHolder.recipes.disableManualCompression) {
+            // Brass Ingot
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("nuggetatobrass"));
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("brassblocktoingots"));
 
-        // Void Nugget
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidtonuggets"));
+            // Brass Nugget
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("brasstonuggets"));
 
-        // Void Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_TC, "voidingotstoblock"));
+            // Brass Block
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("brassingotstoblock"));
+
+            // Thaumium Ingot
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("nuggetatothaumium"));
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("thaumiumblocktoingots"));
+
+            // Thaumium Nugget
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("thaumiumtonuggets"));
+
+            // Thaumium Block
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("thaumiumingotstoblock"));
+
+            // Void Ingot
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("nuggetatovoid"));
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("voidblocktoingots"));
+
+            // Void Nugget
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("voidtonuggets"));
+
+            // Void Block
+            ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("voidingotstoblock"));
+        }
     }
 }

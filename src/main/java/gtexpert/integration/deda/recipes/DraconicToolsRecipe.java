@@ -6,8 +6,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 
@@ -22,6 +20,7 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
 public class DraconicToolsRecipe {
@@ -31,17 +30,17 @@ public class DraconicToolsRecipe {
         // Draconic Evolution
         // ########################################
         // Crystal Binder
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "crystal_binder"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("crystal_binder"));
         ModHandler.addShapedRecipe(true, "crystal_binder", new ItemStack(DEFeatures.crystalBinder),
                 "PhP", " R ", " C ",
                 'P', OreDictUnifier.get(plate, GTEMaterials.Draconium),
-                'R', Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                'R', Mods.EnderIO.isModLoaded() ?
                         OreDictUnifier.get(stick, GTEMaterials.EnergeticAlloy) :
                         OreDictUnifier.get(stick, Materials.BlueAlloy),
                 'C', DEFeatures.wyvernCore);
 
         // Wyvern Flux Capacitor
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconium_capacitor"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconium_capacitor"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
                 .inputs(new ItemStack(DEFeatures.wyvernEnergyCore, 4, 0))
@@ -53,7 +52,7 @@ public class DraconicToolsRecipe {
                 .buildAndRegister();
 
         // Draconic Flux Capacitor
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconium_capacitor_1"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconium_capacitor_1"));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
                 .inputs(new ItemStack(DEFeatures.draconiumCapacitor, 4, 0))
@@ -82,7 +81,7 @@ public class DraconicToolsRecipe {
         // Portable Wired Wyvern Charger
         ModHandler.addShapedRecipe(true, "portable_wired_charger_1", new ItemStack(DAFeatures.pwc, 1, 1),
                 "DDD", "ICI", "DDD",
-                'D', Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                'D', Mods.EnderIO.isModLoaded() ?
                         OreDictUnifier.get(plate, GTEMaterials.DarkSteel) :
                         OreDictUnifier.get(plate, Materials.Steel),
                 'I', OreDictUnifier.get(plate, Materials.Iron),
@@ -91,7 +90,7 @@ public class DraconicToolsRecipe {
         // Portable Wired Wyvern Discharger
         ModHandler.addShapedRecipe(true, "portable_wired_discharger_1", new ItemStack(DAFeatures.pwd, 1, 1),
                 "DDD", "GCG", "DDD",
-                'D', Loader.isModLoaded(GTEValues.MODID_EIO) ?
+                'D', Mods.EnderIO.isModLoaded() ?
                         OreDictUnifier.get(plate, GTEMaterials.DarkSteel) :
                         OreDictUnifier.get(plate, Materials.Steel),
                 'G', OreDictUnifier.get(plate, Materials.Gold),

@@ -9,10 +9,8 @@ import java.util.List;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.Loader;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -33,6 +31,7 @@ import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
+import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
@@ -42,6 +41,7 @@ import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.api.util.Mods;
 
 public class DraconicMaterialsRecipe {
 
@@ -60,7 +60,7 @@ public class DraconicMaterialsRecipe {
                 .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, GTEMaterials.Dragon, 2)
                 .duration(600).EUt(VA[GTEValues.dedaVoltageTier]);
-        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+        if (Mods.EnderIO.isModLoaded()) {
             builderDD.input(dust, GTEMaterials.EndSteel, 1);
         } else {
             builderDD.input(dust, Materials.Endstone, 1);
@@ -111,7 +111,7 @@ public class DraconicMaterialsRecipe {
                 .buildAndRegister();
 
         // Draconium Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconium_block"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconium_block"));
         ModHandler.addMirroredShapedRecipe("de_draconium_block", new ItemStack(DEFeatures.draconiumBlock), "B", 'B',
                 OreDictUnifier.get(block, GTEMaterials.Draconium));
         ModHandler.addMirroredShapedRecipe("ceu_draconium_block", OreDictUnifier.get(block, GTEMaterials.Draconium),
@@ -119,7 +119,7 @@ public class DraconicMaterialsRecipe {
                 new ItemStack(DEFeatures.draconiumBlock));
 
         // Awakened Draconium Block
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "draconic_block"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconic_block"));
         ModHandler.addMirroredShapedRecipe("de_draconic_block", new ItemStack(DEFeatures.draconicBlock), "B", 'B',
                 OreDictUnifier.get(block, GTEMaterials.AwakenedDraconium));
         ModHandler.addMirroredShapedRecipe("ceu_draconic_block",
@@ -374,5 +374,32 @@ public class DraconicMaterialsRecipe {
      */
     private static int getGasCircuitNum(int componentAmount) {
         return componentAmount + 11;
+    }
+
+    public static void remove() {
+        // Draconium Ore
+        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1, 0));
+        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1, 1));
+        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1, 2));
+
+        // Draconium Dust
+        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_dust"));
+
+        if (ConfigHolder.recipes.disableManualCompression) {
+            // Draconium Nugget
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("nugget"));
+
+            // Draconium Ingot
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconium_ingot"));
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconium_ingot_1"));
+            ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ingot"));
+
+            // Awakened Draconium Nugget
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("nugget_1"));
+
+            // Awakened Draconium Ingot
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconic_ingot"));
+            ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("draconic_ingot_1"));
+        }
     }
 }

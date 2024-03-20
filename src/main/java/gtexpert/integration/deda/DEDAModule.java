@@ -3,9 +3,11 @@ package gtexpert.integration.deda;
 import net.minecraft.block.Block;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.deda.loaders.DEDAMaterialInfoLoader;
 import gtexpert.integration.deda.loaders.DEDAOreDictionaryLoader;
@@ -18,7 +20,7 @@ import gtexpert.modules.GTEModules;
 @GTEModule(
            moduleID = GTEModules.MODULE_DEDA,
            containerID = GTEValues.MODID,
-           modDependencies = { GTEValues.MODID_DE, GTEValues.MODID_DA },
+           modDependencies = { Mods.Names.DRACONIC_EVOLUTION, Mods.Names.DRACONIC_ADDITIONS },
            name = "GTExpert Draconic Evolution & Draconic Additions Integration",
            description = "Draconic Evolution & Draconic Additions Integration Module")
 public class DEDAModule extends GTEIntegrationSubmodule {
@@ -26,6 +28,11 @@ public class DEDAModule extends GTEIntegrationSubmodule {
     @Override
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         DEDAMetaTileEntities.init();
+    }
+
+    @Override
+    public void postInit(FMLPostInitializationEvent event) {
+        DraconicMaterialsRecipe.remove();
     }
 
     @Override

@@ -1,3 +1,32 @@
+# v2.1.1
+- Added a recipe to create Mob heads for users playing Peaceful.
+    -  Thanks to @hag-hag for his support!!
+
+* * *
+
+# v2.1.0
+- Forestry wood partially GT compliant.
+    - Part 1 [#245](https://github.com/GTModpackTeam/GTExpert-Core/pull/245)
+    - Part 2 [#247](https://github.com/GTModpackTeam/GTExpert-Core/pull/247)
+- Fixed a recipe change that ignored a CEu cfg setting called `disableManualCompression`. [#244](https://github.com/GTModpackTeam/GTExpert-Core/pull/244)
+
+* * *
+
+# v2.0.8
+- Multiplayer bug fixes [#243](https://github.com/GTModpackTeam/GTExpert-Core/pull/243)
+
+* * *
+
+# v2.0.7
+- Following `#2354` in CEu [#255](https://github.com/GTModpackTeam/GTExpert-Core/issues/225)
+
+* * *
+
+# v2.0.6
+- Fix AE Additions Integration [#237](https://github.com/GTModpackTeam/GTExpert-Core/pull/237)
+
+* * *
+
 # v2.0.5
 - Name change of AGC in GTE to LGC [#236](https://github.com/GTModpackTeam/GTExpert-Core/pull/236)
 

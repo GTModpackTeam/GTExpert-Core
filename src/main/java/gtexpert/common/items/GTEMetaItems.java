@@ -9,6 +9,7 @@ public final class GTEMetaItems {
 
     public static MetaItem<?>.MetaValueItem GTE_ME_FAKE_COMPONENT;
     public static MetaItem<?>.MetaValueItem MATRIX_CORE;
+    public static MetaItem<?>.MetaValueItem ARTIFICIAL_BONE;
     public static MetaItem<?>.MetaValueItem GTE_ELECTRIC_MOTOR;
     public static MetaItem<?>.MetaValueItem GTE_ELECTRIC_PUMP;
     public static MetaItem<?>.MetaValueItem GTE_CONVEYOR_MODULE;

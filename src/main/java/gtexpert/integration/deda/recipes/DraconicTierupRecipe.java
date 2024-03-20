@@ -5,8 +5,6 @@ import static gregtech.api.unification.ore.OrePrefix.plate;
 
 import net.foxmcloud.draconicadditions.DAFeatures;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 
@@ -27,6 +25,7 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
+import gtexpert.api.util.Mods;
 import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
 
@@ -34,7 +33,7 @@ public class DraconicTierupRecipe {
 
     public static void init() {
         // Axe of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_axe"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_axe"));
         addTierUpRecipe(
                 new GTRecipeItemInput(ToolItems.AXE.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
@@ -44,7 +43,7 @@ public class DraconicTierupRecipe {
                 Tier.WYVERN, 2);
 
         // Pickaxe of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_pick"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_pick"));
         addTierUpRecipe(
                 new GTRecipeItemInput(ToolItems.PICKAXE.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
@@ -54,7 +53,7 @@ public class DraconicTierupRecipe {
                 Tier.WYVERN, 2);
 
         // Shovel of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_shovel"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_shovel"));
         addTierUpRecipe(
                 new GTRecipeItemInput(ToolItems.SHOVEL.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
@@ -64,30 +63,30 @@ public class DraconicTierupRecipe {
                 Tier.WYVERN, 2);
 
         // Sword of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_sword"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_sword"));
         addTierUpRecipe(MetaItems.NANO_SABER.getStackForm(),
                 new ItemStack(DEFeatures.wyvernSword),
                 Tier.WYVERN, 2);
 
         // Bow of the Wyvern
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_bow"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_bow"));
         addTierUpRecipe(
-                new GTRecipeItemInput(Loader.isModLoaded(GTEValues.MODID_EIO) ?
-                        GTEUtility.getModItem(GTEValues.MODID_EIO, "item_dark_steel_bow") :
-                        GTEUtility.getModItem(GTEValues.MODID_VANILLA, "bow"))
+                new GTRecipeItemInput(Mods.EnderIO.isModLoaded() ?
+                        GTEUtility.getModItem(Mods.Names.ENDER_IO, "item_dark_steel_bow") :
+                        Mods.Vanilla.getItem("bow"))
                                 .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 new ItemStack(DEFeatures.wyvernBow),
                 Tier.WYVERN, 2);
 
         // Wyvern Helm
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_helm"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_helm"));
         addTierUpRecipe(
                 MetaItems.QUANTUM_HELMET.getStackForm(),
                 new ItemStack(DEFeatures.wyvernHelm),
                 Tier.WYVERN, 6);
 
         // Wyvern Chest
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_chest"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_chest"));
         addTierUpRecipe(
                 MetaItems.QUANTUM_CHESTPLATE_ADVANCED.getStackForm(),
                 new ItemStack(DEFeatures.wyvernChest),
@@ -95,7 +94,7 @@ public class DraconicTierupRecipe {
                 6);
 
         // Wyvern Legs
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_legs"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_legs"));
         addTierUpRecipe(
                 MetaItems.QUANTUM_LEGGINGS.getStackForm(),
                 new ItemStack(DEFeatures.wyvernLegs),
@@ -103,7 +102,7 @@ public class DraconicTierupRecipe {
                 6);
 
         // Wyvern Boots
-        ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID_DE, "wyvern_boots"));
+        ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_boots"));
         addTierUpRecipe(
                 MetaItems.QUANTUM_BOOTS.getStackForm(),
                 new ItemStack(DEFeatures.wyvernBoots),

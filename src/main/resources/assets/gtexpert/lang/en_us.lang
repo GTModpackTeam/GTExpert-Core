@@ -132,6 +132,7 @@ tile.sawmill_conveyor.name=Sawmill Conveyor
 tile.gte_wire_coil.awakened_draconium.name=Awakened Draconium Coil Block
 
 # material
+gregtech.material.artificial_bone=Artificial Bone
 gregtech.material.nm_hea_nps=Noble-Metal High-Entropy-Alloy Nanoparticles
 gregtech.material.naquadah_rocket_fuel=Naquadah Rocket Fuel
 gregtech.material.infinity=Infinity
@@ -168,6 +169,7 @@ gregtech.material.void_metal=Void Metal
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME fake component
 metaitem.matrix_core.name=Matrix Core
+metaitem.artificial_bone.name=Artificial Bone
 metaitem.piston_boots.name=Piston Boots
 metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Higher!
 metaitem.electric.motor.primitive.name=Primitive Motor
