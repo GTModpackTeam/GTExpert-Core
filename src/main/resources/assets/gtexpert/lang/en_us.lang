@@ -123,6 +123,24 @@ gtexpert.machine.electric_spawner.zpm.tooltip=Can be used in place of a spawner 
 gtexpert.machine.electric_spawner.uv.name=Ultimate Electric Spawner
 gtexpert.machine.electric_spawner.uv.tooltip=Can be used in place of a spawner to spawn various monsters/n§dAuthor:§f @miozune, @MrKono
 
+# Industrial Apiary
+gtexpert.machine.industrial_apiary.lv.name=Basic Industrial Apiary
+gtexpert.machine.industrial_apiary.lv.tooltip=BEES GOES BRRRR/n§dAuthor:§f @tier940
+gtexpert.machine.industrial_apiary.mv.name=Advanced Industrial Apiary
+gtexpert.machine.industrial_apiary.mv.tooltip=BEES GOES BRRRR/n§dAuthor:§f @tier940
+gtexpert.machine.industrial_apiary.hv.name=Advanced Industrial Apiary II
+gtexpert.machine.industrial_apiary.hv.tooltip=BEES GOES BRRRR/n§dAuthor:§f @tier940
+gtexpert.machine.industrial_apiary.ev.name=Advanced Industrial Apiary III
+gtexpert.machine.industrial_apiary.ev.tooltip=BEES GOES BRRRR/n§dAuthor:§f @tier940
+gtexpert.machine.industrial_apiary.iv.name=Elite Industrial Apiary
+gtexpert.machine.industrial_apiary.iv.tooltip=BEES GOES BRRRR/n§dAuthor:§f @tier940
+gtexpert.machine.industrial_apiary.luv.name=Elite Industrial Apiary II
+gtexpert.machine.industrial_apiary.luv.tooltip=BEES GOES BRRRR/n§dAuthor:§f @tier940
+gtexpert.machine.industrial_apiary.zpm.name=Elite Industrial Apiary III
+gtexpert.machine.industrial_apiary.zpm.tooltip=BEES GOES BRRRR/n§dAuthor:§f @tier940
+gtexpert.machine.industrial_apiary.uv.name=Ultimate Industrial Apiary
+gtexpert.machine.industrial_apiary.uv.tooltip=BEES GOES BRRRR/n§dAuthor:§f @tier940
+
 # block
 tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
 tile.gte_metal_casing.void_ore_miner_casing.name=Voiding Proof NM-HEA NP Machine Casing

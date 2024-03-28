@@ -122,6 +122,24 @@ gtexpert.machine.electric_spawner.zpm.tooltip=スポナーの代わりに使用�
 gtexpert.machine.electric_spawner.uv.name=究極型電動スポナー
 gtexpert.machine.electric_spawner.uv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
 
+# Industrial Apiary
+gtexpert.machine.industrial_apiary.lv.name=基本型工業用養蜂箱
+gtexpert.machine.industrial_apiary.lv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.mv.name=発展型工業用養蜂箱
+gtexpert.machine.industrial_apiary.mv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.hv.name=発展型工業用養蜂箱 II
+gtexpert.machine.industrial_apiary.hv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.ev.name=発展型工業用養蜂箱 III
+gtexpert.machine.industrial_apiary.ev.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.iv.name=精鋭型工業用養蜂箱
+gtexpert.machine.industrial_apiary.iv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.luv.name=精鋭型工業用養蜂箱 II
+gtexpert.machine.industrial_apiary.luv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.zpm.name=精鋭型工業用養蜂箱 III
+gtexpert.machine.industrial_apiary.zpm.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.uv.name=究極型工業用養蜂箱
+gtexpert.machine.industrial_apiary.uv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
 tile.gte_metal_casing.void_ore_miner_casing.name=対虚無マシン外装

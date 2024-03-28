@@ -69,6 +69,7 @@ public enum Mods {
     ForestryResearch(Names.FORESTRY, forestryModule(Names.FORESTRY_RESEARCH)),
     GalacticraftCore(Names.GALACTICRAFT_CORE),
     Genetics(Names.GENETICS),
+    Gendustry(Names.GENDUSTRY),
     GregicalityMultiblocks(Names.GREGICALITY_MULTIBLOCKS),
     GregTech(Names.GREGTECH),
     GregTechFoodOption(Names.GREGTECH_FOOD_OPTION),
@@ -160,6 +161,7 @@ public enum Mods {
         public static final String FORESTRY_RESEARCH = "research";
         public static final String GALACTICRAFT_CORE = "galacticraftcore";
         public static final String GENETICS = "genetics";
+        public static final String GENDUSTRY = "gendustry";
         public static final String GREGICALITY_MULTIBLOCKS = "gcym";
         public static final String GREGTECH = GTValues.MODID;
         public static final String GREGTECH_FOOD_OPTION = "gregtechfoodoption";
