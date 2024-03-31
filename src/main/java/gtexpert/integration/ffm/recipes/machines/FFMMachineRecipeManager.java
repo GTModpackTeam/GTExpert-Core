@@ -9,7 +9,7 @@ public class FFMMachineRecipeManager {
         if (FFMConfigHolder.hardForestryRecipe) {
             CarpenterLoader.initHard();
         } else {
-        CarpenterLoader.initNormal();
+            CarpenterLoader.initNormal();
         }
     }
 }

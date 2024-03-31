@@ -4,14 +4,10 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gtexpert.integration.ffm.FFMModule.removeCarpenterRecipe;
 
-import forestry.api.circuits.ICircuit;
-import forestry.api.core.ForestryAPI;
-import forestry.api.recipes.RecipeManagers;
-import forestry.arboriculture.ModuleArboriculture;
-import forestry.core.circuits.EnumCircuitBoardType;
-import forestry.core.circuits.ItemCircuitBoard;
-import forestry.core.fluids.Fluids;
-import forestry.lepidopterology.ModuleLepidopterology;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
@@ -24,13 +20,20 @@ import gregtech.api.util.GTUtility;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+
 import gtexpert.api.util.Mods;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+
+import forestry.api.circuits.ICircuit;
+import forestry.api.core.ForestryAPI;
+import forestry.api.recipes.RecipeManagers;
+import forestry.arboriculture.ModuleArboriculture;
+import forestry.core.circuits.EnumCircuitBoardType;
+import forestry.core.circuits.ItemCircuitBoard;
+import forestry.core.fluids.Fluids;
+import forestry.lepidopterology.ModuleLepidopterology;
 
 public class CarpenterLoader {
+
     public static float energyModifier = ForestryAPI.activeMode.getFloatSetting("energy.demand.modifier");
     public static int feToEu = ConfigHolder.compat.energy.euToFeRatio;
 
@@ -62,7 +65,7 @@ public class CarpenterLoader {
      * - : Always loaded
      * Normal : Only loaded when hardForestryRecipe is false
      * Hard : Only loaded when hardForestryRecipe is true
-    */
+     */
     public static void Core() {
         if (Mods.ForestryFactory.isModLoaded()) {
             removeCarpenterRecipe(Mods.Forestry.getItem("portable_alyzer"));
@@ -393,7 +396,7 @@ public class CarpenterLoader {
                 .fluidInputs(Fluids.FOR_HONEY.getFluid(5000))
                 .outputs(Mods.Forestry.getItem("alveary.sieve"))
                 .EUt(60).duration(timeCarpenter(60)).buildAndRegister();
-        
+
         if (Mods.ForestryFactory.isModLoaded()) {
             // Apiarist's Chest
             RecipeManagers.carpenterManager.addRecipe(
@@ -407,7 +410,8 @@ public class CarpenterLoader {
 
             // Apiariy
             RecipeManagers.carpenterManager.addRecipe(
-                    60, SeedOil.getFluid(1000), Mods.Forestry.getItem("frame_impregnated"), Mods.Forestry.getItem("apiary"),
+                    60, SeedOil.getFluid(1000), Mods.Forestry.getItem("frame_impregnated"),
+                    Mods.Forestry.getItem("apiary"),
                     "sws", "aca", "fwf",
                     's', "screwSteel",
                     'w', "slabWood",
@@ -421,7 +425,7 @@ public class CarpenterLoader {
                     60, Fluids.FOR_HONEY.getFluid(5000),
                     Mods.Forestry.getItem("alveary.plain"), Mods.Forestry.getItem("alveary.swarmer"),
                     "TGT", "RFR", "TGT",
-                    'T', Mods.Forestry.getItem("thermionic_tubes", 1,5 ),
+                    'T', Mods.Forestry.getItem("thermionic_tubes", 1, 5),
                     'G', new UnificationEntry(OrePrefix.foil, RoseGold).toString(),
                     'R', Mods.Forestry.getItem("royal_jelly"),
                     'F', Mods.Forestry.getItem("frame_impregnated"));
@@ -528,15 +532,17 @@ public class CarpenterLoader {
                 .fluidInputs(Water.getFluid(2000))
                 .outputs(Mods.Forestry.getItem("habitat_screen"))
                 .EUt(100).duration(timeCarpenter(100)).buildAndRegister();
-
     }
 
     public static void Factory() {
         if (!Mods.ForestryFactory.isModLoaded()) return;
-        removeCarpenterRecipe(ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.BASIC, null, new ICircuit[]{}));
-        removeCarpenterRecipe(ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.ENHANCED, null, new ICircuit[]{}));
-        removeCarpenterRecipe(ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.REFINED, null, new ICircuit[]{}));
-        removeCarpenterRecipe(ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.INTRICATE, null, new ICircuit[]{}));
+        removeCarpenterRecipe(ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.BASIC, null, new ICircuit[] {}));
+        removeCarpenterRecipe(
+                ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.ENHANCED, null, new ICircuit[] {}));
+        removeCarpenterRecipe(
+                ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.REFINED, null, new ICircuit[] {}));
+        removeCarpenterRecipe(
+                ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.INTRICATE, null, new ICircuit[] {}));
         removeCarpenterRecipe(Mods.Forestry.getItem("soldering_iron"));
 
         RecipeManagers.carpenterManager.addRecipe(
@@ -564,16 +570,20 @@ public class CarpenterLoader {
 
     public static void FactoryHard() {
         if (!Mods.ForestryFactory.isModLoaded()) return;
-        registerCircuitRecipeHard(Mods.Forestry.getItem("chipsets", 1, 0), 20, Iron, MetaItems.COATED_BOARD, "circuitUlv");
-        registerCircuitRecipeHard(Mods.Forestry.getItem("chipsets", 1, 1), 40, Bronze, MetaItems.COATED_BOARD, "circuitLv");
-        registerCircuitRecipeHard(Mods.Forestry.getItem("chipsets", 1, 2), 80, Steel, MetaItems.PHENOLIC_BOARD, "circuitMv");
-        registerCircuitRecipeHard(Mods.Forestry.getItem("chipsets", 1, 3), 160, Electrum, MetaItems.PHENOLIC_BOARD, "circuitHv");
+        registerCircuitRecipeHard(Mods.Forestry.getItem("chipsets", 1, 0), 20, Iron, MetaItems.COATED_BOARD,
+                "circuitUlv");
+        registerCircuitRecipeHard(Mods.Forestry.getItem("chipsets", 1, 1), 40, Bronze, MetaItems.COATED_BOARD,
+                "circuitLv");
+        registerCircuitRecipeHard(Mods.Forestry.getItem("chipsets", 1, 2), 80, Steel, MetaItems.PHENOLIC_BOARD,
+                "circuitMv");
+        registerCircuitRecipeHard(Mods.Forestry.getItem("chipsets", 1, 3), 160, Electrum, MetaItems.PHENOLIC_BOARD,
+                "circuitHv");
     }
 
     public static void Mail() {
         if (!Mods.ForestryMail.isModLoaded()) return;
 
-        Material[] matStamp = {Apatite, Copper, Tin, Gold};
+        Material[] matStamp = { Apatite, Copper, Tin, Gold };
 
         for (int i = 0; i < matStamp.length; i++) {
             ASSEMBLER_RECIPES.recipeBuilder()
@@ -617,15 +627,15 @@ public class CarpenterLoader {
                     Mods.Forestry.getItem("forester_bag"),
                     Mods.Forestry.getItem("hunter_bag"),
                     Mods.Forestry.getItem("adventurer_bag"),
-                    Mods.Forestry.getItem("builder_bag")};
+                    Mods.Forestry.getItem("builder_bag") };
             ItemStack[] backStackT2 = { Mods.Forestry.getItem("miner_bag_t2"),
                     Mods.Forestry.getItem("digger_bag_t2"),
                     Mods.Forestry.getItem("forester_bag_t2"),
                     Mods.Forestry.getItem("hunter_bag_t2"),
                     Mods.Forestry.getItem("adventurer_bag_t2"),
-                    Mods.Forestry.getItem("builder_bag_t2")};
+                    Mods.Forestry.getItem("builder_bag_t2") };
 
-            for (int i =0; i < backStack.length; i++) {
+            for (int i = 0; i < backStack.length; i++) {
 
                 ASSEMBLER_RECIPES.recipeBuilder()
                         .input(OrePrefix.gem, Diamond)
@@ -646,9 +656,9 @@ public class CarpenterLoader {
         }
     }
 
-    private static void registerCircuitRecipeNormal (ItemStack output, int EUt,
-                                              Material material,
-                                              MetaItem.MetaValueItem center) {
+    private static void registerCircuitRecipeNormal(ItemStack output, int EUt,
+                                                    Material material,
+                                                    MetaItem.MetaValueItem center) {
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.plate, material, 6)
                 .input(OrePrefix.plate, RedAlloy, 2)
@@ -662,20 +672,18 @@ public class CarpenterLoader {
                 "STS", "SCS", "STS",
                 'S', new UnificationEntry(OrePrefix.plate, material).toString(),
                 'T', new UnificationEntry(OrePrefix.plate, RedAlloy).toString(),
-                'C', center.getStackForm()
-        );
+                'C', center.getStackForm());
         RecipeManagers.carpenterManager.addRecipe(
                 EUt, Tin.getFluid(144),
                 ItemStack.EMPTY, output,
                 "STS", "SCS", "STS",
                 'S', new UnificationEntry(OrePrefix.plate, material).toString(),
                 'T', new UnificationEntry(OrePrefix.plate, RedAlloy).toString(),
-                'C', center.getStackForm()
-        );
+                'C', center.getStackForm());
     }
 
     private static void registerCircuitRecipeHard(ItemStack output, int EUt, Material material,
-                                           MetaItem.MetaValueItem broad, String circuit) {
+                                                  MetaItem.MetaValueItem broad, String circuit) {
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.screw, material, 4)
                 .input(OrePrefix.foil, material, 2)
@@ -706,7 +714,4 @@ public class CarpenterLoader {
     public static int timeCarpenter(int EUt) {
         return Math.round(EUt * 204 * energyModifier / (100 * feToEu));
     }
-
-
-
 }

@@ -2,13 +2,13 @@ package gtexpert.integration.ffm.recipes;
 
 import static gregtech.api.unification.material.Materials.Bronze;
 
-import gregtech.api.GTValues;
-import gregtech.api.unification.material.Materials;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
@@ -71,7 +71,7 @@ public class FFMToolRecipe {
                 'G', new ItemStack(Blocks.GLASS_PANE, 1, GTValues.W),
                 'B', new UnificationEntry(OrePrefix.bolt, Materials.IronMagnetic),
                 'R', new UnificationEntry(OrePrefix.ring, Materials.Zinc),
-                'P', new UnificationEntry(OrePrefix.plate,Bronze),
+                'P', new UnificationEntry(OrePrefix.plate, Bronze),
                 'A', new UnificationEntry(OrePrefix.bolt, Materials.RedAlloy));
     }
 }
