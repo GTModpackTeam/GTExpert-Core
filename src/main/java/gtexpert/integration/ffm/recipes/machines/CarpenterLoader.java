@@ -4,19 +4,24 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gtexpert.integration.ffm.FFMModule.removeCarpenterRecipe;
 
+import forestry.api.circuits.ICircuit;
 import forestry.api.core.ForestryAPI;
 import forestry.api.recipes.RecipeManagers;
 import forestry.arboriculture.ModuleArboriculture;
+import forestry.core.circuits.EnumCircuitBoardType;
+import forestry.core.circuits.ItemCircuitBoard;
 import forestry.core.fluids.Fluids;
 import forestry.lepidopterology.ModuleLepidopterology;
 import gregtech.api.GTValues;
-import gregtech.api.capability.FeCompat;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
+import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.util.Mods;
@@ -27,7 +32,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class CarpenterLoader {
     public static float energyModifier = ForestryAPI.activeMode.getFloatSetting("energy.demand.modifier");
-    public static int feToEu = FeCompat.ratio(true);
+    public static int feToEu = ConfigHolder.compat.energy.euToFeRatio;
 
     public static void initBase() {
         Core();
@@ -188,7 +193,7 @@ public class CarpenterLoader {
         // Portable Analyzer
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.plate, Tin, 2)
-                .input("circuitLv")
+                .input("circuitLv", 2)
                 .input(OrePrefix.plate, Diamond)
                 .input("paneGlass", 2)
                 .input(OrePrefix.plate, RedAlloy, 2)
@@ -213,7 +218,7 @@ public class CarpenterLoader {
         // Portable Analyzer
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.plate, Tin, 2)
-                .input("circuitMv")
+                .input("circuitMv", 2)
                 .input(OrePrefix.plate, Diamond)
                 .input("paneGlass", 2)
                 .input(OrePrefix.plate, RedAlloy, 2)
@@ -528,11 +533,10 @@ public class CarpenterLoader {
 
     public static void Factory() {
         if (!Mods.ForestryFactory.isModLoaded()) return;
-        removeCarpenterRecipe(Mods.Forestry.getItem("chipsets", 1, 0));
-        removeCarpenterRecipe(Mods.Forestry.getItem("chipsets", 1, 1));
-        removeCarpenterRecipe(Mods.Forestry.getItem("chipsets", 1, 2));
-        removeCarpenterRecipe(Mods.Forestry.getItem("chipsets", 1, 2));
-
+        removeCarpenterRecipe(ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.BASIC, null, new ICircuit[]{}));
+        removeCarpenterRecipe(ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.ENHANCED, null, new ICircuit[]{}));
+        removeCarpenterRecipe(ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.REFINED, null, new ICircuit[]{}));
+        removeCarpenterRecipe(ItemCircuitBoard.createCircuitboard(EnumCircuitBoardType.INTRICATE, null, new ICircuit[]{}));
         removeCarpenterRecipe(Mods.Forestry.getItem("soldering_iron"));
 
         RecipeManagers.carpenterManager.addRecipe(
@@ -622,19 +626,15 @@ public class CarpenterLoader {
                     Mods.Forestry.getItem("builder_bag_t2")};
 
             for (int i =0; i < backStack.length; i++) {
-                NBTTagCompound tag = backStack[1].getTagCompound();
-                backStackT2[i].setTagCompound(tag);
 
                 ASSEMBLER_RECIPES.recipeBuilder()
                         .input(OrePrefix.gem, Diamond)
-                        .inputs(backStack[i])
+                        .inputNBT(backStack[i].getItem(), NBTMatcher.ANY, NBTCondition.ANY)
                         .inputs(Mods.Forestry.getItem("crafting_material", 7, 3))
                         .fluidInputs(Water.getFluid(1000))
                         .outputs(backStackT2[i])
                         .EUt(200).duration(timeCarpenter(200)).buildAndRegister();
             }
-
-
         }
         if (Mods.ForestryCrate.isModLoaded()) {
             ASSEMBLER_RECIPES.recipeBuilder()
