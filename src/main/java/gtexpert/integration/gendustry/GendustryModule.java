@@ -10,6 +10,8 @@ import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.gendustry.metatileentities.GendustryMetaTileEntities;
+import gtexpert.integration.gendustry.recipes.GendustryBlocksRecipe;
+import gtexpert.integration.gendustry.recipes.GendustryItemsRecipe;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
@@ -29,5 +31,8 @@ public class GendustryModule extends GTEIntegrationSubmodule {
     public void postInit(FMLPostInitializationEvent event) {}
 
     @Override
-    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {}
+    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
+        GendustryItemsRecipe.init();
+        GendustryBlocksRecipe.init();
+    }
 }
