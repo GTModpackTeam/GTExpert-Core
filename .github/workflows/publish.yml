@@ -107,6 +107,7 @@ jobs:
             project-red-illumination(recommended)
             avaritia-1-1x-kedition(recommended)
             thaumcraft(recommended)
+            forestry(recommended)
             ulv-covers(incompatible)
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar

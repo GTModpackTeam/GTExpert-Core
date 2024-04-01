@@ -63,8 +63,10 @@ dependencies {
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-59751:2684780") // Forestry 5.8.2.387
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:beebetteratbees-244516:2627215") // BeeBetterAtBees 2.0.3
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:jei-bees-248370:2490058") // JEIBees 0.9.0.5
-        runtimeOnlyNonPublishable rfg.deobf("curse.maven:gendustry-70492:2516215") // Gendustry 1.6.5.8
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:bdlib-70496:2518031") // BdLib 1.14.3.12
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:gendustry-70492:2516215") // Gendustry 1.6.5.8
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:gendustry-jei-addon-301364:2609434") // Gendustry JEI Addon 1.0.2
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:binnies-mods-patched-899182:4741099") // Binnie's Mods Patched 2.5.1.211
     }
 
     // Debug Chisel
