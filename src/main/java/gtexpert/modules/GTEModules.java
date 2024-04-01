@@ -19,7 +19,10 @@ public class GTEModules implements IModuleContainer {
     public static final String MODULE_AE = "ae_integration";
     public static final String MODULE_AEA = "aeadditions_integration";
     public static final String MODULE_NAE2 = "nae2_integration";
+    public static final String MODULE_EXBEES = "extrabees_integration";
     public static final String MODULE_EXCPUS = "extracpus_integration";
+    public static final String MODULE_EXTREES = "extratrees_integration";
+    public static final String MODULE_GENETICS = "genetics_integration";
     public static final String MODULE_GTFO = "gtfo_integration";
     public static final String MODULE_EIO = "eio_integration";
     public static final String MODULE_DEDA = "deda_integration";

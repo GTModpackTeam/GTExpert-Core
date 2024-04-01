@@ -10,6 +10,7 @@ import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.ffm.loaders.FFMOreDictionaryLoader;
 import gtexpert.integration.ffm.recipes.*;
+import gtexpert.integration.ffm.recipes.machines.CarpenterLoader;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
@@ -27,6 +28,9 @@ public class FFMModule extends GTEIntegrationSubmodule {
         FFMMaterialsRecipe.init();
         FFMToolRecipe.init();
         FFMWoodRecipe.init();
+
+        CarpenterLoader.initBase();
+        CarpenterLoader.initMode(FFMUtility.recipeMode.safeValueOf(FFMConfigHolder.gameMode));
     }
 
     @Override

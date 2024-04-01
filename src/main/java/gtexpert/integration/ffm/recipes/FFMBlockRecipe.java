@@ -1,16 +1,14 @@
 package gtexpert.integration.ffm.recipes;
 
-import static gregtech.api.recipes.RecipeMaps.ALLOY_SMELTER_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
-import static net.minecraft.init.Items.BRICK;
-import static net.minecraft.init.Items.CLAY_BALL;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.ConfigHolder;
 
 import gtexpert.api.util.Mods;
@@ -30,13 +28,13 @@ public class FFMBlockRecipe {
         // Ash Brick
         if (ConfigHolder.recipes.harderBrickRecipes) {
             ModHandler.removeRecipeByName(Mods.Forestry.getResource("ash_brick"));
-            ALLOY_SMELTER_RECIPES.recipeBuilder()
-                    .input(OrePrefix.dust, Materials.Ash, 4)
-                    .inputs(new ItemStack(BRICK, 4))
+            RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
+                    .input(dust, Materials.Ash, 4)
+                    .inputs(new ItemStack(Items.BRICK, 4))
                     .outputs(Mods.Forestry.getItem("ash_brick"))
                     .duration(400).EUt(2).buildAndRegister();
-            ALLOY_SMELTER_RECIPES.recipeBuilder()
-                    .input(OrePrefix.dust, Materials.Ash, 4)
+            RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
+                    .input(dust, Materials.Ash, 4)
                     .inputs(new ItemStack(Blocks.BRICK_BLOCK))
                     .outputs(Mods.Forestry.getItem("ash_brick"))
                     .duration(100).EUt(2).buildAndRegister();
@@ -46,8 +44,8 @@ public class FFMBlockRecipe {
     public static void blockCharcoal() {
         // Loam
         ModHandler.removeRecipeByName(Mods.Forestry.getResource("loam"));
-        MIXER_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(CLAY_BALL, 4))
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .inputs(new ItemStack(Items.CLAY_BALL, 4))
                 .input("sand", 2)
                 .inputs(Mods.Forestry.getItem("fertilizer_bio", 2))
                 .outputs(Mods.Forestry.getItem("loam", 4))

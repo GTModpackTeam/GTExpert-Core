@@ -1,11 +1,10 @@
 package gtexpert.integration.ffm.recipes;
 
-import static gregtech.api.recipes.RecipeMaps.*;
-
 import java.util.Arrays;
 import java.util.List;
 
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.common.ConfigHolder;
 import gregtech.loaders.WoodTypeEntry;
 
@@ -740,7 +739,7 @@ public class FFMWoodRecipe {
             if (!ConfigHolder.recipes.harderCharcoalRecipe) return;
             ModHandler.removeRecipeByName(Mods.Forestry.getResource("wood_pile"));
 
-            COMPRESSOR_RECIPES.recipeBuilder()
+            RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                     .input("logWood", 4)
                     .outputs(Mods.Forestry.getItem("wood_pile"))
                     .duration(300).EUt(2)
