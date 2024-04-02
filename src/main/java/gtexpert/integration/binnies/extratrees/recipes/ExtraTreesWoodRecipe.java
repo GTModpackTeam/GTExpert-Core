@@ -1,18 +1,22 @@
 package gtexpert.integration.binnies.extratrees.recipes;
 
-import binnie.extratrees.wood.EnumETLog;
-import gregtech.api.recipes.ModHandler;
-import gregtech.loaders.WoodTypeEntry;
-import gregtech.loaders.recipe.WoodRecipeLoader;
-import gtexpert.api.GTEValues;
-import gtexpert.api.util.Mods;
-import gtexpert.core.loaders.GTEWoodRecipeLoader;
-import net.minecraft.util.ResourceLocation;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.util.ResourceLocation;
+
+import gregtech.api.recipes.ModHandler;
+import gregtech.loaders.WoodTypeEntry;
+import gregtech.loaders.recipe.WoodRecipeLoader;
+
+import gtexpert.api.GTEValues;
+import gtexpert.api.util.Mods;
+import gtexpert.core.loaders.GTEWoodRecipeLoader;
+
+import binnie.extratrees.wood.EnumETLog;
+
 public class ExtraTreesWoodRecipe {
+
     private static final String mcModId = Mods.ExtraTrees.name();
 
     private static List<WoodTypeEntry> DEFAULT_ENTRIES;
@@ -41,11 +45,13 @@ public class ExtraTreesWoodRecipe {
             if (logMeta == 0) logId++;
             if (slabMeta == 0) slabId++;
             DEFAULT_ENTRIES.add(getEntryByName(woodName, plankId, logId, slabId, plankMeta, logMeta, slabMeta));
-            FIREPROOF_ENTRIES.add(getFireProofEntryByName(woodName, plankId, logId, slabId, plankMeta, logMeta, slabMeta));
+            FIREPROOF_ENTRIES
+                    .add(getFireProofEntryByName(woodName, plankId, logId, slabId, plankMeta, logMeta, slabMeta));
         }
     }
 
-    private static WoodTypeEntry getEntryByName(String woodName, int plankId, int logId, int slabId, int plankMeta, int logMeta, int slabMeta) {
+    private static WoodTypeEntry getEntryByName(String woodName, int plankId, int logId, int slabId, int plankMeta,
+                                                int logMeta, int slabMeta) {
         return new WoodTypeEntry.Builder(mcModId, woodName)
                 .planks(Mods.ExtraTrees.getItem("planks." + plankId, 1, plankMeta), null)
                 .log(Mods.ExtraTrees.getItem("logs." + logId, 1, logMeta)).removeCharcoalRecipe()
@@ -57,32 +63,37 @@ public class ExtraTreesWoodRecipe {
                 .build();
     }
 
-    private static WoodTypeEntry getFireProofEntryByName(String woodName, int plankId, int logId, int slabId, int plankMeta, int logMeta, int slabMeta) {
+    private static WoodTypeEntry getFireProofEntryByName(String woodName, int plankId, int logId, int slabId,
+                                                         int plankMeta, int logMeta, int slabMeta) {
         return new WoodTypeEntry.Builder(mcModId, woodName)
-                .planks(Mods.ExtraTrees.getItem("planks.fireproof." + plankId, 1, plankMeta), "fireproof_planks_" + woodName)
+                .planks(Mods.ExtraTrees.getItem("planks.fireproof." + plankId, 1, plankMeta),
+                        "fireproof_planks_" + woodName)
                 .log(Mods.ExtraTrees.getItem("logs.fireproof." + logId, 1, logMeta)).removeCharcoalRecipe()
                 .slab(Mods.ExtraTrees.getItem("slabs.fireproof." + slabId, 1, slabMeta), "fireproof_slab_" + woodName)
-                .fence(Mods.ExtraTrees.getItem("fences.fireproof." + plankId, 1, plankMeta), "fireproof_fence_" + woodName)
-                .fenceGate(Mods.ExtraTrees.getItem("fence.gates.fireproof." + woodName), "fireproof_fence_gate_" + woodName)
+                .fence(Mods.ExtraTrees.getItem("fences.fireproof." + plankId, 1, plankMeta),
+                        "fireproof_fence_" + woodName)
+                .fenceGate(Mods.ExtraTrees.getItem("fence.gates.fireproof." + woodName),
+                        "fireproof_fence_gate_" + woodName)
                 .stairs(Mods.ExtraTrees.getItem("stairs.fireproof." + woodName)).addStairsRecipe()
                 .build();
     }
 
     public static void init() {
-        String[] types = {"_planks", "_slabs", "_fences", "_fence_gates", "_stairs"};
+        String[] types = { "_planks", "_slabs", "_fences", "_fence_gates", "_stairs" };
         for (WoodTypeEntry entry : getDefaultEntries()) {
-            for(String type: types) {
+            for (String type : types) {
                 ModHandler.removeRecipeByName(Mods.ExtraTrees.getResource(entry.woodName + type));
             }
-            ModHandler.removeRecipeByName(Mods.ExtraTrees.getResource(entry.woodName + "_doors")); // only for normal woods
+            ModHandler.removeRecipeByName(Mods.ExtraTrees.getResource(entry.woodName + "_doors")); // only for normal
+                                                                                                   // woods
 
             WoodRecipeLoader.registerWoodTypeRecipe(entry);
             GTEWoodRecipeLoader.overridePlankRecipe(true, entry, GTEValues.MODID);
             GTEWoodRecipeLoader.addSawmillRecipe(entry);
         }
 
-        for(WoodTypeEntry entry: getFireproofEntries()) {
-            for(String type: types) {
+        for (WoodTypeEntry entry : getFireproofEntries()) {
+            for (String type : types) {
                 ModHandler.removeRecipeByName(Mods.ExtraTrees.getResource(entry.woodName + "_fireproof" + type));
             }
 
