@@ -1,7 +1,6 @@
 package gtexpert.integration.gendustry;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
@@ -28,10 +27,7 @@ public class GendustryModule extends GTEIntegrationSubmodule {
     }
 
     @Override
-    public void postInit(FMLPostInitializationEvent event) {}
-
-    @Override
-    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
+    public void postInit(FMLPostInitializationEvent event) {
         GendustryItemsRecipe.init();
         GendustryBlocksRecipe.init();
     }

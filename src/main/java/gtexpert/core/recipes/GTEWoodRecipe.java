@@ -96,10 +96,8 @@ public class GTEWoodRecipe {
 
     private static void planks() {
         for (WoodTypeEntry entry : getDefaultEntries()) {
-            GTEWoodRecipeLoader.removePlankRecipes(true, entry, Mods.GregTech.name());
-
-            GTEWoodRecipeLoader.addPlankRecipes(entry);
-            GTEWoodRecipeLoader.addSawmillRecipes(entry);
+            GTEWoodRecipeLoader.overridePlankRecipe(true, entry, Mods.GregTech.name());
+            GTEWoodRecipeLoader.addSawmillRecipe(entry);
         }
     }
 }

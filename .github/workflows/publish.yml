@@ -108,6 +108,7 @@ jobs:
             avaritia-1-1x-kedition(recommended)
             thaumcraft(recommended)
             forestry(recommended)
+            gendustry(recommended)
             binnies-mods-patched(recommended)
             ulv-covers(incompatible)
           files: |

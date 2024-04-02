@@ -30,7 +30,7 @@ public class FFMModule extends GTEIntegrationSubmodule {
         FFMWoodRecipe.init();
 
         CarpenterLoader.initBase();
-        CarpenterLoader.initMode(FFMUtility.recipeMode.safeValueOf(FFMConfigHolder.gameMode));
+        CarpenterLoader.initMode();
     }
 
     @Override

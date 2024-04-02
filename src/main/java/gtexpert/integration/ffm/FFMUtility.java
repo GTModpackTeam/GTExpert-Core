@@ -2,9 +2,20 @@ package gtexpert.integration.ffm;
 
 import org.jetbrains.annotations.NotNull;
 
+import gregtech.common.ConfigHolder;
+
 import gtexpert.api.util.GTELog;
 
+import forestry.api.core.ForestryAPI;
+
 public class FFMUtility {
+
+    public static float energyModifier = ForestryAPI.activeMode.getFloatSetting("energy.demand.modifier");
+    public static int feToEu = ConfigHolder.compat.energy.euToFeRatio;
+
+    public static int timeCarpenter(int EUt) {
+        return Math.round(EUt * 204 * FFMUtility.energyModifier / (100 * FFMUtility.feToEu));
+    }
 
     public enum recipeMode {
 

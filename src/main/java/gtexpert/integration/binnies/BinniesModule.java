@@ -1,4 +1,4 @@
-package gtexpert.integration.binnies.extrabees;
+package gtexpert.integration.binnies;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
@@ -8,20 +8,21 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
-import gtexpert.integration.binnies.extrabees.recipes.ExtraBeesItemsRecipe;
+import gtexpert.integration.binnies.recipes.BinniesItemsRecipe;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
-           moduleID = GTEModules.MODULE_EXBEES,
+           moduleID = GTEModules.MODULE_BINNIES,
            containerID = GTEValues.MODID,
-           modDependencies = { Mods.Names.FORESTRY, Mods.Names.EXTRA_BEES },
-           name = "GTExpert Extra Bees(Binnie's Mods) Integration",
-           description = "Extra Bees(Binnie's Mods) Integration Module")
-public class ExtraBeesModule extends GTEIntegrationSubmodule {
+           modDependencies = { Mods.Names.FORESTRY, Mods.Names.GENETICS, Mods.Names.BOTANY,
+                   Mods.Names.EXTRA_BEES, Mods.Names.EXTRA_TREES },
+           name = "GTExpert Binnie's Mods Integration",
+           description = "Binnie's Mods Integration Module")
+public class BinniesModule extends GTEIntegrationSubmodule {
 
     @Override
     public void postInit(FMLPostInitializationEvent event) {
-        ExtraBeesItemsRecipe.init();
+        BinniesItemsRecipe.init();
     }
 
     @Override

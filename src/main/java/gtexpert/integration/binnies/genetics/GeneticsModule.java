@@ -8,6 +8,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
+import gtexpert.integration.binnies.genetics.recipes.GeneticsItemsRecipe;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
@@ -19,7 +20,9 @@ import gtexpert.modules.GTEModules;
 public class GeneticsModule extends GTEIntegrationSubmodule {
 
     @Override
-    public void postInit(FMLPostInitializationEvent event) {}
+    public void postInit(FMLPostInitializationEvent event) {
+        GeneticsItemsRecipe.init();
+    }
 
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {}
