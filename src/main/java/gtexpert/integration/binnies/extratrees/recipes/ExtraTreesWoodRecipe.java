@@ -84,8 +84,9 @@ public class ExtraTreesWoodRecipe {
             for (String type : types) {
                 ModHandler.removeRecipeByName(Mods.ExtraTrees.getResource(entry.woodName + type));
             }
-            ModHandler.removeRecipeByName(Mods.ExtraTrees.getResource(entry.woodName + "_doors")); // only for normal
-                                                                                                   // woods
+
+            // only for normal woods
+            ModHandler.removeRecipeByName(Mods.ExtraTrees.getResource(entry.woodName + "_doors"));
 
             WoodRecipeLoader.registerWoodTypeRecipe(entry);
             GTEWoodRecipeLoader.overridePlankRecipe(true, entry, GTEValues.MODID);

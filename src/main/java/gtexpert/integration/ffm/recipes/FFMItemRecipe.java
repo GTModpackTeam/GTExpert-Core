@@ -28,5 +28,10 @@ public class FFMItemRecipe {
                 .circuitMeta(8)
                 .outputs(Mods.Forestry.getItem("sturdy_machine"))
                 .duration(50).EUt(16).buildAndRegister();
+
+        // Portable Analyzer
+        ModHandler.addShapelessNBTClearingRecipe("portable_alyzer_nbt",
+                Mods.Forestry.getItem("portable_alyzer"),
+                Mods.Forestry.getItem("portable_alyzer"));
     }
 }

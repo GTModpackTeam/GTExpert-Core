@@ -13,7 +13,6 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.items.MetaItems;
 
 import gtexpert.api.util.Mods;
 import gtexpert.core.GTUtil;
@@ -152,7 +151,7 @@ public class GeneticsItemsRecipe {
             CarpenterLoader.removeCarpenterRecipe(Mods.Genetics.getItem("geneticdatabase"));
             RecipeManagers.carpenterManager.addRecipe(
                     20, Materials.Redstone.getFluid(2880),
-                    MetaItems.COVER_SCREEN.getStackForm(), Mods.Genetics.getItem("geneticdatabase"),
+                    Mods.Forestry.getItem("portable_alyzer"), Mods.Genetics.getItem("geneticdatabase"),
                     "SPS", "PCP", "SPS",
                     'S', new UnificationEntry(screw, Materials.Emerald).toString(),
                     'P', new UnificationEntry(plate, Materials.Diamond).toString(),
@@ -162,7 +161,7 @@ public class GeneticsItemsRecipe {
             ModHandler.removeRecipeByName(Mods.Genetics.getResource("analyst"));
             RecipeManagers.carpenterManager.addRecipe(
                     40, Materials.Redstone.getFluid(4320),
-                    MetaItems.COVER_SCREEN.getStackForm(), Mods.Genetics.getItem("analyst"),
+                    Mods.Forestry.getItem("portable_alyzer"), Mods.Genetics.getItem("analyst"),
                     "IAI", "PCP", "IPI",
                     'I', Mods.Genetics.getItem("misc", 1, 8),
                     'A', Mods.Forestry.getItem("portable_alyzer"),

@@ -161,9 +161,10 @@ public class GTExpertMod {
         ItemBlock itemBlock = producer.apply(block);
         ResourceLocation registryName = block.getRegistryName();
         if (registryName == null) {
-            throw new IllegalArgumentException("Block " + block.getTranslationKey() + " has no registry name.");
+            GTELog.logger.error("Block has no registry name: {}", block.getTranslationKey(), new Throwable());
+        } else {
+            itemBlock.setRegistryName(registryName);
         }
-        itemBlock.setRegistryName(registryName);
         return itemBlock;
     }
 

@@ -2,7 +2,6 @@ package gtexpert.integration.binnies.recipes;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.Materials;
-import gregtech.common.items.MetaItems;
 
 import gtexpert.api.util.Mods;
 import gtexpert.integration.ffm.FFMConfigHolder;
@@ -20,7 +19,7 @@ public class BinniesItemsRecipe {
             ModHandler.removeRecipeByName(Mods.Genetics.getResource("registry"));
             RecipeManagers.carpenterManager.addRecipe(
                     40, Materials.Redstone.getFluid(4320),
-                    MetaItems.COVER_SCREEN.getStackForm(), Mods.Genetics.getItem("registry"),
+                    Mods.Forestry.getItem("portable_alyzer"), Mods.Genetics.getItem("registry"),
                     "IAI", "BCP", "ILI",
                     'I', Mods.Genetics.getItem("misc", 1, 8),
                     'A', Mods.ExtraTrees.getItem("databasetree"),

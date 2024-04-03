@@ -35,10 +35,15 @@ public class FFMUtility {
         }
 
         public static recipeMode safeValueOf(@NotNull String name) {
+            if (name.isEmpty()) {
+                GTELog.logger.error("Invalid recipe mode is empty! Set to default value.", new Throwable());
+                return NORMAL;
+            }
+
             try {
                 return recipeMode.valueOf(name);
             } catch (IllegalArgumentException e) {
-                GTELog.logger.error("Invalid recipe mode: " + name + ". Using NORMAL instead.");
+                GTELog.logger.error("Invalid recipe mode! Set to default value. : {}", name, e, new Throwable());
                 return NORMAL;
             }
         }
