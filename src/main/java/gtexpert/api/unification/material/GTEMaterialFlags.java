@@ -63,8 +63,8 @@ public class GTEMaterialFlags {
             // Bronze
             Materials.Bronze.addFlags(GENERATE_FINE_WIRE);
 
+            // Rose Gold
             Materials.RoseGold.addFlags(GENERATE_FOIL);
-
         }
     }
 }
