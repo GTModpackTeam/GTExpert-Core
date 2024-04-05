@@ -10,8 +10,12 @@ import gtexpert.api.GTEValues;
 @Mod.EventBusSubscriber(modid = GTEValues.MODID, value = Side.CLIENT)
 public class GTETextures {
 
+    // Core
     public static SimpleOverlayRenderer SAWMILL_CASING;
     public static OrientedOverlayRenderer SAWMILL_OVERLAY = new OrientedOverlayRenderer("machines/sawmill");
+    public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;
+
+    // Ender IO
     public static OrientedOverlayRenderer AUTO_CHISEL_OVERLAY = new OrientedOverlayRenderer("machines/auto_chisel");
     public static OrientedOverlayRenderer VIAL_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer(
             "machines/vial_extractor");
@@ -19,13 +23,17 @@ public class GTETextures {
             "machines/slice_n_splice");
     public static OrientedOverlayRenderer SOUL_BINDER_OVERLAY = new OrientedOverlayRenderer("machines/soul_binder");
     public static OrientedOverlayRenderer SPAWNER_OVERLAY = new OrientedOverlayRenderer("machines/powered_spawner");
-    public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;
+
+    // Draconic Evolution
     public static SimpleOverlayRenderer DRACONIUM_CASING;
     public static SimpleOverlayRenderer AWAKENED_DRACONIUM_CASING;
 
     public static void preInit() {
+        // Core
         SAWMILL_CASING = new SimpleOverlayRenderer("casings/sawmill_casing");
         VOID_ORE_MINER_CASING = new SimpleOverlayRenderer("casings/void_ore_miner_casing");
+
+        // Draconic Evolution
         DRACONIUM_CASING = new SimpleOverlayRenderer("casings/draconium_casing");
         AWAKENED_DRACONIUM_CASING = new SimpleOverlayRenderer("casings/awakened_draconium_casing");
     }

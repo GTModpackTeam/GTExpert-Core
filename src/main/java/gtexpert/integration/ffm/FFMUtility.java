@@ -2,9 +2,20 @@ package gtexpert.integration.ffm;
 
 import org.jetbrains.annotations.NotNull;
 
+import gregtech.common.ConfigHolder;
+
 import gtexpert.api.util.GTELog;
 
+import forestry.api.core.ForestryAPI;
+
 public class FFMUtility {
+
+    public static float energyModifier = ForestryAPI.activeMode.getFloatSetting("energy.demand.modifier");
+    public static int feToEu = ConfigHolder.compat.energy.euToFeRatio;
+
+    public static int timeCarpenter(int EUt) {
+        return Math.round(EUt * 204 * FFMUtility.energyModifier / (100 * FFMUtility.feToEu));
+    }
 
     public enum recipeMode {
 
@@ -24,10 +35,15 @@ public class FFMUtility {
         }
 
         public static recipeMode safeValueOf(@NotNull String name) {
+            if (name.isEmpty()) {
+                GTELog.logger.error("Invalid recipe mode is empty! Set to default value.", new Throwable());
+                return NORMAL;
+            }
+
             try {
                 return recipeMode.valueOf(name);
             } catch (IllegalArgumentException e) {
-                GTELog.logger.error("Invalid recipe mode: " + name + ". Using NORMAL instead.");
+                GTELog.logger.error("Invalid recipe mode! Set to default value. : {}", name, e, new Throwable());
                 return NORMAL;
             }
         }
