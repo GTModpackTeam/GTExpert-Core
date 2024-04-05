@@ -1,19 +1,12 @@
 package gtexpert.integration.gendustry.metatileentities;
 
-import java.util.List;
 import java.util.function.Function;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
-import org.jetbrains.annotations.Nullable;
-
-import gregtech.api.GTValues;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.NotifiableItemStackHandler;
 import gregtech.api.capability.impl.RecipeLogicEnergy;
@@ -27,8 +20,6 @@ import gtexpert.core.metatileentities.GTESimpleMachineMetaTileEntity;
 
 public class MetaTileEntityIndustrialApiary extends GTESimpleMachineMetaTileEntity {
 
-    private static final int FONT_HEIGHT = 9; // Minecraft's FontRenderer FONT_HEIGHT value
-
     public MetaTileEntityIndustrialApiary(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap,
                                           ICubeRenderer renderer,
                                           int tier, boolean hasFrontFacing,
@@ -38,8 +29,8 @@ public class MetaTileEntityIndustrialApiary extends GTESimpleMachineMetaTileEnti
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityIndustrialApiary(this.metaTileEntityId, this.recipeMap, this.renderer,
-                this.getTier(), this.hasFrontFacing(), this.getTankScalingFunction());
+        return new MetaTileEntityIndustrialApiary(metaTileEntityId, workable.getRecipeMap(), renderer, getTier(),
+                hasFrontFacing(), getTankScalingFunction());
     }
 
     @Override
@@ -78,29 +69,11 @@ public class MetaTileEntityIndustrialApiary extends GTESimpleMachineMetaTileEnti
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        // prevent NPE with `WorkableTieredMetaTileEntity#addInformation`
-        tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(),
-                GTValues.VNF[getTier()]));
-        tooltip.add(
-                I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
-        String key = this.metaTileEntityId.getPath().split("\\.")[0];
-        String mainKey = String.format("gregtech.machine.%s.tooltip", key);
-        if (I18n.hasKey(mainKey)) {
-            tooltip.add(1, mainKey);
-        }
-    }
-
-    private IndustrialApiaryLogic getLogic() {
-        return (IndustrialApiaryLogic) this.workable;
+    protected ModularUI createUI(EntityPlayer entityPlayer) {
+        return createGuiTemplate(entityPlayer).build(getHolder(), entityPlayer);
     }
 
     protected ModularUI.Builder createGuiTemplate(EntityPlayer player) {
         return null;
-    }
-
-    @Override
-    protected ModularUI createUI(EntityPlayer entityPlayer) {
-        return createGuiTemplate(entityPlayer).build(getHolder(), entityPlayer);
     }
 }

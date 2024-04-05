@@ -54,7 +54,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityLargeCrackingUnit(this.metaTileEntityId);
+        return new MetaTileEntityLargeCrackingUnit(metaTileEntityId);
     }
 
     @NotNull
