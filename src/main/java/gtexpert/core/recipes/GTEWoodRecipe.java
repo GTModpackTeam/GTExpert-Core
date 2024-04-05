@@ -32,44 +32,35 @@ public class GTEWoodRecipe {
             final String mcModId = Mods.Vanilla.name();
             return DEFAULT_ENTRIES = Arrays.asList(
                     new WoodTypeEntry.Builder(mcModId, "oak")
-                            .planks(new ItemStack(Blocks.PLANKS), "oak_planks")
+                            .planks(new ItemStack(Blocks.PLANKS), null)
                             .log(new ItemStack(Blocks.LOG))
-                            .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "spruce")
-                            .planks(new ItemStack(Blocks.PLANKS, 1, 1), "spruce_planks")
+                            .planks(new ItemStack(Blocks.PLANKS, 1, 1), null)
                             .log(new ItemStack(Blocks.LOG, 1, 1))
-                            .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "birch")
-                            .planks(new ItemStack(Blocks.PLANKS, 1, 2), "birch_planks")
+                            .planks(new ItemStack(Blocks.PLANKS, 1, 2), null)
                             .log(new ItemStack(Blocks.LOG, 1, 2))
-                            .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "jungle")
-                            .planks(new ItemStack(Blocks.PLANKS, 1, 3), "jungle_planks")
+                            .planks(new ItemStack(Blocks.PLANKS, 1, 3), null)
                             .log(new ItemStack(Blocks.LOG, 1, 3))
-                            .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "acacia")
-                            .planks(new ItemStack(Blocks.PLANKS, 1, 4), "acacia_planks")
+                            .planks(new ItemStack(Blocks.PLANKS, 1, 4), null)
                             .log(new ItemStack(Blocks.LOG2))
-                            .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "dark_oak")
-                            .planks(new ItemStack(Blocks.PLANKS, 1, 5), "dark_oak_planks")
+                            .planks(new ItemStack(Blocks.PLANKS, 1, 5), null)
                             .log(new ItemStack(Blocks.LOG2, 1, 1))
-                            .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(GTValues.MODID, "rubber")
-                            .planks(MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.RUBBER_PLANK),
-                                    "rubber_planks")
+                            .planks(MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.RUBBER_PLANK), null)
                             .log(new ItemStack(MetaBlocks.RUBBER_LOG))
-                            .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(GTValues.MODID, "treated")
                             .planks(MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK), null)
-                            .registerAllUnificationInfo()
                             .build());
         }
         return DEFAULT_ENTRIES;
@@ -105,10 +96,8 @@ public class GTEWoodRecipe {
 
     private static void planks() {
         for (WoodTypeEntry entry : getDefaultEntries()) {
-            GTEWoodRecipeLoader.removePlankRecipes(true, entry, GTValues.MODID);
-
-            GTEWoodRecipeLoader.addPlankRecipes(entry);
-            GTEWoodRecipeLoader.addSawmillRecipes(entry);
+            GTEWoodRecipeLoader.overridePlankRecipe(true, entry, Mods.GregTech.name());
+            GTEWoodRecipeLoader.addSawmillRecipe(entry);
         }
     }
 }

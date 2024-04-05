@@ -43,8 +43,8 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
             return super.applyProperty(key, value);
         }
         if (!(value instanceof ToolUpgradeRecipe)) {
-            throw new IllegalArgumentException(
-                    "Property for draconic upgrade must be an instance of ToolUpgradeRecipe!");
+            GTELog.logger.error("Property for draconic upgrade must be an instance of ToolUpgradeRecipe!",
+                    new Throwable());
         }
         this.applyProperty(TierUpRecipeProperty.getInstance(), value);
         return true;
@@ -55,15 +55,15 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
         super.validate();
 
         if (catalyst == null) {
-            GTELog.logger.error("Catalyst has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Catalyst has not been set", new Throwable());
             recipeStatus = EnumValidationResult.INVALID;
         }
         if (result == null) {
-            GTELog.logger.error("Result has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Result has not been set", new Throwable());
             recipeStatus = EnumValidationResult.INVALID;
         }
         if (!outputs.isEmpty()) {
-            GTELog.logger.error("Do not manually add item output", new IllegalArgumentException());
+            GTELog.logger.error("Do not manually add item output", new Throwable());
             recipeStatus = EnumValidationResult.INVALID;
         }
 

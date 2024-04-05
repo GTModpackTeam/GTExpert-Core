@@ -44,7 +44,7 @@ import gtexpert.modules.GTEModules;
              "after:" + Mods.Names.ENDER_CONDUITS + ";" + "after:" + Mods.Names.ENDER_AE2_CONDUITS + ";" +
              "after:" + Mods.Names.DRACONIC_EVOLUTION + ";" + "after:" + Mods.Names.DRACONIC_ADDITIONS + ";" +
              "after:" + Mods.Names.CHISEL + ";" + "after:" + Mods.Names.AVARITIA + ";" +
-             "after:" + Mods.Names.FORESTRY + ";")
+             "after:" + Mods.Names.THAUMCRAFT + ";" + "after:" + Mods.Names.FORESTRY + ";")
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 
@@ -159,9 +159,10 @@ public class GTExpertMod {
         ItemBlock itemBlock = producer.apply(block);
         ResourceLocation registryName = block.getRegistryName();
         if (registryName == null) {
-            throw new IllegalArgumentException("Block " + block.getTranslationKey() + " has no registry name.");
+            GTELog.logger.error("Block has no registry name: {}", block.getTranslationKey(), new Throwable());
+        } else {
+            itemBlock.setRegistryName(registryName);
         }
-        itemBlock.setRegistryName(registryName);
         return itemBlock;
     }
 

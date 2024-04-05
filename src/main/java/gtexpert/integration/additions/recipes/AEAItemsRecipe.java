@@ -148,18 +148,14 @@ public class AEAItemsRecipe {
         ModHandler.removeRecipeByName(Mods.AEAdditions.getResource("storagecells/fluid/a2ecasing"));
         ModHandler.addShapedRecipe(true, "empty_fluid_storage_cell_1",
                 Mods.AEAdditions.getItem("storage.casing", 1, 1),
-                "DPS", "P P", "SPH",
-                'D', "craftingToolScrewdriver",
+                "dPS", "P P", "SPh",
                 'P', OreDictUnifier.get(plate, tierMaterials[GTEValues.ae2VoltageTier]),
-                'S', OreDictUnifier.get(screw, tierMaterials[GTEValues.ae2VoltageTier]),
-                'H', "craftingToolHardHammer");
+                'S', OreDictUnifier.get(screw, tierMaterials[GTEValues.ae2VoltageTier]));
         ModHandler.addShapedRecipe("empty_fluid_storage_cell_2",
                 Mods.AEAdditions.getItem("storage.casing", 1, 1),
-                "HPS", "P P", "SPD",
-                'D', "craftingToolScrewdriver",
+                "hPS", "P P", "SPd",
                 'P', OreDictUnifier.get(plate, tierMaterials[GTEValues.ae2VoltageTier]),
-                'S', OreDictUnifier.get(screw, tierMaterials[GTEValues.ae2VoltageTier]),
-                'H', "craftingToolHardHammer");
+                'S', OreDictUnifier.get(screw, tierMaterials[GTEValues.ae2VoltageTier]));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(3)
                 .input(plate, tierMaterials[GTEValues.ae2VoltageTier], 2)
@@ -173,18 +169,14 @@ public class AEAItemsRecipe {
         ModHandler.removeRecipeByName(Mods.AEAdditions.getResource("storagecells/case/item"));
         ModHandler.addShapedRecipe(true, "empty_advanced_storage_cell_1",
                 Mods.AEAdditions.getItem("storage.casing"),
-                "DPS", "P P", "SPH",
-                'D', "craftingToolScrewdriver",
+                "dPS", "P P", "SPh",
                 'P', OreDictUnifier.get(plate, tierMaterials[GTEValues.ae2VoltageTier + 2]),
-                'S', OreDictUnifier.get(screw, tierMaterials[GTEValues.ae2VoltageTier + 2]),
-                'H', "craftingToolHardHammer");
+                'S', OreDictUnifier.get(screw, tierMaterials[GTEValues.ae2VoltageTier + 2]));
         ModHandler.addShapedRecipe("empty_advanced_storage_cell_2",
                 Mods.AEAdditions.getItem("storage.casing"),
-                "HPS", "P P", "SPD",
-                'D', "craftingToolScrewdriver",
+                "hPS", "P P", "SPd",
                 'P', OreDictUnifier.get(plate, tierMaterials[GTEValues.ae2VoltageTier + 2]),
-                'S', OreDictUnifier.get(screw, tierMaterials[GTEValues.ae2VoltageTier + 2]),
-                'H', "craftingToolHardHammer");
+                'S', OreDictUnifier.get(screw, tierMaterials[GTEValues.ae2VoltageTier + 2]));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(3)
                 .input(plate, tierMaterials[GTEValues.ae2VoltageTier + 2], 2)

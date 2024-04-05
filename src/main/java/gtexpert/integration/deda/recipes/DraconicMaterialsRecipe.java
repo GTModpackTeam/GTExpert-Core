@@ -32,6 +32,7 @@ import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
@@ -129,16 +130,32 @@ public class DraconicMaterialsRecipe {
                 .input(DEFeatures.dragonHeart, 1)
                 .input(block, GTEMaterials.Draconium, 4)
                 .output(block, GTEMaterials.AwakenedDraconium, 3)
-                .output(dustSmall, Materials.DarkAsh, 1)
-                .explosivesAmount(2)
+                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.dragonHeart, 1)
                 .input(block, GTEMaterials.Draconium, 4)
                 .output(block, GTEMaterials.AwakenedDraconium, 3)
-                .output(dustSmall, Materials.DarkAsh, 1)
-                .explosivesType(MetaItems.DYNAMITE.getStackForm())
+                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                .explosivesAmount(4)
+                .duration(20).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                .input(DEFeatures.dragonHeart, 1)
+                .input(block, GTEMaterials.Draconium, 4)
+                .output(block, GTEMaterials.AwakenedDraconium, 3)
+                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
+                .duration(20).EUt(VA[LV])
+                .buildAndRegister();
+        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                .input(DEFeatures.dragonHeart, 1)
+                .input(block, GTEMaterials.Draconium, 4)
+                .output(block, GTEMaterials.AwakenedDraconium, 3)
+                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
 
