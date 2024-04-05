@@ -50,8 +50,8 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
             return super.applyProperty(key, value);
         }
         if (!(value instanceof FusionUpgradeRecipe)) {
-            throw new IllegalArgumentException(
-                    "Property for draconic upgrade must be an instance of FusionUpgradeRecipe!");
+            GTELog.logger.error("Property for draconic upgrade must be an instance of FusionUpgradeRecipe!",
+                    new Throwable());
         }
         this.applyProperty(UpgradeRecipeProperty.getInstance(), value);
         return true;
@@ -62,11 +62,11 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         super.validate();
 
         if (upgradeName == null) {
-            GTELog.logger.error("Upgrade name has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Upgrade name has not been set", new Throwable());
             recipeStatus = EnumValidationResult.INVALID;
         }
         if (currentLevel < 0) {
-            GTELog.logger.error("Level has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Level has not been set", new Throwable());
             recipeStatus = EnumValidationResult.INVALID;
         }
 
@@ -75,20 +75,20 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         }
 
         if (catalyst == null) {
-            GTELog.logger.error("Catalyst has not been set", new IllegalArgumentException());
+            GTELog.logger.error("Catalyst has not been set", new Throwable());
             recipeStatus = EnumValidationResult.INVALID;
         } else if (!(catalyst.getItem() instanceof IUpgradableItem)) {
-            GTELog.logger.error("Catalyst is not an instance of IUpgradableItem", new IllegalArgumentException());
+            GTELog.logger.error("Catalyst is not an instance of IUpgradableItem", new Throwable());
             recipeStatus = EnumValidationResult.INVALID;
         } else if (!((IUpgradableItem) catalyst.getItem()).getValidUpgrades(catalyst).contains(upgradeName)) {
             GTELog.logger.error("Upgrade " + upgradeName + " is not valid for this catalyst",
-                    new IllegalArgumentException());
+                    new Throwable());
             recipeStatus = EnumValidationResult.INVALID;
         } else
             if (((IUpgradableItem) catalyst.getItem()).getMaxUpgradeLevel(catalyst, upgradeName) < currentLevel + 1) {
                 GTELog.logger.error("Max level of upgrade " + upgradeName + " is " +
                         ((IUpgradableItem) catalyst.getItem()).getMaxUpgradeLevel(catalyst, upgradeName) +
-                        ", which supplied level is going to exceed", new IllegalArgumentException());
+                        ", which supplied level is going to exceed", new Throwable());
                 recipeStatus = EnumValidationResult.INVALID;
             }
 
