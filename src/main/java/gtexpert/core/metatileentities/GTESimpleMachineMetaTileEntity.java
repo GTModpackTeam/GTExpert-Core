@@ -5,66 +5,37 @@ import java.util.function.Function;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import org.jetbrains.annotations.Nullable;
-
 import gregtech.api.GTValues;
-import gregtech.api.capability.impl.GhostCircuitItemStackHandler;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
-import gregtech.api.items.itemhandlers.GTItemStackHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.util.GTUtility;
-import gregtech.client.particle.IMachineParticleEffect;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.gui.GTEGuiTextures;
 
 public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity {
 
-    private final boolean hasFrontFacing;
-
-    protected final GTItemStackHandler chargerInventory;
-    @Nullable
-    protected GhostCircuitItemStackHandler circuitInventory;
-
     private static final int FONT_HEIGHT = 9; // Minecraft's FontRenderer FONT_HEIGHT value
-
-    @Nullable // particle run every tick when the machine is active
-    protected final IMachineParticleEffect tickingParticle;
-    @Nullable // particle run in randomDisplayTick() when the machine is active
-    protected final IMachineParticleEffect randomParticle;
 
     public GTESimpleMachineMetaTileEntity(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap,
                                           ICubeRenderer renderer, int tier, boolean hasFrontFacing) {
-        this(metaTileEntityId, recipeMap, renderer, tier, hasFrontFacing, GTUtility.defaultTankSizeFunction);
+        super(metaTileEntityId, recipeMap, renderer, tier, hasFrontFacing);
     }
 
     public GTESimpleMachineMetaTileEntity(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap,
                                           ICubeRenderer renderer, int tier, boolean hasFrontFacing,
                                           Function<Integer, Integer> tankScalingFunction) {
-        this(metaTileEntityId, recipeMap, renderer, tier, hasFrontFacing, tankScalingFunction, null, null);
-    }
-
-    public GTESimpleMachineMetaTileEntity(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap,
-                                          ICubeRenderer renderer, int tier, boolean hasFrontFacing,
-                                          Function<Integer, Integer> tankScalingFunction,
-                                          @Nullable IMachineParticleEffect tickingParticle,
-                                          @Nullable IMachineParticleEffect randomParticle) {
         super(metaTileEntityId, recipeMap, renderer, tier, hasFrontFacing, tankScalingFunction);
-        this.hasFrontFacing = hasFrontFacing;
-        this.chargerInventory = new GTItemStackHandler(this, 1);
-        this.tickingParticle = tickingParticle;
-        this.randomParticle = randomParticle;
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new SimpleMachineMetaTileEntity(metaTileEntityId, workable.getRecipeMap(), renderer, getTier(),
-                hasFrontFacing, getTankScalingFunction(), tickingParticle, randomParticle);
+        return new GTESimpleMachineMetaTileEntity(this.metaTileEntityId, workable.getRecipeMap(), this.renderer,
+                this.getTier(), this.hasFrontFacing(), this.getTankScalingFunction());
     }
 
     protected ModularUI.Builder createGuiTemplate(EntityPlayer player) {
@@ -114,8 +85,8 @@ public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity 
                     GTValues.XMAS.get() ? GTEGuiTextures.GTE_LOGO_XMAS : GTEGuiTextures.GTE_LOGO).setIgnoreColor(true);
 
             if (this.circuitInventory != null) {
-                SlotWidget circuitSlot = new GhostCircuitSlotWidget(circuitInventory, 0, 124, 62 + yOffset)
-                        .setBackgroundTexture(GuiTextures.SLOT, getCircuitSlotOverlay());
+                SlotWidget circuitSlot = new GhostCircuitSlotWidget(this.circuitInventory, 0, 124, 62 + yOffset)
+                        .setBackgroundTexture(GuiTextures.SLOT, this.getCircuitSlotOverlay());
                 builder.widget(circuitSlot.setConsumer(this::getCircuitSlotTooltip)).widget(logo);
             }
         }
