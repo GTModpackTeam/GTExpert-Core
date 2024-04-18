@@ -158,4 +158,9 @@ dependencies {
 
     // Client only
     //runtimeOnlyNonPublishable rfg.deobf("curse.maven:lolasm-460609:5120166") // CensoredASM 5.19
+    functionalTestImplementation(platform('org.junit:junit-bom:5.9.2'))
+    functionalTestImplementation('org.junit.jupiter:junit-jupiter')
+    functionalTestImplementation('org.junit.platform:junit-platform-engine')
+    functionalTestImplementation('org.junit.platform:junit-platform-launcher')
+    functionalTestImplementation('org.junit.platform:junit-platform-reporting')
 }
