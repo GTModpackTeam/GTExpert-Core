@@ -35,6 +35,12 @@ public class CentrifugeLoader {
         // If Forestry's Centrifuge is enabled, recipes will be added by GTCEu
         if (ModuleFactory.machineEnabled(MachineUIDs.CENTRIFUGE)) return;
         // Forestry Section
+        RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
+                .inputs(Mods.Forestry.getItem("propolis", 1, 3))
+                .chancedOutput(Mods.Forestry.getItem("crafting_material", 1, 2), 6000, 0)
+                .chancedOutput(Mods.Forestry.getItem("propolis"), 1000, 0)
+                .EUt(5).duration(128).buildAndRegister();
+
         registerCombRecipe(Mods.Forestry.getItem("bee_combs", 1, 0),
                 new ItemStack[] { wax, drop },
                 new int[] { 10000, 9000 });
