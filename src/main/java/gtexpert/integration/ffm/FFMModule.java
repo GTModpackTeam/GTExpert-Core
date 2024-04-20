@@ -32,6 +32,7 @@ public class FFMModule extends GTEIntegrationSubmodule {
         CarpenterLoader.initBase();
         CarpenterLoader.initMode();
         CentrifugeLoader.init();
+        FabricatorLoader.init();
     }
 
     @Override
