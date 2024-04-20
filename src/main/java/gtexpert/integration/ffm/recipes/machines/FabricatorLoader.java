@@ -1,18 +1,20 @@
 package gtexpert.integration.ffm.recipes.machines;
 
-import binnie.extratrees.wood.EnumETLog;
-import binnie.extratrees.wood.planks.ExtraTreePlanks;
-import forestry.api.arboriculture.*;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.util.GTUtility;
-import gtexpert.api.util.Mods;
-import gtexpert.integration.ffm.FFMUtility;
-import net.minecraft.item.ItemStack;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import net.minecraft.item.ItemStack;
+
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.util.GTUtility;
+
+import gtexpert.api.util.Mods;
+import gtexpert.integration.ffm.FFMUtility;
+
+import binnie.extratrees.wood.EnumETLog;
+import forestry.api.arboriculture.*;
 
 public class FabricatorLoader {
 
