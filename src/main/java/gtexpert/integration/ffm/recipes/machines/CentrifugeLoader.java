@@ -16,6 +16,8 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class CentrifugeLoader {
 
     public static void init() {
+        if (!Mods.ForestryApiculture.isModLoaded()) return;
+
         ItemStack wax = Mods.Forestry.getItem("beeswax");
         ItemStack drop = Mods.Forestry.getItem("honey_drop");
         // Recipe was not added by GTCEu
