@@ -1,4 +1,4 @@
-package gtexpert.integration.additions;
+package gtexpert.integration.aeaditions;
 
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.LangKey;

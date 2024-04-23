@@ -1,4 +1,4 @@
-package gtexpert.integration.additions;
+package gtexpert.integration.aeaditions;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
@@ -7,7 +7,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
-import gtexpert.integration.additions.recipes.AEAItemsRecipe;
+import gtexpert.integration.aeaditions.recipes.AEAItemsRecipe;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(

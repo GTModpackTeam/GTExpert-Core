@@ -1,3 +1,10 @@
+# v2.1.3
+- Forestry Gregification Part.3: Centrifuge & Fabricator [#263](https://github.com/GTModpackTeam/GTExpert-Core/pull/263)
+    - Thanks to @MrKono for his support!!
+- Added another recipe for nano boots [#264](https://github.com/GTModpackTeam/GTExpert-Core/pull/264)
+
+* * *
+
 # v2.1.2
 - Add Gregification of Forestry Carpenter [#258](https://github.com/GTModpackTeam/GTExpert-Core/pull/258)
 - Fix explosive recipes of ChargedCertusQuartz and Fluix [#260](https://github.com/GTModpackTeam/GTExpert-Core/pull/260)
