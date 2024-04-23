@@ -21,8 +21,6 @@ import org.jetbrains.annotations.Nullable;
 
 import gregtech.api.GTValues;
 
-import gtexpert.api.GTEValues;
-
 public enum Mods {
 
     AEAdditions(Names.AE_ADDITIONS),
@@ -31,6 +29,7 @@ public enum Mods {
     Avaritia(Names.AVARITIA),
     Avaritiaaddons(Names.AVARITIAADDONS),
     Baubles(Names.BAUBLES),
+    Botany(Names.BOTANY),
     Chisel(Names.CHISEL),
     CTM(Names.CONNECTED_TEXTURES_MOD),
     CraftTweaker(Names.CRAFT_TWEAKER),
@@ -73,7 +72,6 @@ public enum Mods {
     GregicalityMultiblocks(Names.GREGICALITY_MULTIBLOCKS),
     GregTech(Names.GREGTECH),
     GregTechFoodOption(Names.GREGTECH_FOOD_OPTION),
-    GregTechExpertCore(Names.GREGTECH_EXPERT_CORE),
     GroovyScript(Names.GROOVY_SCRIPT),
     HWYLA(Names.HWYLA),
     InventoryTweaks(Names.INVENTORY_TWEAKS),
@@ -123,6 +121,7 @@ public enum Mods {
         public static final String AVARITIA = "avaritia";
         public static final String AVARITIAADDONS = "avaritiaddons";
         public static final String BAUBLES = "baubles";
+        public static final String BOTANY = "botany";
         public static final String CHISEL = "chisel";
         public static final String CONNECTED_TEXTURES_MOD = "ctm";
         public static final String CRAFT_TWEAKER = "crafttweaker";
@@ -165,7 +164,6 @@ public enum Mods {
         public static final String GREGICALITY_MULTIBLOCKS = "gcym";
         public static final String GREGTECH = GTValues.MODID;
         public static final String GREGTECH_FOOD_OPTION = "gregtechfoodoption";
-        public static final String GREGTECH_EXPERT_CORE = GTEValues.MODID;
         public static final String GROOVY_SCRIPT = "groovyscript";
         public static final String HWYLA = "hwyla";
         public static final String INVENTORY_TWEAKS = "inventorytweaks";
