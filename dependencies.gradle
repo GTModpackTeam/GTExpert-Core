@@ -49,6 +49,7 @@ dependencies {
     // devOnlyNonPublishable(rfg.deobf(files("libs/gregtech-1.12.2-2.8.4-beta-dev.jar"))) // CEu pr 2.8.4
     devOnlyNonPublishable(rfg.deobf("curse.maven:gregicality-multiblocks-564858:5121714")) // GCYM 1.2.8
     devOnlyNonPublishable(rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")) // Forgelin 1.8.4
+    //implementation rfg.deobf("curse.maven:advanced-electric-tools-412232:3896321")
 
     // Switchable Dependencies
     if (project.useAE2uelExtended.toBoolean()) {

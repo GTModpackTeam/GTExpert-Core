@@ -45,6 +45,12 @@ public class GTEConfigHolder {
                 "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting(WIP)), normal (3x3 crafting).",
                 "The steamNewMachine must also be enabled.", "Default: normal" })
         public String steamRecipeType = "normal";
+
+        @Config.Name("NanoBow Options")
+        public GTEConfigHolder.NanoBow nanoBow = new GTEConfigHolder.NanoBow();
+
+        @Config.Name("QuarkBow Options")
+        public GTEConfigHolder.QuarkBow quarkBow = new GTEConfigHolder.QuarkBow();
     }
 
     public static class GregtechOverride {
@@ -63,5 +69,51 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Raising Terracotta Grinding from ULV to MV.", "Default: false" })
         public boolean nerfTerracottaCrafting = false;
+    }
+
+    public static class NanoBow {
+
+        @Config.RangeDouble(
+                            min = 0.0,
+                            max = 100.0)
+        @Config.Comment({ "The additional damage added when the NanoBow is powered.", "Default: 20.0" })
+        public double nanoBowDamageBoost = 20.0;
+        @Config.RangeDouble(
+                            min = 0.0,
+                            max = 100.0)
+        @Config.Comment({ "The base damage of the NanoBow.", "Default: 5.0" })
+        public double nanoBowBaseDamage = 5.0;
+        @Config.Comment({ "Should Zombies spawn with charged, active NanoBows on hard difficulty?", "Default: true" })
+        public boolean zombieSpawnWithSabers = true;
+        @Config.RangeInt(
+                         min = 1,
+                         max = 512)
+        @Config.Comment({ "The EU/t consumption of the NanoBow.", "Default: 64" })
+        public int energyConsumption = 64;
+
+        public NanoBow() {}
+    }
+
+    public static class QuarkBow {
+
+        @Config.RangeDouble(
+                            min = 0.0,
+                            max = 100.0)
+        @Config.Comment({ "The additional damage added when the QuarkBow is powered.", "Default: 40.0" })
+        public double quarkBowDamageBoost = 40.0;
+        @Config.RangeDouble(
+                            min = 0.0,
+                            max = 100.0)
+        @Config.Comment({ "The base damage of the QuarkBow.", "Default: 10.0" })
+        public double quarkBowBaseDamage = 10.0;
+        @Config.Comment({ "Should Zombies spawn with charged, active QuarkBows on hard difficulty?", "Default: true" })
+        public boolean zombieSpawnWithSabers = true;
+        @Config.RangeInt(
+                         min = 1,
+                         max = 512)
+        @Config.Comment({ "The EU/t consumption of the QuarkBow.", "Default: 256" })
+        public int energyConsumption = 256;
+
+        public QuarkBow() {}
     }
 }

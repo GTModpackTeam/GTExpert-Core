@@ -3,14 +3,18 @@ package gtexpert.common.items;
 import static gtexpert.common.items.GTEMetaItems.*;
 
 import net.minecraft.client.resources.I18n;
+import net.minecraft.item.EnumRarity;
 
 import gregtech.api.GTValues;
+import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.behaviors.TooltipBehavior;
 
+import gtexpert.common.items.behaviors.NanoBowBehavior;
+import gtexpert.common.items.behaviors.QuarkBowBehavior;
 import gtexpert.core.GTEConfigHolder;
 import gtexpert.integration.ae.AEConfigHolder;
 
@@ -28,7 +32,23 @@ public class GTEMetaItem1 extends StandardMetaItem {
         // Artificial bone
         ARTIFICIAL_BONE = addItem(2, "artificial_bone");
 
-        // Free range: ID 3-10
+        // Free range: ID 5-10
+
+        // Nano Bow and Quantum Bow: ID 3-4
+        GTEMetaItems.NANO_BOW = addItem(3, "nano_bow")
+                .addComponents(ElectricStats.createElectricItem(4_000_000L, GTValues.HV))
+                .addComponents(new NanoBowBehavior())
+                .setRarity(EnumRarity.UNCOMMON)
+                .setMaxStackSize(1);
+        GTEMetaItems.NANO_BOW.getMetaItem().addPropertyOverride(NanoBowBehavior.OVERRIDE_KEY_LOCATION,
+                (stack, worldIn, entityIn) -> NanoBowBehavior.isItemActive(stack) ? 1.0f : 0.0f);
+        GTEMetaItems.QUARK_BOW = addItem(4, "quark_bow")
+                .addComponents(ElectricStats.createElectricItem(16_000_000L, GTValues.EV))
+                .addComponents(new QuarkBowBehavior())
+                .setRarity(EnumRarity.RARE)
+                .setMaxStackSize(1);
+        GTEMetaItems.QUARK_BOW.getMetaItem().addPropertyOverride(QuarkBowBehavior.OVERRIDE_KEY_LOCATION,
+                (stack, worldIn, entityIn) -> QuarkBowBehavior.isItemActive(stack) ? 1.0f : 0.0f);
 
         // Primitive parts: ID 11-20
         String componentsName = GTEConfigHolder.gteFlag.componentsName ? "ulv" : "primitive";

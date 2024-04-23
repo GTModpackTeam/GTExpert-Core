@@ -33,6 +33,8 @@ public final class GTEMetaItems {
     public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_ENGINEERING_PROCESSOR;
 
     public static ArmorMetaItem<?>.ArmorMetaValueItem PISTON_BOOTS;
+    public static MetaItem<?>.MetaValueItem NANO_BOW;
+    public static MetaItem<?>.MetaValueItem QUARK_BOW;
 
     public static void init() {
         GTEMetaItem1 metaItem1 = new GTEMetaItem1();
