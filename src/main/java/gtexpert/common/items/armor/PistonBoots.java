@@ -1,4 +1,4 @@
-package gtexpert.common.items;
+package gtexpert.common.items.armor;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

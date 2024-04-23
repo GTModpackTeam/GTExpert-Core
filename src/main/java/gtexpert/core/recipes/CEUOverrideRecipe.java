@@ -37,12 +37,15 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
+import gtexpert.common.items.GTEMetaItems;
+
 public class CEUOverrideRecipe {
 
     public static void init() {
         materials();
         items();
         blocks();
+        tools();
     }
 
     private static void materials() {
@@ -405,5 +408,14 @@ public class CEUOverrideRecipe {
                     .EUt(vacuumEUt)
                     .buildAndRegister();
         }
+    }
+
+    private static void tools() {
+        // Nano Boots
+        ModHandler.addShapedRecipe("nano_boots_from_piston_boots",
+                MetaItems.NANO_BOOTS.getStackForm(), "PPP", "PBP", "xEd",
+                'B', GTEMetaItems.PISTON_BOOTS.getStackForm(),
+                'P', MetaItems.CARBON_FIBER_PLATE.getStackForm(),
+                'E', MetaItems.ENERGIUM_CRYSTAL.getStackForm());
     }
 }
