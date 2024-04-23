@@ -1,4 +1,4 @@
-package gtexpert.integration.additions.recipes;
+package gtexpert.integration.aeaditions.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
