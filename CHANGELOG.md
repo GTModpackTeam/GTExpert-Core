@@ -2,6 +2,7 @@
 - Forestry Gregification Part.3: Centrifuge & Fabricator [#263](https://github.com/GTModpackTeam/GTExpert-Core/pull/263)
     - Thanks to @MrKono for his support!!
 - Added another recipe for nano boots [#264](https://github.com/GTModpackTeam/GTExpert-Core/pull/264)
+- Part1: Gendustry & Binnie's Mods integration [#257](https://github.com/GTModpackTeam/GTExpert-Core/pull/257)
 
 * * *
 
