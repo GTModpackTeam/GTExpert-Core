@@ -25,7 +25,7 @@ import gregtech.api.cover.CoverDefinition;
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.api.util.Mods;
-import gtexpert.common.items.GTECoverBehaviors;
+import gtexpert.common.items.behaviors.GTECoverBehaviors;
 import gtexpert.modules.GTEModuleManager;
 import gtexpert.modules.GTEModules;
 

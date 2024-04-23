@@ -10,7 +10,7 @@ import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.ffm.loaders.FFMOreDictionaryLoader;
 import gtexpert.integration.ffm.recipes.*;
-import gtexpert.integration.ffm.recipes.machines.CarpenterLoader;
+import gtexpert.integration.ffm.recipes.machines.*;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
@@ -31,6 +31,8 @@ public class FFMModule extends GTEIntegrationSubmodule {
 
         CarpenterLoader.initBase();
         CarpenterLoader.initMode();
+        CentrifugeLoader.init();
+        FabricatorLoader.init();
     }
 
     @Override

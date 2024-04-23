@@ -1,3 +1,9 @@
+# v2.1.2
+- Add Gregification of Forestry Carpenter [#258](https://github.com/GTModpackTeam/GTExpert-Core/pull/258)
+- Fix explosive recipes of ChargedCertusQuartz and Fluix [#260](https://github.com/GTModpackTeam/GTExpert-Core/pull/260)
+
+* * *
+
 # v2.1.1
 - Added a recipe to create Mob heads for users playing Peaceful.
     -  Thanks to @hag-hag for his support!!
