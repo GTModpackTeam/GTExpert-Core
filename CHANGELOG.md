@@ -1,3 +1,8 @@
+# v2.1.4
+- HV and IV Chainsaw added [#266](https://github.com/GTModpackTeam/GTExpert-Core/pull/266)
+
+* * *
+
 # v2.1.3
 - Forestry Gregification Part.3: Centrifuge & Fabricator [#263](https://github.com/GTModpackTeam/GTExpert-Core/pull/263)
     - Thanks to @MrKono for his support!!
