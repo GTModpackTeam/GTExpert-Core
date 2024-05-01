@@ -34,7 +34,6 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockSteamCasing;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.crafting.ToolHeadReplaceRecipe;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 
@@ -48,7 +47,6 @@ import gtexpert.api.util.Mods;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.items.GTEToolItems;
 import gtexpert.core.GTEConfigHolder;
 import gtexpert.core.GTERecipeMaps;
 import gtexpert.core.GTUtil;
@@ -962,10 +960,6 @@ public class GTERecipe {
                 'L', Items.LEATHER_BOOTS,
                 'P', MetaItems.ELECTRIC_PISTON_LV,
                 'B', MetaItems.BATTERY_LV_SODIUM);
-
-        // Chainsaw
-        ToolHeadReplaceRecipe.setToolHeadForTool(OrePrefix.toolHeadChainsaw, GTEToolItems.CHAINSAW_HV);
-        ToolHeadReplaceRecipe.setToolHeadForTool(OrePrefix.toolHeadChainsaw, GTEToolItems.CHAINSAW_IV);
     }
 
     private static void end_contents() {

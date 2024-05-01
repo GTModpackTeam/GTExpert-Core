@@ -98,12 +98,6 @@ metaitem.gte_me_fake_component.name=GTExpert ME存储组件
 metaitem.matrix_core.name=矩阵核心
 metaitem.piston_boots.name=活塞靴子
 
-# tool
-death.attack.chainsaw_hv=%2$s的链锯切碎了%1$s
-death.attack.chainsaw_iv=%2$s的链锯切碎了%1$s
-item.gt.tool.chainsaw_hv.name=%s链锯（HV）
-item.gt.tool.chainsaw_iv.name=%s链锯（IV）
-
 # recipemaps
 recipemap.sawmill.name=锯木机
 recipemap.vial_extractor.name=灵魂提取机
