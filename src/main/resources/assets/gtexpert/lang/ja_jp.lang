@@ -206,6 +206,12 @@ metaitem.shape.extruder.calculation_processor.tooltip=発展プロセッサを�
 metaitem.shape.extruder.engineering_processor.name=上級プロセッサの押出形成用金型
 metaitem.shape.extruder.engineering_processor.tooltip=上級プロセッサを作る為の押出形成用金型
 
+# tool
+death.attack.chainsaw_hv=%s は %s にチェーンソーを振り回すことは危険だと教えたかった。
+death.attack.chainsaw_iv=%s は %s にチェーンソーを振り回すことは危険だと教えたかった。
+item.gt.tool.chainsaw_hv.name=HVの%s製チェーンソー
+item.gt.tool.chainsaw_iv.name=IVの%s製チェーンソー
+
 # recipemaps
 recipemap.sawmill.name=製材機
 recipemap.vial_extractor.name=魂抽出器

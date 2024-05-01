@@ -207,6 +207,12 @@ metaitem.shape.extruder.calculation_processor.tooltip=Used to craft Calculation 
 metaitem.shape.extruder.engineering_processor.name=Extruder Shape (Engineering Processor)
 metaitem.shape.extruder.engineering_processor.tooltip=Used to craft Engineering Processor
 
+# tool
+death.attack.chainsaw_hv=%s was massacred by %s
+death.attack.chainsaw_iv=%s was massacred by %s
+item.gt.tool.chainsaw_hv.name=%s Chainsaw (HV)
+item.gt.tool.chainsaw_iv.name=%s Chainsaw (IV)
+
 # recipemaps
 recipemap.sawmill.name=Saw Mill
 recipemap.vial_extractor.name=Vial Extractor

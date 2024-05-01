@@ -1,4 +1,4 @@
-package gtexpert.common.items;
+package gtexpert.common.items.behaviors;
 
 import static gregtech.common.covers.CoverBehaviors.registerBehavior;
 import static gtexpert.api.util.GTEUtility.gteId;
@@ -9,6 +9,7 @@ import gregtech.common.covers.CoverFluidRegulator;
 import gregtech.common.covers.CoverPump;
 import gregtech.common.covers.CoverRoboticArm;
 
+import gtexpert.common.items.GTEMetaItems;
 import gtexpert.core.GTEConfigHolder;
 
 public class GTECoverBehaviors {
