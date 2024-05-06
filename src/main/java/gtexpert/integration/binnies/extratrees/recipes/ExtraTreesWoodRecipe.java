@@ -7,7 +7,6 @@ import net.minecraft.util.ResourceLocation;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.loaders.WoodTypeEntry;
-import gregtech.loaders.recipe.WoodRecipeLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.Mods;
@@ -88,8 +87,8 @@ public class ExtraTreesWoodRecipe {
             // only for normal woods
             ModHandler.removeRecipeByName(Mods.ExtraTrees.getResource(entry.woodName + "_doors"));
 
-            WoodRecipeLoader.registerWoodTypeRecipe(entry);
-            GTEWoodRecipeLoader.overridePlankRecipe(true, entry, GTEValues.MODID);
+            GTEWoodRecipeLoader.registerWoodTypeRecipe(true, entry);
+            GTEWoodRecipeLoader.addCuttingRecipe(entry);
             GTEWoodRecipeLoader.addSawmillRecipe(entry);
         }
 
@@ -98,8 +97,8 @@ public class ExtraTreesWoodRecipe {
                 ModHandler.removeRecipeByName(Mods.ExtraTrees.getResource(entry.woodName + "_fireproof" + type));
             }
 
-            WoodRecipeLoader.registerWoodTypeRecipe(entry);
-            GTEWoodRecipeLoader.overridePlankRecipe(true, entry, GTEValues.MODID);
+            GTEWoodRecipeLoader.registerWoodTypeRecipe(true, entry);
+            GTEWoodRecipeLoader.addCuttingRecipe(entry);
             GTEWoodRecipeLoader.addSawmillRecipe(entry);
 
             ModHandler.removeRecipeByName(new ResourceLocation(GTEValues.MODID, entry.woodName + "_saw"));

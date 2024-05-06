@@ -58,9 +58,6 @@ public class GTEWoodRecipe {
                     new WoodTypeEntry.Builder(GTValues.MODID, "rubber")
                             .planks(MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.RUBBER_PLANK), null)
                             .log(new ItemStack(MetaBlocks.RUBBER_LOG))
-                            .build(),
-                    new WoodTypeEntry.Builder(GTValues.MODID, "treated")
-                            .planks(MetaBlocks.PLANKS.getItemVariant(BlockGregPlanks.BlockType.TREATED_PLANK), null)
                             .build());
         }
         return DEFAULT_ENTRIES;
@@ -96,7 +93,8 @@ public class GTEWoodRecipe {
 
     private static void planks() {
         for (WoodTypeEntry entry : getDefaultEntries()) {
-            GTEWoodRecipeLoader.overridePlankRecipe(true, entry, Mods.GregTech.name());
+            GTEWoodRecipeLoader.removePlankRecipe(true, entry, Mods.GregTech.name());
+            GTEWoodRecipeLoader.registerWoodTypeRecipe(false, entry);
             GTEWoodRecipeLoader.addSawmillRecipe(entry);
         }
     }

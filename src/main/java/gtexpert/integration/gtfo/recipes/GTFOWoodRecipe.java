@@ -5,7 +5,6 @@ import java.util.List;
 
 import gregtech.loaders.WoodTypeEntry;
 
-import gtexpert.api.GTEValues;
 import gtexpert.api.util.Mods;
 import gtexpert.core.loaders.GTEWoodRecipeLoader;
 
@@ -64,7 +63,9 @@ public class GTFOWoodRecipe {
 
     public static void init() {
         for (WoodTypeEntry entry : getDefaultEntries()) {
-            GTEWoodRecipeLoader.overridePlankRecipe(true, entry, GTEValues.MODID);
+            GTEWoodRecipeLoader.removePlankRecipe(true, entry, Mods.GregTech.name());
+
+            GTEWoodRecipeLoader.registerWoodTypeRecipe(true, entry);
             GTEWoodRecipeLoader.addSawmillRecipe(entry);
         }
     }
