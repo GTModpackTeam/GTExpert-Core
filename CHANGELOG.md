@@ -1,3 +1,9 @@
+# v2.1.5
+- Bugs related to treated wood and FFM related wood recipe names corrected [#267](https://github.com/GTModpackTeam/GTExpert-Core/pull/267)
+    - Recipe bug related to Treated Wood Planks also fixed.
+
+* * *
+
 # v2.1.4
 - HV and IV Chainsaw added [#266](https://github.com/GTModpackTeam/GTExpert-Core/pull/266)
 
