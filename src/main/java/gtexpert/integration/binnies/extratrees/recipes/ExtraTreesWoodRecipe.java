@@ -58,7 +58,7 @@ public class ExtraTreesWoodRecipe {
                 .slab(Mods.ExtraTrees.getItem("slabs." + slabId, 1, slabMeta), null)
                 .fence(Mods.ExtraTrees.getItem("fences." + plankId, 1, plankMeta), null)
                 .fenceGate(Mods.ExtraTrees.getItem("fence.gates." + woodName), null)
-                .stairs(Mods.ExtraTrees.getItem("stairs." + woodName)).addStairsRecipe()
+                .stairs(Mods.ExtraTrees.getItem("stairs." + woodName), null).addStairsRecipe()
                 .build();
     }
 
@@ -68,12 +68,15 @@ public class ExtraTreesWoodRecipe {
                 .planks(Mods.ExtraTrees.getItem("planks.fireproof." + plankId, 1, plankMeta),
                         "fireproof_planks_" + woodName)
                 .log(Mods.ExtraTrees.getItem("logs.fireproof." + logId, 1, logMeta)).removeCharcoalRecipe()
-                .slab(Mods.ExtraTrees.getItem("slabs.fireproof." + slabId, 1, slabMeta), "fireproof_slab_" + woodName)
+                .slab(Mods.ExtraTrees.getItem("slabs.fireproof." + slabId, 1, slabMeta),
+                        "fireproof_slab_" + woodName)
                 .fence(Mods.ExtraTrees.getItem("fences.fireproof." + plankId, 1, plankMeta),
                         "fireproof_fence_" + woodName)
                 .fenceGate(Mods.ExtraTrees.getItem("fence.gates.fireproof." + woodName),
                         "fireproof_fence_gate_" + woodName)
-                .stairs(Mods.ExtraTrees.getItem("stairs.fireproof." + woodName)).addStairsRecipe()
+                .stairs(Mods.ExtraTrees.getItem("stairs.fireproof." + woodName),
+                        "fireproof_stair_" + woodName)
+                .addStairsRecipe()
                 .build();
     }
 
