@@ -40,13 +40,13 @@
 dependencies {
     // Published dependencies
     api("codechicken:codechickenlib:3.2.3.358") // CCL 3.2.3.358
-    api("com.cleanroommc:groovyscript:0.7.3") { transitive = false } // GrS 0.7.3
+    api("com.cleanroommc:groovyscript:1.0.1") { transitive = false } // GrS 1.0.1
     api("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.684") // CrT 4.1.20.684
     api rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
 
     // Hard Dependencies
-    devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5121638")) // CEu 2.8.7
-    // devOnlyNonPublishable(rfg.deobf(files("libs/gregtech-1.12.2-2.8.4-beta-dev.jar"))) // CEu pr 2.8.4
+    devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5322655")) // CEu 2.8.8
+    // devOnlyNonPublishable(rfg.deobf(project.files("libs/gregtech-1.12.2-2.8.8-beta-dev.jar"))) // CEu pr 2.8.8
     devOnlyNonPublishable(rfg.deobf("curse.maven:gregicality-multiblocks-564858:5121714")) // GCYM 1.2.8
     devOnlyNonPublishable(rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")) // Forgelin 1.8.4
 
@@ -54,7 +54,7 @@ dependencies {
     if (project.useAE2uelExtended.toBoolean()) {
         devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-uel-extended-913322:5006535")) // AE2 UEL: Extended 0.55.30-0.4.0.2
     } else {
-        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5088803")) // AE2UEL 0.56.3
+        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5147702")) // AE2UEL 0.56.4
     }
 
     // Debug Forestry
