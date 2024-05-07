@@ -1,3 +1,8 @@
+# v2.1.6
+- Update to CEu v2.8.8
+
+* * *
+
 # v2.1.5
 - Bugs related to treated wood and FFM related wood recipe names corrected [#267](https://github.com/GTModpackTeam/GTExpert-Core/pull/267)
     - Recipe bug related to Treated Wood Planks also fixed.

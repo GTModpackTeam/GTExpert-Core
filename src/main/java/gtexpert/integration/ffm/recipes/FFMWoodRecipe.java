@@ -71,7 +71,7 @@ public class FFMWoodRecipe {
                 .slab(Mods.Forestry.getItem("slabs." + separator + slabId, 1, slabMeta), null)
                 .fence(Mods.Forestry.getItem("fences." + separator + plankId, 1, plankMeta), null)
                 .fenceGate(Mods.Forestry.getItem("fence.gates." + separator + woodName), null)
-                .stairs(Mods.Forestry.getItem("stairs." + separator + woodName)).addStairsRecipe()
+                .stairs(Mods.Forestry.getItem("stairs." + separator + woodName), null).addStairsRecipe()
                 .build();
     }
 

@@ -116,8 +116,10 @@ public class GTEWoodRecipeLoader {
 
         // stairs
         if (!entry.stairs.isEmpty()) {
+            final boolean hasStairRecipe = entry.stairsRecipeName != null;
             if (entry.addStairsCraftingRecipe) {
-                ModHandler.addShapedRecipe(prefix + name + "_stairs", GTUtility.copy(4, entry.stairs),
+                ModHandler.addShapedRecipe(hasStairRecipe ? prefix + entry.stairsRecipeName : prefix + name + "_stairs",
+                        GTUtility.copy(4, entry.stairs),
                         "P  ", "PP ", "PPP",
                         'P', entry.planks.copy());
             }

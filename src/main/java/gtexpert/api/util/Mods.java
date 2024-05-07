@@ -78,6 +78,8 @@ public enum Mods {
     JourneyMap(Names.JOURNEY_MAP),
     JustEnoughItems(Names.JUST_ENOUGH_ITEMS),
     MagicBees(Names.MAGIC_BEES),
+    ModularUI(Names.MODULRAUI),
+    MixinBooter(Names.MIXINBOOTER),
     NeevesAE2(Names.NEEVES_AE2),
     Nothirium(Names.NOTHIRIUM),
     NuclearCraft(Names.NUCLEAR_CRAFT, versionExcludes("2o")),
@@ -170,6 +172,8 @@ public enum Mods {
         public static final String JOURNEY_MAP = "journeymap";
         public static final String JUST_ENOUGH_ITEMS = "jei";
         public static final String MAGIC_BEES = "magicbees";
+        public static final String MODULRAUI = "modularui";
+        public static final String MIXINBOOTER = "mixinbooter";
         public static final String NEEVES_AE2 = "nae2";
         public static final String NOTHIRIUM = "nothirium";
         public static final String NUCLEAR_CRAFT = "nuclearcraft";
