@@ -5,9 +5,9 @@ import net.minecraftforge.common.config.Config;
 import gtexpert.api.GTEValues;
 import gtexpert.modules.GTEModules;
 
-@Config.LangKey(GTEValues.MODID + ".config.deda")
+@Config.LangKey(GTEValues.MODID + ".config.integration.deda")
 @Config(modid = GTEValues.MODID,
-        name = GTEValues.MODID + "/" + GTEModules.MODULE_DEDA,
+        name = GTEValues.MODID + "/integration/" + GTEModules.MODULE_DEDA,
         category = "Draconic Evolution & Draconic Additions")
 public class DEDAConfigHolder {
 

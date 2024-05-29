@@ -1,3 +1,8 @@
+# v2.1.7
+- Fix cfg location []()
+
+* * *
+
 # v2.1.6
 - Update to CEu v2.8.8
 
