@@ -1,3 +1,8 @@
+# v2.1.7
+- Fix cfg location [#269](https://github.com/GTModpackTeam/GTExpert-Core/pull/269)
+
+* * *
+
 # v2.1.6
 - Update to CEu v2.8.8
 

@@ -5,9 +5,9 @@ import net.minecraftforge.common.config.Config;
 import gtexpert.api.GTEValues;
 import gtexpert.modules.GTEModules;
 
-@Config.LangKey(GTEValues.MODID + ".config.chisel")
+@Config.LangKey(GTEValues.MODID + ".config.integration.chisel")
 @Config(modid = GTEValues.MODID,
-        name = GTEValues.MODID + "/" + GTEModules.MODULE_CHISEL,
+        name = GTEValues.MODID + "/integration/" + GTEModules.MODULE_CHISEL,
         category = "Chisel")
 public class ChiselConfigHolder {
 

@@ -6,9 +6,9 @@ import net.minecraftforge.common.config.Config.LangKey;
 import gtexpert.api.GTEValues;
 import gtexpert.modules.GTEModules;
 
-@LangKey(GTEValues.MODID + ".config.ae")
+@LangKey(GTEValues.MODID + ".config.integration.ae")
 @Config(modid = GTEValues.MODID,
-        name = GTEValues.MODID + "/" + GTEModules.MODULE_AE,
+        name = GTEValues.MODID + "/integration/" + GTEModules.MODULE_AE,
         category = "Applied Energistics 2")
 public class AEConfigHolder {
 

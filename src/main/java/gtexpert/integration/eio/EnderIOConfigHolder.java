@@ -5,9 +5,9 @@ import net.minecraftforge.common.config.Config;
 import gtexpert.api.GTEValues;
 import gtexpert.modules.GTEModules;
 
-@Config.LangKey(GTEValues.MODID + ".config.eio")
+@Config.LangKey(GTEValues.MODID + ".config.integration.eio")
 @Config(modid = GTEValues.MODID,
-        name = GTEValues.MODID + "/" + GTEModules.MODULE_EIO,
+        name = GTEValues.MODID + "/integration/" + GTEModules.MODULE_EIO,
         category = "Ender IO")
 public class EnderIOConfigHolder {
 

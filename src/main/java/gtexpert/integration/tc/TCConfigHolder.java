@@ -5,9 +5,9 @@ import net.minecraftforge.common.config.Config;
 import gtexpert.api.GTEValues;
 import gtexpert.modules.GTEModules;
 
-@Config.LangKey(GTEValues.MODID + ".config.tc")
+@Config.LangKey(GTEValues.MODID + ".config.integration.tc")
 @Config(modid = GTEValues.MODID,
-        name = GTEValues.MODID + "/" + GTEModules.MODULE_TC,
+        name = GTEValues.MODID + "/integration/" + GTEModules.MODULE_TC,
         category = "Thaumcraft")
 public class TCConfigHolder {
 

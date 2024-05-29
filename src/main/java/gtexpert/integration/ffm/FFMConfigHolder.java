@@ -5,9 +5,9 @@ import net.minecraftforge.common.config.Config;
 import gtexpert.api.GTEValues;
 import gtexpert.modules.GTEModules;
 
-@Config.LangKey(GTEValues.MODID + ".config.ffm")
+@Config.LangKey(GTEValues.MODID + ".config.integration.ffm")
 @Config(modid = GTEValues.MODID,
-        name = GTEValues.MODID + "/" + GTEModules.MODULE_FFM,
+        name = GTEValues.MODID + "/integration/" + GTEModules.MODULE_FFM,
         category = "Forestry")
 public class FFMConfigHolder {
 
