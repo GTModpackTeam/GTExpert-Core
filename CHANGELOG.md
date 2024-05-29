@@ -1,5 +1,5 @@
 # v2.1.7
-- Fix cfg location []()
+- Fix cfg location [#269](https://github.com/GTModpackTeam/GTExpert-Core/pull/269)
 
 * * *
 
