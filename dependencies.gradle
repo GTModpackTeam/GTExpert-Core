@@ -115,7 +115,7 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:brandons-core-231382:3408276") // BrandonsCore 2.4.20.162
     compileOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261") // DraconicEvolution 2.3.28.354
     compileOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704") // DraconicAdditions 1.17.0.45
-    if (project.debug_all.toBoolean() || project.debug_de.toBoolean()) {
+    if (project.debug_all.toBoolean() || project.debug_deda.toBoolean()) {
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:baubles-227083:2518667")
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:redstone-flux-270789:2920436")
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:brandons-core-231382:3408276")
