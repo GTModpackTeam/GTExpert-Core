@@ -6,7 +6,7 @@ import net.minecraftforge.common.config.Config.LangKey;
 import gtexpert.api.GTEValues;
 import gtexpert.modules.GTEModules;
 
-@LangKey(GTEValues.MODID + ".config.extracpus")
+@LangKey(GTEValues.MODID + ".config.integration.extracpus")
 @Config(modid = GTEValues.MODID,
         name = GTEValues.MODID + "/integration/" + GTEModules.MODULE_EXCPUS,
         category = "Extra CPUs")
