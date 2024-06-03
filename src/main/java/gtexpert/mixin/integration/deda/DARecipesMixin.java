@@ -10,7 +10,7 @@ public class DARecipesMixin {
 
     /**
      * @author tier940
-     * @reason Empty method as recipe cannot be deleted.
+     * @reason Overwrite with an empty method because the craft recipe is not deletable with cfg changes.
      */
     @Overwrite
     public static void addRecipes() {}

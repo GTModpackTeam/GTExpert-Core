@@ -66,7 +66,7 @@ public class DraconicToolsRecipe {
         // ########################################
         // Draconic Additions
         // ########################################
-        // GTEMaterials.Chaos Container
+        // Chaos Container
         GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.recipeBuilder()
                 .inputNBT(DEFeatures.dislocator, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(DEFeatures.infusedObsidian, 2)
@@ -79,7 +79,7 @@ public class DraconicToolsRecipe {
                 .buildAndRegister();
 
         // Portable Wired Wyvern Charger
-        ModHandler.addShapedRecipe(true, "portable_wired_charger_1", new ItemStack(DAFeatures.pwc, 1, 1),
+        ModHandler.addShapedRecipe(true, "portable_wired_charger_wyvern", DAFeatures.pwcWyvern,
                 "DDD", "ICI", "DDD",
                 'D', Mods.EnderIO.isModLoaded() ?
                         OreDictUnifier.get(plate, GTEMaterials.DarkSteel) :
@@ -88,7 +88,7 @@ public class DraconicToolsRecipe {
                 'C', new ItemStack(DEFeatures.wyvernCore));
 
         // Portable Wired Wyvern Discharger
-        ModHandler.addShapedRecipe(true, "portable_wired_discharger_1", new ItemStack(DAFeatures.pwd, 1, 1),
+        ModHandler.addShapedRecipe(true, "portable_wired_discharger_wyvern", DAFeatures.pwdWyvern,
                 "DDD", "GCG", "DDD",
                 'D', Mods.EnderIO.isModLoaded() ?
                         OreDictUnifier.get(plate, GTEMaterials.DarkSteel) :
@@ -96,12 +96,52 @@ public class DraconicToolsRecipe {
                 'G', OreDictUnifier.get(plate, Materials.Gold),
                 'C', new ItemStack(DEFeatures.wyvernCore));
 
+        // Portable Wired Draconic Charger
+        ModHandler.addShapelessRecipe("portable_wired_charger_draconic", DAFeatures.pwcBasic,
+                DAFeatures.pwcWyvern,
+                new ItemStack(DEFeatures.draconicCore));
+
+        // Portable Wired Draconic Discharger
+        ModHandler.addShapelessRecipe("portable_wired_discharger_draconic", DAFeatures.pwdBasic,
+                DAFeatures.pwcWyvern,
+                new ItemStack(DEFeatures.draconicCore));
+
+        // Portable Wired Awakened Charger
+        ModHandler.addShapelessRecipe("portable_wired_charger_awakened", DAFeatures.pwcDraconic,
+                DAFeatures.pwcBasic,
+                new ItemStack(DEFeatures.awakenedCore));
+
+        // Portable Wired Awakened Discharger
+        ModHandler.addShapelessRecipe("portable_wired_discharger_awakened", DAFeatures.pwdDraconic,
+                DAFeatures.pwdBasic,
+                new ItemStack(DEFeatures.awakenedCore));
+
+        // Portable Wired Chaotic Charger
+        ModHandler.addShapelessRecipe("portable_wired_charger_chaotic", DAFeatures.pwcChaotic,
+                DAFeatures.pwcDraconic,
+                new ItemStack(DEFeatures.chaoticCore));
+
+        // Portable Wired Chaotic Discharger
+        ModHandler.addShapelessRecipe("portable_wired_discharger_chaotic", DAFeatures.pwdChaotic,
+                DAFeatures.pwdDraconic,
+                new ItemStack(DEFeatures.chaoticCore));
+
         // Wyvern Necklace of Shielding
         ModHandler.addShapedRecipe(true, "wyvern_shield_necklace", new ItemStack(DAFeatures.wyvernShieldNecklace, 1),
                 "SSS", "SES", " C ",
                 'S', OreDictUnifier.get(stick, Materials.RoseGold),
                 'E', new ItemStack(DEFeatures.wyvernEnergyCore),
                 'C', new ItemStack(DEFeatures.wyvernCore));
+
+        // Draconic Necklace of Shielding
+        ModHandler.addShapelessRecipe("draconic_shield_necklace", new ItemStack(DAFeatures.basicShieldNecklace, 1),
+                new ItemStack(DAFeatures.wyvernShieldNecklace),
+                new ItemStack(DEFeatures.draconicCore));
+
+        // Awakened Necklace of Shielding
+        ModHandler.addShapelessRecipe("awakened_shield_necklace", new ItemStack(DAFeatures.draconicShieldNecklace, 1),
+                new ItemStack(DAFeatures.basicShieldNecklace),
+                new ItemStack(DEFeatures.awakenedCore));
 
         // Draconic Belt of Overloading
         ModHandler.addShapedRecipe(true, "overload_belt", new ItemStack(DAFeatures.overloadBelt, 1),
