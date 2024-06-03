@@ -5,7 +5,8 @@
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "integration.deda.DARecipesMixin"
+    "integration.deda.DARecipesMixin",
+    "integration.deda.PortableWiredChargerMixin"
   ],
   "server": [
   ],
