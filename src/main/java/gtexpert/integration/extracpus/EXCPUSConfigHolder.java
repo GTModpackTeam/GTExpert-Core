@@ -12,4 +12,7 @@ import gtexpert.modules.GTEModules;
         category = "Extra CPUs")
 public class EXCPUSConfigHolder {
 
+    @Config.Comment({ "Do you want to migrate the recipes to NAE2.",
+            "If not changed, the recipes will remain in ExtraCPUs.", "Default: false" })
+    public static boolean migrateToNAE2 = false;
 }

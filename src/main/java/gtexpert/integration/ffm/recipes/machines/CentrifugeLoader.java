@@ -41,7 +41,7 @@ public class CentrifugeLoader {
                 .chancedOutput(Mods.Forestry.getItem("propolis"), 1000, 0)
                 .EUt(5).duration(128).buildAndRegister();
 
-        registerCombRecipe(Mods.Forestry.getItem("bee_combs", 1, 0),
+        registerCombRecipe(Mods.Forestry.getItem("bee_combs", 1),
                 new ItemStack[] { wax, drop },
                 new int[] { 10000, 9000 });
         registerCombRecipe(Mods.Forestry.getItem("bee_combs", 1, 2),

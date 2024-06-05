@@ -395,7 +395,7 @@ public class DraconicMaterialsRecipe {
 
     public static void remove() {
         // Draconium Ore
-        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1, 0));
+        ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1));
         ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1, 1));
         ModHandler.removeFurnaceSmelting(Mods.DraconicEvolution.getItem("draconium_ore", 1, 2));
 

@@ -17,8 +17,8 @@ public class GTFOWoodRecipe {
             final String mcModId = Mods.GregTechFoodOption.name();
             return DEFAULT_ENTRIES = Arrays.asList(
                     new WoodTypeEntry.Builder(mcModId, "banana")
-                            .planks(Mods.GregTechFoodOption.getItem("gtfo_planks_0", 1, 0), null)
-                            .log(Mods.GregTechFoodOption.getItem("gtfo_log_0", 1, 0))
+                            .planks(Mods.GregTechFoodOption.getItem("gtfo_planks_0", 1), null)
+                            .log(Mods.GregTechFoodOption.getItem("gtfo_log_0", 1))
                             .registerAllUnificationInfo()
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "orange")
@@ -35,7 +35,7 @@ public class GTFOWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "lemon")
                             .planks(Mods.GregTechFoodOption.getItem("gtfo_planks_0", 1, 4), null)
-                            .log(Mods.GregTechFoodOption.getItem("gtfo_log_1", 1, 0))
+                            .log(Mods.GregTechFoodOption.getItem("gtfo_log_1", 1))
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "lime")
                             .planks(Mods.GregTechFoodOption.getItem("gtfo_planks_0", 1, 5), null)
@@ -51,7 +51,7 @@ public class GTFOWoodRecipe {
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "nutmeg")
                             .planks(Mods.GregTechFoodOption.getItem("gtfo_planks_0", 1, 8), null)
-                            .log(Mods.GregTechFoodOption.getItem("gtfo_log_2", 1, 0))
+                            .log(Mods.GregTechFoodOption.getItem("gtfo_log_2", 1))
                             .build(),
                     new WoodTypeEntry.Builder(mcModId, "coconut")
                             .planks(Mods.GregTechFoodOption.getItem("gtfo_planks_0", 1, 9), null)
