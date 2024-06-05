@@ -21,6 +21,8 @@ import org.jetbrains.annotations.Nullable;
 
 import gregtech.api.GTValues;
 
+import gtexpert.api.GTEValues;
+
 public enum Mods {
 
     AEAdditions(Names.AE_ADDITIONS),
@@ -72,6 +74,7 @@ public enum Mods {
     GregicalityMultiblocks(Names.GREGICALITY_MULTIBLOCKS),
     GregTech(Names.GREGTECH),
     GregTechFoodOption(Names.GREGTECH_FOOD_OPTION),
+    GregTechExpertCore(GTEValues.MODID),
     GroovyScript(Names.GROOVY_SCRIPT),
     HWYLA(Names.HWYLA),
     InventoryTweaks(Names.INVENTORY_TWEAKS),

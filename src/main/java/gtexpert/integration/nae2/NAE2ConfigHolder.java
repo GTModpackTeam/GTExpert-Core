@@ -12,4 +12,7 @@ import gtexpert.modules.GTEModules;
         category = "Neeve's AE2")
 public class NAE2ConfigHolder {
 
+    @Config.Comment({ "Do you want to change the recipe to one that utilizes items from AEAdditions.",
+            "If not changed, the recipe will utilize NAE2 items.", "Default: false" })
+    public static boolean enableAEAdditions = false;
 }

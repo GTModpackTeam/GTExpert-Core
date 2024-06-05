@@ -53,7 +53,7 @@ public class CarpenterLoader {
             ApicultureNormal();
 
             // Circuit
-            CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1, 0),
+            CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1),
                     20, Materials.Iron, MetaItems.COATED_BOARD);
             CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1, 1),
                     40, Materials.Bronze, MetaItems.COATED_BOARD);
@@ -69,7 +69,7 @@ public class CarpenterLoader {
             LepidopterologyHard();
 
             // Circuit
-            CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1, 0),
+            CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1),
                     20, Materials.Iron, MetaItems.COATED_BOARD, GTUtil.oreDictionaryCircuit(GTValues.ULV));
             CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1, 1),
                     40, Materials.Bronze, MetaItems.COATED_BOARD, GTUtil.oreDictionaryCircuit(GTValues.LV));

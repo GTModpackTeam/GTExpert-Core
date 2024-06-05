@@ -20,7 +20,7 @@ import gtexpert.modules.GTEModules;
 public class EXCPUSModule extends GTEIntegrationSubmodule {
 
     @Override
-    public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
         EXCPUSItemsRecipe.init();
         EXCPUSBlocksRecipe.init();
     }
