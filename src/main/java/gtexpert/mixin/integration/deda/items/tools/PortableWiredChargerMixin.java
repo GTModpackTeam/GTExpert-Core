@@ -1,4 +1,4 @@
-package gtexpert.mixin.integration.deda;
+package gtexpert.mixin.integration.deda.items.tools;
 
 import net.foxmcloud.draconicadditions.items.tools.PortableWiredCharger;
 import net.minecraft.item.ItemStack;
