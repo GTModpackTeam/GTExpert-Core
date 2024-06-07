@@ -28,6 +28,10 @@ public class GTETextures {
     public static SimpleOverlayRenderer DRACONIUM_CASING;
     public static SimpleOverlayRenderer AWAKENED_DRACONIUM_CASING;
 
+    // Gendustry
+    public static OrientedOverlayRenderer INDUSTRIAL_APIARY_OVERLAY = new OrientedOverlayRenderer(
+            "machines/industrial_apiary");
+
     public static void preInit() {
         // Core
         SAWMILL_CASING = new SimpleOverlayRenderer("casings/sawmill_casing");

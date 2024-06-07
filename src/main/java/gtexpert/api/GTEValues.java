@@ -6,44 +6,63 @@ import gtexpert.api.util.Mods;
 import gtexpert.integration.ae.AEConfigHolder;
 import gtexpert.integration.deda.DEDAConfigHolder;
 import gtexpert.integration.eio.EnderIOConfigHolder;
+import gtexpert.modules.GTEModules;
 
 public class GTEValues {
 
     public static final String MODNAME = Tags.MODNAME;
     public static final String MODID = Tags.MODID;
 
-    public static int ae2VoltageTier = voltageTier(AEConfigHolder.voltageTier) ? AEConfigHolder.voltageTier : 3,
-            eioVoltageTier = voltageTier(EnderIOConfigHolder.voltageTier) ? EnderIOConfigHolder.voltageTier : 3,
-            dedaVoltageTier = voltageTier(DEDAConfigHolder.voltageTier) ? DEDAConfigHolder.voltageTier : 6;
+    public static int ae2VoltageTier = voltageTier(AEConfigHolder.voltageTier, GTEModules.MODULE_AE) ?
+            AEConfigHolder.voltageTier : 3;
+    public static int eioVoltageTier = voltageTier(EnderIOConfigHolder.voltageTier, GTEModules.MODULE_EIO) ?
+            EnderIOConfigHolder.voltageTier : 3;
+    public static int dedaVoltageTier = voltageTier(DEDAConfigHolder.voltageTier, GTEModules.MODULE_DEDA) ?
+            DEDAConfigHolder.voltageTier : 6;
 
     public static boolean isModLoadedDEDA() {
         return Mods.DraconicEvolution.isModLoaded() && Mods.DraconicAdditions.isModLoaded();
     }
 
-    private static boolean voltageTier(int voltage) {
+    private static boolean voltageTier(int voltage, String mod) {
+        String greaterMsg = "Base Voltage must be greater than %d! Set to default value.";
+        String lessMsg = "Base Voltage must be less than %d! Set to default value.";
+
         if (voltage == 0) {
-            GTELog.logger.error("Base Voltage must be greater than 0! Set to default value.");
+            GTELog.logger.error("{}", String.format(greaterMsg, 0));
             return false;
         }
-        if (ae2VoltageTier < 2) {
-            GTELog.logger.error("Base Voltage must be greater than 2! Set to default value.");
-            return false;
+
+        switch (mod) {
+            case GTEModules.MODULE_AE -> {
+                if (voltage < 2) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_AE + "] {}", String.format(greaterMsg, 2));
+                } else if (voltage > 10) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_AE + "] {}", String.format(lessMsg, 10));
+                } else {
+                    return true;
+                }
+            }
+            case GTEModules.MODULE_EIO -> {
+                if (voltage < 1) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_EIO + "] {}", String.format(greaterMsg, 1));
+                } else if (voltage > 8) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_EIO + "] {}", String.format(lessMsg, 8));
+                } else {
+                    return true;
+                }
+            }
+            case GTEModules.MODULE_DEDA -> {
+                if (voltage < 3) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_DEDA + "] {}", String.format(greaterMsg, 3));
+                } else if (voltage > 6) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_DEDA + "] {}", String.format(lessMsg, 6));
+                } else {
+                    return true;
+                }
+            }
+            default -> GTELog.logger.error("Unknown mod: {}", mod);
         }
-        if (ae2VoltageTier > 10) {
-            GTELog.logger.error("Base Voltage must be less than 10! Set to default value.");
-            return false;
-        }
-        if (eioVoltageTier > 8) {
-            GTELog.logger.error("Base Voltage must be less than 8! Set to default value.");
-            return false;
-        }
-        if (dedaVoltageTier < 3) {
-            GTELog.logger.error("Base Voltage must be greater than 3! Set to default value.");
-            return false;
-        } else if (dedaVoltageTier > 6) {
-            GTELog.logger.error("Base Voltage must be less than 8! Set to default value.");
-            return false;
-        }
-        return true;
+        return false;
     }
 }

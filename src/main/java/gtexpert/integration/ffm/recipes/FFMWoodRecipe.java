@@ -11,7 +11,6 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.common.ConfigHolder;
 import gregtech.loaders.WoodTypeEntry;
-import gregtech.loaders.recipe.WoodRecipeLoader;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.Mods;
@@ -83,11 +82,12 @@ public class FFMWoodRecipe {
             for (String type : types) {
                 ModHandler.removeRecipeByName(Mods.Forestry.getResource(type + entry.woodName));
             }
-            ModHandler.removeRecipeByName(Mods.Forestry.getResource("doors_" + entry.woodName)); // only for normal
-                                                                                                 // woods
 
-            WoodRecipeLoader.registerWoodTypeRecipe(entry);
-            GTEWoodRecipeLoader.overridePlankRecipe(true, entry, GTEValues.MODID);
+            // only for normal woods
+            ModHandler.removeRecipeByName(Mods.Forestry.getResource("doors_" + entry.woodName));
+
+            GTEWoodRecipeLoader.registerWoodTypeRecipe(true, entry);
+            GTEWoodRecipeLoader.addCuttingRecipe(entry);
             GTEWoodRecipeLoader.addSawmillRecipe(entry);
         }
 
@@ -96,9 +96,9 @@ public class FFMWoodRecipe {
                 ModHandler.removeRecipeByName(Mods.Forestry.getResource("fireproof_" + type + entry.woodName));
             }
 
-            WoodRecipeLoader.registerWoodTypeRecipe(entry);
-            GTEWoodRecipeLoader.overridePlankRecipe(true, entry, GTEValues.MODID);
-            GTEWoodRecipeLoader.addSawmillRecipe(entry);;
+            GTEWoodRecipeLoader.registerWoodTypeRecipe(true, entry);
+            GTEWoodRecipeLoader.addCuttingRecipe(entry);
+            GTEWoodRecipeLoader.addSawmillRecipe(entry);
         }
 
         // Fireproof for vanilla wood

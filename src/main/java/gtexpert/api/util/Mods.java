@@ -31,6 +31,7 @@ public enum Mods {
     Avaritia(Names.AVARITIA),
     Avaritiaaddons(Names.AVARITIAADDONS),
     Baubles(Names.BAUBLES),
+    Botany(Names.BOTANY),
     Chisel(Names.CHISEL),
     CTM(Names.CONNECTED_TEXTURES_MOD),
     CraftTweaker(Names.CRAFT_TWEAKER),
@@ -69,10 +70,11 @@ public enum Mods {
     ForestryResearch(Names.FORESTRY, forestryModule(Names.FORESTRY_RESEARCH)),
     GalacticraftCore(Names.GALACTICRAFT_CORE),
     Genetics(Names.GENETICS),
+    Gendustry(Names.GENDUSTRY),
     GregicalityMultiblocks(Names.GREGICALITY_MULTIBLOCKS),
     GregTech(Names.GREGTECH),
     GregTechFoodOption(Names.GREGTECH_FOOD_OPTION),
-    GregTechExpertCore(Names.GREGTECH_EXPERT_CORE),
+    GregTechExpertCore(GTEValues.MODID),
     GroovyScript(Names.GROOVY_SCRIPT),
     HWYLA(Names.HWYLA),
     InventoryTweaks(Names.INVENTORY_TWEAKS),
@@ -124,6 +126,7 @@ public enum Mods {
         public static final String AVARITIA = "avaritia";
         public static final String AVARITIAADDONS = "avaritiaddons";
         public static final String BAUBLES = "baubles";
+        public static final String BOTANY = "botany";
         public static final String CHISEL = "chisel";
         public static final String CONNECTED_TEXTURES_MOD = "ctm";
         public static final String CRAFT_TWEAKER = "crafttweaker";
@@ -162,10 +165,10 @@ public enum Mods {
         public static final String FORESTRY_RESEARCH = "research";
         public static final String GALACTICRAFT_CORE = "galacticraftcore";
         public static final String GENETICS = "genetics";
+        public static final String GENDUSTRY = "gendustry";
         public static final String GREGICALITY_MULTIBLOCKS = "gcym";
         public static final String GREGTECH = GTValues.MODID;
         public static final String GREGTECH_FOOD_OPTION = "gregtechfoodoption";
-        public static final String GREGTECH_EXPERT_CORE = GTEValues.MODID;
         public static final String GROOVY_SCRIPT = "groovyscript";
         public static final String HWYLA = "hwyla";
         public static final String INVENTORY_TWEAKS = "inventorytweaks";

@@ -7,6 +7,7 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 
 import gtexpert.api.util.Mods;
+import gtexpert.integration.nae2.NAE2ConfigHolder;
 
 public class NAE2BlocksRecipe {
 
@@ -42,7 +43,11 @@ public class NAE2BlocksRecipe {
         ModHandler.removeRecipeByName(Mods.NeevesAE2.getResource("block/crafting/storage_256k"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("crafting_unit"))
-                .inputs(Mods.NeevesAE2.getItem("material", 1, 1))
+                .inputs(Mods.AEAdditions.isModLoaded() ?
+                        NAE2ConfigHolder.enableAEAdditions ?
+                                Mods.AEAdditions.getItem("storage.component", 1) :
+                                Mods.NeevesAE2.getItem("material", 1, 1) :
+                        Mods.NeevesAE2.getItem("material", 1, 1))
                 .outputs(Mods.NeevesAE2.getItem("storage_crafting_256k"))
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
@@ -51,7 +56,11 @@ public class NAE2BlocksRecipe {
         ModHandler.removeRecipeByName(Mods.NeevesAE2.getResource("block/crafting/storage_1024k"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("crafting_unit"))
-                .inputs(Mods.NeevesAE2.getItem("material", 1, 2))
+                .inputs(Mods.AEAdditions.isModLoaded() ?
+                        NAE2ConfigHolder.enableAEAdditions ?
+                                Mods.AEAdditions.getItem("storage.component", 1, 1) :
+                                Mods.NeevesAE2.getItem("material", 1, 2) :
+                        Mods.NeevesAE2.getItem("material", 1, 2))
                 .outputs(Mods.NeevesAE2.getItem("storage_crafting_1024k"))
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
@@ -60,7 +69,11 @@ public class NAE2BlocksRecipe {
         ModHandler.removeRecipeByName(Mods.NeevesAE2.getResource("block/crafting/storage_4096k"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("crafting_unit"))
-                .inputs(Mods.NeevesAE2.getItem("material", 1, 3))
+                .inputs(Mods.AEAdditions.isModLoaded() ?
+                        NAE2ConfigHolder.enableAEAdditions ?
+                                Mods.AEAdditions.getItem("storage.component", 1, 2) :
+                                Mods.NeevesAE2.getItem("material", 1, 3) :
+                        Mods.NeevesAE2.getItem("material", 1, 3))
                 .outputs(Mods.NeevesAE2.getItem("storage_crafting_4096k"))
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();
@@ -69,7 +82,11 @@ public class NAE2BlocksRecipe {
         ModHandler.removeRecipeByName(Mods.NeevesAE2.getResource("block/crafting/storage_16384k"));
         RecipeMaps.PACKER_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("crafting_unit"))
-                .inputs(Mods.NeevesAE2.getItem("material", 1, 4))
+                .inputs(Mods.AEAdditions.isModLoaded() ?
+                        NAE2ConfigHolder.enableAEAdditions ?
+                                Mods.AEAdditions.getItem("storage.component", 1, 3) :
+                                Mods.NeevesAE2.getItem("material", 1, 4) :
+                        Mods.NeevesAE2.getItem("material", 1, 4))
                 .outputs(Mods.NeevesAE2.getItem("storage_crafting_16384k"))
                 .duration(10).EUt(VA[ULV])
                 .buildAndRegister();

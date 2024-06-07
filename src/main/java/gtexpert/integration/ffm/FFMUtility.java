@@ -14,7 +14,11 @@ public class FFMUtility {
     public static int feToEu = ConfigHolder.compat.energy.euToFeRatio;
 
     public static int timeCarpenter(int EUt) {
-        return Math.round(EUt * 204 * FFMUtility.energyModifier / (100 * FFMUtility.feToEu));
+        return Math.round(EUt * 204 * energyModifier / (100 * feToEu));
+    }
+
+    public static int timeFabricator(int EUt) {
+        return Math.round(200 * energyModifier / (EUt * feToEu));
     }
 
     public enum recipeMode {

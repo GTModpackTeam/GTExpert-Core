@@ -25,7 +25,7 @@ import gregtech.api.cover.CoverDefinition;
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.api.util.Mods;
-import gtexpert.common.items.GTECoverBehaviors;
+import gtexpert.common.items.behaviors.GTECoverBehaviors;
 import gtexpert.modules.GTEModuleManager;
 import gtexpert.modules.GTEModules;
 
@@ -44,7 +44,10 @@ import gtexpert.modules.GTEModules;
              "after:" + Mods.Names.ENDER_CONDUITS + ";" + "after:" + Mods.Names.ENDER_AE2_CONDUITS + ";" +
              "after:" + Mods.Names.DRACONIC_EVOLUTION + ";" + "after:" + Mods.Names.DRACONIC_ADDITIONS + ";" +
              "after:" + Mods.Names.CHISEL + ";" + "after:" + Mods.Names.AVARITIA + ";" +
-             "after:" + Mods.Names.THAUMCRAFT + ";" + "after:" + Mods.Names.FORESTRY + ";")
+             "after:" + Mods.Names.THAUMCRAFT + ";" + "after:" + Mods.Names.FORESTRY + ";" +
+             "after:" + Mods.Names.GENDUSTRY + ";" + "after:" + Mods.Names.GENETICS + ";" +
+             "after:" + Mods.Names.BOTANY + ";" + "after:" + Mods.Names.EXTRA_BEES + ";" +
+             "after:" + Mods.Names.EXTRA_TREES + ";")
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 

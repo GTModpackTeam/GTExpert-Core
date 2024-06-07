@@ -42,12 +42,12 @@ dependencies {
     api("codechicken:codechickenlib:3.2.3.358") // CCL 3.2.3.358
     api("com.cleanroommc:modularui:2.4.3") { transitive = false } // MUI 2.4.3
     api("com.cleanroommc:groovyscript:1.0.1") { transitive = false } // GrS 1.0.1
-    api("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.684") // CrT 4.1.20.684
+    api("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.689") // CrT 4.1.20.689
     api rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
 
     // Hard Dependencies
-    //devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5121638")) // CEu 2.8.7
-    devOnlyNonPublishable(rfg.deobf(project.files("libs/gregtech-1.12.2-2.8.8-beta-dev.jar"))) // CEu pr 2.8.8
+    //devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5322655")) // CEu 2.8.8
+    devOnlyNonPublishable(rfg.deobf(project.files("libs/gregtech-1.12.2-2.9.0-beta-dev.jar"))) // CEu pr 2.9.0(nuclear-testing)
     devOnlyNonPublishable(rfg.deobf("curse.maven:gregicality-multiblocks-564858:5121714")) // GCYM 1.2.8
     devOnlyNonPublishable(rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")) // Forgelin 1.8.4
 
@@ -117,7 +117,7 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:brandons-core-231382:3408276") // BrandonsCore 2.4.20.162
     compileOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261") // DraconicEvolution 2.3.28.354
     compileOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704") // DraconicAdditions 1.17.0.45
-    if (project.debug_all.toBoolean() || project.debug_de.toBoolean()) {
+    if (project.debug_all.toBoolean() || project.debug_deda.toBoolean()) {
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:baubles-227083:2518667")
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:redstone-flux-270789:2920436")
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:brandons-core-231382:3408276")
@@ -145,7 +145,7 @@ dependencies {
 
     // Debug NAE2
     if (project.debug_all.toBoolean() || project.debug_nae2.toBoolean()) {
-        runtimeOnlyNonPublishable rfg.deobf("curse.maven:nae2-884359:4955559") // NAE2 1.6.1
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:nae2-884359:5378466") // NAE2 1.6.3
     }
 
     // Extra CPUs

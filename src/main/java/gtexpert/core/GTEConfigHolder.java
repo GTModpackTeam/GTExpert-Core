@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 import gtexpert.api.GTEValues;
 
 @Config(modid = GTEValues.MODID,
-        name = GTEValues.MODID + "/" + "core",
+        name = GTEValues.MODID + "/" + GTEValues.MODID,
         category = "GTExpert-Core")
 public class GTEConfigHolder {
 

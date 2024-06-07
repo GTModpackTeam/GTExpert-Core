@@ -1,3 +1,46 @@
+# v2.2.1
+- Fix [#272](https://github.com/GTModpackTeam/GTExpert-Core/pull/272)
+
+* * *
+
+# v2.2.0
+- Fix cfg location [#269](https://github.com/GTModpackTeam/GTExpert-Core/pull/269)
+- Add Mixin of `DARecipes.addRecipes()` [#270](https://github.com/GTModpackTeam/GTExpert-Core/pull/270)
+- Fix Basic and Wyvern level storage capacity in order of craft [#271](https://github.com/GTModpackTeam/GTExpert-Core/pull/271)
+- Add ExtraCPUs and NAE2 migrations [#272](https://github.com/GTModpackTeam/GTExpert-Core/pull/272)
+
+* * *
+
+# v2.1.6
+- Update to CEu v2.8.8
+
+* * *
+
+# v2.1.5
+- Bugs related to treated wood and FFM related wood recipe names corrected [#267](https://github.com/GTModpackTeam/GTExpert-Core/pull/267)
+    - Recipe bug related to Treated Wood Planks also fixed.
+
+* * *
+
+# v2.1.4
+- HV and IV Chainsaw added [#266](https://github.com/GTModpackTeam/GTExpert-Core/pull/266)
+
+* * *
+
+# v2.1.3
+- Forestry Gregification Part.3: Centrifuge & Fabricator [#263](https://github.com/GTModpackTeam/GTExpert-Core/pull/263)
+    - Thanks to @MrKono for his support!!
+- Added another recipe for nano boots [#264](https://github.com/GTModpackTeam/GTExpert-Core/pull/264)
+- Part1: Gendustry & Binnie's Mods integration [#257](https://github.com/GTModpackTeam/GTExpert-Core/pull/257)
+
+* * *
+
+# v2.1.2
+- Add Gregification of Forestry Carpenter [#258](https://github.com/GTModpackTeam/GTExpert-Core/pull/258)
+- Fix explosive recipes of ChargedCertusQuartz and Fluix [#260](https://github.com/GTModpackTeam/GTExpert-Core/pull/260)
+
+* * *
+
 # v2.1.1
 - Added a recipe to create Mob heads for users playing Peaceful.
     -  Thanks to @hag-hag for his support!!
