@@ -5,8 +5,9 @@
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "integration.deda.DARecipesMixin",
-    "integration.deda.PortableWiredChargerMixin"
+    "integration.deda.items.baubles.ShieldNecklaceMixin",
+    "integration.deda.items.tools.PortableWiredChargerMixin",
+    "integration.deda.lib.DARecipesMixin"
   ],
   "server": [
   ],
