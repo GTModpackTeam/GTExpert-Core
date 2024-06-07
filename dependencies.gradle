@@ -56,7 +56,6 @@ dependencies {
         devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-uel-extended-913322:5006535")) // AE2 UEL: Extended 0.55.30-0.4.0.2
     } else {
         devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5088803")) // AE2UEL 0.56.3
-        devOnlyNonPublishable(rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371")) // AEAdditions 1.3.8
     }
 
     // Debug Forestry
