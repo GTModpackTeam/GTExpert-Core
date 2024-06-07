@@ -3,6 +3,7 @@ package gtexpert.integration.chisel;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMapBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.core.sound.GTSoundEvents;
 
@@ -17,9 +18,14 @@ import stanhebben.zenscript.annotations.ZenProperty;
 public class ChiselRecipeMaps {
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> AUTO_CHISEL_RECIPES = new RecipeMap<>(
-            "auto_chisel", 2, 9, 0, 0, new SimpleRecipeBuilder(), true)
-                    .setSlotOverlay(false, false, false, GuiTextures.BOXED_BACKGROUND)
-                    .setProgressBar(GTEGuiTextures.PROGRESS_BAR_CHISEL, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(GTSoundEvents.FILE_TOOL);
+    public static final RecipeMap<SimpleRecipeBuilder> AUTO_CHISEL_RECIPES = new RecipeMapBuilder<>(
+            "auto_chisel", new SimpleRecipeBuilder())
+                    .itemInputs(2)
+                    .itemOutputs(9)
+                    .fluidInputs(0)
+                    .fluidOutputs(0)
+                    .itemSlotOverlay(GuiTextures.BOXED_BACKGROUND, false)
+                    .progressBar(GTEGuiTextures.PROGRESS_BAR_CHISEL, ProgressWidget.MoveType.HORIZONTAL)
+                    .sound(GTSoundEvents.FILE_TOOL)
+                    .build();
 }
