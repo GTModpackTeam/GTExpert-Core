@@ -1,4 +1,4 @@
-package gtexpert.mixin.integration.deda.items.baubles;
+package gtexpert.mixin.draconicadditions.items.baubles;
 
 import net.foxmcloud.draconicadditions.items.baubles.BaubleStats;
 import net.foxmcloud.draconicadditions.items.baubles.ShieldNecklace;
@@ -31,9 +31,9 @@ public class ShieldNecklaceMixin {
     @Overwrite
     public int getMaxReceive(ItemStack stack) {
         return switch (stack.getTranslationKey()) {
-            case "item.draconicadditions:basic_shield_necklace" -> BaubleStats.NECKLACE_BASE_CAPACITY * 2;
-            case "item.draconicadditions:wyvern_shield_necklace" -> BaubleStats.NECKLACE_BASE_CAPACITY;
-            case "item.draconicadditions:draconic_shield_necklace" -> BaubleStats.NECKLACE_BASE_CAPACITY * 4;
+            case "item.draconicadditions:basic_shield_necklace" -> BaubleStats.NECKLACE_MAX_RECIEVE * 2;
+            case "item.draconicadditions:wyvern_shield_necklace" -> BaubleStats.NECKLACE_MAX_RECIEVE;
+            case "item.draconicadditions:draconic_shield_necklace" -> BaubleStats.NECKLACE_MAX_RECIEVE * 4;
             default -> 0;
         };
     }

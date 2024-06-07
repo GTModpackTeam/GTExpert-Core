@@ -1,4 +1,4 @@
-package gtexpert.mixin.integration.deda.lib;
+package gtexpert.mixin.draconicadditions.lib;
 
 import net.foxmcloud.draconicadditions.lib.DARecipes;
 
