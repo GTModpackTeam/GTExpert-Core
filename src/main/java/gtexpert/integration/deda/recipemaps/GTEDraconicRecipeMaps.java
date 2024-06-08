@@ -1,10 +1,13 @@
 package gtexpert.integration.deda.recipemaps;
 
+import static gtexpert.api.util.GTEUtility.gteId;
+
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMapBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.core.sound.GTSoundEvents;
 
 import gtexpert.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
@@ -29,6 +32,18 @@ public class GTEDraconicRecipeMaps {
                     .fluidInputs(3)
                     .fluidOutputs(1)
                     .progressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
+                    .onBuild(gteId("draconic_fusion_tier_up_1"),
+                            recipeBuilder -> GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES
+                                    .recipeBuilder()
+                                    .inputs(recipeBuilder.getInputs().toArray(new GTRecipeInput[0]))
+                                    .fluidInputs(recipeBuilder.getFluidInputs())
+                                    .outputs(recipeBuilder.getOutputs())
+                                    .fluidOutputs(recipeBuilder.getFluidOutputs())
+                                    .duration(recipeBuilder.getDuration())
+                                    .EUt(recipeBuilder.getEUt())
+                                    .catalyst(recipeBuilder.getCatalyst())
+                                    .result(recipeBuilder.getResult())
+                                    .buildAndRegister())
                     .build();
 
     /**
@@ -55,6 +70,19 @@ public class GTEDraconicRecipeMaps {
                     .fluidInputs(3)
                     .fluidOutputs(1)
                     .progressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
+                    .onBuild(gteId("draconic_fusion_upgrade_1"),
+                            recipeBuilder -> GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES
+                                    .recipeBuilder()
+                                    .inputs(recipeBuilder.getInputs().toArray(new GTRecipeInput[0]))
+                                    .fluidInputs(recipeBuilder.getFluidInputs())
+                                    .outputs(recipeBuilder.getOutputs())
+                                    .fluidOutputs(recipeBuilder.getFluidOutputs())
+                                    .duration(recipeBuilder.getDuration())
+                                    .EUt(recipeBuilder.getEUt())
+                                    .catalyst(recipeBuilder.getCatalyst())
+                                    .upgradeName(recipeBuilder.getUpgradeName())
+                                    .level(recipeBuilder.getCurrentLevel())
+                                    .buildAndRegister())
                     .build();
 
     /**
@@ -79,6 +107,16 @@ public class GTEDraconicRecipeMaps {
                     .fluidOutputs(1)
                     .progressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressWidget.MoveType.HORIZONTAL)
                     .sound(GTSoundEvents.ELECTROLYZER)
+                    .onBuild(gteId("draconic_fusion_1"),
+                            recipeBuilder -> GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES
+                                    .recipeBuilder()
+                                    .inputs(recipeBuilder.getInputs().toArray(new GTRecipeInput[0]))
+                                    .fluidInputs(recipeBuilder.getFluidInputs())
+                                    .outputs(recipeBuilder.getOutputs())
+                                    .fluidOutputs(recipeBuilder.getFluidOutputs())
+                                    .duration(recipeBuilder.getDuration())
+                                    .EUt(recipeBuilder.getEUt())
+                                    .buildAndRegister())
                     .build();
 
     @ZenProperty

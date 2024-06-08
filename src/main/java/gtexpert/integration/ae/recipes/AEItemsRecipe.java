@@ -20,6 +20,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.Mods;
 import gtexpert.common.items.GTEMetaItems;
+import gtexpert.core.GTEConfigHolder;
 import gtexpert.integration.ae.AEConfigHolder;
 
 public class AEItemsRecipe {
@@ -663,35 +664,64 @@ public class AEItemsRecipe {
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
-        // Logic Processor
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
-                .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 18))
-                .fluidInputs(Materials.Redstone.getFluid(144))
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 22))
-                .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
-                .withRecycling()
-                .buildAndRegister();
+        if (GTEConfigHolder.gteFlag.featureFlag) {
+            // Logic Processor
+            RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 18))
+                    .fluidInputs(Materials.Redstone.getFluid(144))
+                    .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 22))
+                    .duration(200).EUt(VHA[GTEValues.ae2VoltageTier - 1])
+                    .buildAndRegister();
 
-        // Calc Processor
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
-                .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 16))
-                .fluidInputs(Materials.Redstone.getFluid(144))
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 23))
-                .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
-                .withRecycling()
-                .buildAndRegister();
+            // Calc Processor
+            RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 16))
+                    .fluidInputs(Materials.Redstone.getFluid(144))
+                    .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 23))
+                    .duration(200).EUt(VHA[GTEValues.ae2VoltageTier - 1])
+                    .buildAndRegister();
 
-        // Engineer Processor
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
-                .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 17))
-                .fluidInputs(Materials.Redstone.getFluid(144))
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 24))
-                .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
-                .withRecycling()
-                .buildAndRegister();
+            // Engineer Processor
+            RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 17))
+                    .fluidInputs(Materials.Redstone.getFluid(144))
+                    .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 24))
+                    .duration(200).EUt(VHA[GTEValues.ae2VoltageTier - 1])
+                    .buildAndRegister();
+        } else {
+            // Logic Processor
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 18))
+                    .fluidInputs(Materials.Redstone.getFluid(144))
+                    .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 22))
+                    .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                    .withRecycling()
+                    .buildAndRegister();
+
+            // Calc Processor
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 16))
+                    .fluidInputs(Materials.Redstone.getFluid(144))
+                    .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 23))
+                    .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                    .withRecycling()
+                    .buildAndRegister();
+
+            // Engineer Processor
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 17))
+                    .fluidInputs(Materials.Redstone.getFluid(144))
+                    .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 24))
+                    .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
+                    .withRecycling()
+                    .buildAndRegister();
+        }
 
         if (AEConfigHolder.moveSteelShape) {
             // All shapes

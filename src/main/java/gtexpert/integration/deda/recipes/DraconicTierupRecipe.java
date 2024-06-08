@@ -141,8 +141,7 @@ public class DraconicTierupRecipe {
 
         // Draconic Staff of Power
         GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.recipeBuilder()
-                .catalyst(new GTRecipeItemInput(new ItemStack(DEFeatures.draconicPick))
-                        .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY))
+                .catalyst(new ItemStack(DEFeatures.draconicPick), NBTMatcher.ANY, NBTCondition.ANY)
                 .result(new ItemStack(DEFeatures.draconicStaffOfPower))
                 .input(plate, GTEMaterials.Draconium, 6)
                 .inputNBT(DEFeatures.draconicAxe, NBTMatcher.ANY, NBTCondition.ANY)
