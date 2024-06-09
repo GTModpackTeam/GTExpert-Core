@@ -97,5 +97,5 @@ jobs:
       - name: Test no errors reported during server run
         if: ${{ !inputs.client-only }}
         run: |
-          chmod +x ./scripts/test_no_error_reports
-          ./scripts/test_no_error_reports
+          chmod +x ./scripts/test_no_error_reports.sh
+          ./scripts/test_no_error_reports.sh
