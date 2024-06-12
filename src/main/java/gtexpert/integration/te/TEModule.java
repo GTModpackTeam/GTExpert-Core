@@ -18,7 +18,5 @@ import gtexpert.modules.GTEModules;
 public class TEModule extends GTEIntegrationSubmodule {
 
     @Override
-    public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
-
-    }
+    public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {}
 }

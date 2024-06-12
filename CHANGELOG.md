@@ -1,5 +1,10 @@
+# v2.2.2
+- Fix [#271](https://github.com/GTModpackTeam/GTExpert-Core/pull/273)
+
+* * *
+
 # v2.2.1
-- Fix [#272](https://github.com/GTModpackTeam/GTExpert-Core/pull/272)
+- Fix [#271](https://github.com/GTModpackTeam/GTExpert-Core/pull/272)
 
 * * *
 

@@ -9,5 +9,4 @@ import gtexpert.modules.GTEModules;
 @Config(modid = GTEValues.MODID,
         name = GTEValues.MODID + "/integration/" + GTEModules.MODULE_TE,
         category = "ThaumicEnergistics")
-public class TEConfigHolder {
-}
+public class TEConfigHolder {}
