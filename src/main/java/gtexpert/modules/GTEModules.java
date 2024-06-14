@@ -30,6 +30,7 @@ public class GTEModules implements IModuleContainer {
     public static final String MODULE_DEDA = "deda_integration";
     public static final String MODULE_AVARITIA = "avaritia_integration";
     public static final String MODULE_TC = "tc_integration";
+    public static final String MODULE_TE = "te_integration";
 
     @Override
     public String getID() {
