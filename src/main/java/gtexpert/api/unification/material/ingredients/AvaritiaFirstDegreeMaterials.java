@@ -3,9 +3,9 @@ package gtexpert.api.unification.material.ingredients;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
-import static gregtech.api.util.GTUtility.gregtechId;
 import static gtexpert.api.unification.GTEElements.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.api.util.GTEUtility.gteId;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
@@ -22,7 +22,7 @@ public class AvaritiaFirstDegreeMaterials {
         Neutronium.addFlags(GENERATE_SMALL_GEAR, GENERATE_FOIL, GENERATE_RING, GENERATE_ROTOR, NO_SMELTING);
 
         // Infinity
-        Infinity = new Material.Builder(24186, gregtechId("infinity"))
+        Infinity = new Material.Builder(24186, gteId("infinity"))
                 .dust(7).ingot(7)
                 .liquid(new FluidBuilder().temperature(10800))
                 .iconSet(GTEMaterialIconSet.INFINITY)

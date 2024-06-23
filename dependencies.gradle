@@ -54,7 +54,7 @@ dependencies {
     if (project.useAE2uelExtended.toBoolean()) {
         devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-uel-extended-913322:5006535")) // AE2 UEL: Extended 0.55.30-0.4.0.2
     } else {
-        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5378163")) // AE2UEL 0.56.5
+        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5088803")) // AE2UEL 0.56.3
     }
 
     // Debug AE Additions
