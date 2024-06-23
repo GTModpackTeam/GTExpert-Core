@@ -1,0 +1,16 @@
+{
+  "package": "gtexpert.mixin.draconicadditions",
+  "refmap": "mixins.gtexpert.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "items.baubles.ShieldNecklaceMixin",
+    "items.tools.PortableWiredChargerMixin",
+    "lib.DARecipesMixin"
+  ],
+  "server": [
+  ],
+  "client": [
+  ]
+}
