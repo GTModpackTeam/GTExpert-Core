@@ -34,7 +34,6 @@ import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.common.items.GTEMetaItems;
@@ -292,9 +291,6 @@ public class CEUOverrideRecipe {
      * @param material The material to add recipes for
      */
     private static void vacuumFreezerExtended(@NotNull Material material) {
-        // Do not generate for disabled materials
-        if (material.hasFlag(GCYMMaterialFlags.NO_ALLOY_BLAST_RECIPES)) return;
-
         // Check if the material has a blast recipe
         if (!material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) return;
 

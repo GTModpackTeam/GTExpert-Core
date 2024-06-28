@@ -46,7 +46,7 @@ dependencies {
 
     // Hard Dependencies
     devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5322655")) // CEu 2.8.8
-    // devOnlyNonPublishable(rfg.deobf(project.files("libs/gregtech-1.12.2-2.8.8-beta-dev.jar"))) // CEu pr 2.8.8
+    //devOnlyNonPublishable(rfg.deobf(project.files("libs/gregtech-1.12.2-2.8.9-beta.jar"))) // CEu pr 2.8.9
     devOnlyNonPublishable(rfg.deobf("curse.maven:gregicality-multiblocks-564858:5121714")) // GCYM 1.2.8
     devOnlyNonPublishable(rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")) // Forgelin 1.8.4
 
@@ -54,7 +54,7 @@ dependencies {
     if (project.useAE2uelExtended.toBoolean()) {
         devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-uel-extended-913322:5006535")) // AE2 UEL: Extended 0.55.30-0.4.0.2
     } else {
-        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5378163")) // AE2UEL 0.56.5
+        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5088803")) // AE2UEL 0.56.3
     }
 
     // Debug AE Additions

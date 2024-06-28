@@ -15,9 +15,9 @@
     "logoFile" : "assets/gregtech/textures/gui/icon/gtexpert_core_logo_high_resolution.png",
     "dependencies" : [
       "chickenchunks",
+      "mixinbooter",
       "gregtech",
-      "gcym",
-      "mixinbooter"
+      "gcym"
     ]
   }
 ]
