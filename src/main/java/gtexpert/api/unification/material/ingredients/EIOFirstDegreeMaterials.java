@@ -58,7 +58,11 @@ public class EIOFirstDegreeMaterials {
                         .blastStats(VA[GTEValues.eioVoltageTier], 120)
                         .vacuumStats(VA[GTEValues.eioVoltageTier], 30))
                 .build();
-        EnergeticAlloy.setFormula("Au2(Si(FeS2)5(CrAl2O3)Hg3)2", true);
+        EnergeticAlloy.setFormula(
+                Redstone.getChemicalFormula() +
+                        Gold.getChemicalFormula() +
+                        Glowstone.getRegistryName(),
+                true);
 
         // Vibrant Alloy
         VibrantAlloy = new Material.Builder(24105, gteId("vibrant_alloy"))
@@ -72,7 +76,10 @@ public class EIOFirstDegreeMaterials {
                         .blastStats(VA[GTEValues.eioVoltageTier], 120)
                         .vacuumStats(VA[GTEValues.eioVoltageTier], 30))
                 .build();
-        VibrantAlloy.setFormula("BeK4N5(Au2(Si(FeS2)5(CrAl2O3)Hg3)2)", true);
+        VibrantAlloy.setFormula(
+                EnergeticAlloy.getChemicalFormula() +
+                        EnderPearl.getChemicalFormula(),
+                true);
 
         // Redstone Alloy
         RedstoneAlloy = new Material.Builder(24106, gteId("redstone_alloy"))
@@ -118,7 +125,7 @@ public class EIOFirstDegreeMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x5F5F5F).iconSet(MaterialIconSet.METALLIC)
-                .flags(EXT2_METAL, GENERATE_RING, GENERATE_FRAME, GENERATE_ROD)
+                .flags(EXT2_METAL, GENERATE_RING, GENERATE_FRAME)
                 .components(Iron, 1, Coal, 1, Obsidian, 1)
                 .blast(b -> b
                         .temp(2700, GasTier.HIGH)
@@ -151,7 +158,11 @@ public class EIOFirstDegreeMaterials {
                         .blastStats(VA[GTEValues.eioVoltageTier] + 1, 1072)
                         .vacuumStats(VA[GTEValues.eioVoltageTier] + 1, 268))
                 .build();
-        EndSteel.setFormula("FeC(MgFeSi2O4)2?", true);
+        EndSteel.setFormula(
+                Endstone.getChemicalFormula() +
+                        DarkSteel.getChemicalFormula() +
+                        Obsidian.getChemicalFormula() + "?",
+                true);
 
         // Iron Alloy
         ConstructionAlloy = new Material.Builder(24112, gteId("construction_alloy"))
