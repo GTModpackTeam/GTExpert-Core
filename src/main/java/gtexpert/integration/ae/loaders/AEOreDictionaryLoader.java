@@ -59,6 +59,9 @@ public class AEOreDictionaryLoader {
                 Mods.AppliedEnergistics2.getItem("fluid_interface"),
                 Mods.AppliedEnergistics2.getItem("part", 1, 441));
 
+        GTEUtility.registerOre("dustSkyStone",
+                Mods.AppliedEnergistics2.getItem("material", 1, 45));
+
         // Register AE2 cable's dictionaries
         registerAECableDict(0, 16, "craftGlassCable");
         registerAECableDict(20, 36, "craftCoveredCable");

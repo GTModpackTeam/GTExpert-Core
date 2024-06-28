@@ -2,20 +2,25 @@ package gtexpert.integration.ae.recipes;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gtexpert.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
 
 import net.minecraft.item.ItemStack;
 
-import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.properties.BlastProperty;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
+
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
@@ -169,11 +174,6 @@ public class AEMaterialsRecipe {
         // ########################################
         // Certus Quartz
         // ########################################
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES,
-                OreDictUnifier.get(block, Materials.CertusQuartz, 1));
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES,
-                OreDictUnifier.get(gem, Materials.CertusQuartz, 9));
-
         // Fluid
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 10))
@@ -189,20 +189,12 @@ public class AEMaterialsRecipe {
                 .buildAndRegister();
 
         // Block
-        ModHandler.addShapedRecipe("decorative/certus_quartz_block_pure",
-                OreDictUnifier.get(block, Materials.CertusQuartz), "QQQ", "Q Q", "QQQ",
-                'Q', Mods.AppliedEnergistics2.getItem("material", 1, 10));
         ModHandler.addMirroredShapedRecipe("ae2_certus_quartz_block",
                 Mods.AppliedEnergistics2.getItem("quartz_block"), "B",
                 'B', new UnificationEntry(block, Materials.CertusQuartz));
         ModHandler.addMirroredShapedRecipe("ceu_certus_quartz_block",
                 OreDictUnifier.get(block, Materials.CertusQuartz), "B",
                 'B', Mods.AppliedEnergistics2.getItem("quartz_block"));
-        RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                .inputs(Mods.AppliedEnergistics2.getItem("material", 4))
-                .output(block, Materials.CertusQuartz, 1)
-                .duration(300).EUt(2)
-                .buildAndRegister();
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 8, 10))
                 .output(block, Materials.CertusQuartz, 1)
@@ -369,6 +361,51 @@ public class AEMaterialsRecipe {
         // ########################################
         // Fluix Alloy
         // ########################################
+        BlastProperty propertyFluixAlloy = GTEMaterials.FluixAlloy.getProperty(PropertyKey.BLAST);
+        int durationFluixAlloy = propertyFluixAlloy.getDurationOverride();
+        if (durationFluixAlloy < 0) durationFluixAlloy = Math.max(1,
+                (int) (GTEMaterials.FluixAlloy.getMass() * propertyFluixAlloy.getBlastTemperature() / 100L));
+
+        // Fluid
+        if (Mods.DraconicEvolution.isModLoaded()) {
+            GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
+                    .circuitMeta(15)
+                    .inputs(Mods.AppliedEnergistics2.getItem("material", 2, 45))
+                    .input(dust, GTEMaterials.Fluix, 2)
+                    .input(dust, Materials.Carbon, 2)
+                    .input(dust, Materials.Silicon, 1)
+                    .input(dust, Materials.Iron, 1)
+                    .fluidInputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
+                    .fluidOutputs(GTEMaterials.FluixAlloy.getFluid(GCYMFluidStorageKeys.MOLTEN, 1152))
+                    .blastFurnaceTemp(propertyFluixAlloy.getBlastTemperature())
+                    .duration((int) ((durationFluixAlloy * 0.67 * ABFDurationMultiplier) / 2))
+                    .EUt(VA[GTEValues.ae2VoltageTier])
+                    .buildAndRegister();
+        }
+        GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
+                .circuitMeta(14)
+                .inputs(Mods.AppliedEnergistics2.getItem("material", 2, 45))
+                .input(dust, GTEMaterials.Fluix, 2)
+                .input(dust, Materials.Carbon, 2)
+                .input(dust, Materials.Silicon, 1)
+                .input(dust, Materials.Iron, 1)
+                .fluidInputs(Materials.Nitrogen.getFluid(6000))
+                .fluidOutputs(GTEMaterials.FluixAlloy.getFluid(GCYMFluidStorageKeys.MOLTEN, 1152))
+                .blastFurnaceTemp(propertyFluixAlloy.getBlastTemperature())
+                .duration((int) (durationFluixAlloy * 0.67 * ABFDurationMultiplier)).EUt(VA[GTEValues.ae2VoltageTier])
+                .buildAndRegister();
+        GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
+                .circuitMeta(4)
+                .inputs(Mods.AppliedEnergistics2.getItem("material", 2, 45))
+                .input(dust, GTEMaterials.Fluix, 2)
+                .input(dust, Materials.Carbon, 2)
+                .input(dust, Materials.Silicon, 1)
+                .input(dust, Materials.Iron, 1)
+                .fluidOutputs(GTEMaterials.FluixAlloy.getFluid(GCYMFluidStorageKeys.MOLTEN, 1152))
+                .blastFurnaceTemp(propertyFluixAlloy.getBlastTemperature())
+                .duration(durationFluixAlloy).EUt(VA[GTEValues.ae2VoltageTier])
+                .buildAndRegister();
+
         // Dust
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
@@ -393,6 +430,9 @@ public class AEMaterialsRecipe {
 
             // Certus Quartz Block
             ModHandler.removeRecipeByOutput(Mods.AppliedEnergistics2.getItem("quartz_block", 4, 0));
+
+            // Certus Quartz Gem
+            ModHandler.removeRecipeByOutput(Mods.AppliedEnergistics2.getItem("material", 4, 0));
 
             // Fluix Block
             ModHandler.removeRecipeByOutput(Mods.AppliedEnergistics2.getItem("material", 4, 7));
