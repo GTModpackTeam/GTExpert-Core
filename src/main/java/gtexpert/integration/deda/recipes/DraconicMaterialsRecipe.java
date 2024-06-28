@@ -46,8 +46,8 @@ import gtexpert.api.util.Mods;
 
 public class DraconicMaterialsRecipe {
 
-    private static final int ABFPyrotheumAmount = 200;
-    private static final double ABFDurationMultiplier = 0.5;
+    public static final int ABFPyrotheumAmount = 200;
+    public static final double ABFDurationMultiplier = 0.5;
 
     public static void init() {
         // ########################################
@@ -171,9 +171,6 @@ public class DraconicMaterialsRecipe {
      * @param material The material to add recipes for
      */
     private static void vacuumFreezerExtended(@NotNull Material material) {
-        // Do not generate for disabled materials
-        if (material.hasFlag(GCYMMaterialFlags.NO_ALLOY_BLAST_RECIPES)) return;
-
         // Check if the material has a blast recipe
         if (!material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) return;
 

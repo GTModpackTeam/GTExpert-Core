@@ -19,7 +19,10 @@ public class GTEMaterialFlags {
 
         // Ender Eye
         Materials.EnderEye.setProperty(PropertyKey.FLUID, new FluidProperty());
-        Materials.EnderEye.setFormula("(BeK4N5)(CS)", true);
+        Materials.EnderEye.setFormula(
+                Materials.EnderPearl.getChemicalFormula() +
+                        Materials.Blaze.getChemicalFormula(),
+                true);
 
         // Nether Quartz
         Materials.NetherQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
@@ -37,7 +40,10 @@ public class GTEMaterialFlags {
         Materials.RedAlloy.addFlags(MORTAR_GRINDABLE);
 
         // Glowstone
-        Materials.Glowstone.setFormula("Au(Si(FeS2)5(CrAl2O3)Hg3)", true);
+        Materials.Glowstone.setFormula(
+                Materials.Gold.getChemicalFormula() +
+                        Materials.Redstone.getChemicalFormula(),
+                true);
 
         // Darmstadtium
         Materials.Darmstadtium.addFlags(GENERATE_GEAR, GENERATE_FRAME);

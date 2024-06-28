@@ -13,8 +13,6 @@ import gtexpert.integration.deda.loaders.DEDAMaterialInfoLoader;
 import gtexpert.integration.deda.loaders.DEDAOreDictionaryLoader;
 import gtexpert.integration.deda.metatileentities.DEDAMetaTileEntities;
 import gtexpert.integration.deda.recipes.*;
-import gtexpert.integration.deda.recipes.DraconicTierupRecipe;
-import gtexpert.integration.deda.recipes.DraconicUpgradeRecipe;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
