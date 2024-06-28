@@ -16,10 +16,10 @@ public class PortableWiredChargerMixin {
     @Overwrite
     public int getCapacity(ItemStack stack) {
         return switch (stack.getItemDamage()) {
-            case 0, 4 -> 800000;
-            case 1, 5 -> 100000;
-            case 2, 6 -> 6400000;
-            case 3, 7 -> 51200000;
+            case 0, 4 -> PortableWiredCharger.wyvernTransfer;
+            case 1, 5 -> PortableWiredCharger.basicTransfer;
+            case 2, 6 -> PortableWiredCharger.draconicTransfer;
+            case 3, 7 -> PortableWiredCharger.chaoticTransfer;
             default -> 0;
         };
     }
