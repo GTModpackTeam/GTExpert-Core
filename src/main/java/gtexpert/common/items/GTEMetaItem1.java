@@ -11,7 +11,7 @@ import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.behaviors.TooltipBehavior;
 
-import gtexpert.core.GTEConfigHolder;
+import gtexpert.common.GTEConfigHolder;
 import gtexpert.integration.ae.AEConfigHolder;
 
 public class GTEMetaItem1 extends StandardMetaItem {

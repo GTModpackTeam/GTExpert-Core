@@ -3,13 +3,13 @@ package gtexpert.integration.eio.metatileentities;
 import static gregtech.api.GTValues.*;
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntities;
 import static gtexpert.api.util.GTEUtility.gteId;
-import static gtexpert.core.metatileentities.GTEMetaTileEntities.registerGTESimpleMetaTileEntity;
+import static gtexpert.common.metatileentities.GTEMetaTileEntities.registerGTESimpleMetaTileEntity;
 
 import gregtech.api.util.GTUtility;
 
 import gtexpert.api.util.GTEUtility;
 import gtexpert.client.GTETextures;
-import gtexpert.core.metatileentities.GTESimpleMachineMetaTileEntity;
+import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
 import gtexpert.integration.eio.EnderIORecipeMaps;
 
 public class EIOMetaTileEntities {

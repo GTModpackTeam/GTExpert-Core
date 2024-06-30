@@ -10,7 +10,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.api.capability.SingleblockRecipeLogicNoCache;
-import gtexpert.core.metatileentities.GTESimpleMachineMetaTileEntity;
+import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
 
 public class MetaTileEntityAutoChisel extends GTESimpleMachineMetaTileEntity {
 

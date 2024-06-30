@@ -39,7 +39,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gtexpert.api.gui.GTEGuiTextures;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
-import gtexpert.core.metatileentities.GTESimpleMachineMetaTileEntity;
+import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
 
 public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntity {
 

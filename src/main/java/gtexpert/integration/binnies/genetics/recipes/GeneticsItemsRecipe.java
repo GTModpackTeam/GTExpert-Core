@@ -14,8 +14,8 @@ import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 
+import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
-import gtexpert.core.GTUtil;
 import gtexpert.integration.ffm.FFMConfigHolder;
 import gtexpert.integration.ffm.FFMUtility;
 import gtexpert.integration.ffm.recipes.machines.CarpenterLoader;
@@ -132,7 +132,7 @@ public class GeneticsItemsRecipe {
             // Integrated CPU
             ModHandler.removeRecipeByName(Mods.Genetics.getResource("integrated_cpu"));
             RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
-                    .input(GTUtil.circuitBoard(HV))
+                    .input(GTEUtility.circuitBoard(HV))
                     .inputs(Mods.Forestry.getItem("thermionic_tubes", 1, 5))
                     .fluidInputs(Materials.Glowstone.getFluid(144))
                     .outputs(Mods.Genetics.getItem("misc", 1, 9))

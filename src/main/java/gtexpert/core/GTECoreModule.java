@@ -32,11 +32,14 @@ import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.items.GTEToolItems;
-import gtexpert.core.loaders.GTEMaterialInfoLoader;
-import gtexpert.core.loaders.GTEOreDictionaryLoader;
-import gtexpert.core.metatileentities.GTEMetaTileEntities;
-import gtexpert.core.recipes.*;
-import gtexpert.core.recipes.handlers.GTEToolRecipeHandler;
+import gtexpert.common.metatileentities.GTEMetaTileEntities;
+import gtexpert.loaders.GTEMaterialInfoLoader;
+import gtexpert.loaders.GTEOreDictionaryLoader;
+import gtexpert.loaders.recipe.CEUOverrideRecipe;
+import gtexpert.loaders.recipe.GTERecipe;
+import gtexpert.loaders.recipe.GTEWoodRecipe;
+import gtexpert.loaders.recipe.GTEVanillaOverrideRecipes;
+import gtexpert.loaders.recipe.handlers.GTEToolRecipeHandler;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
@@ -119,6 +122,6 @@ public class GTECoreModule implements IGTEModule {
         GTERecipe.init();
         GTEWoodRecipe.init();
         CEUOverrideRecipe.init();
-        VanillaOverrideRecipes.init();
+        GTEVanillaOverrideRecipes.init();
     }
 }
