@@ -1,6 +1,10 @@
+# v2.2.4
+- Fix Sawmill and Cutting Machine recipes.
+
+* * *
+
 # v2.2.3
 - Fix Fluix Alloy [#278](https://github.com/GTModpackTeam/GTExpert-Core/pull/278)
-- Fix Sawmill and Cutting Machine recipes.
 
 * * *
 
