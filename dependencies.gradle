@@ -54,7 +54,7 @@ dependencies {
     if (project.useAE2uelExtended.toBoolean()) {
         devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-uel-extended-913322:5006535")) // AE2 UEL: Extended 0.55.30-0.4.0.2
     } else {
-        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5088803")) // AE2UEL 0.56.3
+        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5411078")) // AE2UEL 0.56.6
     }
 
     // Debug AE Additions
@@ -64,7 +64,7 @@ dependencies {
 
     // Debug NAE2
     if (project.debug_all.toBoolean() || project.debug_nae2.toBoolean()) {
-        runtimeOnlyNonPublishable rfg.deobf("curse.maven:nae2-884359:5378466") // NAE2 1.6.3
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:nae2-884359:5380800") // NAE2 1.6.4
     }
 
     // Debug ExtraCPUs
@@ -80,13 +80,13 @@ dependencies {
 
         // Debug Thaumic Energistics Extended Life Fork
         if (project.debug_all.toBoolean() || project.debug_thaumenergy.toBoolean()) {
-            runtimeOnlyNonPublishable rfg.deobf("curse.maven:thaumic-energistics-extended-life-fork-983976:5417925") // TEEL Fork 2.4.3
+            runtimeOnlyNonPublishable rfg.deobf("curse.maven:thaumic-energistics-extended-life-fork-983976:5423183") // TEEL Fork 2.4.4
         }
     }
 
     // Debug Forestry
     compileOnly rfg.deobf("curse.maven:forestry-59751:2684780") // Forestry 5.8.2.387
-    compileOnly rfg.deobf("curse.maven:binnies-mods-patched-899182:4741099") // Binnie's Mods Patched 2.5.1.211
+    compileOnly rfg.deobf("curse.maven:binnies-mods-patched-899182:5492997") // Binnie's Mods Patched 2.5.1.212
     if (project.debug_all.toBoolean() || project.debug_ffm.toBoolean()) {
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-59751:2684780") // Forestry 5.8.2.387
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:beebetteratbees-244516:2627215") // BeeBetterAtBees 2.0.3
@@ -101,7 +101,7 @@ dependencies {
 
         // Debug Binnies
         if (project.debug_all.toBoolean() || project.debug_binnies.toBoolean()) {
-            runtimeOnlyNonPublishable rfg.deobf("curse.maven:binnies-mods-patched-899182:4741099") // Binnie's Mods Patched 2.5.1.211
+            runtimeOnlyNonPublishable rfg.deobf("curse.maven:binnies-mods-patched-899182:5492997") // Binnie's Mods Patched 2.5.1.212
         }
     }
 
@@ -152,7 +152,7 @@ dependencies {
 
     // Debug GTFO
     if (project.debug_all.toBoolean() || project.debug_gtfo.toBoolean()) {
-        runtimeOnlyNonPublishable rfg.deobf("curse.maven:gregtech-food-option-477021:5085993") // GTFO 1.11.0.1
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:gregtech-food-option-477021:5487400") // GTFO 1.11.2.1
     }
 
     // Boot error fix
