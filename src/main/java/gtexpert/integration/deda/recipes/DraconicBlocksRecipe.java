@@ -31,7 +31,6 @@ import gtexpert.api.util.Mods;
 import gtexpert.common.blocks.GTEBlockMetalCasing;
 import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
-import gtexpert.core.GTUtil;
 import gtexpert.integration.deda.metatileentities.DEDAMetaTileEntities;
 import gtexpert.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
@@ -119,9 +118,9 @@ public class DraconicBlocksRecipe {
                 .input(MetaTileEntities.HULL[GTEValues.dedaVoltageTier])
                 .input(frameGt, GTEMaterials.Draconium, 4)
                 .input(DEFeatures.wyvernCore, 4)
-                .input(GTUtil.robotArm(GTEValues.dedaVoltageTier), 2)
-                .input(GTUtil.sensor(LuV), 2)
-                .input(GTUtil.emitter(LuV), 2)
+                .input(GTEUtility.robotArm(GTEValues.dedaVoltageTier), 2)
+                .input(GTEUtility.sensor(LuV), 2)
+                .input(GTEUtility.emitter(LuV), 2)
                 .output(DEDAMetaTileEntities.DRACONIUM_FUSION)
                 .duration(600).EUt(VA[GTEValues.dedaVoltageTier])
                 .withRecycling()
@@ -133,9 +132,9 @@ public class DraconicBlocksRecipe {
                 .input(MetaTileEntities.HULL[UV])
                 .input(frameGt, GTEMaterials.AwakenedDraconium, 4)
                 .input(DEFeatures.awakenedCore, 4)
-                .input(GTUtil.robotArm(UV), 2)
-                .input(GTUtil.sensor(UV), 2)
-                .input(GTUtil.emitter(UV), 2)
+                .input(GTEUtility.robotArm(UV), 2)
+                .input(GTEUtility.sensor(UV), 2)
+                .input(GTEUtility.emitter(UV), 2)
                 .output(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION)
                 .duration(600).EUt(VA[UV])
                 .withRecycling()

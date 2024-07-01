@@ -16,7 +16,6 @@ import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.core.GTUtil;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;
@@ -43,8 +42,8 @@ public class EIOItemsRecipe {
 
         // Basic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(GTUtil.batteryHull(GTEValues.eioVoltageTier), 1)
-                .input(GTUtil.oreDictionaryCircuit(GTEValues.eioVoltageTier), 1)
+                .input(GTEUtility.batteryHull(GTEValues.eioVoltageTier), 1)
+                .input(GTEUtility.oreDictionaryCircuit(GTEValues.eioVoltageTier), 1)
                 .fluidInputs(GTEMaterials.ElectricalSteel.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN())
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
@@ -54,7 +53,7 @@ public class EIOItemsRecipe {
         // Double-Layer Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ModObject.itemBasicCapacitor.getItemNN())
-                .input(GTUtil.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
+                .input(GTEUtility.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
                 .fluidInputs(GTEMaterials.EnergeticAlloy.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 1])
@@ -64,7 +63,7 @@ public class EIOItemsRecipe {
         // Octadic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ModObject.itemBasicCapacitor.getItemNN(), 2, 1)
-                .input(GTUtil.oreDictionaryCircuit(GTEValues.eioVoltageTier + 2), 1)
+                .input(GTEUtility.oreDictionaryCircuit(GTEValues.eioVoltageTier + 2), 1)
                 .fluidInputs(GTEMaterials.VibrantAlloy.getFluid(1152))
                 .output(ModObject.itemBasicCapacitor.getItemNN(), 1, 2)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 2])
@@ -74,7 +73,7 @@ public class EIOItemsRecipe {
         // Crystaline Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ModObject.itemBasicCapacitor.getItemNN(), 1, 1)
-                .input(GTUtil.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
+                .input(GTEUtility.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
                 .fluidInputs(GTEMaterials.CrystallineAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorCrystalline.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 1])
@@ -84,7 +83,7 @@ public class EIOItemsRecipe {
         // Melodic Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(EndergyObject.itemCapacitorCrystalline.getItemNN(), 2)
-                .input(GTUtil.oreDictionaryCircuit(GTEValues.eioVoltageTier + 2), 1)
+                .input(GTEUtility.oreDictionaryCircuit(GTEValues.eioVoltageTier + 2), 1)
                 .fluidInputs(GTEMaterials.MelodicAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorMelodic.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 2])
@@ -93,8 +92,8 @@ public class EIOItemsRecipe {
 
         // Silver Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(GTUtil.batteryHull(GTEValues.eioVoltageTier), 1)
-                .input(GTUtil.oreDictionaryCircuit(GTEValues.eioVoltageTier), 1)
+                .input(GTEUtility.batteryHull(GTEValues.eioVoltageTier), 1)
+                .input(GTEUtility.oreDictionaryCircuit(GTEValues.eioVoltageTier), 1)
                 .fluidInputs(Materials.Silver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorSilver.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier])
@@ -104,7 +103,7 @@ public class EIOItemsRecipe {
         // Endergenic Silver Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(EndergyObject.itemCapacitorSilver.getItemNN(), 2)
-                .input(GTUtil.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
+                .input(GTEUtility.oreDictionaryCircuit(GTEValues.eioVoltageTier + 1), 1)
                 .fluidInputs(GTEMaterials.EnergeticSilver.getFluid(1152))
                 .output(EndergyObject.itemCapacitorEnergeticSilver.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 1])
@@ -114,7 +113,7 @@ public class EIOItemsRecipe {
         // Endergied Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(EndergyObject.itemCapacitorEnergeticSilver.getItemNN(), 2)
-                .input(GTUtil.oreDictionaryCircuit(GTEValues.eioVoltageTier + 2), 1)
+                .input(GTEUtility.oreDictionaryCircuit(GTEValues.eioVoltageTier + 2), 1)
                 .fluidInputs(GTEMaterials.VividAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorVivid.getItemNN(), 1)
                 .duration(56).EUt(VA[GTEValues.eioVoltageTier + 2])
@@ -124,7 +123,7 @@ public class EIOItemsRecipe {
         // Stellar Capacitor
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(EndergyObject.itemCapacitorVivid.getItemNN(), 2)
-                .input(GTUtil.oreDictionaryCircuit(GTEValues.eioVoltageTier + 3), 1)
+                .input(GTEUtility.oreDictionaryCircuit(GTEValues.eioVoltageTier + 3), 1)
                 .input(Items.SHULKER_SHELL, 1)
                 .fluidInputs(GTEMaterials.StellarAlloy.getFluid(1152))
                 .output(EndergyObject.itemCapacitorStellar.getItemNN(), 1)

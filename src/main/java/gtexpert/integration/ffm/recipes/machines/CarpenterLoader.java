@@ -20,8 +20,8 @@ import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 
 import gtexpert.api.util.GTELog;
+import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
-import gtexpert.core.GTUtil;
 import gtexpert.integration.ffm.FFMConfigHolder;
 import gtexpert.integration.ffm.FFMUtility;
 
@@ -70,13 +70,13 @@ public class CarpenterLoader {
 
             // Circuit
             CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1),
-                    20, Materials.Iron, MetaItems.COATED_BOARD, GTUtil.oreDictionaryCircuit(GTValues.ULV));
+                    20, Materials.Iron, MetaItems.COATED_BOARD, GTEUtility.oreDictionaryCircuit(GTValues.ULV));
             CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1, 1),
-                    40, Materials.Bronze, MetaItems.COATED_BOARD, GTUtil.oreDictionaryCircuit(GTValues.LV));
+                    40, Materials.Bronze, MetaItems.COATED_BOARD, GTEUtility.oreDictionaryCircuit(GTValues.LV));
             CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1, 2),
-                    80, Materials.Steel, MetaItems.PHENOLIC_BOARD, GTUtil.oreDictionaryCircuit(GTValues.MV));
+                    80, Materials.Steel, MetaItems.PHENOLIC_BOARD, GTEUtility.oreDictionaryCircuit(GTValues.MV));
             CarpenterLoader.registerCarpenterRecipe(recipeMode, Mods.Forestry.getItem("chipsets", 1, 3),
-                    160, Materials.Electrum, MetaItems.PHENOLIC_BOARD, GTUtil.oreDictionaryCircuit(GTValues.HV));
+                    160, Materials.Electrum, MetaItems.PHENOLIC_BOARD, GTEUtility.oreDictionaryCircuit(GTValues.HV));
         }
     }
 
