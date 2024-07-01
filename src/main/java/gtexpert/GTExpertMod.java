@@ -33,7 +33,8 @@ import gtexpert.modules.GTEModules;
      name = GTEValues.MODNAME,
      acceptedMinecraftVersions = "[1.12.2,1.13)",
      version = Tags.VERSION,
-     dependencies = GTInternalTags.DEP_VERSION_STRING + "required-after:" + Mods.Names.MIXINBOOTER + ";" +
+     dependencies = GTInternalTags.DEP_VERSION_STRING + "required-after:" + Mods.Names.MODULRAUI + ";" +
+             "required-after:" + Mods.Names.MIXINBOOTER + ";" +
              "required-after:" + Mods.Names.GREGICALITY_MULTIBLOCKS + ";" +
              "after:" + Mods.Names.GREGTECH_FOOD_OPTION + ";" + "after:" + Mods.Names.APPLIED_ENERGISTICS2 + ";" +
              "after:" + Mods.Names.AE_ADDITIONS + ";" + "after:" + Mods.Names.AE2_FLUID_CRAFTING + ";" +
