@@ -14,7 +14,7 @@ import gregtech.loaders.WoodTypeEntry;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.Mods;
-import gtexpert.core.loaders.GTEWoodRecipeLoader;
+import gtexpert.loaders.GTEWoodRecipeLoader;
 
 import forestry.api.arboriculture.EnumForestryWoodType;
 import forestry.api.arboriculture.EnumVanillaWoodType;

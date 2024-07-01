@@ -5,7 +5,7 @@ import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTile
 import static gtexpert.api.util.GTEUtility.gteId;
 
 import gtexpert.client.GTETextures;
-import gtexpert.core.GTEConfigHolder;
+import gtexpert.common.GTEConfigHolder;
 import gtexpert.integration.gendustry.GendustryRecipeMaps;
 
 public class GendustryMetaTileEntities {

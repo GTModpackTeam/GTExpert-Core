@@ -9,7 +9,7 @@ import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 
-import gtexpert.core.metatileentities.GTESimpleMachineMetaTileEntity;
+import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
 
 public class MetaTileEntityIndustrialApiary extends GTESimpleMachineMetaTileEntity {
 

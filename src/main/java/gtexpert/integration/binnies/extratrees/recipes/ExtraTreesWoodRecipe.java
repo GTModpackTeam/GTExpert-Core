@@ -10,7 +10,7 @@ import gregtech.loaders.WoodTypeEntry;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.Mods;
-import gtexpert.core.loaders.GTEWoodRecipeLoader;
+import gtexpert.loaders.GTEWoodRecipeLoader;
 
 import binnie.extratrees.wood.EnumETLog;
 

@@ -19,8 +19,8 @@ import gregtech.common.items.MetaItems;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.Mods;
+import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.core.GTEConfigHolder;
 import gtexpert.integration.ae.AEConfigHolder;
 
 public class AEItemsRecipe {

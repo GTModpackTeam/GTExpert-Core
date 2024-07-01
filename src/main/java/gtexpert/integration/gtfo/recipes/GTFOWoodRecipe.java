@@ -6,7 +6,7 @@ import java.util.List;
 import gregtech.loaders.WoodTypeEntry;
 
 import gtexpert.api.util.Mods;
-import gtexpert.core.loaders.GTEWoodRecipeLoader;
+import gtexpert.loaders.GTEWoodRecipeLoader;
 
 public class GTFOWoodRecipe {
 
