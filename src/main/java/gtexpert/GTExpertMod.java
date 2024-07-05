@@ -33,6 +33,7 @@ import gtexpert.modules.GTEModules;
      name = GTEValues.MODNAME,
      acceptedMinecraftVersions = "[1.12.2,1.13)",
      version = Tags.VERSION,
+     updateJSON = "https://forge.curseupdate.com/851103/gtexpert",
      dependencies = GTInternalTags.DEP_VERSION_STRING + "required-after:" + Mods.Names.MIXINBOOTER + ";" +
              "required-after:" + Mods.Names.GREGICALITY_MULTIBLOCKS + ";" +
              "after:" + Mods.Names.GREGTECH_FOOD_OPTION + ";" + "after:" + Mods.Names.APPLIED_ENERGISTICS2 + ";" +
