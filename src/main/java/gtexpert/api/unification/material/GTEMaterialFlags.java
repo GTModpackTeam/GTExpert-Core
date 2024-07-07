@@ -2,6 +2,8 @@ package gtexpert.api.unification.material;
 
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 
+import gregtech.api.fluids.FluidBuilder;
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.*;
 import gregtech.api.unification.ore.OrePrefix;
@@ -15,21 +17,29 @@ public class GTEMaterialFlags {
         Materials.Iron.addFlags(GENERATE_DOUBLE_PLATE);
 
         // Ender Peral
-        Materials.EnderPearl.setProperty(PropertyKey.FLUID, new FluidProperty());
+        FluidProperty enderPeralProp = new FluidProperty();
+        enderPeralProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.EnderPearl.setProperty(PropertyKey.FLUID, enderPeralProp);
 
         // Ender Eye
-        Materials.EnderEye.setProperty(PropertyKey.FLUID, new FluidProperty());
+        FluidProperty enderEyeProp = new FluidProperty();
+        enderEyeProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.EnderEye.setProperty(PropertyKey.FLUID, enderEyeProp);
         Materials.EnderEye.setFormula(
                 Materials.EnderPearl.getChemicalFormula() +
                         Materials.Blaze.getChemicalFormula(),
                 true);
 
         // Nether Quartz
-        Materials.NetherQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
+        FluidProperty netherQuartzProp = new FluidProperty();
+        netherQuartzProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.NetherQuartz.setProperty(PropertyKey.FLUID, netherQuartzProp);
         Materials.NetherQuartz.addFlags(GENERATE_LENS, GENERATE_ROD);
 
         // Certus Quartz
-        Materials.CertusQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
+        FluidProperty certusQuartzProp = new FluidProperty();
+        certusQuartzProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.CertusQuartz.setProperty(PropertyKey.FLUID, certusQuartzProp);
         Materials.CertusQuartz.addFlags(GENERATE_LENS, GENERATE_ROD);
 
         // Quartzite
