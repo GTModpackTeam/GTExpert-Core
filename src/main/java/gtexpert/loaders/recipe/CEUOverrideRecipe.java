@@ -22,6 +22,7 @@ import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.category.RecipeCategories;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
@@ -116,11 +117,13 @@ public class CEUOverrideRecipe {
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .input(dust, Materials.Ice, 1)
                 .fluidOutputs(Materials.Ice.getFluid(1000))
+                .category(RecipeCategories.EXTRACTOR_RECYCLING)
                 .duration(6).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .input(block, Materials.Ice, 1)
                 .fluidOutputs(Materials.Ice.getFluid(1000))
+                .category(RecipeCategories.EXTRACTOR_RECYCLING)
                 .duration(6).EUt(VA[LV])
                 .buildAndRegister();
         RecipeMaps.FLUID_HEATER_RECIPES.recipeBuilder()
@@ -145,6 +148,7 @@ public class CEUOverrideRecipe {
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .input("bookshelf", 1)
                 .outputs(new ItemStack(Items.BOOK, 3))
+                .category(RecipeCategories.EXTRACTOR_RECYCLING)
                 .duration(300).EUt(2)
                 .buildAndRegister();
 
@@ -154,6 +158,7 @@ public class CEUOverrideRecipe {
                 new FluidStack[] { Materials.Oxygen.getFluid(21) });
         RecipeMaps.ARC_FURNACE_RECIPES.recipeBuilder()
                 .input("bookshelf")
+                .category(RecipeCategories.ARC_FURNACE_RECYCLING)
                 .fluidInputs(Materials.Oxygen.getFluid(21))
                 .output(dustTiny, Materials.Ash, 16)
                 .duration(21).EUt(VA[LV])
@@ -165,6 +170,7 @@ public class CEUOverrideRecipe {
                 .input("bookshelf")
                 .output(dust, Materials.Paper, 9)
                 .output(dust, Materials.Wood, 6)
+                .category(RecipeCategories.MACERATOR_RECYCLING)
                 .duration(1470).EUt(2)
                 .buildAndRegister();
     }

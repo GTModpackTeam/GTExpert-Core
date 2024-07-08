@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.category.RecipeCategories;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.unification.OreDictUnifier;
@@ -118,11 +119,13 @@ public class AEMaterialsRecipe {
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("sky_stone_block"))
                 .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 45))
+                .category(RecipeCategories.MACERATOR_RECYCLING)
                 .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("smooth_sky_stone_block"))
                 .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 45))
+                .category(RecipeCategories.MACERATOR_RECYCLING)
                 .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
@@ -147,6 +150,7 @@ public class AEMaterialsRecipe {
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 11))
                 .fluidOutputs(Materials.NetherQuartz.getFluid(72))
+                .category(RecipeCategories.EXTRACTOR_RECYCLING)
                 .duration(14).EUt(VA[LV])
                 .buildAndRegister();
 
@@ -154,6 +158,7 @@ public class AEMaterialsRecipe {
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 11))
                 .output(dustSmall, Materials.NetherQuartz, 2)
+                .category(RecipeCategories.MACERATOR_RECYCLING)
                 .duration(14).EUt(2)
                 .buildAndRegister();
 
@@ -178,6 +183,7 @@ public class AEMaterialsRecipe {
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 10))
                 .fluidOutputs(Materials.CertusQuartz.getFluid(72))
+                .category(RecipeCategories.EXTRACTOR_RECYCLING)
                 .duration(14).EUt(VA[LV])
                 .buildAndRegister();
 
@@ -185,6 +191,7 @@ public class AEMaterialsRecipe {
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 10))
                 .output(dustSmall, Materials.CertusQuartz, 2)
+                .category(RecipeCategories.MACERATOR_RECYCLING)
                 .duration(14).EUt(2)
                 .buildAndRegister();
 
@@ -278,6 +285,7 @@ public class AEMaterialsRecipe {
         RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 12))
                 .fluidOutputs(GTEMaterials.Fluix.getFluid(72))
+                .category(RecipeCategories.EXTRACTOR_RECYCLING)
                 .duration(14).EUt(VA[LV])
                 .buildAndRegister();
 
@@ -293,6 +301,7 @@ public class AEMaterialsRecipe {
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 12))
                 .output(dustSmall, GTEMaterials.Fluix, 2)
+                .category(RecipeCategories.MACERATOR_RECYCLING)
                 .duration(14).EUt(2)
                 .buildAndRegister();
 

@@ -41,12 +41,13 @@ dependencies {
     // Published dependencies
     api("codechicken:codechickenlib:3.2.3.358") // CCL 3.2.3.358
     api("com.cleanroommc:modularui:2.4.3") { transitive = false } // MUI 2.4.3
-    api("com.cleanroommc:groovyscript:1.1.0") { transitive = false } // GrS 1.1.0
-    api("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.688") // CrT 4.1.20.688
+    api("com.cleanroommc:groovyscript:1.1.1") { transitive = false } // GrS 1.1.1
+    api("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.700") // CrT 4.1.20.700
     api rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
 
     // Hard Dependencies
-    devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5506419")) // CEu 2.8.9
+    //devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5506419")) // CEu 2.8.9
+    devOnlyNonPublishable(rfg.deobf(project.files("libs/gregtech-1.12.2-2.8.9-beta-dev.jar"))) // CEu pr 2.8.10
     devOnlyNonPublishable(rfg.deobf("curse.maven:gregicality-multiblocks-564858:5508050")) // GCYM 1.2.10
     devOnlyNonPublishable(rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")) // Forgelin 1.8.4
 
