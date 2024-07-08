@@ -8,6 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.category.RecipeCategories;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.ConfigHolder;
@@ -22,16 +23,16 @@ public class EIOMaterialsRecipe {
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(Blocks.SOUL_SAND))
                 .outputs(OreDictUnifier.get(dust, GTEMaterials.SoulSand))
-                .duration(25)
-                .EUt(2)
+                .category(RecipeCategories.MACERATOR_RECYCLING)
+                .duration(25).EUt(2)
                 .buildAndRegister();
 
         // Chorus fruit Dust
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(Items.CHORUS_FRUIT))
                 .outputs(OreDictUnifier.get(dust, GTEMaterials.ChorusFruit))
-                .duration(25)
-                .EUt(2)
+                .category(RecipeCategories.MACERATOR_RECYCLING)
+                .duration(25).EUt(2)
                 .buildAndRegister();
 
         // Electrical Steel

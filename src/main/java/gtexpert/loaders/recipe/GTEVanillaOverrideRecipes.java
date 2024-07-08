@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.category.RecipeCategories;
 import gregtech.api.unification.material.Materials;
 
 import gtexpert.api.util.Mods;
@@ -68,6 +69,7 @@ public class GTEVanillaOverrideRecipes {
                 RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                         .inputs(new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, i))
                         .output(dust, Materials.Clay, 4)
+                        .category(RecipeCategories.MACERATOR_RECYCLING)
                         .duration(60).EUt(VA[MV])
                         .buildAndRegister();
             }
