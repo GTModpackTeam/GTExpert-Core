@@ -36,33 +36,33 @@ public class GTEMetaTileEntities {
 
     public static void init() {
         // Single Machine
-        // Steam machine 11004~11009
+        // Steam machine 0~5
         if (GTEConfigHolder.gteFlag.steamNewMachine) {
-            STEAM_MIXER_BRONZE = registerMetaTileEntity(11004,
+            STEAM_MIXER_BRONZE = registerMetaTileEntity(0,
                     new SteamMixer(gteId("steam_mixer_bronze"), false));
-            STEAM_MIXER_STEEL = registerMetaTileEntity(11005,
+            STEAM_MIXER_STEEL = registerMetaTileEntity(1,
                     new SteamMixer(gteId("steam_mixer_steel"), true));
-            STEAM_ASSEMBLER_BRONZE = registerMetaTileEntity(11006,
+            STEAM_ASSEMBLER_BRONZE = registerMetaTileEntity(2,
                     new SteamAssembler(gteId("steam_assembler_bronze"), false));
-            STEAM_ASSEMBLER_STEEL = registerMetaTileEntity(11007,
+            STEAM_ASSEMBLER_STEEL = registerMetaTileEntity(3,
                     new SteamAssembler(gteId("steam_assembler_steel"), true));
-            STEAM_CIRCUIT_ASSEMBLER_BRONZE = registerMetaTileEntity(11008,
+            STEAM_CIRCUIT_ASSEMBLER_BRONZE = registerMetaTileEntity(4,
                     new SteamCircuitAssembler(gteId("steam_circuit_assembler_bronze"), false));
-            STEAM_CIRCUIT_ASSEMBLER_STEEL = registerMetaTileEntity(11009,
+            STEAM_CIRCUIT_ASSEMBLER_STEEL = registerMetaTileEntity(5,
                     new SteamCircuitAssembler(gteId("steam_circuit_assembler_steel"), true));
         }
 
         // Multi Machine
-        SAWMILL = registerMetaTileEntity(12001,
+        SAWMILL = registerMetaTileEntity(1000,
                 new MetaTileEntitySawmill(gteId("sawmill")));
-        LARGE_CRACKER = registerMetaTileEntity(12002,
+        LARGE_CRACKER = registerMetaTileEntity(1001,
                 new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
-        VOIDOREMINER = registerMetaTileEntity(12003,
+        VOIDOREMINER = registerMetaTileEntity(1002,
                 new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
         // 12004~12005 is reserved for Draconic Evolution
-        ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(12006,
+        ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(1003,
                 new MetaTileEntityAdvancedChemicalPlant(gteId("advanced_chemical_plant")));
-        LARGE_GAS_COLLECTOR = registerMetaTileEntity(12007,
+        LARGE_GAS_COLLECTOR = registerMetaTileEntity(1004,
                 new MetaTileEntityLargeGasCollector(gteId(GTEConfigHolder.gteFlag.featureFlag ?
                         "large_gas_collector" : "advanced_gas_collector")));
     }
