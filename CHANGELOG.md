@@ -1,3 +1,8 @@
+# v2.2.6
+- Bump up CEu 2.8.10 [#281](https://github.com/GTModpackTeam/GTExpert-Core/pull/281)
+
+* * *
+
 # v2.2.5
 - Bump up CEu 2.8.9 [#276](https://github.com/GTModpackTeam/GTExpert-Core/pull/276)
 
