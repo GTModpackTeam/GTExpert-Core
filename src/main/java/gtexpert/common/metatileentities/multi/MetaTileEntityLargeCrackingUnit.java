@@ -143,7 +143,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
                     // Coil energy discount line
                     if (isStructureFormed()) {
                         ITextComponent energyDiscount = TextComponentUtil.stringWithColor(TextFormatting.AQUA,
-                                (100 - 10 * this.coilTier) + "%");
+                                (100 - 10 * coilTier) + "%");
 
                         ITextComponent base = TextComponentUtil.translationWithColor(
                                 TextFormatting.GRAY,
