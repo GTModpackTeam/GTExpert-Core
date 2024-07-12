@@ -1,3 +1,9 @@
+# v2.2.7
+- Fix Ender Pearl and Ender Eye recipes.
+- Fix LCU(Large Cracking Unit).
+
+* * *
+
 # v2.2.6
 - Bump up CEu 2.8.10 [#281](https://github.com/GTModpackTeam/GTExpert-Core/pull/281)
 
