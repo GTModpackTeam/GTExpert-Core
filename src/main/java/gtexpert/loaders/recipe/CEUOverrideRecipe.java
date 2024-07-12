@@ -74,16 +74,6 @@ public class CEUOverrideRecipe {
         ModHandler.addMirroredShapedRecipe("stone_rod", OreDictUnifier.get(stick, Materials.Stone), "s", "S", 'S',
                 new UnificationEntry(block, Materials.Stone));
 
-        // Glowstone Dust
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES,
-                OreDictUnifier.get(dust, Materials.Glowstone, 2));
-        RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust, Materials.Glowstone, 2)
-                .output(dust, Materials.Redstone, 1)
-                .output(dust, Materials.Gold, 1)
-                .duration(488).EUt(80)
-                .buildAndRegister();
-
         // Netherrack Dust
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES,
                 OreDictUnifier.get(dust, Materials.Netherrack, 1));
@@ -95,6 +85,67 @@ public class CEUOverrideRecipe {
                 .chancedOutput(dustTiny, Materials.Glowstone, 5600, 850)
                 .chancedOutput(dust, Materials.Sulfur, 9900, 100)
                 .duration(160).EUt(20)
+                .buildAndRegister();
+
+        // Pyrite Dust
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(dust, Materials.Iron)
+                .input(dust, Materials.Sulfur, 2)
+                .output(dust, Materials.Pyrite, 3)
+                .duration(100).EUt(VA[LV])
+                .buildAndRegister();
+
+        // Ender Pearl
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES,
+                OreDictUnifier.get(block, Materials.EnderPearl));
+
+        // Ender Eye
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FORGE_HAMMER_RECIPES,
+                OreDictUnifier.get(block, Materials.EnderEye));
+
+        // ########################################
+        // Redstone
+        // ########################################
+        // Dust
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(2)
+                .input(dust, Materials.Silicon)
+                .input(dust, Materials.Pyrite, 5)
+                .input(dust, Materials.Ruby)
+                .fluidInputs(Materials.Mercury.getFluid(3000))
+                .output(dust, Materials.Redstone, 10)
+                .duration(500).EUt(VA[MV])
+                .buildAndRegister();
+
+        // ########################################
+        // Glowstone
+        // ########################################
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES,
+                OreDictUnifier.get(dust, Materials.Glowstone, 2));
+
+        // Fluid
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .fluidInputs(Materials.Redstone.getFluid(144))
+                .fluidInputs(Materials.Gold.getFluid(144))
+                .fluidOutputs(Materials.Glowstone.getFluid(288))
+                .duration(500).EUt(VA[MV])
+                .buildAndRegister();
+
+        // Dust
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .input(dust, Materials.Redstone)
+                .input(dust, Materials.Gold)
+                .output(dust, Materials.Glowstone, 2)
+                .duration(500).EUt(VA[MV])
+                .buildAndRegister();
+        RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, Materials.Glowstone, 2)
+                .output(dust, Materials.Redstone, 1)
+                .output(dust, Materials.Gold, 1)
+                .duration(488).EUt(80)
                 .buildAndRegister();
 
         // ########################################
