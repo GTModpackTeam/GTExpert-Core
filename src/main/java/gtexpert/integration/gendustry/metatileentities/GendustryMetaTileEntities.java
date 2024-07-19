@@ -1,9 +1,9 @@
 package gtexpert.integration.gendustry.metatileentities;
 
 import static gregtech.api.GTValues.V;
-import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntities;
-import static gtexpert.api.util.GTEUtility.gteId;
+import static gtexpert.common.metatileentities.GTEMetaTileEntities.registerGTESimpleMetaTileEntity;
 
+import gtexpert.api.util.GTEUtility;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.integration.gendustry.GendustryRecipeMaps;
@@ -13,16 +13,13 @@ public class GendustryMetaTileEntities {
     public static MetaTileEntityIndustrialApiary[] INDUSTRIAL_APIARY = new MetaTileEntityIndustrialApiary[V.length - 1];
 
     public static void init() {
-        // INDUSTRIAL_APIARY 20000~20012
-        // TODO: IDの変更
+        int mteStartId = GTEConfigHolder.gteFeatureFlag.newId ? 300 : 20000;
 
-        if (GTEConfigHolder.gteFlag.featureFlag) {
-            registerMetaTileEntities(INDUSTRIAL_APIARY, 20000, "industrial_apiary",
-                    (tier, voltageName) -> new MetaTileEntityIndustrialApiary(
-                            gteId(String.format("%s.%s", "industrial_apiary", voltageName)),
-                            GendustryRecipeMaps.INDUSTRIAL_APIARY_RECIPES,
-                            GTETextures.INDUSTRIAL_APIARY_OVERLAY,
-                            tier, false, null));
+        // Industrial Apiary
+        if (GTEConfigHolder.gteFeatureFlag.previewMachines) {
+            registerGTESimpleMetaTileEntity(INDUSTRIAL_APIARY, mteStartId, "industrial_apiary",
+                    GendustryRecipeMaps.INDUSTRIAL_APIARY_RECIPES,
+                    GTETextures.INDUSTRIAL_APIARY_OVERLAY, false, GTEUtility::gteId, null);
         }
     }
 }
