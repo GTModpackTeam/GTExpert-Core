@@ -36,7 +36,7 @@ public class GTEMetaTileEntities {
 
     public static void init() {
         int mteSingleStartId = GTEConfigHolder.gteFeatureFlag.newId ? 0 : 11004;
-        int mteMultiStartId = GTEConfigHolder.gteFeatureFlag.newId ? 1000 : 12000;
+        int mteMultiStartId = GTEConfigHolder.gteFeatureFlag.newId ? 1000 : 12001;
 
         // Steam machines
         if (GTEConfigHolder.gteFlag.steamNewMachine) {
@@ -67,7 +67,8 @@ public class GTEMetaTileEntities {
                 new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
 
         // Advanced Chemical Plant
-        ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(mteMultiStartId += 1,
+        mteMultiStartId = GTEConfigHolder.gteFeatureFlag.newId ? mteMultiStartId + 1 : 12006;
+        ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(mteMultiStartId,
                 new MetaTileEntityAdvancedChemicalPlant(gteId("advanced_chemical_plant")));
 
         // Large Gas Collector

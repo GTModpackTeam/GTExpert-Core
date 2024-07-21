@@ -29,17 +29,17 @@ public class EIOMetaTileEntities {
                 GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEUtility::gteId, GTUtility.hvCappedTankSizeFunction);
 
         // Slice N Splice
-        registerGTESimpleMetaTileEntity(SLICE_N_SPLICE, mteStartId += 14, "slice_n_splice",
+        registerGTESimpleMetaTileEntity(SLICE_N_SPLICE, mteStartId += 13, "slice_n_splice",
                 EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES,
-                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
+                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEUtility::gteId, null);
 
         // Soul Binder
-        registerGTESimpleMetaTileEntity(SOUL_BINDER, mteStartId += 14, "soul_binder",
+        registerGTESimpleMetaTileEntity(SOUL_BINDER, mteStartId += 13, "soul_binder",
                 EnderIORecipeMaps.SOUL_BINDER_RECIPES,
                 GTETextures.SOUL_BINDER_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // Electric Spawner
-        registerMetaTileEntities(ELECTRIC_SPAWNER, mteStartId + 14, "electric_spawner",
+        registerMetaTileEntities(ELECTRIC_SPAWNER, mteStartId + 13, "electric_spawner",
                 (tier, voltageName) -> new MetaTileEntityElectricSpawner(
                         gteId(String.format("%s.%s", "electric_spawner", voltageName)),
                         GTETextures.SPAWNER_OVERLAY,
