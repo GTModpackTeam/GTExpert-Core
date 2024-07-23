@@ -1,13 +1,12 @@
 package gtexpert.integration.gendustry.api.recipes;
 
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.RecipeLogicEnergy;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.recipes.RecipeMap;
+import java.util.function.Supplier;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.function.Supplier;
+import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.RecipeLogicEnergy;
+import gregtech.api.metatileentity.MetaTileEntity;
 
 public class IndustrialApiaryLogic extends RecipeLogicEnergy {
 

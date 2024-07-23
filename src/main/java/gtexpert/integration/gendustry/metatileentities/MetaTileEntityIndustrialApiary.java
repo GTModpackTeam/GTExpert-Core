@@ -1,38 +1,27 @@
 package gtexpert.integration.gendustry.metatileentities;
 
-import gregtech.api.GTValues;
-import gregtech.api.capability.impl.FluidTankList;
-import gregtech.api.capability.impl.NotifiableItemStackHandler;
-import gregtech.api.capability.impl.RecipeLogicEnergy;
-import gregtech.api.recipes.RecipeMap;
+import java.util.List;
 
-import gregtech.api.unification.material.Materials;
-
-import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
-
-import gtexpert.integration.eio.metatileentities.ElectricSpawnerLogic;
-
-import gtexpert.integration.gendustry.api.recipes.IndustrialApiaryLogic;
-
-import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
-import gregtech.client.renderer.ICubeRenderer;
-
-import gtexpert.api.capability.SingleblockRecipeLogicNoCache;
-import gtexpert.integration.gendustry.api.recipes.GendustryRecipeMaps;
-
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+import gregtech.api.GTValues;
+import gregtech.api.capability.impl.FluidTankList;
+import gregtech.api.capability.impl.NotifiableItemStackHandler;
+import gregtech.api.capability.impl.RecipeLogicEnergy;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.client.renderer.ICubeRenderer;
+
+import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
+import gtexpert.integration.gendustry.api.recipes.IndustrialApiaryLogic;
 
 public class MetaTileEntityIndustrialApiary extends GTESimpleMachineMetaTileEntity {
 

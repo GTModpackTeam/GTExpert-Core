@@ -1,16 +1,8 @@
 package gtexpert.integration.gendustry.api.recipes;
 
-import gregtech.api.gui.widgets.RecipeProgressWidget;
-
-import net.minecraftforge.items.IItemHandlerModifiable;
-
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.capability.impl.FluidTankList;
-import gregtech.api.gui.GuiTextures;
-import gregtech.api.gui.ModularUI;
-import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.ui.RecipeMapUI;
 
