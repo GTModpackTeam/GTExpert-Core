@@ -6,7 +6,6 @@ import static gtexpert.api.util.GTEUtility.gteId;
 
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEConfigHolder;
-import gtexpert.integration.gendustry.GendustryRecipeMaps;
 
 public class GendustryMetaTileEntities {
 
