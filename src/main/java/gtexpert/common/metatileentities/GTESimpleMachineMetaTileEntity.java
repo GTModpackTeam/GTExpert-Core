@@ -15,8 +15,6 @@ import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 
-import gtexpert.api.gui.GTEGuiTextures;
-
 public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity {
 
     private static final int FONT_HEIGHT = 9; // Minecraft's FontRenderer FONT_HEIGHT value
@@ -46,7 +44,7 @@ public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity 
             yOffset = FONT_HEIGHT;
         }
 
-        ModularUI.Builder builder = workableRecipeMap
+        ModularUI.Builder builder = workableRecipeMap.getRecipeMapUI()
                 .createUITemplate(workable::getProgressPercent, importItems, exportItems, importFluids, exportFluids,
                         yOffset)
                 .widget(new LabelWidget(5, 5, getMetaFullName()))
@@ -82,11 +80,12 @@ public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity 
 
         if (exportItems.getSlots() + exportFluids.getTanks() <= 9) {
             ImageWidget logo = new ImageWidget(152, 63 + yOffset, 17, 17,
-                    GTValues.XMAS.get() ? GTEGuiTextures.GTE_LOGO_XMAS : GTEGuiTextures.GTE_LOGO).setIgnoreColor(true);
+                    GTValues.XMAS.get() ? GuiTextures.GREGTECH_LOGO_XMAS : GuiTextures.GREGTECH_LOGO)
+                            .setIgnoreColor(true);
 
             if (this.circuitInventory != null) {
-                SlotWidget circuitSlot = new GhostCircuitSlotWidget(this.circuitInventory, 0, 124, 62 + yOffset)
-                        .setBackgroundTexture(GuiTextures.SLOT, this.getCircuitSlotOverlay());
+                SlotWidget circuitSlot = new GhostCircuitSlotWidget(circuitInventory, 0, 124, 62 + yOffset)
+                        .setBackgroundTexture(GuiTextures.SLOT, getCircuitSlotOverlay());
                 builder.widget(circuitSlot.setConsumer(this::getCircuitSlotTooltip)).widget(logo);
             }
         }
