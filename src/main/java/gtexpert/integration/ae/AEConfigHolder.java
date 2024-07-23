@@ -25,6 +25,9 @@ public class AEConfigHolder {
             "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
     public static boolean hardToolRecipes = false;
 
+    @Config.Comment({ "Change from assembly machine to circuit assembly machine.", "Default: false" })
+    public static boolean hardProcessorRecipes = false;
+
     @Config.Comment({ "Integrate Printed Silicon and various Circuit creation molds.", "Default: false" })
     public static boolean moveSteelShape = false;
 }
