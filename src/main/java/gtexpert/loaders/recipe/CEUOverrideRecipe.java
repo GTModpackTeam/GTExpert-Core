@@ -473,11 +473,12 @@ public class CEUOverrideRecipe {
      */
     private static void electricImplosionRecipe(@NotNull Material material) {
         if (!material.hasProperty(PropertyKey.GEM)) return;
+        if (material == Materials.Lapotron) return;
         if (!material.hasFlag(EXPLOSIVE) && !material.hasFlag(FLAMMABLE)) {
             GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                     .input(dust, material, 4)
                     .output(gem, material, 3)
-                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    //.chancedOutput(dust, Materials.DarkAsh, 2500, 0) // 必要ですか?
                     .duration(20).EUt(VH[LuV]) //ToDO 調整
                     .buildAndRegister();
         }
