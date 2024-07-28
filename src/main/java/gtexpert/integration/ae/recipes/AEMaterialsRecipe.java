@@ -4,6 +4,8 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
 
+import gtexpert.api.recipes.GTERecipeMaps;
+
 import net.minecraft.item.ItemStack;
 
 import gregtech.api.recipes.ModHandler;
@@ -269,6 +271,12 @@ public class AEMaterialsRecipe {
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .duration(20).EUt(VA[LV])
                 .buildAndRegister();
+        GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
+                .input(dust,  GTEMaterials.ChargedCertusQuartz, 4)
+                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 1))
+                //.chancedOutput(dust, Materials.DarkAsh, 2500, 0) // 必要ですか?
+                .duration(20).EUt(VH[LuV]) //ToDO 調整
+                .buildAndRegister();
 
         // Lens
         RecipeMaps.LATHE_RECIPES.recipeBuilder()
@@ -345,6 +353,12 @@ public class AEMaterialsRecipe {
                 .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .duration(20).EUt(VA[LV])
+                .buildAndRegister();
+        GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
+                .input(dust,  GTEMaterials.Fluix, 4)
+                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 7))
+                //.chancedOutput(dust, Materials.DarkAsh, 2500, 0) // 必要ですか?
+                .duration(20).EUt(VH[LuV]) //ToDO 調整
                 .buildAndRegister();
 
         // Block
