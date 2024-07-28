@@ -7,6 +7,8 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import gtexpert.api.recipes.GTERecipeMaps;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -52,6 +54,7 @@ public class CEUOverrideRecipe {
         // Vacuum Freezer
         List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
         materials.forEach(CEUOverrideRecipe::vacuumFreezerExtended);
+        materials.forEach(CEUOverrideRecipe::electricImplosionRecipe);
 
         // Iron Nugget
         ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Materials.Iron, 9),
@@ -459,6 +462,23 @@ public class CEUOverrideRecipe {
                     .fluidOutputs(material.getFluid(144))
                     .duration(vacuumDuration)
                     .EUt(vacuumEUt)
+                    .buildAndRegister();
+        }
+    }
+
+    /**
+     * Electric Implosion Compressor recipes without explosives
+     *
+     * @param material The material to add recipes for
+     */
+    private static void electricImplosionRecipe(@NotNull Material material) {
+        if (!material.hasProperty(PropertyKey.GEM)) return;
+        if (!material.hasFlag(EXPLOSIVE) && !material.hasFlag(FLAMMABLE)) {
+            GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
+                    .input(dust, material, 4)
+                    .output(gem, material, 3)
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .duration(20).EUt(VH[LuV]) //ToDO 調整
                     .buildAndRegister();
         }
     }
