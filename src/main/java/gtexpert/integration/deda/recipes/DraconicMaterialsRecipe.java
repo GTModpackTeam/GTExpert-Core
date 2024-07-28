@@ -7,6 +7,8 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import gtexpert.api.recipes.GTERecipeMaps;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -157,6 +159,13 @@ public class DraconicMaterialsRecipe {
                 .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .duration(20).EUt(VA[LV])
+                .buildAndRegister();
+        GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
+                .input(DEFeatures.dragonHeart, 1)
+                .input(block, GTEMaterials.Draconium, 4)
+                .output(block, GTEMaterials.AwakenedDraconium, 3)
+                //.chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                .duration(20).EUt(VH[LuV]) //ToDO 調整
                 .buildAndRegister();
 
         // Extended recipes
