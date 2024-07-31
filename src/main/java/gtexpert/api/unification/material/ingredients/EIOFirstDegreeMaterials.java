@@ -58,11 +58,7 @@ public class EIOFirstDegreeMaterials {
                         .blastStats(VA[GTEValues.eioVoltageTier], 120)
                         .vacuumStats(VA[GTEValues.eioVoltageTier], 30))
                 .build();
-        EnergeticAlloy.setFormula(
-                Redstone.getChemicalFormula() +
-                        Gold.getChemicalFormula() +
-                        Glowstone.getRegistryName(),
-                true);
+        EnergeticAlloy.setFormula("Au2(Si(FeS2)5(CrAl2O3)Hg3)2", true);
 
         // Vibrant Alloy
         VibrantAlloy = new Material.Builder(24105, gteId("vibrant_alloy"))
@@ -76,10 +72,7 @@ public class EIOFirstDegreeMaterials {
                         .blastStats(VA[GTEValues.eioVoltageTier], 120)
                         .vacuumStats(VA[GTEValues.eioVoltageTier], 30))
                 .build();
-        VibrantAlloy.setFormula(
-                EnergeticAlloy.getChemicalFormula() +
-                        EnderPearl.getChemicalFormula(),
-                true);
+        VibrantAlloy.setFormula("BeK4N5(Au2(Si(FeS2)5(CrAl2O3)Hg3)2)", true);
 
         // Redstone Alloy
         RedstoneAlloy = new Material.Builder(24106, gteId("redstone_alloy"))

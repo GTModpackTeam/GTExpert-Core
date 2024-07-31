@@ -25,7 +25,6 @@ import gtexpert.api.util.Mods;
 import gtexpert.integration.eio.EnderIOConfigHolder;
 import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
 
-import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.conduits.init.ConduitObject;
 import crazypants.enderio.endergy.init.EndergyObject;
 import crazypants.enderio.machines.init.MachineObject;
@@ -118,15 +117,6 @@ public class EIOBlocksRecipe {
             ModHandler.addShapelessRecipe("ceu_electric_spawner",
                     EIOMetaTileEntities.ELECTRIC_SPAWNER[HV].getStackForm(),
                     new ItemStack(MachineObject.block_powered_spawner.getBlockNN()));
-        }
-
-        // Sky Stone Block
-        if (Mods.AppliedEnergistics2.isModLoaded()) {
-            RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
-                    .inputs(new ItemStack(ModObject.block_infinity.getBlockNN(), 4, 2))
-                    .outputs(Mods.AppliedEnergistics2.getItem("sky_stone_block"))
-                    .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
-                    .buildAndRegister();
         }
 
         // Fused Quartz

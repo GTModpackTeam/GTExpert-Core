@@ -7,8 +7,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import gtexpert.api.recipes.GTERecipeMaps;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -39,6 +37,7 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
+import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.items.GTEMetaItems;
 
 public class CEUOverrideRecipe {
@@ -54,6 +53,8 @@ public class CEUOverrideRecipe {
         // Vacuum Freezer
         List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
         materials.forEach(CEUOverrideRecipe::vacuumFreezerExtended);
+
+        // Electric Implosion Compressor
         materials.forEach(CEUOverrideRecipe::electricImplosionRecipe);
 
         // Iron Nugget
@@ -478,8 +479,7 @@ public class CEUOverrideRecipe {
             GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                     .input(dust, material, 4)
                     .output(gem, material, 3)
-                    //.chancedOutput(dust, Materials.DarkAsh, 2500, 0) // 必要ですか?
-                    .duration(20).EUt(VH[LuV]) //ToDO 調整
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
                     .buildAndRegister();
         }
     }

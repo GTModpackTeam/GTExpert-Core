@@ -1,10 +1,13 @@
 package gtexpert.api.recipes;
 
+import static gregtech.api.GTValues.*;
+
 import net.minecraft.init.SoundEvents;
 
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.core.sound.GTSoundEvents;
 
@@ -49,12 +52,16 @@ public class GTERecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMap<>(
-            "electric_implosion_compressor", 2, 2, 0, 0, new SimpleRecipeBuilder(), false)
-            .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_1)
-            .setSlotOverlay(false, false, true, GuiTextures.IMPLOSION_OVERLAY_2)
-            .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL)
-            .setSound(SoundEvents.ENTITY_GENERIC_EXPLODE);
+            "electric_implosion_compressor", 6, 2, 0, 0, new SimpleRecipeBuilder().duration(20).EUt(VA[LV]), false)
+                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
+                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
+                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
+                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
+                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
+                    .setSlotOverlay(false, false, true, GuiTextures.IMPLOSION_OVERLAY_2)
+                    .setSlotOverlay(true, false, true, GuiTextures.DUST_OVERLAY)
+                    .setSound(SoundEvents.ENTITY_GENERIC_EXPLODE)
+                    .setSmallRecipeMap(RecipeMaps.IMPLOSION_RECIPES);
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> STEAM_MIXER_RECIPES = new RecipeMap<>(
