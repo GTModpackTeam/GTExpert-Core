@@ -2,10 +2,7 @@ package gtexpert.integration.eio.recipes;
 
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.stick;
 import static gtexpert.loaders.recipe.handlers.GTEMaterialRecipeHandler.addImplosionRecipes;
-
-import gtexpert.api.util.Mods;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
