@@ -48,6 +48,15 @@ public class GTERecipeMaps {
                     .setSound(GTSoundEvents.COOLING);
 
     @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMap<>(
+            "electric_implosion_compressor", 2, 2, 0, 0, new SimpleRecipeBuilder(), false)
+            .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_1)
+            .setSlotOverlay(false, false, true, GuiTextures.IMPLOSION_OVERLAY_2)
+            .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL)
+            .setSound(SoundEvents.ENTITY_GENERIC_EXPLODE);
+
+    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> STEAM_MIXER_RECIPES = new RecipeMap<>(
             "steam_mixer", 6, 2, 0, 0, new SimpleRecipeBuilder(), false)
                     .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
