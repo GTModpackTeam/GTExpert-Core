@@ -1,3 +1,8 @@
+# v2.8.9
+- Fix Implosion Compressor recipes.
+
+* * *
+
 # v2.2.8
 - Electric Implosion Compressor is converted to no explosive items. [#284](https://github.com/GTModpackTeam/GTExpert-Core/pull/284)
     - Thanks to @MrKono for his support!! 

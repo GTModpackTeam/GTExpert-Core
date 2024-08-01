@@ -1,6 +1,7 @@
 package gtexpert.api.recipes;
 
 import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 
 import net.minecraft.init.SoundEvents;
 
@@ -9,6 +10,7 @@ import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.unification.material.Materials;
 import gregtech.core.sound.GTSoundEvents;
 
 import gtexpert.api.gui.GTEGuiTextures;
@@ -52,7 +54,8 @@ public class GTERecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMap<>(
-            "electric_implosion_compressor", 6, 2, 0, 0, new SimpleRecipeBuilder().duration(20).EUt(VA[LV]), false)
+            "electric_implosion_compressor", 6, 2, 0, 0,
+            new SimpleRecipeBuilder().duration(1).EUt(VA[UV]).chancedOutput(dust, Materials.DarkAsh, 2500, 0), false)
                     .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
                     .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
                     .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
