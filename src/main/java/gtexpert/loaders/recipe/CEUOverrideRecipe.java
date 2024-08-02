@@ -37,6 +37,7 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
+import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.items.GTEMetaItems;
 
 public class CEUOverrideRecipe {
@@ -52,6 +53,9 @@ public class CEUOverrideRecipe {
         // Vacuum Freezer
         List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
         materials.forEach(CEUOverrideRecipe::vacuumFreezerExtended);
+
+        // Electric Implosion Compressor
+        materials.forEach(CEUOverrideRecipe::electricImplosionRecipe);
 
         // Iron Nugget
         ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Materials.Iron, 9),
@@ -459,6 +463,23 @@ public class CEUOverrideRecipe {
                     .fluidOutputs(material.getFluid(144))
                     .duration(vacuumDuration)
                     .EUt(vacuumEUt)
+                    .buildAndRegister();
+        }
+    }
+
+    /**
+     * Electric Implosion Compressor recipes without explosives
+     *
+     * @param material The material to add recipes for
+     */
+    private static void electricImplosionRecipe(@NotNull Material material) {
+        if (!material.hasProperty(PropertyKey.GEM)) return;
+        if (material == Materials.Lapotron) return;
+        if (!material.hasFlag(EXPLOSIVE) && !material.hasFlag(FLAMMABLE)) {
+            GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
+                    .input(dust, material, 4)
+                    .output(gem, material, 3)
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
                     .buildAndRegister();
         }
     }

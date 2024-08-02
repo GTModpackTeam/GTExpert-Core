@@ -1,12 +1,14 @@
 package gtexpert.integration.eio.recipes;
 
 import static gregtech.api.GTValues.VA;
-import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gtexpert.loaders.recipe.handlers.GTEMaterialRecipeHandler.addImplosionRecipes;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.category.RecipeCategories;
 import gregtech.api.unification.OreDictUnifier;
@@ -15,6 +17,8 @@ import gregtech.common.ConfigHolder;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
+
+import crazypants.enderio.base.init.ModObject;
 
 public class EIOMaterialsRecipe {
 
@@ -173,6 +177,74 @@ public class EIOMaterialsRecipe {
                 .output(dust, GTEMaterials.VividAlloy, 2)
                 .duration(40).EUt(VA[GTEValues.eioVoltageTier + 1])
                 .buildAndRegister();
+
+        // Pulsating Crystal
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input("itemPulsatingPowder")
+                .fluidInputs(Materials.DrillingFluid.getFluid(50))
+                .output(ModObject.itemMaterial.getItemNN(), 1, 14)
+                .duration(600).EUt(24)
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input("itemPulsatingPowder")
+                .fluidInputs(Materials.Water.getFluid(250))
+                .chancedOutput(new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 14), 7000, 1000)
+                .duration(1200).EUt(24)
+                .buildAndRegister();
+        addImplosionRecipes("itemPulsatingPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 14));
+
+        // Vibrant Crystal
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input("itemVibrantPowder")
+                .fluidInputs(Materials.DrillingFluid.getFluid(50))
+                .output(ModObject.itemMaterial.getItemNN(), 1, 15)
+                .duration(600).EUt(24)
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input("itemVibrantPowder")
+                .fluidInputs(Materials.Water.getFluid(250))
+                .chancedOutput(new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 15), 7000, 1000)
+                .duration(1200).EUt(24)
+                .buildAndRegister();
+        addImplosionRecipes("itemVibrantPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 15));
+
+        // Ender Crystal
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input("itemEnderCrystalPowder")
+                .fluidInputs(Materials.DrillingFluid.getFluid(50))
+                .output(ModObject.itemMaterial.getItemNN(), 1, 16)
+                .duration(600).EUt(24)
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input("itemEnderCrystalPowder")
+                .fluidInputs(Materials.Water.getFluid(250))
+                .chancedOutput(new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 16), 7000, 1000)
+                .duration(1200).EUt(24)
+                .buildAndRegister();
+        addImplosionRecipes("itemEnderCrystalPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 16));
+
+        // Weather Crystal
+        ModHandler.addShapedRecipe(true, "weather_crystal",
+                new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 18),
+                " P ", "VEV", " P ",
+                'P', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 14),
+                'V', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 15),
+                'E', new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 16));
+
+        // Prescient Crystal
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input("itemPrecientPowder")
+                .fluidInputs(Materials.DrillingFluid.getFluid(50))
+                .output(ModObject.itemMaterial.getItemNN(), 1, 19)
+                .duration(600).EUt(24)
+                .buildAndRegister();
+        RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
+                .input("itemPrecientPowder")
+                .fluidInputs(Materials.Water.getFluid(250))
+                .chancedOutput(new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 19), 7000, 1000)
+                .duration(1200).EUt(24)
+                .buildAndRegister();
+        addImplosionRecipes("itemPrecientPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 19));
     }
 
     public static void remove() {
