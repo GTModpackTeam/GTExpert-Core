@@ -19,7 +19,9 @@ public class GTEMixinLoader implements ILateMixinLoader {
 
     public static final Map<String, Boolean> modMixinsConfig = Stream.of(
             new AbstractMap.SimpleImmutableEntry<>(Mods.Names.DRACONIC_ADDITIONS,
-                    Mods.DraconicAdditions.isModLoaded()))
+                    Mods.DraconicAdditions.isModLoaded()),
+            new AbstractMap.SimpleImmutableEntry<>(Mods.Names.GREGICALITY_MULTIBLOCKS,
+                    Mods.GregicalityMultiblocks.isModLoaded()))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     @Override

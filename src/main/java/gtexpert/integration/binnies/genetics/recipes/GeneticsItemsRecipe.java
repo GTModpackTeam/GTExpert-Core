@@ -36,10 +36,17 @@ public class GeneticsItemsRecipe {
             // Reinforced Casing
             ModHandler.removeRecipeByName(Mods.Genetics.getResource("laboratory_casing"));
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(plate, Materials.Aluminium, 4)
                     .inputs(Mods.Forestry.getItem("sturdy_machine"))
-                    .input(plate, Materials.Aluminium, 8)
+                    .fluidInputs(Materials.Water.getFluid(1000))
                     .outputs(Mods.Genetics.getItem("misc"))
-                    .EUt(VA[MV]).duration(1200).buildAndRegister();
+                    .EUt(VA[MV]).duration(FFMUtility.timeCarpenter(75)).buildAndRegister();
+            RecipeManagers.carpenterManager.addRecipe(
+                    75, Materials.Water.getFluid(5000),
+                    ItemStack.EMPTY, Mods.Genetics.getItem("misc"),
+                    "# #", " Y ", "# #",
+                    '#', "plateAluminium",
+                    'Y', Mods.Forestry.getItem("sturdy_machine"));
 
             // DNA Dye
             ModHandler.removeRecipeByName(Mods.Genetics.getResource("dna_dye_from_glowstone"));

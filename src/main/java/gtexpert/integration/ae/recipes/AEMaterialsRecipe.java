@@ -3,8 +3,7 @@ package gtexpert.integration.ae.recipes;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
-
-import net.minecraft.item.ItemStack;
+import static gtexpert.loaders.recipe.handlers.GTEMaterialRecipeHandler.addImplosionRecipes;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -17,8 +16,6 @@ import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
@@ -142,6 +139,13 @@ public class AEMaterialsRecipe {
                 .outputs(Mods.AppliedEnergistics2.getItem("sky_stone_block"))
                 .duration(100).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
+        if (Mods.EnderIO.isModLoaded()) {
+            RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
+                    .inputs(Mods.EnderIO.getItem("block_infinity", 1, 2))
+                    .outputs(Mods.AppliedEnergistics2.getItem("sky_stone_block"))
+                    .duration(500).EUt(VA[GTEValues.ae2VoltageTier])
+                    .buildAndRegister();
+        }
 
         // ########################################
         // Nether Quartz
@@ -241,34 +245,7 @@ public class AEMaterialsRecipe {
                 .chancedOutput(Mods.AppliedEnergistics2.getItem("material", 1, 1), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, GTEMaterials.ChargedCertusQuartz, 4)
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 1))
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, GTEMaterials.ChargedCertusQuartz, 4)
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 1))
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesAmount(4)
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, GTEMaterials.ChargedCertusQuartz, 4)
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 1))
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, GTEMaterials.ChargedCertusQuartz, 4)
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 1))
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesType(new ItemStack(MetaBlocks.ITNT))
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
+        addImplosionRecipes(GTEMaterials.ChargedCertusQuartz, Mods.AppliedEnergistics2.getItem("material", 3, 1));
 
         // Lens
         RecipeMaps.LATHE_RECIPES.recipeBuilder()
@@ -318,34 +295,7 @@ public class AEMaterialsRecipe {
                 .chancedOutput(Mods.AppliedEnergistics2.getItem("material", 1, 7), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, GTEMaterials.Fluix, 4)
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 7))
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, GTEMaterials.Fluix, 4)
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 7))
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesAmount(4)
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, GTEMaterials.Fluix, 4)
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 7))
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, GTEMaterials.Fluix, 4)
-                .outputs(Mods.AppliedEnergistics2.getItem("material", 3, 7))
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesType(new ItemStack(MetaBlocks.ITNT))
-                .duration(20).EUt(VA[LV])
-                .buildAndRegister();
+        addImplosionRecipes(GTEMaterials.Fluix, Mods.AppliedEnergistics2.getItem("material", 3, 7));
 
         // Block
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()

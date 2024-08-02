@@ -27,6 +27,7 @@ gtexpert.machine.advanced_gas_collector.tooltip.1=§dAuthor:§f @tier940
 gtexpert.machine.large_gas_collector.name=Large Gas Collector
 gtexpert.machine.large_gas_collector.tooltip=Squeeze air out of dust
 gtexpert.machine.large_gas_collector.tooltip.1=§dAuthor:§f @tier940
+gcym.machine.electric_implosion_compressor.tooltip=The Explosive Power of Electricity./nImproved version of GCYM's Electric Implosion Compressor modified with GTExpertCore and without explosives items./n§dAuthor:§f @MrKono, @sysnote8main
 
 # singleblock
 # Auto Chisel
@@ -244,6 +245,7 @@ recipemap.draconic_fusion_upgrade.property.1=Preserves upgrade info
 recipemap.draconic_fusion_upgrade.property.2= and stored energy
 recipemap.advanced_chemical_plant.name=Advanced Chemical Plant
 recipemap.large_gas_collector.name=Large Gas Collector
+recipemap.electric_implosion_compressor.name=Electric Implosion Compressor
 recipemap.steam_mixer.name=Steam Mixer
 recipemap.steam_assembler.name=Steam Assembler
 recipemap.steam_circuit_assembler.name=Steam Circuit Assembler

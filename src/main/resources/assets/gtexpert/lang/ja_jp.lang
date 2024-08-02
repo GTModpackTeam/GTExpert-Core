@@ -27,6 +27,7 @@ gtexpert.machine.advanced_gas_collector.tooltip.1=§d作者:§f @tier940
 gtexpert.machine.large_gas_collector.name=大型ガス収集機
 gtexpert.machine.large_gas_collector.tooltip=粉から空気を搾り取る
 gtexpert.machine.large_gas_collector.tooltip.1=§d作者:§f @tier940
+gcym.machine.electric_implosion_compressor.tooltip=電力の爆発力。/nGCYM製の電動内破圧縮機をGTExpertCoreにて着火剤を無しにした改良版。/n§d作者:§f @MrKono, @sysnote8main
 
 # singleblock
 # Auto Chisel
@@ -244,6 +245,7 @@ recipemap.draconic_fusion_upgrade.property.1=アップグレードの状態と�
 recipemap.draconic_fusion_upgrade.property.2= 保持されます
 recipemap.advanced_chemical_plant.name=発展型化学プラント
 recipemap.large_gas_collector.name=大型ガス収集機
+recipemap.electric_implosion_compressor.name=電動内破圧縮機
 recipemap.steam_mixer.name=蒸気式ミキサー
 recipemap.steam_assembler.name=蒸気式組立機
 recipemap.steam_circuit_assembler.name=蒸気式回路作成機
