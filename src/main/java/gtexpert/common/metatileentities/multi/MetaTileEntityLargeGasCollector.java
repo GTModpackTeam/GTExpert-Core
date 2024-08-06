@@ -111,7 +111,7 @@ public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockCont
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format(GTEConfigHolder.gteFlag.featureFlag ?
+        tooltip.add(I18n.format(GTEConfigHolder.gteFeatureFlag.migrationMachine ?
                 "gtexpert.machine.large_gas_collector.tooltip.1" :
                 "gtexpert.machine.advanced_gas_collector.tooltip.1"));
     }

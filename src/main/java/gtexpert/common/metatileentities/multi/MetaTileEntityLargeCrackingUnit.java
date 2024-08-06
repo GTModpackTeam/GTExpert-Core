@@ -62,9 +62,9 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     protected BlockPattern createStructurePattern() {
         TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(10);
         TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true,
-                GTEConfigHolder.gteFlag.featureFlag);
+                GTEConfigHolder.gteFeatureFlag.migrationMachine);
 
-        if (GTEConfigHolder.gteFlag.featureFlag) {
+        if (GTEConfigHolder.gteFeatureFlag.migrationMachine) {
             return FactoryBlockPattern.start()
                     .aisle(" XXX ", " XXX ", "  X  ", "  X  ", "  X  ", " XXX ", "     ")
                     .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
@@ -115,7 +115,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     @Override
     public boolean hasMufflerMechanics() {
-        return GTEConfigHolder.gteFlag.featureFlag;
+        return GTEConfigHolder.gteFeatureFlag.migrationMachine;
     }
 
     @SideOnly(Side.CLIENT)

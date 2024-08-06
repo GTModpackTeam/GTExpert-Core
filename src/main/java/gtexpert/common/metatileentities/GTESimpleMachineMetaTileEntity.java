@@ -46,7 +46,7 @@ public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity 
             yOffset = FONT_HEIGHT;
         }
 
-        ModularUI.Builder builder = workableRecipeMap
+        ModularUI.Builder builder = workableRecipeMap.getRecipeMapUI()
                 .createUITemplate(workable::getProgressPercent, importItems, exportItems, importFluids, exportFluids,
                         yOffset)
                 .widget(new LabelWidget(5, 5, getMetaFullName()))
@@ -85,8 +85,8 @@ public class GTESimpleMachineMetaTileEntity extends SimpleMachineMetaTileEntity 
                     GTValues.XMAS.get() ? GTEGuiTextures.GTE_LOGO_XMAS : GTEGuiTextures.GTE_LOGO).setIgnoreColor(true);
 
             if (this.circuitInventory != null) {
-                SlotWidget circuitSlot = new GhostCircuitSlotWidget(this.circuitInventory, 0, 124, 62 + yOffset)
-                        .setBackgroundTexture(GuiTextures.SLOT, this.getCircuitSlotOverlay());
+                SlotWidget circuitSlot = new GhostCircuitSlotWidget(circuitInventory, 0, 124, 62 + yOffset)
+                        .setBackgroundTexture(GuiTextures.SLOT, getCircuitSlotOverlay());
                 builder.widget(circuitSlot.setConsumer(this::getCircuitSlotTooltip)).widget(logo);
             }
         }

@@ -9,6 +9,7 @@ public final class GTEMetaItems {
 
     private GTEMetaItems() {}
 
+    public static MetaItem<?>.MetaValueItem GTE_LOGO;
     public static MetaItem<?>.MetaValueItem GTE_ME_FAKE_COMPONENT;
     public static MetaItem<?>.MetaValueItem MATRIX_CORE;
     public static MetaItem<?>.MetaValueItem ARTIFICIAL_BONE;

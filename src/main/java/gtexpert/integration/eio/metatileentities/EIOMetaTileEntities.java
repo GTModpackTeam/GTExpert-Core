@@ -5,10 +5,8 @@ import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTile
 import static gtexpert.api.util.GTEUtility.gteId;
 import static gtexpert.common.metatileentities.GTEMetaTileEntities.registerGTESimpleMetaTileEntity;
 
-import gregtech.api.util.GTUtility;
-
-import gtexpert.api.util.GTEUtility;
 import gtexpert.client.GTETextures;
+import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
 import gtexpert.integration.eio.EnderIORecipeMaps;
 
@@ -20,22 +18,25 @@ public class EIOMetaTileEntities {
     public static MetaTileEntityElectricSpawner[] ELECTRIC_SPAWNER = new MetaTileEntityElectricSpawner[V.length - 1];
 
     public static void init() {
-        // VIAL_EXTRACTOR 11010~11022
-        registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor",
+        int mteStartId = GTEConfigHolder.gteFeatureFlag.newId ? 200 : 11010;
+
+        // Vial Extractor
+        registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, mteStartId, "vial_extractor",
                 EnderIORecipeMaps.VIAL_EXTRACTOR_RECIPES,
-                GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEUtility::gteId, GTUtility.hvCappedTankSizeFunction);
+                GTETextures.VIAL_EXTRACTOR_OVERLAY, true);
 
-        // SLICE_N_SPLICE 11023~11035
-        registerGTESimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice",
+        // Slice N Splice
+        registerGTESimpleMetaTileEntity(SLICE_N_SPLICE, mteStartId += 13, "slice_n_splice",
                 EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES,
-                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
+                GTETextures.SLICE_N_SPLICE_OVERLAY, true, null);
 
-        // SOUL_BINDER 11036~11048
-        registerGTESimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", EnderIORecipeMaps.SOUL_BINDER_RECIPES,
-                GTETextures.SOUL_BINDER_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
+        // Soul Binder
+        registerGTESimpleMetaTileEntity(SOUL_BINDER, mteStartId += 13, "soul_binder",
+                EnderIORecipeMaps.SOUL_BINDER_RECIPES,
+                GTETextures.SOUL_BINDER_OVERLAY, true);
 
-        // ELECTRIC_SPAWNER 11049~11061
-        registerMetaTileEntities(ELECTRIC_SPAWNER, 11049, "electric_spawner",
+        // Electric Spawner
+        registerMetaTileEntities(ELECTRIC_SPAWNER, mteStartId + 13, "electric_spawner",
                 (tier, voltageName) -> new MetaTileEntityElectricSpawner(
                         gteId(String.format("%s.%s", "electric_spawner", voltageName)),
                         GTETextures.SPAWNER_OVERLAY,

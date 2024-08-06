@@ -20,7 +20,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import org.jetbrains.annotations.NotNull;
 
+import gregtech.api.GregTechAPI;
 import gregtech.api.items.armor.ArmorMetaItem;
+import gregtech.api.metatileentity.registry.MTEManager;
 import gregtech.api.unification.material.event.MaterialEvent;
 
 import gtexpert.api.GTEValues;
@@ -31,6 +33,11 @@ import gtexpert.common.items.GTEMetaItems;
 public class GTEEventHandlers {
 
     public GTEEventHandlers() {}
+
+    @SubscribeEvent
+    public static void registerMTERegistry(MTEManager.MTERegistryEvent event) {
+        GregTechAPI.mteManager.createRegistry(GTEValues.MODID);
+    }
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void registerMaterialsHigh(MaterialEvent event) {

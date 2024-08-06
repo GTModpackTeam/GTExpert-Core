@@ -19,7 +19,6 @@ import gregtech.common.items.MetaItems;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.Mods;
-import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.integration.ae.AEConfigHolder;
 
@@ -664,7 +663,7 @@ public class AEItemsRecipe {
                 .duration(20).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
 
-        if (GTEConfigHolder.gteFlag.featureFlag) {
+        if (AEConfigHolder.hardProcessorRecipes) {
             // Logic Processor
             RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                     .inputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
