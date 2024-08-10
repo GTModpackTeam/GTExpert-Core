@@ -1,9 +1,9 @@
-# v2.8.10
+# v2.2.10
 - Hotfix AwakenedDraconium recipes.
 
 * * *
 
-# v2.8.9
+# v2.2.9
 - Fix Implosion Compressor recipes.
 
 * * *

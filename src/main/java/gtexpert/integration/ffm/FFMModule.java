@@ -27,7 +27,6 @@ public class FFMModule extends GTEIntegrationSubmodule {
         FFMItemRecipe.init();
         FFMMaterialsRecipe.init();
         FFMToolRecipe.init();
-        FFMWoodRecipe.init();
 
         CarpenterLoader.initBase();
         CarpenterLoader.initMode();

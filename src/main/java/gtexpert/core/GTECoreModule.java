@@ -120,7 +120,6 @@ public class GTECoreModule implements IGTEModule {
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
         GTERecipe.init();
-        GTEWoodRecipe.init();
         CEUOverrideRecipe.init();
         GTEVanillaOverrideRecipes.init();
     }
