@@ -38,7 +38,6 @@ import gtexpert.loaders.GTEOreDictionaryLoader;
 import gtexpert.loaders.recipe.CEUOverrideRecipe;
 import gtexpert.loaders.recipe.GTERecipe;
 import gtexpert.loaders.recipe.GTEVanillaOverrideRecipes;
-import gtexpert.loaders.recipe.GTEWoodRecipe;
 import gtexpert.loaders.recipe.handlers.GTEToolRecipeHandler;
 import gtexpert.modules.GTEModules;
 
