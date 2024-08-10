@@ -31,13 +31,6 @@
       "groupName": "monthly_maintenance",
       "matchDepTypes":[ "devDependencies" ],
       "matchUpdateTypes": ["major", "minor", "patch"]
-    },
-    {
-      "groupName": "monthly_maintenance",
-      "matchDepTypes":[ "devDependencies" ],
-      "matchUpdateTypes": ["major"],
-      "matchPackagePrefixes": ["@types/"],
-      "enabled": false
     }
   ]
 }
