@@ -70,7 +70,7 @@ public class GTERecipe {
                 .fluidInputs(Materials.RocketFuel.getFluid(1000))
                 .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, Materials.NetherStar, 2)
-                .duration(400).EUt(GTEConfigHolder.gteFlag.peacefulFlag ? VA[EV] : VA[LuV])
+                .duration(400).EUt(GTEConfigHolder.gteFlag.peacefulFlag ? VA[IV] : VA[LuV])
                 .buildAndRegister();
 
         // Ender Eye
