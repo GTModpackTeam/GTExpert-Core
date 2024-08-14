@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import com.cleanroommc.modularui.factory.PosGuiData;
 import com.cleanroommc.modularui.screen.ModularPanel;
-import com.cleanroommc.modularui.value.sync.GuiSyncManager;
+import com.cleanroommc.modularui.value.sync.PanelSyncManager;
 
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -73,7 +73,7 @@ public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockCont
     }
 
     @Override
-    public ModularPanel buildUI(PosGuiData data, GuiSyncManager syncManager) {
+    public ModularPanel buildUI(PosGuiData data, PanelSyncManager syncManager) {
         return null;
     }
 
