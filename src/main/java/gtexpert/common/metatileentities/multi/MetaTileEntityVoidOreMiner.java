@@ -14,6 +14,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import com.cleanroommc.modularui.factory.PosGuiData;
+import com.cleanroommc.modularui.screen.ModularPanel;
+import com.cleanroommc.modularui.value.sync.GuiSyncManager;
+
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -62,6 +66,11 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController {
                 .where('F', frame.setMinGlobalLimited(55))
                 .where(' ', any())
                 .build();
+    }
+
+    @Override
+    public ModularPanel buildUI(PosGuiData data, GuiSyncManager syncManager) {
+        return null;
     }
 
     @Override

@@ -3,16 +3,6 @@ package gtexpert.common.metatileentities;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static gtexpert.api.util.GTEUtility.gteId;
 
-import java.util.function.Function;
-
-import net.minecraft.util.ResourceLocation;
-
-import gregtech.api.GTValues;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.util.GTUtility;
-import gregtech.client.renderer.ICubeRenderer;
-
-import gtexpert.api.util.GTEUtility;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.metatileentities.multi.*;
 import gtexpert.common.metatileentities.single.SteamAssembler;
@@ -77,42 +67,5 @@ public class GTEMetaTileEntities {
         LARGE_GAS_COLLECTOR = registerMetaTileEntity(mteMultiStartId + 1,
                 new MetaTileEntityLargeGasCollector(gteId(GTEConfigHolder.gteFeatureFlag.migrationMachine ?
                         "large_gas_collector" : "advanced_gas_collector")));
-    }
-
-    public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines,
-                                                       int startId,
-                                                       String name,
-                                                       RecipeMap<?> map,
-                                                       ICubeRenderer texture,
-                                                       boolean hasFrontFacing) {
-        registerGTESimpleMetaTileEntity(machines, startId, name, map, texture, hasFrontFacing, GTEUtility::gteId,
-                GTUtility.defaultTankSizeFunction);
-    }
-
-    public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines,
-                                                       int startId,
-                                                       String name,
-                                                       RecipeMap<?> map,
-                                                       ICubeRenderer texture,
-                                                       boolean hasFrontFacing,
-                                                       Function<Integer, Integer> tankScalingFunction) {
-        registerGTESimpleMetaTileEntity(machines, startId, name, map, texture, hasFrontFacing, GTEUtility::gteId,
-                tankScalingFunction);
-    }
-
-    public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,
-                                                       String name, RecipeMap<?> map, ICubeRenderer texture,
-                                                       boolean hasFrontFacing,
-                                                       Function<String, ResourceLocation> resourceId,
-                                                       Function<Integer, Integer> tankScalingFunction) {
-        for (int i = 0; i < machines.length - 1; ++i) {
-            if (i <= 4 || getMidTier(name)) continue;
-            if (i > 7 && !getHighTier(name)) break;
-
-            String voltageName = GTValues.VN[i + 1].toLowerCase();
-            machines[i + 1] = registerMetaTileEntity(startId + i,
-                    new GTESimpleMachineMetaTileEntity(resourceId.apply(String.format("%s.%s", name, voltageName)),
-                            map, texture, i + 1, hasFrontFacing, tankScalingFunction));
-        }
     }
 }

@@ -9,18 +9,21 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import gregtech.api.GTValues;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.NotifiableItemStackHandler;
+import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.client.renderer.ICubeRenderer;
 
-import gtexpert.common.metatileentities.GTESimpleMachineMetaTileEntity;
+import gtexpert.api.gui.GTEGuiTextures;
 
-public class MetaTileEntityIndustrialApiary extends GTESimpleMachineMetaTileEntity {
+public class MetaTileEntityIndustrialApiary extends SimpleMachineMetaTileEntity {
 
     public MetaTileEntityIndustrialApiary(ResourceLocation metaTileEntityId, ICubeRenderer renderer, int tier) {
         super(metaTileEntityId, null, renderer, tier, true);
@@ -59,6 +62,14 @@ public class MetaTileEntityIndustrialApiary extends GTESimpleMachineMetaTileEnti
     @Override
     public SoundEvent getSound() {
         return null;
+    }
+
+    protected @NotNull TextureArea getLogo() {
+        return GTEGuiTextures.GTE_LOGO;
+    }
+
+    protected @NotNull TextureArea getXmasLogo() {
+        return GTEGuiTextures.GTE_LOGO_XMAS;
     }
 
     @Override

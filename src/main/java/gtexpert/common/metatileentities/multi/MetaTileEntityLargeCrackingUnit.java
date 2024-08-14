@@ -16,6 +16,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import com.cleanroommc.modularui.factory.PosGuiData;
+import com.cleanroommc.modularui.screen.ModularPanel;
+import com.cleanroommc.modularui.value.sync.GuiSyncManager;
+
 import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -91,6 +95,11 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
                     .where('#', air())
                     .build();
         }
+    }
+
+    @Override
+    public ModularPanel buildUI(PosGuiData data, GuiSyncManager syncManager) {
+        return null;
     }
 
     @Override
