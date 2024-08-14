@@ -3,11 +3,6 @@ package gtexpert.api.unification;
 import gregtech.api.unification.Element;
 import gregtech.api.unification.Elements;
 
-import crafttweaker.annotations.ZenRegister;
-import stanhebben.zenscript.annotations.ZenClass;
-
-@ZenClass("mods.gregtech.material.Elements")
-@ZenRegister
 public class GTEElements {
 
     private GTEElements() {}
