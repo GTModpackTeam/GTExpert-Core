@@ -1,3 +1,13 @@
+# v2.8.11
+- Hotfix Nether Star Dust recipe.
+
+* * *
+
+# v2.8.10
+- Hotfix AwakenedDraconium recipes.
+
+* * *
+
 # v2.8.9
 - Fix Implosion Compressor recipes.
 

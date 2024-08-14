@@ -1,9 +1,9 @@
 diff --git ./settings.gradle ./settings.gradle.patch
 --- ./settings.gradle
 +++ ./settings.gradle.patch
-@@ -24,2 +24,13 @@
+@@ -22,2 +22,13 @@
      id 'org.gradle.toolchains.foojay-resolver-convention' version '0.7.0'
-+    id 'com.gradle.enterprise' version '3.16.2'
++    id 'com.gradle.enterprise' version '3.17.6'
 +}
 +
 +gradleEnterprise {

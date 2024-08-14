@@ -43,6 +43,12 @@ public class GTEConfigHolder {
                 "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting(WIP)), normal (3x3 crafting).",
                 "The steamNewMachine must also be enabled.", "Default: normal" })
         public String steamRecipeType = "normal";
+
+        @Config.Comment({
+                "1. When enabled, the following recipes will be changed to Peaceful difficulty: ",
+                "Nether Star Dust, Skeleton Skull, Wither Skeleton Skull, Zombie Head, Creeper Head, Enderman Head",
+                "Default: false" })
+        public boolean peacefulFlag = false;
     }
 
     public static class GTEFeatureFlag {
