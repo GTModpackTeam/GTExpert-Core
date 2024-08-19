@@ -1,3 +1,8 @@
+# v2.8.12
+- Fixed crafting in the case of gemstone blocks and liquids.
+
+* * *
+
 # v2.8.11
 - Hotfix Nether Star Dust recipe.
 
