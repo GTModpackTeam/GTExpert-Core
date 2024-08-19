@@ -1,19 +1,19 @@
-# v2.8.12
+# v2.2.12
 - Fixed crafting in the case of gemstone blocks and liquids.
 
 * * *
 
-# v2.8.11
+# v2.2.11
 - Hotfix Nether Star Dust recipe.
 
 * * *
 
-# v2.8.10
+# v2.2.10
 - Hotfix AwakenedDraconium recipes.
 
 * * *
 
-# v2.8.9
+# v2.2.9
 - Fix Implosion Compressor recipes.
 
 * * *
