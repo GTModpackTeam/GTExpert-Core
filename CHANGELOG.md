@@ -1,5 +1,5 @@
 # v2.2.12
-- Fixed crafting in the case of gemstone blocks and liquids.
+- Fixed crafting in the case of gem blocks and liquids.
 
 * * *
 
