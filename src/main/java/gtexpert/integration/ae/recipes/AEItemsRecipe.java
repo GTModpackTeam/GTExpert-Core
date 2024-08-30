@@ -594,14 +594,14 @@ public class AEItemsRecipe {
                 "SAS", "FQF", "SAS",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
                 'Q', Mods.AppliedEnergistics2.getItem("material", 1, 7),
-                'A', Mods.AppliedEnergistics2.getItem("material", 2, 44),
-                'F', Mods.AppliedEnergistics2.getItem("material", 2, 43));
+                'A', Mods.AppliedEnergistics2.getItem("material", 1, 44),
+                'F', Mods.AppliedEnergistics2.getItem("material", 1, 43));
         ModHandler.addShapedRecipe("matrix_core_pure", GTEMetaItems.MATRIX_CORE.getStackForm(2),
                 "SAS", "FQF", "SAS",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
                 'Q', Mods.AppliedEnergistics2.getItem("material", 1, 12),
-                'A', Mods.AppliedEnergistics2.getItem("material", 2, 44),
-                'F', Mods.AppliedEnergistics2.getItem("material", 2, 43));
+                'A', Mods.AppliedEnergistics2.getItem("material", 1, 44),
+                'F', Mods.AppliedEnergistics2.getItem("material", 1, 43));
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(6)
                 .input(stick, tierMaterials[GTEValues.ae2VoltageTier - 1], 2)
