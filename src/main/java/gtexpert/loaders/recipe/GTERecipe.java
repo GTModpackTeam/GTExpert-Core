@@ -70,7 +70,7 @@ public class GTERecipe {
                 .fluidInputs(Materials.RocketFuel.getFluid(1000))
                 .cleanroom(CleanroomType.CLEANROOM)
                 .output(dust, Materials.NetherStar, 2)
-                .duration(200).EUt(VA[LuV])
+                .duration(400).EUt(GTEConfigHolder.gteFlag.peacefulFlag ? VA[IV] : VA[LuV])
                 .buildAndRegister();
 
         // Ender Eye
@@ -226,7 +226,7 @@ public class GTERecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1))
-                .duration(100).EUt(VA[IV])
+                .duration(100).EUt(GTEConfigHolder.gteFlag.peacefulFlag ? VA[HV] : VA[IV])
                 .buildAndRegister();
 
         // Wither Skeleton Skull
@@ -236,7 +236,7 @@ public class GTERecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1, 1))
-                .duration(100).EUt(VA[IV])
+                .duration(100).EUt(GTEConfigHolder.gteFlag.peacefulFlag ? VA[HV] : VA[IV])
                 .buildAndRegister();
 
         // Zombie Head
@@ -246,7 +246,7 @@ public class GTERecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 4)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1, 2))
-                .duration(100).EUt(VA[IV])
+                .duration(100).EUt(GTEConfigHolder.gteFlag.peacefulFlag ? VA[HV] : VA[IV])
                 .buildAndRegister();
 
         // Creeper Head
@@ -256,7 +256,7 @@ public class GTERecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 2)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .outputs(Mods.Vanilla.getItem("skull", 1, 4))
-                .duration(100).EUt(VA[IV])
+                .duration(100).EUt(GTEConfigHolder.gteFlag.peacefulFlag ? VA[HV] : VA[IV])
                 .buildAndRegister();
 
         // Primitive Parts
