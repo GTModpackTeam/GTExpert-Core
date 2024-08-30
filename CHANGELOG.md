@@ -1,3 +1,13 @@
+# v2.2.12
+- Fixed crafting in the case of gem blocks and liquids.
+
+* * *
+
+# v2.2.11
+- Hotfix Nether Star Dust recipe.
+
+* * *
+
 # v2.2.10
 - Hotfix AwakenedDraconium recipes.
 
