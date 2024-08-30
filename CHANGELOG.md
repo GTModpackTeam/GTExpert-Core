@@ -1,3 +1,8 @@
+# v2.2.13
+- Fix upgrade recipe to Nano Boots from Piston Boots.
+
+* * *
+
 # v2.2.12
 - Fixed crafting in the case of gem blocks and liquids.
 

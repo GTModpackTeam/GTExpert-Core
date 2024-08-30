@@ -353,7 +353,7 @@ public class CEUOverrideRecipe {
     private static void tools() {
         // Nano Boots
         ModHandler.addShapedRecipe("nano_boots_from_piston_boots",
-                MetaItems.NANO_BOOTS.getStackForm(), "PPP", "PBP", "xEd",
+                MetaItems.NANO_BOOTS.getStackForm(), "PBP", "xEd",
                 'B', GTEMetaItems.PISTON_BOOTS.getStackForm(),
                 'P', MetaItems.CARBON_FIBER_PLATE.getStackForm(),
                 'E', MetaItems.ENERGIUM_CRYSTAL.getStackForm());
