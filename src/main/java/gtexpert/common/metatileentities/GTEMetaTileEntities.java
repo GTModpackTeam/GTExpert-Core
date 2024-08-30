@@ -28,7 +28,6 @@ public class GTEMetaTileEntities {
     public static SteamCircuitAssembler STEAM_CIRCUIT_ASSEMBLER_STEEL;
 
     // Multi Machine
-    public static MetaTileEntitySawmill SAWMILL;
     public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityAdvancedChemicalPlant ADVANCED_CHEMICAL_PLANT;
@@ -53,8 +52,6 @@ public class GTEMetaTileEntities {
         }
 
         // Multi Machine
-        SAWMILL = registerMetaTileEntity(12001,
-                new MetaTileEntitySawmill(gteId("sawmill")));
         LARGE_CRACKER = registerMetaTileEntity(12002,
                 new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
         VOIDOREMINER = registerMetaTileEntity(12003,

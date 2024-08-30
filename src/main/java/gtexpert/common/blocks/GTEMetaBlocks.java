@@ -14,13 +14,10 @@ public class GTEMetaBlocks {
 
     public static GTEBlockWireCoil GTE_WIRE_COIL;
     public static GTEBlockMetalCasing GTE_METAL_CASING;
-    public static BlockSawmillConveyor BLOCK_SAWMILL_CONVEYOR;
 
     public static void init() {
         GTE_METAL_CASING = new GTEBlockMetalCasing();
         GTE_METAL_CASING.setRegistryName("gte_metal_casing");
-        BLOCK_SAWMILL_CONVEYOR = new BlockSawmillConveyor();
-        BLOCK_SAWMILL_CONVEYOR.setRegistryName("sawmill_conveyor");
         GTE_WIRE_COIL = new GTEBlockWireCoil();
         GTE_WIRE_COIL.setRegistryName("gte_wire_coil");
     }
@@ -28,7 +25,6 @@ public class GTEMetaBlocks {
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
         registerItemModel(GTE_METAL_CASING);
-        registerItemModel(BLOCK_SAWMILL_CONVEYOR);
         GTE_WIRE_COIL.onModelRegister();
     }
 

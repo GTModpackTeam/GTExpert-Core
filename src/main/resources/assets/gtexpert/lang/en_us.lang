@@ -2,9 +2,6 @@
 
 
 # multiblock
-gtexpert.machine.sawmill.name=Sawmill
-gtexpert.machine.sawmill.tooltip=Nooo! Do not saw me..
-gtexpert.machine.sawmill.tooltip.1=§dAuthor:§f @Quarri6343
 gtexpert.machine.void_ore_miner.name=Void Ore Miner
 gtexpert.machine.void_ore_miner.tooltip=Stargate Builder
 gtexpert.machine.void_ore_miner.tooltip.1=§6Mines out 32 Ores based on the input Ore §r
@@ -142,11 +139,9 @@ gtexpert.machine.industrial_apiary.uv.name=Ultimate Industrial Apiary
 gtexpert.machine.industrial_apiary.uv.tooltip=BEES GOES BRRRR/n§dAuthor:§f @tier940
 
 # block
-tile.gte_metal_casing.sawmill_casing.name=Treated Wood Machine Casing
 tile.gte_metal_casing.void_ore_miner_casing.name=Voiding Proof NM-HEA NP Machine Casing
 tile.gte_metal_casing.draconium_casing.name=Dragon Proof Draconium Machine Casing
 tile.gte_metal_casing.awakened_draconium_casing.name=Dragon Proof Awakened Draconium Machine Casing
-tile.sawmill_conveyor.name=Sawmill Conveyor
 tile.gte_wire_coil.awakened_draconium.name=Awakened Draconium Coil Block
 
 # material
@@ -226,7 +221,6 @@ metaitem.shape.extruder.engineering_processor.name=Extruder Shape (Engineering P
 metaitem.shape.extruder.engineering_processor.tooltip=Used to craft Engineering Processor
 
 # recipemaps
-recipemap.sawmill.name=Saw Mill
 recipemap.vial_extractor.name=Vial Extractor
 recipemap.slice_n_splice.name=Slice'N'Splice
 recipemap.soul_binder.name=Soul Binder

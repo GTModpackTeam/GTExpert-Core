@@ -30,15 +30,6 @@ public class GTERecipeMaps {
                     .setSound(SoundEvents.BLOCK_SAND_PLACE);
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> SAWMILL_RECIPES = new RecipeMap<>(
-            "sawmill", 2, 2, 1, 0, new SimpleRecipeBuilder(), false)
-                    .setSlotOverlay(false, false, GuiTextures.SAWBLADE_OVERLAY)
-                    .setSlotOverlay(true, false, false, GuiTextures.CUTTER_OVERLAY)
-                    .setSlotOverlay(true, false, true, GuiTextures.DUST_OVERLAY)
-                    .setProgressBar(GuiTextures.PROGRESS_BAR_SLICE, ProgressWidget.MoveType.HORIZONTAL)
-                    .setSound(GTSoundEvents.CHAINSAW_TOOL);
-
-    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> VOID_ORE_MINER_RECIPES = new RecipeMap<>(
             "void_ore_miner", 1, 1, 2, 0, new SimpleRecipeBuilder(), false)
                     .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOM, ProgressWidget.MoveType.VERTICAL)

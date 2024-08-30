@@ -5,11 +5,6 @@
   },
   "variants" : {
     "variant" : {
-      "sawmill_casing" : {
-        "textures" : {
-          "all" : "gregtech:blocks/casings/sawmill_casing"
-        }
-      },
       "void_ore_miner_casing" : {
         "textures" : {
           "all" : "gregtech:blocks/casings/void_ore_miner_casing"

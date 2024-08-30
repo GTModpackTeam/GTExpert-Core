@@ -6,7 +6,6 @@ import static gtexpert.common.blocks.GTEMetaBlocks.*;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -33,7 +32,6 @@ import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
 import gtexpert.common.items.GTEToolItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
-import gtexpert.loaders.GTEMaterialInfoLoader;
 import gtexpert.loaders.GTEOreDictionaryLoader;
 import gtexpert.loaders.recipe.CEUOverrideRecipe;
 import gtexpert.loaders.recipe.GTERecipe;
@@ -93,7 +91,6 @@ public class GTECoreModule implements IGTEModule {
 
         registry.register(GTE_WIRE_COIL);
         registry.register(GTE_METAL_CASING);
-        registry.register(BLOCK_SAWMILL_CONVEYOR);
     }
 
     @Override
@@ -105,13 +102,11 @@ public class GTECoreModule implements IGTEModule {
 
         registry.register(createItemBlock(GTE_WIRE_COIL, VariantItemBlock::new));
         registry.register(createItemBlock(GTE_METAL_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(BLOCK_SAWMILL_CONVEYOR, ItemBlock::new));
     }
 
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
         GTEToolRecipeHandler.register();
-        GTEMaterialInfoLoader.init();
         GTEOreDictionaryLoader.init();
         GTEMetaTileEntities.init();
     }
