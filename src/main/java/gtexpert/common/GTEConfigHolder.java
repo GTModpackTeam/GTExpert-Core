@@ -58,7 +58,7 @@ public class GTEConfigHolder {
     public static class GregtechOverride {
 
         @Config.Comment({ "Making Planks even more difficult.",
-                "CEu's nerfWoodCrafting to true to reflect.", "Default: false" })
+                "CEu's hardWoodRecipes & nerfWoodCrafting to true to reflect.", "Default: false" })
         public boolean moreNerfPlankCrafting = false;
 
         @Config.Comment({ "Making Sticks even more difficult.",
