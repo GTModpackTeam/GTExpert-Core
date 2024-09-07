@@ -12,8 +12,10 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -31,6 +33,8 @@ import gtexpert.common.items.GTEMetaItems;
 public class GTEEventHandlers {
 
     public GTEEventHandlers() {}
+
+    public static boolean getPlayerDifficultyPeaceful;
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void registerMaterialsHigh(MaterialEvent event) {
@@ -85,5 +89,10 @@ public class GTEEventHandlers {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static boolean getPlayerDifficultyPeaceful(WorldEvent event) {
+        return event.getWorld().getDifficulty() == EnumDifficulty.PEACEFUL;
     }
 }

@@ -15,7 +15,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
-import gtexpert.common.GTEConfigHolder;
+import gtexpert.common.GTEEventHandlers;
 import gtexpert.common.items.GTEMetaItems;
 
 import crazypants.enderio.base.init.ModObject;
@@ -31,7 +31,7 @@ public class EIOItemsRecipe {
                 .input(GTEMetaItems.ARTIFICIAL_BONE, 8)
                 .fluidInputs(Materials.Mutagen.getFluid(500))
                 .output(ModObject.blockEndermanSkull.getItemNN())
-                .duration(100).EUt(GTEConfigHolder.gteFlag.peacefulFlag ? VA[HV] : VA[IV])
+                .duration(100).EUt(GTEEventHandlers.getPlayerDifficultyPeaceful ? VA[HV] : VA[IV])
                 .buildAndRegister();
 
         // Soul Vial
