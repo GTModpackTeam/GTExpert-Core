@@ -4,8 +4,6 @@ import static gregtech.api.GregTechAPI.HEATING_COILS;
 import static gtexpert.GTExpertMod.createItemBlock;
 import static gtexpert.common.blocks.GTEMetaBlocks.*;
 
-import gtexpert.api.recipes.GTERecipeMaps;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -23,12 +21,12 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.block.VariantItemBlock;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.loaders.recipe.RecyclingRecipes;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.modules.GTEModule;
 import gtexpert.api.modules.IGTEModule;
+import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.common.CommonProxy;
 import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
