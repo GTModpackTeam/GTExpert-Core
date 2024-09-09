@@ -125,4 +125,8 @@ public class GTERecipeMaps {
                     .progressBar(GuiTextures.PROGRESS_BAR_CIRCUIT_ASSEMBLER, ProgressWidget.MoveType.HORIZONTAL)
                     .sound(GTSoundEvents.ASSEMBLER)
                     .build();
+
+    public static void init() {
+        RecipeMaps.VACUUM_RECIPES.setMaxFluidOutputs(2);
+    }
 }

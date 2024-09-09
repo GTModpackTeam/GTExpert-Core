@@ -4,6 +4,8 @@ import static gregtech.api.GregTechAPI.HEATING_COILS;
 import static gtexpert.GTExpertMod.createItemBlock;
 import static gtexpert.common.blocks.GTEMetaBlocks.*;
 
+import gtexpert.api.recipes.GTERecipeMaps;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -73,6 +75,8 @@ public class GTECoreModule implements IGTEModule {
         GTEMetaItems.init();
         GTEToolItems.init();
 
+        GTERecipeMaps.init();
+
         /* Start API Block Registration */
         for (GTEBlockWireCoil.GTECoilType type : GTEBlockWireCoil.GTECoilType.values()) {
             HEATING_COILS.put(GTE_WIRE_COIL.getState(type), type);
@@ -100,9 +104,6 @@ public class GTECoreModule implements IGTEModule {
     @Override
     public void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
-
-        // TODO Add preLoad to RecipeManager
-        RecipeMaps.VACUUM_RECIPES.setMaxFluidOutputs(2);
 
         registry.register(createItemBlock(GTE_WIRE_COIL, VariantItemBlock::new));
         registry.register(createItemBlock(GTE_METAL_CASING, VariantItemBlock::new));
