@@ -2,9 +2,6 @@
 
 
 # multiblock
-gtexpert.machine.sawmill.name=製材機
-gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らないで..
-gtexpert.machine.sawmill.tooltip.1=§d作者:§f @Quarri6343
 gtexpert.machine.void_ore_miner.name=亜空間型鉱石採掘機
 gtexpert.machine.void_ore_miner.tooltip=スターゲート建設機
 gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します§r
@@ -143,11 +140,9 @@ gtexpert.machine.industrial_apiary.uv.name=究極型工業用養蜂箱
 gtexpert.machine.industrial_apiary.uv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
 
 # block
-tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
 tile.gte_metal_casing.void_ore_miner_casing.name=対虚無マシン外装
 tile.gte_metal_casing.draconium_casing.name=ドラコニウムマシン外装
 tile.gte_metal_casing.awakened_draconium_casing.name=覚醒ドラコニウムマシン外装
-tile.sawmill_conveyor.name=製材機用コンベア
 tile.gte_wire_coil.awakened_draconium.name=覚醒ドラコニウムコイルブロック
 
 # material
@@ -227,7 +222,6 @@ metaitem.shape.extruder.engineering_processor.name=上級プロセッサの押�
 metaitem.shape.extruder.engineering_processor.tooltip=上級プロセッサを作る為の押出形成用金型
 
 # recipemaps
-recipemap.sawmill.name=製材機
 recipemap.vial_extractor.name=魂抽出器
 recipemap.slice_n_splice.name=頭顱調整機
 recipemap.soul_binder.name=魂拘束器

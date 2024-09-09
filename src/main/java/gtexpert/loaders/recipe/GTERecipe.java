@@ -824,16 +824,6 @@ public class GTERecipe {
             }
         }
 
-        // Sawmill
-        ModHandler.addShapedRecipe(true, "gtexpert.machine.sawmill",
-                GTEMetaTileEntities.SAWMILL.getStackForm(), "SBs", "MHM", "COC",
-                'S', new UnificationEntry(screw, Materials.Steel),
-                'B', new UnificationEntry(toolHeadBuzzSaw, Materials.Steel),
-                'M', MetaItems.ELECTRIC_MOTOR_MV.getStackForm(),
-                'H', MetaTileEntities.HULL[MV].getStackForm(),
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.MV),
-                'O', MetaItems.CONVEYOR_MODULE_MV.getStackForm());
-
         // Large Oil Cracking Unit
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit",
                 GTEMetaTileEntities.LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",
@@ -909,22 +899,6 @@ public class GTERecipe {
         List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
         materials.forEach(GTERecipe::voidOreMiner);
 
-        // Treated Wood Machine Casing
-        ModHandler.addShapedRecipe(true, "casing_treated_wood",
-                GTEMetaBlocks.GTE_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill,
-                        ConfigHolder.recipes.casingsPerCraft),
-                "PhP", "PFP", "PwP",
-                'P', new UnificationEntry(plate, Materials.TreatedWood),
-                'F', new UnificationEntry(frameGt, Materials.TreatedWood));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .circuitMeta(6)
-                .input(plate, Materials.TreatedWood, 6)
-                .input(frameGt, Materials.TreatedWood, 1)
-                .outputs(GTEMetaBlocks.GTE_METAL_CASING
-                        .getItemVariant(GTEBlockMetalCasing.MetalCasingType.SAWMill, 2))
-                .duration(50).EUt(VH[LV])
-                .buildAndRegister();
-
         // Void Ore Miner Casing
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM))
@@ -937,16 +911,6 @@ public class GTERecipe {
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER,
                                 ConfigHolder.recipes.casingsPerCraft))
                 .duration(100).EUt(VA[ZPM])
-                .buildAndRegister();
-
-        // Sawmill Conveyor
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(MetaItems.CONVEYOR_MODULE_MV, 1)
-                .input(frameGt, Materials.TreatedWood, 1)
-                .input(Items.LEATHER, 3)
-                .fluidInputs(Materials.Glue.getFluid(100))
-                .output(GTEMetaBlocks.BLOCK_SAWMILL_CONVEYOR, 1)
-                .duration(100).EUt(VA[MV])
                 .buildAndRegister();
     }
 

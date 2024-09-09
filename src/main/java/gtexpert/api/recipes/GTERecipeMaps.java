@@ -34,20 +34,6 @@ public class GTERecipeMaps {
                     .build();
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> SAWMILL_RECIPES = new RecipeMapBuilder<>(
-            "sawmill", new SimpleRecipeBuilder())
-                    .itemInputs(2)
-                    .itemOutputs(2)
-                    .fluidInputs(1)
-                    .fluidOutputs(0)
-                    .itemSlotOverlay(GuiTextures.SAWBLADE_OVERLAY, false)
-                    .itemSlotOverlay(GuiTextures.CUTTER_OVERLAY, true)
-                    .itemSlotOverlay(GuiTextures.DUST_OVERLAY, true, true)
-                    .progressBar(GuiTextures.PROGRESS_BAR_SLICE, ProgressWidget.MoveType.HORIZONTAL)
-                    .sound(GTSoundEvents.CHAINSAW_TOOL)
-                    .build();
-
-    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> VOID_ORE_MINER_RECIPES = new RecipeMapBuilder<>(
             "void_ore_miner", new SimpleRecipeBuilder())
                     .itemInputs(1)

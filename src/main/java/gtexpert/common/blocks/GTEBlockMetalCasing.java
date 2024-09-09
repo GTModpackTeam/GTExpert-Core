@@ -21,7 +21,7 @@ public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalC
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel(ToolClasses.WRENCH, 2);
-        setDefaultState(getState(MetalCasingType.SAWMill));
+        setDefaultState(getState(MetalCasingType.DRACONIUM_CASING));
     }
 
     @Override
@@ -32,7 +32,6 @@ public class GTEBlockMetalCasing extends VariantBlock<GTEBlockMetalCasing.MetalC
 
     public enum MetalCasingType implements IStringSerializable {
 
-        SAWMill("sawmill_casing"),
         VOID_ORE_MINER("void_ore_miner_casing"),
         DRACONIUM_CASING("draconium_casing"),
         AWAKENED_DRACONIUM_CASING("awakened_draconium_casing");
