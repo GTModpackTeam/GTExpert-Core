@@ -23,8 +23,6 @@ gtexpert.machine.advanced_gas_collector.tooltip=粉から空気を搾り取る
 gtexpert.machine.advanced_gas_collector.tooltip.1=§d作者:§f @tier940
 gtexpert.machine.large_gas_collector.name=大型ガス収集機
 gtexpert.machine.large_gas_collector.tooltip=粉から空気を搾り取る
-gtexpert.machine.large_gas_collector.tooltip.1=§d作者:§f @tier940
-gcym.machine.electric_implosion_compressor.tooltip=電力の爆発力。/nGCYM製の電動内破圧縮機をGTExpertCoreにて着火剤を無しにした改良版。/n§d作者:§f @MrKono, @sysnote8main
 
 # singleblock
 # Auto Chisel
