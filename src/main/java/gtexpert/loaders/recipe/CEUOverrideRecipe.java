@@ -29,6 +29,7 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
@@ -56,6 +57,9 @@ public class CEUOverrideRecipe {
 
         // Electric Implosion Compressor
         materials.forEach(CEUOverrideRecipe::electricImplosionRecipe);
+
+        // Remove Gem (temp fix)
+        materials.forEach(CEUOverrideRecipe::removeGem);
 
         // Iron Nugget
         ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Materials.Iron, 9),
@@ -346,6 +350,15 @@ public class CEUOverrideRecipe {
                 'T', OreDictNames.chestWood);
     }
 
+    private static void tools() {
+        // Nano Boots
+        ModHandler.addShapedRecipe("nano_boots_from_piston_boots",
+                MetaItems.NANO_BOOTS.getStackForm(), "PBP", "xEd",
+                'B', GTEMetaItems.PISTON_BOOTS.getStackForm(),
+                'P', MetaItems.CARBON_FIBER_PLATE.getStackForm(),
+                'E', MetaItems.ENERGIUM_CRYSTAL.getStackForm());
+    }
+
     /**
      * Vacuum Freezer to extended recipes
      *
@@ -484,12 +497,20 @@ public class CEUOverrideRecipe {
         }
     }
 
-    private static void tools() {
-        // Nano Boots
-        ModHandler.addShapedRecipe("nano_boots_from_piston_boots",
-                MetaItems.NANO_BOOTS.getStackForm(), "PBP", "xEd",
-                'B', GTEMetaItems.PISTON_BOOTS.getStackForm(),
-                'P', MetaItems.CARBON_FIBER_PLATE.getStackForm(),
-                'E', MetaItems.ENERGIUM_CRYSTAL.getStackForm());
+    /**
+     * Remove gem recipes
+     *
+     * @param material The material
+     */
+    private static void removeGem(Material material) {
+        if (!material.hasProperty(PropertyKey.FLUID)) return;
+        if (!material.hasProperty(PropertyKey.GEM)) return;
+        if (!ConfigHolder.recipes.disableManualCompression) return;
+
+        long materialAmount = OrePrefix.block.getMaterialAmount(material);
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
+                new ItemStack[] { MetaItems.SHAPE_MOLD_BLOCK.getStackForm() },
+                new FluidStack[] {
+                        material.getProperty(PropertyKey.FLUID).solidifiesFrom(((int) (materialAmount * L / M))) });
     }
 }

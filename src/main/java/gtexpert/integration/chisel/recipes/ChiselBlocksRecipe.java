@@ -92,7 +92,7 @@ public class ChiselBlocksRecipe {
         // Lamp
         if (ChiselConfigHolder.hardLedRecipes) {
             if (Mods.ProjectRedIllumination.isModLoaded()) {
-                IntStream.range(0, 31)
+                IntStream.range(0, 32)
                         .mapToObj(i -> GTEUtility.getModItem(Mods.Names.PROJECT_RED_ILLUMINATION, "lamp", 1, i))
                         .forEach(ModHandler::removeRecipeByOutput);
             }
