@@ -7,6 +7,8 @@ import static gtexpert.api.util.GTEUtility.gteId;
 
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 
+import gregtech.api.util.GTUtility;
+
 import gtexpert.api.util.GTEUtility;
 import gtexpert.client.GTETextures;
 import gtexpert.common.GTEConfigHolder;
@@ -26,19 +28,19 @@ public class EIOMetaTileEntities {
         registerSimpleMetaTileEntity(VIAL_EXTRACTOR, mteStartId, "vial_extractor",
                 EnderIORecipeMaps.VIAL_EXTRACTOR_RECIPES,
                 GTETextures.VIAL_EXTRACTOR_OVERLAY,
-                true, GTEUtility::gteId, null);
+                true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // Slice N Splice
         registerSimpleMetaTileEntity(SLICE_N_SPLICE, mteStartId += 13, "slice_n_splice",
                 EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES,
                 GTETextures.SLICE_N_SPLICE_OVERLAY,
-                true, GTEUtility::gteId, null);
+                true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // Soul Binder
         registerSimpleMetaTileEntity(SOUL_BINDER, mteStartId += 13, "soul_binder",
                 EnderIORecipeMaps.SOUL_BINDER_RECIPES,
                 GTETextures.SOUL_BINDER_OVERLAY,
-                true, GTEUtility::gteId, null);
+                true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
         // Electric Spawner
         registerMetaTileEntities(ELECTRIC_SPAWNER, mteStartId + 13, "electric_spawner",

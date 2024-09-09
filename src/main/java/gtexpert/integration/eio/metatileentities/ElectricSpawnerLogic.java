@@ -166,15 +166,40 @@ public class ElectricSpawnerLogic extends RecipeLogicEnergy {
         return consumeEmptyVial();
     }
 
+    public static int @NotNull [] standardOverclockingLogic(int recipeEUt, long maxVoltage, int recipeDuration, int numberOfOCs, double durationDivisor, double voltageMultiplier) {
+        double resultDuration = recipeDuration;
+
+        double resultVoltage;
+        for(resultVoltage = recipeEUt; numberOfOCs > 0 && resultDuration != 1.0; --numberOfOCs) {
+            double potentialVoltage = resultVoltage * voltageMultiplier;
+            if (potentialVoltage > (double)maxVoltage) {
+                break;
+            }
+
+            double potentialDuration = resultDuration / durationDivisor;
+            if (potentialDuration < 1.0) {
+                potentialDuration = 1.0;
+            }
+
+            resultDuration = potentialDuration;
+            resultVoltage = potentialVoltage;
+        }
+
+        return new int[]{(int)resultVoltage, (int)resultDuration};
+    }
+
+    private int processTime, processEut;
     private boolean checkOverclock() {
         // TODO: adjust energy consumption
         int eut = 30;
         int duration = 10 * 20;
-        this.overclockResults = OverclockingLogic.standardOverclockingLogic(eut, getMaximumOverclockVoltage(), duration,
-                getNumberOfOCs(eut), getOverclockingDurationDivisor(),
-                getOverclockingVoltageMultiplier());
+        var l = standardOverclockingLogic(eut, getMaximumOverclockVoltage(), duration,
+                getNumberOfOCs(eut), this.hasPerfectOC ? 4.0 : 2.0,
+                4.0);
 
-        return hasEnoughPower(overclockResults);
+        processEut = l[0];
+        processTime = l[1];
+        return hasEnoughPower(l[0], l[1]);
     }
 
     private boolean consumeEmptyVial() {
@@ -194,8 +219,8 @@ public class ElectricSpawnerLogic extends RecipeLogicEnergy {
      */
     private void setup(@NotNull CapturedMob mobToSpawn, @NotNull ItemStack outputItem) {
         this.progressTime = 1;
-        setMaxProgress(overclockResults[1]);
-        this.recipeEUt = overclockResults[0];
+        setMaxProgress(processTime);
+        this.recipeEUt = processEut;
         if (!spawnMode) {
             this.itemOutputs = GTUtility.copyStackList(Collections.singletonList(outputItem));
         } else {
