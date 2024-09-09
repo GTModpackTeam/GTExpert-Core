@@ -25,7 +25,6 @@ import com.enderio.core.client.render.BoundingBox;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.RecipeLogicEnergy;
 import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.recipes.logic.OverclockingLogic;
 import gregtech.api.util.GTTransferUtils;
 import gregtech.api.util.GTUtility;
 
@@ -166,13 +165,15 @@ public class ElectricSpawnerLogic extends RecipeLogicEnergy {
         return consumeEmptyVial();
     }
 
-    public static int @NotNull [] standardOverclockingLogic(int recipeEUt, long maxVoltage, int recipeDuration, int numberOfOCs, double durationDivisor, double voltageMultiplier) {
+    public static int @NotNull [] standardOverclockingLogic(int recipeEUt, long maxVoltage, int recipeDuration,
+                                                            int numberOfOCs, double durationDivisor,
+                                                            double voltageMultiplier) {
         double resultDuration = recipeDuration;
 
         double resultVoltage;
-        for(resultVoltage = recipeEUt; numberOfOCs > 0 && resultDuration != 1.0; --numberOfOCs) {
+        for (resultVoltage = recipeEUt; numberOfOCs > 0 && resultDuration != 1.0; --numberOfOCs) {
             double potentialVoltage = resultVoltage * voltageMultiplier;
-            if (potentialVoltage > (double)maxVoltage) {
+            if (potentialVoltage > (double) maxVoltage) {
                 break;
             }
 
@@ -185,10 +186,11 @@ public class ElectricSpawnerLogic extends RecipeLogicEnergy {
             resultVoltage = potentialVoltage;
         }
 
-        return new int[]{(int)resultVoltage, (int)resultDuration};
+        return new int[] { (int) resultVoltage, (int) resultDuration };
     }
 
     private int processTime, processEut;
+
     private boolean checkOverclock() {
         // TODO: adjust energy consumption
         int eut = 30;

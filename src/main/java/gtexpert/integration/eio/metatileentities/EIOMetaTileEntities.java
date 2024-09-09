@@ -6,7 +6,6 @@ import static gregtech.common.metatileentities.MetaTileEntities.registerSimpleMe
 import static gtexpert.api.util.GTEUtility.gteId;
 
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
-
 import gregtech.api.util.GTUtility;
 
 import gtexpert.api.util.GTEUtility;
