@@ -11,21 +11,17 @@ public class GTEConfigHolder {
 
     @Config.Name("GTExpert-Core Options")
     @Config.RequiresMcRestart
-    public static final ModpackFlag gteFlag = new ModpackFlag();
+    public static final GTEFlag gteFlag = new GTEFlag();
+
+    @Config.Name("GTExpert-Core Feature Options")
+    @Config.RequiresMcRestart
+    public static final GTEFeatureFlag gteFeatureFlag = new GTEFeatureFlag();
 
     @Config.Name("Gregtech Override")
     @Config.RequiresMcRestart
     public static final GregtechOverride ceuOverride = new GregtechOverride();
 
-    public static class ModpackFlag {
-
-        @Config.Comment({ "Activate changes in the replacement schedule.",
-                "1. When enabled, the following structure and mte name changes: ",
-                "Large Cracking Unit",
-                "2. When enabled, the recipe of the following items will be changed: ",
-                "Logic Processor, Calc Processor, Engineer Processor",
-                "Default: false" })
-        public boolean featureFlag = false;
+    public static class GTEFlag {
 
         @Config.Comment({ "Item name to be CEu standard instead of Primitive",
                 "Options: true (ULV), false (Primitive)",
@@ -53,6 +49,29 @@ public class GTEConfigHolder {
                 "Nether Star Dust, Skeleton Skull, Wither Skeleton Skull, Zombie Head, Creeper Head, Enderman Head",
                 "Default: false" })
         public boolean peacefulFlag = false;
+    }
+
+    public static class GTEFeatureFlag {
+
+        @Config.Comment({ "Activate changes in the replacement schedule.",
+                "1. When enabled, the following structure and mte name changes: ",
+                "Large Cracking Unit",
+                "1. When enabled, the following mte name changes: ",
+                "Advanced Gas Collector -> Large Gas Collector",
+                "Default: false" })
+        public boolean migrationMachine = false;
+
+        @Config.Comment({ "Activate machines under development.",
+                "Default: false" })
+        public boolean previewMachines = false;
+
+        @Config.Comment({ "Activate items under development.",
+                "Default: false" })
+        public boolean previewItems = false;
+
+        @Config.Comment({ "Items and machines are re-numbered.",
+                "Default: false" })
+        public boolean newId = false;
     }
 
     public static class GregtechOverride {

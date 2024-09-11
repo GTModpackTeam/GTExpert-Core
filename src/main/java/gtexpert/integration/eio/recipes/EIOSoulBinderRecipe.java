@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
-import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
@@ -42,8 +41,8 @@ public class EIOSoulBinderRecipe {
 
             // SoulBinder - Soul Filter
             EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                    .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                            NBTCondition.create(NBTTagType.STRING, "entityId", name.toString())))
+                    .inputNBT(new ItemStack(stack.getItem()), NBTMatcher.RECURSIVE_EQUAL_TO,
+                            NBTCondition.create(NBTTagType.STRING, "entityId", name.toString()))
                     .input(ModObject.itemBasicItemFilter.getItem())
                     .fluidInputs(GTEUtility.getModFluid("xpjuice", 4320))
                     .output(ModObject.itemSoulVial.getItemNN())
@@ -52,8 +51,8 @@ public class EIOSoulBinderRecipe {
 
             // SoulBinder - Big Soul Filter
             EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                    .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                            NBTCondition.create(NBTTagType.STRING, "entityId", name.toString())))
+                    .inputNBT(new ItemStack(stack.getItem()), NBTMatcher.RECURSIVE_EQUAL_TO,
+                            NBTCondition.create(NBTTagType.STRING, "entityId", name.toString()))
                     .input(ModObject.itemBigItemFilter.getItem())
                     .fluidInputs(GTEUtility.getModFluid("xpjuice", 4320))
                     .output(ModObject.itemSoulVial.getItemNN())
@@ -70,8 +69,8 @@ public class EIOSoulBinderRecipe {
 
         // Soul Binder - Enticing Crystal
         EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                        NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:villager")))
+                .inputNBT(new ItemStack(stack.getItem()), NBTMatcher.RECURSIVE_EQUAL_TO,
+                        NBTCondition.create(NBTTagType.STRING, "entityId", "minecraft:villager"))
                 .input(gem, Materials.Emerald)
                 .fluidInputs(GTEUtility.getModFluid("xpjuice", 576))
                 .output(ModObject.itemSoulVial.getItemNN())
@@ -89,8 +88,8 @@ public class EIOSoulBinderRecipe {
 
             // Soul Binder - Sentient Ender
             EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                    .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                            NBTCondition.create(NBTTagType.STRING, "entityId", witch)))
+                    .inputNBT(new ItemStack(stack.getItem()), NBTMatcher.RECURSIVE_EQUAL_TO,
+                            NBTCondition.create(NBTTagType.STRING, "entityId", witch))
                     .input(ModObject.itemMaterial.getItemNN(), 1, 43)
                     .fluidInputs(GTEUtility.getModFluid("xpjuice", 8640))
                     .output(ModObject.itemSoulVial.getItemNN())
@@ -108,8 +107,8 @@ public class EIOSoulBinderRecipe {
 
             // Soul Binder - Frank'N'Zombie
             EnderIORecipeMaps.SOUL_BINDER_RECIPES.recipeBuilder()
-                    .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                            NBTCondition.create(NBTTagType.STRING, "entityId", zombie)))
+                    .inputNBT(new ItemStack(stack.getItem()), NBTMatcher.RECURSIVE_EQUAL_TO,
+                            NBTCondition.create(NBTTagType.STRING, "entityId", zombie))
                     .input(ModObject.itemMaterial.getItemNN(), 1, 41)
                     .fluidInputs(GTEUtility.getModFluid("xpjuice", 8640))
                     .output(ModObject.itemSoulVial.getItemNN())

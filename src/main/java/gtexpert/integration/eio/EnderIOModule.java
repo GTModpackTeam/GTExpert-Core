@@ -17,7 +17,6 @@ import com.enderio.core.common.util.EntityUtil;
 
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
@@ -90,9 +89,8 @@ public class EnderIOModule extends GTEIntegrationSubmodule {
 
         RecipeBuilder<SimpleRecipeBuilder> recipeBuilder = EnderIORecipeMaps.VIAL_EXTRACTOR_RECIPES.recipeBuilder();
 
-        recipeBuilder
-                .input(new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.RECURSIVE_EQUAL_TO,
-                        NBTCondition.create(NBTTagType.STRING, "entityId", entityName)))
+        recipeBuilder.inputNBT(new ItemStack(stack.getItem()), NBTMatcher.RECURSIVE_EQUAL_TO,
+                NBTCondition.create(NBTTagType.STRING, "entityId", entityName))
                 .output(ModObject.itemSoulVial.getItemNN())
                 .fluidOutputs(GTEUtility.getModFluid("xpjuice", xpAmount));
 

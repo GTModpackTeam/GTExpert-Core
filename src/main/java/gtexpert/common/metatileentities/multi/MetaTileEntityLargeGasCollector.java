@@ -14,6 +14,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import com.cleanroommc.modularui.factory.PosGuiData;
+import com.cleanroommc.modularui.screen.ModularPanel;
+import com.cleanroommc.modularui.value.sync.PanelSyncManager;
+
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -69,6 +73,11 @@ public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockCont
     }
 
     @Override
+    public ModularPanel buildUI(PosGuiData data, PanelSyncManager syncManager) {
+        return null;
+    }
+
+    @Override
     public boolean allowsExtendedFacing() {
         return false;
     }
@@ -111,7 +120,7 @@ public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockCont
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format(GTEConfigHolder.gteFlag.featureFlag ?
+        tooltip.add(I18n.format(GTEConfigHolder.gteFeatureFlag.migrationMachine ?
                 "gtexpert.machine.large_gas_collector.tooltip.1" :
                 "gtexpert.machine.advanced_gas_collector.tooltip.1"));
     }

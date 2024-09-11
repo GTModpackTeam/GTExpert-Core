@@ -492,6 +492,7 @@ public class CEUOverrideRecipe {
             GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                     .input(dust, material, 4)
                     .output(gem, material, 3)
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
                     .buildAndRegister();
         }
     }

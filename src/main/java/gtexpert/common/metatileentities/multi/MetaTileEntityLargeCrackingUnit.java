@@ -16,6 +16,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import com.cleanroommc.modularui.factory.PosGuiData;
+import com.cleanroommc.modularui.screen.ModularPanel;
+import com.cleanroommc.modularui.value.sync.PanelSyncManager;
+
 import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -62,9 +66,9 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     protected BlockPattern createStructurePattern() {
         TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(10);
         TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true,
-                GTEConfigHolder.gteFlag.featureFlag);
+                GTEConfigHolder.gteFeatureFlag.migrationMachine);
 
-        if (GTEConfigHolder.gteFlag.featureFlag) {
+        if (GTEConfigHolder.gteFeatureFlag.migrationMachine) {
             return FactoryBlockPattern.start()
                     .aisle(" XXX ", " XXX ", "  X  ", "  X  ", "  X  ", " XXX ", "     ")
                     .aisle("XXXXX", "XXXXX", " CCC ", " CCC ", " CCC ", "XXXXX", " XXX ")
@@ -94,6 +98,11 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     }
 
     @Override
+    public ModularPanel buildUI(PosGuiData data, PanelSyncManager syncManager) {
+        return null;
+    }
+
+    @Override
     public boolean allowsExtendedFacing() {
         return false;
     }
@@ -115,7 +124,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
 
     @Override
     public boolean hasMufflerMechanics() {
-        return GTEConfigHolder.gteFlag.featureFlag;
+        return GTEConfigHolder.gteFeatureFlag.migrationMachine;
     }
 
     @SideOnly(Side.CLIENT)
