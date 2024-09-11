@@ -24,7 +24,7 @@ plugins {
 
 blowdryerSetup {
     repoSubfolder 'spotless'
-    github 'GTModpackTeam/Buildscripts', 'tag', 'v1.0.0'
+    github 'GTModpackTeam/Buildscripts', 'tag', 'v1.0.1'
 }
 
 rootProject.name = rootProject.projectDir.getName()
