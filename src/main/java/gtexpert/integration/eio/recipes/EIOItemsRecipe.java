@@ -24,6 +24,21 @@ import crazypants.enderio.endergy.init.EndergyObject;
 public class EIOItemsRecipe {
 
     public static void init() {
+        // Black Paper
+        ModHandler.removeRecipeByOutput(Mods.EnderIO.getItem("item_material", 1, 77));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(Items.PAPER)
+                .input("dyeBlack")
+                .circuitMeta(2)
+                .outputs(Mods.EnderIO.getItem("item_material", 1, 77))
+                .duration(100).EUt(4).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(Items.PAPER)
+                .fluidInputs(Materials.DyeBlack.getFluid(72))
+                .circuitMeta(2)
+                .outputs(Mods.EnderIO.getItem("item_material", 1, 77))
+                .duration(100).EUt(4).buildAndRegister();
+
         // Enderman Head
         RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .circuitMeta(5)

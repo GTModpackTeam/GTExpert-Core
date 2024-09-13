@@ -21,7 +21,7 @@
  *
  *  - shadowapi("g:n:v:c"): effectively the same as API, but the dependency is included in your jar under a renamed package name
  *       Requires you to enable usesShadowedDependencies in gradle.properties
- *       For more info, see https://github.com/GregTechCEu/Buildscripts/blob/master/docs/shadow.md
+ *       For more info, see https://github.com/GTModpackTeam/Buildscripts/blob/master/docs/shadow.md
  *
  * You can exclude transitive dependencies (dependencies of the chosen dependency) by appending { transitive = false } if needed,
  * but use this sparingly as it can break using your mod as another mod's dependency if you're not careful.

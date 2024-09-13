@@ -1,3 +1,12 @@
+# v2.2.14
+## Ender IO
+- Fix Black Paper
+
+## GregTech Food Options
+- Kitchen Recipe
+
+* * *
+
 # v2.2.13
 - Fix upgrade recipe to Nano Boots from Piston Boots.
 
