@@ -58,6 +58,12 @@ dependencies {
         devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5411078")) // AE2UEL 0.56.6
     }
 
+    // Debug ImplosionNoBomb
+    compileOnly rfg.deobf("curse.maven:implosionnobomb-1094386:5680426") // ImplosionNoBomb 1.0.0
+    if (project.debug_all.toBoolean() || project.debug_inb.toBoolean()) {
+        runtimeOnlyNonPublishable rfg.deobf("curse.maven:implosionnobomb-1094386:5680426")
+    }
+
     // Debug AE Additions
     if (project.debug_all.toBoolean() || project.debug_aea.toBoolean()) {
         runtimeOnlyNonPublishable rfg.deobf("curse.maven:ae-additions-extra-cells-2-fork-493962:3814371") // AEAdditions 1.3.8

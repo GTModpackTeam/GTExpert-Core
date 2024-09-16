@@ -41,7 +41,6 @@ import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import gtexpert.api.GTEValues;
-import gtexpert.api.recipes.GTERecipeMaps;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.Mods;
 
@@ -150,11 +149,6 @@ public class DraconicMaterialsRecipe {
                 .input(block, GTEMaterials.Draconium, 4)
                 .output(block, GTEMaterials.AwakenedDraconium, 3)
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
-                .buildAndRegister();
-        GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
-                .input(DEFeatures.dragonHeart, 1)
-                .input(block, GTEMaterials.Draconium, 4)
-                .output(block, GTEMaterials.AwakenedDraconium, 3)
                 .buildAndRegister();
 
         // Extended recipes

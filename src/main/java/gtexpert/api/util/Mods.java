@@ -77,6 +77,7 @@ public enum Mods {
     GregTechExpertCore(GTEValues.MODID),
     GroovyScript(Names.GROOVY_SCRIPT),
     HWYLA(Names.HWYLA),
+    ImplosionNoBomb(Names.IMPLOSION_NO_BOMB),
     InventoryTweaks(Names.INVENTORY_TWEAKS),
     JourneyMap(Names.JOURNEY_MAP),
     JustEnoughItems(Names.JUST_ENOUGH_ITEMS),
@@ -171,6 +172,7 @@ public enum Mods {
         public static final String GREGTECH_FOOD_OPTION = "gregtechfoodoption";
         public static final String GROOVY_SCRIPT = "groovyscript";
         public static final String HWYLA = "hwyla";
+        public static final String IMPLOSION_NO_BOMB = "inb";
         public static final String INVENTORY_TWEAKS = "inventorytweaks";
         public static final String JOURNEY_MAP = "journeymap";
         public static final String JUST_ENOUGH_ITEMS = "jei";

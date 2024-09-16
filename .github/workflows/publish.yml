@@ -91,6 +91,7 @@ jobs:
             mixin-booter(required)
             gregtech-ce-unofficial(required)
             gregicality-multiblocks(required)
+            implosionnobomb(required)
             ae2-extended-life(recommended)
             ae-additions-extra-cells-2-fork(recommended)
             nae2(recommended)

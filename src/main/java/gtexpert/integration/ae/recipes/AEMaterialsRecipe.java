@@ -3,7 +3,6 @@ package gtexpert.integration.ae.recipes;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
-import static gtexpert.loaders.recipe.handlers.GTEMaterialRecipeHandler.addImplosionRecipes;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -23,6 +22,7 @@ import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.Mods;
+import gtexpert.loaders.recipe.handlers.GTEImplosionRecipeHandler;
 
 public class AEMaterialsRecipe {
 
@@ -245,7 +245,8 @@ public class AEMaterialsRecipe {
                 .chancedOutput(Mods.AppliedEnergistics2.getItem("material", 1, 1), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
-        addImplosionRecipes(GTEMaterials.ChargedCertusQuartz, Mods.AppliedEnergistics2.getItem("material", 3, 1));
+        GTEImplosionRecipeHandler.add(GTEMaterials.ChargedCertusQuartz,
+                Mods.AppliedEnergistics2.getItem("material", 3, 1));
 
         // Lens
         RecipeMaps.LATHE_RECIPES.recipeBuilder()
@@ -295,7 +296,7 @@ public class AEMaterialsRecipe {
                 .chancedOutput(Mods.AppliedEnergistics2.getItem("material", 1, 7), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
-        addImplosionRecipes(GTEMaterials.Fluix, Mods.AppliedEnergistics2.getItem("material", 3, 7));
+        GTEImplosionRecipeHandler.add(GTEMaterials.Fluix, Mods.AppliedEnergistics2.getItem("material", 3, 7));
 
         // Block
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()

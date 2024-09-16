@@ -10,12 +10,11 @@ import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 
-import gtexpert.api.recipes.GTERecipeMaps;
+import gtexpert.api.util.Mods;
 
-public class GTEMaterialRecipeHandler {
-    // TODO: リファクタリング
+public class GTEImplosionRecipeHandler {
 
-    public static void addImplosionRecipes(Material inputMaterial, Material outputMaterial) {
+    public static void add(Material inputMaterial, Material outputMaterial) {
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(dust, inputMaterial, 4)
                 .output(gem, outputMaterial, 3)
@@ -36,13 +35,12 @@ public class GTEMaterialRecipeHandler {
                 .output(gem, outputMaterial, 3)
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .buildAndRegister();
-        GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .output(gem, outputMaterial, 3)
-                .buildAndRegister();
+
+        if (!Mods.ImplosionNoBomb.isModLoaded()) return;
+        GTEImplosionNoBombRecipeHandler.add(inputMaterial, outputMaterial);
     }
 
-    public static void addImplosionRecipes(Material inputMaterial, ItemStack outputStack) {
+    public static void add(Material inputMaterial, ItemStack outputStack) {
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(dust, inputMaterial, 4)
                 .outputs(GTUtility.copy(3, outputStack))
@@ -63,13 +61,12 @@ public class GTEMaterialRecipeHandler {
                 .outputs(GTUtility.copy(3, outputStack))
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .buildAndRegister();
-        GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .outputs(GTUtility.copy(3, outputStack))
-                .buildAndRegister();
+
+        if (!Mods.ImplosionNoBomb.isModLoaded()) return;
+        GTEImplosionNoBombRecipeHandler.add(inputMaterial, outputStack);
     }
 
-    public static void addImplosionRecipes(String inputOreDict, ItemStack outputStack) {
+    public static void add(String inputOreDict, ItemStack outputStack) {
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(inputOreDict, 4)
                 .outputs(GTUtility.copy(3, outputStack))
@@ -90,9 +87,8 @@ public class GTEMaterialRecipeHandler {
                 .outputs(GTUtility.copy(3, outputStack))
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .buildAndRegister();
-        GTERecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
-                .input(inputOreDict, 4)
-                .outputs(GTUtility.copy(3, outputStack))
-                .buildAndRegister();
+
+        if (!Mods.ImplosionNoBomb.isModLoaded()) return;
+        GTEImplosionNoBombRecipeHandler.add(inputOreDict, outputStack);
     }
 }
