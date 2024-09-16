@@ -1,5 +1,6 @@
 # v2.3.0
-- 
+- Separate Electric Implosion Compressor changes to [ImplosionNoBomb](https://www.curseforge.com/minecraft/mc-mods/implosionnobomb)
+    - Thanks to @MrKono for his support!!
 
 * * *
 
