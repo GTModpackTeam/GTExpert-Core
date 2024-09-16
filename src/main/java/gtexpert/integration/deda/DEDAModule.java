@@ -51,5 +51,8 @@ public class DEDAModule extends GTEIntegrationSubmodule {
         // Draconic upgrade recipes
         DraconicTierupRecipe.init();
         DraconicUpgradeRecipe.init();
+
+        if (!Mods.ImplosionNoBomb.isModLoaded()) return;
+        DraconicImplosionMaterialsRecipe.init();
     }
 }

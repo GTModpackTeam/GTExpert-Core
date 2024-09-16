@@ -1,16 +1,11 @@
 package gtexpert.api.recipes;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
-
 import net.minecraft.init.SoundEvents;
 
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.unification.material.Materials;
 import gregtech.core.sound.GTSoundEvents;
 
 import gtexpert.api.gui.GTEGuiTextures;
@@ -51,20 +46,6 @@ public class GTERecipeMaps {
                     .setSlotOverlay(true, true, GuiTextures.CENTRIFUGE_OVERLAY)
                     .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)
                     .setSound(GTSoundEvents.COOLING);
-
-    @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMap<>(
-            "electric_implosion_compressor", 6, 2, 0, 0,
-            new SimpleRecipeBuilder().duration(1).EUt(VA[UV]).chancedOutput(dust, Materials.DarkAsh, 2500, 0), false)
-                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
-                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
-                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
-                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
-                    .setSlotOverlay(false, false, false, GuiTextures.IMPLOSION_OVERLAY_2)
-                    .setSlotOverlay(false, false, true, GuiTextures.IMPLOSION_OVERLAY_2)
-                    .setSlotOverlay(true, false, true, GuiTextures.DUST_OVERLAY)
-                    .setSound(SoundEvents.ENTITY_GENERIC_EXPLODE)
-                    .setSmallRecipeMap(RecipeMaps.IMPLOSION_RECIPES);
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> STEAM_MIXER_RECIPES = new RecipeMap<>(

@@ -2,7 +2,6 @@ package gtexpert.integration.eio.recipes;
 
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gtexpert.loaders.recipe.handlers.GTEMaterialRecipeHandler.addImplosionRecipes;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -17,6 +16,7 @@ import gregtech.common.ConfigHolder;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
+import gtexpert.loaders.recipe.handlers.GTEImplosionRecipeHandler;
 
 import crazypants.enderio.base.init.ModObject;
 
@@ -191,7 +191,7 @@ public class EIOMaterialsRecipe {
                 .chancedOutput(new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 14), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
-        addImplosionRecipes("itemPulsatingPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 14));
+        GTEImplosionRecipeHandler.add("itemPulsatingPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 14));
 
         // Vibrant Crystal
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
@@ -206,7 +206,7 @@ public class EIOMaterialsRecipe {
                 .chancedOutput(new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 15), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
-        addImplosionRecipes("itemVibrantPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 15));
+        GTEImplosionRecipeHandler.add("itemVibrantPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 15));
 
         // Ender Crystal
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
@@ -221,7 +221,8 @@ public class EIOMaterialsRecipe {
                 .chancedOutput(new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 16), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
-        addImplosionRecipes("itemEnderCrystalPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 16));
+        GTEImplosionRecipeHandler.add("itemEnderCrystalPowder",
+                new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 16));
 
         // Weather Crystal
         ModHandler.addShapedRecipe(true, "weather_crystal",
@@ -244,7 +245,7 @@ public class EIOMaterialsRecipe {
                 .chancedOutput(new ItemStack(ModObject.itemMaterial.getItemNN(), 1, 19), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
-        addImplosionRecipes("itemPrecientPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 19));
+        GTEImplosionRecipeHandler.add("itemPrecientPowder", new ItemStack(ModObject.itemMaterial.getItemNN(), 3, 19));
     }
 
     public static void remove() {

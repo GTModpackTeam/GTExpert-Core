@@ -1,3 +1,8 @@
+# v2.3.1
+- Hotfix a mistake when splitting into INBs [#296](https://github.com/GTModpackTeam/GTExpert-Core/pull/296)
+
+* * *
+
 # v2.3.0
 - Separate Electric Implosion Compressor changes to [ImplosionNoBomb](https://www.curseforge.com/minecraft/mc-mods/implosionnobomb)
     - Thanks to @MrKono for his support!!
