@@ -177,7 +177,7 @@ public class DraconicMaterialsRecipe {
                 (int) (material.getMass() * 0.5);
 
         // Check if the material has a blast temperature above 5000K
-        if (property.getBlastTemperature() > 5000) {
+        if (property.getBlastTemperature() >= 5000) {
             if (material.hasFlag(GENERATE_PLATE)) {
                 RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                         .notConsumable(MetaItems.SHAPE_MOLD_PLATE)

@@ -1,3 +1,8 @@
+# v2.3.2
+- Fix BlastTemperature of Vacuum Freezer Extended Recipes.
+
+* * *
+
 # v2.3.1
 - Hotfix a mistake when splitting into INBs [#296](https://github.com/GTModpackTeam/GTExpert-Core/pull/296)
 
