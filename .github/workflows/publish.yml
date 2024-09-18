@@ -82,9 +82,9 @@ jobs:
           modrinth-id: ${{ env.MODRINTH_PROJECT_ID }}
           modrinth-token: "${{ secrets.MODRINTH_API_KEY }}"
           modrinth-dependencies: |
-            8PB5NZf9(required)
-            vaQ5bJYU(required)
-            MeXYT7nJ(required)
+            G1ckZuWK(required)
+            tULldUx4(required)
+            tZiutdLG(required)
           curseforge-id: ${{ env.CURSEFORGE_PROJECT_ID }}
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           curseforge-dependencies: |
