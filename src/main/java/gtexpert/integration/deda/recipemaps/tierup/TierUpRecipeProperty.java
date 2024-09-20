@@ -2,10 +2,13 @@ package gtexpert.integration.deda.recipemaps.tierup;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.nbt.NBTBase;
+
+import org.jetbrains.annotations.NotNull;
 
 import com.brandon3055.draconicevolution.lib.ToolUpgradeRecipe;
 
-import gregtech.api.recipes.recipeproperties.RecipeProperty;
+import gregtech.api.recipes.properties.RecipeProperty;
 
 public class TierUpRecipeProperty extends RecipeProperty<ToolUpgradeRecipe> {
 
@@ -21,6 +24,16 @@ public class TierUpRecipeProperty extends RecipeProperty<ToolUpgradeRecipe> {
             INSTANCE = new TierUpRecipeProperty();
         }
         return INSTANCE;
+    }
+
+    @Override
+    public @NotNull NBTBase serialize(@NotNull Object value) {
+        return null;
+    }
+
+    @Override
+    public @NotNull Object deserialize(@NotNull NBTBase nbt) {
+        return null;
     }
 
     @Override
