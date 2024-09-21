@@ -26,7 +26,7 @@ public class GTEDraconicRecipeMaps {
      * In order to preserve upgrade info NBT, actual recipe is handled by {@link RecipeMapDraconicFusion}.
      */
     public static final RecipeMap<TierUpRecipeBuilder> DRACONIC_FUSION_TIER_UP_FAKE_RECIPES = new RecipeMapBuilder<>(
-            "draconic_fusion_tier_up", new TierUpRecipeBuilder())
+            "draconic_fusion_tier_up", new TierUpRecipeBuilder().hidden())
                     .itemInputs(6)
                     .itemOutputs(3)
                     .fluidInputs(3)
@@ -51,7 +51,7 @@ public class GTEDraconicRecipeMaps {
      * In order to preserve upgrade info NBT, actual recipe is handled by {@link RecipeMapDraconicFusion}.
      */
     public static final RecipeMap<TierUpRecipeBuilder> AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES = new RecipeMapBuilder<>(
-            "awakened_draconic_fusion_tier_up", new TierUpRecipeBuilder())
+            "awakened_draconic_fusion_tier_up", new TierUpRecipeBuilder().hidden())
                     .itemInputs(6)
                     .itemOutputs(3)
                     .fluidInputs(3)
@@ -64,7 +64,7 @@ public class GTEDraconicRecipeMaps {
      * In order to preserve upgrade info NBT, actual recipe is handled by {@link RecipeMapDraconicFusion}.
      */
     public static final RecipeMap<UpgradeRecipeBuilder> DRACONIC_FUSION_UPGRADE_FAKE_RECIPES = new RecipeMapBuilder<>(
-            "draconic_fusion_upgrade", new UpgradeRecipeBuilder())
+            "draconic_fusion_upgrade", new UpgradeRecipeBuilder().hidden())
                     .itemInputs(6)
                     .itemOutputs(3)
                     .fluidInputs(3)
@@ -90,7 +90,7 @@ public class GTEDraconicRecipeMaps {
      * In order to preserve upgrade info NBT, actual recipe is handled by {@link RecipeMapDraconicFusion}.
      */
     public static final RecipeMap<UpgradeRecipeBuilder> AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES = new RecipeMapBuilder<>(
-            "awakened_draconic_fusion_upgrade", new UpgradeRecipeBuilder())
+            "awakened_draconic_fusion_upgrade", new UpgradeRecipeBuilder().hidden())
                     .itemInputs(6)
                     .itemOutputs(3)
                     .fluidInputs(3)
