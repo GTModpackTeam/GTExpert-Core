@@ -68,10 +68,6 @@ public class GTEConfigHolder {
         @Config.Comment({ "Activate items under development.",
                 "Default: false" })
         public boolean previewItems = false;
-
-        @Config.Comment({ "Items and machines are re-numbered.",
-                "Default: false" })
-        public boolean newId = false;
     }
 
     public static class GregtechOverride {

@@ -26,22 +26,19 @@ public class GTEMetaTileEntities {
     public static MetaTileEntityLargeGasCollector LARGE_GAS_COLLECTOR;
 
     public static void init() {
-        int mteSingleStartId = GTEConfigHolder.gteFeatureFlag.newId ? 0 : 11004;
-        int mteMultiStartId = GTEConfigHolder.gteFeatureFlag.newId ? 1000 : 12001;
-
         // Steam machines
         if (GTEConfigHolder.gteFlag.steamNewMachine) {
-            STEAM_MIXER_BRONZE = registerMetaTileEntity(mteSingleStartId,
+            STEAM_MIXER_BRONZE = registerMetaTileEntity(11004,
                     new SteamMixer(gteId("steam_mixer_bronze"), false));
-            STEAM_MIXER_STEEL = registerMetaTileEntity(mteSingleStartId += 1,
+            STEAM_MIXER_STEEL = registerMetaTileEntity(11005,
                     new SteamMixer(gteId("steam_mixer_steel"), true));
-            STEAM_ASSEMBLER_BRONZE = registerMetaTileEntity(mteSingleStartId += 1,
+            STEAM_ASSEMBLER_BRONZE = registerMetaTileEntity(11006,
                     new SteamAssembler(gteId("steam_assembler_bronze"), false));
-            STEAM_ASSEMBLER_STEEL = registerMetaTileEntity(mteSingleStartId += 1,
+            STEAM_ASSEMBLER_STEEL = registerMetaTileEntity(11007,
                     new SteamAssembler(gteId("steam_assembler_steel"), true));
-            STEAM_CIRCUIT_ASSEMBLER_BRONZE = registerMetaTileEntity(mteSingleStartId += 1,
+            STEAM_CIRCUIT_ASSEMBLER_BRONZE = registerMetaTileEntity(11008,
                     new SteamCircuitAssembler(gteId("steam_circuit_assembler_bronze"), false));
-            STEAM_CIRCUIT_ASSEMBLER_STEEL = registerMetaTileEntity(mteSingleStartId + 1,
+            STEAM_CIRCUIT_ASSEMBLER_STEEL = registerMetaTileEntity(11009,
                     new SteamCircuitAssembler(gteId("steam_circuit_assembler_steel"), true));
         }
 
@@ -50,16 +47,15 @@ public class GTEMetaTileEntities {
                 new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
 
         // Void Ore Miner
-        VOIDOREMINER = registerMetaTileEntity(mteMultiStartId += 1,
+        VOIDOREMINER = registerMetaTileEntity(12003,
                 new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
 
         // Advanced Chemical Plant
-        mteMultiStartId = GTEConfigHolder.gteFeatureFlag.newId ? mteMultiStartId + 1 : 12006;
-        ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(mteMultiStartId,
+        ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(12006,
                 new MetaTileEntityAdvancedChemicalPlant(gteId("advanced_chemical_plant")));
 
         // Large Gas Collector
-        LARGE_GAS_COLLECTOR = registerMetaTileEntity(mteMultiStartId + 1,
+        LARGE_GAS_COLLECTOR = registerMetaTileEntity(12007,
                 new MetaTileEntityLargeGasCollector(gteId(GTEConfigHolder.gteFeatureFlag.migrationMachine ?
                         "large_gas_collector" : "advanced_gas_collector")));
     }

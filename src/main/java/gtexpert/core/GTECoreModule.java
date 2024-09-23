@@ -30,13 +30,11 @@ import gtexpert.common.CommonProxy;
 import gtexpert.common.blocks.GTEBlockWireCoil;
 import gtexpert.common.blocks.GTEMetaBlocks;
 import gtexpert.common.items.GTEMetaItems;
-import gtexpert.common.items.GTEToolItems;
 import gtexpert.common.metatileentities.GTEMetaTileEntities;
 import gtexpert.loaders.GTEOreDictionaryLoader;
 import gtexpert.loaders.recipe.CEUOverrideRecipe;
 import gtexpert.loaders.recipe.GTERecipe;
 import gtexpert.loaders.recipe.GTEVanillaOverrideRecipes;
-import gtexpert.loaders.recipe.handlers.GTEToolRecipeHandler;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
@@ -68,7 +66,6 @@ public class GTECoreModule implements IGTEModule {
 
         GTEMetaBlocks.init();
         GTEMetaItems.init();
-        GTEToolItems.init();
 
         GTERecipeMaps.init();
 
@@ -105,7 +102,6 @@ public class GTECoreModule implements IGTEModule {
 
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
-        GTEToolRecipeHandler.register();
         GTEOreDictionaryLoader.init();
         GTEMetaTileEntities.init();
     }

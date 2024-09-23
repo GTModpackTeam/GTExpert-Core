@@ -4,7 +4,6 @@ import net.minecraft.item.ItemStack;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
@@ -45,15 +44,15 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
     }
 
     @Override
-    public boolean applyProperty(@NotNull String key, @Nullable Object value) {
+    public boolean applyPropertyCT(@NotNull String key, @NotNull Object value) {
         if (!key.equals(UpgradeRecipeProperty.KEY)) {
-            return super.applyProperty(key, value);
+            return super.applyPropertyCT(key, value);
         }
         if (!(value instanceof FusionUpgradeRecipe)) {
             GTELog.logger.error("Property for draconic upgrade must be an instance of FusionUpgradeRecipe!",
                     new Throwable());
         }
-        this.applyProperty(UpgradeRecipeProperty.getInstance(), value);
+        this.applyPropertyCT(key, value);
         return true;
     }
 
@@ -97,11 +96,8 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 
     @Override
     public ValidationResult<Recipe> build() {
-        EnumValidationResult validationResult = finalizeAndValidate();
-        if (validationResult != EnumValidationResult.INVALID) {
-            setFusionProperties();
-        }
-
+        EnumValidationResult validationResult = recipePropertyStorageErrored ? EnumValidationResult.INVALID :
+                validate();
         return ValidationResult.newResult(validationResult,
                 new Recipe(inputs, outputs, new ChancedOutputList<>(this.chancedOutputLogic, chancedOutputs),
                         fluidInputs, fluidOutputs,
@@ -165,8 +161,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
     }
 
     public FusionUpgradeRecipe getFusionRecipe() {
-        return this.recipePropertyStorage == null ? null :
-                this.recipePropertyStorage.getRecipePropertyValue(UpgradeRecipeProperty.getInstance(), null);
+        return this.recipePropertyStorage.get(UpgradeRecipeProperty.getInstance(), null);
     }
 
     @Override

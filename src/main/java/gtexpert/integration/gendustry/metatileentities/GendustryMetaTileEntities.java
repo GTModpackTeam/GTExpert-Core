@@ -12,11 +12,10 @@ public class GendustryMetaTileEntities {
     public static MetaTileEntityIndustrialApiary[] INDUSTRIAL_APIARY = new MetaTileEntityIndustrialApiary[V.length - 1];
 
     public static void init() {
-        int mteStartId = GTEConfigHolder.gteFeatureFlag.newId ? 300 : 20000;
-
-        // Industrial Apiary
+        // INDUSTRIAL_APIARY 20000~20012
+        // TODO: IDの変更
         if (GTEConfigHolder.gteFeatureFlag.previewMachines) {
-            registerMetaTileEntities(INDUSTRIAL_APIARY, mteStartId, "industrial_apiary",
+            registerMetaTileEntities(INDUSTRIAL_APIARY, 20000, "industrial_apiary",
                     (tier, voltageName) -> new MetaTileEntityIndustrialApiary(
                             gteId(String.format("%s.%s", "industrial_apiary", voltageName)),
                             GTETextures.INDUSTRIAL_APIARY_OVERLAY,
