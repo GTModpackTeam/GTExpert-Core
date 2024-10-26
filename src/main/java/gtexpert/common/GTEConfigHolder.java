@@ -71,5 +71,8 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Raising Terracotta Grinding from ULV to MV.", "Default: false" })
         public boolean nerfTerracottaCrafting = false;
+
+        @Config.Comment({ "Disable auto eat function of QuarkTech helmet", "Default: true" })
+        public boolean disableHelmetAutoEat = true;
     }
 }
