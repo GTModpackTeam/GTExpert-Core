@@ -8,12 +8,17 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import gregtech.common.items.armor.QuarkTechSuite;
 
+import gtexpert.common.GTEConfigHolder;
+
 @Mixin(value = QuarkTechSuite.class, remap = false)
 public class QuarkTechSuiteMixin {
 
-    // disable autoeat in modpack
     @Redirect(method = "onArmorTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/FoodStats;needFood()Z"))
-    private boolean gteCore$onArmorTick(FoodStats instance) {
-        return false;
+    private boolean gteCore$onArmorTick(FoodStats foodStats) {
+        if (GTEConfigHolder.ceuOverride.disableHelmetAutoEat) {
+            return false;
+        } else {
+            return foodStats.needFood();
+        }
     }
 }
