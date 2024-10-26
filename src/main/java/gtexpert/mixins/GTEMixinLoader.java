@@ -1,12 +1,5 @@
 package gtexpert.mixins;
 
-import net.minecraftforge.fml.common.Loader;
-
-import gtexpert.api.GTEValues;
-import gtexpert.api.util.GTELog;
-import gtexpert.api.util.Mods;
-import zone.rong.mixinbooter.ILateMixinLoader;
-
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
@@ -14,13 +7,21 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import net.minecraftforge.fml.common.Loader;
+
+import gtexpert.api.GTEValues;
+import gtexpert.api.util.GTELog;
+import gtexpert.api.util.Mods;
+
+import zone.rong.mixinbooter.ILateMixinLoader;
+
 public class GTEMixinLoader implements ILateMixinLoader {
 
     public static final Map<String, Boolean> modMixinsConfig = Stream.of(
-                    new AbstractMap.SimpleImmutableEntry<>(Mods.Names.DRACONIC_ADDITIONS,
-                            Mods.DraconicAdditions.isModLoaded())
-                    , new AbstractMap.SimpleImmutableEntry<>(Mods.Names.GREGTECH,
-                            Mods.GregTech.isModLoaded()))
+            new AbstractMap.SimpleImmutableEntry<>(Mods.Names.DRACONIC_ADDITIONS,
+                    Mods.DraconicAdditions.isModLoaded()),
+            new AbstractMap.SimpleImmutableEntry<>(Mods.Names.GREGTECH,
+                    Mods.GregTech.isModLoaded()))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     @Override
