@@ -1,6 +1,5 @@
 package gtexpert.common.items;
 
-import static gtexpert.common.GTEConfigHolder.ae2Integration;
 import static gtexpert.common.items.GTEMetaItems.*;
 
 import net.minecraft.client.resources.I18n;
@@ -11,6 +10,9 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.behaviors.TooltipBehavior;
+
+import gtexpert.common.GTEConfigHolder;
+import gtexpert.integration.ae.AEConfigHolder;
 
 public class GTEMetaItem1 extends StandardMetaItem {
 
@@ -23,37 +25,41 @@ public class GTEMetaItem1 extends StandardMetaItem {
         GTE_ME_FAKE_COMPONENT = addItem(0, "gte_me_fake_component");
         MATRIX_CORE = addItem(1, "matrix_core");
 
-        // Free range: ID 2-10
+        // Artificial bone
+        ARTIFICIAL_BONE = addItem(2, "artificial_bone");
+
+        // Free range: ID 3-10
 
         // Primitive parts: ID 11-20
-        PRIMITIVE_MOTOR = addItem(11, "primitive.motor");
-        PRIMITIVE_PUMP = addItem(12, "primitive.pump")
+        String componentsName = GTEConfigHolder.gteFlag.componentsName ? "ulv" : "primitive";
+        GTE_ELECTRIC_MOTOR = addItem(11, "electric.motor." + componentsName);
+        GTE_ELECTRIC_PUMP = addItem(12, "electric.pump." + componentsName)
                 .addComponents(new TooltipBehavior(lines -> {
                     lines.add(I18n.format("metaitem.electric.pump.tooltip"));
-                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 1280 / 4));
+                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", (1280 / 4) / 20));
                 }));
-        PRIMITIVE_CONVEYOR = addItem(13, "primitive.conveyor")
+        GTE_CONVEYOR_MODULE = addItem(13, "conveyor.module." + componentsName)
                 .addComponents(new TooltipBehavior(lines -> {
                     lines.add(I18n.format("metaitem.conveyor.module.tooltip"));
                     lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
                 }));
-        PRIMITIVE_PISTON = addItem(14, "primitive.piston");
-        PRIMITIVE_ROBOT_ARM = addItem(15, "primitive.robot.arm")
+        GTE_ELECTRIC_PISTON = addItem(14, "electric.piston." + componentsName);
+        GTE_ROBOT_ARM = addItem(15, "robot.arm." + componentsName)
                 .addComponents(new TooltipBehavior(lines -> {
                     lines.add(I18n.format("metaitem.robot.arm.tooltip"));
                     lines.add(I18n.format("gregtech.universal.tooltip.item_transfer_rate", 2));
                 }));
-        PRIMITIVE_FLUID_REGULATOR = addItem(16, "primitive.fluid.regulator")
+        GTE_FLUID_REGULATOR = addItem(16, "fluid.regulator." + componentsName)
                 .addComponents(new TooltipBehavior(lines -> {
                     lines.add(I18n.format("metaitem.fluid.regulator.tooltip"));
-                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", 320 / 4));
+                    lines.add(I18n.format("gregtech.universal.tooltip.fluid_transfer_rate", (1280 / 4) / 20));
                 }));
-        PRIMITIVE_FIELD_GENERATOR = addItem(17, "primitive.field.generator");
-        PRIMITIVE_EMITTER = addItem(18, "primitive.emitter");
-        PRIMITIVE_SENSOR = addItem(19, "primitive.sensor");
+        GTE_FIELD_GENERATOR = addItem(17, "field.generator." + componentsName);
+        GTE_EMITTER = addItem(18, "emitter." + componentsName);
+        GTE_SENSOR = addItem(19, "sensor." + componentsName);
 
         // Shapes: ID 101-110
-        if (ae2Integration.moveSteelShape) {
+        if (AEConfigHolder.moveSteelShape) {
             GTE_SHAPE_MOLDS[0] = SHAPE_MOLD_PRINTED_SILICON = addItem(101, "shape.mold.printed_silicon")
                     .setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, GTValues.M * 4)));
             GTE_SHAPE_MOLDS[1] = SHAPE_MOLD_LOGIC_PROCESSOR = addItem(102, "shape.mold.logic_processor")

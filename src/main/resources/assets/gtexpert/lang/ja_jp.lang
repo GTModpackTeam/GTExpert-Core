@@ -1,5 +1,6 @@
 
 
+
 # multiblock
 gtexpert.machine.sawmill.name=製材機
 gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らないで..
@@ -20,9 +21,12 @@ gtexpert.machine.large_cracking_unit.tooltip.1=§d作者:§f @Quarri6343
 gtexpert.machine.advanced_chemical_plant.name=発展型化学プラント
 gtexpert.machine.advanced_chemical_plant.tooltip=昔のGregicalityには居たやつ
 gtexpert.machine.advanced_chemical_plant.tooltip.1=§d作者:§f @tier940
-gtexpert.machine.advanced_gas_collector.name=発展型ガス収集機
+gtexpert.machine.advanced_gas_collector.name=大型ガス収集機
 gtexpert.machine.advanced_gas_collector.tooltip=粉から空気を搾り取る
 gtexpert.machine.advanced_gas_collector.tooltip.1=§d作者:§f @tier940
+gtexpert.machine.large_gas_collector.name=大型ガス収集機
+gtexpert.machine.large_gas_collector.tooltip=粉から空気を搾り取る
+gtexpert.machine.large_gas_collector.tooltip.1=§d作者:§f @tier940
 gtexpert.machine.parallel_assembly_line.name=パラレルアセンブリライン
 gtexpert.machine.parallel_assembly_line.tooltip=GTNHからの刺客
 gtexpert.machine.parallel_assembly_line.tooltip.1=§d作者:§f @tier940
@@ -35,6 +39,20 @@ gtexpert.machine.auto_chisel.mv.name=発展型自動彫刻機
 gtexpert.machine.auto_chisel.mv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
 gtexpert.machine.auto_chisel.hv.name=発展型自動彫刻機 II
 gtexpert.machine.auto_chisel.hv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
+
+# Steam Machines
+gtexpert.machine.steam_mixer_bronze.name=蒸気式ミキサー
+gtexpert.machine.steam_mixer_steel.name=高圧蒸気式ミキサー
+gtexpert.machine.steam_mixer.tooltip=§d作者:§f @tier940
+gtexpert.machine.steam_mixer.tooltip.1=手で混ぜるよりはマシ
+gtexpert.machine.steam_assembler_bronze.name=蒸気式組立機
+gtexpert.machine.steam_assembler_steel.name=高圧蒸気式組立機
+gtexpert.machine.steam_assembler.tooltip=§d作者:§f @tier940
+gtexpert.machine.steam_assembler.tooltip.1=手で組み立てるよりはマシ
+gtexpert.machine.steam_circuit_assembler_bronze.name=蒸気式回路作成機
+gtexpert.machine.steam_circuit_assembler_steel.name=高圧蒸気式回路作成機
+gtexpert.machine.steam_circuit_assembler.tooltip=§d作者:§f @tier940
+gtexpert.machine.steam_circuit_assembler.tooltip.1=手で回路を作るよりはマシ
 
 # Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=基本型魂抽出器
@@ -108,6 +126,24 @@ gtexpert.machine.electric_spawner.zpm.tooltip=スポナーの代わりに使用�
 gtexpert.machine.electric_spawner.uv.name=究極型電動スポナー
 gtexpert.machine.electric_spawner.uv.tooltip=スポナーの代わりに使用でき、様々なモンスターをスポーンさせる/n§d作者:§f @miozune, @MrKono
 
+# Industrial Apiary
+gtexpert.machine.industrial_apiary.lv.name=基本型工業用養蜂箱
+gtexpert.machine.industrial_apiary.lv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.mv.name=発展型工業用養蜂箱
+gtexpert.machine.industrial_apiary.mv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.hv.name=発展型工業用養蜂箱 II
+gtexpert.machine.industrial_apiary.hv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.ev.name=発展型工業用養蜂箱 III
+gtexpert.machine.industrial_apiary.ev.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.iv.name=精鋭型工業用養蜂箱
+gtexpert.machine.industrial_apiary.iv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.luv.name=精鋭型工業用養蜂箱 II
+gtexpert.machine.industrial_apiary.luv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.zpm.name=精鋭型工業用養蜂箱 III
+gtexpert.machine.industrial_apiary.zpm.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+gtexpert.machine.industrial_apiary.uv.name=究極型工業用養蜂箱
+gtexpert.machine.industrial_apiary.uv.tooltip=ミツバチ殿様のおな～り～/n§d作者:§f @tier940
+
 # block
 tile.gte_metal_casing.sawmill_casing.name=防腐木材製マシン外装
 tile.gte_metal_casing.void_ore_miner_casing.name=対虚無マシン外装
@@ -117,51 +153,64 @@ tile.sawmill_conveyor.name=製材機用コンベア
 tile.gte_wire_coil.awakened_draconium.name=覚醒ドラコニウムコイルブロック
 
 # material
-gregtech.material.nm_hea_nps=貴金属ハイエントロピーナノ合金
-gregtech.material.naquadah_rocket_fuel=ナクアダロケット燃料
-gregtech.material.infinity=インフィニティ
-gregtech.material.dragon=ドラゴン
-gregtech.material.chaos=カオス
-gregtech.material.cryotheum=液化クリオジウム
-gregtech.material.pyrotheum=熔融パイロジウム
-gregtech.material.draconium=ドラコニウム
-gregtech.material.awakened_draconium=覚醒ドラコニウム
-gregtech.material.electrical_steel=ケイ素鋼
-gregtech.material.energetic_alloy=エナジェティック合金
-gregtech.material.vibrant_alloy=ヴァイブラント合金
-gregtech.material.redstone_alloy=レッドストーン合金
-gregtech.material.conductive_iron=伝導鉄
-gregtech.material.pulsating_iron=脈動鉄
-gregtech.material.dark_steel=ダークスチール
-gregtech.material.soul_sand=ソウルサンド
-gregtech.material.chorus_fruit=コーラスフルーツ
-gregtech.material.soularium=ソウラリウム
-gregtech.material.end_steel=エンドスチール
-gregtech.material.construction_alloy=鉄合金
-gregtech.material.crystalline_alloy=結晶性合金
-gregtech.material.melodic_alloy=メロディック合金
-gregtech.material.stellar_alloy=ステラ合金
-gregtech.material.crystalline_pink_slime=結晶性ピンクスライム
-gregtech.material.energetic_silver=エナジェティックシルバー
-gregtech.material.vivid_alloy=ビビッド合金
-gregtech.material.fluix=フルーシュ
-gregtech.material.fluix_alloy=フルーシュ合金
-gregtech.material.charged_certus_quartz=チャージドケルタスクォーツ
+gtexpert.material.artificial_bone=人工骨
+gtexpert.material.nm_hea_nps=貴金属ハイエントロピーナノ合金
+gtexpert.material.naquadah_rocket_fuel=ナクアダロケット燃料
+gtexpert.material.infinity=インフィニティ
+gtexpert.material.dragon=ドラゴン
+gtexpert.material.chaos=カオス
+gtexpert.material.cryotheum=液化クリオジウム
+gtexpert.material.pyrotheum=熔融パイロジウム
+gtexpert.material.draconium=ドラコニウム
+gtexpert.material.awakened_draconium=覚醒ドラコニウム
+gtexpert.material.electrical_steel=ケイ素鋼
+gtexpert.material.energetic_alloy=エナジェティック合金
+gtexpert.material.vibrant_alloy=ヴァイブラント合金
+gtexpert.material.redstone_alloy=レッドストーン合金
+gtexpert.material.conductive_iron=伝導鉄
+gtexpert.material.pulsating_iron=脈動鉄
+gtexpert.material.dark_steel=ダークスチール
+gtexpert.material.soul_sand=ソウルサンド
+gtexpert.material.chorus_fruit=コーラスフルーツ
+gtexpert.material.soularium=ソウラリウム
+gtexpert.material.end_steel=エンドスチール
+gtexpert.material.construction_alloy=鉄合金
+gtexpert.material.crystalline_alloy=結晶性合金
+gtexpert.material.melodic_alloy=メロディック合金
+gtexpert.material.stellar_alloy=ステラ合金
+gtexpert.material.crystalline_pink_slime=結晶性ピンクスライム
+gtexpert.material.energetic_silver=エナジェティックシルバー
+gtexpert.material.vivid_alloy=ビビッド合金
+gtexpert.material.fluix=フルーシュ
+gtexpert.material.fluix_alloy=フルーシュ合金
+gtexpert.material.charged_certus_quartz=チャージドケルタスクォーツ
+gtexpert.material.thaumium=ソーミウム
+gtexpert.material.void_metal=ボイドメタル
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert 虚構MEストレージセル素材
 metaitem.matrix_core.name=マトリックスコア
+metaitem.artificial_bone.name=人工骨
 metaitem.piston_boots.name=ピストンブーツ
 metaitem.piston_boots.tooltip=トロッコのように走り、ピストンのように跳ねる!
-metaitem.primitive.motor.name=初歩的なモーター
-metaitem.primitive.pump.name=初歩的なポンプ
-metaitem.primitive.conveyor.name=初歩的なコンベアーモジュール
-metaitem.primitive.piston.name=初歩的なピストン
-metaitem.primitive.robot.arm.name=初歩的なロボットアーム
-metaitem.primitive.fluid.regulator.name=初歩的な流量制御器
-metaitem.primitive.field.generator.name=初歩的な空間発生器
-metaitem.primitive.emitter.name=初歩的なエミッタ
-metaitem.primitive.sensor.name=初歩的なセンサ
+metaitem.electric.motor.primitive.name=初歩的なモーター
+metaitem.electric.pump.primitive.name=初歩的なポンプ
+metaitem.conveyor.module.primitive.name=初歩的なコンベアーモジュール
+metaitem.electric.piston.primitive.name=初歩的なピストン
+metaitem.robot.arm.primitive.name=初歩的なロボットアーム
+metaitem.fluid.regulator.primitive.name=初歩的な流量制御器
+metaitem.field.generator.primitive.name=初歩的な空間発生器
+metaitem.emitter.primitive.name=初歩的なエミッタ
+metaitem.sensor.primitive.name=初歩的なセンサ
+metaitem.electric.motor.ulv.name=ULV電動モーター
+metaitem.electric.pump.ulv.name=ULVポンプポンプ
+metaitem.conveyor.module.ulv.name=ULVコンベアーモジュール
+metaitem.electric.piston.ulv.name=ULV電動ピストン
+metaitem.robot.arm.ulv.name=ULVロボットアーム
+metaitem.fluid.regulator.ulv.name=ULV流量制御器
+metaitem.field.generator.ulv.name=ULV空間発生器
+metaitem.emitter.ulv.name=ULVエミッタ
+metaitem.sensor.ulv.name=ULVセンサ
 metaitem.shape.mold.printed_silicon.name=シリコン基板の金型
 metaitem.shape.mold.printed_silicon.tooltip=シリコン基板を作る為の金型
 metaitem.shape.mold.logic_processor.name=基本プロセッサの金型
@@ -182,7 +231,7 @@ metaitem.shape.extruder.engineering_processor.tooltip=上級プロセッサを�
 # recipemaps
 recipemap.sawmill.name=製材機
 recipemap.vial_extractor.name=魂抽出器
-recipemap.slice'n'splice.name=頭顱調整機
+recipemap.slice_n_splice.name=頭顱調整機
 recipemap.soul_binder.name=魂拘束器
 recipemap.auto_chisel.name=自動彫刻機
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
@@ -197,7 +246,10 @@ recipemap.awakened_draconic_fusion_upgrade.name=ドラコニック装備のア�
 recipemap.draconic_fusion_upgrade.property.1=アップグレードの状態と蓄電量は
 recipemap.draconic_fusion_upgrade.property.2= 保持されます
 recipemap.advanced_chemical_plant.name=発展型化学プラント
-recipemap.advanced_gas_collector.name=発展型ガス収集機
+recipemap.large_gas_collector.name=大型ガス収集機
+recipemap.steam_mixer.name=蒸気式ミキサー
+recipemap.steam_assembler.name=蒸気式組立機
+recipemap.steam_circuit_assembler.name=蒸気式回路作成機
 
 # misc
 gtexpert.gui.electric_spawner_mode.spawn=スポーンモード

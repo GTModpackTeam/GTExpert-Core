@@ -1,62 +1,179 @@
 package gtexpert;
 
+import java.util.function.Function;
+
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import gregtech.GTInternalTags;
+import gregtech.api.GregTechAPI;
+import gregtech.api.cover.CoverDefinition;
 
 import gtexpert.api.GTEValues;
-import gtexpert.common.CommonProxy;
+import gtexpert.api.util.GTELog;
+import gtexpert.api.util.Mods;
+import gtexpert.common.items.behaviors.GTECoverBehaviors;
+import gtexpert.modules.GTEModuleManager;
+import gtexpert.modules.GTEModules;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
+     acceptedMinecraftVersions = "[1.12.2,1.13)",
      version = Tags.VERSION,
-     dependencies = "required-after:mixinbooter;" +
-             GTInternalTags.DEP_VERSION_STRING + "required-after:" + GTEValues.MODID_GCYM + ";" +
-             "after:" + GTEValues.MODID_GTFO + ";" + "after:" + GTEValues.MODID_AE + ";" +
-             "after:" + GTEValues.MODID_AEA + ";" + "after:" + GTEValues.MODID_AEFC + ";" +
-             "after:" + GTEValues.MODID_EXCPU + ";" + "after:" + GTEValues.MODID_ECO + ";" +
-             "after:" + GTEValues.MODID_EIO + ";" + "after:" + GTEValues.MODID_EIOE + ";" +
-             "after:" + GTEValues.MODID_EIOM + ";" + "after:" + GTEValues.MODID_EIOC + ";" +
-             "after:" + GTEValues.MODID_EIOCA + ";" + "after:" + GTEValues.MODID_DE + ";" +
-             "after:" + GTEValues.MODID_DA + ";" + "after:" + GTEValues.MODID_CHISEL + ";" +
-             "after:" + GTEValues.MODID_AVARITIA + ";" + "after:" + GTEValues.MODID_FFM + ";")
-
+     updateJSON = "https://forge.curseupdate.com/851103/gtexpert",
+     dependencies = GTInternalTags.DEP_VERSION_STRING + "required-after:" + Mods.Names.MIXINBOOTER + ";" +
+             "required-after:" + Mods.Names.GREGICALITY_MULTIBLOCKS + ";" + "after:" + Mods.Names.IMPLOSION_NO_BOMB +
+             ";" +
+             "after:" + Mods.Names.GREGTECH_FOOD_OPTION + ";" + "after:" + Mods.Names.APPLIED_ENERGISTICS2 + ";" +
+             "after:" + Mods.Names.AE_ADDITIONS + ";" + "after:" + Mods.Names.AE2_FLUID_CRAFTING + ";" +
+             "after:" + Mods.Names.NEEVES_AE2 + ";" + "after:" + Mods.Names.EXTRA_CPUS + ";" +
+             "after:" + Mods.Names.ENDER_CORE + ";" + "after:" + Mods.Names.ENDER_IO + ";" +
+             "after:" + Mods.Names.ENDER_ENDERGY + ";" + "after:" + Mods.Names.ENDER_MACHINES + ";" +
+             "after:" + Mods.Names.ENDER_CONDUITS + ";" + "after:" + Mods.Names.ENDER_AE2_CONDUITS + ";" +
+             "after:" + Mods.Names.DRACONIC_EVOLUTION + ";" + "after:" + Mods.Names.DRACONIC_ADDITIONS + ";" +
+             "after:" + Mods.Names.CHISEL + ";" + "after:" + Mods.Names.AVARITIA + ";" +
+             "after:" + Mods.Names.THAUMCRAFT + ";" + "after:" + Mods.Names.THAUMIC_ENERGISTICS + ";" +
+             "after:" + Mods.Names.FORESTRY + ";" + "after:" + Mods.Names.GENDUSTRY + ";" +
+             "after:" + Mods.Names.GENETICS + ";" + "after:" + Mods.Names.BOTANY + ";" +
+             "after:" + Mods.Names.EXTRA_BEES + ";" + "after:" + Mods.Names.EXTRA_TREES + ";")
+@Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 
-    @SidedProxy(modId = GTEValues.MODID,
-                clientSide = "gtexpert.client.ClientProxy",
-                serverSide = "gtexpert.common.CommonProxy")
-    public static CommonProxy proxy;
+    private GTEModuleManager moduleManager;
+
+    @Mod.EventHandler
+    public void onConstruction(FMLConstructionEvent event) {
+        MinecraftForge.EVENT_BUS.register(this);
+        GTELog.logger.info("starting construction event...");
+        moduleManager = GTEModuleManager.getInstance();
+        moduleManager.registerContainer(new GTEModules());
+        moduleManager.setup(event.getASMHarvestedData(), Loader.instance().getConfigDir());
+        moduleManager.onConstruction(event);
+        GTELog.logger.info("finished construction!");
+    }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        proxy.preInit(event);
+        moduleManager.onPreInit(event);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        proxy.init(event);
+        moduleManager.onInit(event);
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        proxy.postInit(event);
+        moduleManager.onPostInit(event);
     }
 
     @Mod.EventHandler
-    public void loadComplete(FMLLoadCompleteEvent event) {}
+    public void loadComplete(FMLLoadCompleteEvent event) {
+        moduleManager.onLoadComplete(event);
+    }
 
     @Mod.EventHandler
-    public void serverStarting(FMLServerStartingEvent event) {}
+    public void serverAboutToStart(FMLServerAboutToStartEvent event) {
+        moduleManager.onServerAboutToStart(event);
+    }
 
     @Mod.EventHandler
-    public void serverStarted(FMLServerStartedEvent event) {}
+    public void serverStarting(FMLServerStartingEvent event) {
+        moduleManager.onServerStarting(event);
+    }
 
     @Mod.EventHandler
-    public void serverStopped(FMLServerStoppedEvent event) {}
+    public void serverStarted(FMLServerStartedEvent event) {
+        moduleManager.onServerStarted(event);
+    }
 
     @Mod.EventHandler
-    public void respondIMC(FMLInterModComms.IMCEvent event) {}
+    public void serverStopping(FMLServerStoppingEvent event) {
+        moduleManager.onServerStopping(event);
+    }
+
+    @Mod.EventHandler
+    public void serverStopped(FMLServerStoppedEvent event) {
+        moduleManager.onServerStopped(event);
+    }
+
+    @Mod.EventHandler
+    public void respondIMC(FMLInterModComms.IMCEvent event) {
+        moduleManager.processIMC(event.getMessages());
+    }
+
+    @SubscribeEvent
+    public void registerBlocks(RegistryEvent.Register<Block> event) {
+        GTELog.logger.info("Registering Blocks...");
+        moduleManager.registerBlocks(event);
+    }
+
+    @SubscribeEvent
+    public void registerItems(RegistryEvent.Register<Item> event) {
+        GTELog.logger.info("Registering Items...");
+
+        moduleManager.registerItems(event);
+    }
+
+    @SubscribeEvent
+    public static void registerCovers(GregTechAPI.RegisterEvent<CoverDefinition> event) {
+        GTELog.logger.info("Registering Covers...");
+        GTECoverBehaviors.init();
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public void registerRecipesHighest(RegistryEvent.Register<IRecipe> event) {
+        moduleManager.registerRecipesHighest(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public void registerRecipesHigh(RegistryEvent.Register<IRecipe> event) {
+        moduleManager.registerRecipesHigh(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.NORMAL)
+    public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        moduleManager.registerRecipesNormal(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
+        moduleManager.registerRecipesLow(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        moduleManager.registerRecipesLowest(event);
+    }
+
+    public static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
+        ItemBlock itemBlock = producer.apply(block);
+        ResourceLocation registryName = block.getRegistryName();
+        if (registryName == null) {
+            GTELog.logger.error("Block has no registry name: {}", block.getTranslationKey(), new Throwable());
+        } else {
+            itemBlock.setRegistryName(registryName);
+        }
+        return itemBlock;
+    }
+
+    @SubscribeEvent
+    public static void syncConfigValues(ConfigChangedEvent.OnConfigChangedEvent event) {
+        if (event.getModID().equals(GTEValues.MODID)) {
+            ConfigManager.sync(GTEValues.MODID, Config.Type.INSTANCE);
+        }
+    }
 }

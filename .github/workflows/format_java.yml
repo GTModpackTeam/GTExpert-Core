@@ -10,7 +10,7 @@ on:
     paths: ['src/main/java/**', 'src/test/**']
 
 concurrency:
-  group: checks-${{ github.head_ref || github.ref }}
+  group: format-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -18,12 +18,45 @@ jobs:
     name: Formatting
     runs-on: ubuntu-latest
 
+    permissions:
+      pull-requests: write
+      contents: write
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Setup Build
         uses: ./.github/actions/build_setup
 
       - name: Run Spotless Formatting Check with Gradle
-        run: ./gradlew spotlessCheck --warning-mode all --build-cache
+        id: build
+        run: ./gradlew --info spotlessCheck
+
+      - name: Attempt to make a PR fixing spotless errors
+        if: failure()
+        run: |
+          git reset --hard
+          git checkout "${PR_BRANCH}"
+          ./gradlew --info spotlessApply || exit 1
+          git diff --exit-code && exit 1
+          git config user.name "GitHub Actions"
+          git config user.email "<>"
+          git switch -c "${FIXED_BRANCH}"
+          git commit -am "spotlessApply"
+          git push --force-with-lease origin "${FIXED_BRANCH}"
+          gh pr create \
+            --head "${FIXED_BRANCH}" \
+            --base "${PR_BRANCH}" \
+            --title "Spotless apply for branch ${PR_BRANCH} for #${PR_NUMBER}" \
+            --body "Automatic spotless apply to fix formatting errors, applies to PR #${PR_NUMBER}" \
+            2>&1 | tee pr-message.log || true
+          gh pr comment "${PR_BRANCH}" -F pr-message.log || true
+        shell: bash # ensures set -eo pipefail
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          FIXED_BRANCH: ${{ github.head_ref }}-spotless-fixes

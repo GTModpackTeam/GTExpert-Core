@@ -11,7 +11,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 
 import gtexpert.api.GTEValues;
-import gtexpert.common.metatileentities.single.MetaTileEntityElectricSpawner;
+import gtexpert.integration.eio.metatileentities.MetaTileEntityElectricSpawner;
 
 import mcjty.theoneprobe.api.*;
 

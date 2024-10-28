@@ -65,41 +65,43 @@ tile.gte_metal_casing.void_ore_miner_casing.name=抗虚空NM-HEA NP机械外壳
 tile.sawmill_conveyor.name=锯木机传送带
 
 # material
-gregtech.material.nm_hea_nps=纳米粒子贵金属高熵合金
-gregtech.material.naquadah_rocket_fuel=硅岩火箭燃料
-gregtech.material.infinity=无尽之
-gregtech.material.draconium=龙
-gregtech.material.awakened_draconium=觉醒龙
-gregtech.material.electrical_steel=磁钢
-gregtech.material.energetic_alloy=充能合金
-gregtech.material.vibrant_alloy=脉冲合金
-gregtech.material.redstone_alloy=红石合金
-gregtech.material.conductive_iron=导电铁
-gregtech.material.pulsating_iron=充能铁
-gregtech.material.dark_steel=玄钢
-gregtech.material.soularium=魂金
-gregtech.material.end_steel=末影钢
-gregtech.material.construction_alloy=铁合金
-gregtech.material.crystalline_alloy=晶化合金
-gregtech.material.melodic_alloy=旋律合金
-gregtech.material.stellar_alloy=恒星合金
-gregtech.material.crystalline_pink_slime=晶化粉红史莱姆
-gregtech.material.energetic_silver=充能银
-gregtech.material.vivid_alloy=生动合金
-gregtech.material.fluix=福鲁伊克斯
-gregtech.material.fluix_alloy=福鲁伊克斯合金
-gregtech.material.charged_certus_quartz=充能赛特斯石英
+gtexpert.material.artificial_bone=人工骨
+gtexpert.material.nm_hea_nps=纳米粒子贵金属高熵合金
+gtexpert.material.naquadah_rocket_fuel=硅岩火箭燃料
+gtexpert.material.infinity=无尽之
+gtexpert.material.draconium=龙
+gtexpert.material.awakened_draconium=觉醒龙
+gtexpert.material.electrical_steel=磁钢
+gtexpert.material.energetic_alloy=充能合金
+gtexpert.material.vibrant_alloy=脉冲合金
+gtexpert.material.redstone_alloy=红石合金
+gtexpert.material.conductive_iron=导电铁
+gtexpert.material.pulsating_iron=充能铁
+gtexpert.material.dark_steel=玄钢
+gtexpert.material.soularium=魂金
+gtexpert.material.end_steel=末影钢
+gtexpert.material.construction_alloy=铁合金
+gtexpert.material.crystalline_alloy=晶化合金
+gtexpert.material.melodic_alloy=旋律合金
+gtexpert.material.stellar_alloy=恒星合金
+gtexpert.material.crystalline_pink_slime=晶化粉红史莱姆
+gtexpert.material.energetic_silver=充能银
+gtexpert.material.vivid_alloy=生动合金
+gtexpert.material.fluix=福鲁伊克斯
+gtexpert.material.fluix_alloy=福鲁伊克斯合金
+gtexpert.material.charged_certus_quartz=充能赛特斯石英
+gtexpert.material.thaumium=神秘
+gtexpert.material.void_metal=虚空金属
 
 # item
 metaitem.gte_me_fake_component.name=GTExpert ME存储组件
 metaitem.matrix_core.name=矩阵核心
 metaitem.piston_boots.name=活塞靴子
-metaitem.piston_boots.tooltip=Wearer can Step Deeper, Run Faster, and Jump Higher!
 
 # recipemaps
 recipemap.sawmill.name=锯木机
 recipemap.vial_extractor.name=灵魂提取机
-recipemap.slice'n'splice.name=头颅装配机
+recipemap.slice_n_splice.name=头颅装配机
 recipemap.soul_binder.name=灵魂绑定器
 recipemap.void_ore_miner.name=虚空矿物采掘机
 

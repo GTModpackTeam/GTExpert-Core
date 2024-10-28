@@ -2,9 +2,13 @@ package gtexpert.api.unification.material;
 
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 
+import gregtech.api.fluids.FluidBuilder;
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.*;
 import gregtech.api.unification.ore.OrePrefix;
+
+import gtexpert.api.util.Mods;
 
 public class GTEMaterialFlags {
 
@@ -13,18 +17,29 @@ public class GTEMaterialFlags {
         Materials.Iron.addFlags(GENERATE_DOUBLE_PLATE);
 
         // Ender Peral
-        Materials.EnderPearl.setProperty(PropertyKey.FLUID, new FluidProperty());
+        FluidProperty enderPeralProp = new FluidProperty();
+        enderPeralProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.EnderPearl.setProperty(PropertyKey.FLUID, enderPeralProp);
 
         // Ender Eye
-        Materials.EnderEye.setProperty(PropertyKey.FLUID, new FluidProperty());
-        Materials.EnderEye.setFormula("(BeK4N5)(CS)", true);
+        FluidProperty enderEyeProp = new FluidProperty();
+        enderEyeProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.EnderEye.setProperty(PropertyKey.FLUID, enderEyeProp);
+        Materials.EnderEye.setFormula(
+                Materials.EnderPearl.getChemicalFormula() +
+                        Materials.Blaze.getChemicalFormula(),
+                true);
 
         // Nether Quartz
-        Materials.NetherQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
+        FluidProperty netherQuartzProp = new FluidProperty();
+        netherQuartzProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.NetherQuartz.setProperty(PropertyKey.FLUID, netherQuartzProp);
         Materials.NetherQuartz.addFlags(GENERATE_LENS, GENERATE_ROD);
 
         // Certus Quartz
-        Materials.CertusQuartz.setProperty(PropertyKey.FLUID, new FluidProperty());
+        FluidProperty certusQuartzProp = new FluidProperty();
+        certusQuartzProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.CertusQuartz.setProperty(PropertyKey.FLUID, certusQuartzProp);
         Materials.CertusQuartz.addFlags(GENERATE_LENS, GENERATE_ROD);
 
         // Quartzite
@@ -35,15 +50,37 @@ public class GTEMaterialFlags {
         Materials.RedAlloy.addFlags(MORTAR_GRINDABLE);
 
         // Glowstone
-        Materials.Glowstone.setFormula("Au(Si(FeS2)5(CrAl2O3)Hg3)", true);
+        Materials.Glowstone.setFormula(
+                Materials.Gold.getChemicalFormula() +
+                        Materials.Redstone.getChemicalFormula(),
+                true);
 
         // Darmstadtium
         Materials.Darmstadtium.addFlags(GENERATE_GEAR, GENERATE_FRAME);
 
         // Osmium
         Materials.Osmium.setProperty(PropertyKey.ORE, new OreProperty());
+        Materials.Osmium.getProperty(PropertyKey.ORE).setOreByProducts(Materials.Iridium);
 
         // Iridium
         Materials.Iridium.setProperty(PropertyKey.ORE, new OreProperty());
+        Materials.Iridium.getProperty(PropertyKey.ORE).setOreByProducts(Materials.Platinum, Materials.Osmium);
+
+        if (Mods.Forestry.isModLoaded()) {
+            // Copper
+            Materials.Copper.addFlags(GENERATE_GEAR);
+
+            // Tin
+            Materials.Tin.addFlags(GENERATE_GEAR);
+
+            // Iron
+            Materials.Iron.addFlags(GENERATE_FINE_WIRE, GENERATE_FOIL);
+
+            // Bronze
+            Materials.Bronze.addFlags(GENERATE_FINE_WIRE);
+
+            // Rose Gold
+            Materials.RoseGold.addFlags(GENERATE_FOIL);
+        }
     }
 }

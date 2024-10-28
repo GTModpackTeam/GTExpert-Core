@@ -3,11 +3,9 @@ package gtexpert.api.unification.material.ingredients;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
-import static gregtech.api.util.GTUtility.gregtechId;
 import static gtexpert.api.unification.GTEElements.*;
 import static gtexpert.api.unification.material.GTEMaterials.*;
-
-import net.minecraftforge.fml.common.Loader;
+import static gtexpert.api.util.GTEUtility.gteId;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
@@ -18,6 +16,7 @@ import gregtech.api.unification.material.properties.ToolProperty;
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import gtexpert.api.GTEValues;
+import gtexpert.api.util.Mods;
 
 public class DEFirstDegreeMaterials {
 
@@ -26,7 +25,7 @@ public class DEFirstDegreeMaterials {
      */
     public static void init() {
         // Cryotheum
-        Cryotheum = new Material.Builder(24176, gregtechId("cryotheum"))
+        Cryotheum = new Material.Builder(24176, gteId("cryotheum"))
                 .liquid(new FluidBuilder().temperature(2))
                 .color(0x00B6FF).iconSet(MaterialIconSet.FLUID)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
@@ -34,7 +33,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Pyrotheum
-        Pyrotheum = new Material.Builder(24177, gregtechId("pyrotheum"))
+        Pyrotheum = new Material.Builder(24177, gteId("pyrotheum"))
                 .fluid(GCYMFluidStorageKeys.MOLTEN, new FluidBuilder().temperature(10273))
                 .color(0xE42C13).iconSet(MaterialIconSet.BRIGHT)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
@@ -42,16 +41,17 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Dragon Dust
-        Dragon = new Material.Builder(24178, gregtechId("dragon"))
+        Dragon = new Material.Builder(24178, gteId("dragon"))
                 .dust()
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(Iridium, 1, EnderEye, 1, SaltWater, 1,
-                        Loader.isModLoaded(GTEValues.MODID_EIO) ? EndSteel : Endstone, 1)
+                        Mods.EnderIO.isModLoaded() ? EndSteel : Endstone, 1)
+                .element(Dr)
                 .build();
 
         // Draconium
-        Draconium = new Material.Builder(24180, gregtechId("draconium"))
+        Draconium = new Material.Builder(24180, gteId("draconium"))
                 .ore(2, 1, true)
                 .ingot(5)
                 .liquid(new FluidBuilder().temperature(1200))
@@ -72,7 +72,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Awakened Draconium
-        AwakenedDraconium = new Material.Builder(24181, gregtechId("awakened_draconium"))
+        AwakenedDraconium = new Material.Builder(24181, gteId("awakened_draconium"))
                 .ingot(6)
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xFF6C00).iconSet(MaterialIconSet.METALLIC)
@@ -90,11 +90,12 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Chaos Dust
-        Chaos = new Material.Builder(24179, gregtechId("chaos"))
+        Chaos = new Material.Builder(24179, gteId("chaos"))
                 .dust()
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
                 .components(AwakenedDraconium, 8, Pyrotheum, 8, Dragon, 8)
+                .element(Dr1)
                 .build();
     }
 }

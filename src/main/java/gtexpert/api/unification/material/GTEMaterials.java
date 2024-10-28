@@ -1,11 +1,10 @@
 package gtexpert.api.unification.material;
 
-import net.minecraftforge.fml.common.Loader;
-
 import gregtech.api.unification.material.Material;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.ingredients.*;
+import gtexpert.api.util.Mods;
 
 /**
  * Material Registration.
@@ -40,10 +39,10 @@ public class GTEMaterials {
      * claimed ranges below this comment. Max value is 32767.
      *
      * - Gregicality: 3000-19999
-     * - FREE RANGE 20000-20999
+     * - Gregification: 20000-20999
      * - HtmlTech: 21000-21499
-     * - GregTech Food Option: 21500-21999
-     * - PCM's Ore Addon: 22000-23599
+     * - GregTech Food Option: 21500-22499
+     * - FREE RANGE 22500-23599
      * - MechTech: 23600-23999
      * - FREE RANGE 24000-31999
      * - Reserved for CraftTweaker: 32000-32767
@@ -52,6 +51,7 @@ public class GTEMaterials {
     // Element Materials
 
     // First Degree Materials
+    public static Material ArtificialBone;
     public static Material NM_HEA_NPs;
     public static Material NaquadahRocketFuel;
     public static Material SoulSand;
@@ -82,6 +82,8 @@ public class GTEMaterials {
     public static Material Draconium;
     public static Material AwakenedDraconium;
     public static Material Infinity;
+    public static Material Thaumium;
+    public static Material VoidMetal;
 
     // Second Degree Materials
 
@@ -100,17 +102,20 @@ public class GTEMaterials {
     }
 
     public static void registerMaterialsLowest() {
-        if (Loader.isModLoaded(GTEValues.MODID_EIO)) {
+        if (Mods.EnderIO.isModLoaded()) {
             EIOFirstDegreeMaterials.init(); // 24101 - 24150
         }
-        if (Loader.isModLoaded(GTEValues.MODID_AE)) {
+        if (Mods.AppliedEnergistics2.isModLoaded()) {
             AEFirstDegreeMaterials.init();  // 24151 - 24175
         }
         if (GTEValues.isModLoadedDEDA()) {
             DEFirstDegreeMaterials.init(); // 24176 - 24185
         }
-        if (Loader.isModLoaded(GTEValues.MODID_AVARITIA)) {
+        if (Mods.Avaritia.isModLoaded()) {
             AvaritiaFirstDegreeMaterials.init(); // 24186 - 24190
+        }
+        if (Mods.Thaumcraft.isModLoaded()) {
+            TCFirstDegreeMaterials.init(); // 24191 - 24199
         }
     }
 }

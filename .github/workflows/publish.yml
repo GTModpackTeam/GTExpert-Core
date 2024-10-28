@@ -1,5 +1,5 @@
-# Publishes built jars to distribution platforms
-name: Publish
+# Publishes the project to GitHub Releases, CurseForge, and Modrinth
+name: Publish Project
 
 on:
   workflow_dispatch:
@@ -17,14 +17,29 @@ on:
           - 'alpha'
 
 env:
+  # link to the changelog with a format code for the version
+  CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{ github.repository }}/releases/tag/GTExpertCore-v${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }})"
   # Version of the mod
   FULL_VERSION: "${{ github.event.inputs.version }}-${{ github.event.inputs.release_type }}"
   # type of release
   NAME: "GTExpertCore"
 
+  # Curseforge and Modrinth project IDs
+  CURSEFORGE_PROJECT_ID: "851103"
+  MODRINTH_PROJECT_ID: "ipueNiWG"
+
+concurrency:
+  group: publish-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  publish:
+    name: Publish
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -47,12 +62,6 @@ jobs:
           file_pattern: gradle.properties
           tagging_message: "v${{ env.FULL_VERSION }}"
 
-      - name: Apply patch to settings.gradle
-        run: |
-          if [ -f settings.gradle.patch ]; then
-            patch -p0 < settings.gradle.patch
-          fi
-
       - name: Setup Build
         uses: ./.github/actions/build_setup
       
@@ -60,7 +69,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Project
-        run: ./gradlew --scan --build-cache --info --stacktrace build
+        run: ./gradlew --info build
 
       - name: Publish to Curseforge and Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
@@ -70,20 +79,22 @@ jobs:
           github-draft: false
           github-prerelease: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          modrinth-id: 'ipueNiWG'
+          modrinth-id: ${{ env.MODRINTH_PROJECT_ID }}
           modrinth-token: "${{ secrets.MODRINTH_API_KEY }}"
           modrinth-dependencies: |
             G1ckZuWK(required)
             tULldUx4(required)
             tZiutdLG(required)
-          curseforge-id: '851103'
+          curseforge-id: ${{ env.CURSEFORGE_PROJECT_ID }}
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           curseforge-dependencies: |
             mixin-booter(required)
             gregtech-ce-unofficial(required)
             gregicality-multiblocks(required)
+            implosionnobomb(recommended)
             ae2-extended-life(recommended)
             ae-additions-extra-cells-2-fork(recommended)
+            nae2(recommended)
             ender-io-base(recommended)
             ender-io-machines(recommended)
             ender-io-endergy(recommended)
@@ -95,6 +106,11 @@ jobs:
             draconic-evolution(recommended)
             draconicadditions(recommended)
             project-red-illumination(recommended)
+            avaritia-1-1x-kedition(recommended)
+            thaumcraft(recommended)
+            forestry(recommended)
+            gendustry(recommended)
+            binnies-mods-patched(recommended)
             ulv-covers(incompatible)
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar

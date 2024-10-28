@@ -4,43 +4,61 @@ import net.minecraftforge.common.config.Config;
 
 import gtexpert.api.GTEValues;
 
-@Config(modid = GTEValues.MODID)
+@Config(modid = GTEValues.MODID,
+        name = GTEValues.MODID + "/" + GTEValues.MODID,
+        category = "GTExpert-Core")
 public class GTEConfigHolder {
 
-    @Config.Name("Gregtech Expert Options")
+    @Config.Name("GTExpert-Core Options")
     @Config.RequiresMcRestart
-    public static final ModpackFlag modpackFlag = new ModpackFlag();
+    public static final ModpackFlag gteFlag = new ModpackFlag();
 
     @Config.Name("Gregtech Override")
     @Config.RequiresMcRestart
     public static final GregtechOverride ceuOverride = new GregtechOverride();
 
-    @Config.Name("AE2 Integration")
-    @Config.RequiresMcRestart
-    public static final AE2Integration ae2Integration = new AE2Integration();
-
-    @Config.Name("EnderIO Integration")
-    @Config.RequiresMcRestart
-    public static final EIOIntegration eioIntegration = new EIOIntegration();
-
-    @Config.Name("DE/DA Integration")
-    @Config.RequiresMcRestart
-    public static final DEDAIntegration dedaIntegration = new DEDAIntegration();
-
-    @Config.Name("Chisel Integration")
-    @Config.RequiresMcRestart
-    public static final ChiselIntegration chiselIntegration = new ChiselIntegration();
-
     public static class ModpackFlag {
 
-        @Config.Comment({ "Activate changes in the replacement schedule.", "Default: false" })
+        @Config.Comment({ "Activate changes in the replacement schedule.",
+                "1. When enabled, the following structure and mte name changes: ",
+                "Large Cracking Unit",
+                "2. When enabled, the recipe of the following items will be changed: ",
+                "Logic Processor, Calc Processor, Engineer Processor",
+                "Default: false" })
         public boolean featureFlag = false;
+
+        @Config.Comment({ "Item name to be CEu standard instead of Primitive",
+                "Options: true (ULV), false (Primitive)",
+                "Default: false" })
+        public boolean componentsName = false;
+
+        @Config.Comment({
+                "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting), normal (3x3 crafting).",
+                "Default: easy" })
+        public String componentsRecipeType = "easy";
+
+        @Config.Comment({
+                "Enable the new steam machines.",
+                "Steam Mixer, Steam Assembler, Steam Circuit Assembler",
+                "Default: false" })
+        public boolean steamNewMachine = false;
+
+        @Config.Comment({
+                "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting(WIP)), normal (3x3 crafting).",
+                "The steamNewMachine must also be enabled.", "Default: normal" })
+        public String steamRecipeType = "normal";
+
+        @Config.Comment({
+                "1. When enabled, the following recipes will be changed to Peaceful difficulty: ",
+                "Nether Star Dust, Skeleton Skull, Wither Skeleton Skull, Zombie Head, Creeper Head, Enderman Head",
+                "Default: false" })
+        public boolean peacefulFlag = false;
     }
 
     public static class GregtechOverride {
 
         @Config.Comment({ "Making Planks even more difficult.",
-                "CEu's nerfWoodCrafting to true to reflect.", "Default: false" })
+                "CEu's hardWoodRecipes & nerfWoodCrafting to true to reflect.", "Default: false" })
         public boolean moreNerfPlankCrafting = false;
 
         @Config.Comment({ "Making Sticks even more difficult.",
@@ -54,60 +72,7 @@ public class GTEConfigHolder {
         @Config.Comment({ "Raising Terracotta Grinding from ULV to MV.", "Default: false" })
         public boolean nerfTerracottaCrafting = false;
 
-        @Config.Comment({ "Recipe type Options: false (2x2 crafting), true (3x3 crafting).", "Default: false" })
-        public boolean hardPrimitiveParts = false;
-    }
-
-    public static class AE2Integration {
-
-        @Config.Comment({ "Change the recipe to use AE2 UEL: Extended by setting it to true.",
-                "Changes are not recommended if you don't know what kind of mod it is.", "Default: false" })
-        public boolean enableAE2UELExtended = false;
-
-        @Config.Comment({ "The voltage at which AE can be started.",
-                "The material is also adjusted to each voltage.", "Default: 3 (HV)" })
-        @Config.RangeInt(min = 1, max = 10)
-        public int voltageTier = 3;
-
-        @Config.Comment({ "Change AE swords, axes, etc. to GT recipe standards.",
-                "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
-        public boolean hardToolRecipes = false;
-
-        @Config.Comment({ "Integrate Printed Silicon and various Circuit creation molds.", "Default: false" })
-        public boolean moveSteelShape = false;
-    }
-
-    public static class EIOIntegration {
-
-        @Config.Comment({ "The voltage at which EIO can be started.",
-                "The material is also adjusted to each voltage.", "Default: 3 (HV)" })
-        @Config.RangeInt(min = 1, max = 8)
-        public int voltageTier = 3;
-
-        @Config.Comment({ "Change EIO swords, axes, armor, etc. to GT recipe standards.",
-                "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
-        public boolean hardToolArmorRecipes = false;
-
-        @Config.Comment({ "Add Shapeless Recipe in CoreMod Machines and EIO Machines.",
-                "This change adds a recipe for equivalent exchange of HV machines and EIO machines", "Default: false" })
-        public boolean addShapelessRecipeMachines = false;
-    }
-
-    public static class DEDAIntegration {
-
-        @Config.Comment({ "The voltage at which DE/DA can be started.",
-                "The material is also adjusted to each voltage.", "Default: 6 (LuV)" })
-        @Config.RangeInt(min = 3, max = 6)
-        public int voltageTier = 6;
-    }
-
-    public static class ChiselIntegration {
-
-        @Config.Comment({ "Change Chisel recipes to GT recipe standards.",
-                "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
-        public boolean hardToolRecipes = false;
-
-        @Config.Comment({ "Change LED for Project:RED recipes to GT recipe standards.", "Default: false" })
-        public boolean hardLedRecipes = false;
+        @Config.Comment({ "Disable auto eat function of QuarkTech helmet", "Default: true" })
+        public boolean disableHelmetAutoEat = true;
     }
 }

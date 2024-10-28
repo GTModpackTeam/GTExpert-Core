@@ -1,69 +1,68 @@
 package gtexpert.api;
 
-import static gtexpert.common.GTEConfigHolder.*;
-
-import net.minecraftforge.fml.common.Loader;
-
+import gtexpert.Tags;
 import gtexpert.api.util.GTELog;
+import gtexpert.api.util.Mods;
+import gtexpert.integration.ae.AEConfigHolder;
+import gtexpert.integration.deda.DEDAConfigHolder;
+import gtexpert.integration.eio.EnderIOConfigHolder;
+import gtexpert.modules.GTEModules;
 
 public class GTEValues {
 
-    public static final String MODNAME = "GTExpert-Core";
-    public static final String MODID = "gtexpert",
-            MODID_VANILLA = "minecraft",
-            MODID_GCYM = "gcym",
-            MODID_GCYS = "gcys",
-            MODID_GTFO = "gregtechfoodoption",
-            MODID_TOP = "theoneprobe",
-            MODID_ECO = "endercore",
-            MODID_EIO = "enderio",
-            MODID_EIOE = "enderioendergy",
-            MODID_EIOM = "enderiomachines",
-            MODID_EIOC = "enderioconduits",
-            MODID_EIOCA = "enderioconduitsappliedenergistics",
-            MODID_AE = "appliedenergistics2",
-            MODID_AEA = "aeadditions",
-            MODID_AEFC = "ae2fc",
-            MODID_EXCPU = "extracpus",
-            MODID_DE = "draconicevolution",
-            MODID_DA = "draconicadditions",
-            MODID_CHISEL = "chisel",
-            MODID_AVARITIA = "avaritia",
-            MODID_AVAADDON = "avaritiaddons",
-            MODID_FFM = "forestry";
+    public static final String MODNAME = Tags.MODNAME;
+    public static final String MODID = Tags.MODID;
 
-    public static int ae2VoltageTier = voltageTier(ae2Integration.voltageTier) ? ae2Integration.voltageTier : 3,
-            eioVoltageTier = voltageTier(eioIntegration.voltageTier) ? eioIntegration.voltageTier : 3,
-            dedaVoltageTier = voltageTier(dedaIntegration.voltageTier) ? dedaIntegration.voltageTier : 6;
+    public static int ae2VoltageTier = voltageTier(AEConfigHolder.voltageTier, GTEModules.MODULE_AE) ?
+            AEConfigHolder.voltageTier : 3;
+    public static int eioVoltageTier = voltageTier(EnderIOConfigHolder.voltageTier, GTEModules.MODULE_EIO) ?
+            EnderIOConfigHolder.voltageTier : 3;
+    public static int dedaVoltageTier = voltageTier(DEDAConfigHolder.voltageTier, GTEModules.MODULE_DEDA) ?
+            DEDAConfigHolder.voltageTier : 6;
 
     public static boolean isModLoadedDEDA() {
-        return Loader.isModLoaded(MODID_DE) && Loader.isModLoaded(MODID_DA);
+        return Mods.DraconicEvolution.isModLoaded() && Mods.DraconicAdditions.isModLoaded();
     }
 
-    public static boolean isModLoadedAEACPU() {
-        return Loader.isModLoaded(GTEValues.MODID_AEA) && Loader.isModLoaded(GTEValues.MODID_EXCPU);
-    }
+    private static boolean voltageTier(int voltage, String mod) {
+        String greaterMsg = "Base Voltage must be greater than %d! Set to default value.";
+        String lessMsg = "Base Voltage must be less than %d! Set to default value.";
 
-    private static boolean voltageTier(int voltage) {
         if (voltage == 0) {
-            GTELog.logger.error("Base Voltage must be greater than 0! Set to default value.");
+            GTELog.logger.error("{}", String.format(greaterMsg, 0));
             return false;
         }
-        if (ae2VoltageTier > 10) {
-            GTELog.logger.error("Base Voltage must be less than 10! Set to default value.");
-            return false;
+
+        switch (mod) {
+            case GTEModules.MODULE_AE -> {
+                if (voltage < 2) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_AE + "] {}", String.format(greaterMsg, 2));
+                } else if (voltage > 10) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_AE + "] {}", String.format(lessMsg, 10));
+                } else {
+                    return true;
+                }
+            }
+            case GTEModules.MODULE_EIO -> {
+                if (voltage < 1) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_EIO + "] {}", String.format(greaterMsg, 1));
+                } else if (voltage > 8) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_EIO + "] {}", String.format(lessMsg, 8));
+                } else {
+                    return true;
+                }
+            }
+            case GTEModules.MODULE_DEDA -> {
+                if (voltage < 3) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_DEDA + "] {}", String.format(greaterMsg, 3));
+                } else if (voltage > 6) {
+                    GTELog.logger.error("[" + GTEModules.MODULE_DEDA + "] {}", String.format(lessMsg, 6));
+                } else {
+                    return true;
+                }
+            }
+            default -> GTELog.logger.error("Unknown mod: {}", mod);
         }
-        if (eioVoltageTier > 8) {
-            GTELog.logger.error("Base Voltage must be less than 8! Set to default value.");
-            return false;
-        }
-        if (dedaVoltageTier < 3) {
-            GTELog.logger.error("Base Voltage must be greater than 3! Set to default value.");
-            return false;
-        } else if (dedaVoltageTier > 6) {
-            GTELog.logger.error("Base Voltage must be less than 8! Set to default value.");
-            return false;
-        }
-        return true;
+        return false;
     }
 }

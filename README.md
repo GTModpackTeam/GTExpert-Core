@@ -7,7 +7,7 @@
     <br>
     <a href="https://www.curseforge.com/minecraft/mc-mods/gte2-coremod"><img src="https://cf.way2muchnoise.eu/851103.svg?badge_style=for_the_badge" alt="CurseForge"></a>
     <a href="https://modrinth.com/mod/gte2-coremod"><img src="https://img.shields.io/modrinth/dt/gte2-coremod?logo=modrinth&label=&suffix=%20&style=for-the-badge&color=2d2d2d&labelColor=5ca424&logoColor=1c1c1c" alt="Modrinth"></a>
-    <a href="https://www.curseforge.com/minecraft/mc-mods/gte2-coremod/releases"><img src="https://img.shields.io/github/downloads/GTModpackTeam/GTExpert-Core/total?sort=semver&logo=github&label=&style=for-the-badge&color=2d2d2d&labelColor=545454&logoColor=FFFFFF" alt="GitHub"></a>
+    <a href="https://github.com/GTModpackTeam/GTExpert-Core/releases"><img src="https://img.shields.io/github/downloads/GTModpackTeam/GTExpert-Core/total?sort=semver&logo=github&label=&style=for-the-badge&color=2d2d2d&labelColor=545454&logoColor=FFFFFF" alt="GitHub"></a>
 </h1>
 
 ## Info
@@ -17,7 +17,10 @@
 
 ## Credits
 
-- I modified some textures from [GregTech CE: Unofficial](https://www.curseforge.com/minecraft/mc-mods/gregtech-ce-unofficial) under [LGPL-3.0](https://github.com/GregTechCEu/GregTech/blob/master/LICENSE) License
+- I modified some textures & codes from [GregTech CE: Unofficial](https://www.curseforge.com/minecraft/mc-mods/gregtech-ce-unofficial) under [LGPL-3.0](https://github.com/GregTechCEu/GregTech/blob/master/LICENSE) License
 - I also borrowed some contents from [Impact-Core](https://github.com/GT-IMPACT/Impact-Core) under [MIT](https://github.com/GT-IMPACT/Impact-Core/blob/master/LICENSE) License
 - Piston Boots are from [Adventure Backpack](https://www.curseforge.com/minecraft/mc-mods/adventure-backpack) under [LGPL-3.0](https://github.com/Darkona/AdventureBackpack2/blob/master/LICENSE.md) License
 - Primitive(ULV) Motor/Pump/ConveyorModule/Piston/RobotArm from [ULV-Covers](https://github.com/Cosmic-Chaos/ULV-Covers) under [LGPL-2.1](https://github.com/Cosmic-Chaos/ULV-Covers/blob/main/LICENSE.txt) License
+- DepLoader from [NewHorizonsCoreMod](https://github.com/GTNewHorizons/NewHorizonsCoreMod) under [LGPL-3.0](https://github.com/GTNewHorizons/NewHorizonsCoreMod/blob/master/LICENSE) License
+- Infinity some textures, Industrial Apiary some textures & codes from [NewHorizonsCoreMod](https://github.com/GTNewHorizons/NewHorizonsCoreMod) under [LGPL-3.0](https://github.com/GTNewHorizons/NewHorizonsCoreMod/blob/master/LICENSE) License
+- I referenced MixinLoader from [Nomi-Labs](https://github.com/Nomi-CEu/Nomi-Labs) under [LGPL-3.0](https://github.com/Nomi-CEu/Nomi-Labs/blob/main/LICENSE)

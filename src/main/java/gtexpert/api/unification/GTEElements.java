@@ -14,6 +14,7 @@ public class GTEElements {
     public static final Element De = add(9, 11, -1, null, "Draconium", "De", false);
     public static final Element De1 = add(43, 55, -1, null, "AwakenedDraconium", "De+", false);
     public static final Element If = add(1, 0, -1, null, "Infinity", "If", false);
+    public static final Element FeMa = add(1, 0, -1, null, "Thaumium", "FeMa", false);
 
     public static Element add(long protons, long neutrons, long halfLifeSeconds, String decayTo, String name,
                               String symbol, boolean isIsotope) {

@@ -4,8 +4,8 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
-import static gregtech.api.util.GTUtility.gregtechId;
 import static gtexpert.api.unification.material.GTEMaterials.*;
+import static gtexpert.api.util.GTEUtility.gteId;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
@@ -17,10 +17,16 @@ public class GTEFirstDegreeMaterials {
      * 24001 - 24100
      */
     public static void init() {
-        // FreeSpace 24001
+        // Artificial Bone 24001
+        ArtificialBone = new Material.Builder(24001, gteId("artificial_bone"))
+                .dust(1)
+                .color(0xFAFAFA)
+                .flags(FORCE_GENERATE_BLOCK, MORTAR_GRINDABLE, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES)
+                .components(Calcium, 10, Phosphate, 6, Hydrogen, 2, Oxygen, 2)
+                .build();
 
         // NM_HEA_NPs
-        NM_HEA_NPs = new Material.Builder(24002, gregtechId("nm_hea_nps"))
+        NM_HEA_NPs = new Material.Builder(24002, gteId("nm_hea_nps"))
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xa90000).iconSet(METALLIC)
@@ -35,7 +41,7 @@ public class GTEFirstDegreeMaterials {
                 .build();
 
         // Naquadah Rocket Fuel
-        NaquadahRocketFuel = new Material.Builder(24003, gregtechId("naquadah_rocket_fuel"))
+        NaquadahRocketFuel = new Material.Builder(24003, gteId("naquadah_rocket_fuel"))
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x2E4C00)
                 .flags(NO_WORKING)
