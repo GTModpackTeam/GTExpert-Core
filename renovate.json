@@ -10,16 +10,14 @@
   "automerge": false,
   "packageRules": [
     {
-      "matchFiles": [
-        "build.gradle",
-        "dependencies.gradle"
-      ],
-      "enabled": false
-    },
-    {
       "matchDatasources": ["gradle-version"],
       "registryUrls": [
-        "https://domain.tld/repository/custom-gradle-wrapper/versions.json"
+        "https://www.cursemaven.com",
+        "https://api.modrinth.com/maven",
+        "https://maven.cleanroommc.com",
+        "https://maven.blamejared.com",
+        "https://nexus.gtnewhorizons.com/repository/public/",
+        "https://maven.gtceu.com"
       ]
     },
     {
