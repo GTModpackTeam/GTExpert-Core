@@ -1,3 +1,9 @@
+# v2.4.0
+- Disable automatic meal function for helmets [#300](https://github.com/GTModpackTeam/GTExpert-Core/pull/300)
+- Removed conflicts with GTWP [#303](https://github.com/GTModpackTeam/GTExpert-Core/pull/303)
+
+* * *
+
 # v2.3.2
 - Fix BlastTemperature of Vacuum Freezer Extended Recipes.
 
