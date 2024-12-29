@@ -10,7 +10,10 @@
   "automerge": false,
   "packageRules": [
     {
-      "matchFiles": ["dependencies.gradle"],
+      "matchFiles": [
+        "build.gradle",
+        "dependencies.gradle"
+      ],
       "enabled": false
     },
     {
