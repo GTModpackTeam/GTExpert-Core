@@ -22,7 +22,6 @@ public class ExtraTreesModule extends GTEIntegrationSubmodule {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         ExtraTreesItemsRecipe.init();
-        ExtraTreesWoodRecipe.init();
     }
 
     @Override

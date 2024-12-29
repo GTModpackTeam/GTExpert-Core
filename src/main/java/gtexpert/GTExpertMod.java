@@ -35,8 +35,8 @@ import gtexpert.modules.GTEModules;
      version = Tags.VERSION,
      updateJSON = "https://forge.curseupdate.com/851103/gtexpert",
      dependencies = GTInternalTags.DEP_VERSION_STRING + "required-after:" + Mods.Names.MIXINBOOTER + ";" +
-             "required-after:" + Mods.Names.GREGICALITY_MULTIBLOCKS + ";" + "after:" + Mods.Names.IMPLOSION_NO_BOMB +
-             ";" +
+             "required-after:" + Mods.Names.GREGICALITY_MULTIBLOCKS + ";" +
+             "after:" + Mods.Names.GREGTECH_WOOD_PROCESSING + ";" + "after:" + Mods.Names.IMPLOSION_NO_BOMB + ";" +
              "after:" + Mods.Names.GREGTECH_FOOD_OPTION + ";" + "after:" + Mods.Names.APPLIED_ENERGISTICS2 + ";" +
              "after:" + Mods.Names.AE_ADDITIONS + ";" + "after:" + Mods.Names.AE2_FLUID_CRAFTING + ";" +
              "after:" + Mods.Names.NEEVES_AE2 + ";" + "after:" + Mods.Names.EXTRA_CPUS + ";" +

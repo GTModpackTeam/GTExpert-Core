@@ -75,6 +75,7 @@ public enum Mods {
     GregTech(Names.GREGTECH),
     GregTechFoodOption(Names.GREGTECH_FOOD_OPTION),
     GregTechExpertCore(GTEValues.MODID),
+    GregTechWoodProcessing(Names.GREGTECH_WOOD_PROCESSING),
     GroovyScript(Names.GROOVY_SCRIPT),
     HWYLA(Names.HWYLA),
     ImplosionNoBomb(Names.IMPLOSION_NO_BOMB),
@@ -170,6 +171,7 @@ public enum Mods {
         public static final String GREGICALITY_MULTIBLOCKS = "gcym";
         public static final String GREGTECH = GTValues.MODID;
         public static final String GREGTECH_FOOD_OPTION = "gregtechfoodoption";
+        public static final String GREGTECH_WOOD_PROCESSING = "gtwp";
         public static final String GROOVY_SCRIPT = "groovyscript";
         public static final String HWYLA = "hwyla";
         public static final String IMPLOSION_NO_BOMB = "inb";

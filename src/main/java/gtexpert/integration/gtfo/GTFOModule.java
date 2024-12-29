@@ -9,7 +9,6 @@ import gtexpert.api.util.Mods;
 import gtexpert.integration.GTEIntegrationSubmodule;
 import gtexpert.integration.gtfo.recipes.GTFOChemicalRecipe;
 import gtexpert.integration.gtfo.recipes.GTFOItemsRecipe;
-import gtexpert.integration.gtfo.recipes.GTFOWoodRecipe;
 import gtexpert.modules.GTEModules;
 
 @GTEModule(
@@ -23,7 +22,6 @@ public class GTFOModule extends GTEIntegrationSubmodule {
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
         GTFOItemsRecipe.init();
-        GTFOWoodRecipe.init();
         GTFOChemicalRecipe.init();
     }
 }

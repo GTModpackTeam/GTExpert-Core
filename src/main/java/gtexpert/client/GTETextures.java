@@ -11,8 +11,6 @@ import gtexpert.api.GTEValues;
 public class GTETextures {
 
     // Core
-    public static SimpleOverlayRenderer SAWMILL_CASING;
-    public static OrientedOverlayRenderer SAWMILL_OVERLAY = new OrientedOverlayRenderer("machines/sawmill");
     public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;
 
     // Ender IO
@@ -34,7 +32,6 @@ public class GTETextures {
 
     public static void preInit() {
         // Core
-        SAWMILL_CASING = new SimpleOverlayRenderer("casings/sawmill_casing");
         VOID_ORE_MINER_CASING = new SimpleOverlayRenderer("casings/void_ore_miner_casing");
 
         // Draconic Evolution
