@@ -3,20 +3,22 @@
   "extends": [
     "config:recommended"
   ],
-  "dependencyDashboard": true,
   "timezone": "Asia/Tokyo",
   "schedule": [
     "every weekend"
   ],
-  "enabledManagers": [
-    "gradle"
-  ],
-  "ignorePaths": [
-    "build.gradle"
-  ],
-  "separateMajorMinor": false,
   "automerge": false,
   "packageRules": [
+    {
+      "matchFiles": ["dependencies.gradle"],
+      "enabled": false
+    },
+    {
+      "matchDatasources": ["gradle-version"],
+      "registryUrls": [
+        "https://domain.tld/repository/custom-gradle-wrapper/versions.json"
+      ]
+    },
     {
       "groupName": "monthly_maintenance",
       "matchDepTypes":[ "dependencies" ],
