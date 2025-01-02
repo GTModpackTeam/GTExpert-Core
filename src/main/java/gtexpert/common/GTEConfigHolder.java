@@ -28,9 +28,10 @@ public class GTEConfigHolder {
         public boolean featureFlag = false;
 
         @Config.Comment({ "Item name to be CEu standard instead of Primitive",
-                "Options: true (ULV), false (Primitive)",
-                "Default: false" })
-        public boolean componentsName = false;
+                "If you want to use Filostorm's ULV Covers, set it to none.",
+                "Options: ulv, primitive, none",
+                "Default: primitive" })
+        public String componentsName = "primitive";
 
         @Config.Comment({
                 "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting), normal (3x3 crafting).",
@@ -53,6 +54,14 @@ public class GTEConfigHolder {
                 "Nether Star Dust, Skeleton Skull, Wither Skeleton Skull, Zombie Head, Creeper Head, Enderman Head",
                 "Default: false" })
         public boolean peacefulFlag = false;
+
+        @Config.Comment({ "Add to a creative machine recipe.",
+                "When enabled, Recipes will be added to the following machines: ",
+                "1. GTCEu: Data Hatch, Energy Unit, Quantum Tank, Quantum Chest",
+                "2. AE2UEL: Energy Cell",
+                "3. EIO: Capacitor Bank",
+                "Default: true" })
+        public boolean addCreativeRecipe = true;
     }
 
     public static class GregtechOverride {

@@ -52,7 +52,7 @@ public class GTEMetaTileEntities {
         }
 
         // Multi Machine
-        //
+        // Free: 12000~12001
         LARGE_CRACKER = registerMetaTileEntity(12002,
                 new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
         VOIDOREMINER = registerMetaTileEntity(12003,

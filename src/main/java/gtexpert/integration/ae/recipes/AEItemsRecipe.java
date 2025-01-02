@@ -27,24 +27,26 @@ public class AEItemsRecipe {
 
     public static void init() {
         // GTE ME Storage Fake Component
-        AssemblyLineRecipeBuilder builderGTECore = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(screw, Materials.Neutronium, 8)
-                .input(MetaItems.CRYSTAL_MAINFRAME_UV, 4)
-                .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
-                .fluidInputs(Materials.Neutronium.getFluid(9216))
-                .output(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 1)
-                .duration(1200).EUt(VA[UV]);
-        if (AEConfigHolder.enableAE2UELExtended) {
-            builderGTECore.inputs(Mods.AppliedEnergistics2.getItem("material", 16, 65));
-            builderGTECore.inputs(Mods.AppliedEnergistics2.getItem("material", 16, 70));
-        } else if (Mods.AEAdditions.isModLoaded()) {
-            builderGTECore.inputs(Mods.AEAdditions.getItem("storage.component", 16, 3));
-            builderGTECore.inputs(Mods.AEAdditions.getItem("storage.component", 16, 6));
-        } else {
-            builderGTECore.inputs(Mods.AppliedEnergistics2.getItem("material", 16, 38));
-            builderGTECore.inputs(Mods.AppliedEnergistics2.getItem("material", 16, 57));
+        if (GTEConfigHolder.gteFlag.addCreativeRecipe) {
+            AssemblyLineRecipeBuilder builderGTECore = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(screw, Materials.Neutronium, 8)
+                    .input(MetaItems.CRYSTAL_MAINFRAME_UV, 4)
+                    .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
+                    .fluidInputs(Materials.Neutronium.getFluid(9216))
+                    .output(GTEMetaItems.GTE_ME_FAKE_COMPONENT, 1)
+                    .duration(1200).EUt(VA[UV]);
+            if (AEConfigHolder.enableAE2UELExtended) {
+                builderGTECore.inputs(Mods.AppliedEnergistics2.getItem("material", 16, 65));
+                builderGTECore.inputs(Mods.AppliedEnergistics2.getItem("material", 16, 70));
+            } else if (Mods.AEAdditions.isModLoaded()) {
+                builderGTECore.inputs(Mods.AEAdditions.getItem("storage.component", 16, 3));
+                builderGTECore.inputs(Mods.AEAdditions.getItem("storage.component", 16, 6));
+            } else {
+                builderGTECore.inputs(Mods.AppliedEnergistics2.getItem("material", 16, 38));
+                builderGTECore.inputs(Mods.AppliedEnergistics2.getItem("material", 16, 57));
+            }
+            builderGTECore.buildAndRegister();
         }
-        builderGTECore.buildAndRegister();
 
         // 1k Storage Cell
         ModHandler.removeRecipeByName(

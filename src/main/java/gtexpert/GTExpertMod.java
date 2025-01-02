@@ -2,6 +2,8 @@ package gtexpert;
 
 import java.util.function.Function;
 
+import gtexpert.common.GTEConfigHolder;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -131,7 +133,15 @@ public class GTExpertMod {
     @SubscribeEvent
     public static void registerCovers(GregTechAPI.RegisterEvent<CoverDefinition> event) {
         GTELog.logger.info("Registering Covers...");
-        GTECoverBehaviors.init();
+
+        String componentsName = GTEConfigHolder.gteFlag.componentsName;
+        if (componentsName.equals("ulv") || componentsName.equals("primitive")) {
+            GTECoverBehaviors.init();
+        }
+        else {
+            GTELog.logger.error("Invalid componentsName setting: {}",
+                    componentsName, new Throwable());
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
