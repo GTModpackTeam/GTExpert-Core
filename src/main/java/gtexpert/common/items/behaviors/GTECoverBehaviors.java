@@ -15,7 +15,7 @@ import gtexpert.common.items.GTEMetaItems;
 public class GTECoverBehaviors {
 
     public static void init() {
-        String componentsName = GTEConfigHolder.gteFlag.componentsName ? "ulv" : "primitive";
+        String componentsName = GTEConfigHolder.gteFlag.componentsName;
         registerBehavior(gteId("conveyor." + componentsName), GTEMetaItems.GTE_CONVEYOR_MODULE,
                 (def, tile, side) -> new CoverConveyor(def, tile, side, GTValues.ULV, 2));
         registerBehavior(gteId("pump." + componentsName), GTEMetaItems.GTE_ELECTRIC_PUMP,

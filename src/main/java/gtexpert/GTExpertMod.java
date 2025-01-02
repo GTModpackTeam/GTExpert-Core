@@ -25,6 +25,7 @@ import gregtech.api.cover.CoverDefinition;
 import gtexpert.api.GTEValues;
 import gtexpert.api.util.GTELog;
 import gtexpert.api.util.Mods;
+import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.items.behaviors.GTECoverBehaviors;
 import gtexpert.modules.GTEModuleManager;
 import gtexpert.modules.GTEModules;
@@ -131,7 +132,14 @@ public class GTExpertMod {
     @SubscribeEvent
     public static void registerCovers(GregTechAPI.RegisterEvent<CoverDefinition> event) {
         GTELog.logger.info("Registering Covers...");
-        GTECoverBehaviors.init();
+
+        String componentsName = GTEConfigHolder.gteFlag.componentsName;
+        if (componentsName.equals("ulv") || componentsName.equals("primitive")) {
+            GTECoverBehaviors.init();
+        } else {
+            GTELog.logger.error("Invalid componentsName setting: {}",
+                    componentsName, new Throwable());
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

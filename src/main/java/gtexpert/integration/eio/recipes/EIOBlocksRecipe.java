@@ -22,6 +22,7 @@ import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.GTEUtility;
 import gtexpert.api.util.Mods;
+import gtexpert.common.GTEConfigHolder;
 import gtexpert.integration.eio.EnderIOConfigHolder;
 import gtexpert.integration.eio.metatileentities.EIOMetaTileEntities;
 
@@ -34,23 +35,25 @@ public class EIOBlocksRecipe {
 
     public static void init() {
         // Creative Capacitor Bank
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(MetaItems.ENERGY_CLUSTER, 4)
-                .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
-                .input(MetaTileEntities.HULL[UV])
-                .input(MetaItems.CRYSTAL_MAINFRAME_UV, 4)
-                .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 3))
-                .input(MetaItems.COVER_SOLAR_PANEL_UV, 1)
-                .fluidInputs(GTEMaterials.VibrantAlloy.getFluid(18432))
-                .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
-                .fluidInputs(Materials.Neutronium.getFluid(9216))
-                .outputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN()))
-                .duration(1200).EUt(VA[UV])
-                .buildAndRegister();
+        if (GTEConfigHolder.gteFlag.addCreativeRecipe) {
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(MetaItems.ENERGY_CLUSTER, 4)
+                    .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
+                    .input(MetaTileEntities.HULL[UV])
+                    .input(MetaItems.CRYSTAL_MAINFRAME_UV, 4)
+                    .inputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN(), 8, 3))
+                    .input(MetaItems.COVER_SOLAR_PANEL_UV, 1)
+                    .fluidInputs(GTEMaterials.VibrantAlloy.getFluid(18432))
+                    .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
+                    .fluidInputs(Materials.Neutronium.getFluid(9216))
+                    .outputs(new ItemStack(PowerToolObject.block_cap_bank.getBlockNN()))
+                    .duration(1200).EUt(VA[UV])
+                    .buildAndRegister();
 
-        ModHandler.addShapelessNBTClearingRecipe("creative_capacitor_bank_nbt",
-                new ItemStack(PowerToolObject.block_cap_bank.getBlockNN()),
-                new ItemStack(PowerToolObject.block_cap_bank.getBlockNN()));
+            ModHandler.addShapelessNBTClearingRecipe("creative_capacitor_bank_nbt",
+                    new ItemStack(PowerToolObject.block_cap_bank.getBlockNN()),
+                    new ItemStack(PowerToolObject.block_cap_bank.getBlockNN()));
+        }
 
         // Vial Extractor
         MetaTileEntityLoader.registerMachineRecipe(true,

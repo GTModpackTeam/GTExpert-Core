@@ -21,6 +21,7 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.Mods;
+import gtexpert.common.GTEConfigHolder;
 import gtexpert.integration.ae.AEConfigHolder;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
@@ -29,19 +30,21 @@ public class AEBlocksRecipe {
 
     public static void init() {
         // Creative Energy Cell
-        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(MetaItems.ENERGY_CLUSTER, 4)
-                .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
-                .input(MetaTileEntities.HULL[UV])
-                .input(MetaItems.CRYSTAL_MAINFRAME_UV, 4)
-                .inputs(Mods.AppliedEnergistics2.getItem("dense_energy_cell", 8))
-                .input(MetaItems.COVER_SOLAR_PANEL_UV, 1)
-                .fluidInputs(GTEMaterials.Fluix.getFluid(18432))
-                .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
-                .fluidInputs(Materials.Neutronium.getFluid(9216))
-                .outputs(Mods.AppliedEnergistics2.getItem("creative_energy_cell"))
-                .duration(1200).EUt(VA[UV])
-                .buildAndRegister();
+        if (GTEConfigHolder.gteFlag.addCreativeRecipe) {
+            RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                    .input(MetaItems.ENERGY_CLUSTER, 4)
+                    .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_CASING_MK3, 8))
+                    .input(MetaTileEntities.HULL[UV])
+                    .input(MetaItems.CRYSTAL_MAINFRAME_UV, 4)
+                    .inputs(Mods.AppliedEnergistics2.getItem("dense_energy_cell", 8))
+                    .input(MetaItems.COVER_SOLAR_PANEL_UV, 1)
+                    .fluidInputs(GTEMaterials.Fluix.getFluid(18432))
+                    .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
+                    .fluidInputs(Materials.Neutronium.getFluid(9216))
+                    .outputs(Mods.AppliedEnergistics2.getItem("creative_energy_cell"))
+                    .duration(1200).EUt(VA[UV])
+                    .buildAndRegister();
+        }
 
         // ME Interface
         ModHandler.removeRecipeByName(
