@@ -2,8 +2,6 @@ package gtexpert.common.items;
 
 import static gtexpert.common.items.GTEMetaItems.*;
 
-import gtexpert.api.util.GTELog;
-
 import net.minecraft.client.resources.I18n;
 
 import gregtech.api.GTValues;
@@ -13,6 +11,7 @@ import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.behaviors.TooltipBehavior;
 
+import gtexpert.api.util.GTELog;
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.integration.ae.AEConfigHolder;
 
@@ -60,8 +59,7 @@ public class GTEMetaItem1 extends StandardMetaItem {
             GTE_FIELD_GENERATOR = addItem(17, "field.generator." + componentsName);
             GTE_EMITTER = addItem(18, "emitter." + componentsName);
             GTE_SENSOR = addItem(19, "sensor." + componentsName);
-        }
-        else {
+        } else {
             GTELog.logger.error("Invalid componentsName setting: {}",
                     componentsName, new Throwable());
         }
