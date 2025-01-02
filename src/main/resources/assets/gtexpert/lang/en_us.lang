@@ -27,6 +27,9 @@ gtexpert.machine.advanced_gas_collector.tooltip.1=§dAuthor:§f @tier940
 gtexpert.machine.large_gas_collector.name=Large Gas Collector
 gtexpert.machine.large_gas_collector.tooltip=Squeeze air out of dust
 gtexpert.machine.large_gas_collector.tooltip.1=§dAuthor:§f @tier940
+gtexpert.machine.parallel_assembly_line.name=Parallel Assembly Line
+gtexpert.machine.parallel_assembly_line.tooltip=Assassins from GTNH
+gtexpert.machine.parallel_assembly_line.tooltip.1=§dAuthor:§f @tier940
 
 # singleblock
 # Auto Chisel
