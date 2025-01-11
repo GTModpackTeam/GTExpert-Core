@@ -4,6 +4,9 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
 
+import net.minecraftforge.fluids.FluidStack;
+
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.category.RecipeCategories;
@@ -15,6 +18,7 @@ import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
+import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
@@ -325,6 +329,11 @@ public class AEMaterialsRecipe {
         int durationFluixAlloy = propertyFluixAlloy.getDurationOverride();
         if (durationFluixAlloy < 0) durationFluixAlloy = Math.max(1,
                 (int) (GTEMaterials.FluixAlloy.getMass() * propertyFluixAlloy.getBlastTemperature() / 100L));
+        int vacuumEUt = propertyFluixAlloy.getVacuumEUtOverride() != -1 ? propertyFluixAlloy.getVacuumEUtOverride() :
+                VA[MV];
+        int vacuumDuration = propertyFluixAlloy.getVacuumDurationOverride() != -1 ?
+                propertyFluixAlloy.getVacuumDurationOverride() :
+                (int) GTEMaterials.FluixAlloy.getMass() * 3;
 
         // Fluid
         if (Mods.DraconicEvolution.isModLoaded()) {
@@ -377,6 +386,28 @@ public class AEMaterialsRecipe {
                 .output(dust, GTEMaterials.FluixAlloy, 8)
                 .duration(200).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
+
+        // Ingot
+        RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                .notConsumable(MetaItems.SHAPE_MOLD_INGOT)
+                .fluidInputs(new FluidStack(GTEMaterials.FluixAlloy.getFluid(GCYMFluidStorageKeys.MOLTEN), 144))
+                .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 500))
+                .fluidOutputs(Materials.Helium.getFluid(250))
+                .output(ingot, GTEMaterials.FluixAlloy, 1)
+                .duration(vacuumDuration)
+                .EUt(vacuumEUt)
+                .buildAndRegister();
+        if (Mods.DraconicEvolution.isModLoaded()) {
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .notConsumable(MetaItems.SHAPE_MOLD_INGOT)
+                    .fluidInputs(new FluidStack(GTEMaterials.FluixAlloy.getFluid(GCYMFluidStorageKeys.MOLTEN), 144))
+                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
+                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
+                    .output(ingot, GTEMaterials.FluixAlloy, 1)
+                    .duration(vacuumDuration / 2)
+                    .EUt(vacuumEUt)
+                    .buildAndRegister();
+        }
     }
 
     public static void remove() {
