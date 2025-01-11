@@ -1,3 +1,8 @@
+# v2.4.1
+- A recipe for processing FluixAlloy Molten in AlloyBlastFurnace into Ingot using Mold has been added
+
+* * *
+
 # v2.4.0
 - Disable automatic meal function for helmets [#300](https://github.com/GTModpackTeam/GTExpert-Core/pull/300)
 - Removed conflicts with GTWP [#303](https://github.com/GTModpackTeam/GTExpert-Core/pull/303)
