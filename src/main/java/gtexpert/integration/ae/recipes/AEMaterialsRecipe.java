@@ -4,6 +4,8 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gtexpert.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
 
+import net.minecraftforge.fluids.FluidStack;
+
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -16,18 +18,15 @@ import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
+import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-
-import gregtech.common.items.MetaItems;
 
 import gtexpert.api.GTEValues;
 import gtexpert.api.unification.material.GTEMaterials;
 import gtexpert.api.util.Mods;
 import gtexpert.loaders.recipe.handlers.GTEImplosionRecipeHandler;
-
-import net.minecraftforge.fluids.FluidStack;
 
 public class AEMaterialsRecipe {
 
@@ -330,8 +329,10 @@ public class AEMaterialsRecipe {
         int durationFluixAlloy = propertyFluixAlloy.getDurationOverride();
         if (durationFluixAlloy < 0) durationFluixAlloy = Math.max(1,
                 (int) (GTEMaterials.FluixAlloy.getMass() * propertyFluixAlloy.getBlastTemperature() / 100L));
-        int vacuumEUt = propertyFluixAlloy.getVacuumEUtOverride() != -1 ? propertyFluixAlloy.getVacuumEUtOverride() : VA[MV];
-        int vacuumDuration = propertyFluixAlloy.getVacuumDurationOverride() != -1 ? propertyFluixAlloy.getVacuumDurationOverride() :
+        int vacuumEUt = propertyFluixAlloy.getVacuumEUtOverride() != -1 ? propertyFluixAlloy.getVacuumEUtOverride() :
+                VA[MV];
+        int vacuumDuration = propertyFluixAlloy.getVacuumDurationOverride() != -1 ?
+                propertyFluixAlloy.getVacuumDurationOverride() :
                 (int) GTEMaterials.FluixAlloy.getMass() * 3;
 
         // Fluid
