@@ -94,16 +94,6 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
     }
 
     @Override
-    public boolean allowsExtendedFacing() {
-        return false;
-    }
-
-    @Override
-    public boolean allowsFlip() {
-        return false;
-    }
-
-    @Override
     public boolean isTiered() {
         return true;
     }
