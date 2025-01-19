@@ -13,19 +13,10 @@ import gregtech.client.renderer.ICubeRenderer;
 
 import gtexpert.common.GTEConfigHolder;
 import gtexpert.common.metatileentities.multi.*;
-import gtexpert.common.metatileentities.single.SteamAssembler;
-import gtexpert.common.metatileentities.single.SteamCircuitAssembler;
-import gtexpert.common.metatileentities.single.SteamMixer;
 
 public class GTEMetaTileEntities {
 
     // Single Machine
-    public static SteamMixer STEAM_MIXER_BRONZE;
-    public static SteamMixer STEAM_MIXER_STEEL;
-    public static SteamAssembler STEAM_ASSEMBLER_BRONZE;
-    public static SteamAssembler STEAM_ASSEMBLER_STEEL;
-    public static SteamCircuitAssembler STEAM_CIRCUIT_ASSEMBLER_BRONZE;
-    public static SteamCircuitAssembler STEAM_CIRCUIT_ASSEMBLER_STEEL;
 
     // Multi Machine
     public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
@@ -35,21 +26,7 @@ public class GTEMetaTileEntities {
 
     public static void init() {
         // Single Machine
-        // Steam machine 11004~11009
-        if (GTEConfigHolder.gteFlag.steamNewMachine) {
-            STEAM_MIXER_BRONZE = registerMetaTileEntity(11004,
-                    new SteamMixer(gteId("steam_mixer_bronze"), false));
-            STEAM_MIXER_STEEL = registerMetaTileEntity(11005,
-                    new SteamMixer(gteId("steam_mixer_steel"), true));
-            STEAM_ASSEMBLER_BRONZE = registerMetaTileEntity(11006,
-                    new SteamAssembler(gteId("steam_assembler_bronze"), false));
-            STEAM_ASSEMBLER_STEEL = registerMetaTileEntity(11007,
-                    new SteamAssembler(gteId("steam_assembler_steel"), true));
-            STEAM_CIRCUIT_ASSEMBLER_BRONZE = registerMetaTileEntity(11008,
-                    new SteamCircuitAssembler(gteId("steam_circuit_assembler_bronze"), false));
-            STEAM_CIRCUIT_ASSEMBLER_STEEL = registerMetaTileEntity(11009,
-                    new SteamCircuitAssembler(gteId("steam_circuit_assembler_steel"), true));
-        }
+        // Free: 11004~11999
 
         // Multi Machine
         // Free: 12000~12001

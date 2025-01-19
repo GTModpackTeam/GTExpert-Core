@@ -37,20 +37,6 @@ gtexpert.machine.auto_chisel.mv.tooltip=Your ideal, we will sculpt it/nMaterial 
 gtexpert.machine.auto_chisel.hv.name=Advanced Auto Chisel II
 gtexpert.machine.auto_chisel.hv.tooltip=Your ideal, we will sculpt it/nMaterial in the left, chiseling to the right. See JEI's Chiseling page for details./n§dAuthor:§f @tier940
 
-# Steam Machines
-gtexpert.machine.steam_mixer_bronze.name=Steam Mixer
-gtexpert.machine.steam_mixer_steel.name=High Pressure Steam Mixer
-gtexpert.machine.steam_mixer.tooltip=§dAuthor:§f @tier940
-gtexpert.machine.steam_mixer.tooltip.1=Better than mixing by hand
-gtexpert.machine.steam_assembler_bronze.name=Steam Assembling Machine
-gtexpert.machine.steam_assembler_steel.name=High Pressure Steam Assembling Machine
-gtexpert.machine.steam_assembler.tooltip=§dAuthor:§f @tier940
-gtexpert.machine.steam_assembler.tooltip.1=Better than assembling by hand
-gtexpert.machine.steam_circuit_assembler_bronze.name=Steam Circuit Assembler
-gtexpert.machine.steam_circuit_assembler_steel.name=High Pressure Steam Circuit Assembler
-gtexpert.machine.steam_circuit_assembler.tooltip=§dAuthor:§f @tier940
-gtexpert.machine.steam_circuit_assembler.tooltip.1=Better than making circuits by hand
-
 # Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
 gtexpert.machine.vial_extractor.lv.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
