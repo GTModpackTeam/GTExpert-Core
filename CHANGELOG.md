@@ -1,5 +1,10 @@
-# v2.4.1
+# v2.4.2
 - Delete unused steam machines.
+
+* * *
+
+# v2.4.1
+- A recipe for processing FluixAlloy Molten in AlloyBlastFurnace into Ingot using Mold has been added.
 
 * * *
 
