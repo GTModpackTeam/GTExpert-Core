@@ -2,6 +2,14 @@ package com.github.gtexpert.core.common.metatileentities.multi;
 
 import java.util.List;
 
+import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
+
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+
+import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
+
+import gregtech.client.utils.TooltipHelper;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -33,10 +41,13 @@ import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockControl
 
 import com.github.gtexpert.core.api.gui.GTEGuiTextures;
 
+import static gregtech.api.recipes.logic.OverclockingLogic.*;
+
 public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityAdvancedChemicalPlant(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.LARGE_CHEMICAL_RECIPES);
+        this.recipeMapWorkable = new AdvancedChemicalPlantWorkableHandler(this);
     }
 
     @Override
@@ -62,16 +73,6 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
                 .where('C', heatingCoils().setMinGlobalLimited(12).setMaxGlobalLimited(12))
                 .where(' ', any())
                 .build();
-    }
-
-    @Override
-    public boolean allowsExtendedFacing() {
-        return false;
-    }
-
-    @Override
-    public boolean allowsFlip() {
-        return false;
     }
 
     @Override
@@ -112,6 +113,7 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.advanced_chemical_plant.tooltip.1"));
+        tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
     }
 
     @Override
@@ -134,5 +136,32 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
     @Override
     protected ICubeRenderer getFrontOverlay() {
         return Textures.CHEMICAL_REACTOR_OVERLAY;
+    }
+
+    @SuppressWarnings("InnerClassMayBeStatic")
+    private class AdvancedChemicalPlantWorkableHandler extends GCYMMultiblockRecipeLogic {
+
+        public AdvancedChemicalPlantWorkableHandler(RecipeMapMultiblockController tileEntity) {
+            super(tileEntity);
+        }
+
+        protected int[] runOverclockingLogic(@NotNull IRecipePropertyStorage propertyStorage, int recipeEUt,
+                                             long maxVoltage, int duration, int amountOC) {
+            return standardOverclockingLogic(
+                    Math.abs(recipeEUt),
+                    maxVoltage,
+                    duration,
+                    amountOC,
+                    getOverclockingDurationDivisor(),
+                    getOverclockingVoltageMultiplier());
+        }
+
+        protected double getOverclockingDurationDivisor() {
+            return PERFECT_OVERCLOCK_DURATION_DIVISOR;
+        }
+
+        protected double getOverclockingVoltageMultiplier() {
+            return STANDARD_OVERCLOCK_VOLTAGE_MULTIPLIER;
+        }
     }
 }
