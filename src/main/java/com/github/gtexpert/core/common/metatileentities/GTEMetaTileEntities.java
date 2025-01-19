@@ -1,18 +1,18 @@
 package com.github.gtexpert.core.common.metatileentities;
 
-import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static com.github.gtexpert.core.api.util.GTEUtility.gteId;
+import static gregtech.common.metatileentities.MetaTileEntities.*;
 
 import java.util.function.Function;
 
 import net.minecraft.util.ResourceLocation;
 
+import com.github.gtexpert.core.common.GTEConfigHolder;
+import com.github.gtexpert.core.common.metatileentities.multi.*;
+
 import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
-
-import com.github.gtexpert.core.common.GTEConfigHolder;
-import com.github.gtexpert.core.common.metatileentities.multi.*;
 
 public class GTEMetaTileEntities {
 

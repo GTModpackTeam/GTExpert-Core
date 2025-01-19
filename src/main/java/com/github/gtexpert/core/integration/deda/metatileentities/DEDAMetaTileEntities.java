@@ -1,7 +1,7 @@
 package com.github.gtexpert.core.integration.deda.metatileentities;
 
-import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 import static com.github.gtexpert.core.api.util.GTEUtility.gteId;
+import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 
 public class DEDAMetaTileEntities {
 

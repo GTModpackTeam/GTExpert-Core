@@ -18,10 +18,6 @@ import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import gregtech.GTInternalTags;
-import gregtech.api.GregTechAPI;
-import gregtech.api.cover.CoverDefinition;
-
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.util.GTELog;
 import com.github.gtexpert.core.api.util.Mods;
@@ -29,6 +25,10 @@ import com.github.gtexpert.core.common.GTEConfigHolder;
 import com.github.gtexpert.core.common.items.behaviors.GTECoverBehaviors;
 import com.github.gtexpert.core.modules.GTEModuleManager;
 import com.github.gtexpert.core.modules.GTEModules;
+
+import gregtech.GTInternalTags;
+import gregtech.api.GregTechAPI;
+import gregtech.api.cover.CoverDefinition;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,

@@ -1,15 +1,15 @@
 package com.github.gtexpert.core.integration.aeaditions.recipes;
 
+import static com.github.gtexpert.core.integration.ae.AEUtil.tierMaterials;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static com.github.gtexpert.core.integration.ae.AEUtil.tierMaterials;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.util.Mods;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
-
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.util.Mods;
 
 public class AEAItemsRecipe {
 

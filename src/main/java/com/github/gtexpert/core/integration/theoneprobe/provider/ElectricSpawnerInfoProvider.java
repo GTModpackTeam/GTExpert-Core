@@ -7,11 +7,11 @@ import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.MetaTileEntityHolder;
-
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.integration.eio.metatileentities.MetaTileEntityElectricSpawner;
+
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.MetaTileEntityHolder;
 
 import mcjty.theoneprobe.api.*;
 

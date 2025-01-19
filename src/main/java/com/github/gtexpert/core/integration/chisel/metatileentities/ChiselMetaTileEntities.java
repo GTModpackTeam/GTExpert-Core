@@ -1,13 +1,13 @@
 package com.github.gtexpert.core.integration.chisel.metatileentities;
 
+import static com.github.gtexpert.core.api.util.GTEUtility.gteId;
 import static gregtech.api.GTValues.*;
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
-import static com.github.gtexpert.core.api.util.GTEUtility.gteId;
-
-import gregtech.api.util.GTUtility;
 
 import com.github.gtexpert.core.client.GTETextures;
 import com.github.gtexpert.core.integration.chisel.ChiselRecipeMaps;
+
+import gregtech.api.util.GTUtility;
 
 public class ChiselMetaTileEntities {
 

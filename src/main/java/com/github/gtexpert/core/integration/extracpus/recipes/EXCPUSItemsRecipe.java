@@ -3,9 +3,9 @@ package com.github.gtexpert.core.integration.extracpus.recipes;
 import static gregtech.api.GTValues.ULV;
 import static gregtech.api.GTValues.VA;
 
-import gregtech.api.recipes.RecipeMaps;
-
 import com.github.gtexpert.core.api.util.Mods;
+
+import gregtech.api.recipes.RecipeMaps;
 
 public class EXCPUSItemsRecipe {
 

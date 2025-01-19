@@ -12,6 +12,18 @@ import net.minecraft.item.ItemStack;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.recipes.GTERecipeMaps;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.GTELog;
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.common.GTEConfigHolder;
+import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
+import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
+import com.github.gtexpert.core.common.items.GTEMetaItems;
+import com.github.gtexpert.core.common.metatileentities.GTEMetaTileEntities;
+
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.fluids.store.FluidStorageKeys;
@@ -36,18 +48,6 @@ import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.recipes.GTERecipeMaps;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.GTELog;
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.common.GTEConfigHolder;
-import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
-import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
-import com.github.gtexpert.core.common.items.GTEMetaItems;
-import com.github.gtexpert.core.common.metatileentities.GTEMetaTileEntities;
 
 public class GTERecipe {
 

@@ -1,9 +1,9 @@
 package com.github.gtexpert.core.integration.tc.recipes;
 
+import com.github.gtexpert.core.api.util.Mods;
+
 import gregtech.api.recipes.ModHandler;
 import gregtech.common.ConfigHolder;
-
-import com.github.gtexpert.core.api.util.Mods;
 
 public class TCMaterialsRecipe {
 

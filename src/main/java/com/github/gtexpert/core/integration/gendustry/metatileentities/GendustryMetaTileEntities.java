@@ -1,8 +1,8 @@
 package com.github.gtexpert.core.integration.gendustry.metatileentities;
 
+import static com.github.gtexpert.core.api.util.GTEUtility.gteId;
 import static gregtech.api.GTValues.V;
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntities;
-import static com.github.gtexpert.core.api.util.GTEUtility.gteId;
 
 import com.github.gtexpert.core.client.GTETextures;
 import com.github.gtexpert.core.common.GTEConfigHolder;

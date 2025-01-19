@@ -1,10 +1,10 @@
 package com.github.gtexpert.core.api.unification.material.ingredients;
 
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static com.github.gtexpert.core.api.unification.GTEElements.*;
 import static com.github.gtexpert.core.api.unification.material.GTEMaterials.*;
 import static com.github.gtexpert.core.api.util.GTEUtility.gteId;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.info.MaterialFlags.*;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;

@@ -17,6 +17,11 @@ import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
+import com.github.gtexpert.core.api.util.GTELog;
+import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
+import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeProperty;
+import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
+import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeProperty;
 
 import gregtech.api.capability.FeCompat;
 import gregtech.api.capability.GregtechCapabilities;
@@ -24,12 +29,6 @@ import gregtech.api.capability.IElectricItem;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-
-import com.github.gtexpert.core.api.util.GTELog;
-import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
-import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeProperty;
-import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
-import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeProperty;
 
 import cofh.redstoneflux.api.IEnergyContainerItem;
 

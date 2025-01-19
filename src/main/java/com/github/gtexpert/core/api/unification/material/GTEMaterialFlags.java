@@ -2,13 +2,13 @@ package com.github.gtexpert.core.api.unification.material;
 
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 
+import com.github.gtexpert.core.api.util.Mods;
+
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.*;
 import gregtech.api.unification.ore.OrePrefix;
-
-import com.github.gtexpert.core.api.util.Mods;
 
 public class GTEMaterialFlags {
 
