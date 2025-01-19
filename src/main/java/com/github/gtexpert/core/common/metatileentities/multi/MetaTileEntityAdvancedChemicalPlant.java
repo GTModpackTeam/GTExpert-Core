@@ -1,14 +1,8 @@
 package com.github.gtexpert.core.common.metatileentities.multi;
 
+import static gregtech.api.recipes.logic.OverclockingLogic.*;
+
 import java.util.List;
-
-import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
-
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-
-import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
-
-import gregtech.client.utils.TooltipHelper;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -26,22 +20,24 @@ import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
+import gregtech.client.utils.TooltipHelper;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
 
+import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 
 import com.github.gtexpert.core.api.gui.GTEGuiTextures;
-
-import static gregtech.api.recipes.logic.OverclockingLogic.*;
 
 public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblockController {
 
