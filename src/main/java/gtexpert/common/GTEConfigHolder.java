@@ -39,17 +39,6 @@ public class GTEConfigHolder {
         public String componentsRecipeType = "easy";
 
         @Config.Comment({
-                "Enable the new steam machines.",
-                "Steam Mixer, Steam Assembler, Steam Circuit Assembler",
-                "Default: false" })
-        public boolean steamNewMachine = false;
-
-        @Config.Comment({
-                "Recipe Type. Options: none (no generated recipes), easy (2x2 crafting(WIP)), normal (3x3 crafting).",
-                "The steamNewMachine must also be enabled.", "Default: normal" })
-        public String steamRecipeType = "normal";
-
-        @Config.Comment({
                 "1. When enabled, the following recipes will be changed to Peaceful difficulty: ",
                 "Nether Star Dust, Skeleton Skull, Wither Skeleton Skull, Zombie Head, Creeper Head, Enderman Head",
                 "Default: false" })

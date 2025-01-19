@@ -764,68 +764,6 @@ public class GTERecipe {
     }
 
     private static void blocks() {
-        if (GTEConfigHolder.gteFlag.steamNewMachine) {
-            switch (GTEConfigHolder.gteFlag.steamRecipeType) {
-                case "none":
-                    return;
-                case "easy":
-                case "normal":
-                    // Steam Mixer
-                    ModHandler.addShapedRecipe(true, "steam_mixer_bronze",
-                            GTEMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(), "GRG", "GEG", "CMC",
-                            'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
-                            'E', GTEMetaItems.GTE_ELECTRIC_MOTOR,
-                            'R', new UnificationEntry(rotor, Materials.Bronze),
-                            'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                            'G', Blocks.GLASS);
-
-                    // Steam Assembler
-                    ModHandler.addShapedRecipe(true, "steam_assembler_bronze",
-                            GTEMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(), "ACA", "VMV", "WCW",
-                            'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
-                            'V', GTEMetaItems.GTE_CONVEYOR_MODULE,
-                            'A', GTEMetaItems.GTE_ROBOT_ARM,
-                            'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ULV),
-                            'W', new UnificationEntry(cableGtSingle, Materials.Lead));
-
-                    // Steam Circuit Assembler
-                    ModHandler.addShapedRecipe(true, "steam_circuit_assembler_bronze",
-                            GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(), "RIE", "CHC", "WIW",
-                            'R', GTEMetaItems.GTE_ROBOT_ARM,
-                            'I', GTEUtility.oreDictionaryCircuit(GTValues.LV),
-                            'E', GTEMetaItems.GTE_EMITTER,
-                            'C', GTEMetaItems.GTE_CONVEYOR_MODULE,
-                            'H', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL),
-                            'W', new UnificationEntry(cableGtSingle, Materials.Lead));
-
-                    // High Pressure Steam Mixer
-                    ModHandler.addShapedRecipe(true, "steam_compressor_steel",
-                            GTEMetaTileEntities.STEAM_MIXER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
-                            'M', GTEMetaTileEntities.STEAM_MIXER_BRONZE.getStackForm(),
-                            'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
-                            'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
-                            'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
-
-                    // High Pressure Steam Assembler
-                    ModHandler.addShapedRecipe(true, "steam_assembler_steel",
-                            GTEMetaTileEntities.STEAM_ASSEMBLER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
-                            'M', GTEMetaTileEntities.STEAM_ASSEMBLER_BRONZE.getStackForm(),
-                            'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
-                            'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
-                            'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
-
-                    // High Pressure Steam Circuit Assembler
-                    ModHandler.addShapedRecipe(true, "steam_circuit_assembler_steel",
-                            GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_STEEL.getStackForm(), "PSP", "WMW", "PPP",
-                            'M', GTEMetaTileEntities.STEAM_CIRCUIT_ASSEMBLER_BRONZE.getStackForm(),
-                            'S', new UnificationEntry(OrePrefix.plate, Materials.Steel),
-                            'W', new UnificationEntry(OrePrefix.plate, Materials.WroughtIron),
-                            'P', new UnificationEntry(OrePrefix.pipeSmallFluid, Materials.TinAlloy));
-                default:
-                    GTELog.logger.error("Invalid steamRecipeType setting: " + GTEConfigHolder.gteFlag.steamRecipeType);
-            }
-        }
-
         // Large Oil Cracking Unit
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit",
                 GTEMetaTileEntities.LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",

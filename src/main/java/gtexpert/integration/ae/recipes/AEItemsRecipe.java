@@ -542,10 +542,10 @@ public class AEItemsRecipe {
         // Formation Core
         ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("materials/formationcore"));
         ModHandler.addShapedRecipe(true, "formation_core",
-                Mods.AppliedEnergistics2.getItem("material", 2, 43),
+                Mods.AppliedEnergistics2.getItem("material", 1, 43),
                 "SES", "LQL", "SES",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
-                'Q', "gemMaterials.NetherQuartz",
+                'Q', "gemNetherQuartz",
                 'E', Mods.AppliedEnergistics2.getItem("material", 1, 24),
                 'L', Mods.AppliedEnergistics2.getItem("material", 1, 22));
         ModHandler.addShapedRecipe("formation_core_pure",
@@ -568,7 +568,7 @@ public class AEItemsRecipe {
         // Annihilation Core
         ModHandler.removeRecipeByName(Mods.AppliedEnergistics2.getResource("materials/annihilationcore"));
         ModHandler.addShapedRecipe(true, "annihilation_core",
-                Mods.AppliedEnergistics2.getItem("material", 2, 44),
+                Mods.AppliedEnergistics2.getItem("material", 1, 44),
                 "SES", "CQC", "SES",
                 'S', OreDictUnifier.get(stick, tierMaterials[GTEValues.ae2VoltageTier - 1]),
                 'Q', "gemCertusQuartz",
