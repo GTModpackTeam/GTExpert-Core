@@ -2,15 +2,15 @@ package com.github.gtexpert.core.integration.binnies.extrabees.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.ffm.FFMConfigHolder;
-import com.github.gtexpert.core.integration.ffm.FFMUtility;
-import com.github.gtexpert.core.integration.ffm.recipes.machines.CarpenterLoader;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
+
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.ffm.FFMConfigHolder;
+import com.github.gtexpert.core.integration.ffm.FFMUtility;
+import com.github.gtexpert.core.integration.ffm.recipes.machines.CarpenterLoader;
 
 import forestry.api.recipes.RecipeManagers;
 

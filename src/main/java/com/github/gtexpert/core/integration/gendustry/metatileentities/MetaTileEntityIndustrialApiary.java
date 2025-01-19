@@ -4,12 +4,12 @@ import java.util.function.Function;
 
 import net.minecraft.util.ResourceLocation;
 
-import com.github.gtexpert.core.common.metatileentities.GTESimpleMachineMetaTileEntity;
-
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
+
+import com.github.gtexpert.core.common.metatileentities.GTESimpleMachineMetaTileEntity;
 
 public class MetaTileEntityIndustrialApiary extends GTESimpleMachineMetaTileEntity {
 

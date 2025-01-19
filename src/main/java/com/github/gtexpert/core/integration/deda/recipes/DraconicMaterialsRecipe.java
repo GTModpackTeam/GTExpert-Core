@@ -15,9 +15,6 @@ import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 import com.brandon3055.draconicevolution.DEFeatures;
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.Mods;
 
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
@@ -42,6 +39,10 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.Mods;
 
 public class DraconicMaterialsRecipe {
 

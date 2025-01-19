@@ -1,9 +1,9 @@
 package com.github.gtexpert.core.api.capability;
 
-import com.github.gtexpert.core.integration.deda.recipemaps.RecipeMapDraconicFusion;
-
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+
+import com.github.gtexpert.core.integration.deda.recipemaps.RecipeMapDraconicFusion;
 
 /**
  * This recipe logic disables cache used for speeding up recipe check.

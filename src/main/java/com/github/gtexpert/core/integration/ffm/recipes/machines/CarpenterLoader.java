@@ -6,12 +6,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import com.github.gtexpert.core.api.util.GTELog;
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.ffm.FFMConfigHolder;
-import com.github.gtexpert.core.integration.ffm.FFMUtility;
-
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
@@ -24,6 +18,12 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+
+import com.github.gtexpert.core.api.util.GTELog;
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.ffm.FFMConfigHolder;
+import com.github.gtexpert.core.integration.ffm.FFMUtility;
 
 import forestry.api.circuits.ICircuit;
 import forestry.api.recipes.RecipeManagers;

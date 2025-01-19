@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.brandon3055.draconicevolution.lib.ToolUpgradeRecipe;
-import com.github.gtexpert.core.api.util.GTELog;
 
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
@@ -19,6 +18,8 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
+
+import com.github.gtexpert.core.api.util.GTELog;
 
 public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
 

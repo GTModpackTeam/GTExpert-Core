@@ -6,13 +6,13 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.unification.material.Materials;
+
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 import com.github.gtexpert.core.api.util.GTEUtility;
 import com.github.gtexpert.core.api.util.Mods;
-
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.material.Materials;
 
 import crazypants.enderio.base.init.ModObject;
 

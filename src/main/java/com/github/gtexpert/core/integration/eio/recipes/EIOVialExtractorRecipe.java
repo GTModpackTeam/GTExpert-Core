@@ -8,10 +8,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import gregtech.api.unification.material.Materials;
+
 import com.github.gtexpert.core.api.util.Mods;
 import com.github.gtexpert.core.integration.eio.EnderIOModule;
-
-import gregtech.api.unification.material.Materials;
 
 import crazypants.enderio.base.init.ModObject;
 

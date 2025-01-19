@@ -6,13 +6,14 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.google.common.collect.ImmutableList;
+
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.modules.GTEModule;
 import com.github.gtexpert.core.api.util.Mods;
 import com.github.gtexpert.core.integration.GTEIntegrationSubmodule;
 import com.github.gtexpert.core.integration.theoneprobe.provider.ElectricSpawnerInfoProvider;
 import com.github.gtexpert.core.modules.GTEModules;
-import com.google.common.collect.ImmutableList;
 
 import mcjty.theoneprobe.TheOneProbe;
 import mcjty.theoneprobe.api.ITheOneProbe;

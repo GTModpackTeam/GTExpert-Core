@@ -3,10 +3,10 @@ package com.github.gtexpert.core.integration.nae2.recipes;
 import static gregtech.api.GTValues.ULV;
 import static gregtech.api.GTValues.VA;
 
+import gregtech.api.recipes.RecipeMaps;
+
 import com.github.gtexpert.core.api.util.Mods;
 import com.github.gtexpert.core.integration.nae2.NAE2ConfigHolder;
-
-import gregtech.api.recipes.RecipeMaps;
 
 public class NAE2ItemsRecipe {
 

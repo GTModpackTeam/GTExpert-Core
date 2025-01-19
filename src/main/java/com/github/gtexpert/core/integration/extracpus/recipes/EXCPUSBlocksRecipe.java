@@ -3,11 +3,11 @@ package com.github.gtexpert.core.integration.extracpus.recipes;
 import static gregtech.api.GTValues.ULV;
 import static gregtech.api.GTValues.VA;
 
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.extracpus.EXCPUSConfigHolder;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.extracpus.EXCPUSConfigHolder;
 
 public class EXCPUSBlocksRecipe {
 

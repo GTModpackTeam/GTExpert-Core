@@ -3,13 +3,13 @@ package com.github.gtexpert.core.integration.ae.loaders;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.api.util.Mods;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
+
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.api.util.Mods;
 
 public class AEOreDictionaryLoader {
 

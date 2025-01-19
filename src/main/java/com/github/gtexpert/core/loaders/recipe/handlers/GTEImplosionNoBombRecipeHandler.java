@@ -4,10 +4,10 @@ import static gregtech.api.unification.ore.OrePrefix.block;
 
 import net.minecraft.item.ItemStack;
 
-import com.github.gtexpert.inb.api.recipes.INBRecipeMaps;
-
 import gregtech.api.unification.material.Material;
 import gregtech.api.util.GTUtility;
+
+import com.github.gtexpert.inb.api.recipes.INBRecipeMaps;
 
 public class GTEImplosionNoBombRecipeHandler {
 

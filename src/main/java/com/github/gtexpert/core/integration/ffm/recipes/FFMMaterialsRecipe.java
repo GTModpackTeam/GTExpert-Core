@@ -1,8 +1,8 @@
 package com.github.gtexpert.core.integration.ffm.recipes;
 
-import com.github.gtexpert.core.api.util.Mods;
-
 import gregtech.api.recipes.ModHandler;
+
+import com.github.gtexpert.core.api.util.Mods;
 
 public class FFMMaterialsRecipe {
 

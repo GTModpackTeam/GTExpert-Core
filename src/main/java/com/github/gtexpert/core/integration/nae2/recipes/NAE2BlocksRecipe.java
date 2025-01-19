@@ -3,11 +3,11 @@ package com.github.gtexpert.core.integration.nae2.recipes;
 import static gregtech.api.GTValues.ULV;
 import static gregtech.api.GTValues.VA;
 
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.nae2.NAE2ConfigHolder;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
+
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.nae2.NAE2ConfigHolder;
 
 public class NAE2BlocksRecipe {
 

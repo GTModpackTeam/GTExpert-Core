@@ -6,12 +6,12 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.ffm.FFMUtility;
-
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.util.GTUtility;
+
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.ffm.FFMUtility;
 
 import binnie.extratrees.wood.EnumETLog;
 import forestry.api.arboriculture.*;

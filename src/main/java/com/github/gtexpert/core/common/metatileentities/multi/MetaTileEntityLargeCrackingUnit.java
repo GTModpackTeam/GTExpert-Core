@@ -16,9 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.github.gtexpert.core.api.gui.GTEGuiTextures;
-import com.github.gtexpert.core.common.GTEConfigHolder;
-
 import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -42,6 +39,9 @@ import gregtech.core.sound.GTSoundEvents;
 
 import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
+
+import com.github.gtexpert.core.api.gui.GTEGuiTextures;
+import com.github.gtexpert.core.common.GTEConfigHolder;
 
 public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockController {
 

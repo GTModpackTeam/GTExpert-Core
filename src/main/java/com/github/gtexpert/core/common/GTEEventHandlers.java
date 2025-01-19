@@ -20,12 +20,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import org.jetbrains.annotations.NotNull;
 
+import gregtech.api.items.armor.ArmorMetaItem;
+import gregtech.api.unification.material.event.MaterialEvent;
+
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 import com.github.gtexpert.core.common.items.GTEMetaItems;
-
-import gregtech.api.items.armor.ArmorMetaItem;
-import gregtech.api.unification.material.event.MaterialEvent;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTEEventHandlers {

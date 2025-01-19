@@ -9,15 +9,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import com.brandon3055.draconicevolution.DEFeatures;
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
-import com.github.gtexpert.core.common.blocks.GTEBlockWireCoil;
-import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
-import com.github.gtexpert.core.integration.deda.metatileentities.DEDAMetaTileEntities;
-import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeBuilder;
@@ -32,6 +23,16 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.metatileentities.MetaTileEntities;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
+import com.github.gtexpert.core.common.blocks.GTEBlockWireCoil;
+import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
+import com.github.gtexpert.core.integration.deda.metatileentities.DEDAMetaTileEntities;
+import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
 public class DraconicBlocksRecipe {
 

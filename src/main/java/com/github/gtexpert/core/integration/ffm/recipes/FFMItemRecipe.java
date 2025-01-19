@@ -2,12 +2,12 @@ package com.github.gtexpert.core.integration.ffm.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import com.github.gtexpert.core.api.util.Mods;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
+
+import com.github.gtexpert.core.api.util.Mods;
 
 public class FFMItemRecipe {
 

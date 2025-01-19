@@ -19,10 +19,11 @@ import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.modules.*;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.modules.*;
 
 public class GTEModuleManager implements IModuleManager {
 

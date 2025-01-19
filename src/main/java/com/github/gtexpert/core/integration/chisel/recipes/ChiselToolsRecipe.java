@@ -2,14 +2,14 @@ package com.github.gtexpert.core.integration.chisel.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.chisel.ChiselConfigHolder;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
+
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.chisel.ChiselConfigHolder;
 
 public class ChiselToolsRecipe {
 

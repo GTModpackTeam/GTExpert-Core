@@ -7,11 +7,11 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 
-import com.github.gtexpert.core.api.unification.material.info.GTEMaterialIconSet;
-
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.ToolProperty;
+
+import com.github.gtexpert.core.api.unification.material.info.GTEMaterialIconSet;
 
 public class AvaritiaFirstDegreeMaterials {
 

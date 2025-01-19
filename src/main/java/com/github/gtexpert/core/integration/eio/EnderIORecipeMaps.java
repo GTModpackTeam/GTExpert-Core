@@ -2,14 +2,14 @@ package com.github.gtexpert.core.integration.eio;
 
 import net.minecraft.util.SoundEvent;
 
-import com.github.gtexpert.core.api.gui.GTEGuiTextures;
-import com.github.gtexpert.core.api.util.Mods;
-
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.core.sound.GTSoundEvents;
+
+import com.github.gtexpert.core.api.gui.GTEGuiTextures;
+import com.github.gtexpert.core.api.util.Mods;
 
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenExpansion;

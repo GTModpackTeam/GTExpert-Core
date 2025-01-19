@@ -7,12 +7,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.common.GTEConfigHolder;
-import com.github.gtexpert.core.integration.ae.AEConfigHolder;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
@@ -23,6 +17,12 @@ import gregtech.common.blocks.BlockFusionCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.common.GTEConfigHolder;
+import com.github.gtexpert.core.integration.ae.AEConfigHolder;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
