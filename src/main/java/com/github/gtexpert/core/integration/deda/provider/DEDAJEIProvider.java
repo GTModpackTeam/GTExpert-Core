@@ -2,11 +2,11 @@ package com.github.gtexpert.core.integration.deda.provider;
 
 import org.jetbrains.annotations.NotNull;
 
+import gregtech.api.GTValues;
+
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.integration.deda.metatileentities.DEDAMetaTileEntities;
 import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
-
-import gregtech.api.GTValues;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;

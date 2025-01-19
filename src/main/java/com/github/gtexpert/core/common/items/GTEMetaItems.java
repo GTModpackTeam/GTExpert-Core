@@ -1,9 +1,9 @@
 package com.github.gtexpert.core.common.items;
 
-import com.github.gtexpert.core.common.items.armor.GTEMetaArmor;
-
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
+
+import com.github.gtexpert.core.common.items.armor.GTEMetaArmor;
 
 public final class GTEMetaItems {
 

@@ -14,13 +14,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.github.gtexpert.core.api.capability.MultiblockRecipeLogicNoCache;
-import com.github.gtexpert.core.api.gui.GTEGuiTextures;
-import com.github.gtexpert.core.client.GTETextures;
-import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
-import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
-import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
-
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -32,6 +25,13 @@ import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.core.sound.GTSoundEvents;
+
+import com.github.gtexpert.core.api.capability.MultiblockRecipeLogicNoCache;
+import com.github.gtexpert.core.api.gui.GTEGuiTextures;
+import com.github.gtexpert.core.client.GTETextures;
+import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
+import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
+import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
 public abstract class MetaTileEntityDraconiumFusion extends RecipeMapMultiblockController {
 

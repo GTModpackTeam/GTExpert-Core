@@ -6,17 +6,17 @@ import static gregtech.api.unification.ore.OrePrefix.plate;
 
 import net.minecraft.init.Items;
 
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.stack.UnificationEntry;
+
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 import com.github.gtexpert.core.api.util.GTEUtility;
 import com.github.gtexpert.core.api.util.Mods;
 import com.github.gtexpert.core.common.GTEConfigHolder;
 import com.github.gtexpert.core.common.items.GTEMetaItems;
-
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.stack.UnificationEntry;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;

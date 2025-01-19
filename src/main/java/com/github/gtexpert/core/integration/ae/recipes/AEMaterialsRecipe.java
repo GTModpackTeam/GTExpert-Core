@@ -6,11 +6,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 import net.minecraftforge.fluids.FluidStack;
 
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.loaders.recipe.handlers.GTEImplosionRecipeHandler;
-
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -27,6 +22,11 @@ import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.loaders.recipe.handlers.GTEImplosionRecipeHandler;
 
 public class AEMaterialsRecipe {
 

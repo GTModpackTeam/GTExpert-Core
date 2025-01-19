@@ -1,14 +1,14 @@
 package com.github.gtexpert.core.integration.deda.recipemaps;
 
-import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
-import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
-
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.core.sound.GTSoundEvents;
+
+import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
+import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
 
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenExpansion;

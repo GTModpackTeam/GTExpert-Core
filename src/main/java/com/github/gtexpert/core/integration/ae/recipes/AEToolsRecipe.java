@@ -2,13 +2,13 @@ package com.github.gtexpert.core.integration.ae.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.ae.AEConfigHolder;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.ConfigHolder;
+
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.ae.AEConfigHolder;
 
 public class AEToolsRecipe {
 

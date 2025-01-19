@@ -9,13 +9,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import com.github.gtexpert.core.api.util.Mods;
-
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.category.RecipeCategories;
 import gregtech.api.unification.material.Materials;
+
+import com.github.gtexpert.core.api.util.Mods;
 
 public class GTEVanillaOverrideRecipes {
 

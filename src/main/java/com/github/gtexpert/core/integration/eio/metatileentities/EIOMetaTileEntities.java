@@ -5,12 +5,12 @@ import static com.github.gtexpert.core.common.metatileentities.GTEMetaTileEntiti
 import static gregtech.api.GTValues.*;
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntities;
 
+import gregtech.api.util.GTUtility;
+
 import com.github.gtexpert.core.api.util.GTEUtility;
 import com.github.gtexpert.core.client.GTETextures;
 import com.github.gtexpert.core.common.metatileentities.GTESimpleMachineMetaTileEntity;
 import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
-
-import gregtech.api.util.GTUtility;
 
 public class EIOMetaTileEntities {
 

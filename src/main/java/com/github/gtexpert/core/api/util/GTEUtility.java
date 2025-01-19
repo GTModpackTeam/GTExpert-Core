@@ -13,9 +13,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.common.items.GTEMetaItems;
-
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
@@ -23,6 +20,9 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.MetaItems;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.common.items.GTEMetaItems;
 
 public class GTEUtility {
 

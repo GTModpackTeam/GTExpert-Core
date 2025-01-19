@@ -5,11 +5,11 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 import net.minecraft.init.Items;
 
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
-
 import gregtech.api.unification.material.Materials;
 import gregtech.common.items.MetaItems;
+
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;

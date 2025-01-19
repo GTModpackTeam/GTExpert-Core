@@ -14,8 +14,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.github.gtexpert.core.api.gui.GTEGuiTextures;
-
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -32,6 +30,8 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
 
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
+
+import com.github.gtexpert.core.api.gui.GTEGuiTextures;
 
 public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblockController {
 

@@ -6,12 +6,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.ffm.FFMConfigHolder;
-import com.github.gtexpert.core.integration.ffm.FFMUtility;
-import com.github.gtexpert.core.integration.ffm.recipes.machines.CarpenterLoader;
-
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -19,6 +13,12 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
+
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.ffm.FFMConfigHolder;
+import com.github.gtexpert.core.integration.ffm.FFMUtility;
+import com.github.gtexpert.core.integration.ffm.recipes.machines.CarpenterLoader;
 
 import forestry.api.recipes.RecipeManagers;
 

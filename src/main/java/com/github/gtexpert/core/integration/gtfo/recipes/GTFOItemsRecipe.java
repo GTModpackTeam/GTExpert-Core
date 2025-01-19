@@ -2,11 +2,11 @@ package com.github.gtexpert.core.integration.gtfo.recipes;
 
 import net.minecraft.init.Items;
 
-import com.github.gtexpert.core.api.util.Mods;
-
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
+
+import com.github.gtexpert.core.api.util.Mods;
 
 public class GTFOItemsRecipe {
 

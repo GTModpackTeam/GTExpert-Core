@@ -4,16 +4,16 @@ import static com.github.gtexpert.core.common.items.GTEMetaItems.*;
 
 import net.minecraft.client.resources.I18n;
 
-import com.github.gtexpert.core.api.util.GTELog;
-import com.github.gtexpert.core.common.GTEConfigHolder;
-import com.github.gtexpert.core.integration.ae.AEConfigHolder;
-
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.ItemMaterialInfo;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.behaviors.TooltipBehavior;
+
+import com.github.gtexpert.core.api.util.GTELog;
+import com.github.gtexpert.core.common.GTEConfigHolder;
+import com.github.gtexpert.core.integration.ae.AEConfigHolder;
 
 public class GTEMetaItem1 extends StandardMetaItem {
 

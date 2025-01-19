@@ -4,13 +4,13 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 import net.minecraft.item.ItemStack;
 
-import com.github.gtexpert.core.api.util.Mods;
-
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Material;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
+
+import com.github.gtexpert.core.api.util.Mods;
 
 public class GTEImplosionRecipeHandler {
 

@@ -10,15 +10,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.integration.eio.EnderIOModule;
-import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
-
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.unification.material.Materials;
+
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.integration.eio.EnderIOModule;
+import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
 
 import crazypants.enderio.base.init.ModObject;
 

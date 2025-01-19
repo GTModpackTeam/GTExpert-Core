@@ -11,7 +11,6 @@ import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
-import com.github.gtexpert.core.api.util.GTELog;
 
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
@@ -22,6 +21,8 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
+
+import com.github.gtexpert.core.api.util.GTELog;
 
 public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 

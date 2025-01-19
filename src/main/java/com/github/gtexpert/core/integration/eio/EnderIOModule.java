@@ -14,6 +14,14 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import com.enderio.core.common.util.EntityUtil;
+
+import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.recipes.ingredients.GTRecipeItemInput;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
+
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.modules.GTEModule;
 import com.github.gtexpert.core.api.util.GTEUtility;
@@ -24,13 +32,6 @@ import com.github.gtexpert.core.integration.eio.loaders.EIOOreDictionaryLoader;
 import com.github.gtexpert.core.integration.eio.metatileentities.EIOMetaTileEntities;
 import com.github.gtexpert.core.integration.eio.recipes.*;
 import com.github.gtexpert.core.modules.GTEModules;
-
-import gregtech.api.recipes.RecipeBuilder;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.recipes.ingredients.GTRecipeItemInput;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
-import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 
 import crazypants.enderio.base.init.ModObject;
 

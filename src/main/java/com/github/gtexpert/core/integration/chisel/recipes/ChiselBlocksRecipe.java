@@ -15,11 +15,6 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.chisel.ChiselConfigHolder;
-import com.github.gtexpert.core.integration.chisel.ChiselRecipeMaps;
-import com.github.gtexpert.core.integration.chisel.ChiselUtil;
 import com.google.common.base.CaseFormat;
 
 import gregtech.api.recipes.GTRecipeHandler;
@@ -30,6 +25,12 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.*;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
+
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.chisel.ChiselConfigHolder;
+import com.github.gtexpert.core.integration.chisel.ChiselRecipeMaps;
+import com.github.gtexpert.core.integration.chisel.ChiselUtil;
 
 public class ChiselBlocksRecipe {
 

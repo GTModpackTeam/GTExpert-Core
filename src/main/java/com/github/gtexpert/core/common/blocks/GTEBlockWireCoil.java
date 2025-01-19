@@ -19,8 +19,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-
 import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.block.VariantActiveBlock;
 import gregtech.api.block.VariantItemBlock;
@@ -29,6 +27,8 @@ import gregtech.api.unification.material.Material;
 import gregtech.client.utils.TooltipHelper;
 import gregtech.common.ConfigHolder;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityMultiSmelter;
+
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 
 public class GTEBlockWireCoil extends VariantActiveBlock<GTEBlockWireCoil.GTECoilType> {
 

@@ -1,10 +1,10 @@
 package com.github.gtexpert.core.api.unification.material;
 
+import gregtech.api.unification.material.Material;
+
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.ingredients.*;
 import com.github.gtexpert.core.api.util.Mods;
-
-import gregtech.api.unification.material.Material;
 
 /**
  * Material Registration.

@@ -6,9 +6,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import com.github.gtexpert.core.common.GTEConfigHolder;
-
 import gregtech.common.items.armor.QuarkTechSuite;
+
+import com.github.gtexpert.core.common.GTEConfigHolder;
 
 @Mixin(value = QuarkTechSuite.class, remap = false)
 public class QuarkTechSuiteMixin {
