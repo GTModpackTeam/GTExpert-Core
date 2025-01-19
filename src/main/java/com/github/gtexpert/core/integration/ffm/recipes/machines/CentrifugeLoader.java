@@ -6,12 +6,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import com.github.gtexpert.core.api.util.Mods;
+
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
-
-import com.github.gtexpert.core.api.util.Mods;
 
 import forestry.factory.MachineUIDs;
 import forestry.factory.ModuleFactory;

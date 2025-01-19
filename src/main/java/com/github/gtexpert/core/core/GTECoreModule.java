@@ -1,8 +1,8 @@
 package com.github.gtexpert.core.core;
 
-import static gregtech.api.GregTechAPI.HEATING_COILS;
 import static com.github.gtexpert.core.GTExpertMod.createItemBlock;
 import static com.github.gtexpert.core.common.blocks.GTEMetaBlocks.*;
+import static gregtech.api.GregTechAPI.HEATING_COILS;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -19,10 +19,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.block.VariantItemBlock;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.loaders.recipe.RecyclingRecipes;
-
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.modules.GTEModule;
 import com.github.gtexpert.core.api.modules.IGTEModule;
@@ -36,6 +32,10 @@ import com.github.gtexpert.core.loaders.recipe.CEUOverrideRecipe;
 import com.github.gtexpert.core.loaders.recipe.GTERecipe;
 import com.github.gtexpert.core.loaders.recipe.GTEVanillaOverrideRecipes;
 import com.github.gtexpert.core.modules.GTEModules;
+
+import gregtech.api.block.VariantItemBlock;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.loaders.recipe.RecyclingRecipes;
 
 @GTEModule(
            moduleID = GTEModules.MODULE_CORE,

@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.enderio.core.client.render.BoundingBox;
+import com.github.gtexpert.core.api.capability.GTEDataCodes;
 
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.RecipeLogicEnergy;
@@ -28,8 +29,6 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.logic.OverclockingLogic;
 import gregtech.api.util.GTTransferUtils;
 import gregtech.api.util.GTUtility;
-
-import com.github.gtexpert.core.api.capability.GTEDataCodes;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.base.item.soulvial.ItemSoulVial;

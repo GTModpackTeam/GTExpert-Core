@@ -1,11 +1,14 @@
 package com.github.gtexpert.core.api.unification.material.ingredients;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static com.github.gtexpert.core.api.unification.GTEElements.*;
 import static com.github.gtexpert.core.api.unification.material.GTEMaterials.*;
 import static com.github.gtexpert.core.api.util.GTEUtility.gteId;
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.info.MaterialFlags.*;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.util.Mods;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
@@ -14,9 +17,6 @@ import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.material.properties.ToolProperty;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.util.Mods;
 
 public class DEFirstDegreeMaterials {
 

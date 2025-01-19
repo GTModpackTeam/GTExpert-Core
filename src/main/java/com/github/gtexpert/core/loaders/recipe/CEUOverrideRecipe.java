@@ -16,6 +16,8 @@ import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.github.gtexpert.core.common.items.GTEMetaItems;
+
 import gregtech.api.GregTechAPI;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.items.OreDictNames;
@@ -37,8 +39,6 @@ import gregtech.common.metatileentities.MetaTileEntities;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
-
-import com.github.gtexpert.core.common.items.GTEMetaItems;
 
 public class CEUOverrideRecipe {
 

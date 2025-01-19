@@ -1,11 +1,11 @@
 package com.github.gtexpert.core.integration.binnies.recipes;
 
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.material.Materials;
-
 import com.github.gtexpert.core.api.util.Mods;
 import com.github.gtexpert.core.integration.ffm.FFMConfigHolder;
 import com.github.gtexpert.core.integration.ffm.FFMUtility;
+
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.material.Materials;
 
 import forestry.api.recipes.RecipeManagers;
 

@@ -7,16 +7,16 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.loaders.recipe.handlers.GTEImplosionRecipeHandler;
+
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.category.RecipeCategories;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.ConfigHolder;
-
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.loaders.recipe.handlers.GTEImplosionRecipeHandler;
 
 import crazypants.enderio.base.init.ModObject;
 

@@ -10,18 +10,17 @@ import net.minecraft.item.ItemStack;
 import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.GTELog;
+import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
+import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
 
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.GTELog;
-import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
-import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
 
 public class DraconicUpgradeRecipe {
 

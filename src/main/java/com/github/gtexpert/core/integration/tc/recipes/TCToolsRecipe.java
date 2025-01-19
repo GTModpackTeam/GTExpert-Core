@@ -2,14 +2,14 @@ package com.github.gtexpert.core.integration.tc.recipes;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.tc.TCConfigHolder;
+
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.ConfigHolder;
-
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.tc.TCConfigHolder;
 
 public class TCToolsRecipe {
 

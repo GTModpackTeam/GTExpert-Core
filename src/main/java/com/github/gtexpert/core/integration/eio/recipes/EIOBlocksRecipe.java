@@ -7,6 +7,14 @@ import static gregtech.loaders.recipe.CraftingComponent.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.common.GTEConfigHolder;
+import com.github.gtexpert.core.integration.eio.EnderIOConfigHolder;
+import com.github.gtexpert.core.integration.eio.metatileentities.EIOMetaTileEntities;
+
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
@@ -17,14 +25,6 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
-
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.common.GTEConfigHolder;
-import com.github.gtexpert.core.integration.eio.EnderIOConfigHolder;
-import com.github.gtexpert.core.integration.eio.metatileentities.EIOMetaTileEntities;
 
 import crazypants.enderio.conduits.init.ConduitObject;
 import crazypants.enderio.endergy.init.EndergyObject;

@@ -3,9 +3,9 @@ package com.github.gtexpert.core.client;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 
-import gregtech.client.renderer.texture.cube.*;
-
 import com.github.gtexpert.core.api.GTEValues;
+
+import gregtech.client.renderer.texture.cube.*;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID, value = Side.CLIENT)
 public class GTETextures {

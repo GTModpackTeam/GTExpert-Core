@@ -1,16 +1,16 @@
 package com.github.gtexpert.core.integration.eio.metatileentities;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntities;
 import static com.github.gtexpert.core.api.util.GTEUtility.gteId;
 import static com.github.gtexpert.core.common.metatileentities.GTEMetaTileEntities.registerGTESimpleMetaTileEntity;
-
-import gregtech.api.util.GTUtility;
+import static gregtech.api.GTValues.*;
+import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntities;
 
 import com.github.gtexpert.core.api.util.GTEUtility;
 import com.github.gtexpert.core.client.GTETextures;
 import com.github.gtexpert.core.common.metatileentities.GTESimpleMachineMetaTileEntity;
 import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
+
+import gregtech.api.util.GTUtility;
 
 public class EIOMetaTileEntities {
 

@@ -3,9 +3,8 @@ package com.github.gtexpert.core.integration.deda.recipes;
 import static gregtech.api.unification.ore.OrePrefix.block;
 
 import com.brandon3055.draconicevolution.DEFeatures;
-import com.github.gtexpert.inb.api.recipes.INBRecipeMaps;
-
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.inb.api.recipes.INBRecipeMaps;
 
 public class DraconicImplosionMaterialsRecipe {
 

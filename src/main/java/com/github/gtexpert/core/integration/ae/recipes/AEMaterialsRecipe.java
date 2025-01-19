@@ -1,10 +1,15 @@
 package com.github.gtexpert.core.integration.ae.recipes;
 
+import static com.github.gtexpert.core.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static com.github.gtexpert.core.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
 
 import net.minecraftforge.fluids.FluidStack;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.loaders.recipe.handlers.GTEImplosionRecipeHandler;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.ModHandler;
@@ -22,11 +27,6 @@ import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.loaders.recipe.handlers.GTEImplosionRecipeHandler;
 
 public class AEMaterialsRecipe {
 

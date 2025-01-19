@@ -3,17 +3,17 @@ package com.github.gtexpert.core.integration.deda.loaders;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
-import gregtech.api.GTValues;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.stack.ItemMaterialInfo;
-import gregtech.api.unification.stack.MaterialStack;
-import gregtech.common.ConfigHolder;
-
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 import com.github.gtexpert.core.api.util.GTEUtility;
 import com.github.gtexpert.core.api.util.Mods;
 import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
 import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
+
+import gregtech.api.GTValues;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.stack.ItemMaterialInfo;
+import gregtech.api.unification.stack.MaterialStack;
+import gregtech.common.ConfigHolder;
 
 public class DEDAMaterialInfoLoader {
 

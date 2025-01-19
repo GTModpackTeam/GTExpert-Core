@@ -17,6 +17,11 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.github.gtexpert.core.api.gui.GTEGuiTextures;
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.common.metatileentities.GTESimpleMachineMetaTileEntity;
+
 import gregtech.api.GTValues;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.NotifiableItemStackHandler;
@@ -35,11 +40,6 @@ import gregtech.api.util.LocalizationUtils;
 import gregtech.api.util.Position;
 import gregtech.api.util.Size;
 import gregtech.client.renderer.ICubeRenderer;
-
-import com.github.gtexpert.core.api.gui.GTEGuiTextures;
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.common.metatileentities.GTESimpleMachineMetaTileEntity;
 
 public class MetaTileEntityElectricSpawner extends GTESimpleMachineMetaTileEntity {
 

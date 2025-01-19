@@ -14,6 +14,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import com.github.gtexpert.core.api.gui.GTEGuiTextures;
+import com.github.gtexpert.core.api.recipes.GTERecipeMaps;
+import com.github.gtexpert.core.client.GTETextures;
+import com.github.gtexpert.core.common.GTEConfigHolder;
+import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
+import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
+
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -29,13 +36,6 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.core.sound.GTSoundEvents;
 
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
-
-import com.github.gtexpert.core.api.gui.GTEGuiTextures;
-import com.github.gtexpert.core.api.recipes.GTERecipeMaps;
-import com.github.gtexpert.core.client.GTETextures;
-import com.github.gtexpert.core.common.GTEConfigHolder;
-import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
-import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
 
 public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockController {
 

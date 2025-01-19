@@ -2,9 +2,9 @@ package com.github.gtexpert.core.integration.ffm;
 
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.common.ConfigHolder;
-
 import com.github.gtexpert.core.api.util.GTELog;
+
+import gregtech.common.ConfigHolder;
 
 import forestry.api.core.ForestryAPI;
 

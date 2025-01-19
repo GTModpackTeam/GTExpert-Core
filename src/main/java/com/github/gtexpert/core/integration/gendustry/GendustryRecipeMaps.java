@@ -1,10 +1,10 @@
 package com.github.gtexpert.core.integration.gendustry;
 
-import gregtech.api.recipes.RecipeMap;
-import gregtech.core.sound.GTSoundEvents;
-
 import com.github.gtexpert.core.integration.gendustry.recipes.builders.IndustrialApiaryRecipeBuilder;
 import com.github.gtexpert.core.integration.gendustry.recipes.machines.RecipeMapIndustrialApiary;
+
+import gregtech.api.recipes.RecipeMap;
+import gregtech.core.sound.GTSoundEvents;
 
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenExpansion;

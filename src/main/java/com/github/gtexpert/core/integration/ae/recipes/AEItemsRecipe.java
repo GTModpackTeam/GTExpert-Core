@@ -1,11 +1,18 @@
 package com.github.gtexpert.core.integration.ae.recipes;
 
+import static com.github.gtexpert.core.integration.ae.AEUtil.tierMaterials;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static com.github.gtexpert.core.integration.ae.AEUtil.tierMaterials;
 
 import java.util.Arrays;
 import java.util.Objects;
+
+import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.common.GTEConfigHolder;
+import com.github.gtexpert.core.common.items.GTEMetaItems;
+import com.github.gtexpert.core.integration.ae.AEConfigHolder;
 
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -15,13 +22,6 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.items.MetaItems;
-
-import com.github.gtexpert.core.api.GTEValues;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.common.GTEConfigHolder;
-import com.github.gtexpert.core.common.items.GTEMetaItems;
-import com.github.gtexpert.core.integration.ae.AEConfigHolder;
 
 public class AEItemsRecipe {
 
