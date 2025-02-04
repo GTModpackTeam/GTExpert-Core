@@ -7,11 +7,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.common.GTEConfigHolder;
-
-import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -42,7 +37,10 @@ import gregtech.common.metatileentities.MetaTileEntities;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 
+import com.github.gtexpert.core.api.util.GTEUtility;
+import com.github.gtexpert.core.common.GTEConfigHolder;
 import com.github.gtexpert.core.common.items.GTEMetaItems;
 
 public class CEUOverrideRecipe {
