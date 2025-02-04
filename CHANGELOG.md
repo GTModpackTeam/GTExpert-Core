@@ -1,6 +1,10 @@
+# 2.4.4
+- Fix Wyvern tool recipe. [#319](https://github.com/GTModpackTeam/GTExpert-Core/pull/319)
+
+* * *
+
 # v2.4.3
 - Add BrokenSpawer recipe to SoulBinder. [#315](https://github.com/GTModpackTeam/GTExpert-Core/pull/315)
-- Fix Wyvern tool recipe. [#319](https://github.com/GTModpackTeam/GTExpert-Core/pull/319)
 
 * * *
 
