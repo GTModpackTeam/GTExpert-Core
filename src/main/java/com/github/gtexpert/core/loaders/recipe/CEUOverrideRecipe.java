@@ -37,10 +37,7 @@ import gregtech.common.metatileentities.MetaTileEntities;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
-import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 
-import com.github.gtexpert.core.api.util.GTEUtility;
-import com.github.gtexpert.core.common.GTEConfigHolder;
 import com.github.gtexpert.core.common.items.GTEMetaItems;
 
 public class CEUOverrideRecipe {
@@ -51,19 +48,6 @@ public class CEUOverrideRecipe {
         blocks();
         tools();
     }
-
-    public static final Material[] tierMaterials = new Material[] {
-            Materials.WroughtIron,
-            Materials.Steel,
-            Materials.Aluminium,
-            Materials.StainlessSteel,
-            Materials.Titanium,
-            Materials.TungstenSteel,
-            Materials.RhodiumPlatedPalladium,
-            Materials.NaquadahAlloy,
-            Materials.Darmstadtium,
-            Materials.Neutronium
-    };
 
     private static void materials() {
         // Vacuum Freezer
@@ -360,19 +344,6 @@ public class CEUOverrideRecipe {
                 'W', new UnificationEntry(cableGtSingle, Materials.Europium),
                 'C', MetaItems.WETWARE_MAINFRAME_UHV,
                 'T', OreDictNames.chestWood);
-
-        // GCYM: Voltage Control Unit
-        if (GTEConfigHolder.ceuOverride.fixVoltageControlUnit) {
-            int isHighTier = GregTechAPI.isHighTier() ? 14 : 9;
-            for (int i = 0; i <= isHighTier; i++) {
-                ModHandler.removeRecipeByOutput(GCYMMetaTileEntities.TIERED_HATCH[i].getStackForm());
-                ModHandler.addShapedRecipe(true, "gregtech.machine.tiered_hatch." + VN[i],
-                        GCYMMetaTileEntities.TIERED_HATCH[i].getStackForm(),
-                        "PPP", "PCP", "PPP",
-                        'P', OreDictUnifier.get(plate, tierMaterials[i]),
-                        'C', GTEUtility.oreDictionaryCircuit(i));
-            }
-        }
     }
 
     private static void tools() {
