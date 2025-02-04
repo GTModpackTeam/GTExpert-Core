@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 
-import gregtech.api.GTValues;
 import gregtech.api.items.toolitem.ToolHelper;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMap;
