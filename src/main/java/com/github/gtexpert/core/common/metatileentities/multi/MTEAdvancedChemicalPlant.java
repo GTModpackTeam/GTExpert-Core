@@ -39,16 +39,16 @@ import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockControl
 
 import com.github.gtexpert.core.api.gui.GTEGuiTextures;
 
-public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblockController {
+public class MTEAdvancedChemicalPlant extends GCYMRecipeMapMultiblockController {
 
-    public MetaTileEntityAdvancedChemicalPlant(ResourceLocation metaTileEntityId) {
+    public MTEAdvancedChemicalPlant(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.LARGE_CHEMICAL_RECIPES);
         this.recipeMapWorkable = new AdvancedChemicalPlantWorkableHandler(this);
     }
 
     @Override
     public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityAdvancedChemicalPlant(metaTileEntityId);
+        return new MTEAdvancedChemicalPlant(metaTileEntityId);
     }
 
     @NotNull

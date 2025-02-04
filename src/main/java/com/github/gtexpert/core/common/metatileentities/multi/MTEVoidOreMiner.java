@@ -18,54 +18,55 @@ import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.TraceabilityPredicate;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
-
-import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 
 import com.github.gtexpert.core.api.gui.GTEGuiTextures;
 import com.github.gtexpert.core.api.recipes.GTERecipeMaps;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 import com.github.gtexpert.core.client.GTETextures;
-import com.github.gtexpert.core.common.GTEConfigHolder;
 import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
 import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
 
-public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockController {
+public class MTEVoidOreMiner extends RecipeMapMultiblockController {
 
-    public MetaTileEntityLargeGasCollector(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, new RecipeMap[] {
-                RecipeMaps.GAS_COLLECTOR_RECIPES,
-                GTERecipeMaps.LARGE_GAS_COLLECTOR_RECIPES
-        });
+    public MTEVoidOreMiner(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, GTERecipeMaps.VOID_ORE_MINER_RECIPES);
     }
 
     @Override
     public @NotNull MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityLargeGasCollector(metaTileEntityId);
+        return new MTEVoidOreMiner(metaTileEntityId);
     }
 
-    @NotNull
     @Override
-    protected BlockPattern createStructurePattern() {
-        TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(8);
-        TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, true, false);
+    protected @NotNull BlockPattern createStructurePattern() {
+        TraceabilityPredicate frame = states(getFrameState());
+        TraceabilityPredicate casing = states(getCasingState());
+        TraceabilityPredicate abilities = autoAbilities(true, true, true, true, true, false, false);
         return FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "XXX")
-                .aisle("XTX", "X#X", "XHX")
-                .aisle("XXX", "XSX", "XXX")
+                .aisle("XXXXX", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
+                .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
+                .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FCF ", " FCF ", " FCF ", "  F  ", "  F  ", "  F  ")
+                .aisle("XXXXX", "FCCCF", "FCCCF", "FCCCF", " FFF ", "  F  ", "  F  ", "     ", "     ", "     ")
+                .aisle("XXSXX", " FFF ", " FFF ", " FFF ", "     ", "     ", "     ", "     ", "     ", "     ")
                 .where('S', selfPredicate())
-                .where('X', casing.or(abilities))
-                .where('T', tieredCasing().or(states(getCasingState())))
-                .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
-                .where('#', air())
+                .where('X', casing.setMinGlobalLimited(17).or(abilities))
+                .where('C', casing.setMinGlobalLimited(30))
+                .where('F', frame.setMinGlobalLimited(55))
+                .where(' ', any())
                 .build();
+    }
+
+    @Override
+    protected boolean shouldShowVoidingModeButton() {
+        return false;
     }
 
     @Override
@@ -73,30 +74,14 @@ public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockCont
         return false;
     }
 
-    @Override
-    public boolean allowsFlip() {
-        return false;
-    }
-
-    @Override
-    public boolean isTiered() {
-        return true;
-    }
-
-    @Override
-    public boolean canBeDistinct() {
-        return true;
-    }
-
-    @Override
-    public boolean isParallel() {
-        return true;
-    }
-
     @SideOnly(Side.CLIENT)
     @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
+    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return GTETextures.VOID_ORE_MINER_CASING;
+    }
+
+    protected IBlockState getFrameState() {
+        return MetaBlocks.FRAMES.get(GTEMaterials.NM_HEA_NPs).getBlock(GTEMaterials.NM_HEA_NPs);
     }
 
     protected IBlockState getCasingState() {
@@ -109,11 +94,13 @@ public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockCont
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
+                               boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format(GTEConfigHolder.gteFlag.featureFlag ?
-                "gtexpert.machine.large_gas_collector.tooltip.1" :
-                "gtexpert.machine.advanced_gas_collector.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.2"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.3"));
+        tooltip.add(I18n.format("gtexpert.machine.void_ore_miner.tooltip.4"));
     }
 
     @Override
@@ -135,6 +122,6 @@ public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockCont
     @NotNull
     @Override
     protected ICubeRenderer getFrontOverlay() {
-        return Textures.GAS_COLLECTOR_OVERLAY;
+        return Textures.ITEM_VOIDING_ADVANCED;
     }
 }

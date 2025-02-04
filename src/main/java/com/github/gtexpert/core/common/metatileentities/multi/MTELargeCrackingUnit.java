@@ -43,18 +43,18 @@ import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockControl
 import com.github.gtexpert.core.api.gui.GTEGuiTextures;
 import com.github.gtexpert.core.common.GTEConfigHolder;
 
-public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockController {
+public class MTELargeCrackingUnit extends GCYMRecipeMapMultiblockController {
 
     private int coilTier;
 
-    public MetaTileEntityLargeCrackingUnit(ResourceLocation metaTileEntityId) {
+    public MTELargeCrackingUnit(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.CRACKING_RECIPES);
         this.recipeMapWorkable = new LargeCrackingUnitWorkableHandler(this);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntityLargeCrackingUnit(metaTileEntityId);
+        return new MTELargeCrackingUnit(metaTileEntityId);
     }
 
     @NotNull
@@ -209,7 +209,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
         }
 
         protected void performNonOverclockBonuses(int[] resultOverclock) {
-            int coilTier = ((MetaTileEntityLargeCrackingUnit) metaTileEntity).getCoilTier();
+            int coilTier = ((MTELargeCrackingUnit) metaTileEntity).getCoilTier();
             if (coilTier > 0) {
                 resultOverclock[0] = (int) ((double) resultOverclock[0] * (1.0 - (double) coilTier * 0.1));
                 resultOverclock[0] = Math.max(1, resultOverclock[0]);

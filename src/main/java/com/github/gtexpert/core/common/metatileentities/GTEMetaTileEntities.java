@@ -19,10 +19,10 @@ public class GTEMetaTileEntities {
     // Single Machine
 
     // Multi Machine
-    public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
-    public static MetaTileEntityVoidOreMiner VOIDOREMINER;
-    public static MetaTileEntityAdvancedChemicalPlant ADVANCED_CHEMICAL_PLANT;
-    public static MetaTileEntityLargeGasCollector LARGE_GAS_COLLECTOR;
+    public static MTELargeCrackingUnit LARGE_CRACKER;
+    public static MTEVoidOreMiner VOIDOREMINER;
+    public static MTEAdvancedChemicalPlant ADVANCED_CHEMICAL_PLANT;
+    public static MTELargeGasCollector LARGE_GAS_COLLECTOR;
 
     public static void init() {
         // Single Machine
@@ -31,14 +31,14 @@ public class GTEMetaTileEntities {
         // Multi Machine
         // Free: 12000~12001
         LARGE_CRACKER = registerMetaTileEntity(12002,
-                new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
+                new MTELargeCrackingUnit(gteId("large_cracking_unit")));
         VOIDOREMINER = registerMetaTileEntity(12003,
-                new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
+                new MTEVoidOreMiner(gteId("void_ore_miner")));
         // 12004~12005 is reserved for Draconic Evolution
         ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(12006,
-                new MetaTileEntityAdvancedChemicalPlant(gteId("advanced_chemical_plant")));
+                new MTEAdvancedChemicalPlant(gteId("advanced_chemical_plant")));
         LARGE_GAS_COLLECTOR = registerMetaTileEntity(12007,
-                new MetaTileEntityLargeGasCollector(gteId(GTEConfigHolder.gteFlag.featureFlag ?
+                new MTELargeGasCollector(gteId(GTEConfigHolder.gteFlag.featureFlag ?
                         "large_gas_collector" : "advanced_gas_collector")));
     }
 
