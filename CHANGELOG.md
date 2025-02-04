@@ -1,6 +1,5 @@
 # v2.4.3
 - Add BrokenSpawer recipe to SoulBinder [#315](https://github.com/GTModpackTeam/GTExpert-Core/pull/315)
-- Fix VCU recipe [#316](https://github.com/GTModpackTeam/GTExpert-Core/pull/316)
 
 * * *
 
