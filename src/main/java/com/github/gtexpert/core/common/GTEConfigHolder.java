@@ -64,8 +64,5 @@ public class GTEConfigHolder {
 
         @Config.Comment({ "Disable auto eat function of QuarkTech helmet", "Default: true" })
         public boolean disableHelmetAutoEat = true;
-
-        @Config.Comment({ "Change the recipe for GCYM's VoltageControlUnit", "Default: false" })
-        public boolean fixVoltageControlUnit = false;
     }
 }
