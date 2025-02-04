@@ -1,3 +1,9 @@
+# v2.4.3
+- Add BrokenSpawer recipe to SoulBinder [#315](https://github.com/GTModpackTeam/GTExpert-Core/pull/315)
+- Fix VCU recipe [#316](https://github.com/GTModpackTeam/GTExpert-Core/pull/316)
+
+* * *
+
 # v2.4.2
 - Delete unused steam machines. [#309](https://github.com/GTModpackTeam/GTExpert-Core/pull/309)
 - Advanced Chemical Plant to be compatible with PerfectOC. [#310](https://github.com/GTModpackTeam/GTExpert-Core/pull/314)
