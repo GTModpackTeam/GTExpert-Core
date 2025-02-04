@@ -38,7 +38,7 @@ public class DraconicTierupRecipe {
                 new GTRecipeItemInput(ToolItems.AXE.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
-                                        NBTTagType.STRING, "Material", GTValues.MODID + ":draconium"))),
+                                        NBTTagType.STRING, "Material", GTEValues.MODID + ":draconium"))),
                 new ItemStack(DEFeatures.wyvernAxe),
                 Tier.WYVERN, 2);
 
@@ -48,7 +48,7 @@ public class DraconicTierupRecipe {
                 new GTRecipeItemInput(ToolItems.PICKAXE.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
-                                        NBTTagType.STRING, "Material", GTValues.MODID + ":draconium"))),
+                                        NBTTagType.STRING, "Material", GTEValues.MODID + ":draconium"))),
                 new ItemStack(DEFeatures.wyvernPick),
                 Tier.WYVERN, 2);
 
@@ -58,7 +58,7 @@ public class DraconicTierupRecipe {
                 new GTRecipeItemInput(ToolItems.SHOVEL.get(GTEMaterials.Draconium)).setNBTMatchingCondition(
                         NBTMatcher.RECURSIVE_EQUAL_TO, NBTCondition.create(
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
-                                        NBTTagType.STRING, "Material", GTValues.MODID + ":draconium"))),
+                                        NBTTagType.STRING, "Material", GTEValues.MODID + ":draconium"))),
                 new ItemStack(DEFeatures.wyvernShovel),
                 Tier.WYVERN, 2);
 
