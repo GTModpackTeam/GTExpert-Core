@@ -36,7 +36,7 @@ jobs:
         run: ./gradlew --info spotlessCheck
 
       - name: Attempt to make a PR fixing spotless errors
-        if: failure()
+        if: failure() && steps.build.conclusion == 'failure'
         run: |
           git reset --hard
           git checkout "${PR_BRANCH}"

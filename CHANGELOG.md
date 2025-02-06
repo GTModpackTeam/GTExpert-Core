@@ -1,10 +1,21 @@
+# 2.4.4
+- Fix Wyvern tool recipe. [#319](https://github.com/GTModpackTeam/GTExpert-Core/pull/319)
+
+* * *
+
+# v2.4.3
+- Add BrokenSpawer recipe to SoulBinder. [#315](https://github.com/GTModpackTeam/GTExpert-Core/pull/315)
+
+* * *
+
 # v2.4.2
-- Delete unused steam machines.
+- Delete unused steam machines. [#309](https://github.com/GTModpackTeam/GTExpert-Core/pull/309)
+- Advanced Chemical Plant to be compatible with PerfectOC. [#310](https://github.com/GTModpackTeam/GTExpert-Core/pull/314)
 
 * * *
 
 # v2.4.1
-- A recipe for processing FluixAlloy Molten in AlloyBlastFurnace into Ingot using Mold has been added.
+- A recipe for processing FluixAlloy Molten in AlloyBlastFurnace into Ingot using Mold has been added. [#307](https://github.com/GTModpackTeam/GTExpert-Core/pull/307)
 
 * * *
 
