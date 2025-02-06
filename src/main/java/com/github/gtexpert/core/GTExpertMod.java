@@ -46,10 +46,7 @@ import com.github.gtexpert.core.modules.GTEModules;
              "after:" + Mods.Names.ENDER_CONDUITS + ";" + "after:" + Mods.Names.ENDER_AE2_CONDUITS + ";" +
              "after:" + Mods.Names.DRACONIC_EVOLUTION + ";" + "after:" + Mods.Names.DRACONIC_ADDITIONS + ";" +
              "after:" + Mods.Names.CHISEL + ";" + "after:" + Mods.Names.AVARITIA + ";" +
-             "after:" + Mods.Names.THAUMCRAFT + ";" + "after:" + Mods.Names.THAUMIC_ENERGISTICS + ";" +
-             "after:" + Mods.Names.FORESTRY + ";" + "after:" + Mods.Names.GENDUSTRY + ";" +
-             "after:" + Mods.Names.GENETICS + ";" + "after:" + Mods.Names.BOTANY + ";" +
-             "after:" + Mods.Names.EXTRA_BEES + ";" + "after:" + Mods.Names.EXTRA_TREES + ";")
+             "after:" + Mods.Names.THAUMCRAFT + ";" + "after:" + Mods.Names.THAUMIC_ENERGISTICS + ";")
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 

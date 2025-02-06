@@ -31,7 +31,6 @@ public enum Mods {
     Avaritia(Names.AVARITIA),
     Avaritiaaddons(Names.AVARITIAADDONS),
     Baubles(Names.BAUBLES),
-    Botany(Names.BOTANY),
     Chisel(Names.CHISEL),
     CTM(Names.CONNECTED_TEXTURES_MOD),
     CraftTweaker(Names.CRAFT_TWEAKER),
@@ -43,34 +42,8 @@ public enum Mods {
     EnderIOMachines(Names.ENDER_MACHINES),
     EnderIOConduits(Names.ENDER_CONDUITS),
     EnderIOAE2Conduits(Names.ENDER_AE2_CONDUITS),
-    ExtraBees(Names.EXTRA_BEES),
     ExtraCPUs(Names.EXTRA_CPUS),
-    ExtraTrees(Names.EXTRA_TREES),
-    Forestry(Names.FORESTRY),
-    ForestryApiculture(Names.FORESTRY, forestryModule(Names.FORESTRY_APICULTURE)),
-    ForestryArboriculture(Names.FORESTRY, forestryModule(Names.FORESTRY_ARBORICULTURE)),
-    ForestryCharcoal(Names.FORESTRY, forestryModule(Names.FORESTRY_CHARCOAL)),
-    ForestryCore(Names.FORESTRY, forestryModule(Names.FORESTRY_CORE)),
-    ForestryEnergy(Names.FORESTRY, forestryModule(Names.FORESTRY_ENERGY)),
-    ForestryFactory(Names.FORESTRY, forestryModule(Names.FORESTRY_FACTORY)),
-    ForestryWorktable(Names.FORESTRY, forestryModule(Names.FORESTRY_WORKTABLE)),
-    ForestryFarming(Names.FORESTRY, forestryModule(Names.FORESTRY_FARMING)),
-    ForestryClimatology(Names.FORESTRY, forestryModule(Names.FORESTRY_CLIMATOLOGY)),
-    ForestryGreenhouse(Names.FORESTRY, forestryModule(Names.FORESTRY_GREENHOUSE)),
-    ForestryFluids(Names.FORESTRY, forestryModule(Names.FORESTRY_FLUIDS)),
-    ForestryFood(Names.FORESTRY, forestryModule(Names.FORESTRY_FOOD)),
-    ForestryLepidopterology(Names.FORESTRY, forestryModule(Names.FORESTRY_LEPIDOPTEROLOGY)),
-    ForestryMail(Names.FORESTRY, forestryModule(Names.FORESTRY_MAIL)),
-    ForestryCrate(Names.FORESTRY, forestryModule(Names.FORESTRY_CRATE)),
-    ForestryBackpacks(Names.FORESTRY, forestryModule(Names.FORESTRY_BACKPACKS)),
-    ForestryDatabase(Names.FORESTRY, forestryModule(Names.FORESTRY_DATABASE)),
-    ForestrySorting(Names.FORESTRY, forestryModule(Names.FORESTRY_SORTING)),
-    ForestryBook(Names.FORESTRY, forestryModule(Names.FORESTRY_BOOK)),
-    ForestryCultivation(Names.FORESTRY, forestryModule(Names.FORESTRY_CULTIVATION)),
-    ForestryResearch(Names.FORESTRY, forestryModule(Names.FORESTRY_RESEARCH)),
     GalacticraftCore(Names.GALACTICRAFT_CORE),
-    Genetics(Names.GENETICS),
-    Gendustry(Names.GENDUSTRY),
     GregicalityMultiblocks(Names.GREGICALITY_MULTIBLOCKS),
     GregTech(Names.GREGTECH),
     GregTechFoodOption(Names.GREGTECH_FOOD_OPTION),
@@ -82,7 +55,6 @@ public enum Mods {
     InventoryTweaks(Names.INVENTORY_TWEAKS),
     JourneyMap(Names.JOURNEY_MAP),
     JustEnoughItems(Names.JUST_ENOUGH_ITEMS),
-    MagicBees(Names.MAGIC_BEES),
     ModularUI(Names.MODULRAUI),
     MixinBooter(Names.MIXINBOOTER),
     NeevesAE2(Names.NEEVES_AE2),
@@ -143,28 +115,6 @@ public enum Mods {
         public static final String EXTRA_BEES = "extrabees";
         public static final String EXTRA_CPUS = "extracpus";
         public static final String EXTRA_TREES = "extratrees";
-        public static final String FORESTRY = "forestry";
-        public static final String FORESTRY_APICULTURE = "apiculture";
-        public static final String FORESTRY_ARBORICULTURE = "arboriculture";
-        public static final String FORESTRY_CHARCOAL = "charcoal";
-        public static final String FORESTRY_CORE = "core";
-        public static final String FORESTRY_ENERGY = "energy";
-        public static final String FORESTRY_FACTORY = "factory";
-        public static final String FORESTRY_WORKTABLE = "worktable";
-        public static final String FORESTRY_FARMING = "farming";
-        public static final String FORESTRY_CLIMATOLOGY = "climatology";
-        public static final String FORESTRY_GREENHOUSE = "greenhouse";
-        public static final String FORESTRY_FLUIDS = "fluids";
-        public static final String FORESTRY_FOOD = "food";
-        public static final String FORESTRY_LEPIDOPTEROLOGY = "lepidopterology";
-        public static final String FORESTRY_MAIL = "mail";
-        public static final String FORESTRY_CRATE = "crates";
-        public static final String FORESTRY_BACKPACKS = "backpacks";
-        public static final String FORESTRY_DATABASE = "database";
-        public static final String FORESTRY_SORTING = "sorting";
-        public static final String FORESTRY_BOOK = "book";
-        public static final String FORESTRY_CULTIVATION = "cultivation";
-        public static final String FORESTRY_RESEARCH = "research";
         public static final String GALACTICRAFT_CORE = "galacticraftcore";
         public static final String GENETICS = "genetics";
         public static final String GENDUSTRY = "gendustry";
@@ -178,7 +128,6 @@ public enum Mods {
         public static final String INVENTORY_TWEAKS = "inventorytweaks";
         public static final String JOURNEY_MAP = "journeymap";
         public static final String JUST_ENOUGH_ITEMS = "jei";
-        public static final String MAGIC_BEES = "magicbees";
         public static final String MODULRAUI = "modularui";
         public static final String MIXINBOOTER = "mixinbooter";
         public static final String NEEVES_AE2 = "nae2";
@@ -302,14 +251,5 @@ public enum Mods {
             if (container == null) return false;
             return !container.getVersion().contains(versionPart);
         };
-    }
-
-    /** Test if a specific Forestry module is enabled. */
-    private static Function<Mods, Boolean> forestryModule(String moduleID) {
-        if (Forestry.isModLoaded()) {
-            return mod -> forestry.modules.ModuleHelper.isEnabled(moduleID);
-        } else {
-            return $ -> false;
-        }
     }
 }
