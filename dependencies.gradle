@@ -49,7 +49,7 @@ dependencies {
     devOnlyNonPublishable(rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5519022")) // CEu 2.8.10
     //devOnlyNonPublishable(rfg.deobf(project.files("libs/gregtech-1.12.2-2.8.9-beta-dev.jar"))) // CEu pr 2.8.10
     devOnlyNonPublishable(rfg.deobf("curse.maven:gregicality-multiblocks-564858:5508050")) // GCYM 1.2.10
-    devOnlyNonPublishable(rfg.deobf("curse.maven:shadowfacts-forgelin-248453:2785465")) // Forgelin 1.8.4
+    devOnlyNonPublishable(rfg.deobf("curse.maven:forgelin-continuous-456403:6142081")) // Forgelin-Continuous 2.1.10.0
 
     // Switchable Dependencies
     if (project.useAE2uelExtended.toBoolean()) {
