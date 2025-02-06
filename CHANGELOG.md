@@ -1,3 +1,12 @@
+# 2.4.5
+- Separate to [GTBeesMatrix](https://github.com/GTModpackTeam/GTBeesMatrix). [#320](https://github.com/GTModpackTeam/GTExpert-Core/pull/320)
+    - The following mods have been separated into separate mods to improve maintainability.
+        - [Forestry](https://www.curseforge.com/minecraft/mc-mods/forestry)
+        - [Gendustry](https://www.curseforge.com/minecraft/mc-mods/gendustry)
+        - [Binnie's Mods Patched](https://www.curseforge.com/minecraft/mc-mods/binnies-mods-patched)
+
+* * *
+
 # 2.4.4
 - Fix Wyvern tool recipe. [#319](https://github.com/GTModpackTeam/GTExpert-Core/pull/319)
 
