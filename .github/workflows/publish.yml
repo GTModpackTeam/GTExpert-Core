@@ -82,15 +82,16 @@ jobs:
           modrinth-id: ${{ env.MODRINTH_PROJECT_ID }}
           modrinth-token: "${{ secrets.MODRINTH_API_KEY }}"
           modrinth-dependencies: |
-            8PB5NZf9(required)
-            vaQ5bJYU(required)
-            MeXYT7nJ(required)
+            G1ckZuWK(required)
+            tULldUx4(required)
+            tZiutdLG(required)
           curseforge-id: ${{ env.CURSEFORGE_PROJECT_ID }}
           curseforge-token: "${{ secrets.CURSEFORGE_API_KEY }}"
           curseforge-dependencies: |
             mixin-booter(required)
             gregtech-ce-unofficial(required)
             gregicality-multiblocks(required)
+            implosionnobomb(recommended)
             ae2-extended-life(recommended)
             ae-additions-extra-cells-2-fork(recommended)
             nae2(recommended)
@@ -105,7 +106,7 @@ jobs:
             draconic-evolution(recommended)
             draconicadditions(recommended)
             project-red-illumination(recommended)
-            avaritia-1-1x-kedition(recommended)
+            avaritia-1-1x-unofficial(recommended)
             thaumcraft(recommended)
             forestry(recommended)
             gendustry(recommended)

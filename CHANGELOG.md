@@ -1,3 +1,64 @@
+# 2.4.5
+- Separate to [GTBeesMatrix](https://github.com/GTModpackTeam/GTBeesMatrix). [#320](https://github.com/GTModpackTeam/GTExpert-Core/pull/320)
+    - The following mods have been separated into separate mods to improve maintainability.
+        - [Forestry](https://www.curseforge.com/minecraft/mc-mods/forestry)
+        - [Gendustry](https://www.curseforge.com/minecraft/mc-mods/gendustry)
+        - [Binnie's Mods Patched](https://www.curseforge.com/minecraft/mc-mods/binnies-mods-patched)
+
+* * *
+
+# 2.4.4
+- Fix Wyvern tool recipe. [#319](https://github.com/GTModpackTeam/GTExpert-Core/pull/319)
+
+* * *
+
+# v2.4.3
+- Add BrokenSpawer recipe to SoulBinder. [#315](https://github.com/GTModpackTeam/GTExpert-Core/pull/315)
+
+* * *
+
+# v2.4.2
+- Delete unused steam machines. [#309](https://github.com/GTModpackTeam/GTExpert-Core/pull/309)
+- Advanced Chemical Plant to be compatible with PerfectOC. [#310](https://github.com/GTModpackTeam/GTExpert-Core/pull/314)
+
+* * *
+
+# v2.4.1
+- A recipe for processing FluixAlloy Molten in AlloyBlastFurnace into Ingot using Mold has been added. [#307](https://github.com/GTModpackTeam/GTExpert-Core/pull/307)
+
+* * *
+
+# v2.4.0
+- Disable automatic meal function for helmets [#300](https://github.com/GTModpackTeam/GTExpert-Core/pull/300)
+- Removed conflicts with GTWP [#303](https://github.com/GTModpackTeam/GTExpert-Core/pull/303)
+
+* * *
+
+# v2.3.2
+- Fix BlastTemperature of Vacuum Freezer Extended Recipes.
+
+* * *
+
+# v2.3.1
+- Hotfix a mistake when splitting into INBs [#296](https://github.com/GTModpackTeam/GTExpert-Core/pull/296)
+
+* * *
+
+# v2.3.0
+- Separate Electric Implosion Compressor changes to [ImplosionNoBomb](https://www.curseforge.com/minecraft/mc-mods/implosionnobomb)
+    - Thanks to @MrKono for his support!!
+
+* * *
+
+# v2.2.14
+## Ender IO
+- Fix Black Paper
+
+## GregTech Food Options
+- Kitchen Recipe
+
+* * *
+
 # v2.2.13
 - Fix upgrade recipe to Nano Boots from Piston Boots.
 

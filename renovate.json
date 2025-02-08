@@ -3,20 +3,23 @@
   "extends": [
     "config:recommended"
   ],
-  "dependencyDashboard": true,
   "timezone": "Asia/Tokyo",
   "schedule": [
     "every weekend"
   ],
-  "enabledManagers": [
-    "gradle"
-  ],
-  "ignorePaths": [
-    "build.gradle"
-  ],
-  "separateMajorMinor": false,
   "automerge": false,
   "packageRules": [
+    {
+      "matchDatasources": ["gradle-version"],
+      "registryUrls": [
+        "https://www.cursemaven.com",
+        "https://api.modrinth.com/maven",
+        "https://maven.cleanroommc.com",
+        "https://maven.blamejared.com",
+        "https://nexus.gtnewhorizons.com/repository/public/",
+        "https://maven.gtceu.com"
+      ]
+    },
     {
       "groupName": "monthly_maintenance",
       "matchDepTypes":[ "dependencies" ],

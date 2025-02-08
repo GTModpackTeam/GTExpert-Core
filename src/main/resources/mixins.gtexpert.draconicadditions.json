@@ -1,5 +1,5 @@
 {
-  "package": "gtexpert.mixins.draconicadditions",
+  "package": "com.github.gtexpert.core.mixins.draconicadditions",
   "refmap": "mixins.gtexpert.refmap.json",
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",

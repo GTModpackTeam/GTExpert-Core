@@ -1,0 +1,14 @@
+{
+  "package": "com.github.gtexpert.core.mixins.gregtech",
+  "refmap": "mixins.gtexpert.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "QuarkTechSuiteMixin"
+  ],
+  "server": [
+  ],
+  "client": [
+  ]
+}
