@@ -28,11 +28,13 @@ public class UpgradeRecipeProperty extends RecipeProperty<FusionUpgradeRecipe> {
 
     @Override
     public @NotNull NBTBase serialize(@NotNull Object value) {
+        // TODO: FIX
         return null;
     }
 
     @Override
     public @NotNull Object deserialize(@NotNull NBTBase nbt) {
+        // TODO: FIX
         return null;
     }
 

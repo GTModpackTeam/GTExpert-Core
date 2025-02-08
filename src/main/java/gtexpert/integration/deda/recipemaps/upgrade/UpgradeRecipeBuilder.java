@@ -97,11 +97,8 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 
     @Override
     public ValidationResult<Recipe> build() {
-        EnumValidationResult validationResult = finalizeAndValidate();
-        if (validationResult != EnumValidationResult.INVALID) {
-            setFusionProperties();
-        }
-
+        EnumValidationResult validationResult = recipePropertyStorageErrored ? EnumValidationResult.INVALID :
+                validate();
         return ValidationResult.newResult(validationResult,
                 new Recipe(inputs, outputs, new ChancedOutputList<>(this.chancedOutputLogic, chancedOutputs),
                         fluidInputs, fluidOutputs,
@@ -165,8 +162,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
     }
 
     public FusionUpgradeRecipe getFusionRecipe() {
-        return this.recipePropertyStorage == null ? null :
-                this.recipePropertyStorage.getRecipePropertyValue(UpgradeRecipeProperty.getInstance(), null);
+        return this.recipePropertyStorage.get(UpgradeRecipeProperty.getInstance(), null);
     }
 
     @Override

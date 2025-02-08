@@ -72,11 +72,8 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
 
     @Override
     public ValidationResult<Recipe> build() {
-        EnumValidationResult validationResult = finalizeAndValidate();
-        if (validationResult != EnumValidationResult.INVALID) {
-            setFusionProperties();
-        }
-
+        EnumValidationResult validationResult = recipePropertyStorageErrored ? EnumValidationResult.INVALID :
+                validate();
         return ValidationResult.newResult(validationResult,
                 new Recipe(inputs, outputs, new ChancedOutputList<>(this.chancedOutputLogic, chancedOutputs),
                         fluidInputs, fluidOutputs,
@@ -127,8 +124,7 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
     }
 
     public ToolUpgradeRecipe getFusionRecipe() {
-        return this.recipePropertyStorage == null ? null :
-                this.recipePropertyStorage.getRecipePropertyValue(TierUpRecipeProperty.getInstance(), null);
+        return this.recipePropertyStorage.get(TierUpRecipeProperty.getInstance(), null);
     }
 
     @Override
