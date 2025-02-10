@@ -2,8 +2,6 @@
 # 中文翻译由 Quarri6343 翻译。
 
 # multiblock
-gtexpert.machine.sawmill.name=锯木机
-gtexpert.machine.sawmill.tooltip=Nooooo!不要砍我...
 gtexpert.machine.void_ore_miner.name=虚空矿物采掘机
 gtexpert.machine.void_ore_miner.tooltip=星门建造机
 gtexpert.machine.void_ore_miner.tooltip.1=§6采掘32个矿石基于输入的矿石§r
