@@ -87,14 +87,25 @@ public class EIOBlocksRecipe {
                 'Z', "skullZombieController");
 
         // Electric Spawner
-        MetaTileEntityLoader.registerMachineRecipe(true,
-                EIOMetaTileEntities.ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
-                'P', new UnificationEntry(plate, GTEMaterials.ConstructionAlloy),
-                'E', "skullSentientEnder",
-                'S', new UnificationEntry(plate, GTEMaterials.Soularium),
-                'H', HULL,
-                'C', "itemEnderCrystal",
-                'Z', "skullZombieFrankenstein");
+        if (GTEConfigHolder.gteFlag.peacefulFlag) {
+            MetaTileEntityLoader.registerMachineRecipe(true,
+                    EIOMetaTileEntities.ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
+                    'P', new UnificationEntry(plate, GTEMaterials.ConstructionAlloy),
+                    'E', "skullEnderResonator",
+                    'S', new UnificationEntry(plate, GTEMaterials.Soularium),
+                    'H', HULL,
+                    'C', "itemEnderCrystal",
+                    'Z', "skullZombieController");
+        } else {
+            MetaTileEntityLoader.registerMachineRecipe(true,
+                    EIOMetaTileEntities.ELECTRIC_SPAWNER, "PEP", "SHS", "CZC",
+                    'P', new UnificationEntry(plate, GTEMaterials.ConstructionAlloy),
+                    'E', "skullSentientEnder",
+                    'S', new UnificationEntry(plate, GTEMaterials.Soularium),
+                    'H', HULL,
+                    'C', "itemEnderCrystal",
+                    'Z', "skullZombieFrankenstein");
+        }
 
         if (EnderIOConfigHolder.addShapelessRecipeMachines) {
             // Slice'N'Splice
