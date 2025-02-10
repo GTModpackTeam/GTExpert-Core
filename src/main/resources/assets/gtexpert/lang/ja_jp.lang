@@ -2,9 +2,9 @@
 
 
 # multiblock
-gtexpert.machine.sawmill.name=製材機
-gtexpert.machine.sawmill.tooltip=うるさいからって電話を伐らないで..
-gtexpert.machine.sawmill.tooltip.1=§d作者:§f @Quarri6343
+gtexpert.machine.large_rock_breaker.name=大型破砕機
+gtexpert.machine.large_rock_breaker.tooltip=アレもコレも壊したい
+gtexpert.machine.large_rock_breaker.tooltip.1=§d作者:§f @tier940
 gtexpert.machine.void_ore_miner.name=亜空間型鉱石採掘機
 gtexpert.machine.void_ore_miner.tooltip=スターゲート建設機
 gtexpert.machine.void_ore_miner.tooltip.1=§6搬入された鉱石に基づいて32個の鉱石を掘り出します§r

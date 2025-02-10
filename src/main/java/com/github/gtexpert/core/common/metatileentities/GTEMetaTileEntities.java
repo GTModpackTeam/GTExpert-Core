@@ -19,6 +19,7 @@ public class GTEMetaTileEntities {
     // Single Machine
 
     // Multi Machine
+    public static MetaTileEntityLargeRockBreaker LARGE_ROCK_BREAKER;
     public static MetaTileEntityLargeCrackingUnit LARGE_CRACKER;
     public static MetaTileEntityVoidOreMiner VOIDOREMINER;
     public static MetaTileEntityAdvancedChemicalPlant ADVANCED_CHEMICAL_PLANT;
@@ -29,7 +30,8 @@ public class GTEMetaTileEntities {
         // Free: 11004~11999
 
         // Multi Machine
-        // Free: 12000~12001
+        LARGE_ROCK_BREAKER = registerMetaTileEntity(12001,
+                new MetaTileEntityLargeRockBreaker(gteId("large_rock_breaker")));
         LARGE_CRACKER = registerMetaTileEntity(12002,
                 new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
         VOIDOREMINER = registerMetaTileEntity(12003,
