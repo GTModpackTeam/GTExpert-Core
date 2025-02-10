@@ -762,14 +762,6 @@ public class GTERecipe {
     }
 
     private static void blocks() {
-        // Large Rock Breaker
-        ModHandler.addShapedRecipe(true, "gtexpert.machine.large_rock_breaker",
-                GTEMetaTileEntities.LARGE_ROCK_BREAKER.getStackForm(), "PCP", "MSM", "PCP",
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.LuV),
-                'S', MetaTileEntities.ROCK_BREAKER[LuV].getStackForm(),
-                'P', MetaItems.ELECTRIC_PISTON_LUV.getStackForm(),
-                'M', MetaItems.ELECTRIC_MOTOR_LuV.getStackForm());
-
         // Large Oil Cracking Unit
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit",
                 GTEMetaTileEntities.LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",

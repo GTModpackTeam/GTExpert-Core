@@ -41,8 +41,6 @@ public class GTEConfigHolder {
         @Config.Comment({
                 "1. When enabled, the following recipes will be changed to Peaceful difficulty: ",
                 "Nether Star Dust, Skeleton Skull, Wither Skeleton Skull, Zombie Head, Creeper Head, Enderman Head",
-                "2. When enabled, some machine recipes are for Peaceful: ",
-                "Electric Spawner",
                 "Default: false" })
         public boolean peacefulFlag = false;
 
