@@ -50,13 +50,7 @@ dependencies {
     //devOnlyNonPublishable(rfg.deobf(project.files("libs/gregtech-1.12.2-2.8.9-beta-dev.jar"))) // CEu pr 2.8.10
     devOnlyNonPublishable(rfg.deobf("curse.maven:gregicality-multiblocks-564858:5508050")) // GCYM 1.2.10
     devOnlyNonPublishable(rfg.deobf("curse.maven:forgelin-continuous-456403:6142081")) // Forgelin-Continuous 2.1.10.0
-
-    // Switchable Dependencies
-    if (project.useAE2uelExtended.toBoolean()) {
-        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-uel-extended-913322:5006535")) // AE2 UEL: Extended 0.55.30-0.4.0.2
-    } else {
-        devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5411078")) // AE2UEL 0.56.6
-    }
+    devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5378163")) // AE2UEL 0.56.5
 
     // Debug GTWoodProcessing
     if (project.debug_all.toBoolean() || project.debug_gtwp.toBoolean()) {

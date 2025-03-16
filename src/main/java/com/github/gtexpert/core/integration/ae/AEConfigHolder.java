@@ -12,10 +12,6 @@ import com.github.gtexpert.core.modules.GTEModules;
         category = "Applied Energistics 2")
 public class AEConfigHolder {
 
-    @Config.Comment({ "Change the recipe to use AE2 UEL: Extended by setting it to true.",
-            "Changes are not recommended if you don't know what kind of mod it is.", "Default: false" })
-    public static boolean enableAE2UELExtended = false;
-
     @Config.Comment({ "The voltage at which AE can be started.",
             "The material is also adjusted to each voltage.", "Default: 3 (HV)" })
     @Config.RangeInt(min = 2, max = 10)
