@@ -60,7 +60,7 @@ public class MetaTileEntityLargeRockBreaker extends GCYMRecipeMapMultiblockContr
                 .where('C', casing)
                 .where('X', casing.or(abilities))
                 .where('P', states(getPipeCasingState()))
-                .where('T', tieredCasing().or(states(getCasingState())))
+                .where('T', tieredCasing().or(casing))
                 .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('#', air())
                 .where(' ', any())

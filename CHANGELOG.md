@@ -1,3 +1,8 @@
+# 2.4.7
+- Fix Draconium Casing Recycle [#324](https://github.com/GTModpackTeam/GTExpert-Core/pull/324)
+
+* * *
+
 # 2.4.6
 - Add Large Rock Breaker [#321](https://github.com/GTModpackTeam/GTExpert-Core/pull/321)
 - Fix Electric Spawner [#323](https://github.com/GTModpackTeam/GTExpert-Core/pull/322)

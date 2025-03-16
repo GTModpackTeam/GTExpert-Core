@@ -4,9 +4,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 import gregtech.api.GTValues;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.stack.ItemMaterialInfo;
-import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.ConfigHolder;
 
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
@@ -30,10 +27,5 @@ public class DEDAMaterialInfoLoader {
                         .getItemVariant(GTEBlockMetalCasing.MetalCasingType.AWAKENED_DRACONIUM_CASING),
                 GTEMaterials.AwakenedDraconium,
                 (GTValues.M * 8) / ConfigHolder.recipes.casingsPerCraft);
-        GTEUtility.registerOre(
-                GTEMetaBlocks.GTE_METAL_CASING.getItemVariant(GTEBlockMetalCasing.MetalCasingType.DRACONIUM_CASING),
-                new ItemMaterialInfo(
-                        new MaterialStack(GTEMaterials.Draconium, GTValues.M * 9),
-                        new MaterialStack(Materials.Tritanium, GTValues.M * 2)));
     }
 }
