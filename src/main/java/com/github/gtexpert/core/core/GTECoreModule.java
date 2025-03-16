@@ -78,9 +78,7 @@ public class GTECoreModule implements IGTEModule {
     public void init(FMLInitializationEvent event) {}
 
     @Override
-    public void postInit(FMLPostInitializationEvent event) {
-        RecyclingRecipes.init();
-    }
+    public void postInit(FMLPostInitializationEvent event) {}
 
     @Override
     public void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -112,5 +110,6 @@ public class GTECoreModule implements IGTEModule {
         GTERecipe.init();
         CEUOverrideRecipe.init();
         GTEVanillaOverrideRecipes.init();
+        RecyclingRecipes.init();
     }
 }

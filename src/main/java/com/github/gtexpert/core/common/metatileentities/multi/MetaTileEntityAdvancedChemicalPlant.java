@@ -64,7 +64,7 @@ public class MetaTileEntityAdvancedChemicalPlant extends GCYMRecipeMapMultiblock
                 .aisle("X   X", "SXXXX", "X   X", "XXXXX", "X   X")
                 .where('S', selfPredicate())
                 .where('X', casing.or(abilities))
-                .where('T', tieredCasing().or(states(getCasingState())))
+                .where('T', tieredCasing().or(casing))
                 .where('P', states(getPipeCasingState()))
                 .where('C', heatingCoils().setMinGlobalLimited(12).setMaxGlobalLimited(12))
                 .where(' ', any())

@@ -62,7 +62,7 @@ public class MetaTileEntityLargeGasCollector extends GCYMRecipeMapMultiblockCont
                 .aisle("XXX", "XSX", "XXX")
                 .where('S', selfPredicate())
                 .where('X', casing.or(abilities))
-                .where('T', tieredCasing().or(states(getCasingState())))
+                .where('T', tieredCasing().or(casing))
                 .where('H', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('#', air())
                 .build();

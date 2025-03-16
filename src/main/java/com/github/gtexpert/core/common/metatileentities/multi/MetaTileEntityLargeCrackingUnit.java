@@ -86,7 +86,7 @@ public class MetaTileEntityLargeCrackingUnit extends GCYMRecipeMapMultiblockCont
                     .aisle("XCCXCCX", "XCCSCCX", "XCCXCCX")
                     .where('S', selfPredicate())
                     .where('X', casing.or(abilities))
-                    .where('T', tieredCasing().or(states(getCasingState())))
+                    .where('T', casing.or(tieredCasing()))
                     .where('C', heatingCoils().setMinGlobalLimited(32).setMaxGlobalLimited(32))
                     .where('#', air())
                     .build();
