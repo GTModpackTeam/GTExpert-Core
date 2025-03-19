@@ -31,6 +31,7 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -762,6 +763,13 @@ public class GTERecipe {
     }
 
     private static void blocks() {
+        // Large Rock Breaker
+        ModHandler.addShapedRecipe(true, "gtexpert.machine.large_rock_breaker",
+                GTEMetaTileEntities.LARGE_ROCK_BREAKER.getStackForm(), "CGC", "CFC", "CGC",
+                'G', new UnificationEntry(gear, Materials.Potin),
+                'F', MetaTileEntities.STEAM_ROCK_BREAKER_STEEL.getStackForm(),
+                'C', MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID));
+
         // Large Oil Cracking Unit
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_oil_cracking_unit",
                 GTEMetaTileEntities.LARGE_CRACKER.getStackForm(), "PCP", "FSF", "PCP",
