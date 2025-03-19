@@ -766,8 +766,8 @@ public class GTERecipe {
         // Large Rock Breaker
         ModHandler.addShapedRecipe(true, "gtexpert.machine.large_rock_breaker",
                 GTEMetaTileEntities.LARGE_ROCK_BREAKER.getStackForm(), "CGC", "CFC", "CGC",
-                'G', new UnificationEntry(gear, Materials.Potin),
-                'F', MetaTileEntities.STEAM_ROCK_BREAKER_STEEL.getStackForm(),
+                'G', new UnificationEntry(gear, Materials.TungstenSteel),
+                'F', MetaTileEntities.ROCK_BREAKER[EV].getStackForm(),
                 'C', MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID));
 
         // Large Oil Cracking Unit
