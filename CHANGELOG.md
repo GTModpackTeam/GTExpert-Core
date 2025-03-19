@@ -1,3 +1,8 @@
+# 2.4.8
+- Forgot to add recipe for LRB [#326](https://github.com/GTModpackTeam/GTExpert-Core/pull/326)
+
+* * *
+
 # 2.4.7
 - Fix Draconium Casing Recycle [#324](https://github.com/GTModpackTeam/GTExpert-Core/pull/324)
 - AE2 UEL: Extended support ends [#325](https://github.com/GTModpackTeam/GTExpert-Core/pull/325)
