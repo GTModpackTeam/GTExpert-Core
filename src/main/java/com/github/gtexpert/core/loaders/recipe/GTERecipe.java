@@ -858,6 +858,14 @@ public class GTERecipe {
                                 ConfigHolder.recipes.casingsPerCraft))
                 .duration(100).EUt(VA[ZPM])
                 .buildAndRegister();
+
+        // Large Adjustable Transformer
+        ModHandler.addShapedRecipe(true, "gtexpert.machine.large_transformer",
+                GTEMetaTileEntities.LARGE_TRANSFORMER.getStackForm(), "DPD", "CHC", "DPD",
+                'D', MetaItems.SMD_DIODE,
+                'P', new UnificationEntry(plate, Materials.Palladium),
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.EV),
+                'H', MetaTileEntities.HULL[EV].getStackForm());
     }
 
     private static void tools() {
