@@ -3,6 +3,8 @@ package com.github.gtexpert.core.common.metatileentities.multi;
 import java.util.ArrayList;
 import java.util.List;
 
+import gregtech.common.blocks.BlockMetalCasing;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -83,7 +85,7 @@ public class MetaTileEntityLargeTransformer extends MultiblockWithDisplayBase im
                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setExactLimit(1))
                         .or(abilities(MultiblockAbility.OUTPUT_ENERGY).setExactLimit(1))
                         .or(states(
-                                MetaBlocks.COMPUTER_CASING.getState(BlockComputerCasing.CasingType.HIGH_POWER_CASING))
+                                MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PALLADIUM_SUBSTATION))
                                         .setExactLimit(2)))
                 .where('S', selfPredicate())
                 .build();
@@ -201,11 +203,7 @@ public class MetaTileEntityLargeTransformer extends MultiblockWithDisplayBase im
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return Textures.HIGH_POWER_CASING;
-    }
-
-    protected IBlockState getCasingState() {
-        return MetaBlocks.COMPUTER_CASING.getState(BlockComputerCasing.CasingType.HIGH_POWER_CASING);
+        return Textures.PALLADIUM_SUBSTATION_CASING;
     }
 
     @SideOnly(Side.CLIENT)
