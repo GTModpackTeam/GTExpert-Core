@@ -27,6 +27,10 @@ gtexpert.machine.advanced_gas_collector.tooltip.1=§d作者:§f @tier940
 gtexpert.machine.large_gas_collector.name=大型ガス収集機
 gtexpert.machine.large_gas_collector.tooltip=粉から空気を搾り取る
 gtexpert.machine.large_gas_collector.tooltip.1=§d作者:§f @tier940
+gtexpert.machine.large_transformer.name=大型可変変圧器
+gtexpert.machine.large_transformer.tooltip=昔のGregicalityには居たやつ
+gtexpert.machine.large_transformer.tooltip.1=大型変圧器の簡易版
+gtexpert.machine.large_transformer.tooltip.2=§d作者:§f @MrKono
 
 # singleblock
 # Auto Chisel
@@ -238,3 +242,8 @@ recipemap.steam_circuit_assembler.name=蒸気式回路作成機
 gtexpert.gui.electric_spawner_mode.spawn=スポーンモード
 gtexpert.gui.electric_spawner_mode.capture=捕獲モード
 gtexpert.gui.needs_redstone=動作にはレッドストーン入力が必要です
+
+#multiblock display
+gtexpert.multiblock.large_transformer.max_input_energy_per_tick_amps=最大入力: %s EU/t (%s) / %s A
+gtexpert.multiblock.large_transformer.max_output_energy_per_tick_amps=最大出力: %s EU/t (%s) / %s A
+gtexpert.multiblock.large_transformer.not_enough_input=最大出力が最大入力を超過している!

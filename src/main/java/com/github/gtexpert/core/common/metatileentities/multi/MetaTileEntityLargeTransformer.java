@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
@@ -44,6 +46,7 @@ import gregtech.common.blocks.MetaBlocks;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import org.jetbrains.annotations.Nullable;
 
 public class MetaTileEntityLargeTransformer extends MultiblockWithDisplayBase implements IControllable {
 
@@ -228,18 +231,24 @@ public class MetaTileEntityLargeTransformer extends MultiblockWithDisplayBase im
                         String inputEnergyFormatted = TextFormattingUtil.formatNumbers(getInputVolt());
                         ITextComponent inputVoltageName = new TextComponentString(
                                 GTValues.VNF[GTUtility.getFloorTierByVoltage(getInputVolt())]);
+                        ITextComponent inputAmp = TextComponentUtil.stringWithColor(
+                                TextFormatting.YELLOW,
+                                TextFormattingUtil.formatNumbers(getInputAmp()));
                         tl.add(TextComponentUtil.translationWithColor(
                                 TextFormatting.GRAY,
                                 "gtexpert.multiblock.large_transformer.max_input_energy_per_tick_amps",
-                                inputEnergyFormatted, inputVoltageName, getInputAmp()));
+                                inputEnergyFormatted, inputVoltageName, inputAmp));
                         // output
                         String outputEnergyFormatted = TextFormattingUtil.formatNumbers(getOutputVolt());
                         ITextComponent outputVoltageName = new TextComponentString(
                                 GTValues.VNF[GTUtility.getFloorTierByVoltage(getOutputVolt())]);
+                        ITextComponent outputAmp = TextComponentUtil.stringWithColor(
+                                TextFormatting.YELLOW,
+                                TextFormattingUtil.formatNumbers(getOutputAmp()));
                         tl.add(TextComponentUtil.translationWithColor(
                                 TextFormatting.GRAY,
                                 "gtexpert.multiblock.large_transformer.max_output_energy_per_tick_amps",
-                                outputEnergyFormatted, outputVoltageName, getOutputAmp()));
+                                outputEnergyFormatted, outputVoltageName, outputAmp));
                     }
                 })
                 .addWorkingStatusLine();
@@ -253,6 +262,13 @@ public class MetaTileEntityLargeTransformer extends MultiblockWithDisplayBase im
                     TextFormatting.YELLOW,
                     "gtexpert.multiblock.large_transformer.not_enough_input"));
         }
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World world, @NotNull List<String> tooltip,
+                               boolean advanced) {
+        tooltip.add(I18n.format("gtexpert.machine.large_transformer.tooltip.1"));
+        tooltip.add(I18n.format("gtexpert.machine.large_transformer.tooltip.2"));
     }
 
     private long getInput() {

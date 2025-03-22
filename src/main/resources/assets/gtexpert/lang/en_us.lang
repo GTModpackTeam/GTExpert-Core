@@ -27,6 +27,10 @@ gtexpert.machine.advanced_gas_collector.tooltip.1=§dAuthor:§f @tier940
 gtexpert.machine.large_gas_collector.name=Large Gas Collector
 gtexpert.machine.large_gas_collector.tooltip=Squeeze air out of dust
 gtexpert.machine.large_gas_collector.tooltip.1=§dAuthor:§f @tier940
+gtexpert.machine.large_transformer.name=Large Adjustable Transformer
+gtexpert.machine.large_transformer.tooltip=The one that was in the old Gregicality
+gtexpert.machine.large_transformer.tooltip.1=Simplified version of active transformers
+gtexpert.machine.large_transformer.tooltip.2=§dAuthor:§f @MrKono
 
 # singleblock
 # Auto Chisel
@@ -238,3 +242,8 @@ recipemap.steam_circuit_assembler.name=Steam Circuit Assembler
 gtexpert.gui.electric_spawner_mode.spawn=Spawn Mode
 gtexpert.gui.electric_spawner_mode.capture=Capture Mode
 gtexpert.gui.needs_redstone=Needs Redstone signal to work
+
+#multiblock display
+gtexpert.multiblock.large_transformer.max_input_energy_per_tick_amps=Max Input: %s EU/t (%s) / %s A
+gtexpert.multiblock.large_transformer.max_output_energy_per_tick_amps=Max Output: %s EU/t (%s) / %s A
+gtexpert.multiblock.large_transformer.not_enough_input=Max Output exceeds Max Input!
