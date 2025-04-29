@@ -8,6 +8,7 @@ import com.github.gtexpert.core.api.gui.GTEGuiTextures;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 
 import com.github.gtexpert.core.client.GTETextures;
+import com.github.gtexpert.core.common.GTEConfigHolder;
 import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
 import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
 
@@ -257,11 +258,11 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
     }
 
     public int getBaseTier() {
-        return GTValues.EV;
+        return GTEConfigHolder.gteFlag.vfpBaseVoltage;
     }
 
     public int getBaseMultiplier() {
-        return 16;
+        return GTEConfigHolder.gteFlag.vfpBaseProductionRate;
     }
 
 

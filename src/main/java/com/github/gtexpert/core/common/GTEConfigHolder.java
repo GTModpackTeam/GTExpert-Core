@@ -53,6 +53,20 @@ public class GTEConfigHolder {
                 "3. EIO: Capacitor Bank",
                 "Default: true" })
         public boolean addCreativeRecipe = true;
+
+        @Config.Comment({ "The base voltage of Void Fluid Pump",
+                "Minimum: 0 (ULV)",
+                "Maximum: 9 (UHV)",
+                "Default: 4 (EV)"})
+        @Config.RangeInt(min = 0, max = 9)
+        public int vfpBaseVoltage = 4;
+
+        @Config.Comment({ "The base of Production Rate of Void Fluid Pump",
+                "Total Production Multiplier = Base Production Rate * (Current Voltage - Base Voltage)",
+                "Minimum: 1",
+                "Default: 16"})
+        @Config.RangeInt(min = 1)
+        public int vfpBaseProductionRate = 16;
     }
 
     public static class GregtechOverride {
