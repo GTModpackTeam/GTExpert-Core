@@ -25,6 +25,7 @@ public class GTEMetaTileEntities {
     public static MetaTileEntityAdvancedChemicalPlant ADVANCED_CHEMICAL_PLANT;
     public static MetaTileEntityLargeGasCollector LARGE_GAS_COLLECTOR;
     public static MetaTileEntityLargeTransformer LARGE_TRANSFORMER;
+    public static MetaTileEntityVoidFluidPump VOID_FLUID_PUMP;
 
     public static void init() {
         // Single Machine
@@ -45,6 +46,8 @@ public class GTEMetaTileEntities {
                         "large_gas_collector" : "advanced_gas_collector")));
         LARGE_TRANSFORMER = registerMetaTileEntity(12008,
                 new MetaTileEntityLargeTransformer(gteId("large_transformer")));
+        VOID_FLUID_PUMP = registerMetaTileEntity(12009,
+                new MetaTileEntityVoidFluidPump((gteId("void_fluid_pump"))));
     }
 
     public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,
