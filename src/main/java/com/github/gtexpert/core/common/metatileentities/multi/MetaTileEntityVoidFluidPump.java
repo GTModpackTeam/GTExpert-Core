@@ -1,56 +1,7 @@
 package com.github.gtexpert.core.common.metatileentities.multi;
 
-import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.pipeline.IVertexOperation;
-import codechicken.lib.vec.Matrix4;
-import com.github.gtexpert.core.api.capability.impl.VoidFluidPumpLogic;
-import com.github.gtexpert.core.api.gui.GTEGuiTextures;
-import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-
-import com.github.gtexpert.core.client.GTETextures;
-import com.github.gtexpert.core.common.GTEConfigHolder;
-import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
-import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
-
-import com.google.common.collect.Lists;
-
-import gregtech.api.GTValues;
-import gregtech.api.capability.GregtechTileCapabilities;
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.capability.IWorkable;
-import gregtech.api.capability.impl.EnergyContainerList;
-import gregtech.api.capability.impl.FluidDrillLogic;
-import gregtech.api.capability.impl.FluidTankList;
-import gregtech.api.gui.GuiTextures;
-import gregtech.api.gui.resources.TextureArea;
-import gregtech.api.metatileentity.ITieredMetaTileEntity;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
-import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.IProgressBarMultiblock;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
-import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
-
-import gregtech.api.pattern.BlockPattern;
-import gregtech.api.pattern.FactoryBlockPattern;
-import gregtech.api.pattern.PatternMatchContext;
-
-import gregtech.api.unification.material.Materials;
-
-import gregtech.api.util.GTTransferUtils;
-import gregtech.api.util.GTUtility;
-import gregtech.api.util.TextComponentUtil;
-import gregtech.api.util.TextFormattingUtil;
-import gregtech.api.worldgen.bedrockFluids.BedrockFluidVeinHandler;
-import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockSteamCasing;
-import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.MetaTileEntities;
-
-import gregtech.common.metatileentities.multi.electric.MetaTileEntityFluidDrill;
+import java.util.Collections;
+import java.util.List;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -70,11 +21,50 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collections;
-import java.util.List;
+import com.google.common.collect.Lists;
+
+import gregtech.api.GTValues;
+import gregtech.api.capability.GregtechTileCapabilities;
+import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.IMultipleTankHandler;
+import gregtech.api.capability.IWorkable;
+import gregtech.api.capability.impl.EnergyContainerList;
+import gregtech.api.capability.impl.FluidDrillLogic;
+import gregtech.api.capability.impl.FluidTankList;
+import gregtech.api.gui.GuiTextures;
+import gregtech.api.gui.resources.TextureArea;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
+import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.IProgressBarMultiblock;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
+import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.util.GTTransferUtils;
+import gregtech.api.util.GTUtility;
+import gregtech.api.util.TextComponentUtil;
+import gregtech.api.util.TextFormattingUtil;
+import gregtech.api.worldgen.bedrockFluids.BedrockFluidVeinHandler;
+import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
+
+import com.github.gtexpert.core.api.capability.impl.VoidFluidPumpLogic;
+import com.github.gtexpert.core.api.gui.GTEGuiTextures;
+import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.client.GTETextures;
+import com.github.gtexpert.core.common.GTEConfigHolder;
+import com.github.gtexpert.core.common.blocks.GTEBlockMetalCasing;
+import com.github.gtexpert.core.common.blocks.GTEMetaBlocks;
+
+import codechicken.lib.render.CCRenderState;
+import codechicken.lib.render.pipeline.IVertexOperation;
+import codechicken.lib.vec.Matrix4;
 
 public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
-        implements IWorkable, IProgressBarMultiblock {
+                                         implements IWorkable, IProgressBarMultiblock {
 
     private final VoidFluidPumpLogic minerLogic;
 
@@ -134,12 +124,15 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
                 .aisle("XXXXHXX", "F*****F", "F*****F", "FFFFFFF")
                 .aisle("SXXXXXX", "****F**", "****F**", "****F**")
                 .where('S', selfPredicate())
-                .where('X', states(GTEMetaBlocks.GTE_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setExactLimit(1))
-                        .or(autoAbilities(true, false)))
+                .where('X',
+                        states(GTEMetaBlocks.GTE_METAL_CASING
+                                .getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER))
+                                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setExactLimit(1))
+                                        .or(autoAbilities(true, false)))
                 .where('F', frames(GTEMaterials.NM_HEA_NPs))
                 .where('H', abilities(MultiblockAbility.EXPORT_FLUIDS).setExactLimit(1)
-                        .or(states(GTEMetaBlocks.GTE_METAL_CASING.getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER))))
+                        .or(states(GTEMetaBlocks.GTE_METAL_CASING
+                                .getState(GTEBlockMetalCasing.MetalCasingType.VOID_ORE_MINER))))
                 .where('*', any())
                 .build();
     }
@@ -159,6 +152,7 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return GTETextures.VOID_ORE_MINER_CASING;
     }
+
     @Override
     protected @NotNull TextureArea getLogo() {
         return GTEGuiTextures.GTE_LOGO_DARK;
@@ -240,13 +234,15 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World world, @NotNull List<String> tooltip, boolean advanced) {
-        super.addInformation(stack,world, tooltip, advanced);
+    public void addInformation(ItemStack stack, @Nullable World world, @NotNull List<String> tooltip,
+                               boolean advanced) {
+        super.addInformation(stack, world, tooltip, advanced);
         tooltip.add(I18n.format("gtexpert.machine.void_fluid_pump.tooltip.1"));
         tooltip.add(I18n.format("gregtech.machine.fluid_drilling_rig.description"));
         tooltip.add(I18n.format("gregtech.machine.fluid_drilling_rig.depletion",
                 TextFormattingUtil.formatNumbers(0)));
-        tooltip.add(I18n.format("gtexpert.machine.void_fluid_pump.tooltip.2", GTValues.VNF[getBaseTier()], getBaseMultiplier()));
+        tooltip.add(I18n.format("gtexpert.machine.void_fluid_pump.tooltip.2", GTValues.VNF[getBaseTier()],
+                getBaseMultiplier()));
         tooltip.add(I18n.format("gtexpert.machine.void_fluid_pump.tooltip.3"));
     }
 
@@ -264,7 +260,6 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
     public int getBaseMultiplier() {
         return GTEConfigHolder.gteFlag.vfpBaseProductionRate;
     }
-
 
     public int getRigMultiplier() {
         return Math.max(1, getBaseMultiplier() * (getEnergyTier() - getBaseTier()));
@@ -311,7 +306,6 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
         }
         return false;
     }
-
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
@@ -361,7 +355,6 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
             return GregtechTileCapabilities.CAPABILITY_CONTROLLABLE.cast(this);
         return super.getCapability(capability, side);
     }
-
 
     @Override
     public boolean showProgressBar() {
