@@ -31,6 +31,10 @@ gtexpert.machine.large_transformer.name=Large Adjustable Transformer
 gtexpert.machine.large_transformer.tooltip=The one that was in the old Gregicality
 gtexpert.machine.large_transformer.tooltip.1=Simplified version of active transformers
 gtexpert.machine.large_transformer.tooltip.2=§dAuthor:§f @MrKono
+gtexpert.machine.void_fluid_pump.name=Void Fluid Pump
+gtexpert.machine.void_fluid_pump.tooltip.1=Infinite Oil Deposit
+gtexpert.machine.void_fluid_pump.tooltip.2=For every voltage tier above §b%s§7, Production Multiplier is §e%dx§7.
+gtexpert.machine.void_fluid_pump.tooltip.3=§dAuthor:§f @MrKono
 
 # singleblock
 # Auto Chisel

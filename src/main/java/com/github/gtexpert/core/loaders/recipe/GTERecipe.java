@@ -866,6 +866,40 @@ public class GTERecipe {
                 'P', new UnificationEntry(plate, Materials.Palladium),
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.EV),
                 'H', MetaTileEntities.HULL[EV].getStackForm());
+
+        // Void Fluid Pump
+        AssemblyLineRecipeBuilder builderVFP = RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.ADVANCED_FLUID_DRILLING_RIG)
+                .fluidInputs(Materials.SolderingAlloy.getFluid(18432))
+                .output(GTEMetaTileEntities.VOID_FLUID_PUMP);
+        if (GTEValues.isModLoadedDEDA()) {
+            builderVFP.inputs(Mods.DraconicEvolution.getItem("awakened_core", 4, 0))
+                    .input(MetaItems.ELECTRIC_MOTOR_UV, 4)
+                    .input(MetaItems.ELECTRIC_PUMP_UV, 4)
+                    .input(MetaItems.CONVEYOR_MODULE_UV, 4)
+                    .input(MetaItems.ELECTRIC_PISTON_UV, 4)
+                    .input(MetaItems.ROBOT_ARM_UV, 4)
+                    .input(MetaItems.EMITTER_UV, 4)
+                    .input(MetaItems.SENSOR_UV, 4)
+                    .duration(600).EUt(VA[UV])
+                    .stationResearch(
+                    b -> b.researchStack(MetaTileEntities.ADVANCED_FLUID_DRILLING_RIG.getStackForm()).CWUt(96).EUt(VA[UV]));
+        } else {
+            builderVFP.input(circuit, MarkerMaterials.Tier.ZPM, 4)
+                    .input(MetaItems.ELECTRIC_MOTOR_ZPM, 4)
+                    .input(MetaItems.ELECTRIC_PUMP_ZPM, 4)
+                    .input(MetaItems.CONVEYOR_MODULE_ZPM, 4)
+                    .input(MetaItems.ELECTRIC_PISTON_ZPM, 4)
+                    .input(MetaItems.ROBOT_ARM_ZPM, 4)
+                    .input(MetaItems.EMITTER_ZPM, 4)
+                    .input(MetaItems.SENSOR_ZPM, 4)
+                    .duration(600).EUt(VA[ZPM])
+                    .stationResearch(
+                    b -> b.researchStack(MetaTileEntities.ADVANCED_FLUID_DRILLING_RIG.getStackForm()).CWUt(64).EUt(VA[ZPM]));
+        }
+        builderVFP.input(MetaItems.FLUID_FILTER)
+                .input(gear, Materials.NaquadahAlloy, 4)
+                .buildAndRegister();
     }
 
     private static void tools() {

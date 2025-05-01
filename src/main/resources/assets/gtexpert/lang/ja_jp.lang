@@ -31,6 +31,10 @@ gtexpert.machine.large_transformer.name=大型可変変圧器
 gtexpert.machine.large_transformer.tooltip=昔のGregicalityには居たやつ
 gtexpert.machine.large_transformer.tooltip.1=大型変圧器の簡易版
 gtexpert.machine.large_transformer.tooltip.2=§d作者:§f @MrKono
+gtexpert.machine.void_fluid_pump.name=亜空間型液体ポンプ
+gtexpert.machine.void_fluid_pump.tooltip.1=無限の油田
+gtexpert.machine.void_fluid_pump.tooltip.2=使用電圧が§b%s§7よりも高い場合、電圧Tier毎に生産量が§e%d倍§7になる。
+gtexpert.machine.void_fluid_pump.tooltip.3=§d作者:§f @MrKono
 
 # singleblock
 # Auto Chisel
