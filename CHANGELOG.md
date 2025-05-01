@@ -1,3 +1,8 @@
+# 2.4.9
+- Add Void Fluid Pump [#328](https://github.com/GTModpackTeam/GTExpert-Core/pull/328)
+
+* * *
+
 # 2.4.8
 - Forgot to add recipe for LRB [#326](https://github.com/GTModpackTeam/GTExpert-Core/pull/326)
 
