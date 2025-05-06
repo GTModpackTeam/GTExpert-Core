@@ -30,3 +30,7 @@ runs:
           notifications
           jdks
           wrapper
+
+    - name: Grant execute permission for gradlew
+      shell: bash
+      run: chmod +x gradlew
