@@ -1,4 +1,5 @@
 # 2.4.9
+- Add Large Adjustable Transformer [#327](https://github.com/GTModpackTeam/GTExpert-Core/pull/327)
 - Add Void Fluid Pump [#328](https://github.com/GTModpackTeam/GTExpert-Core/pull/328)
 
 * * *
