@@ -883,7 +883,8 @@ public class GTERecipe {
                     .input(MetaItems.SENSOR_UV, 4)
                     .duration(600).EUt(VA[UV])
                     .stationResearch(
-                    b -> b.researchStack(MetaTileEntities.ADVANCED_FLUID_DRILLING_RIG.getStackForm()).CWUt(96).EUt(VA[UV]));
+                            b -> b.researchStack(MetaTileEntities.ADVANCED_FLUID_DRILLING_RIG.getStackForm()).CWUt(96)
+                                    .EUt(VA[UV]));
         } else {
             builderVFP.input(circuit, MarkerMaterials.Tier.ZPM, 4)
                     .input(MetaItems.ELECTRIC_MOTOR_ZPM, 4)
@@ -895,7 +896,8 @@ public class GTERecipe {
                     .input(MetaItems.SENSOR_ZPM, 4)
                     .duration(600).EUt(VA[ZPM])
                     .stationResearch(
-                    b -> b.researchStack(MetaTileEntities.ADVANCED_FLUID_DRILLING_RIG.getStackForm()).CWUt(64).EUt(VA[ZPM]));
+                            b -> b.researchStack(MetaTileEntities.ADVANCED_FLUID_DRILLING_RIG.getStackForm()).CWUt(64)
+                                    .EUt(VA[ZPM]));
         }
         builderVFP.input(MetaItems.FLUID_FILTER)
                 .input(gear, Materials.NaquadahAlloy, 4)

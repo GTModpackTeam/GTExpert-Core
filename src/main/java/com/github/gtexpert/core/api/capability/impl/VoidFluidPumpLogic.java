@@ -1,20 +1,19 @@
 package com.github.gtexpert.core.api.capability.impl;
 
-import com.github.gtexpert.core.common.metatileentities.multi.MetaTileEntityVoidFluidPump;
-
-import gregtech.api.GTValues;
-import gregtech.api.capability.GregtechDataCodes;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.worldgen.bedrockFluids.BedrockFluidVeinHandler;
-import gregtech.common.ConfigHolder;
-import gregtech.common.metatileentities.multi.electric.MetaTileEntityFluidDrill;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.NotNull;
+
+import gregtech.api.GTValues;
+import gregtech.api.capability.GregtechDataCodes;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.worldgen.bedrockFluids.BedrockFluidVeinHandler;
+import gregtech.common.ConfigHolder;
+
+import com.github.gtexpert.core.common.metatileentities.multi.MetaTileEntityVoidFluidPump;
 
 public class VoidFluidPumpLogic {
 
@@ -231,7 +230,6 @@ public class VoidFluidPumpLogic {
     public double getProgressPercent() {
         return getProgressTime() * 1.0 / MAX_PROGRESS;
     }
-
 
     /**
      *
