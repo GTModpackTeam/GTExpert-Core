@@ -35,7 +35,7 @@ gradleEnterprise {
 
 blowdryerSetup {
     repoSubfolder 'spotless'
-    github 'GTModpackTeam/Buildscripts', 'tag', 'v1.0.1'
+    github 'GTModpackTeam/Buildscripts', 'tag', 'v1.0.3'
 }
 
 rootProject.name = rootProject.projectDir.getName()
