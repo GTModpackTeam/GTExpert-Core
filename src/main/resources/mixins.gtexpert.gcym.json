@@ -1,0 +1,15 @@
+{
+  "package": "com.github.gtexpert.core.mixins.gcym",
+  "refmap": "mixins.gtexpert.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MetaTileEntityMegaBlastFurnaceMixin",
+    "MetaTileEntityMegaVacuumFreezerMixin"
+  ],
+  "server": [
+  ],
+  "client": [
+  ]
+}
