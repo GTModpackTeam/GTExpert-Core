@@ -30,7 +30,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       - name: Apply patch to gradle.properties
         run: sed -i 's/debug_all = false/debug_all = true/g' gradle.properties
 
@@ -38,7 +37,7 @@ jobs:
         uses: ./.github/actions/build_setup
 
       - name: Compile the mod
-        run: ./gradlew --info --scan assemble
+        run: ./gradlew --info --scan --stacktrace assemble
 
       - name: Upload Jars
         uses: actions/upload-artifact@v4

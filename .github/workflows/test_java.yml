@@ -29,4 +29,4 @@ jobs:
         uses: ./.github/actions/build_setup
 
       - name: Run Tests with Gradle
-        run: ./gradlew --info --scan test
+        run: ./gradlew --info --scan --stacktrace test
