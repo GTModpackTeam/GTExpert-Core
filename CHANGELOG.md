@@ -1,3 +1,8 @@
+# 2.4.10
+- Fix Tiered Hatch tooltip [#330](https://github.com/GTModpackTeam/GTExpert-Core/pull/330)
+
+* * *
+
 # 2.4.9
 - Add Large Adjustable Transformer [#327](https://github.com/GTModpackTeam/GTExpert-Core/pull/327)
 - Add Void Fluid Pump [#328](https://github.com/GTModpackTeam/GTExpert-Core/pull/328)

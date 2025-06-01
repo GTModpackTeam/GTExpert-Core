@@ -1,9 +1,10 @@
 package com.github.gtexpert.core.mixins.gcym;
 
-import com.github.gtexpert.core.api.capability.impl.ITiered;
+import org.spongepowered.asm.mixin.Mixin;
+
 import gregicality.multiblocks.common.metatileentities.multiblock.standard.MetaTileEntityMegaBlastFurnace;
 
-import org.spongepowered.asm.mixin.Mixin;
+import com.github.gtexpert.core.api.capability.impl.ITiered;
 
 @Mixin(value = MetaTileEntityMegaBlastFurnace.class, remap = false)
 public abstract class MetaTileEntityMegaBlastFurnaceMixin implements ITiered {
