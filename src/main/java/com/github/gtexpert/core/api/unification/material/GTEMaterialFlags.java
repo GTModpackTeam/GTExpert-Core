@@ -14,6 +14,11 @@ public class GTEMaterialFlags {
         // Iron
         Materials.Iron.addFlags(GENERATE_DOUBLE_PLATE);
 
+        // Diamond
+        FluidProperty diamondProp = new FluidProperty();
+        diamondProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.Diamond.setProperty(PropertyKey.FLUID, diamondProp);
+
         // Ender Peral
         FluidProperty enderPeralProp = new FluidProperty();
         enderPeralProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());

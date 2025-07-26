@@ -109,6 +109,19 @@ public class CEUOverrideRecipe {
                 OreDictUnifier.get(block, Materials.EnderEye));
 
         // ########################################
+        // Diamond
+        // ########################################
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
+                new ItemStack[] { MetaItems.SHAPE_MOLD_PLATE.getStackForm() },
+                new FluidStack[] { Materials.Diamond.getFluid(144) });
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
+                new ItemStack[] { MetaItems.SHAPE_MOLD_GEAR.getStackForm() },
+                new FluidStack[] { Materials.Diamond.getFluid(576) });
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
+                new ItemStack[] { MetaItems.SHAPE_MOLD_BLOCK.getStackForm() },
+                new FluidStack[] { Materials.Diamond.getFluid(1296) });
+
+        // ########################################
         // Redstone
         // ########################################
         // Dust
