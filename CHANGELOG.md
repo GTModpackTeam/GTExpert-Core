@@ -1,3 +1,8 @@
+# 2.4.11
+- Added a recipe using Fluid Solidifier to the AE2 circuit. [#332](https://github.com/GTModpackTeam/GTExpert-Core/pull/332)
+
+* * *
+
 # 2.4.10
 - Fix Tiered Hatch tooltip [#330](https://github.com/GTModpackTeam/GTExpert-Core/pull/330)
 

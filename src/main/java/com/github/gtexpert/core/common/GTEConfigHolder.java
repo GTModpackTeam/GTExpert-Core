@@ -4,6 +4,7 @@ import net.minecraftforge.common.config.Config;
 
 import com.github.gtexpert.core.api.GTEValues;
 
+@Config.LangKey(GTEValues.MODID + ".config." + GTEValues.MODID)
 @Config(modid = GTEValues.MODID,
         name = GTEValues.MODID + "/" + GTEValues.MODID,
         category = "GTExpert-Core")
