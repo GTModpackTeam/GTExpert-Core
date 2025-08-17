@@ -4,6 +4,7 @@ import net.minecraftforge.common.config.Config;
 
 import com.github.gtexpert.core.api.GTEValues;
 
+@Config.LangKey(GTEValues.MODID + ".config." + GTEValues.MODID)
 @Config(modid = GTEValues.MODID,
         name = GTEValues.MODID + "/" + GTEValues.MODID,
         category = "GTExpert-Core")
@@ -22,8 +23,6 @@ public class GTEConfigHolder {
         @Config.Comment({ "Activate changes in the replacement schedule.",
                 "1. When enabled, the following structure and mte name changes: ",
                 "Large Cracking Unit",
-                "2. When enabled, the recipe of the following items will be changed: ",
-                "Logic Processor, Calc Processor, Engineer Processor",
                 "Default: false" })
         public boolean featureFlag = false;
 

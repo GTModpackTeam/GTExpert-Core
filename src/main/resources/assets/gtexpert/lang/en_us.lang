@@ -251,3 +251,15 @@ gtexpert.gui.needs_redstone=Needs Redstone signal to work
 gtexpert.multiblock.large_transformer.max_input_energy_per_tick_amps=Max Input: %s EU/t (%s) / %s A
 gtexpert.multiblock.large_transformer.max_output_energy_per_tick_amps=Max Output: %s EU/t (%s) / %s A
 gtexpert.multiblock.large_transformer.not_enough_input=Max Output exceeds Max Input!
+
+#config
+gtexpert.config.gtexpert=GTExpert-Core
+gtexpert.config.integration.ae=Applied Energistics 2
+gtexpert.config.integration.aeadditions=AE Additions
+gtexpert.config.integration.chisel=Chisel
+gtexpert.config.integration.deda=Draconic Evolution & Draconic Additions
+gtexpert.config.integration.eio=Ender IO
+gtexpert.config.integration.extracpus=Extra CPUs
+gtexpert.config.integration.nae2=Neeve's AE2
+gtexpert.config.integration.tc=Thaumcraft
+gtexpert.config.integration.te=ThaumicEnergistics
