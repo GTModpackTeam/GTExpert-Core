@@ -20,7 +20,7 @@ public class GTECoreMod implements IFMLLoadingPlugin {
     public String[] getASMTransformerClass() {
         GTELog.logger.info("GTECoreMod: getASMTransformerClass() called");
         return new String[] {
-            "com.github.gtexpert.core.core.NAE2PatchTransformer"
+                "com.github.gtexpert.core.core.NAE2PatchTransformer"
         };
     }
 
