@@ -57,7 +57,7 @@ public class NAE2PatchTransformer implements IClassTransformer {
             }
 
             if (fieldRemoved) {
-                ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
+                ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
                 classNode.accept(classWriter);
                 GTELog.logger.info("Successfully patched NAE2 MixinDualityInterface");
                 return classWriter.toByteArray();
