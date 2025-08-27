@@ -1,3 +1,12 @@
+# 2.5.0
+- Bump version to MixinBooter v10 [#334](https://github.com/GTModpackTeam/GTExpert-Core/pull/334)
+    - Updated MixinBooter from v9.4 to v10.6
+    - Updated AE2UEL to v0.56.7
+    - Added required dependencies: NAE2 1.6.4 and AE2FC 2.6.6-r
+    - Added ASM Transformer to fix NAE2 compatibility issues
+
+* * *
+
 # 2.4.11
 - Added a recipe using Fluid Solidifier to the AE2 circuit. [#332](https://github.com/GTModpackTeam/GTExpert-Core/pull/332)
 
