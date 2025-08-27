@@ -32,21 +32,22 @@ import com.github.gtexpert.core.modules.GTEModules;
 
 @Mod(modid = GTEValues.MODID,
      name = GTEValues.MODNAME,
-     acceptedMinecraftVersions = "[1.12.2,1.13)",
+     acceptedMinecraftVersions = "[1.12.2]",
      version = Tags.VERSION,
      updateJSON = "https://forge.curseupdate.com/851103/gtexpert",
-     dependencies = GTInternalTags.DEP_VERSION_STRING + "required-after:" + Mods.Names.MIXINBOOTER + ";" +
+     dependencies = GTInternalTags.DEP_VERSION_STRING + "required-after:" + Mods.Names.MIXINBOOTER + "@[10.5,);" +
              "required-after:" + Mods.Names.GREGICALITY_MULTIBLOCKS + ";" +
+             "required-after:" + Mods.Names.APPLIED_ENERGISTICS2 + "@[v0.56.7,);" +
+             "required-after:" + Mods.Names.NEEVES_AE2 + ";" + "required-after:" + Mods.Names.AE2_FLUID_CRAFTING + ";" +
              "after:" + Mods.Names.GREGTECH_WOOD_PROCESSING + ";" + "after:" + Mods.Names.IMPLOSION_NO_BOMB + ";" +
-             "after:" + Mods.Names.GREGTECH_FOOD_OPTION + ";" + "after:" + Mods.Names.APPLIED_ENERGISTICS2 + ";" +
-             "after:" + Mods.Names.AE_ADDITIONS + ";" + "after:" + Mods.Names.AE2_FLUID_CRAFTING + ";" +
-             "after:" + Mods.Names.NEEVES_AE2 + ";" + "after:" + Mods.Names.EXTRA_CPUS + ";" +
-             "after:" + Mods.Names.ENDER_CORE + ";" + "after:" + Mods.Names.ENDER_IO + ";" +
-             "after:" + Mods.Names.ENDER_ENDERGY + ";" + "after:" + Mods.Names.ENDER_MACHINES + ";" +
-             "after:" + Mods.Names.ENDER_CONDUITS + ";" + "after:" + Mods.Names.ENDER_AE2_CONDUITS + ";" +
-             "after:" + Mods.Names.DRACONIC_EVOLUTION + ";" + "after:" + Mods.Names.DRACONIC_ADDITIONS + ";" +
-             "after:" + Mods.Names.CHISEL + ";" + "after:" + Mods.Names.AVARITIA + ";" +
-             "after:" + Mods.Names.THAUMCRAFT + ";" + "after:" + Mods.Names.THAUMIC_ENERGISTICS + ";")
+             "after:" + Mods.Names.GREGTECH_FOOD_OPTION + ";" + "after:" + Mods.Names.AE_ADDITIONS + ";" +
+             "after:" + Mods.Names.EXTRA_CPUS + ";" + "after:" + Mods.Names.ENDER_CORE + ";" +
+             "after:" + Mods.Names.ENDER_IO + ";" + "after:" + Mods.Names.ENDER_ENDERGY + ";" +
+             "after:" + Mods.Names.ENDER_MACHINES + ";" + "after:" + Mods.Names.ENDER_CONDUITS + ";" +
+             "after:" + Mods.Names.ENDER_AE2_CONDUITS + ";" + "after:" + Mods.Names.DRACONIC_EVOLUTION + ";" +
+             "after:" + Mods.Names.DRACONIC_ADDITIONS + ";" + "after:" + Mods.Names.CHISEL + ";" +
+             "after:" + Mods.Names.AVARITIA + ";" + "after:" + Mods.Names.THAUMCRAFT + ";" +
+             "after:" + Mods.Names.THAUMIC_ENERGISTICS + ";")
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 

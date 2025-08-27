@@ -53,9 +53,11 @@ dependencies {
     implementation ("com.cleanroommc:groovyscript:1.1.3") {
         transitive = false
     } // Version 1.1.3
-    implementation rfg.deobf("curse.maven:ae2-extended-life-570458:5378163") // AE2UEL 0.56.5
+    implementation rfg.deobf("curse.maven:ae2-extended-life-570458:6302098") // AE2UEL 0.56.7
+    implementation rfg.deobf("curse.maven:nae2-884359:5380800") // NAE2: 1.6.4
+    implementation rfg.deobf("curse.maven:ae2-fluid-crafting-rework-623955:5751930") // AE2FC: 2.6.6-r
 
-    compileOnly "curse.maven:forgelin-continuous-456403:6359253" // Forgelin-Continuous 2.1.20.0
+    compileOnly "curse.maven:forgelin-continuous-456403:6760510" // Forgelin-Continuous 2.2.0.0
     compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.700" // CrT 4.1.20.700
     compileOnly "curse.maven:ctm-267602:2915363" // CTM 1.0.2.31
     runtimeOnly "com.cleanroommc:modularui:2.4.3" // MUI 2.4.3
@@ -74,16 +76,6 @@ dependencies {
     // Debug ExtraCells2 Additions: 1.3.8
     if (project.debug_all.toBoolean() || project.debug_aea.toBoolean()) {
         runtimeOnly "curse.maven:ae-additions-extra-cells-2-fork-493962:3814371"
-    }
-
-    // Debug NAE2: 1.6.4
-    if (project.debug_all.toBoolean() || project.debug_nae2.toBoolean()) {
-        runtimeOnly "curse.maven:nae2-884359:5380800"
-    }
-
-    // Debug AE2FC: 2.6.6-r
-    if (project.debug_all.toBoolean() || project.debug_ae2fc.toBoolean()) {
-        runtimeOnly "curse.maven:ae2-fluid-crafting-rework-623955:5751930"
     }
 
     // Debug ExtraCPUs: 1.2.1

@@ -18,7 +18,9 @@ public class GTECoreMod implements IFMLLoadingPlugin {
 
     @Override
     public String[] getASMTransformerClass() {
-        return new String[0];
+        return new String[] {
+            "com.github.gtexpert.core.core.NAE2PatchTransformer"
+        };
     }
 
     @Override
