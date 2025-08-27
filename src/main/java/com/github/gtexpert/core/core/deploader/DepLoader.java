@@ -103,11 +103,13 @@ public class DepLoader implements IFMLCallHook {
 
     @Override
     public void injectData(Map<String, Object> data) {
+        LOGGER.info("DepLoader: injectData() called");
         mcLocation = (File) data.get("mcLocation");
     }
 
     @Override
     public Void call() throws Exception {
+        LOGGER.info("DepLoader: call() method started");
         // get dep info
         Gson g = new GsonBuilder().disableHtmlEscaping().create();
         List<Dependency> deps;

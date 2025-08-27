@@ -18,6 +18,7 @@ public class GTECoreMod implements IFMLLoadingPlugin {
 
     @Override
     public String[] getASMTransformerClass() {
+        GTELog.logger.info("GTECoreMod: getASMTransformerClass() called");
         return new String[] {
             "com.github.gtexpert.core.core.NAE2PatchTransformer"
         };
@@ -31,11 +32,13 @@ public class GTECoreMod implements IFMLLoadingPlugin {
     @Nullable
     @Override
     public String getSetupClass() {
+        GTELog.logger.info("GTECoreMod: getSetupClass() called, returning DepLoader");
         return "com.github.gtexpert.core.core.deploader.DepLoader";
     }
 
     @Override
     public void injectData(Map<String, Object> data) {
+        GTELog.logger.info("GTECoreMod: injectData() called");
         coremodConfig.setProperty("downloadOnlyOnce", "true");
         File mcLocation = (File) data.get("mcLocation");
         File configDir = new File(mcLocation, "config");
