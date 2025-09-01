@@ -1,5 +1,6 @@
 # 2.5.1
 - Incorporated the patch fix for NAE2 [#335](https://github.com/GTModpackTeam/GTExpert-Core/pull/335)
+    - Includes the AE2FC Dual Interface fix
     - Drop required dependencies: NAE2 1.6.4 and AE2FC 2.6.6-r
 
 * * *
