@@ -2,6 +2,7 @@ package com.github.gtexpert.core.integration.nae2;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.modules.GTEModule;
@@ -18,6 +19,12 @@ import com.github.gtexpert.core.modules.GTEModules;
            name = "GTExpert Neeve's AE2 Integration",
            description = "Neeve's AE2 Integration Module")
 public class NAE2Module extends GTEIntegrationSubmodule {
+
+    @Override
+    public void postInit(FMLPostInitializationEvent event) {
+        if (Mods.NeevesAE2.isModLoaded())
+            AE2FCIntegration.postInit();
+    }
 
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {

@@ -1,3 +1,9 @@
+# 2.5.1
+- Incorporated the patch fix for NAE2 [#335](https://github.com/GTModpackTeam/GTExpert-Core/pull/335)
+    - Drop required dependencies: NAE2 1.6.4 and AE2FC 2.6.6-r
+
+* * *
+
 # 2.5.0
 - Bump version to MixinBooter v10 [#334](https://github.com/GTModpackTeam/GTExpert-Core/pull/334)
     - Updated MixinBooter from v9.4 to v10.6
