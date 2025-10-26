@@ -1022,6 +1022,7 @@ public class GTERecipe {
 
         // Get the ore
         List<ItemStack> ores = OreDictUnifier.getAll(new UnificationEntry(ore, material));
+        if (ores.isEmpty()) return;
         ItemStack oreStack = ores.get(ores.size() - 1);
         oreStack.setCount(32);
         GTERecipeMaps.VOID_ORE_MINER_RECIPES.recipeBuilder()
