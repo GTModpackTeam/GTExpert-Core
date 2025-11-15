@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Apply patch to build.gradle
         run: sed -i 's/debug_all = false/debug_all = true/g' gradle.properties
