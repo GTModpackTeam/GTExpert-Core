@@ -1,3 +1,9 @@
+# 2.5.2
+- Fix a possible array out-of-bounds error [#337](https://github.com/GTModpackTeam/GTExpert-Core/pull/337)
+    - Thanks to @ChenHaoYan1234 for his support!!
+
+* * *
+
 # 2.5.1
 - Incorporated the patch fix for NAE2 [#335](https://github.com/GTModpackTeam/GTExpert-Core/pull/335)
     - Includes the AE2FC Dual Interface fix
