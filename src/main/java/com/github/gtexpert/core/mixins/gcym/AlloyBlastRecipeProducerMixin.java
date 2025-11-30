@@ -21,8 +21,8 @@ import gregtech.loaders.recipe.CraftingComponent;
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.recipes.alloyblast.AlloyBlastRecipeProducer;
 
+import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.api.util.Mods;
 
 @Mixin(value = AlloyBlastRecipeProducer.class, remap = false)
 public abstract class AlloyBlastRecipeProducerMixin {
@@ -46,7 +46,7 @@ public abstract class AlloyBlastRecipeProducerMixin {
                     .duration((int) (duration * 0.67))
                     .buildAndRegister();
 
-            if (Mods.DraconicEvolution.isModLoaded()) {
+            if (GTEValues.isModLoadedDEDA()) {
                 RecipeBuilder<BlastRecipeBuilder> builderPyrotheum = builder.copy();
                 builderPyrotheum.notConsumable(new IntCircuitIngredient(getPyrotheumCircuitNum(componentAmount)))
                         .fluidInputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, ABFPyrotheumAmount))
