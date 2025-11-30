@@ -336,7 +336,7 @@ public class AEMaterialsRecipe {
                 (int) GTEMaterials.FluixAlloy.getMass() * 3;
 
         // Fluid
-        if (Mods.DraconicEvolution.isModLoaded()) {
+        if (GTEValues.isModLoadedDEDA()) {
             GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
                     .circuitMeta(15)
                     .inputs(Mods.AppliedEnergistics2.getItem("material", 2, 45))
