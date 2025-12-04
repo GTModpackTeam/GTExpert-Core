@@ -1,3 +1,13 @@
+# 2.5.3
+- Fix QuarkTechSuiteMixin [#340](https://github.com/GTModpackTeam/GTExpert-Core/pull/340)
+    - Thanks to @MrKono for his support!!
+- DraconicEvolution and DraconicAdditions logic fixes on installation [#339](https://github.com/GTModpackTeam/GTExpert-Core/pull/339)
+    - Thanks to @MrKono for his support!!
+- Fix incorrect output amount when using Pyrotheum [#338](https://github.com/GTModpackTeam/GTExpert-Core/pull/338)
+    - Thanks to @MrKono for his support!!
+
+* * *
+
 # 2.5.2
 - Fix a possible array out-of-bounds error [#337](https://github.com/GTModpackTeam/GTExpert-Core/pull/337)
     - Thanks to @ChenHaoYan1234 for his support!!
