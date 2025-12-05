@@ -138,6 +138,7 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:chisel-235279:2915375")
     if (project.debug_all.toBoolean() || project.debug_chisel.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:chisel-235279:2915375")
+        runtimeOnly rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
     }
 
     // Debug GTFO: 1.12.5

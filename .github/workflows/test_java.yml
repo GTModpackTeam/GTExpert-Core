@@ -2,9 +2,6 @@
 name: Java Tests
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - '*'
@@ -20,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Apply patch to build.gradle
         run: sed -i 's/debug_all = false/debug_all = true/g' gradle.properties

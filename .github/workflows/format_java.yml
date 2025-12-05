@@ -2,10 +2,6 @@
 name: Java Formatting
 
 on:
-  push:
-    branches:
-      - master
-    paths: ['src/main/java/**', 'src/test/**']
   pull_request:
     paths: ['src/main/java/**', 'src/test/**']
 
@@ -24,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.head_ref }}
 

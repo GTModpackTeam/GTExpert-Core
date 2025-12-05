@@ -1,7 +1,7 @@
 # 2.5.4
 - Fix DraconicEvolution mod OreDictionary [#341](https://github.com/GTModpackTeam/GTExpert-Core/pull/341)
 
-* * * 
+* * *
 
 # 2.5.3
 - Fix QuarkTechSuiteMixin [#340](https://github.com/GTModpackTeam/GTExpert-Core/pull/340)
