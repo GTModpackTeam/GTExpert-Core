@@ -8,15 +8,17 @@ public class DEDAOreDictionaryLoader {
 
     public static void init() {
         OreDictionary.registerOre("oreDraconium",
-                Mods.DraconicEvolution.getItem("draconium_ore"));
+                Mods.DraconicEvolution.getItem("draconium_ore", 1, 0));
         OreDictionary.registerOre("oreNetherrackDraconium",
-                Mods.DraconicEvolution.getItem("resources", 1, 1));
+                Mods.DraconicEvolution.getItem("draconium_ore", 1, 1));
         OreDictionary.registerOre("oreEndstoneDraconium",
-                Mods.DraconicEvolution.getItem("resources", 1, 2));
+                Mods.DraconicEvolution.getItem("draconium_ore", 1, 2));
 
-        OreDictionary.registerOre("blockDraconium",
-                Mods.DraconicEvolution.getItem("draconium_block"));
+        OreDictionary.registerOre("nuggetAwakenedDraconium",
+                Mods.DraconicEvolution.getItem("nugget", 1, 1));
+        OreDictionary.registerOre("ingotAwakenedDraconium",
+                Mods.DraconicEvolution.getItem("draconic_ingot", 1, 0));
         OreDictionary.registerOre("blockAwakenedDraconium",
-                Mods.DraconicEvolution.getItem("draconic_block"));
+                Mods.DraconicEvolution.getItem("draconic_block", 1, 0));
     }
 }

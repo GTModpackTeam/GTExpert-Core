@@ -36,11 +36,12 @@ public class DEDAModule extends GTEIntegrationSubmodule {
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
         DEDAMaterialInfoLoader.init();
-        DEDAOreDictionaryLoader.init();
     }
 
     @Override
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        DEDAOreDictionaryLoader.init();
+
         // Draconic recipes
         DraconicFluidRecipe.init();
         DraconicMaterialsRecipe.init();

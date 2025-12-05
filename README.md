@@ -23,4 +23,4 @@
 - Primitive(ULV) Motor/Pump/ConveyorModule/Piston/RobotArm from [ULV-Covers](https://github.com/Cosmic-Chaos/ULV-Covers) under [LGPL-2.1](https://github.com/Cosmic-Chaos/ULV-Covers/blob/main/LICENSE.txt) License
 - DepLoader from [NewHorizonsCoreMod](https://github.com/GTNewHorizons/NewHorizonsCoreMod) under [LGPL-3.0](https://github.com/GTNewHorizons/NewHorizonsCoreMod/blob/master/LICENSE) License
 - Infinity some textures, Industrial Apiary some textures & codes from [NewHorizonsCoreMod](https://github.com/GTNewHorizons/NewHorizonsCoreMod) under [LGPL-3.0](https://github.com/GTNewHorizons/NewHorizonsCoreMod/blob/master/LICENSE) License
-- I referenced MixinLoader from [Nomi-Labs](https://github.com/Nomi-CEu/Nomi-Labs) under [LGPL-3.0](https://github.com/Nomi-CEu/Nomi-Labs/blob/main/LICENSE)
+- I referenced MixinLoader from [Nomi-Labs](https://github.com/Nomi-CEu/Nomi-Labs) under [LGPL-3.0](https://github.com/Nomi-CEu/Nomi-Labs/blob/main/LICENSE) License
