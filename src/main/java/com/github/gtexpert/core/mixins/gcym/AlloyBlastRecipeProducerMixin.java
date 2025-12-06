@@ -2,20 +2,33 @@ package com.github.gtexpert.core.mixins.gcym;
 
 import static com.github.gtexpert.core.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
 import static com.github.gtexpert.core.integration.deda.recipes.DraconicMaterialsRecipe.ABFPyrotheumAmount;
+import static gregtech.api.GTValues.*;
+import static gregtech.api.unification.material.info.MaterialFlags.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.BlastRecipeBuilder;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.properties.BlastProperty;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.items.MetaItems;
 import gregtech.loaders.recipe.CraftingComponent;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
@@ -79,5 +92,120 @@ public abstract class AlloyBlastRecipeProducerMixin {
 
     protected int getPyrotheumCircuitNum(int componentAmount) {
         return componentAmount + 11;
+    }
+
+    @Inject(method = "addFreezerRecipes", at = @At("TAIL"))
+    protected void addFreezerRecipesMixin(@NotNull Material material, @NotNull Fluid molten,
+                                          @NotNull BlastProperty property, CallbackInfo ci) {
+        int vacuumEUt = property.getVacuumEUtOverride() != -1 ? property.getVacuumEUtOverride() : VA[MV];
+        int vacuumDuration = property.getVacuumDurationOverride() != -1 ? property.getVacuumDurationOverride() :
+                (int) material.getMass() * 3;
+        boolean highTemp = property.getBlastTemperature() >= 5000;
+
+        // Shared recipes for all temperatures
+        addMoldRecipe(material, molten, vacuumEUt, vacuumDuration, highTemp,
+                GENERATE_PLATE, plate, MetaItems.SHAPE_MOLD_PLATE.getStackForm(), 1);
+        addMoldRecipe(material, molten, vacuumEUt, vacuumDuration, highTemp,
+                GENERATE_SMALL_GEAR, gearSmall, MetaItems.SHAPE_MOLD_GEAR_SMALL.getStackForm(), 1);
+        addMoldRecipe(material, molten, vacuumEUt, vacuumDuration * 4, highTemp,
+                GENERATE_GEAR, gear, MetaItems.SHAPE_MOLD_GEAR.getStackForm(), 4);
+        addMoldRecipe(material, molten, vacuumEUt, vacuumDuration * 4, highTemp,
+                GENERATE_ROTOR, rotor, MetaItems.SHAPE_MOLD_ROTOR.getStackForm(), 4);
+
+        // Molten -> Fluid conversion
+        addFluidConversionRecipe(material, molten, vacuumEUt, vacuumDuration, highTemp);
+
+        // Cryotheum recipes (DEDA only, high temp only)
+        if (highTemp && GTEValues.isModLoadedDEDA()) {
+            int cryotheumDuration = property.getVacuumDurationOverride() != -1 ?
+                    property.getVacuumDurationOverride() : (int) (material.getMass() * 0.5);
+
+            addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration / 2,
+                    null, ingot, MetaItems.SHAPE_MOLD_INGOT.getStackForm(), 1);
+            addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration / 2,
+                    GENERATE_PLATE, plate, MetaItems.SHAPE_MOLD_PLATE.getStackForm(), 1);
+            addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration / 2,
+                    GENERATE_SMALL_GEAR, gearSmall, MetaItems.SHAPE_MOLD_GEAR_SMALL.getStackForm(), 1);
+            addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration * 2,
+                    GENERATE_GEAR, gear, MetaItems.SHAPE_MOLD_GEAR.getStackForm(), 4);
+            addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration / 2,
+                    GENERATE_ROTOR, rotor, MetaItems.SHAPE_MOLD_ROTOR.getStackForm(), 4);
+
+            // Hot Ingot -> Ingot
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .input(ingotHot, material, 1)
+                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
+                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
+                    .output(ingot, material, 1)
+                    .duration(cryotheumDuration / 2)
+                    .EUt(vacuumEUt)
+                    .buildAndRegister();
+
+            // Molten -> Fluid with Cryotheum
+            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .fluidInputs(new FluidStack(molten, L))
+                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
+                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
+                    .fluidOutputs(material.getFluid(L))
+                    .duration(cryotheumDuration / 2)
+                    .EUt(vacuumEUt)
+                    .buildAndRegister();
+        }
+    }
+
+    private void addMoldRecipe(@NotNull Material material, @NotNull Fluid molten,
+                               int vacuumEUt, int vacuumDuration, boolean highTemp,
+                               @NotNull MaterialFlag flag, @NotNull OrePrefix prefix,
+                               @NotNull ItemStack mold, int multiplier) {
+        if (!material.hasFlag(flag)) return;
+
+        RecipeBuilder<SimpleRecipeBuilder> builder = RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                .notConsumable(mold)
+                .fluidInputs(new FluidStack(molten, L * multiplier))
+                .output(prefix, material, 1)
+                .duration(vacuumDuration)
+                .EUt(vacuumEUt);
+
+        if (highTemp) {
+            builder.fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 500 * multiplier))
+                    .fluidOutputs(Materials.Helium.getFluid(250 * multiplier));
+        }
+
+        builder.buildAndRegister();
+    }
+
+    private void addFluidConversionRecipe(@NotNull Material material, @NotNull Fluid molten,
+                                          int vacuumEUt, int vacuumDuration, boolean highTemp) {
+        RecipeBuilder<SimpleRecipeBuilder> builder = RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .fluidInputs(new FluidStack(molten, L))
+                .fluidOutputs(material.getFluid(L))
+                .duration(vacuumDuration)
+                .EUt(vacuumEUt);
+
+        if (highTemp) {
+            builder.fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 500))
+                    .fluidOutputs(Materials.Helium.getFluid(250));
+        }
+
+        builder.buildAndRegister();
+    }
+
+    private void addCryotheumMoldRecipe(@NotNull Material material, @NotNull Fluid molten,
+                                        int vacuumEUt, int duration,
+                                        @Nullable MaterialFlag flag, @NotNull OrePrefix prefix,
+                                        @NotNull ItemStack mold, int multiplier) {
+        if (flag != null && !material.hasFlag(flag)) return;
+
+        RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+                .notConsumable(mold)
+                .fluidInputs(new FluidStack(molten, L * multiplier))
+                .fluidInputs(GTEMaterials.Cryotheum.getFluid(250 * multiplier))
+                .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50 * multiplier))
+                .output(prefix, material, 1)
+                .duration(duration)
+                .EUt(vacuumEUt)
+                .buildAndRegister();
     }
 }

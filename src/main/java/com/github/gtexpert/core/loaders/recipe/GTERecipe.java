@@ -9,6 +9,7 @@ import java.util.List;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,6 +17,7 @@ import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
+import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.AssemblyLineRecipeBuilder;
@@ -27,6 +29,7 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockGlassCasing;
@@ -52,6 +55,8 @@ import com.github.gtexpert.core.common.metatileentities.GTEMetaTileEntities;
 
 public class GTERecipe {
 
+    static List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
+
     public static void init() {
         materials();
         items();
@@ -61,6 +66,9 @@ public class GTERecipe {
     }
 
     private static void materials() {
+        // Remove Gem
+        materials.forEach(GTERecipe::removeGem);
+
         // Nether Star Dust
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Materials.Diamond, 1)
@@ -842,7 +850,6 @@ public class GTERecipe {
         builderVOM.buildAndRegister();
 
         // Void Ore Miner Recipes
-        List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
         materials.forEach(GTERecipe::voidOreMiner);
 
         // Void Ore Miner Casing
@@ -1046,5 +1053,22 @@ public class GTERecipe {
                 .output(oreEndstone, material, 64)
                 .duration(20).EUt(VA[ZPM])
                 .buildAndRegister();
+    }
+
+    /**
+     * Remove gem recipes
+     *
+     * @param material The material
+     */
+    private static void removeGem(Material material) {
+        if (!material.hasProperty(PropertyKey.FLUID)) return;
+        if (!material.hasProperty(PropertyKey.GEM)) return;
+        if (!ConfigHolder.recipes.disableManualCompression) return;
+
+        long materialAmount = OrePrefix.block.getMaterialAmount(material);
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
+                new ItemStack[] { MetaItems.SHAPE_MOLD_BLOCK.getStackForm() },
+                new FluidStack[] {
+                        material.getProperty(PropertyKey.FLUID).solidifiesFrom(((int) (materialAmount * L / M))) });
     }
 }

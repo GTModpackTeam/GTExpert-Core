@@ -1,42 +1,33 @@
 package com.github.gtexpert.core.loaders.recipe;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.ULTIMATE_BATTERY;
+import static gregtech.loaders.recipe.handlers.ToolRecipeHandler.batteryItems;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
-import org.jetbrains.annotations.NotNull;
-
-import gregtech.api.GregTechAPI;
-import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.GTValues;
 import gregtech.api.items.OreDictNames;
+import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.category.RecipeCategories;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.properties.BlastProperty;
-import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
-
-import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import com.github.gtexpert.core.common.items.GTEMetaItems;
 
@@ -50,13 +41,6 @@ public class CEUOverrideRecipe {
     }
 
     private static void materials() {
-        // Vacuum Freezer
-        List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        materials.forEach(CEUOverrideRecipe::vacuumFreezerExtended);
-
-        // Remove Gem
-        materials.forEach(CEUOverrideRecipe::removeGem);
-
         // Iron Nugget
         ModHandler.addShapelessRecipe("wrought_iron_nugget", OreDictUnifier.get(nugget, Materials.Iron, 9),
                 OreDictUnifier.get(ingot, Materials.Iron, 1));
@@ -241,6 +225,16 @@ public class CEUOverrideRecipe {
                 .category(RecipeCategories.MACERATOR_RECYCLING)
                 .duration(1470).EUt(2)
                 .buildAndRegister();
+
+        batteryItems.put(GTValues.UHV, Collections.singletonList(ULTIMATE_BATTERY));
+        for (int i = GTValues.ULV; i < GTValues.UEV; i++) {
+            List<MetaItem.MetaValueItem> tieredBatteryItems = batteryItems.get(i);
+            for (MetaItem.MetaValueItem batteryItem : tieredBatteryItems) {
+                ItemStack batteryStack = batteryItem.getStackForm();
+                String recipeName = String.format("nbt_clearing_%s", batteryItem.unlocalizedName);
+                ModHandler.addShapelessNBTClearingRecipe(recipeName, batteryStack, batteryStack);
+            }
+        }
     }
 
     private static void blocks() {
@@ -366,143 +360,5 @@ public class CEUOverrideRecipe {
                 'B', GTEMetaItems.PISTON_BOOTS.getStackForm(),
                 'P', MetaItems.CARBON_FIBER_PLATE.getStackForm(),
                 'E', MetaItems.ENERGIUM_CRYSTAL.getStackForm());
-    }
-
-    /**
-     * Vacuum Freezer to extended recipes
-     *
-     * @param material The material to add recipes for
-     */
-    private static void vacuumFreezerExtended(@NotNull Material material) {
-        // Check if the material has a blast recipe
-        if (!material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) return;
-
-        // Check if the material has a molten fluid
-        Fluid molten = material.getFluid(GCYMFluidStorageKeys.MOLTEN);
-        if (molten == null) return;
-
-        // Get the vacuum freezer EUt and duration
-        BlastProperty property = material.getProperty(PropertyKey.BLAST);
-        int vacuumEUt = property.getVacuumEUtOverride() != -1 ? property.getVacuumEUtOverride() : VA[MV];
-        int vacuumDuration = property.getVacuumDurationOverride() != -1 ? property.getVacuumDurationOverride() :
-                (int) material.getMass() * 3;
-
-        // Check if the material has a blast temperature above 5000K
-        if (property.getBlastTemperature() >= 5000) {
-            if (material.hasFlag(GENERATE_PLATE)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_PLATE)
-                        .fluidInputs(new FluidStack(molten, 144))
-                        .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 500))
-                        .fluidOutputs(Materials.Helium.getFluid(250))
-                        .output(plate, material, 1)
-                        .duration(vacuumDuration)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_SMALL_GEAR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_GEAR_SMALL)
-                        .fluidInputs(new FluidStack(molten, 144))
-                        .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 500))
-                        .fluidOutputs(Materials.Helium.getFluid(250))
-                        .output(gearSmall, material, 1)
-                        .duration(vacuumDuration)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_GEAR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_GEAR)
-                        .fluidInputs(new FluidStack(molten, 576))
-                        .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 2000))
-                        .fluidOutputs(Materials.Helium.getFluid(1000))
-                        .output(gear, material, 1)
-                        .duration(vacuumDuration * 4)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_ROTOR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_ROTOR)
-                        .fluidInputs(new FluidStack(molten, 576))
-                        .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 2000))
-                        .fluidOutputs(Materials.Helium.getFluid(1000))
-                        .output(rotor, material, 1)
-                        .duration(vacuumDuration * 4)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .circuitMeta(1)
-                    .fluidInputs(new FluidStack(molten, 144))
-                    .fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 500))
-                    .fluidOutputs(Materials.Helium.getFluid(250))
-                    .fluidOutputs(material.getFluid(144))
-                    .duration(vacuumDuration)
-                    .EUt(vacuumEUt)
-                    .buildAndRegister();
-        } else {
-            if (material.hasFlag(GENERATE_PLATE)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_PLATE)
-                        .fluidInputs(new FluidStack(molten, 144))
-                        .output(plate, material, 1)
-                        .duration(vacuumDuration)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_SMALL_GEAR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_GEAR_SMALL)
-                        .fluidInputs(new FluidStack(molten, 144))
-                        .output(gearSmall, material, 1)
-                        .duration(vacuumDuration)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_GEAR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_GEAR)
-                        .fluidInputs(new FluidStack(molten, 576))
-                        .output(gear, material, 1)
-                        .duration(vacuumDuration * 4)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_ROTOR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_ROTOR)
-                        .fluidInputs(new FluidStack(molten, 576))
-                        .output(rotor, material, 1)
-                        .duration(vacuumDuration * 4)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .circuitMeta(1)
-                    .fluidInputs(new FluidStack(molten, 144))
-                    .fluidOutputs(material.getFluid(144))
-                    .duration(vacuumDuration)
-                    .EUt(vacuumEUt)
-                    .buildAndRegister();
-        }
-    }
-
-    /**
-     * Remove gem recipes
-     *
-     * @param material The material
-     */
-    private static void removeGem(Material material) {
-        if (!material.hasProperty(PropertyKey.FLUID)) return;
-        if (!material.hasProperty(PropertyKey.GEM)) return;
-        if (!ConfigHolder.recipes.disableManualCompression) return;
-
-        long materialAmount = OrePrefix.block.getMaterialAmount(material);
-        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
-                new ItemStack[] { MetaItems.SHAPE_MOLD_BLOCK.getStackForm() },
-                new FluidStack[] {
-                        material.getProperty(PropertyKey.FLUID).solidifiesFrom(((int) (materialAmount * L / M))) });
     }
 }
