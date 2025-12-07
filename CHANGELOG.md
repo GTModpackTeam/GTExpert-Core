@@ -1,5 +1,6 @@
 # 2.5.4
 - Fix DraconicEvolution mod OreDictionary [#341](https://github.com/GTModpackTeam/GTExpert-Core/pull/341)
+- Fix FreezerRecipes logic [#342](https://github.com/GTModpackTeam/GTExpert-Core/pull/342)
 
 * * *
 
