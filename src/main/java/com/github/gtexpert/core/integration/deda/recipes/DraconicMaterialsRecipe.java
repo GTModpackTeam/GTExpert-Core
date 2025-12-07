@@ -1,37 +1,24 @@
 package com.github.gtexpert.core.integration.deda.recipes;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-
-import org.jetbrains.annotations.NotNull;
 
 import com.brandon3055.draconicevolution.DEFeatures;
 
-import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.properties.BlastProperty;
-import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
@@ -143,95 +130,6 @@ public class DraconicMaterialsRecipe {
                 .output(block, GTEMaterials.AwakenedDraconium, 3)
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .buildAndRegister();
-
-        // Extended recipes
-        List<Material> materials = new ArrayList<>(GregTechAPI.materialManager.getRegisteredMaterials());
-        materials.forEach(DraconicMaterialsRecipe::vacuumFreezerExtended);
-    }
-
-    /**
-     * Vacuum Freezer to extended recipes
-     *
-     * @param material The material to add recipes for
-     */
-    private static void vacuumFreezerExtended(@NotNull Material material) {
-        // Check if the material has a blast recipe
-        if (!material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) return;
-
-        // Check if the material has a molten fluid
-        Fluid molten = material.getFluid(GCYMFluidStorageKeys.MOLTEN);
-        if (molten == null) return;
-
-        // Get the vacuum freezer EUt and duration
-        BlastProperty property = material.getProperty(PropertyKey.BLAST);
-        int vacuumEUt = property.getVacuumEUtOverride() != -1 ? property.getVacuumEUtOverride() : VA[MV];
-        int vacuumDuration = property.getVacuumDurationOverride() != -1 ? property.getVacuumDurationOverride() :
-                (int) (material.getMass() * 0.5);
-
-        // Check if the material has a blast temperature above 5000K
-        if (property.getBlastTemperature() >= 5000) {
-            if (material.hasFlag(GENERATE_PLATE)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_PLATE)
-                        .fluidInputs(new FluidStack(molten, 144))
-                        .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
-                        .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
-                        .output(plate, material, 1)
-                        .duration(vacuumDuration / 2)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_SMALL_GEAR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_GEAR_SMALL)
-                        .fluidInputs(new FluidStack(molten, 144))
-                        .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
-                        .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
-                        .output(gearSmall, material, 1)
-                        .duration(vacuumDuration / 2)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_GEAR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_GEAR)
-                        .fluidInputs(new FluidStack(molten, 576))
-                        .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
-                        .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
-                        .output(gear, material, 1)
-                        .duration(vacuumDuration * 2)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            if (material.hasFlag(GENERATE_ROTOR)) {
-                RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                        .notConsumable(MetaItems.SHAPE_MOLD_ROTOR)
-                        .fluidInputs(new FluidStack(molten, 576))
-                        .fluidInputs(GTEMaterials.Cryotheum.getFluid(1000))
-                        .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
-                        .output(rotor, material, 1)
-                        .duration(vacuumDuration / 2)
-                        .EUt(vacuumEUt)
-                        .buildAndRegister();
-            }
-            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .input(ingotHot, material, 1)
-                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
-                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
-                    .output(ingot, material, 1)
-                    .duration(vacuumDuration / 2)
-                    .EUt(vacuumEUt)
-                    .buildAndRegister();
-            RecipeMaps.VACUUM_RECIPES.recipeBuilder()
-                    .circuitMeta(1)
-                    .fluidInputs(new FluidStack(molten, 144))
-                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(250))
-                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50))
-                    .fluidOutputs(material.getFluid(144))
-                    .duration(vacuumDuration / 2)
-                    .EUt(vacuumEUt)
-                    .buildAndRegister();
-        }
     }
 
     public static void remove() {

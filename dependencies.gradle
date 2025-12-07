@@ -57,7 +57,7 @@ dependencies {
     implementation rfg.deobf("curse.maven:nae2-884359:5380800") // NAE2: 1.6.4
     implementation rfg.deobf("curse.maven:ae2-fluid-crafting-rework-623955:5751930") // AE2FC: 2.6.6-r
 
-    compileOnly "curse.maven:forgelin-continuous-456403:6760510" // Forgelin-Continuous 2.2.0.0
+    compileOnly "curse.maven:forgelin-continuous-456403:7182824" // Forgelin-Continuous 2.2.21.0
     compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.700" // CrT 4.1.20.700
     compileOnly "curse.maven:ctm-267602:2915363" // CTM 1.0.2.31
     runtimeOnly "com.cleanroommc:modularui:2.4.3" // MUI 2.4.3
@@ -129,9 +129,9 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704")
     }
 
-    // Debug Avaritia: 3.3.0.46-hotfix3
+    // Debug Avaritia: 3.3.0.47-hotfix1
     if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:avaritia-1-1x-unofficial-1165010:6542330")
+        runtimeOnly rfg.deobf("curse.maven:avaritia-1-1x-unofficial-1165010:7186329")
     }
 
     // Debug Chisel: 1.0.2.45
