@@ -1061,9 +1061,9 @@ public class GTERecipe {
      * @param material The material
      */
     private static void removeGem(Material material) {
+        if (!ConfigHolder.recipes.disableManualCompression) return;
         if (!material.hasProperty(PropertyKey.FLUID)) return;
         if (!material.hasProperty(PropertyKey.GEM)) return;
-        if (!ConfigHolder.recipes.disableManualCompression) return;
 
         long materialAmount = OrePrefix.block.getMaterialAmount(material);
         GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,

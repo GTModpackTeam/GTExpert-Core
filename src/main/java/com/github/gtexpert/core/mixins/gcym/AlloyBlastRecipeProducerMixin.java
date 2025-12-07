@@ -94,23 +94,27 @@ public abstract class AlloyBlastRecipeProducerMixin {
         return componentAmount + 11;
     }
 
-    @Inject(method = "addFreezerRecipes", at = @At("TAIL"))
+    @Inject(method = "addFreezerRecipes", at = @At("HEAD"), cancellable = true)
     protected void addFreezerRecipesMixin(@NotNull Material material, @NotNull Fluid molten,
                                           @NotNull BlastProperty property, CallbackInfo ci) {
-        int vacuumEUt = property.getVacuumEUtOverride() != -1 ? property.getVacuumEUtOverride() : VA[MV];
-        int vacuumDuration = property.getVacuumDurationOverride() != -1 ? property.getVacuumDurationOverride() :
-                (int) material.getMass() * 3;
+        int vacuumEUt = property.getVacuumEUtOverride() == -1 ? VA[MV] : property.getVacuumEUtOverride();
+        int vacuumDuration = property.getVacuumDurationOverride() == -1 ? (int) material.getMass() * 3 :
+                property.getVacuumDurationOverride();
         boolean highTemp = property.getBlastTemperature() >= 5000;
 
-        // Shared recipes for all temperatures
+        // Standard recipes
+        addMoldRecipe(material, molten, vacuumEUt, Math.max(1, vacuumDuration / 9), highTemp,
+                null, nugget, MetaItems.SHAPE_MOLD_NUGGET.getStackForm(), (int) (L / 9));
         addMoldRecipe(material, molten, vacuumEUt, vacuumDuration, highTemp,
-                GENERATE_PLATE, plate, MetaItems.SHAPE_MOLD_PLATE.getStackForm(), 1);
+                null, ingot, MetaItems.SHAPE_MOLD_INGOT.getStackForm(), (int) L);
         addMoldRecipe(material, molten, vacuumEUt, vacuumDuration, highTemp,
-                GENERATE_SMALL_GEAR, gearSmall, MetaItems.SHAPE_MOLD_GEAR_SMALL.getStackForm(), 1);
+                GENERATE_PLATE, plate, MetaItems.SHAPE_MOLD_PLATE.getStackForm(), (int) L);
+        addMoldRecipe(material, molten, vacuumEUt, vacuumDuration, highTemp,
+                GENERATE_SMALL_GEAR, gearSmall, MetaItems.SHAPE_MOLD_GEAR_SMALL.getStackForm(), (int) L);
         addMoldRecipe(material, molten, vacuumEUt, vacuumDuration * 4, highTemp,
-                GENERATE_GEAR, gear, MetaItems.SHAPE_MOLD_GEAR.getStackForm(), 4);
+                GENERATE_GEAR, gear, MetaItems.SHAPE_MOLD_GEAR.getStackForm(), (int) (L * 4));
         addMoldRecipe(material, molten, vacuumEUt, vacuumDuration * 4, highTemp,
-                GENERATE_ROTOR, rotor, MetaItems.SHAPE_MOLD_ROTOR.getStackForm(), 4);
+                GENERATE_ROTOR, rotor, MetaItems.SHAPE_MOLD_ROTOR.getStackForm(), (int) (L * 4));
 
         // Molten -> Fluid conversion
         addFluidConversionRecipe(material, molten, vacuumEUt, vacuumDuration, highTemp);
@@ -120,16 +124,18 @@ public abstract class AlloyBlastRecipeProducerMixin {
             int cryotheumDuration = property.getVacuumDurationOverride() != -1 ?
                     property.getVacuumDurationOverride() : (int) (material.getMass() * 0.5);
 
+            addCryotheumMoldRecipe(material, molten, vacuumEUt, Math.max(1, cryotheumDuration / 18),
+                    null, nugget, MetaItems.SHAPE_MOLD_NUGGET.getStackForm(), (int) (L / 9));
             addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration / 2,
-                    null, ingot, MetaItems.SHAPE_MOLD_INGOT.getStackForm(), 1);
+                    null, ingot, MetaItems.SHAPE_MOLD_INGOT.getStackForm(), (int) L);
             addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration / 2,
-                    GENERATE_PLATE, plate, MetaItems.SHAPE_MOLD_PLATE.getStackForm(), 1);
+                    GENERATE_PLATE, plate, MetaItems.SHAPE_MOLD_PLATE.getStackForm(), (int) L);
             addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration / 2,
-                    GENERATE_SMALL_GEAR, gearSmall, MetaItems.SHAPE_MOLD_GEAR_SMALL.getStackForm(), 1);
+                    GENERATE_SMALL_GEAR, gearSmall, MetaItems.SHAPE_MOLD_GEAR_SMALL.getStackForm(), (int) L);
             addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration * 2,
-                    GENERATE_GEAR, gear, MetaItems.SHAPE_MOLD_GEAR.getStackForm(), 4);
+                    GENERATE_GEAR, gear, MetaItems.SHAPE_MOLD_GEAR.getStackForm(), (int) (L * 4));
             addCryotheumMoldRecipe(material, molten, vacuumEUt, cryotheumDuration / 2,
-                    GENERATE_ROTOR, rotor, MetaItems.SHAPE_MOLD_ROTOR.getStackForm(), 4);
+                    GENERATE_ROTOR, rotor, MetaItems.SHAPE_MOLD_ROTOR.getStackForm(), (int) (L * 4));
 
             // Hot Ingot -> Ingot
             RecipeMaps.VACUUM_RECIPES.recipeBuilder()
@@ -152,24 +158,26 @@ public abstract class AlloyBlastRecipeProducerMixin {
                     .EUt(vacuumEUt)
                     .buildAndRegister();
         }
+
+        ci.cancel();
     }
 
     private void addMoldRecipe(@NotNull Material material, @NotNull Fluid molten,
                                int vacuumEUt, int vacuumDuration, boolean highTemp,
-                               @NotNull MaterialFlag flag, @NotNull OrePrefix prefix,
-                               @NotNull ItemStack mold, int multiplier) {
-        if (!material.hasFlag(flag)) return;
+                               @Nullable MaterialFlag flag, @NotNull OrePrefix prefix,
+                               @NotNull ItemStack mold, int fluidAmount) {
+        if (flag != null && !material.hasFlag(flag)) return;
 
         RecipeBuilder<SimpleRecipeBuilder> builder = RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                 .notConsumable(mold)
-                .fluidInputs(new FluidStack(molten, L * multiplier))
+                .fluidInputs(new FluidStack(molten, fluidAmount))
                 .output(prefix, material, 1)
                 .duration(vacuumDuration)
                 .EUt(vacuumEUt);
 
         if (highTemp) {
-            builder.fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 500 * multiplier))
-                    .fluidOutputs(Materials.Helium.getFluid(250 * multiplier));
+            builder.fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, fluidAmount * 500 / L))
+                    .fluidOutputs(Materials.Helium.getFluid(fluidAmount * 250 / L));
         }
 
         builder.buildAndRegister();
@@ -195,14 +203,14 @@ public abstract class AlloyBlastRecipeProducerMixin {
     private void addCryotheumMoldRecipe(@NotNull Material material, @NotNull Fluid molten,
                                         int vacuumEUt, int duration,
                                         @Nullable MaterialFlag flag, @NotNull OrePrefix prefix,
-                                        @NotNull ItemStack mold, int multiplier) {
+                                        @NotNull ItemStack mold, int fluidAmount) {
         if (flag != null && !material.hasFlag(flag)) return;
 
         RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                 .notConsumable(mold)
-                .fluidInputs(new FluidStack(molten, L * multiplier))
-                .fluidInputs(GTEMaterials.Cryotheum.getFluid(250 * multiplier))
-                .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 50 * multiplier))
+                .fluidInputs(new FluidStack(molten, fluidAmount))
+                .fluidInputs(GTEMaterials.Cryotheum.getFluid((int) (fluidAmount * 250 / L)))
+                .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, (int) (fluidAmount * 50 / L)))
                 .output(prefix, material, 1)
                 .duration(duration)
                 .EUt(vacuumEUt)
