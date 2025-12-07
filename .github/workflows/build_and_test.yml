@@ -30,8 +30,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
-      - name: Apply patch to gradle.properties
-        run: sed -i 's/debug_all = false/debug_all = true/g' gradle.properties
+      - name: Apply patch to buildscript.properties
+        run: sed -i 's/debug_all = false/debug_all = true/g' buildscript.properties
 
       - name: Setup Build
         uses: ./.github/actions/build_setup
