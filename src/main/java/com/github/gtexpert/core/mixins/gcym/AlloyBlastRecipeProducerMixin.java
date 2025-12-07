@@ -210,7 +210,8 @@ public abstract class AlloyBlastRecipeProducerMixin {
                 .notConsumable(mold)
                 .fluidInputs(new FluidStack(molten, fluidAmount))
                 .fluidInputs(GTEMaterials.Cryotheum.getFluid((int) (fluidAmount * 250 / L)))
-                .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, (int) (fluidAmount * 50 / L)))
+                .fluidOutputs(
+                        GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, (int) (fluidAmount * 50 / L)))
                 .output(prefix, material, 1)
                 .duration(duration)
                 .EUt(vacuumEUt)
