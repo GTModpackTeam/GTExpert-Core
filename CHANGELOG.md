@@ -1,3 +1,8 @@
+# 2.5.6
+- Fix Implosion logic
+
+* * *
+
 # 2.5.5
 - Fix FluixBlock OreDictionary
 

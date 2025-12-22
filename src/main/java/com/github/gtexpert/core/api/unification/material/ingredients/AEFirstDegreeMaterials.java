@@ -9,7 +9,6 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.ore.OrePrefix;
@@ -23,7 +22,7 @@ public class AEFirstDegreeMaterials {
      */
     public static void init() {
         // Certus Quartz
-        OrePrefix.block.modifyMaterialAmount(Materials.CertusQuartz, 4);
+        OrePrefix.block.modifyMaterialAmount(CertusQuartz, 4);
 
         // Charged Certus Quartz
         ChargedCertusQuartz = new Material.Builder(24151, gteId("charged_certus_quartz"))

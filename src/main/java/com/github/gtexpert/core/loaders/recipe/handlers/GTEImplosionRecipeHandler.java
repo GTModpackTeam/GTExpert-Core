@@ -2,6 +2,8 @@ package com.github.gtexpert.core.loaders.recipe.handlers;
 
 import static gregtech.api.unification.ore.OrePrefix.*;
 
+import gregtech.api.unification.material.Materials;
+
 import net.minecraft.item.ItemStack;
 
 import gregtech.api.recipes.RecipeMaps;
@@ -15,80 +17,95 @@ import com.github.gtexpert.core.api.util.Mods;
 public class GTEImplosionRecipeHandler {
 
     public static void add(Material inputMaterial, Material outputMaterial) {
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .output(gem, outputMaterial, 3)
-                .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .output(gem, outputMaterial, 3)
-                .explosivesAmount(4)
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .output(gem, outputMaterial, 3)
-                .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .output(gem, outputMaterial, 3)
-                .explosivesType(new ItemStack(MetaBlocks.ITNT))
-                .buildAndRegister();
-
-        if (!Mods.ImplosionNoBomb.isModLoaded()) return;
-        GTEImplosionNoBombRecipeHandler.add(inputMaterial, outputMaterial);
+        if (Mods.ImplosionNoBomb.isModLoaded()) {
+            GTEImplosionNoBombRecipeHandler.add(inputMaterial, outputMaterial);
+        } else {
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, inputMaterial, 4)
+                    .output(gem, outputMaterial, 3)
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
+                    .buildAndRegister();
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, inputMaterial, 4)
+                    .output(gem, outputMaterial, 3)
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesAmount(4)
+                    .buildAndRegister();
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, inputMaterial, 4)
+                    .output(gem, outputMaterial, 3)
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
+                    .buildAndRegister();
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, inputMaterial, 4)
+                    .output(gem, outputMaterial, 3)
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesType(new ItemStack(MetaBlocks.ITNT))
+                    .buildAndRegister();
+        }
     }
 
     public static void add(Material inputMaterial, ItemStack outputStack) {
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .outputs(GTUtility.copy(3, outputStack))
-                .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .outputs(GTUtility.copy(3, outputStack))
-                .explosivesAmount(4)
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .outputs(outputStack)
-                .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, inputMaterial, 4)
-                .outputs(GTUtility.copy(3, outputStack))
-                .explosivesType(new ItemStack(MetaBlocks.ITNT))
-                .buildAndRegister();
-
-        if (!Mods.ImplosionNoBomb.isModLoaded()) return;
-        GTEImplosionNoBombRecipeHandler.add(inputMaterial, outputStack);
+        if (Mods.ImplosionNoBomb.isModLoaded()) {
+            GTEImplosionNoBombRecipeHandler.add(inputMaterial, outputStack);
+        } else {
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, inputMaterial, 4)
+                    .outputs(GTUtility.copy(3, outputStack))
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
+                    .buildAndRegister();
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, inputMaterial, 4)
+                    .outputs(GTUtility.copy(3, outputStack))
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesAmount(4)
+                    .buildAndRegister();
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, inputMaterial, 4)
+                    .outputs(GTUtility.copy(3, outputStack))
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
+                    .buildAndRegister();
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, inputMaterial, 4)
+                    .outputs(GTUtility.copy(3, outputStack))
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesType(new ItemStack(MetaBlocks.ITNT))
+                    .buildAndRegister();
+        }
     }
 
     public static void add(String inputOreDict, ItemStack outputStack) {
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(inputOreDict, 4)
-                .outputs(GTUtility.copy(3, outputStack))
-                .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(inputOreDict, 4)
-                .outputs(GTUtility.copy(3, outputStack))
-                .explosivesAmount(4)
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(inputOreDict, 4)
-                .outputs(GTUtility.copy(3, outputStack))
-                .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(inputOreDict, 4)
-                .outputs(GTUtility.copy(3, outputStack))
-                .explosivesType(new ItemStack(MetaBlocks.ITNT))
-                .buildAndRegister();
-
-        if (!Mods.ImplosionNoBomb.isModLoaded()) return;
-        GTEImplosionNoBombRecipeHandler.add(inputOreDict, outputStack);
+        if (Mods.ImplosionNoBomb.isModLoaded()) {
+            GTEImplosionNoBombRecipeHandler.add(inputOreDict, outputStack);
+        } else {
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(inputOreDict, 4)
+                    .outputs(GTUtility.copy(3, outputStack))
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
+                    .buildAndRegister();
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(inputOreDict, 4)
+                    .outputs(GTUtility.copy(3, outputStack))
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesAmount(4)
+                    .buildAndRegister();
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(inputOreDict, 4)
+                    .outputs(GTUtility.copy(3, outputStack))
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
+                    .buildAndRegister();
+            RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(inputOreDict, 4)
+                    .outputs(GTUtility.copy(3, outputStack))
+                    .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
+                    .explosivesType(new ItemStack(MetaBlocks.ITNT))
+                    .buildAndRegister();
+        }
     }
 }

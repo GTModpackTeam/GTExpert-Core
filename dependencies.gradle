@@ -54,10 +54,10 @@ dependencies {
         transitive = false
     } // Version 1.1.3
     implementation rfg.deobf("curse.maven:ae2-extended-life-570458:6302098") // AE2UEL 0.56.7
-    implementation rfg.deobf("curse.maven:nae2-884359:5380800") // NAE2: 1.6.4
-    implementation rfg.deobf("curse.maven:ae2-fluid-crafting-rework-623955:5751930") // AE2FC: 2.6.6-r
 
-    compileOnly "curse.maven:forgelin-continuous-456403:7182824" // Forgelin-Continuous 2.2.21.0
+    compileOnly "curse.maven:nae2-884359:5380800" // NAE2: 1.6.4
+    compileOnly "curse.maven:ae2-fluid-crafting-rework-623955:5751930" // AE2FC: 2.6.6-r
+	compileOnly "curse.maven:forgelin-continuous-456403:7182824" // Forgelin-Continuous 2.2.21.0
     compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.700" // CrT 4.1.20.700
     compileOnly "curse.maven:ctm-267602:2915363" // CTM 1.0.2.31
     runtimeOnly "com.cleanroommc:modularui:2.4.3" // MUI 2.4.3

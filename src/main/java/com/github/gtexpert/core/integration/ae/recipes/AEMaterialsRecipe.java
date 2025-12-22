@@ -300,7 +300,8 @@ public class AEMaterialsRecipe {
                 .chancedOutput(Mods.AppliedEnergistics2.getItem("material", 1, 7), 7000, 1000)
                 .duration(1200).EUt(24)
                 .buildAndRegister();
-        GTEImplosionRecipeHandler.add(GTEMaterials.Fluix, Mods.AppliedEnergistics2.getItem("material", 3, 7));
+        GTEImplosionRecipeHandler.add(GTEMaterials.Fluix,
+                Mods.AppliedEnergistics2.getItem("material", 3, 7));
 
         // Block
         RecipeMaps.COMPRESSOR_RECIPES.recipeBuilder()
