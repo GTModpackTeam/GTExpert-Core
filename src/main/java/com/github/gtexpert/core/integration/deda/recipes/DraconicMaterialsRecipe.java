@@ -110,24 +110,28 @@ public class DraconicMaterialsRecipe {
                 .input(DEFeatures.dragonHeart, 1)
                 .input(block, GTEMaterials.Draconium, 4)
                 .output(block, GTEMaterials.AwakenedDraconium, 3)
+                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
                 .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.dragonHeart, 1)
                 .input(block, GTEMaterials.Draconium, 4)
                 .output(block, GTEMaterials.AwakenedDraconium, 3)
+                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
                 .explosivesAmount(4)
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.dragonHeart, 1)
                 .input(block, GTEMaterials.Draconium, 4)
                 .output(block, GTEMaterials.AwakenedDraconium, 3)
+                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
                 .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
                 .buildAndRegister();
         RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                 .input(DEFeatures.dragonHeart, 1)
                 .input(block, GTEMaterials.Draconium, 4)
                 .output(block, GTEMaterials.AwakenedDraconium, 3)
+                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .buildAndRegister();
     }
