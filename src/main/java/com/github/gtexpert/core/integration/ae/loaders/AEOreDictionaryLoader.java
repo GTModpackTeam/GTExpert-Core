@@ -18,7 +18,10 @@ public class AEOreDictionaryLoader {
                 "blockCertus",
                 Mods.AppliedEnergistics2.getItem("quartz_block"),
                 Mods.AppliedEnergistics2.getItem("quartz_pillar"),
-                Mods.AppliedEnergistics2.getItem("chiseled_quartz_block"),
+                Mods.AppliedEnergistics2.getItem("chiseled_quartz_block"));
+
+        GTEUtility.registerOre(
+                "blockFluix",
                 Mods.AppliedEnergistics2.getItem("fluix_block"));
 
         GTEUtility.registerOre(
