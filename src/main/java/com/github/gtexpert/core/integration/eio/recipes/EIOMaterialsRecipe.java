@@ -181,7 +181,7 @@ public class EIOMaterialsRecipe {
         // Pulsating Crystal
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input("itemPulsatingPowder")
-                .fluidInputs(Materials.DrillingFluid.getFluid(50))
+                .fluidInputs(Materials.DistilledWater.getFluid(50))
                 .output(ModObject.itemMaterial.getItemNN(), 1, 14)
                 .duration(600).EUt(24)
                 .buildAndRegister();
@@ -196,7 +196,7 @@ public class EIOMaterialsRecipe {
         // Vibrant Crystal
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input("itemVibrantPowder")
-                .fluidInputs(Materials.DrillingFluid.getFluid(50))
+                .fluidInputs(Materials.DistilledWater.getFluid(50))
                 .output(ModObject.itemMaterial.getItemNN(), 1, 15)
                 .duration(600).EUt(24)
                 .buildAndRegister();
@@ -211,7 +211,7 @@ public class EIOMaterialsRecipe {
         // Ender Crystal
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input("itemEnderCrystalPowder")
-                .fluidInputs(Materials.DrillingFluid.getFluid(50))
+                .fluidInputs(Materials.DistilledWater.getFluid(50))
                 .output(ModObject.itemMaterial.getItemNN(), 1, 16)
                 .duration(600).EUt(24)
                 .buildAndRegister();
@@ -235,7 +235,7 @@ public class EIOMaterialsRecipe {
         // Prescient Crystal
         RecipeMaps.AUTOCLAVE_RECIPES.recipeBuilder()
                 .input("itemPrecientPowder")
-                .fluidInputs(Materials.DrillingFluid.getFluid(50))
+                .fluidInputs(Materials.DistilledWater.getFluid(50))
                 .output(ModObject.itemMaterial.getItemNN(), 1, 19)
                 .duration(600).EUt(24)
                 .buildAndRegister();

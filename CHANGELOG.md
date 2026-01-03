@@ -1,5 +1,6 @@
 # 2.5.6
 - Fix Implosion logic
+- Mining Level and Tool Suitability Adjustments for Blocks Added via Chisel [#343](https://github.com/GTModpackTeam/GTExpert-Core/pull/343)
 
 * * *
 
