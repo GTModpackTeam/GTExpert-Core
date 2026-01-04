@@ -25,8 +25,13 @@ public class UpgradeRecipeProperty extends RecipeProperty<FusionUpgradeRecipe> {
 
     @Override
     public void drawInfo(Minecraft minecraft, int x, int y, int color, Object value) {
-        minecraft.fontRenderer.drawString(I18n.format("recipemap.draconic_fusion_upgrade.property.1"), x, y, color);
-        minecraft.fontRenderer.drawString(I18n.format("recipemap.draconic_fusion_upgrade.property.2"), x, y + 10,
+        minecraft.fontRenderer.drawString(I18n.format("recipemap.draconic_fusion_upgrade.property.1"), x, y - 10,
                 color);
+        minecraft.fontRenderer.drawString(I18n.format("recipemap.draconic_fusion_upgrade.property.2"), x, y, color);
+    }
+
+    @Override
+    public int getInfoHeight(Object value) {
+        return 20;
     }
 }
