@@ -1,4 +1,4 @@
-# 2.5.7
+# 2.6.0
 - Mining Level and Tool Suitability Adjustments for Blocks Added via Chisel [#343](https://github.com/GTModpackTeam/GTExpert-Core/pull/343)
 - DEDA Integration Refactoring [#344](https://github.com/GTModpackTeam/GTExpert-Core/pull/344)
 
