@@ -11,7 +11,6 @@ import com.brandon3055.draconicevolution.DEFeatures;
 import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
 import com.brandon3055.draconicevolution.items.ToolUpgrade;
 
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 
@@ -66,13 +65,8 @@ public class DraconicUpgradeRecipe {
                 while (currentLevel < ToolUpgrade.NAME_MAX_LEVEL.get(upgradeName)) {
                     if (item.getValidUpgrades(stack).contains(upgradeName) &&
                             item.getMaxUpgradeLevel(stack, upgradeName) >= currentLevel + 1) {
-                        RecipeMap<UpgradeRecipeBuilder> recipeMap;
-                        if (currentLevel == 0 || currentLevel == 1) {
-                            recipeMap = GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_FAKE_RECIPES;
-                        } else {
-                            recipeMap = GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES;
-                        }
-                        UpgradeRecipeBuilder recipeBuilder = recipeMap.recipeBuilder();
+                        UpgradeRecipeBuilder recipeBuilder = GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_RECIPES
+                                .recipeBuilder();
                         recipeBuilder.catalyst(stack).upgradeName(upgradeName).level(currentLevel);
 
                         switch (currentLevel) {

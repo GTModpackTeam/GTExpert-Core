@@ -1,7 +1,7 @@
 package com.github.gtexpert.core.mixins.gcym;
 
-import static com.github.gtexpert.core.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
-import static com.github.gtexpert.core.integration.deda.recipes.DraconicMaterialsRecipe.ABFPyrotheumAmount;
+import static com.github.gtexpert.core.integration.deda.DEDAConstants.ABF_DURATION_MULTIPLIER;
+import static com.github.gtexpert.core.integration.deda.DEDAConstants.ABF_PYROTHEUM_AMOUNT;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -62,8 +62,8 @@ public abstract class AlloyBlastRecipeProducerMixin {
             if (GTEValues.isModLoadedDEDA()) {
                 RecipeBuilder<BlastRecipeBuilder> builderPyrotheum = builder.copy();
                 builderPyrotheum.notConsumable(new IntCircuitIngredient(getPyrotheumCircuitNum(componentAmount)))
-                        .fluidInputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, ABFPyrotheumAmount))
-                        .duration((int) (duration * 0.67 * ABFDurationMultiplier))
+                        .fluidInputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, ABF_PYROTHEUM_AMOUNT))
+                        .duration((int) (duration * 0.67 * ABF_DURATION_MULTIPLIER))
                         .buildAndRegister();
             }
         }

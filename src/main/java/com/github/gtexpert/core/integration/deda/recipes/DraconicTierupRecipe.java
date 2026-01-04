@@ -1,6 +1,5 @@
 package com.github.gtexpert.core.integration.deda.recipes;
 
-import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.ore.OrePrefix.plate;
 
 import net.foxmcloud.draconicadditions.DAFeatures;
@@ -10,7 +9,6 @@ import com.brandon3055.draconicevolution.DEFeatures;
 
 import gregtech.api.items.toolitem.ToolHelper;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
@@ -19,12 +17,13 @@ import gregtech.api.recipes.ingredients.nbtmatch.NBTTagType;
 import gregtech.common.items.MetaItems;
 import gregtech.common.items.ToolItems;
 
-import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 import com.github.gtexpert.core.api.util.GTEUtility;
 import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.deda.DEDAConstants;
+import com.github.gtexpert.core.integration.deda.DEDAConstants.DraconicTier;
+import com.github.gtexpert.core.integration.deda.DEDARecipeHelper;
 import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
 
@@ -39,7 +38,7 @@ public class DraconicTierupRecipe {
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", GTEValues.MODID + ":draconium"))),
                 new ItemStack(DEFeatures.wyvernAxe),
-                Tier.WYVERN, 2);
+                DraconicTier.WYVERN, 2);
 
         // Pickaxe of the Wyvern
         ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_pick"));
@@ -49,7 +48,7 @@ public class DraconicTierupRecipe {
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", GTEValues.MODID + ":draconium"))),
                 new ItemStack(DEFeatures.wyvernPick),
-                Tier.WYVERN, 2);
+                DraconicTier.WYVERN, 2);
 
         // Shovel of the Wyvern
         ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_shovel"));
@@ -59,13 +58,13 @@ public class DraconicTierupRecipe {
                                 NBTTagType.COMPOUND, ToolHelper.TOOL_TAG_KEY, NBTCondition.create(
                                         NBTTagType.STRING, "Material", GTEValues.MODID + ":draconium"))),
                 new ItemStack(DEFeatures.wyvernShovel),
-                Tier.WYVERN, 2);
+                DraconicTier.WYVERN, 2);
 
         // Sword of the Wyvern
         ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_sword"));
         addTierUpRecipe(MetaItems.NANO_SABER.getStackForm(),
                 new ItemStack(DEFeatures.wyvernSword),
-                Tier.WYVERN, 2);
+                DraconicTier.WYVERN, 2);
 
         // Bow of the Wyvern
         ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_bow"));
@@ -75,21 +74,21 @@ public class DraconicTierupRecipe {
                         Mods.Vanilla.getItem("bow"))
                                 .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 new ItemStack(DEFeatures.wyvernBow),
-                Tier.WYVERN, 2);
+                DraconicTier.WYVERN, 2);
 
         // Wyvern Helm
         ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_helm"));
         addTierUpRecipe(
                 MetaItems.QUANTUM_HELMET.getStackForm(),
                 new ItemStack(DEFeatures.wyvernHelm),
-                Tier.WYVERN, 6);
+                DraconicTier.WYVERN, 6);
 
         // Wyvern Chest
         ModHandler.removeRecipeByName(Mods.DraconicEvolution.getResource("wyvern_chest"));
         addTierUpRecipe(
                 MetaItems.QUANTUM_CHESTPLATE_ADVANCED.getStackForm(),
                 new ItemStack(DEFeatures.wyvernChest),
-                Tier.WYVERN,
+                DraconicTier.WYVERN,
                 6);
 
         // Wyvern Legs
@@ -97,7 +96,7 @@ public class DraconicTierupRecipe {
         addTierUpRecipe(
                 MetaItems.QUANTUM_LEGGINGS.getStackForm(),
                 new ItemStack(DEFeatures.wyvernLegs),
-                Tier.WYVERN,
+                DraconicTier.WYVERN,
                 6);
 
         // Wyvern Boots
@@ -105,137 +104,130 @@ public class DraconicTierupRecipe {
         addTierUpRecipe(
                 MetaItems.QUANTUM_BOOTS.getStackForm(),
                 new ItemStack(DEFeatures.wyvernBoots),
-                Tier.WYVERN,
+                DraconicTier.WYVERN,
                 6);
 
         // Draconic Axe
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernAxe),
                 new ItemStack(DEFeatures.draconicAxe),
-                Tier.DRACONIC);
+                DraconicTier.DRACONIC);
 
         // Draconic Pickaxe
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernPick),
                 new ItemStack(DEFeatures.draconicPick),
-                Tier.DRACONIC);
+                DraconicTier.DRACONIC);
 
         // Draconic Shovel
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernShovel),
                 new ItemStack(DEFeatures.draconicShovel),
-                Tier.DRACONIC);
+                DraconicTier.DRACONIC);
 
         // Draconic Sword
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernSword),
                 new ItemStack(DEFeatures.draconicSword),
-                Tier.DRACONIC);
+                DraconicTier.DRACONIC);
 
         // Draconic Bow
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernBow),
                 new ItemStack(DEFeatures.draconicBow),
-                Tier.DRACONIC);
+                DraconicTier.DRACONIC);
 
         // Draconic Staff of Power
-        GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.recipeBuilder()
-                .catalyst(new GTRecipeItemInput(new ItemStack(DEFeatures.draconicPick))
-                        .setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY))
+        GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_RECIPES.recipeBuilder()
+                .catalyst(DEDARecipeHelper.inputWithAnyNBT(new ItemStack(DEFeatures.draconicPick)))
                 .result(new ItemStack(DEFeatures.draconicStaffOfPower))
                 .input(plate, GTEMaterials.Draconium, 6)
                 .inputNBT(DEFeatures.draconicAxe, NBTMatcher.ANY, NBTCondition.ANY)
                 .inputNBT(DEFeatures.draconicShovel, NBTMatcher.ANY, NBTCondition.ANY)
                 .inputNBT(DEFeatures.draconicSword, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(DEFeatures.draconicCore, 4)
-                .fluidInputs(GTEMaterials.Cryotheum.getFluid(32000))
-                .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
-                .duration(400).EUt(VA[GTEValues.dedaVoltageTier + 1])
+                .fluidInputs(DEDARecipeHelper.cryotheum(DraconicTier.DRACONIC))
+                .fluidOutputs(DEDARecipeHelper.pyrotheum(DraconicTier.DRACONIC))
+                .duration(DEDAConstants.DURATION_DRACONIC).EUt(DEDARecipeHelper.voltage(DraconicTier.DRACONIC))
                 .buildAndRegister();
 
         // Draconic Helm
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernHelm),
                 new ItemStack(DEFeatures.draconicHelm),
-                Tier.DRACONIC);
+                DraconicTier.DRACONIC);
 
         // Draconic Chest
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernChest),
                 new ItemStack(DEFeatures.draconicChest),
-                Tier.DRACONIC);
+                DraconicTier.DRACONIC);
 
         // Draconic Legs
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernLegs),
                 new ItemStack(DEFeatures.draconicLegs),
-                Tier.DRACONIC);
+                DraconicTier.DRACONIC);
 
         // Draconic Boots
         addTierUpRecipe(
                 new ItemStack(DEFeatures.wyvernBoots),
                 new ItemStack(DEFeatures.draconicBoots),
-                Tier.DRACONIC);
+                DraconicTier.DRACONIC);
 
         // Chaotic Staff of Power
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicStaffOfPower),
                 new ItemStack(DAFeatures.chaoticStaffOfPower),
-                Tier.CHAOTIC);
+                DraconicTier.CHAOTIC);
 
         // Chaotic Bow
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicBow),
                 new ItemStack(DAFeatures.chaoticBow),
-                Tier.CHAOTIC);
+                DraconicTier.CHAOTIC);
 
         // Chaotic Helm
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicHelm),
                 new ItemStack(DAFeatures.chaoticHelm),
-                Tier.CHAOTIC);
+                DraconicTier.CHAOTIC);
 
         // Chaotic Chest
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicChest),
                 new ItemStack(DAFeatures.chaoticChest),
-                Tier.CHAOTIC);
+                DraconicTier.CHAOTIC);
 
         // Chaotic Leggings
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicLegs),
                 new ItemStack(DAFeatures.chaoticLegs),
-                Tier.CHAOTIC);
+                DraconicTier.CHAOTIC);
 
         // Chaotic Boots
         addTierUpRecipe(
                 new ItemStack(DEFeatures.draconicBoots),
                 new ItemStack(DAFeatures.chaoticBoots),
-                Tier.CHAOTIC);
+                DraconicTier.CHAOTIC);
     }
 
-    private static void addTierUpRecipe(ItemStack catalyst, ItemStack result, Tier tier) {
+    private static void addTierUpRecipe(ItemStack catalyst, ItemStack result, DraconicTier tier) {
         addTierUpRecipe(catalyst, result, tier, -1);
     }
 
-    private static void addTierUpRecipe(GTRecipeInput catalyst, ItemStack result, Tier tier) {
+    private static void addTierUpRecipe(GTRecipeInput catalyst, ItemStack result, DraconicTier tier) {
         addTierUpRecipe(catalyst, result, tier, -1);
     }
 
-    private static void addTierUpRecipe(ItemStack catalyst, ItemStack result, Tier tier, int plateAmount) {
+    private static void addTierUpRecipe(ItemStack catalyst, ItemStack result, DraconicTier tier, int plateAmount) {
         addTierUpRecipe(
                 new GTRecipeItemInput(catalyst).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY),
                 result, tier, plateAmount);
     }
 
-    private static void addTierUpRecipe(GTRecipeInput catalyst, ItemStack result, Tier tier, int plateAmount) {
-        RecipeMap<TierUpRecipeBuilder> recipeMap;
-        if (tier == Tier.CHAOTIC) {
-            recipeMap = GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES;
-        } else {
-            recipeMap = GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES;
-        }
-        TierUpRecipeBuilder recipeBuilder = recipeMap.recipeBuilder();
+    private static void addTierUpRecipe(GTRecipeInput catalyst, ItemStack result, DraconicTier tier, int plateAmount) {
+        TierUpRecipeBuilder recipeBuilder = GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_RECIPES.recipeBuilder();
         recipeBuilder.catalyst(catalyst).result(result);
 
         switch (tier) {
@@ -243,31 +235,25 @@ public class DraconicTierupRecipe {
                     .input(plate, GTEMaterials.Draconium, plateAmount)
                     .input(DEFeatures.wyvernCore, 1)
                     .input(DEFeatures.wyvernEnergyCore, 1)
-                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(16000))
-                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
-                    .duration(200).EUt(VA[GTEValues.dedaVoltageTier]);
+                    .fluidInputs(DEDARecipeHelper.cryotheum(DraconicTier.WYVERN))
+                    .fluidOutputs(DEDARecipeHelper.pyrotheum(DraconicTier.WYVERN))
+                    .duration(DEDAConstants.DURATION_WYVERN).EUt(DEDARecipeHelper.voltage(DraconicTier.WYVERN));
             case DRACONIC -> recipeBuilder
                     .input(plate, GTEMaterials.AwakenedDraconium, 2)
                     .input(DEFeatures.draconicCore, 4)
                     .input(DEFeatures.draconicEnergyCore, 1)
-                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(32000))
-                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
-                    .duration(400).EUt(VA[GTEValues.dedaVoltageTier + 1]);
+                    .fluidInputs(DEDARecipeHelper.cryotheum(DraconicTier.DRACONIC))
+                    .fluidOutputs(DEDARecipeHelper.pyrotheum(DraconicTier.DRACONIC))
+                    .duration(DEDAConstants.DURATION_DRACONIC).EUt(DEDARecipeHelper.voltage(DraconicTier.DRACONIC));
             case CHAOTIC -> recipeBuilder
                     .input(DEFeatures.chaosShard, 4, 0)
                     .input(DEFeatures.infusedObsidian, 2)
                     .input(DEFeatures.chaoticCore, 1)
                     .input(DAFeatures.chaoticEnergyCore, 1)
-                    .fluidInputs(GTEMaterials.Cryotheum.getFluid(48000))
-                    .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 12000))
-                    .duration(600).EUt(VA[GTEValues.dedaVoltageTier + 2]);
+                    .fluidInputs(DEDARecipeHelper.cryotheum(DraconicTier.CHAOTIC))
+                    .fluidOutputs(DEDARecipeHelper.pyrotheum(DraconicTier.CHAOTIC))
+                    .duration(DEDAConstants.DURATION_CHAOTIC).EUt(DEDARecipeHelper.voltage(DraconicTier.CHAOTIC));
         }
         recipeBuilder.buildAndRegister();
-    }
-
-    private enum Tier {
-        WYVERN,
-        DRACONIC,
-        CHAOTIC
     }
 }

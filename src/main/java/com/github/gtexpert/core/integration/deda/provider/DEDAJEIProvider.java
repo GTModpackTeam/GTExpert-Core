@@ -19,14 +19,18 @@ public class DEDAJEIProvider implements IModPlugin {
     @Override
     public void register(@NotNull IModRegistry registry) {
         if (GTEValues.isModLoadedDEDA()) {
-            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(),
-                    GTValues.MODID + ":" + GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.unlocalizedName);
-            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(), GTValues.MODID +
-                    ":" + GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_TIER_UP_FAKE_RECIPES.unlocalizedName);
-            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(),
-                    GTValues.MODID + ":" + GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_FAKE_RECIPES.unlocalizedName);
-            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(), GTValues.MODID +
-                    ":" + GTEDraconicRecipeMaps.AWAKENED_DRACONIC_FUSION_UPGRADE_FAKE_RECIPES.unlocalizedName);
+            String fusionCategory = GTValues.MODID + ":" +
+                    GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.unlocalizedName;
+            String tierUpCategory = GTValues.MODID + ":" +
+                    GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_RECIPES.unlocalizedName;
+            String upgradeCategory = GTValues.MODID + ":" +
+                    GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_RECIPES.unlocalizedName;
+
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(), fusionCategory);
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(), tierUpCategory);
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(), tierUpCategory);
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(), upgradeCategory);
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(), upgradeCategory);
         }
     }
 }

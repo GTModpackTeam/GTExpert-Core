@@ -26,6 +26,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 
 import com.github.gtexpert.core.api.util.GTELog;
+import com.github.gtexpert.core.integration.deda.DEDAConfigHolder;
 import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
 import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeProperty;
 import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
@@ -37,6 +38,9 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private final RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap;
     private final RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap;
+
+    /** Cache for upgrade recipe lookups - improves O(n) to O(m) where m << n */
+    private final UpgradeRecipeCache upgradeCache = new UpgradeRecipeCache();
 
     public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
                                    int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder,
@@ -63,25 +67,51 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
                     tierUpRecipe.getProperty(TierUpRecipeProperty.getInstance(), null));
         }
 
-        // We need to manually search RecipeMap here.
-        //
-        // RecipeMap#recurseIngredientTreeFindRecipe only searches branch first found (`Either<Recipe, Branch> result =
-        // targetMap.get(obj);`).
-        // This is fine in most of the situations, but here it's not;
-        //
-        // When recipes get added, many of the catalyst objects are not equal each other, as they don't have level-0 tag
-        // and UpgradeRecipeBuilder#EQUAL_TO_RECURSIVE returns false, hence all the recipes are added as separate nodes.
-        // example: #lookup -> [draconic_helm -> [tool_upgrade@9], draconic_helm -> [tool_upgrade@8], ...], instead of
-        // [draconic_helm -> [tool_upgrade@9, tool_upgrade@8]]
-        // But when searching recipe, an itemstack can match (`equals`) to multiple branches.
-        // example: when draconic_helm with no upgrade is passed as input, it can match to all branches accepts basic
-        // upgrade
-        for (Recipe recipe : upgradeRecipeMap.getRecipeList()) {
-            if (recipe.getEUt() <= voltage && recipe.matches(false, inputs, fluidInputs)) {
-                return setupOutput(recipe, inputs, recipe.getProperty(UpgradeRecipeProperty.getInstance(), null));
-            }
+        // Use cached lookup for upgrade recipes if enabled
+        // This improves performance from O(n) to O(m) where m is the number of recipes
+        // for the specific catalyst item type, instead of all upgrade recipes
+        Recipe upgradeRecipe = findUpgradeRecipe(voltage, inputs, fluidInputs);
+        if (upgradeRecipe != null) {
+            return setupOutput(upgradeRecipe, inputs,
+                    upgradeRecipe.getProperty(UpgradeRecipeProperty.getInstance(), null));
         }
 
+        return null;
+    }
+
+    /**
+     * Find upgrade recipe using cache if enabled, otherwise fall back to linear search.
+     */
+    @Nullable
+    private Recipe findUpgradeRecipe(long voltage, List<ItemStack> inputs, List<FluidStack> fluidInputs) {
+        if (DEDAConfigHolder.enableUpgradeRecipeCache) {
+            // Ensure cache is built (lazy initialization)
+            if (!upgradeCache.isInitialized()) {
+                upgradeCache.buildCache(upgradeRecipeMap);
+            }
+            return upgradeCache.findRecipe(voltage, inputs, fluidInputs);
+        } else {
+            // Fallback to original O(n) linear search
+            return findUpgradeRecipeLinear(voltage, inputs, fluidInputs);
+        }
+    }
+
+    /**
+     * Linear search for upgrade recipes.
+     * O(n) complexity where n is the total number of upgrade recipes.
+     * <p>
+     * We need to manually search RecipeMap here because:
+     * RecipeMap#recurseIngredientTreeFindRecipe only searches branch first found.
+     * When recipes get added, catalyst objects with different NBT states create separate branches.
+     * But when searching, an itemstack can match to multiple branches.
+     */
+    @Nullable
+    private Recipe findUpgradeRecipeLinear(long voltage, List<ItemStack> inputs, List<FluidStack> fluidInputs) {
+        for (Recipe recipe : upgradeRecipeMap.getRecipeList()) {
+            if (recipe.getEUt() <= voltage && recipe.matches(false, inputs, fluidInputs)) {
+                return recipe;
+            }
+        }
         return null;
     }
 
