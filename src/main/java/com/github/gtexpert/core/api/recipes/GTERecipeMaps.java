@@ -9,7 +9,6 @@ import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.core.sound.GTSoundEvents;
 
 import com.github.gtexpert.core.api.gui.GTEGuiTextures;
-import com.github.gtexpert.core.common.GTEConfigHolder;
 
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenExpansion;
