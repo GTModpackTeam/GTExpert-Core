@@ -28,8 +28,10 @@ import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import com.github.gtexpert.core.api.util.GTELog;
 import com.github.gtexpert.core.integration.deda.DEDAConfigHolder;
 import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
+import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeInfo;
 import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeProperty;
 import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
+import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeInfo;
 import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeProperty;
 
 import cofh.redstoneflux.api.IEnergyContainerItem;
@@ -63,8 +65,8 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
         Recipe tierUpRecipe = tierUpRecipeMap.findRecipe(voltage, inputs, fluidInputs, exactVoltage);
         if (tierUpRecipe != null) {
-            return setupOutput(tierUpRecipe, inputs,
-                    tierUpRecipe.getProperty(TierUpRecipeProperty.getInstance(), null));
+            TierUpRecipeInfo tierUpInfo = tierUpRecipe.getProperty(TierUpRecipeProperty.getInstance(), null);
+            return setupOutput(tierUpRecipe, inputs, tierUpInfo != null ? tierUpInfo.recipe() : null);
         }
 
         // Use cached lookup for upgrade recipes if enabled
@@ -72,8 +74,8 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
         // for the specific catalyst item type, instead of all upgrade recipes
         Recipe upgradeRecipe = findUpgradeRecipe(voltage, inputs, fluidInputs);
         if (upgradeRecipe != null) {
-            return setupOutput(upgradeRecipe, inputs,
-                    upgradeRecipe.getProperty(UpgradeRecipeProperty.getInstance(), null));
+            UpgradeRecipeInfo upgradeInfo = upgradeRecipe.getProperty(UpgradeRecipeProperty.getInstance(), null);
+            return setupOutput(upgradeRecipe, inputs, upgradeInfo != null ? upgradeInfo.recipe() : null);
         }
 
         return null;

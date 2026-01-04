@@ -52,5 +52,13 @@ public final class DEDAConstants {
         DraconicTier(int voltageOffset) {
             this.voltageOffset = voltageOffset;
         }
+
+        /**
+         * Returns true if this tier requires the Awakened Draconium Fusion Crafter (Tier II).
+         * CHAOTIC tier requires UV voltage which is only available on the Awakened Crafter.
+         */
+        public boolean requiresAwakenedCrafter() {
+            return this == CHAOTIC;
+        }
     }
 }

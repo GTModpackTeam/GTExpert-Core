@@ -1,3 +1,8 @@
+# 2.6.2
+- Re: Fix DEDA JEI display [#346](https://github.com/GTModpackTeam/GTExpert-Core/pull/346)
+
+* * *
+
 # 2.6.1
 - Fix DEDA JEI display [#345](https://github.com/GTModpackTeam/GTExpert-Core/pull/345)
 
