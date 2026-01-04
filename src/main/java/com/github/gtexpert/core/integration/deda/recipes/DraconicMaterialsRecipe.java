@@ -26,9 +26,6 @@ import com.github.gtexpert.core.api.util.Mods;
 
 public class DraconicMaterialsRecipe {
 
-    public static final int ABFPyrotheumAmount = 200;
-    public static final double ABFDurationMultiplier = 0.5;
-
     public static void init() {
         // ########################################
         // Draconic Evolution

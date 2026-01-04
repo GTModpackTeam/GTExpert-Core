@@ -1,6 +1,6 @@
 package com.github.gtexpert.core.integration.ae.recipes;
 
-import static com.github.gtexpert.core.integration.deda.recipes.DraconicMaterialsRecipe.ABFDurationMultiplier;
+import static com.github.gtexpert.core.integration.deda.DEDAConstants.ABF_DURATION_MULTIPLIER;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
@@ -348,7 +348,7 @@ public class AEMaterialsRecipe {
                     .fluidInputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 200))
                     .fluidOutputs(GTEMaterials.FluixAlloy.getFluid(GCYMFluidStorageKeys.MOLTEN, 1152))
                     .blastFurnaceTemp(propertyFluixAlloy.getBlastTemperature())
-                    .duration((int) ((durationFluixAlloy * 0.67 * ABFDurationMultiplier) / 2))
+                    .duration((int) ((durationFluixAlloy * 0.67 * ABF_DURATION_MULTIPLIER) / 2))
                     .EUt(VA[GTEValues.ae2VoltageTier])
                     .buildAndRegister();
         }
@@ -362,7 +362,7 @@ public class AEMaterialsRecipe {
                 .fluidInputs(Materials.Nitrogen.getFluid(6000))
                 .fluidOutputs(GTEMaterials.FluixAlloy.getFluid(GCYMFluidStorageKeys.MOLTEN, 1152))
                 .blastFurnaceTemp(propertyFluixAlloy.getBlastTemperature())
-                .duration((int) (durationFluixAlloy * 0.67 * ABFDurationMultiplier)).EUt(VA[GTEValues.ae2VoltageTier])
+                .duration((int) (durationFluixAlloy * 0.67 * ABF_DURATION_MULTIPLIER)).EUt(VA[GTEValues.ae2VoltageTier])
                 .buildAndRegister();
         GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
                 .circuitMeta(4)
