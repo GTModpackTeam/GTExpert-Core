@@ -9,6 +9,7 @@ import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.core.sound.GTSoundEvents;
 
 import com.github.gtexpert.core.api.gui.GTEGuiTextures;
+import com.github.gtexpert.core.common.GTEConfigHolder;
 
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -26,8 +27,8 @@ public class GTERecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> VOID_ORE_MINER_RECIPES = new RecipeMap<>(
-            "void_ore_miner", 1, 1, 2, 0, new SimpleRecipeBuilder(), false)
-                    .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOM, ProgressWidget.MoveType.VERTICAL)
+            "void_ore_miner", 1, 1, 2, 0, new SimpleRecipeBuilder(), true)
+                    .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOID, ProgressWidget.MoveType.VERTICAL)
                     .setSound(GTSoundEvents.DRILL_TOOL);
 
     @ZenProperty

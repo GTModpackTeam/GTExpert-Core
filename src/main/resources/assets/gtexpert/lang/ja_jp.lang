@@ -253,3 +253,5 @@ gtexpert.gui.needs_redstone=動作にはレッドストーン入力が必要で�
 gtexpert.multiblock.large_transformer.max_input_energy_per_tick_amps=最大入力: %s EU/t (%s) / %s A
 gtexpert.multiblock.large_transformer.max_output_energy_per_tick_amps=最大出力: %s EU/t (%s) / %s A
 gtexpert.multiblock.large_transformer.not_enough_input=最大出力が最大入力を超過している!
+gtexpert.multiblock.void_ore_miner.ender_pearl_amount=エンダーパール: %s
+gtexpert.multiblock.void_ore_miner.drilling_fluid_amount=採掘油: %s
