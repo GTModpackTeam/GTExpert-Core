@@ -20,16 +20,19 @@ import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
 
 import com.github.gtexpert.core.api.util.GTELog;
+import com.github.gtexpert.core.integration.deda.DEDAConstants.DraconicTier;
 
 public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
 
     private GTRecipeInput catalyst;
     private ItemStack result;
+    private boolean requiresAwakenedCrafter;
 
     public TierUpRecipeBuilder() {}
 
     public TierUpRecipeBuilder(TierUpRecipeBuilder recipeBuilder) {
         super(recipeBuilder);
+        this.requiresAwakenedCrafter = recipeBuilder.requiresAwakenedCrafter;
     }
 
     @Override
@@ -42,8 +45,8 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
         if (!key.equals(TierUpRecipeProperty.KEY)) {
             return super.applyProperty(key, value);
         }
-        if (!(value instanceof ToolUpgradeRecipe)) {
-            GTELog.logger.error("Property for draconic upgrade must be an instance of ToolUpgradeRecipe!",
+        if (!(value instanceof TierUpRecipeInfo)) {
+            GTELog.logger.error("Property for draconic upgrade must be an instance of TierUpRecipeInfo!",
                     new Throwable());
         }
         this.applyProperty(TierUpRecipeProperty.getInstance(), value);
@@ -85,13 +88,14 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
     }
 
     private void setFusionProperties() {
-        setFusionRecipe(new ToolUpgradeRecipe(
+        ToolUpgradeRecipe toolRecipe = new ToolUpgradeRecipe(
                 result,
                 catalyst.getInputStacks()[0],
                 0,
                 0,
                 new ItemStack(Blocks.DIRT) // fake item to avoid crash
-        ));
+        );
+        setFusionRecipe(new TierUpRecipeInfo(toolRecipe, requiresAwakenedCrafter));
         inputs.add(0, catalyst);
         outputs.add(result);
     }
@@ -114,8 +118,13 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
         return this;
     }
 
-    public void setFusionRecipe(ToolUpgradeRecipe fusionRecipe) {
-        applyProperty(TierUpRecipeProperty.getInstance(), fusionRecipe);
+    public TierUpRecipeBuilder tier(DraconicTier tier) {
+        this.requiresAwakenedCrafter = tier.requiresAwakenedCrafter();
+        return this;
+    }
+
+    public void setFusionRecipe(TierUpRecipeInfo recipeInfo) {
+        applyProperty(TierUpRecipeProperty.getInstance(), recipeInfo);
     }
 
     public GTRecipeInput getCatalyst() {
@@ -126,7 +135,7 @@ public class TierUpRecipeBuilder extends RecipeBuilder<TierUpRecipeBuilder> {
         return result;
     }
 
-    public ToolUpgradeRecipe getFusionRecipe() {
+    public TierUpRecipeInfo getFusionRecipe() {
         return this.recipePropertyStorage == null ? null :
                 this.recipePropertyStorage.getRecipePropertyValue(TierUpRecipeProperty.getInstance(), null);
     }

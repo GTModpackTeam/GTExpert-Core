@@ -141,6 +141,7 @@ public class DraconicTierupRecipe {
         GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_RECIPES.recipeBuilder()
                 .catalyst(DEDARecipeHelper.inputWithAnyNBT(new ItemStack(DEFeatures.draconicPick)))
                 .result(new ItemStack(DEFeatures.draconicStaffOfPower))
+                .tier(DraconicTier.DRACONIC)
                 .input(plate, GTEMaterials.Draconium, 6)
                 .inputNBT(DEFeatures.draconicAxe, NBTMatcher.ANY, NBTCondition.ANY)
                 .inputNBT(DEFeatures.draconicShovel, NBTMatcher.ANY, NBTCondition.ANY)
@@ -228,7 +229,7 @@ public class DraconicTierupRecipe {
 
     private static void addTierUpRecipe(GTRecipeInput catalyst, ItemStack result, DraconicTier tier, int plateAmount) {
         TierUpRecipeBuilder recipeBuilder = GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_RECIPES.recipeBuilder();
-        recipeBuilder.catalyst(catalyst).result(result);
+        recipeBuilder.catalyst(catalyst).result(result).tier(tier);
 
         switch (tier) {
             case WYVERN -> recipeBuilder

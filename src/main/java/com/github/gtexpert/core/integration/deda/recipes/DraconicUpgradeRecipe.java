@@ -19,6 +19,7 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 import com.github.gtexpert.core.api.util.GTELog;
+import com.github.gtexpert.core.integration.deda.DEDAConstants.DraconicTier;
 import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
 
@@ -71,6 +72,7 @@ public class DraconicUpgradeRecipe {
 
                         switch (currentLevel) {
                             case 0 -> recipeBuilder
+                                    .tier(DraconicTier.WYVERN)
                                     .input(Items.GOLDEN_APPLE, 2)
                                     .input(OrePrefix.gem, Materials.Diamond, 2)
                                     .input(OrePrefix.gem, Materials.EnderEye, 2)
@@ -79,6 +81,7 @@ public class DraconicUpgradeRecipe {
                                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 2000))
                                     .duration(100).EUt(VA[GTEValues.dedaVoltageTier - 1]);
                             case 1 -> recipeBuilder
+                                    .tier(DraconicTier.WYVERN)
                                     .input(OrePrefix.gem, Materials.NetherStar, 2)
                                     .input(DEFeatures.wyvernCore, 2)
                                     .input(OrePrefix.gem, Materials.Emerald, 2)
@@ -87,6 +90,7 @@ public class DraconicUpgradeRecipe {
                                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 4000))
                                     .duration(200).EUt(VA[GTEValues.dedaVoltageTier]);
                             case 2 -> recipeBuilder
+                                    .tier(DraconicTier.DRACONIC)
                                     .input(OrePrefix.gem, Materials.NetherStar, 2)
                                     .input(DEFeatures.draconicCore, 2)
                                     .input(OrePrefix.block, Materials.Emerald, 2)
@@ -95,6 +99,7 @@ public class DraconicUpgradeRecipe {
                                     .fluidOutputs(GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000))
                                     .duration(400).EUt(VA[GTEValues.dedaVoltageTier + 1]);
                             case 3 -> recipeBuilder
+                                    .tier(DraconicTier.CHAOTIC)
                                     .input(DEFeatures.draconicCore, 2)
                                     .input(DEFeatures.awakenedCore, 2)
                                     .input(Blocks.DRAGON_EGG, 2)
