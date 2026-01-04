@@ -253,6 +253,8 @@ gtexpert.gui.needs_redstone=Needs Redstone signal to work
 gtexpert.multiblock.large_transformer.max_input_energy_per_tick_amps=Max Input: %s EU/t (%s) / %s A
 gtexpert.multiblock.large_transformer.max_output_energy_per_tick_amps=Max Output: %s EU/t (%s) / %s A
 gtexpert.multiblock.large_transformer.not_enough_input=Max Output exceeds Max Input!
+gtexpert.multiblock.void_ore_miner.ender_pearl_amount=Ender Pearl: %s
+gtexpert.multiblock.void_ore_miner.drilling_fluid_amount=Drilling Fluid: %s
 
 #config
 gtexpert.config.gtexpert=GTExpert-Core

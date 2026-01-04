@@ -26,8 +26,8 @@ public class GTERecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> VOID_ORE_MINER_RECIPES = new RecipeMap<>(
-            "void_ore_miner", 1, 1, 2, 0, new SimpleRecipeBuilder(), false)
-                    .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOM, ProgressWidget.MoveType.VERTICAL)
+            "void_ore_miner", 1, 1, 2, 0, new SimpleRecipeBuilder(), true)
+                    .setProgressBar(GTEGuiTextures.PROGRESS_BAR_VOID, ProgressWidget.MoveType.VERTICAL)
                     .setSound(GTSoundEvents.DRILL_TOOL);
 
     @ZenProperty
