@@ -1,5 +1,6 @@
 # 2.6.3
 - Re: Fix Disable Helmet AutoEat Mixin [#349](https://github.com/GTModpackTeam/GTExpert-Core/pull/349)
+- Improved VFP overclock efficiency with quadratic scaling [#350](https://github.com/GTModpackTeam/GTExpert-Core/pull/350)
 
 * * *
 
