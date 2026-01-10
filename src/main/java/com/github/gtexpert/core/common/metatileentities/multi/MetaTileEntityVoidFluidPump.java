@@ -273,8 +273,7 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
 
     public int getOverclockMultiplier() {
         int tierDiff = Math.max(0, getEnergyTier() - getBaseTier());
-        int n = tierDiff + 1;
-        return n * n;
+        return (tierDiff + 1) * (tierDiff + 1);
     }
 
     public int getRigMultiplier() {
