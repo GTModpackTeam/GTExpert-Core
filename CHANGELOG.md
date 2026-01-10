@@ -1,3 +1,8 @@
+# 2.6.3
+- Re: Fix Disable Helmet AutoEat Mixin [#349](https://github.com/GTModpackTeam/GTExpert-Core/pull/349)
+
+* * *
+
 # 2.6.2
 - Re: Fix DEDA JEI display [#346](https://github.com/GTModpackTeam/GTExpert-Core/pull/346)
 - Improve the VOM UI [#347](https://github.com/GTModpackTeam/GTExpert-Core/pull/347)
