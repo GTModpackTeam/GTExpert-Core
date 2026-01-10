@@ -15,6 +15,12 @@ import gregtech.integration.jei.recipe.GTRecipeWrapper;
 
 import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 
+/**
+ * Mixin to fix JEI recipe display positioning for DEDA recipe maps.
+ * <p>
+ * Corrects the Y-position calculation for recipe info text when recipe properties
+ * have custom heights (via getInfoHeight) instead of the default 10px per property.
+ */
 @Mixin(value = GTRecipeWrapper.class, remap = false)
 public class GTRecipeWrapperMixin {
 
@@ -33,7 +39,7 @@ public class GTRecipeWrapperMixin {
      * Fixed: recipeHeight - (sumOfPropertyHeights + defaultLines * 10 - 3)
      */
     @ModifyVariable(method = "drawInfo", at = @At(value = "STORE"), ordinal = 5)
-    private int gteCore$fixYPosition(int original) {
+    private int gtexpert$fixYPosition(int original) {
         // Only apply fix for DEDA recipe maps
         if (recipeMap != GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_RECIPES &&
                 recipeMap != GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_RECIPES) {
