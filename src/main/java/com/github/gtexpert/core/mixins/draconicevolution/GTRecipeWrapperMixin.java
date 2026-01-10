@@ -1,4 +1,4 @@
-package com.github.gtexpert.core.mixins.gregtech;
+package com.github.gtexpert.core.mixins.draconicevolution;
 
 import java.util.Map;
 

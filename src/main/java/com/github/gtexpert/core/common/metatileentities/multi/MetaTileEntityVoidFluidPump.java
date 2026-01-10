@@ -186,6 +186,15 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
                 .addEnergyUsageLine(energyContainer)
                 .addCustom(tl -> {
                     if (isStructureFormed()) {
+                        // Production multiplier info
+                        ITextComponent multiplierInfo = TextComponentUtil.stringWithColor(
+                                TextFormatting.AQUA,
+                                getOverclockMultiplier() + "x");
+                        tl.add(TextComponentUtil.translationWithColor(
+                                TextFormatting.GRAY,
+                                "gtexpert.multiblock.void_fluid_pump.multiplier",
+                                multiplierInfo));
+
                         if (minerLogic.getDrilledFluid() != null) {
                             // Fluid name
                             Fluid drilledFluid = minerLogic.getDrilledFluid();
@@ -244,6 +253,7 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
         tooltip.add(I18n.format("gtexpert.machine.void_fluid_pump.tooltip.2", GTValues.VNF[getBaseTier()],
                 getBaseMultiplier()));
         tooltip.add(I18n.format("gtexpert.machine.void_fluid_pump.tooltip.3"));
+        tooltip.add(I18n.format("gtexpert.machine.void_fluid_pump.tooltip.overclock"));
     }
 
     @Override
@@ -261,8 +271,14 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
         return GTEConfigHolder.gteFlag.vfpBaseProductionRate;
     }
 
+    public int getOverclockMultiplier() {
+        int tierDiff = Math.max(0, getEnergyTier() - getBaseTier());
+        int n = tierDiff + 1;
+        return n * n;
+    }
+
     public int getRigMultiplier() {
-        return Math.max(1, getBaseMultiplier() * (getEnergyTier() - getBaseTier()));
+        return Math.max(1, getBaseMultiplier() * getOverclockMultiplier());
     }
 
     @Override
