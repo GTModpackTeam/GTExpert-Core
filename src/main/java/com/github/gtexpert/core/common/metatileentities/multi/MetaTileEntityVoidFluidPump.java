@@ -277,7 +277,7 @@ public class MetaTileEntityVoidFluidPump extends MultiblockWithDisplayBase
     }
 
     public int getRigMultiplier() {
-        return Math.max(1, getBaseMultiplier() * getOverclockMultiplier());
+        return getBaseMultiplier() * getOverclockMultiplier();
     }
 
     @Override
