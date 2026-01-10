@@ -33,8 +33,9 @@ gtexpert.machine.large_transformer.tooltip.1=大型変圧器の簡易版
 gtexpert.machine.large_transformer.tooltip.2=§d作者:§f @MrKono
 gtexpert.machine.void_fluid_pump.name=亜空間型液体ポンプ
 gtexpert.machine.void_fluid_pump.tooltip.1=無限の油田
-gtexpert.machine.void_fluid_pump.tooltip.2=使用電圧が§b%s§7よりも高い場合、電圧Tier毎に生産量が§e%d倍§7になる。
+gtexpert.machine.void_fluid_pump.tooltip.2=§b%s§7ティアでの基本生産倍率: §e%d倍§7
 gtexpert.machine.void_fluid_pump.tooltip.3=§d作者:§f @MrKono
+gtexpert.machine.void_fluid_pump.tooltip.overclock=§a二次オーバークロック:§7 高ティアほど効率向上 (例: +1ティア = 4倍, +2 = 9倍, +3 = 16倍)
 
 # singleblock
 # Auto Chisel
@@ -255,3 +256,4 @@ gtexpert.multiblock.large_transformer.max_output_energy_per_tick_amps=最大出�
 gtexpert.multiblock.large_transformer.not_enough_input=最大出力が最大入力を超過している!
 gtexpert.multiblock.void_ore_miner.ender_pearl_amount=エンダーパール: %s
 gtexpert.multiblock.void_ore_miner.drilling_fluid_amount=採掘油: %s
+gtexpert.multiblock.void_fluid_pump.multiplier=生産倍率: %s

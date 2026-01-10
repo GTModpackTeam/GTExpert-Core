@@ -33,8 +33,9 @@ gtexpert.machine.large_transformer.tooltip.1=Simplified version of active transf
 gtexpert.machine.large_transformer.tooltip.2=§dAuthor:§f @MrKono
 gtexpert.machine.void_fluid_pump.name=Void Fluid Pump
 gtexpert.machine.void_fluid_pump.tooltip.1=Infinite Oil Deposit
-gtexpert.machine.void_fluid_pump.tooltip.2=For every voltage tier above §b%s§7, Production Multiplier is §e%dx§7.
+gtexpert.machine.void_fluid_pump.tooltip.2=Base production multiplier at §b%s§7 tier: §e%dx§7
 gtexpert.machine.void_fluid_pump.tooltip.3=§dAuthor:§f @MrKono
+gtexpert.machine.void_fluid_pump.tooltip.overclock=§aQuadratic Overclock:§7 Higher tiers are more efficient (e.g., +1 tier = 4x, +2 = 9x, +3 = 16x)
 
 # singleblock
 # Auto Chisel
@@ -255,6 +256,7 @@ gtexpert.multiblock.large_transformer.max_output_energy_per_tick_amps=Max Output
 gtexpert.multiblock.large_transformer.not_enough_input=Max Output exceeds Max Input!
 gtexpert.multiblock.void_ore_miner.ender_pearl_amount=Ender Pearl: %s
 gtexpert.multiblock.void_ore_miner.drilling_fluid_amount=Drilling Fluid: %s
+gtexpert.multiblock.void_fluid_pump.multiplier=Production Multiplier: %s
 
 #config
 gtexpert.config.gtexpert=GTExpert-Core
