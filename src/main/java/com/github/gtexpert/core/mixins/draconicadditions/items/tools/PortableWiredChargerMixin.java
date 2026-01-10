@@ -6,6 +6,12 @@ import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
+/**
+ * Mixin to rebalance Portable Wired Charger capacity from Draconic Additions.
+ * <p>
+ * Adjusts energy storage capacity for basic and wyvern tiers to better fit
+ * the modpack progression.
+ */
 @Mixin(value = PortableWiredCharger.class, remap = false)
 public class PortableWiredChargerMixin {
 

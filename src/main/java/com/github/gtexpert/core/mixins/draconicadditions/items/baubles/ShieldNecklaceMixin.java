@@ -7,6 +7,12 @@ import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
+/**
+ * Mixin to rebalance Shield Necklace stats from Draconic Additions.
+ * <p>
+ * Adjusts energy capacity, max receive rate, protection points, and recovery rate
+ * for basic and wyvern tiers to better fit the modpack progression.
+ */
 @Mixin(value = ShieldNecklace.class, remap = false)
 public class ShieldNecklaceMixin {
 

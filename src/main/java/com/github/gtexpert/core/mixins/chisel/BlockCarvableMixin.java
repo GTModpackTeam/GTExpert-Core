@@ -12,6 +12,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.chisel.api.block.VariationData;
 import team.chisel.common.block.BlockCarvable;
 
+/**
+ * Mixin to add harvest level information to Chisel's carvable blocks.
+ * <p>
+ * Sets appropriate harvest tools (pickaxe, axe, shovel) based on block material type,
+ * enabling proper tool requirements for breaking these blocks.
+ */
 @Mixin(value = BlockCarvable.class, remap = false)
 public abstract class BlockCarvableMixin extends Block {
 
@@ -19,6 +25,14 @@ public abstract class BlockCarvableMixin extends Block {
         super(materialIn);
     }
 
+    /**
+     * Sets the harvest level for carvable blocks based on their material type.
+     * <ul>
+     * <li>Pickaxe: Rock, Iron, Anvil, Ice</li>
+     * <li>Axe: Wood</li>
+     * <li>Shovel: Ground, Sand, Clay</li>
+     * </ul>
+     */
     @Inject(method = "<init>(Lnet/minecraft/block/material/Material;Lnet/minecraft/util/BlockRenderLayer;II[Lteam/chisel/api/block/VariationData;)V",
             at = @At("RETURN"))
     private void gtexpert$setHarvestLevel(Material material, BlockRenderLayer layer, int index, int max,

@@ -9,11 +9,18 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import com.brandon3055.draconicevolution.OreHandler;
 
+/**
+ * Mixin to prevent Draconic Evolution from registering its ore dictionary entries.
+ * <p>
+ * Specifically blocks the "oreDraconium" registration to allow GregTech
+ * to handle draconium ore processing instead.
+ */
 @Mixin(value = OreHandler.class, remap = false)
 public class OreHandlerMixin {
 
     /**
-     * Redirect OreDictionary.registerOre calls to prevent oreDraconium registration.
+     * Redirects OreDictionary.registerOre calls to skip oreDraconium registration.
+     * All other ore registrations are passed through unchanged.
      */
     @Redirect(method = "registerOres",
               at = @At(value = "INVOKE",

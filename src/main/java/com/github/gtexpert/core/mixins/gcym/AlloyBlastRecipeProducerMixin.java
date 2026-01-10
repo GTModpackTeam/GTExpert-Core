@@ -37,9 +37,19 @@ import gregicality.multiblocks.api.recipes.alloyblast.AlloyBlastRecipeProducer;
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 
+/**
+ * Mixin to extend {@link AlloyBlastRecipeProducer} with additional recipe variants.
+ * <p>
+ * Adds pyrotheum-boosted alloy blast recipes and cryotheum-cooled vacuum freezer recipes
+ * when Draconic Evolution/Draconic Additions (DEDA) is loaded.
+ */
 @Mixin(value = AlloyBlastRecipeProducer.class, remap = false)
 public abstract class AlloyBlastRecipeProducerMixin {
 
+    /**
+     * Injects into buildRecipes to add pyrotheum-boosted recipes.
+     * Replaces the original method to include an additional recipe variant using molten pyrotheum.
+     */
     @Inject(
             method = "buildRecipes",
             at = @At(
@@ -90,10 +100,20 @@ public abstract class AlloyBlastRecipeProducerMixin {
         return componentAmount + 10;
     }
 
+    /**
+     * @param componentAmount the amount of different components in the material
+     * @return the circuit number for the pyrotheum-boosted recipe
+     */
     protected int getPyrotheumCircuitNum(int componentAmount) {
         return componentAmount + 11;
     }
 
+    /**
+     * Injects into addFreezerRecipes to add extended vacuum freezer recipes.
+     * <p>
+     * Adds recipes for multiple mold types (nugget, ingot, plate, gear, rotor) and
+     * cryotheum-cooled variants for high-temperature materials when DEDA is loaded.
+     */
     @Inject(method = "addFreezerRecipes", at = @At("HEAD"), cancellable = true)
     protected void addFreezerRecipesMixin(@NotNull Material material, @NotNull Fluid molten,
                                           @NotNull BlastProperty property, CallbackInfo ci) {
@@ -162,6 +182,20 @@ public abstract class AlloyBlastRecipeProducerMixin {
         ci.cancel();
     }
 
+    /**
+     * Adds a standard vacuum freezer recipe with a mold.
+     * For high-temperature materials, liquid helium is used as a coolant.
+     *
+     * @param material       the material to process
+     * @param molten         the molten fluid input
+     * @param vacuumEUt      the EU/t for the recipe
+     * @param vacuumDuration the duration in ticks
+     * @param highTemp       whether the material requires high-temp processing (>= 5000K)
+     * @param flag           the material flag required (null if always applicable)
+     * @param prefix         the output ore prefix
+     * @param mold           the mold item
+     * @param fluidAmount    the amount of molten fluid required
+     */
     private void addMoldRecipe(@NotNull Material material, @NotNull Fluid molten,
                                int vacuumEUt, int vacuumDuration, boolean highTemp,
                                @Nullable MaterialFlag flag, @NotNull OrePrefix prefix,
@@ -183,6 +217,16 @@ public abstract class AlloyBlastRecipeProducerMixin {
         builder.buildAndRegister();
     }
 
+    /**
+     * Adds a vacuum freezer recipe to convert molten fluid to standard fluid.
+     * For high-temperature materials, liquid helium is used as a coolant.
+     *
+     * @param material       the material to process
+     * @param molten         the molten fluid input
+     * @param vacuumEUt      the EU/t for the recipe
+     * @param vacuumDuration the duration in ticks
+     * @param highTemp       whether the material requires high-temp processing (>= 5000K)
+     */
     private void addFluidConversionRecipe(@NotNull Material material, @NotNull Fluid molten,
                                           int vacuumEUt, int vacuumDuration, boolean highTemp) {
         RecipeBuilder<SimpleRecipeBuilder> builder = RecipeMaps.VACUUM_RECIPES.recipeBuilder()
@@ -200,6 +244,19 @@ public abstract class AlloyBlastRecipeProducerMixin {
         builder.buildAndRegister();
     }
 
+    /**
+     * Adds a cryotheum-cooled vacuum freezer recipe with a mold.
+     * Uses cryotheum as coolant and produces molten pyrotheum as a byproduct.
+     *
+     * @param material    the material to process
+     * @param molten      the molten fluid input
+     * @param vacuumEUt   the EU/t for the recipe
+     * @param duration    the duration in ticks
+     * @param flag        the material flag required (null if always applicable)
+     * @param prefix      the output ore prefix
+     * @param mold        the mold item
+     * @param fluidAmount the amount of molten fluid required
+     */
     private void addCryotheumMoldRecipe(@NotNull Material material, @NotNull Fluid molten,
                                         int vacuumEUt, int duration,
                                         @Nullable MaterialFlag flag, @NotNull OrePrefix prefix,
