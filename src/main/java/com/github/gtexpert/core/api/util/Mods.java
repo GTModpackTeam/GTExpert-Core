@@ -139,7 +139,7 @@ public enum Mods {
         public static final String RAILCRAFT = "railcraft";
         public static final String REFINED_STORAGE = "refinedstorage";
         public static final String THAUMCRAFT = "thaumcraft";
-        public static final String THAUMIC_ENERGISTICS = "haumicenergistics";
+        public static final String THAUMIC_ENERGISTICS = "thaumicenergistics";
         public static final String THE_ONE_PROBE = "theoneprobe";
         public static final String TINKERS_CONSTRUCT = "tconstruct";
         public static final String TOP_ADDONS = "topaddons";

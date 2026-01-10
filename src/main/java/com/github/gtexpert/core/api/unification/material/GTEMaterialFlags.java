@@ -19,10 +19,10 @@ public class GTEMaterialFlags {
         diamondProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
         Materials.Diamond.setProperty(PropertyKey.FLUID, diamondProp);
 
-        // Ender Peral
-        FluidProperty enderPeralProp = new FluidProperty();
-        enderPeralProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
-        Materials.EnderPearl.setProperty(PropertyKey.FLUID, enderPeralProp);
+        // Ender Pearl
+        FluidProperty enderPearlProp = new FluidProperty();
+        enderPearlProp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+        Materials.EnderPearl.setProperty(PropertyKey.FLUID, enderPearlProp);
 
         // Ender Eye
         FluidProperty enderEyeProp = new FluidProperty();

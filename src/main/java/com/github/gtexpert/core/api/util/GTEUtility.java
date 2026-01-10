@@ -13,7 +13,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
@@ -25,6 +24,8 @@ import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.common.items.GTEMetaItems;
 
 public class GTEUtility {
+
+    private static final Random RANDOM = new Random();
 
     public static @NotNull ItemStack getModItem(String modID, String itemName) {
         return GameRegistry.makeItemStack(modID + ":" + itemName, 0, 1, null);
@@ -62,11 +63,10 @@ public class GTEUtility {
     }
 
     public static String generateRandomString(int length) {
-        Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder(length);
 
         for (int i = 0; i < length; i++) {
-            stringBuilder.append(random.nextInt(10));
+            stringBuilder.append(RANDOM.nextInt(10));
         }
 
         return stringBuilder.toString();
@@ -88,7 +88,7 @@ public class GTEUtility {
             case 11 -> MetaItems.ELECTRIC_MOTOR_UIV;
             case 12 -> MetaItems.ELECTRIC_MOTOR_UXV;
             case 13 -> MetaItems.ELECTRIC_MOTOR_OpV;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -108,7 +108,7 @@ public class GTEUtility {
             case 11 -> MetaItems.ELECTRIC_PUMP_UIV;
             case 12 -> MetaItems.ELECTRIC_PUMP_UXV;
             case 13 -> MetaItems.ELECTRIC_PUMP_OpV;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -123,7 +123,7 @@ public class GTEUtility {
             case 6 -> MetaItems.FLUID_REGULATOR_LUV;
             case 7 -> MetaItems.FLUID_REGULATOR_ZPM;
             case 8 -> MetaItems.FLUID_REGULATOR_UV;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -143,7 +143,7 @@ public class GTEUtility {
             case 11 -> MetaItems.ELECTRIC_PISTON_UIV;
             case 12 -> MetaItems.ELECTRIC_PISTON_UXV;
             case 13 -> MetaItems.ELECTRIC_PISTON_OpV;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -163,7 +163,7 @@ public class GTEUtility {
             case 11 -> MetaItems.ROBOT_ARM_UIV;
             case 12 -> MetaItems.ROBOT_ARM_UXV;
             case 13 -> MetaItems.ROBOT_ARM_OpV;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -183,7 +183,7 @@ public class GTEUtility {
             case 11 -> MetaItems.FIELD_GENERATOR_UIV;
             case 12 -> MetaItems.FIELD_GENERATOR_UXV;
             case 13 -> MetaItems.FIELD_GENERATOR_OpV;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -203,7 +203,7 @@ public class GTEUtility {
             case 11 -> MetaItems.CONVEYOR_MODULE_UIV;
             case 12 -> MetaItems.CONVEYOR_MODULE_UXV;
             case 13 -> MetaItems.CONVEYOR_MODULE_OpV;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -223,7 +223,7 @@ public class GTEUtility {
             case 11 -> MetaItems.EMITTER_UIV;
             case 12 -> MetaItems.EMITTER_UXV;
             case 13 -> MetaItems.EMITTER_OpV;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -243,7 +243,7 @@ public class GTEUtility {
             case 11 -> MetaItems.SENSOR_UIV;
             case 12 -> MetaItems.SENSOR_UXV;
             case 13 -> MetaItems.SENSOR_OpV;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -257,7 +257,7 @@ public class GTEUtility {
             case 6 -> MetaItems.BATTERY_HULL_LARGE_VANADIUM;
             case 7 -> MetaItems.BATTERY_HULL_MEDIUM_NAQUADRIA;
             case 8 -> MetaItems.BATTERY_HULL_LARGE_NAQUADRIA;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -270,7 +270,7 @@ public class GTEUtility {
             case 5 -> MetaItems.EXTREME_CIRCUIT_BOARD;
             case 6 -> MetaItems.ELITE_CIRCUIT_BOARD;
             case 7 -> MetaItems.WETWARE_CIRCUIT_BOARD;
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 
@@ -290,7 +290,7 @@ public class GTEUtility {
             case 11 -> "circuitUiv";
             case 12 -> "circuitUxv";
             case 13 -> "circuitOpv";
-            default -> throw new IllegalStateException("Out of Voltage: " + GTValues.VN[voltage]);
+            default -> throw new IllegalStateException("Invalid voltage tier: " + voltage);
         };
     }
 

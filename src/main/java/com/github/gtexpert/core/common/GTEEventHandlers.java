@@ -30,7 +30,7 @@ import com.github.gtexpert.core.common.items.GTEMetaItems;
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTEEventHandlers {
 
-    public GTEEventHandlers() {}
+    private GTEEventHandlers() {}
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void registerMaterialsHigh(MaterialEvent event) {

@@ -289,7 +289,7 @@ public class GTEModuleManager implements IModuleManager {
                 containerModules.add(0, coreModule);
             }
 
-            logger.debug("containterModule size: " + containerModules.size());
+            logger.debug("containerModules size: " + containerModules.size());
 
             // Remove disabled modules and gather potential modules to load
             Iterator<IGTEModule> iterator = containerModules.iterator();

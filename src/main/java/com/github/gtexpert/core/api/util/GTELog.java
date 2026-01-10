@@ -9,5 +9,5 @@ public class GTELog {
 
     private GTELog() {}
 
-    public static Logger logger = LogManager.getLogger(Tags.MODNAME);
+    public static final Logger logger = LogManager.getLogger(Tags.MODNAME);
 }
