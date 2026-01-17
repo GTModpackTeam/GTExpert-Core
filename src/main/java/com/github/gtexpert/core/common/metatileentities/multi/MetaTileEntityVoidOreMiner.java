@@ -11,18 +11,19 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.IProgressBarMultiblock;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
@@ -136,30 +137,19 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController
 
     // IProgressBarMultiblock implementation
     @Override
-    public boolean showProgressBar() {
-        return true;
-    }
-
-    @Override
     public int getNumProgressBars() {
         return 2;
     }
 
     @Override
     public double getFillPercentage(int index) {
-        if (!isStructureFormed() || getInputFluidInventory() == null) {
-            return 0;
-        }
-
         if (index == 0) {
             // EnderPearl fluid
-            int[] amount = getTotalFluidAmount(Materials.EnderPearl.getFluid(Integer.MAX_VALUE),
-                    getInputFluidInventory());
+            int[] amount = getTotalFluidAmount(Materials.EnderPearl.getFluid(Integer.MAX_VALUE));
             return amount[1] != 0 ? 1.0 * amount[0] / amount[1] : 0;
         } else {
             // Drilling Fluid
-            int[] amount = getTotalFluidAmount(Materials.DrillingFluid.getFluid(Integer.MAX_VALUE),
-                    getInputFluidInventory());
+            int[] amount = getTotalFluidAmount(Materials.DrillingFluid.getFluid(Integer.MAX_VALUE));
             return amount[1] != 0 ? 1.0 * amount[0] / amount[1] : 0;
         }
     }
@@ -175,14 +165,9 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController
 
     @Override
     public void addBarHoverText(List<ITextComponent> hoverList, int index) {
-        if (!isStructureFormed() || getInputFluidInventory() == null) {
-            return;
-        }
-
         if (index == 0) {
             // EnderPearl fluid
-            int[] amount = getTotalFluidAmount(Materials.EnderPearl.getFluid(Integer.MAX_VALUE),
-                    getInputFluidInventory());
+            int[] amount = getTotalFluidAmount(Materials.EnderPearl.getFluid(Integer.MAX_VALUE));
             ITextComponent fluidInfo = TextComponentUtil.stringWithColor(
                     TextFormatting.GREEN,
                     TextFormattingUtil.formatNumbers(amount[0]) + " / " +
@@ -193,8 +178,7 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController
                     fluidInfo));
         } else {
             // Drilling Fluid
-            int[] amount = getTotalFluidAmount(Materials.DrillingFluid.getFluid(Integer.MAX_VALUE),
-                    getInputFluidInventory());
+            int[] amount = getTotalFluidAmount(Materials.DrillingFluid.getFluid(Integer.MAX_VALUE));
             ITextComponent fluidInfo = TextComponentUtil.stringWithColor(
                     TextFormatting.GOLD,
                     TextFormattingUtil.formatNumbers(amount[0]) + " / " +
@@ -206,19 +190,19 @@ public class MetaTileEntityVoidOreMiner extends RecipeMapMultiblockController
         }
     }
 
-    private int[] getTotalFluidAmount(FluidStack testStack, IMultipleTankHandler tanks) {
-        int stored = 0;
-        int capacity = 0;
-        for (var tank : tanks.getFluidTanks()) {
-            FluidStack contained = tank.getFluid();
-            if (contained != null && contained.isFluidEqual(testStack)) {
-                stored += contained.amount;
-                capacity += tank.getCapacity();
-            } else if (contained == null) {
-                // Empty tank that could hold this fluid
-                capacity += tank.getCapacity();
+    private int[] getTotalFluidAmount(FluidStack testStack) {
+        if (!isStructureFormed()) return new int[] { 0, 0 };
+        List<IFluidTank> tanks = getAbilities(MultiblockAbility.IMPORT_FLUIDS);
+        int fluidAmount = 0;
+        int fluidCapacity = 0;
+        for (IFluidTank tank : tanks) {
+            if (tank == null || tank.getFluid() == null) continue;
+            if (tank.getFluid().isFluidEqual(testStack)) {
+                fluidAmount += tank.getFluidAmount();
+                int capacity = tank.getCapacity();
+                fluidCapacity += capacity > 0 ? capacity : tank.getFluidAmount();
             }
         }
-        return new int[] { stored, capacity };
+        return new int[] { fluidAmount, fluidCapacity };
     }
 }
