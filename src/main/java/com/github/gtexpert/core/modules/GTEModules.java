@@ -12,6 +12,7 @@ public class GTEModules implements IModuleContainer {
     // Integration modules
     public static final String MODULE_JEI = "jei_integration";
     public static final String MODULE_TOP = "top_integration";
+    public static final String MODULE_JER = "jer_integration";
     public static final String MODULE_CT = "ct_integration";
     public static final String MODULE_FFM = "ffm_integration";
     public static final String MODULE_GENDUSTRY = "gendustry_integration";

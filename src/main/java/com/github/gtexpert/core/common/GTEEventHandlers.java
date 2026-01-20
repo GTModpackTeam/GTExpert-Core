@@ -4,7 +4,14 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -13,6 +20,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -25,6 +33,7 @@ import gregtech.api.unification.material.event.MaterialEvent;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.Mods;
 import com.github.gtexpert.core.common.items.GTEMetaItems;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
@@ -85,5 +94,37 @@ public class GTEEventHandlers {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onLivingDrops(@NotNull LivingDropsEvent event) {
+        if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) {
+            return;
+        }
+
+        EntityLivingBase entity = event.getEntityLiving();
+        if (entity.world.rand.nextFloat() >= 0.025F) {
+            return;
+        }
+
+        ItemStack drop = getSkullDrop(entity);
+        if (!drop.isEmpty()) {
+            event.getDrops().add(new EntityItem(entity.world, entity.posX, entity.posY, entity.posZ, drop));
+        }
+    }
+
+    private static ItemStack getSkullDrop(EntityLivingBase entity) {
+        if (entity instanceof EntityCreeper) {
+            return new ItemStack(Items.SKULL, 1, 4);
+        } else if (entity instanceof EntitySkeleton) {
+            return new ItemStack(Items.SKULL, 1, 0);
+        } else if (entity instanceof EntityZombie) {
+            return new ItemStack(Items.SKULL, 1, 2);
+        } else if (entity instanceof EntityEnderman) {
+            if (Mods.EnderIO.isModLoaded()) {
+                return Mods.EnderIO.getItem("block_enderman_skull", 1, 0);
+            }
+        }
+        return ItemStack.EMPTY;
     }
 }
