@@ -1,3 +1,9 @@
+# 2.6.4
+- Re: Improve the VOM UI [#351](https://github.com/GTModpackTeam/GTExpert-Core/pull/351)
+- The AwakenedFusion category is hidden [#352](https://github.com/GTModpackTeam/GTExpert-Core/pull/352)
+
+* * *
+
 # 2.6.3
 - Re: Fix Disable Helmet AutoEat Mixin [#349](https://github.com/GTModpackTeam/GTExpert-Core/pull/349)
 - Improved VFP overclock efficiency with quadratic scaling [#350](https://github.com/GTModpackTeam/GTExpert-Core/pull/350)

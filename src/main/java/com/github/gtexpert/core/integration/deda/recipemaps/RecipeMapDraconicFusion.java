@@ -3,51 +3,31 @@ package com.github.gtexpert.core.integration.deda.recipemaps;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.brandon3055.brandonscore.utils.ItemNBTHelper;
-import com.brandon3055.draconicevolution.api.fusioncrafting.IFusionRecipe;
-import com.brandon3055.draconicevolution.api.fusioncrafting.SimpleFusionRecipe;
-import com.brandon3055.draconicevolution.api.itemupgrade.FusionUpgradeRecipe;
-import com.brandon3055.draconicevolution.api.itemupgrade.IUpgradableItem;
-import com.brandon3055.draconicevolution.api.itemupgrade.UpgradeHelper;
-import com.brandon3055.draconicevolution.items.ToolUpgrade;
-
-import gregtech.api.capability.FeCompat;
-import gregtech.api.capability.GregtechCapabilities;
-import gregtech.api.capability.IElectricItem;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 
-import com.github.gtexpert.core.api.util.GTELog;
-import com.github.gtexpert.core.integration.deda.DEDAConfigHolder;
-import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
-import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeInfo;
-import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeProperty;
-import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
-import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeInfo;
-import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeProperty;
-
-import cofh.redstoneflux.api.IEnergyContainerItem;
-
+/**
+ * RecipeMap for Draconic Fusion machines.
+ * Holds Fusion recipes (via parent class) and delegates to TierUp and Upgrade RecipeMaps.
+ * <p>
+ * Search order: Fusion (own recipes) → TierUp → Upgrade
+ */
 public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
-    private final RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap;
-    private final RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap;
-
-    /** Cache for upgrade recipe lookups - improves O(n) to O(m) where m << n */
-    private final UpgradeRecipeCache upgradeCache = new UpgradeRecipeCache();
+    private final RecipeMapDraconicTierUp tierUpRecipeMap;
+    private final RecipeMapDraconicUpgrade upgradeRecipeMap;
 
     public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
                                    int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder,
-                                   boolean isHidden, RecipeMap<TierUpRecipeBuilder> tierUpRecipeMap,
-                                   RecipeMap<UpgradeRecipeBuilder> upgradeRecipeMap) {
+                                   boolean isHidden,
+                                   RecipeMapDraconicTierUp tierUpRecipeMap,
+                                   RecipeMapDraconicUpgrade upgradeRecipeMap) {
         super(unlocalizedName, maxInputs, maxOutputs, maxFluidInputs, maxFluidOutputs, defaultRecipeBuilder, isHidden);
         this.tierUpRecipeMap = tierUpRecipeMap;
         this.upgradeRecipeMap = upgradeRecipeMap;
@@ -56,141 +36,19 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
     @Nullable
     @Override
     public Recipe findRecipe(long voltage, List<ItemStack> inputs, List<FluidStack> fluidInputs, boolean exactVoltage) {
-        Recipe superRecipe = super.findRecipe(voltage, inputs, fluidInputs, exactVoltage);
-        if (superRecipe != null) {
-            return superRecipe;
+        // 1. Check own Fusion recipes
+        Recipe fusionRecipe = super.findRecipe(voltage, inputs, fluidInputs, exactVoltage);
+        if (fusionRecipe != null) {
+            return fusionRecipe;
         }
 
-        applyDefaultUpgradeTag(inputs);
-
+        // 2. Check TierUp recipes
         Recipe tierUpRecipe = tierUpRecipeMap.findRecipe(voltage, inputs, fluidInputs, exactVoltage);
         if (tierUpRecipe != null) {
-            TierUpRecipeInfo tierUpInfo = tierUpRecipe.getProperty(TierUpRecipeProperty.getInstance(), null);
-            return setupOutput(tierUpRecipe, inputs, tierUpInfo != null ? tierUpInfo.recipe() : null);
+            return tierUpRecipe;
         }
 
-        // Use cached lookup for upgrade recipes if enabled
-        // This improves performance from O(n) to O(m) where m is the number of recipes
-        // for the specific catalyst item type, instead of all upgrade recipes
-        Recipe upgradeRecipe = findUpgradeRecipe(voltage, inputs, fluidInputs);
-        if (upgradeRecipe != null) {
-            UpgradeRecipeInfo upgradeInfo = upgradeRecipe.getProperty(UpgradeRecipeProperty.getInstance(), null);
-            return setupOutput(upgradeRecipe, inputs, upgradeInfo != null ? upgradeInfo.recipe() : null);
-        }
-
-        return null;
-    }
-
-    /**
-     * Find upgrade recipe using cache if enabled, otherwise fall back to linear search.
-     */
-    @Nullable
-    private Recipe findUpgradeRecipe(long voltage, List<ItemStack> inputs, List<FluidStack> fluidInputs) {
-        if (DEDAConfigHolder.enableUpgradeRecipeCache) {
-            // Ensure cache is built (lazy initialization)
-            if (!upgradeCache.isInitialized()) {
-                upgradeCache.buildCache(upgradeRecipeMap);
-            }
-            return upgradeCache.findRecipe(voltage, inputs, fluidInputs);
-        } else {
-            // Fallback to original O(n) linear search
-            return findUpgradeRecipeLinear(voltage, inputs, fluidInputs);
-        }
-    }
-
-    /**
-     * Linear search for upgrade recipes.
-     * O(n) complexity where n is the total number of upgrade recipes.
-     * <p>
-     * We need to manually search RecipeMap here because:
-     * RecipeMap#recurseIngredientTreeFindRecipe only searches branch first found.
-     * When recipes get added, catalyst objects with different NBT states create separate branches.
-     * But when searching, an itemstack can match to multiple branches.
-     */
-    @Nullable
-    private Recipe findUpgradeRecipeLinear(long voltage, List<ItemStack> inputs, List<FluidStack> fluidInputs) {
-        for (Recipe recipe : upgradeRecipeMap.getRecipeList()) {
-            if (recipe.getEUt() <= voltage && recipe.matches(false, inputs, fluidInputs)) {
-                return recipe;
-            }
-        }
-        return null;
-    }
-
-    private void applyDefaultUpgradeTag(List<ItemStack> inputs) {
-        for (ItemStack input : inputs) {
-            if (!(input.getItem() instanceof IUpgradableItem item)) continue;
-            for (String upgradeName : ToolUpgrade.NAME_TO_ID.keySet()) {
-                if (!item.getValidUpgrades(input).contains(upgradeName)) continue;
-                NBTTagCompound upgradeTag = input.getOrCreateSubCompound(UpgradeHelper.UPGRADE_TAG);
-                if (upgradeTag.hasKey(upgradeName, Constants.NBT.TAG_BYTE)) continue;
-                upgradeTag.setByte(upgradeName, (byte) 0);
-            }
-        }
-    }
-
-    private Recipe setupOutput(Recipe gtRecipe, List<ItemStack> inputs, IFusionRecipe fusionRecipe) {
-        if (fusionRecipe == null) {
-            GTELog.logger.warn("Recipe found, but property not found");
-            GTELog.logger.warn("Recipe: " + gtRecipe);
-            return null;
-        }
-        ItemStack catalyst = findCatalyst(inputs, fusionRecipe);
-        if (catalyst.isEmpty()) {
-            GTELog.logger.warn("Recipe found, but actual catalyst not found in the GT recipe");
-            GTELog.logger.warn("Recipe: " + gtRecipe);
-            GTELog.logger.warn("Expected catalyst: " + fusionRecipe.getRecipeCatalyst());
-            return null;
-        }
-
-        ItemStack outputStack = fusionRecipe.getRecipeOutput(catalyst);
-
-        // convert GTEU to FE
-        IElectricItem inputElectricItem = catalyst.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
-        if (inputElectricItem != null) {
-            long euCharge = inputElectricItem.getCharge();
-            int feCharge = (int) Math.min(euCharge * FeCompat.ratio(false), Integer.MAX_VALUE);
-            if (outputStack.getItem() instanceof IEnergyContainerItem outputEnergyItem) {
-                ItemNBTHelper.setInteger(outputStack, "Energy",
-                        Math.min(feCharge, outputEnergyItem.getMaxEnergyStored(outputStack)));
-            }
-        }
-
-        Recipe retRecipe = gtRecipe.copy();
-        retRecipe.getOutputs().clear(); // This assumes there's only 1 output
-        retRecipe.getOutputs().add(outputStack);
-        return retRecipe;
-    }
-
-    @NotNull
-    private ItemStack findCatalyst(List<ItemStack> inputs, IFusionRecipe fusionRecipe) {
-        ItemStack expectedCatalyst = getCatalyst(fusionRecipe);
-        if (expectedCatalyst == null || expectedCatalyst.isEmpty()) {
-            return ItemStack.EMPTY;
-        }
-        for (ItemStack input : inputs) {
-            if (expectedCatalyst.getItem() == input.getItem() &&
-                    expectedCatalyst.getItemDamage() == input.getItemDamage() && fusionRecipe.isRecipeCatalyst(input)) {
-                return input;
-            }
-        }
-        return ItemStack.EMPTY;
-    }
-
-    @Nullable
-    private static ItemStack getCatalyst(IFusionRecipe fusionRecipe) {
-        if (fusionRecipe instanceof SimpleFusionRecipe) {
-            return fusionRecipe.getRecipeCatalyst();
-        } else if (fusionRecipe instanceof FusionUpgradeRecipe) {
-            List<Object> ingredients = ((FusionUpgradeRecipe) fusionRecipe).getRecipeIngredients();
-            if (ingredients.isEmpty() || !(ingredients.get(0) instanceof ItemStack)) {
-                GTELog.logger.warn("Unknown ingredient: " + (ingredients.isEmpty() ? "empty" : ingredients.get(0)));
-                GTELog.logger.warn("Recipe: " + fusionRecipe);
-                return null;
-            }
-            return (ItemStack) ingredients.get(0);
-        } else {
-            throw new RuntimeException("Unknown type of IFusionRecipe: " + fusionRecipe.getClass().getName());
-        }
+        // 3. Check Upgrade recipes
+        return upgradeRecipeMap.findRecipe(voltage, inputs, fluidInputs, exactVoltage);
     }
 }
