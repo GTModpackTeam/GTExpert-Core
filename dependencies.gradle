@@ -146,6 +146,11 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:gregtech-food-option-477021:6472136")
     }
 
+    // Debug JER: 0.9.2.60
+    if (project.debug_all.toBoolean() || project.debug_jer.toBoolean()) {
+        runtimeOnly "curse.maven:just-enough-resources-jer-240630:2728585"
+    }
+
     // Boot error fix
     if (project.debug_all.toBoolean() || project.debug_eio.toBoolean()) {
         runtimeOnly files("libs/EnderCore-1.12.2-0.5.78-core.jar")

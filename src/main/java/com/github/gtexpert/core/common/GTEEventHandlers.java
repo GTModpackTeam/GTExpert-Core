@@ -5,14 +5,27 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.storage.loot.LootEntry;
+import net.minecraft.world.storage.loot.LootEntryItem;
+import net.minecraft.world.storage.loot.LootPool;
+import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraft.world.storage.loot.RandomValueRange;
+import net.minecraft.world.storage.loot.conditions.KilledByPlayer;
+import net.minecraft.world.storage.loot.conditions.LootCondition;
+import net.minecraft.world.storage.loot.conditions.RandomChance;
+import net.minecraft.world.storage.loot.functions.LootFunction;
+import net.minecraft.world.storage.loot.functions.SetMetadata;
 import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -25,10 +38,14 @@ import gregtech.api.unification.material.event.MaterialEvent;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
+import com.github.gtexpert.core.api.util.Mods;
 import com.github.gtexpert.core.common.items.GTEMetaItems;
 
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTEEventHandlers {
+
+    private static final float SKULL_DROP_CHANCE = 0.025F;
+    private static final String SKULL_POOL_NAME = "gtexpert_skull_drops";
 
     private GTEEventHandlers() {}
 
@@ -85,5 +102,75 @@ public class GTEEventHandlers {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onLootTableLoad(LootTableLoadEvent event) {
+        ResourceLocation name = event.getName();
+
+        if (name.equals(LootTableList.ENTITIES_CREEPER)) {
+            addSkullDrop(event, 4); // Creeper Head
+        } else if (name.equals(LootTableList.ENTITIES_SKELETON)) {
+            addSkullDrop(event, 0); // Skeleton Skull
+        } else if (name.equals(LootTableList.ENTITIES_ZOMBIE)) {
+            addSkullDrop(event, 2); // Zombie Head
+        } else if (name.equals(LootTableList.ENTITIES_ENDERMAN) && Mods.EnderIO.isModLoaded()) {
+            addEndermanSkullDrop(event);
+        }
+    }
+
+    private static void addSkullDrop(LootTableLoadEvent event, int meta) {
+        LootCondition[] conditions = new LootCondition[] {
+                new KilledByPlayer(false),
+                new RandomChance(SKULL_DROP_CHANCE)
+        };
+
+        LootFunction[] functions = new LootFunction[] {
+                new SetMetadata(new LootCondition[0], new RandomValueRange(meta))
+        };
+
+        LootEntry entry = new LootEntryItem(
+                Items.SKULL,
+                1,
+                0,
+                functions,
+                conditions,
+                GTEValues.MODID + ":skull_drop");
+
+        LootPool pool = new LootPool(
+                new LootEntry[] { entry },
+                new LootCondition[0],
+                new RandomValueRange(1),
+                new RandomValueRange(0),
+                SKULL_POOL_NAME);
+
+        event.getTable().addPool(pool);
+    }
+
+    private static void addEndermanSkullDrop(LootTableLoadEvent event) {
+        ItemStack endermanSkull = Mods.EnderIO.getItem("block_enderman_skull", 1, 0);
+        if (endermanSkull.isEmpty()) return;
+
+        LootCondition[] conditions = new LootCondition[] {
+                new KilledByPlayer(false),
+                new RandomChance(SKULL_DROP_CHANCE)
+        };
+
+        LootEntry entry = new LootEntryItem(
+                endermanSkull.getItem(),
+                1,
+                0,
+                new LootFunction[0],
+                conditions,
+                GTEValues.MODID + ":enderman_skull_drop");
+
+        LootPool pool = new LootPool(
+                new LootEntry[] { entry },
+                new LootCondition[0],
+                new RandomValueRange(1),
+                new RandomValueRange(0),
+                SKULL_POOL_NAME);
+
+        event.getTable().addPool(pool);
     }
 }
