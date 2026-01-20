@@ -55,7 +55,6 @@ public enum Mods {
     InventoryTweaks(Names.INVENTORY_TWEAKS),
     JourneyMap(Names.JOURNEY_MAP),
     JustEnoughItems(Names.JUST_ENOUGH_ITEMS),
-    JustEnoughResources(Names.JUST_ENOUGH_RESOURCES),
     ModularUI(Names.MODULRAUI),
     MixinBooter(Names.MIXINBOOTER),
     NeevesAE2(Names.NEEVES_AE2),
@@ -129,7 +128,6 @@ public enum Mods {
         public static final String INVENTORY_TWEAKS = "inventorytweaks";
         public static final String JOURNEY_MAP = "journeymap";
         public static final String JUST_ENOUGH_ITEMS = "jei";
-        public static final String JUST_ENOUGH_RESOURCES = "jeresources";
         public static final String MODULRAUI = "modularui";
         public static final String MIXINBOOTER = "mixinbooter";
         public static final String NEEVES_AE2 = "nae2";

@@ -147,7 +147,6 @@ dependencies {
     }
 
     // Debug JER: 0.9.2.60
-    compileOnly "curse.maven:just-enough-resources-jer-240630:2728585"
     if (project.debug_all.toBoolean() || project.debug_jer.toBoolean()) {
         runtimeOnly "curse.maven:just-enough-resources-jer-240630:2728585"
     }
