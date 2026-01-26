@@ -40,7 +40,8 @@ public class MetaTileEntitySliceNSplice extends GTESimpleMachineMetaTileEntity {
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
         return new MetaTileEntitySliceNSplice(this.metaTileEntityId, EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES,
-                GTETextures.SOUL_BINDER_OVERLAY, this.getTier(), this.hasFrontFacing(), this.getTankScalingFunction());
+                GTETextures.SLICE_N_SPLICE_OVERLAY, this.getTier(), this.hasFrontFacing(),
+                this.getTankScalingFunction());
     }
 
     @Override
@@ -76,8 +77,11 @@ public class MetaTileEntitySliceNSplice extends GTESimpleMachineMetaTileEntity {
 
     private static class AmountLimitedItemStackHandler extends NotifiableItemStackHandler {
 
+        private final Collection<Recipe> recipes;
+
         public AmountLimitedItemStackHandler(MetaTileEntity metaTileEntity, int slots, MetaTileEntity entityToNotify) {
             super(metaTileEntity, slots, entityToNotify, false);
+            this.recipes = EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.getRecipeList();
         }
 
         // === Copied from MetaTileEntityMachineHatch.LimitedImportHandler#insertItem ===
@@ -140,9 +144,7 @@ public class MetaTileEntitySliceNSplice extends GTESimpleMachineMetaTileEntity {
         @Override
         // Determine whether the item is used in the recipe
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            Collection<Recipe> recipes = EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES.getRecipeList();
-
-            for (Recipe recipe : recipes) {
+            for (Recipe recipe : this.recipes) {
                 List<GTRecipeInput> inputs = recipe.getInputs();
 
                 if (slot < 0 || slot >= inputs.size()) continue;
