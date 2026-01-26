@@ -31,8 +31,7 @@ public class EIOMetaTileEntities {
                 (tier, voltageName) -> new MetaTileEntitySliceNSplice(
                         gteId(String.format("%s.%s", "slice_n_splice", voltageName)),
                         EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES,
-                        GTETextures.SLICE_N_SPLICE_OVERLAY, tier, true, GTUtility.defaultTankSizeFunction
-                ));
+                        GTETextures.SLICE_N_SPLICE_OVERLAY, tier, true, GTUtility.defaultTankSizeFunction));
 
         // SOUL_BINDER 11036~11048
         registerGTESimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", EnderIORecipeMaps.SOUL_BINDER_RECIPES,

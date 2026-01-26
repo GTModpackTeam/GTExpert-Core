@@ -1,23 +1,9 @@
 package com.github.gtexpert.core.integration.eio.metatileentities;
 
-import com.github.gtexpert.core.client.GTETextures;
-import com.github.gtexpert.core.common.metatileentities.GTESimpleMachineMetaTileEntity;
-
-import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
-
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.ItemHandlerProxy;
-import gregtech.api.capability.impl.NotifiableItemStackHandler;
-import gregtech.api.capability.impl.RecipeLogicEnergy;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
-
-import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeMap;
-
-import gregtech.api.recipes.ingredients.GTRecipeInput;
-import gregtech.api.util.ItemStackHashStrategy;
-import gregtech.client.renderer.ICubeRenderer;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -27,10 +13,21 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.ItemHandlerProxy;
+import gregtech.api.capability.impl.NotifiableItemStackHandler;
+import gregtech.api.capability.impl.RecipeLogicEnergy;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
+import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.ingredients.GTRecipeInput;
+import gregtech.api.util.ItemStackHashStrategy;
+import gregtech.client.renderer.ICubeRenderer;
+
+import com.github.gtexpert.core.client.GTETextures;
+import com.github.gtexpert.core.common.metatileentities.GTESimpleMachineMetaTileEntity;
+import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
 
 public class MetaTileEntitySliceNSplice extends GTESimpleMachineMetaTileEntity {
 
@@ -39,7 +36,6 @@ public class MetaTileEntitySliceNSplice extends GTESimpleMachineMetaTileEntity {
                                       Function<Integer, Integer> tankScalingFunction) {
         super(metaTileEntityId, recipeMap, renderer, tier, hasFrontFacing, tankScalingFunction);
     }
-
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
@@ -140,7 +136,6 @@ public class MetaTileEntitySliceNSplice extends GTESimpleMachineMetaTileEntity {
 
             return remainder;
         }
-
 
         @Override
         // Determine whether the item is used in the recipe
