@@ -81,6 +81,10 @@ gtexpert.machine.slice_n_splice.zpm.name=Elite Slice'N'Splice III
 gtexpert.machine.slice_n_splice.zpm.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
 gtexpert.machine.slice_n_splice.uv.name=Ultimate Slice'N'Splice
 gtexpert.machine.slice_n_splice.uv.tooltip=Slices heads and splices in all sorts of useful things/n§dAuthor:§f @MrKono
+gtexpert.machine.slice_n_splice.slot.1=Only one item can be placed in each slot.
+gtexpert.machine.slice_n_splice.slot.2=Only items related to the recipe can be placed.
+gtexpert.machine.slice_n_splice.ordered=§fItems§7 must be in the correct order to run.
+
 
 # Soul Binder
 gtexpert.machine.soul_binder.lv.name=Basic Soul Binder
