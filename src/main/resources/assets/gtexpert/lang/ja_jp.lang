@@ -81,6 +81,9 @@ gtexpert.machine.slice_n_splice.zpm.name=精鋭型頭顱調整機 III
 gtexpert.machine.slice_n_splice.zpm.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
 gtexpert.machine.slice_n_splice.uv.name=究極型頭顱調整機
 gtexpert.machine.slice_n_splice.uv.tooltip=スライスした頭と様々な便利品を接合/n§d作者:§f @MrKono
+gtexpert.machine.slice_n_splice.slot.1=各スロットは1個しか配置できません
+gtexpert.machine.slice_n_splice.slot.2=レシピに関係のあるアイテムのみしか配置できません
+gtexpert.machine.slice_n_splice.ordered=§fアイテム§7がレシピ通りの順番で並んでいないと動作しません
 
 # Soul Binder
 gtexpert.machine.soul_binder.lv.name=基本型魂拘束器

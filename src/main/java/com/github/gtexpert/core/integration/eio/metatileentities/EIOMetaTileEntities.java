@@ -15,7 +15,7 @@ import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
 public class EIOMetaTileEntities {
 
     public static GTESimpleMachineMetaTileEntity[] VIAL_EXTRACTOR = new GTESimpleMachineMetaTileEntity[V.length - 1];
-    public static GTESimpleMachineMetaTileEntity[] SLICE_N_SPLICE = new GTESimpleMachineMetaTileEntity[V.length - 1];
+    public static MetaTileEntitySliceNSplice[] SLICE_N_SPLICE = new MetaTileEntitySliceNSplice[V.length - 1];
     public static GTESimpleMachineMetaTileEntity[] SOUL_BINDER = new GTESimpleMachineMetaTileEntity[V.length - 1];
     public static MetaTileEntityElectricSpawner[] ELECTRIC_SPAWNER = new MetaTileEntityElectricSpawner[V.length - 1];
 
@@ -26,9 +26,12 @@ public class EIOMetaTileEntities {
                 GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEUtility::gteId, GTUtility.hvCappedTankSizeFunction);
 
         // SLICE_N_SPLICE 11023~11035
-        registerGTESimpleMetaTileEntity(SLICE_N_SPLICE, 11023, "slice_n_splice",
-                EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES,
-                GTETextures.SLICE_N_SPLICE_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
+
+        registerMetaTileEntities(SLICE_N_SPLICE, 11023, "slice_n_splice",
+                (tier, voltageName) -> new MetaTileEntitySliceNSplice(
+                        gteId(String.format("%s.%s", "slice_n_splice", voltageName)),
+                        EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES,
+                        GTETextures.SLICE_N_SPLICE_OVERLAY, tier, true, GTUtility.defaultTankSizeFunction));
 
         // SOUL_BINDER 11036~11048
         registerGTESimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", EnderIORecipeMaps.SOUL_BINDER_RECIPES,
