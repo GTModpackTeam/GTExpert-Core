@@ -3,6 +3,7 @@ package com.github.gtexpert.core.integration.chisel;
 import net.minecraft.block.Block;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.modules.GTEModule;
@@ -21,6 +22,11 @@ import com.github.gtexpert.core.modules.GTEModules;
            name = "GTExpert Chisel Integration",
            description = "Chisel Integration Module")
 public class ChiselModule extends GTEIntegrationSubmodule {
+
+    @Override
+    public void postInit(FMLPostInitializationEvent event) {
+        ChiselBlocksRecipe.registerAutoChiselRecipe();
+    }
 
     @Override
     public void registerBlocks(RegistryEvent.Register<Block> event) {
