@@ -2,7 +2,6 @@ package com.github.gtexpert.core.integration.chisel.tools;
 
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 
-import com.github.gtexpert.core.integration.chisel.ChiselConfigHolder;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
@@ -11,6 +10,8 @@ import gregtech.api.unification.material.properties.ToolProperty;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
+
+import com.github.gtexpert.core.integration.chisel.ChiselConfigHolder;
 
 public class ChiselToolRecipeHandler {
 
