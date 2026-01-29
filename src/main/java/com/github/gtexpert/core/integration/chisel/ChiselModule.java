@@ -3,9 +3,6 @@ package com.github.gtexpert.core.integration.chisel;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.gtexpert.core.integration.chisel.tools.ChiselToolItems;
-import com.github.gtexpert.core.integration.chisel.tools.ChiselToolRecipeHandler;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
@@ -29,6 +26,8 @@ import com.github.gtexpert.core.integration.chisel.loaders.ChiselOreDictionaryLo
 import com.github.gtexpert.core.integration.chisel.metatileentities.ChiselMetaTileEntities;
 import com.github.gtexpert.core.integration.chisel.recipes.ChiselBlocksRecipe;
 import com.github.gtexpert.core.integration.chisel.recipes.ChiselToolsRecipe;
+import com.github.gtexpert.core.integration.chisel.tools.ChiselToolItems;
+import com.github.gtexpert.core.integration.chisel.tools.ChiselToolRecipeHandler;
 import com.github.gtexpert.core.modules.GTEModules;
 
 @GTEModule(
