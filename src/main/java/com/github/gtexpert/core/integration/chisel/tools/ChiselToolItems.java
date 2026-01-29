@@ -1,4 +1,4 @@
-package com.github.gtexpert.core.integration.chisel;
+package com.github.gtexpert.core.integration.chisel.tools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public final class ChiselToolItems {
 
     public static void init() {
         CHISEL = register(ItemGTTool.Builder.of(GTEValues.MODID, "chisel")
-                .toolStats(b -> b.cannotAttack().attackSpeed(-2.4F))
+                .toolStats(b -> b.cannotAttack().attackSpeed(-2.4F).durabilityMultiplier(2.0F))
                 .oreDict("toolChisel")
                 .secondaryOreDicts("craftingToolChisel")
                 .toolClasses("chisel")

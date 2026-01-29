@@ -3,6 +3,9 @@ package com.github.gtexpert.core.integration.chisel;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.gtexpert.core.integration.chisel.tools.ChiselToolItems;
+import com.github.gtexpert.core.integration.chisel.tools.ChiselToolRecipeHandler;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
