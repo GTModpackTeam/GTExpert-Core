@@ -38,14 +38,6 @@ gtexpert.machine.void_fluid_pump.tooltip.3=§d作者:§f @MrKono
 gtexpert.machine.void_fluid_pump.tooltip.overclock=§a二次オーバークロック:§7 高ティアほど効率向上 (例: +1ティア = 4倍, +2 = 9倍, +3 = 16倍)
 
 # singleblock
-# Auto Chisel
-gtexpert.machine.auto_chisel.lv.name=基本型自動彫刻機
-gtexpert.machine.auto_chisel.lv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
-gtexpert.machine.auto_chisel.mv.name=発展型自動彫刻機
-gtexpert.machine.auto_chisel.mv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
-gtexpert.machine.auto_chisel.hv.name=発展型自動彫刻機 II
-gtexpert.machine.auto_chisel.hv.tooltip=あなたの理想、彫刻します/n左が素材、右が彫刻型。詳しくはJEIのChiselingページをご覧ください。/n§d作者:§f @tier940
-
 # Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=基本型魂抽出器
 gtexpert.machine.vial_extractor.lv.tooltip=故も知らぬ不死のソウル?/n§d作者:§f @tier940
@@ -228,7 +220,6 @@ recipemap.sawmill.name=製材機
 recipemap.vial_extractor.name=魂抽出器
 recipemap.slice_n_splice.name=頭顱調整機
 recipemap.soul_binder.name=魂拘束器
-recipemap.auto_chisel.name=自動彫刻機
 recipemap.void_ore_miner.name=亜空間型鉱石採掘機
 recipemap.draconium_fusion.name=ドラコニック融合機
 recipemap.awakened_draconium_fusion.name=ドラコニック融合機

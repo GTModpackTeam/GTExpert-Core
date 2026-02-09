@@ -14,7 +14,6 @@ public class GTETextures {
     public static SimpleOverlayRenderer VOID_ORE_MINER_CASING;
 
     // Ender IO
-    public static OrientedOverlayRenderer AUTO_CHISEL_OVERLAY = new OrientedOverlayRenderer("machines/auto_chisel");
     public static OrientedOverlayRenderer VIAL_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer(
             "machines/vial_extractor");
     public static OrientedOverlayRenderer SLICE_N_SPLICE_OVERLAY = new OrientedOverlayRenderer(

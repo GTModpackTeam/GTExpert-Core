@@ -38,14 +38,6 @@ gtexpert.machine.void_fluid_pump.tooltip.3=§dAuthor:§f @MrKono
 gtexpert.machine.void_fluid_pump.tooltip.overclock=§aQuadratic Overclock:§7 Higher tiers are more efficient (e.g., +1 tier = 4x, +2 = 9x, +3 = 16x)
 
 # singleblock
-# Auto Chisel
-gtexpert.machine.auto_chisel.lv.name=Basic Auto Chisel
-gtexpert.machine.auto_chisel.lv.tooltip=Your ideal, we will sculpt it./nMaterial in the left, chiseling to the right. See JEI's Chiseling page for details./n§dAuthor:§f @tier940
-gtexpert.machine.auto_chisel.mv.name=Advanced Auto Chisel
-gtexpert.machine.auto_chisel.mv.tooltip=Your ideal, we will sculpt it/nMaterial in the left, chiseling to the right. See JEI's Chiseling page for details./n§dAuthor:§f @tier940
-gtexpert.machine.auto_chisel.hv.name=Advanced Auto Chisel II
-gtexpert.machine.auto_chisel.hv.tooltip=Your ideal, we will sculpt it/nMaterial in the left, chiseling to the right. See JEI's Chiseling page for details./n§dAuthor:§f @tier940
-
 # Vial Extractor
 gtexpert.machine.vial_extractor.lv.name=Basic Vial Extractor
 gtexpert.machine.vial_extractor.lv.tooltip=Soul of a Lost Undead?/n§dAuthor:§f @tier940
@@ -229,7 +221,6 @@ recipemap.sawmill.name=Saw Mill
 recipemap.vial_extractor.name=Vial Extractor
 recipemap.slice_n_splice.name=Slice'N'Splice
 recipemap.soul_binder.name=Soul Binder
-recipemap.auto_chisel.name=Auto Chisel
 recipemap.void_ore_miner.name=Void Ore Miner
 recipemap.draconium_fusion.name=Draconic Fusion Crafter
 recipemap.awakened_draconium_fusion.name=Draconic Fusion Crafter
@@ -266,7 +257,6 @@ gtexpert.multiblock.void_fluid_pump.multiplier=Production Multiplier: %s
 gtexpert.config.gtexpert=GTExpert-Core
 gtexpert.config.integration.ae=Applied Energistics 2
 gtexpert.config.integration.aeadditions=AE Additions
-gtexpert.config.integration.chisel=Chisel
 gtexpert.config.integration.deda=Draconic Evolution & Draconic Additions
 gtexpert.config.integration.eio=Ender IO
 gtexpert.config.integration.extracpus=Extra CPUs

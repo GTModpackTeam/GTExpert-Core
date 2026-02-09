@@ -45,9 +45,8 @@ import com.github.gtexpert.core.modules.GTEModules;
              "after:" + Mods.Names.ENDER_IO + ";" + "after:" + Mods.Names.ENDER_ENDERGY + ";" +
              "after:" + Mods.Names.ENDER_MACHINES + ";" + "after:" + Mods.Names.ENDER_CONDUITS + ";" +
              "after:" + Mods.Names.ENDER_AE2_CONDUITS + ";" + "after:" + Mods.Names.DRACONIC_EVOLUTION + ";" +
-             "after:" + Mods.Names.DRACONIC_ADDITIONS + ";" + "after:" + Mods.Names.CHISEL + ";" +
-             "after:" + Mods.Names.AVARITIA + ";" + "after:" + Mods.Names.THAUMCRAFT + ";" +
-             "after:" + Mods.Names.THAUMIC_ENERGISTICS + ";")
+             "after:" + Mods.Names.DRACONIC_ADDITIONS + ";" + "after:" + Mods.Names.AVARITIA + ";" +
+             "after:" + Mods.Names.THAUMCRAFT + ";" + "after:" + Mods.Names.THAUMIC_ENERGISTICS + ";")
 @Mod.EventBusSubscriber(modid = GTEValues.MODID)
 public class GTExpertMod {
 
