@@ -1,3 +1,8 @@
+# 2.7.0
+- Chisel integration move to [GTModpackTeam/GTMoreTools](https://github.com/GTModpackTeam/GTMoreTools)
+
+* * *
+
 # 2.6.4
 - Re: Improve the VOM UI [#351](https://github.com/GTModpackTeam/GTExpert-Core/pull/351)
 - The AwakenedFusion category is hidden [#352](https://github.com/GTModpackTeam/GTExpert-Core/pull/352)

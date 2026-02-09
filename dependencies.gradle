@@ -134,13 +134,6 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:avaritia-1-1x-unofficial-1165010:7186329")
     }
 
-    // Debug Chisel: 1.0.2.45
-    compileOnly rfg.deobf("curse.maven:chisel-235279:2915375")
-    if (project.debug_all.toBoolean() || project.debug_chisel.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:chisel-235279:2915375")
-        runtimeOnly rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
-    }
-
     // Debug GTFO: 1.12.5
     if (project.debug_all.toBoolean() || project.debug_gtfo.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:gregtech-food-option-477021:6472136")
