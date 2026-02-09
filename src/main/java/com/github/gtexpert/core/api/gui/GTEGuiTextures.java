@@ -21,8 +21,6 @@ public class GTEGuiTextures {
             .fullImage("textures/gui/progress_bar/progress_bar_void_fuel.png");
     public static final TextureArea PROGRESS_BAR_VOID_ENDER = TextureArea
             .fullImage("textures/gui/progress_bar/progress_bar_void_ender.png");
-    public static final TextureArea PROGRESS_BAR_CHISEL = TextureArea
-            .fullImage("textures/gui/progress_bar/progress_bar_chisel.png");
     public static final TextureArea SOULVIAL_EMPTY_OVRELAY = TextureArea
             .fullImage("textures/gui/overlay/soul_vial_e_overlay.png");
     public static final TextureArea SOULVIAL_FULL_OVERLAY = TextureArea
