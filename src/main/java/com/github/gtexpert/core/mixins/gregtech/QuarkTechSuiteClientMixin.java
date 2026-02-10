@@ -25,7 +25,7 @@ public class QuarkTechSuiteClientMixin {
               at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
     private boolean gtexpert$hideAutoEatTooltip(List<String> list, Object element) {
         if (GTEConfigHolder.ceuOverride.disableHelmetAutoEat &&
-                element.equals(I18n.format("metaarmor.tooltip.autoeat"))) {
+                I18n.format("metaarmor.tooltip.autoeat").equals(element)) {
             return false;
         }
         return list.add((String) element);
