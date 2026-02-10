@@ -16,7 +16,7 @@ on:
         type: boolean
 
 concurrency:
-  group: build-and-test-${{ github.head_ref || github.ref }}
+  group: build-and-test-${{ inputs.target_branch || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -30,6 +30,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.target_branch || github.ref }}
+        
       - name: Apply patch to buildscript.properties
         run: sed -i 's/debug_all = false/debug_all = true/g' buildscript.properties
 

@@ -6,7 +6,7 @@ on:
     paths: ['src/main/java/**', 'src/test/**']
 
 concurrency:
-  group: format-${{ github.head_ref || github.ref }}
+  group: format-${{ inputs.target_branch || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ inputs.target_branch || github.ref }}
 
       - name: Setup Build
         uses: ./.github/actions/build_setup

@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: gradle-cache-${{ github.ref }}
+  group: gradle-cache-${{ inputs.target_branch || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.target_branch || github.ref }}
 
       - name: Setup Build
         uses: ./.github/actions/build_setup
