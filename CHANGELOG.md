@@ -1,3 +1,8 @@
+# 2.7.1
+- Fix server boot crash [#354](https://github.com/GTModpackTeam/GTExpert-Core/pull/354)
+
+* * *
+
 # 2.7.0
 - Chisel integration move to [GTModpackTeam/GTMoreTools](https://github.com/GTModpackTeam/GTMoreTools)
 
