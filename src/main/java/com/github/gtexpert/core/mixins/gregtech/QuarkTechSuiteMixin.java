@@ -1,8 +1,5 @@
 package com.github.gtexpert.core.mixins.gregtech;
 
-import java.util.List;
-
-import net.minecraft.client.resources.I18n;
 import net.minecraft.util.FoodStats;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,18 +31,5 @@ public class QuarkTechSuiteMixin {
         } else {
             return foodStats.needFood();
         }
-    }
-
-    /**
-     * Hides the auto-eat tooltip when the feature is disabled via config.
-     */
-    @Redirect(method = "addInfo",
-              at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
-    private boolean gtexpert$hideAutoEatTooltip(List<String> list, Object element) {
-        if (GTEConfigHolder.ceuOverride.disableHelmetAutoEat &&
-                element.equals(I18n.format("metaarmor.tooltip.autoeat"))) {
-            return false;
-        }
-        return list.add((String) element);
     }
 }
