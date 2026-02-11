@@ -129,6 +129,12 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704")
     }
 
+    // Debug BQu: 4.2.7
+    compileOnly rfg.deobf("curse.maven:better-questing-unofficial-629629:7421294")
+    if (project.debug_all.toBoolean() || project.debug_deda.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:better-questing-unofficial-629629:7421294")
+    }
+
     // Debug Avaritia: 3.3.0.47-hotfix1
     if (project.debug_all.toBoolean() || project.debug_avaritia.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:avaritia-1-1x-unofficial-1165010:7186329")

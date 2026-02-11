@@ -17,10 +17,6 @@ public class AEConfigHolder {
     @Config.RangeInt(min = 2, max = 10)
     public static int voltageTier = 3;
 
-    @Config.Comment({ "Change AE swords, axes, etc. to GT recipe standards.",
-            "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
-    public static boolean hardToolRecipes = false;
-
     @Config.Comment({ "Integrate Printed Silicon and various Circuit creation molds.", "Default: false" })
     public static boolean moveSteelShape = false;
 }

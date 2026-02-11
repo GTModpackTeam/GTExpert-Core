@@ -19,6 +19,7 @@ import zone.rong.mixinbooter.ILateMixinLoader;
 public class GTEMixinLoader implements ILateMixinLoader {
 
     public static final Map<String, Boolean> modMixinsConfig = new ImmutableMap.Builder<String, Boolean>()
+            .put(Mods.Names.BETTER_QUESTING, true)
             .put(Mods.Names.DRACONIC_EVOLUTION, true)
             .put(Mods.Names.DRACONIC_ADDITIONS, true)
             .put(Mods.Names.GREGTECH, true)
