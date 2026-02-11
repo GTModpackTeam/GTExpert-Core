@@ -1,7 +1,15 @@
 package com.github.gtexpert.core.integration.ae;
 
+import java.util.Collections;
+import java.util.List;
+
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import org.jetbrains.annotations.NotNull;
+
+import gregtech.api.event.MaterialInfoEvent;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.modules.GTEModule;
@@ -23,9 +31,19 @@ import com.github.gtexpert.core.modules.GTEModules;
            description = "Applied Energistics 2 Integration Module")
 public class AEModule extends GTEIntegrationSubmodule {
 
+    @NotNull
+    @Override
+    public List<Class<?>> getEventBusSubscribers() {
+        return Collections.singletonList(AEModule.class);
+    }
+
+    @SubscribeEvent
+    public static void onMaterialInfo(MaterialInfoEvent event) {
+        AEMaterialInfoLoader.init();
+    }
+
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
-        AEMaterialInfoLoader.init();
         AEOreDictionaryLoader.init();
     }
 
