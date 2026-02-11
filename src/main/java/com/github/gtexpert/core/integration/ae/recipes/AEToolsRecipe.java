@@ -8,12 +8,11 @@ import gregtech.api.unification.material.Materials;
 import gregtech.common.ConfigHolder;
 
 import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.ae.AEConfigHolder;
 
 public class AEToolsRecipe {
 
     public static void init() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && AEConfigHolder.hardToolRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes) {
             // Nether Quartz Axe
             ModHandler.removeRecipeByName(
                     Mods.AppliedEnergistics2.getResource("tools/nether_quartz_axe"));

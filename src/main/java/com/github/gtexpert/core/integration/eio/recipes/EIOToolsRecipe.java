@@ -10,7 +10,6 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.ConfigHolder;
 
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
-import com.github.gtexpert.core.integration.eio.EnderIOConfigHolder;
 
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.endergy.init.EndergyObject;
@@ -18,7 +17,7 @@ import crazypants.enderio.endergy.init.EndergyObject;
 public class EIOToolsRecipe {
 
     public static void init() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && EnderIOConfigHolder.hardToolArmorRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes) {
             // Dark Helm
             ModHandler.addShapedRecipe(true, "dark_steel_helmet",
                     new ItemStack(ModObject.itemDarkSteelHelmet.getItemNN(), 1),

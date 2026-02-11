@@ -31,6 +31,7 @@ public enum Mods {
     Avaritia(Names.AVARITIA),
     Avaritiaaddons(Names.AVARITIAADDONS),
     Baubles(Names.BAUBLES),
+    BetterQuesting(Names.BETTER_QUESTING),
     Chisel(Names.CHISEL),
     CTM(Names.CONNECTED_TEXTURES_MOD),
     CraftTweaker(Names.CRAFT_TWEAKER),
@@ -100,6 +101,7 @@ public enum Mods {
         public static final String AVARITIA = "avaritia";
         public static final String AVARITIAADDONS = "avaritiaddons";
         public static final String BAUBLES = "baubles";
+        public static final String BETTER_QUESTING = "betterquesting";
         public static final String BOTANY = "botany";
         public static final String CHISEL = "chisel";
         public static final String CONNECTED_TEXTURES_MOD = "ctm";

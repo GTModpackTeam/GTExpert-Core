@@ -73,9 +73,10 @@ dependencies {
         runtimeOnly "curse.maven:implosionnobomb-1094386:5731331"
     }
 
-    // Debug ExtraCells2 Additions: 1.3.8
+    // Debug ExtraCells2 Additions
     if (project.debug_all.toBoolean() || project.debug_aea.toBoolean()) {
-        runtimeOnly "curse.maven:ae-additions-extra-cells-2-fork-493962:3814371"
+        runtimeOnly "curse.maven:forgelin-continuous-456403:7182824" // Forgelin-Continuous 2.2.21.0
+        runtimeOnly "curse.maven:ae-additions-extra-cells-2-fork-493962:3814371" // ExtraCells2 Additions: 1.3.8
     }
 
     // Debug ExtraCPUs: 1.2.1
@@ -127,6 +128,12 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:brandons-core-231382:3408276")
         runtimeOnly rfg.deobf("curse.maven:draconic-evolution-223565:3431261")
         runtimeOnly rfg.deobf("curse.maven:draconicadditions-314515:3514704")
+    }
+
+    // Debug BQu: 4.2.7
+    compileOnly rfg.deobf("curse.maven:better-questing-unofficial-629629:7421294")
+    if (project.debug_all.toBoolean() || project.debug_bqu.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:better-questing-unofficial-629629:7421294")
     }
 
     // Debug Avaritia: 3.3.0.47-hotfix1

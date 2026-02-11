@@ -11,7 +11,4 @@ import com.github.gtexpert.core.modules.GTEModules;
         category = "Thaumcraft")
 public class TCConfigHolder {
 
-    @Config.Comment({ "Change Thaumcraft recipes to GT recipe standards.",
-            "CEu's hardToolArmorRecipes to true to reflect.", "Default: false" })
-    public static boolean hardToolRecipes = false;
 }

@@ -9,12 +9,11 @@ import gregtech.common.ConfigHolder;
 
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 import com.github.gtexpert.core.api.util.Mods;
-import com.github.gtexpert.core.integration.tc.TCConfigHolder;
 
 public class TCToolsRecipe {
 
     public static void init() {
-        if (ConfigHolder.recipes.hardToolArmorRecipes && TCConfigHolder.hardToolRecipes) {
+        if (ConfigHolder.recipes.hardToolArmorRecipes) {
             // Dark Helm
             ModHandler.removeRecipeByName(Mods.Thaumcraft.getResource("thaumiumhelm"));
             ModHandler.addShapedRecipe(true, "thaumium_helm",
