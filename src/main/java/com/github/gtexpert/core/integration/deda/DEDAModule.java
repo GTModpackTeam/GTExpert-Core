@@ -1,9 +1,17 @@
 package com.github.gtexpert.core.integration.deda;
 
+import java.util.Collections;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import org.jetbrains.annotations.NotNull;
+
+import gregtech.api.event.MaterialInfoEvent;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.modules.GTEModule;
@@ -23,6 +31,17 @@ import com.github.gtexpert.core.modules.GTEModules;
            description = "Draconic Evolution & Draconic Additions Integration Module")
 public class DEDAModule extends GTEIntegrationSubmodule {
 
+    @NotNull
+    @Override
+    public List<Class<?>> getEventBusSubscribers() {
+        return Collections.singletonList(DEDAModule.class);
+    }
+
+    @SubscribeEvent
+    public static void onMaterialInfo(MaterialInfoEvent event) {
+        DEDAMaterialInfoLoader.init();
+    }
+
     @Override
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         DEDAMetaTileEntities.init();
@@ -31,11 +50,6 @@ public class DEDAModule extends GTEIntegrationSubmodule {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         DraconicMaterialsRecipe.remove();
-    }
-
-    @Override
-    public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
-        DEDAMaterialInfoLoader.init();
     }
 
     @Override

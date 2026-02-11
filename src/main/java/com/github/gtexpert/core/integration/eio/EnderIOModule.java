@@ -2,6 +2,8 @@ package com.github.gtexpert.core.integration.eio;
 
 import static gregtech.api.GTValues.*;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Consumer;
 
 import net.minecraft.block.Block;
@@ -12,9 +14,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import org.jetbrains.annotations.NotNull;
 
 import com.enderio.core.common.util.EntityUtil;
 
+import gregtech.api.event.MaterialInfoEvent;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
@@ -43,6 +49,17 @@ import crazypants.enderio.base.init.ModObject;
            description = "Ender IO Integration Module")
 public class EnderIOModule extends GTEIntegrationSubmodule {
 
+    @NotNull
+    @Override
+    public List<Class<?>> getEventBusSubscribers() {
+        return Collections.singletonList(EnderIOModule.class);
+    }
+
+    @SubscribeEvent
+    public static void onMaterialInfo(MaterialInfoEvent event) {
+        EIOMaterialInfoLoader.init();
+    }
+
     @Override
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         EIOMetaTileEntities.init();
@@ -55,7 +72,6 @@ public class EnderIOModule extends GTEIntegrationSubmodule {
 
     @Override
     public void registerRecipesNormal(RegistryEvent.Register<IRecipe> event) {
-        EIOMaterialInfoLoader.init();
         EIOOreDictionaryLoader.init();
     }
 

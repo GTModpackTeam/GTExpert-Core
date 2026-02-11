@@ -21,7 +21,6 @@ import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.block.VariantItemBlock;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.loaders.recipe.RecyclingRecipes;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.modules.GTEModule;
@@ -110,6 +109,5 @@ public class GTECoreModule implements IGTEModule {
         GTERecipe.init();
         CEUOverrideRecipe.init();
         GTEVanillaOverrideRecipes.init();
-        RecyclingRecipes.init();
     }
 }

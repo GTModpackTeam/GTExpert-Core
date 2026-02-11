@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,6 +22,11 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
+
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.stack.ItemAndMetadata;
+import gregtech.api.unification.stack.ItemMaterialInfo;
+import gregtech.loaders.recipe.RecyclingRecipes;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.modules.*;
@@ -262,9 +268,25 @@ public class GTEModuleManager implements IModuleManager {
     }
 
     public void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        // Take a snapshot of all item material infos before GTE registers its LOWEST recipes.
+        // Any new entries added by .withRecycling() during buildAndRegister() will need
+        // recycling recipes generated, since GregTech's RecyclingRecipes.init() has already run.
+        Set<ItemAndMetadata> existingInfos = new HashSet<>();
+        for (Map.Entry<ItemStack, ItemMaterialInfo> entry : OreDictUnifier.getAllItemInfos()) {
+            existingInfos.add(new ItemAndMetadata(entry.getKey()));
+        }
+
         for (IGTEModule module : loadedModules) {
             currentContainer = containers.get(getContainerID(module));
             module.registerRecipesLowest(event);
+        }
+
+        // Generate recycling recipes for items newly registered via .withRecycling()
+        for (Map.Entry<ItemStack, ItemMaterialInfo> entry : OreDictUnifier.getAllItemInfos()) {
+            if (!existingInfos.contains(new ItemAndMetadata(entry.getKey()))) {
+                RecyclingRecipes.registerRecyclingRecipes(entry.getKey(),
+                        new ArrayList<>(entry.getValue().getMaterials()), false, null);
+            }
         }
     }
 
