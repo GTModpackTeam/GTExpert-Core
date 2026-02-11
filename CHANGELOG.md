@@ -1,5 +1,6 @@
 # 2.7.2
 - Add BQu mixin [#359](https://github.com/GTModpackTeam/GTExpert-Core/pull/359)
+- Fix recycling recipes [#360](https://github.com/GTModpackTeam/GTExpert-Core/pull/360)
 
 * * *
 
