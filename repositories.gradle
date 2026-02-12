@@ -9,4 +9,7 @@ repositories {
         name 'GTCEu Maven'
         url 'https://maven.gtceu.com'
     }
+    flatDir {
+        dirs 'libs'
+    }
 }
