@@ -43,7 +43,7 @@ jobs:
         run: ./gradlew --info --scan --stacktrace assemble
 
       - name: Upload Jars
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: GTExpert-Core
           path: build/libs/*.jar
