@@ -32,8 +32,10 @@ public class DEDAJEIProvider implements IModPlugin {
                     GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_RECIPES.unlocalizedName;
 
             // Register Fusion categories
-            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(),
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(),
                     draconiumFusionCategory);
+            registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(),
+                    awakenedFusionCategory);
 
             // Register TierUp category
             registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(), tierUpCategory);
