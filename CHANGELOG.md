@@ -1,3 +1,8 @@
+# 2.7.4
+- Fix DEDA logic.
+
+* * *
+
 # 2.7.3
 - Fix ja_jp.lang file.
 
