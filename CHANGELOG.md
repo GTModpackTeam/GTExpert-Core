@@ -1,3 +1,8 @@
+# 2.7.5
+- Re: Fix DEDA logic.
+
+* * *
+
 # 2.7.4
 - Fix DEDA logic.
 
