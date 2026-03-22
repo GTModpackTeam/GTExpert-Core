@@ -22,8 +22,6 @@ public class DEDAJEIProvider implements IModPlugin {
             // Fusion categories
             String draconiumFusionCategory = GTValues.MODID + ":" +
                     GTEDraconicRecipeMaps.DRACONIUM_FUSION_RECIPES.unlocalizedName;
-            String awakenedFusionCategory = GTValues.MODID + ":" +
-                    GTEDraconicRecipeMaps.AWAKENED_DRACONIUM_FUSION_RECIPES.unlocalizedName;
 
             // Shared categories
             String tierUpCategory = GTValues.MODID + ":" +
@@ -31,11 +29,10 @@ public class DEDAJEIProvider implements IModPlugin {
             String upgradeCategory = GTValues.MODID + ":" +
                     GTEDraconicRecipeMaps.DRACONIC_FUSION_UPGRADE_RECIPES.unlocalizedName;
 
-            // Register Fusion categories
-            registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(),
-                    draconiumFusionCategory);
+            // Tier II can also process Tier I Fusion recipes
+            // (own RecipeMap catalysts are auto-registered by CEu)
             registry.addRecipeCatalyst(DEDAMetaTileEntities.AWAKENED_DRACONIUM_FUSION.getStackForm(),
-                    awakenedFusionCategory);
+                    draconiumFusionCategory);
 
             // Register TierUp category
             registry.addRecipeCatalyst(DEDAMetaTileEntities.DRACONIUM_FUSION.getStackForm(), tierUpCategory);

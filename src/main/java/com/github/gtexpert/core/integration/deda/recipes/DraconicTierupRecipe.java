@@ -23,7 +23,6 @@ import com.github.gtexpert.core.api.util.GTEUtility;
 import com.github.gtexpert.core.api.util.Mods;
 import com.github.gtexpert.core.integration.deda.DEDAConstants;
 import com.github.gtexpert.core.integration.deda.DEDAConstants.DraconicTier;
-import com.github.gtexpert.core.integration.deda.DEDARecipeHelper;
 import com.github.gtexpert.core.integration.deda.recipemaps.GTEDraconicRecipeMaps;
 import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
 
@@ -139,7 +138,7 @@ public class DraconicTierupRecipe {
 
         // Draconic Staff of Power
         GTEDraconicRecipeMaps.DRACONIC_FUSION_TIER_UP_RECIPES.recipeBuilder()
-                .catalyst(DEDARecipeHelper.inputWithAnyNBT(new ItemStack(DEFeatures.draconicPick)))
+                .catalyst(DEDAConstants.inputWithAnyNBT(new ItemStack(DEFeatures.draconicPick)))
                 .result(new ItemStack(DEFeatures.draconicStaffOfPower))
                 .tier(DraconicTier.DRACONIC)
                 .input(plate, GTEMaterials.Draconium, 6)
@@ -147,9 +146,9 @@ public class DraconicTierupRecipe {
                 .inputNBT(DEFeatures.draconicShovel, NBTMatcher.ANY, NBTCondition.ANY)
                 .inputNBT(DEFeatures.draconicSword, NBTMatcher.ANY, NBTCondition.ANY)
                 .input(DEFeatures.draconicCore, 4)
-                .fluidInputs(DEDARecipeHelper.cryotheum(DraconicTier.DRACONIC))
-                .fluidOutputs(DEDARecipeHelper.pyrotheum(DraconicTier.DRACONIC))
-                .duration(DEDAConstants.DURATION_DRACONIC).EUt(DEDARecipeHelper.voltage(DraconicTier.DRACONIC))
+                .fluidInputs(DEDAConstants.getCryotheum(DraconicTier.DRACONIC))
+                .fluidOutputs(DEDAConstants.getPyrotheum(DraconicTier.DRACONIC))
+                .duration(DEDAConstants.DURATION_DRACONIC).EUt(DEDAConstants.voltage(DraconicTier.DRACONIC))
                 .buildAndRegister();
 
         // Draconic Helm
@@ -236,24 +235,24 @@ public class DraconicTierupRecipe {
                     .input(plate, GTEMaterials.Draconium, plateAmount)
                     .input(DEFeatures.wyvernCore, 1)
                     .input(DEFeatures.wyvernEnergyCore, 1)
-                    .fluidInputs(DEDARecipeHelper.cryotheum(DraconicTier.WYVERN))
-                    .fluidOutputs(DEDARecipeHelper.pyrotheum(DraconicTier.WYVERN))
-                    .duration(DEDAConstants.DURATION_WYVERN).EUt(DEDARecipeHelper.voltage(DraconicTier.WYVERN));
+                    .fluidInputs(DEDAConstants.getCryotheum(DraconicTier.WYVERN))
+                    .fluidOutputs(DEDAConstants.getPyrotheum(DraconicTier.WYVERN))
+                    .duration(DEDAConstants.DURATION_WYVERN).EUt(DEDAConstants.voltage(DraconicTier.WYVERN));
             case DRACONIC -> recipeBuilder
                     .input(plate, GTEMaterials.AwakenedDraconium, 2)
                     .input(DEFeatures.draconicCore, 4)
                     .input(DEFeatures.draconicEnergyCore, 1)
-                    .fluidInputs(DEDARecipeHelper.cryotheum(DraconicTier.DRACONIC))
-                    .fluidOutputs(DEDARecipeHelper.pyrotheum(DraconicTier.DRACONIC))
-                    .duration(DEDAConstants.DURATION_DRACONIC).EUt(DEDARecipeHelper.voltage(DraconicTier.DRACONIC));
+                    .fluidInputs(DEDAConstants.getCryotheum(DraconicTier.DRACONIC))
+                    .fluidOutputs(DEDAConstants.getPyrotheum(DraconicTier.DRACONIC))
+                    .duration(DEDAConstants.DURATION_DRACONIC).EUt(DEDAConstants.voltage(DraconicTier.DRACONIC));
             case CHAOTIC -> recipeBuilder
                     .input(DEFeatures.chaosShard, 4, 0)
                     .input(DEFeatures.infusedObsidian, 2)
                     .input(DEFeatures.chaoticCore, 1)
                     .input(DAFeatures.chaoticEnergyCore, 1)
-                    .fluidInputs(DEDARecipeHelper.cryotheum(DraconicTier.CHAOTIC))
-                    .fluidOutputs(DEDARecipeHelper.pyrotheum(DraconicTier.CHAOTIC))
-                    .duration(DEDAConstants.DURATION_CHAOTIC).EUt(DEDARecipeHelper.voltage(DraconicTier.CHAOTIC));
+                    .fluidInputs(DEDAConstants.getCryotheum(DraconicTier.CHAOTIC))
+                    .fluidOutputs(DEDAConstants.getPyrotheum(DraconicTier.CHAOTIC))
+                    .duration(DEDAConstants.DURATION_CHAOTIC).EUt(DEDAConstants.voltage(DraconicTier.CHAOTIC));
         }
         recipeBuilder.buildAndRegister();
     }

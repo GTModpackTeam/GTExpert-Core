@@ -12,8 +12,6 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 
 import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeBuilder;
-import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeInfo;
-import com.github.gtexpert.core.integration.deda.recipemaps.tierup.TierUpRecipeProperty;
 
 /**
  * Recipe map for TierUp recipes (item tier upgrades like Wyvern → Draconic → Awakened).
@@ -37,7 +35,7 @@ public class RecipeMapDraconicTierUp extends RecipeMap<TierUpRecipeBuilder> {
             return null;
         }
 
-        TierUpRecipeInfo tierUpInfo = recipe.getProperty(TierUpRecipeProperty.getInstance(), null);
-        return DraconicRecipeUtils.setupOutput(recipe, inputs, tierUpInfo != null ? tierUpInfo.recipe() : null);
+        DraconicRecipeInfo info = recipe.getProperty(DraconicRecipeProperty.getTierUpInstance(), null);
+        return DraconicRecipeUtils.setupOutput(recipe, inputs, info != null ? info.recipe() : null);
     }
 }

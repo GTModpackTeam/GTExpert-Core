@@ -22,15 +22,27 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
 
     private final RecipeMapDraconicTierUp tierUpRecipeMap;
     private final RecipeMapDraconicUpgrade upgradeRecipeMap;
+    private final @Nullable RecipeMapDraconicFusion lowerTierMap;
 
     public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
                                    int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder,
                                    boolean isHidden,
                                    RecipeMapDraconicTierUp tierUpRecipeMap,
                                    RecipeMapDraconicUpgrade upgradeRecipeMap) {
+        this(unlocalizedName, maxInputs, maxOutputs, maxFluidInputs, maxFluidOutputs, defaultRecipeBuilder, isHidden,
+                tierUpRecipeMap, upgradeRecipeMap, null);
+    }
+
+    public RecipeMapDraconicFusion(@NotNull String unlocalizedName, int maxInputs, int maxOutputs, int maxFluidInputs,
+                                   int maxFluidOutputs, @NotNull SimpleRecipeBuilder defaultRecipeBuilder,
+                                   boolean isHidden,
+                                   RecipeMapDraconicTierUp tierUpRecipeMap,
+                                   RecipeMapDraconicUpgrade upgradeRecipeMap,
+                                   @Nullable RecipeMapDraconicFusion lowerTierMap) {
         super(unlocalizedName, maxInputs, maxOutputs, maxFluidInputs, maxFluidOutputs, defaultRecipeBuilder, isHidden);
         this.tierUpRecipeMap = tierUpRecipeMap;
         this.upgradeRecipeMap = upgradeRecipeMap;
+        this.lowerTierMap = lowerTierMap;
     }
 
     @Nullable
@@ -42,13 +54,29 @@ public class RecipeMapDraconicFusion extends RecipeMap<SimpleRecipeBuilder> {
             return fusionRecipe;
         }
 
-        // 2. Check TierUp recipes
+        // 2. Check lower-tier Fusion recipes
+        if (lowerTierMap != null) {
+            Recipe lowerTierRecipe = lowerTierMap.findOwnRecipe(voltage, inputs, fluidInputs, exactVoltage);
+            if (lowerTierRecipe != null) {
+                return lowerTierRecipe;
+            }
+        }
+
+        // 3. Check TierUp recipes
         Recipe tierUpRecipe = tierUpRecipeMap.findRecipe(voltage, inputs, fluidInputs, exactVoltage);
         if (tierUpRecipe != null) {
             return tierUpRecipe;
         }
 
-        // 3. Check Upgrade recipes
+        // 4. Check Upgrade recipes
         return upgradeRecipeMap.findRecipe(voltage, inputs, fluidInputs, exactVoltage);
+    }
+
+    /**
+     * Searches only this map's own recipes, without delegating to TierUp/Upgrade/lowerTier.
+     */
+    @Nullable
+    Recipe findOwnRecipe(long voltage, List<ItemStack> inputs, List<FluidStack> fluidInputs, boolean exactVoltage) {
+        return super.findRecipe(voltage, inputs, fluidInputs, exactVoltage);
     }
 }

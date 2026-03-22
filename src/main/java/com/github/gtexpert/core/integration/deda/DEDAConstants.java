@@ -1,9 +1,18 @@
 package com.github.gtexpert.core.integration.deda;
 
+import static gregtech.api.GTValues.VA;
+
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import gregtech.api.recipes.ingredients.GTRecipeInput;
+import gregtech.api.recipes.ingredients.GTRecipeItemInput;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTCondition;
+import gregtech.api.recipes.ingredients.nbtmatch.NBTMatcher;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
+import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 
 /**
@@ -22,6 +31,10 @@ public final class DEDAConstants {
     public static final int DURATION_DRACONIC = 400;
     public static final int DURATION_CHAOTIC = 600;
 
+    public static int voltage(DraconicTier tier) {
+        return VA[GTEValues.dedaVoltageTier + tier.voltageOffset];
+    }
+
     public static FluidStack getCryotheum(DraconicTier tier) {
         return switch (tier) {
             case WYVERN -> GTEMaterials.Cryotheum.getFluid(16000);
@@ -36,6 +49,10 @@ public final class DEDAConstants {
             case DRACONIC -> GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 8000);
             case CHAOTIC -> GTEMaterials.Pyrotheum.getFluid(GCYMFluidStorageKeys.MOLTEN, 12000);
         };
+    }
+
+    public static GTRecipeInput inputWithAnyNBT(ItemStack stack) {
+        return new GTRecipeItemInput(stack).setNBTMatchingCondition(NBTMatcher.ANY, NBTCondition.ANY);
     }
 
     /**

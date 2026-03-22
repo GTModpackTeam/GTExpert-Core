@@ -24,6 +24,8 @@ import gregtech.api.util.ValidationResult;
 
 import com.github.gtexpert.core.api.util.GTELog;
 import com.github.gtexpert.core.integration.deda.DEDAConstants.DraconicTier;
+import com.github.gtexpert.core.integration.deda.recipemaps.DraconicRecipeInfo;
+import com.github.gtexpert.core.integration.deda.recipemaps.DraconicRecipeProperty;
 
 public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 
@@ -49,14 +51,14 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
 
     @Override
     public boolean applyProperty(@NotNull String key, @Nullable Object value) {
-        if (!key.equals(UpgradeRecipeProperty.KEY)) {
+        if (!key.equals(DraconicRecipeProperty.UPGRADE_KEY)) {
             return super.applyProperty(key, value);
         }
-        if (!(value instanceof UpgradeRecipeInfo)) {
-            GTELog.logger.error("Property for draconic upgrade must be an instance of UpgradeRecipeInfo!",
+        if (!(value instanceof DraconicRecipeInfo)) {
+            GTELog.logger.error("Property for draconic upgrade must be an instance of DraconicRecipeInfo!",
                     new Throwable());
         }
-        this.applyProperty(UpgradeRecipeProperty.getInstance(), value);
+        this.applyProperty(DraconicRecipeProperty.getUpgradeInstance(), value);
         return true;
     }
 
@@ -133,7 +135,7 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
                 currentLevel,
                 upgradeLevel,
                 input);
-        setFusionRecipe(new UpgradeRecipeInfo(fusionRecipe, requiresAwakenedCrafter));
+        setFusionRecipe(new DraconicRecipeInfo(fusionRecipe, requiresAwakenedCrafter));
         inputs.add(1, new GTRecipeItemInput(upgradeKey, upgradeKey.getCount()).setNonConsumable());
     }
 
@@ -157,8 +159,8 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         return this;
     }
 
-    public void setFusionRecipe(UpgradeRecipeInfo recipeInfo) {
-        applyProperty(UpgradeRecipeProperty.getInstance(), recipeInfo);
+    public void setFusionRecipe(DraconicRecipeInfo recipeInfo) {
+        applyProperty(DraconicRecipeProperty.getUpgradeInstance(), recipeInfo);
     }
 
     public ItemStack getCatalyst() {
@@ -173,16 +175,16 @@ public class UpgradeRecipeBuilder extends RecipeBuilder<UpgradeRecipeBuilder> {
         return currentLevel;
     }
 
-    public UpgradeRecipeInfo getFusionRecipe() {
+    public DraconicRecipeInfo getFusionRecipe() {
         return this.recipePropertyStorage == null ? null :
-                this.recipePropertyStorage.getRecipePropertyValue(UpgradeRecipeProperty.getInstance(), null);
+                this.recipePropertyStorage.getRecipePropertyValue(DraconicRecipeProperty.getUpgradeInstance(), null);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
-                .append(UpgradeRecipeProperty.getInstance().getKey(), getFusionRecipe())
+                .append(DraconicRecipeProperty.getUpgradeInstance().getKey(), getFusionRecipe())
                 .toString();
     }
 }

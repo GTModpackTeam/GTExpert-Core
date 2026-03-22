@@ -13,8 +13,6 @@ import gregtech.api.recipes.RecipeMap;
 
 import com.github.gtexpert.core.integration.deda.DEDAConfigHolder;
 import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeBuilder;
-import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeInfo;
-import com.github.gtexpert.core.integration.deda.recipemaps.upgrade.UpgradeRecipeProperty;
 
 /**
  * Recipe map for Upgrade recipes (item stat upgrades like Attack Damage, Speed, etc.).
@@ -44,8 +42,8 @@ public class RecipeMapDraconicUpgrade extends RecipeMap<UpgradeRecipeBuilder> {
             return null;
         }
 
-        UpgradeRecipeInfo upgradeInfo = recipe.getProperty(UpgradeRecipeProperty.getInstance(), null);
-        return DraconicRecipeUtils.setupOutput(recipe, inputs, upgradeInfo != null ? upgradeInfo.recipe() : null);
+        DraconicRecipeInfo info = recipe.getProperty(DraconicRecipeProperty.getUpgradeInstance(), null);
+        return DraconicRecipeUtils.setupOutput(recipe, inputs, info != null ? info.recipe() : null);
     }
 
     /**

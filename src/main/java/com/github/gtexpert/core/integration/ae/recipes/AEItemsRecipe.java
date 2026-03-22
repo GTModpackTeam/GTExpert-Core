@@ -543,7 +543,7 @@ public class AEItemsRecipe {
                     .notConsumable(GTEMetaItems.SHAPE_MOLD_PRINTED_SILICON.getStackForm())
                     .fluidInputs(Materials.Silicon.getFluid(144))
                     .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 20))
-                    .duration(200).EUt(VA[GTEValues.ae2VoltageTier - 1])
+                    .duration(200).EUt(VA[GTEValues.ae2VoltageTier])
                     .buildAndRegister();
 
             // Logic Circuit
@@ -551,7 +551,7 @@ public class AEItemsRecipe {
                     .notConsumable(GTEMetaItems.SHAPE_MOLD_LOGIC_PROCESSOR.getStackForm())
                     .fluidInputs(Materials.Gold.getFluid(144))
                     .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 18))
-                    .duration(200).EUt(VA[GTEValues.ae2VoltageTier - 1])
+                    .duration(200).EUt(VA[GTEValues.ae2VoltageTier])
                     .buildAndRegister();
 
             // Calc Circuit
@@ -559,7 +559,7 @@ public class AEItemsRecipe {
                     .notConsumable(GTEMetaItems.SHAPE_MOLD_CALCULATION_PROCESSOR.getStackForm())
                     .fluidInputs(Materials.CertusQuartz.getFluid(144))
                     .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 16))
-                    .duration(200).EUt(VA[GTEValues.ae2VoltageTier - 1])
+                    .duration(200).EUt(VA[GTEValues.ae2VoltageTier])
                     .buildAndRegister();
 
             // Engineer Circuit
@@ -567,7 +567,7 @@ public class AEItemsRecipe {
                     .notConsumable(GTEMetaItems.SHAPE_MOLD_ENGINEERING_PROCESSOR.getStackForm())
                     .fluidInputs(Materials.Diamond.getFluid(144))
                     .outputs(Mods.AppliedEnergistics2.getItem("material", 1, 17))
-                    .duration(200).EUt(VA[GTEValues.ae2VoltageTier - 1])
+                    .duration(200).EUt(VA[GTEValues.ae2VoltageTier])
                     .buildAndRegister();
         } else {
             // Silicon Processor Press

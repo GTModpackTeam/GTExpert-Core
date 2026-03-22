@@ -33,7 +33,8 @@ public class GTEDraconicRecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> AWAKENED_DRACONIUM_FUSION_RECIPES = new RecipeMapDraconicFusion(
             "awakened_draconium_fusion", 6, 3, 3, 1, new SimpleRecipeBuilder(), false,
-            DRACONIC_FUSION_TIER_UP_RECIPES, DRACONIC_FUSION_UPGRADE_RECIPES);
+            DRACONIC_FUSION_TIER_UP_RECIPES, DRACONIC_FUSION_UPGRADE_RECIPES,
+            (RecipeMapDraconicFusion) DRACONIUM_FUSION_RECIPES);
 
     static {
         DRACONIC_FUSION_TIER_UP_RECIPES
