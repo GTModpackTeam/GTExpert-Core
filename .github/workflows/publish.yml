@@ -107,9 +107,6 @@ jobs:
             project-red-illumination(recommended)
             avaritia-1-1x-unofficial(recommended)
             thaumcraft(recommended)
-            forestry(recommended)
-            gendustry(recommended)
-            binnies-mods-patched(recommended)
             ulv-covers(incompatible)
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar
