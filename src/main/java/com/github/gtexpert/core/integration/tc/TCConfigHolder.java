@@ -11,4 +11,8 @@ import com.github.gtexpert.core.modules.GTEModules;
         category = "Thaumcraft")
 public class TCConfigHolder {
 
+    @Config.Comment({ "Start ID for Thaumcraft materials", "Default: 24191" })
+    @Config.RangeInt(min = 0)
+    @Config.RequiresMcRestart
+    public static int materialStartId = 24191;
 }

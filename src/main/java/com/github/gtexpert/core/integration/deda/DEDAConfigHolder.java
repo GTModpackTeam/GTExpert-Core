@@ -24,4 +24,14 @@ public class DEDAConfigHolder {
             "Improves performance by indexing recipes by catalyst item type.",
             "Disable if you experience recipe matching issues.", "Default: true" })
     public static boolean enableUpgradeRecipeCache = true;
+
+    @Config.Comment({ "Start ID for DEDA MetaTileEntities", "Default: 12004" })
+    @Config.RangeInt(min = 0)
+    @Config.RequiresMcRestart
+    public static int mteStartId = 12004;
+
+    @Config.Comment({ "Start ID for DEDA materials", "Default: 24176" })
+    @Config.RangeInt(min = 0)
+    @Config.RequiresMcRestart
+    public static int materialStartId = 24176;
 }

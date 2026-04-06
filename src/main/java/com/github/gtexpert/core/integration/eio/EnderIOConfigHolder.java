@@ -19,4 +19,14 @@ public class EnderIOConfigHolder {
     @Config.Comment({ "Add Shapeless Recipe in CoreMod Machines and EIO Machines.",
             "This change adds a recipe for equivalent exchange of HV machines and EIO machines", "Default: false" })
     public static boolean addShapelessRecipeMachines = false;
+
+    @Config.Comment({ "Start ID for EIO MetaTileEntities", "Default: 11010" })
+    @Config.RangeInt(min = 0)
+    @Config.RequiresMcRestart
+    public static int mteStartId = 11010;
+
+    @Config.Comment({ "Start ID for EIO materials", "Default: 24101" })
+    @Config.RangeInt(min = 0)
+    @Config.RequiresMcRestart
+    public static int materialStartId = 24101;
 }

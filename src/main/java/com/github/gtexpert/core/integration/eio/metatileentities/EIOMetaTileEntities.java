@@ -10,6 +10,7 @@ import gregtech.api.util.GTUtility;
 import com.github.gtexpert.core.api.util.GTEUtility;
 import com.github.gtexpert.core.client.GTETextures;
 import com.github.gtexpert.core.common.metatileentities.GTESimpleMachineMetaTileEntity;
+import com.github.gtexpert.core.integration.eio.EnderIOConfigHolder;
 import com.github.gtexpert.core.integration.eio.EnderIORecipeMaps;
 
 public class EIOMetaTileEntities {
@@ -20,25 +21,27 @@ public class EIOMetaTileEntities {
     public static MetaTileEntityElectricSpawner[] ELECTRIC_SPAWNER = new MetaTileEntityElectricSpawner[V.length - 1];
 
     public static void init() {
-        // VIAL_EXTRACTOR 11010~11022
-        registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, 11010, "vial_extractor",
+        int startId = EnderIOConfigHolder.mteStartId;
+
+        // VIAL_EXTRACTOR
+        registerGTESimpleMetaTileEntity(VIAL_EXTRACTOR, startId, "vial_extractor",
                 EnderIORecipeMaps.VIAL_EXTRACTOR_RECIPES,
                 GTETextures.VIAL_EXTRACTOR_OVERLAY, true, GTEUtility::gteId, GTUtility.hvCappedTankSizeFunction);
 
-        // SLICE_N_SPLICE 11023~11035
-
-        registerMetaTileEntities(SLICE_N_SPLICE, 11023, "slice_n_splice",
+        // SLICE_N_SPLICE
+        registerMetaTileEntities(SLICE_N_SPLICE, startId + 13, "slice_n_splice",
                 (tier, voltageName) -> new MetaTileEntitySliceNSplice(
                         gteId(String.format("%s.%s", "slice_n_splice", voltageName)),
                         EnderIORecipeMaps.SLICE_N_SPLICE_RECIPES,
                         GTETextures.SLICE_N_SPLICE_OVERLAY, tier, true, GTUtility.defaultTankSizeFunction));
 
-        // SOUL_BINDER 11036~11048
-        registerGTESimpleMetaTileEntity(SOUL_BINDER, 11036, "soul_binder", EnderIORecipeMaps.SOUL_BINDER_RECIPES,
+        // SOUL_BINDER
+        registerGTESimpleMetaTileEntity(SOUL_BINDER, startId + 26, "soul_binder",
+                EnderIORecipeMaps.SOUL_BINDER_RECIPES,
                 GTETextures.SOUL_BINDER_OVERLAY, true, GTEUtility::gteId, GTUtility.defaultTankSizeFunction);
 
-        // ELECTRIC_SPAWNER 11049~11061
-        registerMetaTileEntities(ELECTRIC_SPAWNER, 11049, "electric_spawner",
+        // ELECTRIC_SPAWNER
+        registerMetaTileEntities(ELECTRIC_SPAWNER, startId + 39, "electric_spawner",
                 (tier, voltageName) -> new MetaTileEntityElectricSpawner(
                         gteId(String.format("%s.%s", "electric_spawner", voltageName)),
                         GTETextures.SPAWNER_OVERLAY,

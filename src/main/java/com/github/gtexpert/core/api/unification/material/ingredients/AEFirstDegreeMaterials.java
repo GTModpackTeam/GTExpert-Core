@@ -14,6 +14,7 @@ import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 import gregtech.api.unification.ore.OrePrefix;
 
 import com.github.gtexpert.core.api.GTEValues;
+import com.github.gtexpert.core.integration.ae.AEConfigHolder;
 
 public class AEFirstDegreeMaterials {
 
@@ -21,11 +22,13 @@ public class AEFirstDegreeMaterials {
      * 24151 - 24175
      */
     public static void init() {
+        int startId = AEConfigHolder.materialStartId;
+
         // Certus Quartz
         OrePrefix.block.modifyMaterialAmount(CertusQuartz, 4);
 
         // Charged Certus Quartz
-        ChargedCertusQuartz = new Material.Builder(24151, gteId("charged_certus_quartz"))
+        ChargedCertusQuartz = new Material.Builder(startId, gteId("charged_certus_quartz"))
                 .dust()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xCFDAFF).iconSet(MaterialIconSet.CERTUS)
@@ -35,7 +38,7 @@ public class AEFirstDegreeMaterials {
         OrePrefix.block.modifyMaterialAmount(ChargedCertusQuartz, 4);
 
         // Fluix
-        Fluix = new Material.Builder(24152, gteId("fluix"))
+        Fluix = new Material.Builder(startId + 1, gteId("fluix"))
                 .dust()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x846994).iconSet(MaterialIconSet.CERTUS)
@@ -45,7 +48,7 @@ public class AEFirstDegreeMaterials {
         OrePrefix.block.modifyMaterialAmount(Fluix, 4);
 
         // Fluix Alloy
-        FluixAlloy = new Material.Builder(24153, gteId("fluix_alloy"))
+        FluixAlloy = new Material.Builder(startId + 2, gteId("fluix_alloy"))
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x4A3954).iconSet(MaterialIconSet.SHINY)

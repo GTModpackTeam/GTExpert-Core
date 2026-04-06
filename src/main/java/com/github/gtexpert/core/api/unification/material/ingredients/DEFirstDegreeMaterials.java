@@ -17,6 +17,7 @@ import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.integration.deda.DEDAConfigHolder;
 
 public class DEFirstDegreeMaterials {
 
@@ -24,8 +25,10 @@ public class DEFirstDegreeMaterials {
      * 24176 - 24200
      */
     public static void init() {
+        int startId = DEDAConfigHolder.materialStartId;
+
         // Cryotheum
-        Cryotheum = new Material.Builder(24176, gteId("cryotheum"))
+        Cryotheum = new Material.Builder(startId, gteId("cryotheum"))
                 .liquid(new FluidBuilder().temperature(2))
                 .color(0x00B6FF).iconSet(MaterialIconSet.FLUID)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
@@ -33,7 +36,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Pyrotheum
-        Pyrotheum = new Material.Builder(24177, gteId("pyrotheum"))
+        Pyrotheum = new Material.Builder(startId + 1, gteId("pyrotheum"))
                 .fluid(GCYMFluidStorageKeys.MOLTEN, new FluidBuilder().temperature(10273))
                 .color(0xE42C13).iconSet(MaterialIconSet.BRIGHT)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
@@ -41,7 +44,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Dragon Dust
-        Dragon = new Material.Builder(24178, gteId("dragon"))
+        Dragon = new Material.Builder(startId + 2, gteId("dragon"))
                 .dust()
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
@@ -51,7 +54,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Draconium
-        Draconium = new Material.Builder(24180, gteId("draconium"))
+        Draconium = new Material.Builder(startId + 4, gteId("draconium"))
                 .ore(2, 1, true)
                 .ingot(5)
                 .liquid(new FluidBuilder().temperature(1200))
@@ -72,7 +75,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Awakened Draconium
-        AwakenedDraconium = new Material.Builder(24181, gteId("awakened_draconium"))
+        AwakenedDraconium = new Material.Builder(startId + 5, gteId("awakened_draconium"))
                 .ingot(6)
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xFF6C00).iconSet(MaterialIconSet.METALLIC)
@@ -90,7 +93,7 @@ public class DEFirstDegreeMaterials {
                 .build();
 
         // Chaos Dust
-        Chaos = new Material.Builder(24179, gteId("chaos"))
+        Chaos = new Material.Builder(startId + 3, gteId("chaos"))
                 .dust()
                 .color(0x000000).iconSet(MaterialIconSet.ROUGH)
                 .flags(NO_WORKING, DISABLE_DECOMPOSITION)
