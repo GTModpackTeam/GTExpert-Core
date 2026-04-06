@@ -14,6 +14,11 @@ public class GTEConfigHolder {
     @Config.RequiresMcRestart
     public static final ModpackFlag gteFlag = new ModpackFlag();
 
+    @Config.Name("Start IDs")
+    @Config.Comment("Start IDs for meta items, machines and materials. Change if there are conflicts with other mods.")
+    @Config.RequiresMcRestart
+    public static final StartIDs startIDs = new StartIDs();
+
     @Config.Name("Gregtech Override")
     @Config.RequiresMcRestart
     public static final GregtechOverride ceuOverride = new GregtechOverride();
@@ -66,6 +71,39 @@ public class GTEConfigHolder {
                 "Default: 16" })
         @Config.RangeInt(min = 1)
         public int vfpBaseProductionRate = 16;
+    }
+
+    public static class StartIDs {
+
+        @Config.Comment({ "Start ID for misc meta items (ME Fake Component, Matrix Core, Artificial Bone)",
+                "Default: 0" })
+        @Config.RangeInt(min = 0)
+        public int metaItemMisc = 0;
+
+        @Config.Comment({ "Start ID for component meta items (Electric Motor, Pump, Conveyor, etc.)",
+                "Default: 11" })
+        @Config.RangeInt(min = 0)
+        public int metaItemComponent = 11;
+
+        @Config.Comment({ "Start ID for shape meta items (Molds and Extruders)",
+                "Default: 101" })
+        @Config.RangeInt(min = 0)
+        public int metaItemShape = 101;
+
+        @Config.Comment({ "Start ID for core multi-block machines",
+                "Default: 12001" })
+        @Config.RangeInt(min = 0)
+        public int coreMTE = 12001;
+
+        @Config.Comment({ "Start ID for core materials",
+                "Default: 24001" })
+        @Config.RangeInt(min = 0)
+        public int coreMaterial = 24001;
+
+        @Config.Comment({ "Start ID for Avaritia materials",
+                "Default: 24186" })
+        @Config.RangeInt(min = 0)
+        public int avaritiaMaterial = 24186;
     }
 
     public static class GregtechOverride {

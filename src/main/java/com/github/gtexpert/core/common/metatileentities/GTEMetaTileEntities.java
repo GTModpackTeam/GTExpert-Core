@@ -28,26 +28,28 @@ public class GTEMetaTileEntities {
     public static MetaTileEntityVoidFluidPump VOID_FLUID_PUMP;
 
     public static void init() {
+        int startId = GTEConfigHolder.startIDs.coreMTE;
+
         // Single Machine
         // Free: 11004~11999
 
         // Multi Machine
-        LARGE_ROCK_BREAKER = registerMetaTileEntity(12001,
+        LARGE_ROCK_BREAKER = registerMetaTileEntity(startId,
                 new MetaTileEntityLargeRockBreaker(gteId("large_rock_breaker")));
-        LARGE_CRACKER = registerMetaTileEntity(12002,
+        LARGE_CRACKER = registerMetaTileEntity(startId + 1,
                 new MetaTileEntityLargeCrackingUnit(gteId("large_cracking_unit")));
-        VOIDOREMINER = registerMetaTileEntity(12003,
+        VOIDOREMINER = registerMetaTileEntity(startId + 2,
                 new MetaTileEntityVoidOreMiner(gteId("void_ore_miner")));
-        // 12004~12005 is reserved for Draconic Evolution
-        ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(12006,
+        // startId + 3 ~ startId + 4 is reserved for Draconic Evolution
+        ADVANCED_CHEMICAL_PLANT = registerMetaTileEntity(startId + 5,
                 new MetaTileEntityAdvancedChemicalPlant(gteId("advanced_chemical_plant")));
-        LARGE_GAS_COLLECTOR = registerMetaTileEntity(12007,
+        LARGE_GAS_COLLECTOR = registerMetaTileEntity(startId + 6,
                 new MetaTileEntityLargeGasCollector(gteId(GTEConfigHolder.gteFlag.featureFlag ?
                         "large_gas_collector" : "advanced_gas_collector")));
-        LARGE_TRANSFORMER = registerMetaTileEntity(12008,
+        LARGE_TRANSFORMER = registerMetaTileEntity(startId + 7,
                 new MetaTileEntityLargeTransformer(gteId("large_transformer")));
-        VOID_FLUID_PUMP = registerMetaTileEntity(12009,
-                new MetaTileEntityVoidFluidPump((gteId("void_fluid_pump"))));
+        VOID_FLUID_PUMP = registerMetaTileEntity(startId + 8,
+                new MetaTileEntityVoidFluidPump(gteId("void_fluid_pump")));
     }
 
     public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,

@@ -11,14 +11,18 @@ import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
 
+import com.github.gtexpert.core.common.GTEConfigHolder;
+
 public class GTEFirstDegreeMaterials {
 
     /**
-     * 24001 - 24100
+     * Default: 24001 - 24100
      */
     public static void init() {
-        // Artificial Bone 24001
-        ArtificialBone = new Material.Builder(24001, gteId("artificial_bone"))
+        int startId = GTEConfigHolder.startIDs.coreMaterial;
+
+        // Artificial Bone
+        ArtificialBone = new Material.Builder(startId, gteId("artificial_bone"))
                 .dust(1)
                 .color(0xFAFAFA)
                 .flags(FORCE_GENERATE_BLOCK, MORTAR_GRINDABLE, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES)
@@ -26,7 +30,7 @@ public class GTEFirstDegreeMaterials {
                 .build();
 
         // NM_HEA_NPs
-        NM_HEA_NPs = new Material.Builder(24002, gteId("nm_hea_nps"))
+        NM_HEA_NPs = new Material.Builder(startId + 1, gteId("nm_hea_nps"))
                 .ingot()
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0xa90000).iconSet(METALLIC)
@@ -41,7 +45,7 @@ public class GTEFirstDegreeMaterials {
                 .build();
 
         // Naquadah Rocket Fuel
-        NaquadahRocketFuel = new Material.Builder(24003, gteId("naquadah_rocket_fuel"))
+        NaquadahRocketFuel = new Material.Builder(startId + 2, gteId("naquadah_rocket_fuel"))
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x2E4C00)
                 .flags(NO_WORKING)

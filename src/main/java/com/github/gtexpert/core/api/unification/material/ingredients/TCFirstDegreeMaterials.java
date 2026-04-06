@@ -10,14 +10,18 @@ import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
 
+import com.github.gtexpert.core.integration.tc.TCConfigHolder;
+
 public class TCFirstDegreeMaterials {
 
     /**
-     * 24191 - 24199
+     * Default: 24191 - 24199
      */
     public static void init() {
+        int startId = TCConfigHolder.materialStartId;
+
         // Thaumium
-        Thaumium = new Material.Builder(24191, gteId("thaumium"))
+        Thaumium = new Material.Builder(startId, gteId("thaumium"))
                 .dust(3).ingot(3)
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x9664c8).iconSet(MaterialIconSet.METALLIC)
@@ -29,7 +33,7 @@ public class TCFirstDegreeMaterials {
                 .build();
 
         // Void Metal
-        VoidMetal = new Material.Builder(24192, gteId("void_metal"))
+        VoidMetal = new Material.Builder(startId + 1, gteId("void_metal"))
                 .dust(4).ingot(4)
                 .liquid(new FluidBuilder().temperature(1200))
                 .color(0x1c0639).iconSet(MaterialIconSet.SHINY)

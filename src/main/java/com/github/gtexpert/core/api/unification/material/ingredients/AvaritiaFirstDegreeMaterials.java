@@ -12,17 +12,19 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.ToolProperty;
 
 import com.github.gtexpert.core.api.unification.material.info.GTEMaterialIconSet;
+import com.github.gtexpert.core.common.GTEConfigHolder;
 
 public class AvaritiaFirstDegreeMaterials {
 
     public static void init() {
+        int startId = GTEConfigHolder.startIDs.avaritiaMaterial;
         // Neutronium
         // Neutronium.setMaterialRGB(0x000000);
         // Neutronium.setMaterialIconSet(GTEMaterialIconSet.NEUTRONIUM);
         Neutronium.addFlags(GENERATE_SMALL_GEAR, GENERATE_FOIL, GENERATE_RING, GENERATE_ROTOR, NO_SMELTING);
 
         // Infinity
-        Infinity = new Material.Builder(24186, gteId("infinity"))
+        Infinity = new Material.Builder(startId, gteId("infinity"))
                 .dust(7).ingot(7)
                 .liquid(new FluidBuilder().temperature(10800))
                 .iconSet(GTEMaterialIconSet.INFINITY)

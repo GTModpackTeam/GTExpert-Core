@@ -19,4 +19,9 @@ public class AEConfigHolder {
 
     @Config.Comment({ "Integrate Printed Silicon and various Circuit creation molds.", "Default: false" })
     public static boolean moveSteelShape = false;
+
+    @Config.Comment({ "Start ID for AE2 materials", "Default: 24151" })
+    @Config.RangeInt(min = 0)
+    @Config.RequiresMcRestart
+    public static int materialStartId = 24151;
 }
