@@ -17,7 +17,7 @@ import com.github.gtexpert.core.integration.eio.EnderIOConfigHolder;
 public class EIOFirstDegreeMaterials {
 
     /**
-     * 24101 - 24150
+     * Default: 24101 - 24150
      */
     public static void init() {
         int startId = EnderIOConfigHolder.materialStartId;

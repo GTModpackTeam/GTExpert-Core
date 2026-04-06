@@ -15,7 +15,7 @@ import com.github.gtexpert.core.integration.tc.TCConfigHolder;
 public class TCFirstDegreeMaterials {
 
     /**
-     * 24191 - 24199
+     * Default: 24191 - 24199
      */
     public static void init() {
         int startId = TCConfigHolder.materialStartId;

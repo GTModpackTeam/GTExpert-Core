@@ -19,7 +19,7 @@ import com.github.gtexpert.core.integration.ae.AEConfigHolder;
 public class AEFirstDegreeMaterials {
 
     /**
-     * 24151 - 24175
+     * Default: 24151 - 24175
      */
     public static void init() {
         int startId = AEConfigHolder.materialStartId;

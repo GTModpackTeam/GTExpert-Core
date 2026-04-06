@@ -49,7 +49,7 @@ public class GTEMetaTileEntities {
         LARGE_TRANSFORMER = registerMetaTileEntity(startId + 7,
                 new MetaTileEntityLargeTransformer(gteId("large_transformer")));
         VOID_FLUID_PUMP = registerMetaTileEntity(startId + 8,
-                new MetaTileEntityVoidFluidPump((gteId("void_fluid_pump"))));
+                new MetaTileEntityVoidFluidPump(gteId("void_fluid_pump")));
     }
 
     public static void registerGTESimpleMetaTileEntity(GTESimpleMachineMetaTileEntity[] machines, int startId,

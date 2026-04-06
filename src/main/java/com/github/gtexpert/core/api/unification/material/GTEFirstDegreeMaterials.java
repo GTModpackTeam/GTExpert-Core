@@ -16,7 +16,7 @@ import com.github.gtexpert.core.common.GTEConfigHolder;
 public class GTEFirstDegreeMaterials {
 
     /**
-     * 24001 - 24100
+     * Default: 24001 - 24100
      */
     public static void init() {
         int startId = GTEConfigHolder.startIDs.coreMaterial;

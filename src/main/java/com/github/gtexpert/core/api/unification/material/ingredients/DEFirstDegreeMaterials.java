@@ -22,7 +22,7 @@ import com.github.gtexpert.core.integration.deda.DEDAConfigHolder;
 public class DEFirstDegreeMaterials {
 
     /**
-     * 24176 - 24200
+     * Default: 24176 - 24200
      */
     public static void init() {
         int startId = DEDAConfigHolder.materialStartId;
