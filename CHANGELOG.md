@@ -1,3 +1,10 @@
+# 2.7.6
+- Make MetaItem, MetaTileEntity, and Material IDs configurable via cfg
+  - Each category uses a configurable start ID; individual IDs are calculated as offsets
+  - Default values match the previous hardcoded values, so no impact on existing worlds
+
+* * *
+
 # 2.7.5
 - Re: Fix DEDA logic.
 
