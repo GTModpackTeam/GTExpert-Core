@@ -14,8 +14,6 @@ import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 
-import com.github.gtexpert.core.api.util.Mods;
-
 public class GTEImplosionRecipeHandler {
 
     private static final Consumer<ImplosionRecipeBuilder>[] EXPLOSIVES = new Consumer[] {
@@ -26,34 +24,24 @@ public class GTEImplosionRecipeHandler {
     };
 
     public static void add(Material inputMaterial, Material outputMaterial) {
-        register(
-                builder -> builder.input(dust, inputMaterial, 4).output(gem, outputMaterial, 3),
-                () -> GTEImplosionNoBombRecipeHandler.add(inputMaterial, outputMaterial));
+        register(builder -> builder.input(dust, inputMaterial, 4).output(gem, outputMaterial, 3));
     }
 
     public static void add(Material inputMaterial, ItemStack outputStack) {
-        register(
-                builder -> builder.input(dust, inputMaterial, 4).outputs(GTUtility.copy(3, outputStack)),
-                () -> GTEImplosionNoBombRecipeHandler.add(inputMaterial, outputStack));
+        register(builder -> builder.input(dust, inputMaterial, 4).outputs(GTUtility.copy(3, outputStack)));
     }
 
     public static void add(String inputOreDict, ItemStack outputStack) {
-        register(
-                builder -> builder.input(inputOreDict, 4).outputs(GTUtility.copy(3, outputStack)),
-                () -> GTEImplosionNoBombRecipeHandler.add(inputOreDict, outputStack));
+        register(builder -> builder.input(inputOreDict, 4).outputs(GTUtility.copy(3, outputStack)));
     }
 
-    private static void register(Consumer<ImplosionRecipeBuilder> recipeConfig, Runnable noBombHandler) {
-        if (Mods.ImplosionNoBomb.isModLoaded()) {
-            noBombHandler.run();
-        } else {
-            for (Consumer<ImplosionRecipeBuilder> explosive : EXPLOSIVES) {
-                ImplosionRecipeBuilder builder = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder();
-                recipeConfig.accept(builder);
-                builder.chancedOutput(dust, Materials.DarkAsh, 2500, 0);
-                explosive.accept(builder);
-                builder.buildAndRegister();
-            }
+    private static void register(Consumer<ImplosionRecipeBuilder> recipeConfig) {
+        for (Consumer<ImplosionRecipeBuilder> explosive : EXPLOSIVES) {
+            ImplosionRecipeBuilder builder = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder();
+            recipeConfig.accept(builder);
+            builder.chancedOutput(dust, Materials.DarkAsh, 2500, 0);
+            explosive.accept(builder);
+            builder.buildAndRegister();
         }
     }
 }

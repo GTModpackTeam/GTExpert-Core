@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import com.brandon3055.draconicevolution.DEFeatures;
 
 import gregtech.api.metatileentity.multiblock.CleanroomType;
+import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
@@ -45,6 +46,8 @@ public class DraconicMaterialsRecipe {
         }
         builderDD.buildAndRegister();
 
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES,
+                new ItemStack(Blocks.DRAGON_EGG));
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .input(Blocks.DRAGON_EGG)
                 .output(dust, GTEMaterials.Dragon, 8)
@@ -60,6 +63,8 @@ public class DraconicMaterialsRecipe {
                 .output(dust, GTEMaterials.Chaos, 2)
                 .duration(1200).EUt(VA[GTEValues.dedaVoltageTier + 1])
                 .buildAndRegister();
+        GTRecipeHandler.removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES,
+                new ItemStack(DEFeatures.chaosShard, 1, 1));
         RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(DEFeatures.chaosShard, 1, 1))
                 .output(dust, GTEMaterials.Chaos, 1)
