@@ -1,3 +1,9 @@
+# 2.7.7
+- Drop BQu Mixin [#363](https://github.com/GTModpackTeam/GTExpert-Core/pull/363)
+- Fix conflict ImplosionRecipe [#364](https://github.com/GTModpackTeam/GTExpert-Core/pull/364)
+
+* * *
+
 # 2.7.6
 - Make MetaItem, MetaTileEntity, and Material IDs configurable via cfg
   - Each category uses a configurable start ID; individual IDs are calculated as offsets

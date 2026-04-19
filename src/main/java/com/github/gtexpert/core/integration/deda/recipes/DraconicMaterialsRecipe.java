@@ -16,14 +16,13 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 
 import com.github.gtexpert.core.api.GTEValues;
 import com.github.gtexpert.core.api.unification.material.GTEMaterials;
 import com.github.gtexpert.core.api.util.Mods;
+import com.github.gtexpert.core.loaders.recipe.handlers.GTEImplosionRecipeHandler;
 
 public class DraconicMaterialsRecipe {
 
@@ -108,34 +107,10 @@ public class DraconicMaterialsRecipe {
         ModHandler.addMirroredShapedRecipe("ceu_draconic_block",
                 OreDictUnifier.get(block, GTEMaterials.AwakenedDraconium), "B",
                 'B', new ItemStack(DEFeatures.draconicBlock));
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+        GTEImplosionRecipeHandler.register(builder -> builder
                 .input(DEFeatures.dragonHeart, 1)
                 .input(block, GTEMaterials.Draconium, 4)
-                .output(block, GTEMaterials.AwakenedDraconium, 3)
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(DEFeatures.dragonHeart, 1)
-                .input(block, GTEMaterials.Draconium, 4)
-                .output(block, GTEMaterials.AwakenedDraconium, 3)
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesAmount(4)
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(DEFeatures.dragonHeart, 1)
-                .input(block, GTEMaterials.Draconium, 4)
-                .output(block, GTEMaterials.AwakenedDraconium, 3)
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
-                .buildAndRegister();
-        RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                .input(DEFeatures.dragonHeart, 1)
-                .input(block, GTEMaterials.Draconium, 4)
-                .output(block, GTEMaterials.AwakenedDraconium, 3)
-                .chancedOutput(dust, Materials.DarkAsh, 2500, 0)
-                .explosivesType(new ItemStack(MetaBlocks.ITNT))
-                .buildAndRegister();
+                .output(block, GTEMaterials.AwakenedDraconium, 3));
     }
 
     public static void remove() {

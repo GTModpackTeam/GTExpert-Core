@@ -35,7 +35,7 @@ public class GTEImplosionRecipeHandler {
         register(builder -> builder.input(inputOreDict, 4).outputs(GTUtility.copy(3, outputStack)));
     }
 
-    private static void register(Consumer<ImplosionRecipeBuilder> recipeConfig) {
+    public static void register(Consumer<ImplosionRecipeBuilder> recipeConfig) {
         for (Consumer<ImplosionRecipeBuilder> explosive : EXPLOSIVES) {
             ImplosionRecipeBuilder builder = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder();
             recipeConfig.accept(builder);
