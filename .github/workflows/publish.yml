@@ -29,7 +29,7 @@ env:
   MODRINTH_PROJECT_ID: "ipueNiWG"
 
 concurrency:
-  group: publish-${{ inputs.target_branch || github.ref }}
+  group: publish-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -44,7 +44,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
         with:
-          ref: ${{ inputs.target_branch || github.ref }}
+          ref: ${{ github.ref }}
           fetch-tags: true
 
       - name: Check if tag already exists

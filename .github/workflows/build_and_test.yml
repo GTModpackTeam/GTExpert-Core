@@ -4,6 +4,10 @@ name: Build and test
 on:
   workflow_dispatch:
     inputs:
+      target_branch:
+        description: 'Target branch to build'
+        required: false
+        type: string
       timeout:
         description: 'Timeout for runServer (seconds)'
         required: false
@@ -16,7 +20,7 @@ on:
         type: boolean
 
 concurrency:
-  group: build-and-test-${{ inputs.target_branch || github.ref }}
+  group: build-and-test-${{ inputs.target_branch || github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -32,7 +36,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           ref: ${{ inputs.target_branch || github.ref }}
-        
+
       - name: Apply patch to buildscript.properties
         run: sed -i 's/debug_all = false/debug_all = true/g' buildscript.properties
 
