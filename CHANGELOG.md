@@ -1,3 +1,8 @@
+# 2.7.8
+- Fix NAE2 MixinDualityInterface craftingList compatibility with AE2-UEL
+
+* * *
+
 # 2.7.7
 - Drop BQu Mixin [#363](https://github.com/GTModpackTeam/GTExpert-Core/pull/363)
 - Fix conflict ImplosionRecipe [#364](https://github.com/GTModpackTeam/GTExpert-Core/pull/364)

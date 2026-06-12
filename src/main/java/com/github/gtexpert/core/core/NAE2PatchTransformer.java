@@ -12,9 +12,9 @@ import org.objectweb.asm.tree.*;
 import com.github.gtexpert.core.api.util.GTELog;
 
 /**
- * ASM Transformer to patch NAE2's MixinDualityInterface by removing the problematic craftingList field
- * and any methods that reference it. This fixes compatibility issues with newer AE2 versions
- * where the craftingList field no longer exists.
+ * ASM Transformer to patch NAE2's MixinDualityInterface by removing the @Shadow craftingList field
+ * and replacing methods that reference it with no-ops. This fixes compatibility issues with newer
+ * AE2 versions where the craftingList field no longer exists, while preserving Mixin injection points.
  */
 public class NAE2PatchTransformer implements IClassTransformer {
 
@@ -65,30 +65,32 @@ public class NAE2PatchTransformer implements IClassTransformer {
                 if (method.name.contains("injectInventoryChange") ||
                         method.name.contains("handler$")) {
 
-                    // Remove any GETFIELD instructions that reference craftingList
+                    // Check for any GETFIELD/PUTFIELD instructions that reference craftingList
                     if (method.instructions != null) {
-                        boolean methodModified = false;
+                        boolean hasCraftingListRef = false;
                         Iterator<AbstractInsnNode> insnIterator = method.instructions.iterator();
-
                         while (insnIterator.hasNext()) {
                             AbstractInsnNode insn = insnIterator.next();
-
                             if (insn.getOpcode() == Opcodes.GETFIELD || insn.getOpcode() == Opcodes.PUTFIELD) {
                                 FieldInsnNode fieldInsn = (FieldInsnNode) insn;
                                 if ("craftingList".equals(fieldInsn.name)) {
-                                    GTELog.logger.info(
-                                            "Found reference to craftingList in method {}, removing the method entirely",
-                                            method.name);
-                                    methodIterator.remove();
-                                    modified = true;
-                                    methodModified = true;
+                                    hasCraftingListRef = true;
                                     break;
                                 }
                             }
                         }
 
-                        if (methodModified) {
-                            continue;
+                        if (hasCraftingListRef) {
+                            GTELog.logger.info(
+                                    "Found reference to craftingList in method {}, replacing with no-op",
+                                    method.name);
+                            method.instructions.clear();
+                            if (method.tryCatchBlocks != null) {
+                                method.tryCatchBlocks.clear();
+                            }
+                            method.localVariables = null;
+                            method.instructions.add(new InsnNode(Opcodes.RETURN));
+                            modified = true;
                         }
                     }
                 }
