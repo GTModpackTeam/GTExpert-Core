@@ -11,17 +11,20 @@ runs:
   using: 'composite'
 
   steps:
-    - name: Set up JDK 8 and 17
+    # RetroFuturaGradle 2.x requires a Java 25 JDK to run the Gradle daemon.
+    # The last listed version becomes JAVA_HOME (used by the daemon); 8 stays
+    # available as a compilation toolchain. Jabel runs on the Java 25 toolchain.
+    - name: Set up JDK 8 and 25
       uses: actions/setup-java@v5
       with:
         cache: gradle
         distribution: 'zulu'
         java-version: |
           8
-          17
+          25
 
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v5
+      uses: gradle/actions/setup-gradle@v6
       with:
         cache-write-only: ${{ inputs.update-cache }}
         gradle-home-cache-includes: |

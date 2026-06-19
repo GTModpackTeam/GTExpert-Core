@@ -2,8 +2,8 @@ pluginManagement {
     repositories {
         maven {
             // RetroFuturaGradle
-            name 'GTNH Maven'
-            url 'https://nexus.gtnewhorizons.com/repository/public/'
+            name = 'GTNH Maven'
+            url = 'https://nexus.gtnewhorizons.com/repository/public/'
             //noinspection GroovyAssignabilityCheck
             mavenContent {
                 includeGroup 'com.gtnewhorizons'
@@ -17,25 +17,25 @@ pluginManagement {
 }
 
 plugins {
-    id 'com.diffplug.blowdryerSetup' version '1.7.0'
+    id 'com.diffplug.blowdryerSetup' version '1.7.1'
     // Automatic toolchain provisioning
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.7.0'
-    id 'com.gradle.enterprise' version '3.18.1'
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+    id 'com.gradle.develocity' version '3.19'
 }
 
-gradleEnterprise {
-    if (System.getenv("CI") != null) {
-        buildScan {
-            publishAlways()
-            termsOfServiceUrl = "https://gradle.com/terms-of-service"
-            termsOfServiceAgree = "yes"
-        }
+develocity {
+    buildScan {
+        termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
+        termsOfUseAgree = "yes"
+        // Only publish a build scan in CI; locally the terms are still accepted
+        // so the daemon never blocks on the interactive "Do you accept?" prompt.
+        publishing.onlyIf { System.getenv("CI") != null }
     }
 }
 
 blowdryerSetup {
     repoSubfolder 'spotless'
-    github 'GTModpackTeam/Buildscripts', 'tag', 'v1.0.4'
+    github 'GTModpackTeam/Buildscripts', 'tag', 'v1.0.7'
 }
 
 rootProject.name = rootProject.projectDir.getName()

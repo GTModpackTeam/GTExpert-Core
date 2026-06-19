@@ -12,7 +12,7 @@
       "miozune",
       "MrKono"
     ],
-    "logoFile" : "assets/gregtech/textures/gui/icon/gtexpert_core_logo_high_resolution.png",
+    "logoFile" : "assets/gregtech/textures/gui/icon/gte_logo.png",
     "dependencies" : [
       "chickenchunks",
       "mixinbooter",
