@@ -35,6 +35,19 @@ reviews:
         - Injection points must be specific enough not to break on minor upstream changes.
         - Any new mixin must be registered in the matching `mixins.gtexpert.*.json`.
 
+        ASM class transformers (`core/GTECoreMod.java` as `IFMLLoadingPlugin`,
+        `getASMTransformerClass()`, and `IClassTransformer` implementations such as
+        `NAE2PatchTransformer`):
+        - These patch bytecode directly (ASM tree API), with no compile-time check against
+          the target class — a wrong field/method name or descriptor fails silently or
+          crashes at class-load time instead of at compile time. Review changes here with
+          extra scrutiny.
+        - Confirm the transformer only touches the intended target class name and that any
+          new transformer is registered in `getASMTransformerClass()`.
+        - Flag any transformer logic that assumes a target field/method exists without a
+          null/absence check, since upstream mods can rename or remove members between
+          versions (this is literally why `NAE2PatchTransformer` exists).
+
         Integration modules (`integration/`, `modules/`):
         - Optional mod integrations must be gated (`Loader.isModLoaded()` or the module
           system's `modDependencies`) so a missing optional mod cannot crash the game.
