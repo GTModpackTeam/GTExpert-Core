@@ -1,0 +1,57 @@
+knowledge_base:
+  mcp:
+    # "auto" disables MCP for public repositories, so set it explicitly.
+    # This is what allows the DeepWiki MCP server to be used as review context.
+    usage: enabled
+
+reviews:
+  path_instructions:
+    - path: "src/main/java/**/*.java"
+      instructions: |
+        Minecraft 1.12.2 Forge mod (GTExpert-Core), an add-on for
+        GregTech CE: Unofficial (GTCEu, https://github.com/GregTechCEu/GregTech).
+        Hard dependency: `gregtech:gregtech:2.8.10-beta`.
+
+        GTCEu context — use DeepWiki (GregTechCEu/GregTech) to verify:
+        - Confirm GTCEu APIs, registries and helper classes are used correctly, and that
+          referenced methods/fields actually exist in the pinned GTCEu version.
+        - Flag use of GTCEu internals that are not part of its public API when a public
+          equivalent exists.
+        - Recipe registration, material/OrePrefix usage and MetaTileEntity registration
+          must follow GTCEu conventions. Check ID collisions where relevant.
+
+        Platform constraints (1.12.2 / Java 8 bytecode):
+        - Do NOT suggest Java APIs or language features unavailable on this platform
+          (e.g. `List.of`, `var` in this codebase, records, switch expressions, text blocks).
+        - Do NOT suggest modern Minecraft/Forge APIs; this is the 1.12.2 Forge line.
+
+        Side boundary:
+        - Flag client-only types or `@SideOnly(Side.CLIENT)` members referenced from
+          common/server code paths — this crashes a dedicated server.
+
+        Mixins (`core/mixins/`, configs `mixins.gtexpert.*.json`):
+        - Verify the target class, method signature and descriptor plausibly exist in the
+          targeted mod (gregtech, gcym, draconicevolution, draconicadditions).
+        - Injection points must be specific enough not to break on minor upstream changes.
+        - Any new mixin must be registered in the matching `mixins.gtexpert.*.json`.
+
+        ASM class transformers (`core/GTECoreMod.java` as `IFMLLoadingPlugin`,
+        `getASMTransformerClass()`, and `IClassTransformer` implementations such as
+        `NAE2PatchTransformer`):
+        - These patch bytecode directly (ASM tree API), with no compile-time check against
+          the target class — a wrong field/method name or descriptor fails silently or
+          crashes at class-load time instead of at compile time. Review changes here with
+          extra scrutiny.
+        - Confirm the transformer only touches the intended target class name and that any
+          new transformer is registered in `getASMTransformerClass()`.
+        - Flag any transformer logic that assumes a target field/method exists without a
+          null/absence check, since upstream mods can rename or remove members between
+          versions (this is literally why `NAE2PatchTransformer` exists).
+
+        Integration modules (`integration/`, `modules/`):
+        - Optional mod integrations must be gated (`Loader.isModLoaded()` or the module
+          system's `modDependencies`) so a missing optional mod cannot crash the game.
+
+        Build:
+        - `build.gradle` is auto-generated. Never edit it
+          (configure via `buildscript.properties` / `dependencies.gradle`).
